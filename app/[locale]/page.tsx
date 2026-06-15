@@ -8,6 +8,7 @@ import { FooterSection } from "./_components/Footer/FooterSections";
 import HomeHero from "./_components/HomeHero/HomeHero";
 import { AiShowcase } from "./_components/AiShowcase/AiShowcase";
 import Script from "next/script";
+import { HowItWorksWrapper } from "./_components/HowItWorksWrapper";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -248,6 +249,7 @@ export default async function HomePage({ params }: Props) {
         <Header />
         <HomeHero />
         <AiShowcase />
+        <HowItWorksWrapper />
         <FooterSection />
       </div>
     </>
