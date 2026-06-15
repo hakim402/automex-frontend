@@ -16,7 +16,7 @@
 "use client";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { ThemeProvider } from "./theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { getGoogleClientId } from "@/lib/env";
 
