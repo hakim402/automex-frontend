@@ -3,33 +3,24 @@
  *
  * Execution order:
  *   1. next-intl handles locale detection, redirect, and cookie setting
- *   2. Auth layer reads the auth_status cookie and protects/redirects routes
+ *   2. Auth layer reads auth_status cookie and protects / redirects routes
  *
- * Why compose manually instead of next-intl's createMiddleware alone?
- *   next-intl doesn't know about your auth state. We need to intercept
- *   AFTER locale is resolved so redirect URLs include the correct locale prefix.
- *
- * Route anatomy with i18n:
- *   Public URL:    /en/dashboard    → protected
- *   Public URL:    /en/login        → auth route (redirect if logged in)
- *   pathname from request.nextUrl:  /en/dashboard  (always has locale prefix here)
+ * Route anatomy (i18n):
+ *   Browser URL     /en/dashboard  →  stripped path  /dashboard  →  PROTECTED
+ *   Browser URL     /ar/sign-in    →  stripped path  /sign-in    →  AUTH_ROUTE
  */
 
 import createIntlMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
-// ─── next-intl middleware instance ───────────────────────────────────────────
+// ─── next-intl instance ───────────────────────────────────────────────────────
 
 const intlMiddleware = createIntlMiddleware(routing);
 
-// ─── Route definitions (WITHOUT locale prefix — we strip it before matching) ─
+// ─── Route lists (without locale prefix) ─────────────────────────────────────
 
-/**
- * Routes that require authentication.
- * Define the path AFTER the locale segment.
- * e.g. /en/dashboard → stripped to /dashboard → matches here.
- */
+/** Require a valid session — redirect to /sign-in if missing. */
 const PROTECTED_ROUTES = [
   "/dashboard",
   "/profile",
@@ -37,9 +28,7 @@ const PROTECTED_ROUTES = [
   "/settings",
 ];
 
-/**
- * Routes that logged-in users should be redirected away from.
- */
+/** Redirect logged-in users away (e.g. back to dashboard). */
 const AUTH_ROUTES = [
   "/sign-in",
   "/sign-up",
@@ -47,130 +36,81 @@ const AUTH_ROUTES = [
 ];
 
 /**
- * Routes that are always accessible, even with a broken/expired token.
- * These are token-consumption pages that need to load regardless of auth state.
+ * Token-consumption pages — always accessible regardless of session state.
+ * These pages call the API themselves and handle their own error states.
  */
 const PUBLIC_ROUTES = [
-  "/verify-email",
-  "/magic-link",
-  "/reset-password",
+  "/auth/verify-email",
+  "/auth/magic-link",
+  "/auth/reset-password",
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/**
- * Strip the locale prefix from a pathname.
- * /en/dashboard  → /dashboard
- * /ar/login      → /login
- * /zh            → /
- */
 function stripLocale(pathname: string, locales: readonly string[]): string {
   for (const locale of locales) {
     if (pathname === `/${locale}`) return "/";
-    if (pathname.startsWith(`/${locale}/`)) {
-      return pathname.slice(`/${locale}`.length);
-    }
+    if (pathname.startsWith(`/${locale}/`)) return pathname.slice(locale.length + 1);
   }
   return pathname;
 }
 
-function isProtected(path: string): boolean {
-  return PROTECTED_ROUTES.some(
-    (r) => path === r || path.startsWith(`${r}/`)
-  );
+function matchesRoute(stripped: string, routes: string[]): boolean {
+  return routes.some((r) => stripped === r || stripped.startsWith(`${r}/`));
 }
 
-function isAuthRoute(path: string): boolean {
-  return AUTH_ROUTES.some(
-    (r) => path === r || path.startsWith(`${r}/`)
-  );
-}
-
-function isAlwaysPublic(path: string): boolean {
-  return PUBLIC_ROUTES.some(
-    (r) => path === r || path.startsWith(`${r}/`)
-  );
-}
-
-// ─── Composed middleware ──────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ── Step 1: Run next-intl first ────────────────────────────────────────
-  // It handles locale detection, redirects (e.g. / → /en), and sets the
-  // Next-Locale cookie. We capture its response and potentially override it.
+  // ── Step 1: next-intl (locale detection + redirect) ────────────────────
   const intlResponse = intlMiddleware(request);
 
-  // If next-intl itself issued a redirect (e.g. / → /en), honour it.
-  // Auth state doesn't matter — we'd just redirect again on the next load.
+  // Honour next-intl locale redirects immediately (e.g. / → /en)
   if (intlResponse.status === 307 || intlResponse.status === 308) {
     return intlResponse;
   }
 
-  // ── Step 2: Resolve the locale-stripped path ───────────────────────────
-  const locales = routing.locales as readonly string[];
+  // ── Step 2: strip locale prefix for route matching ──────────────────────
+  const locales     = routing.locales as readonly string[];
+  const stripped    = stripLocale(pathname, locales);
 
-  // After a 307, next-intl may redirect to a localised path. For non-redirect
-  // responses we read the original pathname (already localised by the router).
-  const strippedPath = stripLocale(pathname, locales);
+  // Always-public token pages — skip auth check entirely
+  if (matchesRoute(stripped, PUBLIC_ROUTES)) return intlResponse;
 
-  // Always-public routes skip auth entirely
-  if (isAlwaysPublic(strippedPath)) {
-    return intlResponse;
-  }
+  // ── Step 3: auth cookie ─────────────────────────────────────────────────
+  // Set to "1" by POST /api/auth/session after login.
+  // Cleared by DELETE /api/auth/session on logout.
+  const isLoggedIn = request.cookies.get("auth_status")?.value === "1";
 
-  // ── Step 3: Read auth status cookie ────────────────────────────────────
-  // Set by /api/auth/session route handler when the user logs in/out.
-  // Contains "1" when a valid session exists, absent otherwise.
-  const authStatus = request.cookies.get("auth_status")?.value;
-  const isLoggedIn = authStatus === "1";
-
-  // ── Step 4: Detect the current locale for building redirect URLs ────────
-  // next-intl sets the X-Next-Intl-Locale header on its response.
-  // Fall back to the default locale if not present.
-  const currentLocale =
+  // Current locale — from next-intl response header or routing default
+  const locale =
     intlResponse.headers.get("X-Next-Intl-Locale") ??
     (routing.defaultLocale as string);
 
-  // ── Step 5: Protected route — not logged in ─────────────────────────────
-  if (isProtected(strippedPath) && !isLoggedIn) {
-    const loginUrl = new URL(`/${currentLocale}/login`, request.url);
-    // Preserve original destination for post-login redirect
-    loginUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginUrl);
+  // ── Step 4: protected route + no session → redirect to /sign-in ─────────
+  if (matchesRoute(stripped, PROTECTED_ROUTES) && !isLoggedIn) {
+    const url = new URL(`/${locale}/sign-in`, request.url);
+    url.searchParams.set("redirect", pathname);
+    return NextResponse.redirect(url);
   }
 
-  // ── Step 6: Auth route — already logged in ──────────────────────────────
-  if (isAuthRoute(strippedPath) && isLoggedIn) {
+  // ── Step 5: auth route + active session → redirect to /dashboard ─────────
+  if (matchesRoute(stripped, AUTH_ROUTES) && isLoggedIn) {
     const redirectParam = request.nextUrl.searchParams.get("redirect");
-    // Only honour same-origin redirects to prevent open redirect attacks
-    const isSafeRedirect =
-      redirectParam &&
-      redirectParam.startsWith("/") &&
-      !redirectParam.startsWith("//");
-
-    const destination = isSafeRedirect
-      ? redirectParam
-      : `/${currentLocale}/dashboard`;
-
-    return NextResponse.redirect(new URL(destination, request.url));
+    const isSafe =
+      redirectParam?.startsWith("/") && !redirectParam.startsWith("//");
+    const dest = isSafe ? redirectParam! : `/${locale}/dashboard`;
+    return NextResponse.redirect(new URL(dest, request.url));
   }
 
-  // ── Step 7: Pass through — return next-intl's response ─────────────────
+  // ── Step 6: pass through ─────────────────────────────────────────────────
   return intlResponse;
 }
 
-// ─── Matcher configuration (only for middleware execution) ───────────────────
+// ─── Matcher ──────────────────────────────────────────────────────────────────
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except:
-     *   - api routes          (/api/...)
-     *   - _next internals     (/_next/...)
-     *   - static assets       (files with extensions: .ico, .png, .svg, etc.)
-     */
-    "/((?!api|_next|.*\\..*).*)",
-  ],
+  matcher: ["/((?!api|_next|.*\\..*).*)" ],
 };

@@ -494,5 +494,67 @@
       "primary": "Start a conversation",
       "secondary": "Explore our services"
     }
+  },
+
+  "Sidebar": {
+    "dashboard":       "Dashboard",
+    "myRequests":      "My Requests",
+    "videoBookings":   "Video Bookings",
+    "consulting":      "Consulting",
+    "support":         "Support",
+    "notifications":   "Notifications",
+    "profile":         "Profile",
+    "security":        "Security"
+  },
+
+  "DashboardHeader": {
+    "openMenu": "Open navigation",
+    "profile":  "Profile"
+  },
+
+  "Dashboard": {
+    "defaultName":         "there",
+    "welcomeEyebrow":      "Your workspace",
+    "greetMorning":        "Good morning",
+    "greetAfternoon":      "Good afternoon",
+    "greetEvening":        "Good evening",
+    "welcomeDescription":  "Here's an overview of your account activity and quick access to your most-used services.",
+    "ctaNewRequest":       "New request",
+    "ctaBookSession":      "Book a session",
+
+    "statRequests":        "Total requests",
+    "statBookings":        "Video bookings",
+    "statConsulting":      "Consulting",
+    "statTickets":         "Open tickets",
+
+    "actApproved":         "Request #1042 approved",
+    "actPending":          "Request #1041 pending review",
+    "actBooking":          "Video session booked for tomorrow",
+    "actSupport":          "Support ticket #203 replied",
+
+    "sectionActivity":     "Recent activity",
+    "sectionQuickLinks":   "Quick access",
+    "sectionAccount":      "Account status",
+    "viewAll":             "View all",
+
+    "quickRequests":       "My Requests",
+    "quickRequestsDesc":   "Track and manage your service requests",
+    "quickBookings":       "Video Bookings",
+    "quickBookingsDesc":   "Schedule and join video consultations",
+    "quickConsulting":     "Consulting",
+    "quickConsultingDesc": "View your active consulting sessions",
+    "quickSupport":        "Support",
+    "quickSupportDesc":    "Get help from our support team",
+    "quickNotifications":  "Notifications",
+    "quickNotificationsDesc": "Stay up to date with alerts",
+    "quickProfile":        "Profile",
+    "quickProfileDesc":    "Manage your account information",
+
+    "statusEmail":         "Email address",
+    "statusVerified":      "Verified",
+    "statusUnverified":    "Not verified",
+    "statusAuthMethod":    "Sign-in method",
+    "statusPassword":      "Email & password",
+    "statusRole":          "Account role"
   }
 }

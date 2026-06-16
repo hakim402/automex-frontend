@@ -81,13 +81,13 @@ export default function ResetPasswordPage() {
             This link is missing a reset token. Please use the link from your email,
             or request a new one.
           </p>
-          <Link
+          <a
             href="/auth/forgot-password"
             className="inline-block text-[13px] font-semibold text-primary
                        hover:underline underline-offset-4"
           >
             Request a new reset link
-          </Link>
+          </a>
         </div>
       </div>
     );

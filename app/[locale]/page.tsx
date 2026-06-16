@@ -248,8 +248,8 @@ export default async function HomePage({ params }: Props) {
       <div dir={isRtl ? "rtl" : "ltr"}>
         <Header />
         <HomeHero />
-        <HowItWorksWrapper />
         <AiShowcase />
+        <HowItWorksWrapper />
         <FooterSection />
       </div>
     </>

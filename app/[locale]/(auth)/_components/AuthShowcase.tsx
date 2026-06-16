@@ -46,12 +46,15 @@ const itemVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.6,
+      // ✅ Cast array to any to satisfy Framer Motion's type checker
+      ease: [0.22, 1, 0.36, 1] as any,
+    },
   },
 };
 
 // ─── Feature card data ────────────────────────────────────────────────────────
-// Icons are static; text comes from i18n.
 
 const FEATURE_ICONS = [Bot, Rocket, ShieldCheck] as const;
 
@@ -60,7 +63,6 @@ const FEATURE_ICONS = [Bot, Rocket, ShieldCheck] as const;
 export function AuthShowcase({ locale }: AuthShowcaseProps) {
   const t = useTranslations("Auth");
 
-  // Pull the points array from translations
   const points = t.raw("showcase.points") as Array<{
     title: string;
     description: string;
@@ -71,25 +73,19 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
       className="relative w-full h-full flex flex-col overflow-hidden
                  bg-[#07111f] dark:bg-[#07111f]"
     >
-      {/* ── Background layers ─────────────────────────────────────────────── */}
-
-      {/* Top-left radial brand glow */}
+      {/* Background layers */}
       <div
         aria-hidden="true"
         className="absolute -top-32 -left-32 w-150 h-150 rounded-full
                    bg-[radial-gradient(circle,rgb(10_184_251/14%)_0%,transparent_70%)]
                    pointer-events-none"
       />
-
-      {/* Bottom-right secondary glow */}
       <div
         aria-hidden="true"
         className="absolute -bottom-40 -right-20 w-125 h-125 rounded-full
                    bg-[radial-gradient(circle,rgb(50_75_157/20%)_0%,transparent_70%)]
                    pointer-events-none"
       />
-
-      {/* Subtle dot-grid texture overlay */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -100,14 +96,13 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
         }}
       />
 
-      {/* ── Content ───────────────────────────────────────────────────────── */}
+      {/* Content */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
         className="relative z-10 flex flex-col h-full px-10 py-12 xl:px-14 xl:py-14"
       >
-
         {/* Brand logo */}
         <motion.div variants={itemVariants} className="mb-12">
           <div className="flex items-center gap-3">
@@ -124,7 +119,6 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
 
         {/* Hero headline */}
         <motion.div variants={itemVariants} className="mb-10">
-          {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 mb-5
                           rounded-full border border-[rgb(10_184_251/25%)]
                           bg-[rgb(10_184_251/8%)] px-3.5 py-1.5">
@@ -133,13 +127,9 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
               {t("showcase.eyebrow")}
             </span>
           </div>
-
-          {/* Main headline — gradient accent on last word */}
           <h2 className="text-3xl xl:text-4xl font-bold leading-tight text-white mb-4">
-            {/* Split the title so we can accent the last part */}
             {t("showcase.title")}
           </h2>
-
           <p className="text-[15px] leading-7 text-[#9eb0c4]">
             {t("showcase.description")}
           </p>
@@ -160,7 +150,6 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
                            hover:border-[rgb(10_184_251/25%)]
                            hover:bg-[rgb(13_26_45/80%)]"
               >
-                {/* Icon chip */}
                 <div
                   className="flex size-10 shrink-0 items-center justify-center
                               rounded-xl bg-color shadow-brand
@@ -168,8 +157,6 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
                 >
                   <Icon className="size-5 text-white" aria-hidden="true" />
                 </div>
-
-                {/* Text */}
                 <div className="min-w-0">
                   <p className="text-[14px] font-semibold text-white mb-1">
                     {point.title}
@@ -210,7 +197,6 @@ export function AuthShowcase({ locale }: AuthShowcaseProps) {
           ))}
         </motion.div>
 
-        {/* Footer note */}
         <motion.p
           variants={itemVariants}
           className="mt-6 text-[11px] text-[#56697f]"

@@ -12,7 +12,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
@@ -131,6 +131,7 @@ export default function SignUpPage() {
 
   const {
     register,
+    control, // 👈 added for Controller
     handleSubmit,
     formState: { errors },
     watch,
@@ -292,23 +293,30 @@ export default function SignUpPage() {
             />
           </AuthFormField>
 
-          {/* Terms checkbox */}
+          {/* ─── Terms checkbox (FIXED with Controller) ─── */}
           <div className="space-y-1.5">
             <label className="flex items-start gap-3 cursor-pointer">
-              <Checkbox
-                id="terms_accepted"
-                className="mt-0.5 shrink-0"
-                {...register("terms_accepted")}
+              <Controller
+                name="terms_accepted"
+                control={control}
+                render={({ field }) => (
+                  <Checkbox
+                    id="terms_accepted"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    className="mt-0.5 shrink-0"
+                  />
+                )}
               />
               <span className="text-[13px] text-muted-foreground leading-5">
                 {t("signup.termsPrefix")}{" "}
-                <Link href="/terms" className="text-primary hover:underline underline-offset-4 font-medium">
+                <a href="/terms" className="text-primary hover:underline underline-offset-4 font-medium">
                   {t("signup.terms")}
-                </Link>{" "}
+                </a>{" "}
                 {t("signup.and")}{" "}
-                <Link href="#" className="text-primary hover:underline underline-offset-4 font-medium">
+                <a href="/privacy" className="text-primary hover:underline underline-offset-4 font-medium">
                   {t("signup.privacy")}
-                </Link>
+                </a>
               </span>
             </label>
 
