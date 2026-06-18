@@ -1,3 +1,5 @@
+// app/[locale]/dashboard/layout.tsx
+
 import { SidebarProvider } from "@/contexts/sidebar-context";
 import { Sidebar } from "./_components/Sidebar/Sidebar";
 import { DashboardMain } from "./_components/DashboardMain";  // new file

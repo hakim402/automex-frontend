@@ -1,5 +1,7 @@
 "use client";
 
+// app/[locale]/dashboard/_components/DashboardMain.tsx
+
 import { useState, useEffect } from "react";
 import { useSidebar } from "@/contexts/sidebar-context";
 import { usePathname } from "next/navigation";
