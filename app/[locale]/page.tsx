@@ -10,6 +10,7 @@ import { AiShowcase } from "./_components/AiShowcase/AiShowcase";
 import Script from "next/script";
 import { HowItWorksWrapper } from "./_components/Wrappers/HowItWorksWrapper";
 import { TechStackSection } from "./_components/Wrappers/TechStackSection";
+import { ConnectedModelSection } from "./_components/Wrappers/ConnectedModelSection";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -252,6 +253,7 @@ export default async function HomePage({ params }: Props) {
         <AiShowcase />
         <HowItWorksWrapper />
         <TechStackSection isRtl={isRtl} />
+        <ConnectedModelSection isRtl={isRtl} />
         <FooterSection />
       </div>
     </>

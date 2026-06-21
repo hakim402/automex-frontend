@@ -78,8 +78,10 @@ export interface TechStackProps {
 function MarqueeBackground({ tools }: { tools: TechTool[] }) {
   const names = tools.map((t) => t.name);
   // Triple for seamless loop
-  const row  = [...names, ...names, ...names];
-  const rowR = [...names].reverse().concat([...names].reverse(), [...names].reverse());
+  const row = [...names, ...names, ...names];
+  const rowR = [...names]
+    .reverse()
+    .concat([...names].reverse(), [...names].reverse());
 
   return (
     <div
@@ -87,8 +89,8 @@ function MarqueeBackground({ tools }: { tools: TechTool[] }) {
       className="pointer-events-none absolute inset-0 -z-10 select-none overflow-hidden"
     >
       {/* Left + right fade masks */}
-      <div className="absolute inset-y-0 start-0 z-10 w-32 bg-gradient-to-r from-background to-transparent" />
-      <div className="absolute inset-y-0 end-0 z-10 w-32 bg-gradient-to-l from-background to-transparent" />
+      <div className="absolute inset-y-0 start-s-0 z-10 w-32 bg-linear-to-r from-background to-transparent" />
+      <div className="absolute inset-y-0 end-e-0 z-10 w-32 bg-linear-to-l from-background to-transparent" />
 
       <div className="flex flex-col gap-3 pt-8 opacity-[0.032] dark:opacity-[0.022]">
         {/* Row 1 — left → right */}
@@ -96,21 +98,33 @@ function MarqueeBackground({ tools }: { tools: TechTool[] }) {
           className="flex whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.32em] text-foreground"
           style={{ animation: "ts-marquee 42s linear infinite" }}
         >
-          {row.map((name, i) => <span key={i} className="mx-8">{name}</span>)}
+          {row.map((name, i) => (
+            <span key={i} className="mx-8">
+              {name}
+            </span>
+          ))}
         </div>
         {/* Row 2 — right → left */}
         <div
           className="flex whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.32em] text-foreground"
           style={{ animation: "ts-marquee-rev 36s linear infinite" }}
         >
-          {rowR.map((name, i) => <span key={i} className="mx-8">{name}</span>)}
+          {rowR.map((name, i) => (
+            <span key={i} className="mx-8">
+              {name}
+            </span>
+          ))}
         </div>
         {/* Row 3 — left → right, slower */}
         <div
           className="flex whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.32em] text-foreground"
           style={{ animation: "ts-marquee 58s linear infinite" }}
         >
-          {row.map((name, i) => <span key={i} className="mx-8">{name}</span>)}
+          {row.map((name, i) => (
+            <span key={i} className="mx-8">
+              {name}
+            </span>
+          ))}
         </div>
       </div>
     </div>
@@ -324,10 +338,10 @@ function CounterStrip({
   isRtl: boolean;
 }) {
   const items = [
-    { value: `${tools.length}+`,      label: "Integrations"   },
-    { value: `${categories.length}`,  label: "Categories"     },
-    { value: "REST",                  label: "API standard"   },
-    { value: "OAuth 2.0",             label: "Auth protocol"  },
+    { value: `${tools.length}+`, label: "Integrations" },
+    { value: `${categories.length}`, label: "Categories" },
+    { value: "REST", label: "API standard" },
+    { value: "OAuth 2.0", label: "Auth protocol" },
   ];
 
   return (
@@ -350,7 +364,9 @@ function CounterStrip({
           <span className="text-xl font-bold tabular-nums text-foreground sm:text-2xl">
             {item.value}
           </span>
-          <span className="text-[11px] text-muted-foreground">{item.label}</span>
+          <span className="text-[11px] text-muted-foreground">
+            {item.label}
+          </span>
         </motion.div>
       ))}
     </motion.div>
@@ -404,7 +420,7 @@ export function TechStack({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20
                    bg-[linear-gradient(to_right,rgb(148_198_233/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.04)_1px,transparent_1px)]
-                   bg-[size:48px_48px]"
+                   bg-size-[48px_48px]"
       />
 
       {/* Decorative marquee */}
@@ -413,17 +429,16 @@ export function TechStack({
       {/* Top + bottom masks to blend marquee into page bg */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-[5] h-24
-                   bg-gradient-to-b from-background to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 z-[-5] h-24
+                   bg-linear-to-b from-background to-transparent"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-[5] h-24
-                   bg-gradient-to-t from-background to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[-5] h-24
+                   bg-linear-to-t from-background to-transparent"
       />
 
       <div className="mx-auto max-w-6xl">
-
         {/* ── Header ── */}
         <div className="mb-10 text-center">
           {eyebrow && (

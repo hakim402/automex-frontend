@@ -138,6 +138,17 @@
     "allLabel": "All tools"
   },
   
+  "ConnectedModel": {
+    "eyebrow": "One Connected Model",
+    "headlineLead": "One trusted reality.",
+    "headlineAccent": "Dashboard and AI on top.",
+    "description": "Sales, ads, and website numbers often sit in different apps, so it's hard to see how your business is really doing. We bring it together in one place. AI and dashboard both use the same numbers, so you never get two different answers.",
+    "signalsLabel": "Every signal",
+    "outputsLabel": "Same data, two doors",
+    "primaryLabel": "Book a demo",
+    "secondaryLabel": "Contact us"
+  },
+  
   "Auth": {
     "common": {
       "brand": "IDWE",
