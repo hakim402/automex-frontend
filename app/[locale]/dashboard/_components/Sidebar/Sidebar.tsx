@@ -62,17 +62,21 @@ interface NavItem {
 // ─── Nav items — matches i18n/routing.ts pathnames ────────────────────────────
 
 const MAIN_NAV: NavItem[] = [
-  { icon: LayoutDashboard,   labelKey: "dashboard",     href: "/dashboard" },
-  { icon: PackageSearch,     labelKey: "projects",    href: "/dashboard/projects" },
-  { icon: Video,             labelKey: "services", href: "/dashboard/services" },
-  { icon: BriefcaseBusiness, labelKey: "consulting",    href: "/dashboard/consulting" },
-  { icon: BotMessageSquare,  labelKey: "support",       href: "/dashboard/support" },
+  { icon: LayoutDashboard, labelKey: "dashboard", href: "/dashboard" },
+  { icon: PackageSearch, labelKey: "projects", href: "/dashboard/projects" },
+  { icon: Video, labelKey: "services", href: "/dashboard/services" },
+  {
+    icon: BriefcaseBusiness,
+    labelKey: "consulting",
+    href: "/dashboard/consulting",
+  },
+  { icon: BotMessageSquare, labelKey: "support", href: "/dashboard/support" },
 ];
 
 const BOTTOM_NAV: NavItem[] = [
-  { icon: Bell,        labelKey: "notifications", href: "/dashboard/notifications" },
-  { icon: UserCircle,  labelKey: "profile",       href: "/dashboard/profile" },
-  { icon: ShieldCheck, labelKey: "security",      href: "/dashboard/security" },
+  { icon: Bell, labelKey: "notifications", href: "/dashboard/notifications" },
+  { icon: UserCircle, labelKey: "profile", href: "/dashboard/profile" },
+  { icon: ShieldCheck, labelKey: "security", href: "/dashboard/security" },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -83,14 +87,17 @@ interface SidebarProps {
 
 export function Sidebar({ isRtl }: SidebarProps) {
   const t = useTranslations("Sidebar");
-  const { collapsed, setCollapsed, mobileOpen, setMobileOpen, sidebarWidth } = useSidebar();
+  const { collapsed, setCollapsed, mobileOpen, setMobileOpen, sidebarWidth } =
+    useSidebar();
   const { user, logout } = useAuth();
   const pathname = usePathname();
 
   const close = () => setMobileOpen(false);
 
   const isActive = (href: string) =>
-    href === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(href);
+    href === "/dashboard"
+      ? pathname === "/dashboard"
+      : pathname.startsWith(href);
 
   const initial = user?.full_name?.charAt(0).toUpperCase() ?? "U";
 
@@ -140,8 +147,8 @@ export function Sidebar({ isRtl }: SidebarProps) {
             className="flex min-w-0 items-center gap-2.5 overflow-hidden"
           >
             <Image
-              src="/logo/idwe.png"
-              alt="IDWE"
+              src="/logo/icon.png"
+              alt="Automex"
               width={32}
               height={32}
               className="size-8 shrink-0 rounded-lg object-contain"
@@ -156,9 +163,9 @@ export function Sidebar({ isRtl }: SidebarProps) {
                   exit={{ opacity: 0, width: 0 }}
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden whitespace-nowrap text-[15px]
-                             font-bold tracking-tight text-sidebar-foreground"
+                             font-bold tracking-tight text-sidebar-foreground mt-2"
                 >
-                  IDWE
+                  Automex
                 </motion.span>
               )}
             </AnimatePresence>
@@ -174,7 +181,9 @@ export function Sidebar({ isRtl }: SidebarProps) {
                          hover:bg-sidebar-accent/15 hover:text-sidebar-foreground"
               aria-label="Collapse sidebar"
             >
-              <span className={cn("transition-transform", isRtl && "rotate-180")}>
+              <span
+                className={cn("transition-transform", isRtl && "rotate-180")}
+              >
                 <ChevronLeft className="size-4" />
               </span>
             </Button>
@@ -216,8 +225,10 @@ export function Sidebar({ isRtl }: SidebarProps) {
         >
           <div className="flex flex-col gap-0.5">
             {!collapsed && (
-              <p className="mb-1 px-3 text-[10px] font-bold uppercase tracking-[0.14em]
-                            text-sidebar-foreground/35">
+              <p
+                className="mb-1 px-3 text-[10px] font-bold uppercase tracking-[0.14em]
+                            text-sidebar-foreground/35"
+              >
                 {t("menuLabel")}
               </p>
             )}
@@ -237,8 +248,10 @@ export function Sidebar({ isRtl }: SidebarProps) {
 
           <div className="flex flex-col gap-0.5 border-t border-sidebar-border/15 pt-2">
             {!collapsed && (
-              <p className="mb-1 px-3 text-[10px] font-bold uppercase tracking-[0.14em]
-                            text-sidebar-foreground/35">
+              <p
+                className="mb-1 px-3 text-[10px] font-bold uppercase tracking-[0.14em]
+                            text-sidebar-foreground/35"
+              >
                 {t("accountLabel")}
               </p>
             )}
@@ -277,10 +290,14 @@ export function Sidebar({ isRtl }: SidebarProps) {
               </button>
             </div>
           ) : (
-            <div className="group flex items-center gap-3 rounded-xl p-2.5
-                            transition-colors hover:bg-sidebar-accent/10">
-              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl
-                              bg-color text-[13px] font-bold text-white shadow-brand">
+            <div
+              className="group flex items-center gap-3 rounded-xl p-2.5
+                            transition-colors hover:bg-sidebar-accent/10"
+            >
+              <div
+                className="flex size-9 shrink-0 items-center justify-center rounded-xl
+                              bg-color text-[13px] font-bold text-white shadow-brand"
+              >
                 {initial}
               </div>
               <div className="min-w-0 flex-1">

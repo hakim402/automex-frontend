@@ -459,7 +459,7 @@ export function AiShowcase() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_40%_at_50%_100%,rgb(50_75_157/10%),transparent)]"
       />
 
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* ── Main two-column layout ── */}
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           {/* Left: Service orbit – responsive scaling wrapper */}

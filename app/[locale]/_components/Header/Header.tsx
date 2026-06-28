@@ -59,19 +59,28 @@ export const Header = () => {
           "fixed top-4 z-50 w-full transition-all duration-300",
           scrolled
             ? "border-border/40 backdrop-blur-lg border-b shadow-sm top-0 p-4"
-            : "bg-transparent"
+            : "bg-transparent",
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            {/* Logo */}
             <Link href="/" className="flex items-center">
+              {/* Light mode logo */}
               <Image
-                src="/logo/idwe.png"
+                src="/logo/automex-dark.png"
                 alt="Infinity Solutions Logo"
                 width={120}
                 height={50}
-                className="h-20 md:h-26 lg:h-26 xl:h-26 w-auto object-contain -ml-4 md:ml-0 lg:ml-4 xl:ml-0"
+                className="block dark:hidden h-40 md:h-48 lg:h-52 xl:h-52 w-auto object-contain -ml-4 md:ml-0 lg:ml-4 xl:ml-0"
+                priority
+              />
+              {/* Dark mode logo */}
+              <Image
+                src="/logo/automex-light.png"
+                alt="Infinity Solutions Logo"
+                width={120}
+                height={50}
+                className="hidden dark:block h-40 md:h-48 lg:h-52 xl:h-52 w-auto object-contain -ml-4 md:ml-0 lg:ml-4 xl:ml-0"
                 priority
               />
             </Link>
@@ -80,22 +89,12 @@ export const Header = () => {
             <div className="hidden lg:flex lg:items-center lg:gap-6">
               {!isAuthenticated
                 ? menuItems.map((item) => (
-                    <Button
-                      key={item.href}
-                      asChild
-                      variant="ghost"
-                      size="sm"
-                    >
+                    <Button key={item.href} asChild variant="ghost" size="sm">
                       <Link href={item.href}>{item.name}</Link>
                     </Button>
                   ))
                 : menuItemsSignedIn.map((item) => (
-                    <Button
-                      key={item.href}
-                      asChild
-                      variant="ghost"
-                      size="sm"
-                    >
+                    <Button key={item.href} asChild variant="ghost" size="sm">
                       <Link href={item.href}>{item.name}</Link>
                     </Button>
                   ))}
@@ -127,11 +126,7 @@ export const Header = () => {
                   </Button>
                 </>
               ) : (
-                <Button
-                  asChild
-                  size="sm"
-                  className="hidden sm:inline-flex"
-                >
+                <Button asChild size="sm" className="hidden sm:inline-flex">
                   <Link href="/dashboard">{t("profile")}</Link>
                 </Button>
               )}
@@ -155,7 +150,7 @@ export const Header = () => {
             "absolute left-0 right-0 top-16 bg-background border-border border-b shadow-lg transition-all duration-300 lg:hidden",
             menuOpen
               ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-2 pointer-events-none"
+              : "opacity-0 -translate-y-2 pointer-events-none",
           )}
         >
           <div className="container mx-auto px-4 py-6 space-y-4">
@@ -186,10 +181,7 @@ export const Header = () => {
             {!isAuthenticated && (
               <div className="flex flex-col gap-2 pt-2 border-t border-border">
                 <Button asChild variant="outline" className="w-full">
-                  <Link
-                    href="/sign-in"
-                    onClick={() => setMenuOpen(false)}
-                  >
+                  <Link href="/sign-in" onClick={() => setMenuOpen(false)}>
                     {t("login")}
                   </Link>
                 </Button>
@@ -198,10 +190,7 @@ export const Header = () => {
                   asChild
                   className="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
                 >
-                  <Link
-                    href="/sign-up"
-                    onClick={() => setMenuOpen(false)}
-                  >
+                  <Link href="/sign-up" onClick={() => setMenuOpen(false)}>
                     {t("signUp")}
                   </Link>
                 </Button>

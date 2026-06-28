@@ -4,12 +4,7 @@ import type { ElementType } from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  ArrowRight,
-  Bot,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, Bot, Sparkles, Zap } from "lucide-react";
 
 import OrbitalSystem from "./OrbitalSystem";
 
@@ -69,7 +64,9 @@ const fadeInVariants: Variants = {
 };
 
 function getSupportedLocale(locale: string): Locale {
-  return SUPPORTED_LOCALES.includes(locale as Locale) ? (locale as Locale) : "en";
+  return SUPPORTED_LOCALES.includes(locale as Locale)
+    ? (locale as Locale)
+    : "en";
 }
 
 function buildLocalePath(locale: Locale, path: string) {
@@ -164,7 +161,7 @@ export default function HomeHero() {
     >
       <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgb(10_184_251/12%),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgb(10_184_251/8%),transparent)]" />
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 xl:gap-12">
           <motion.div
             variants={containerVariants}
@@ -197,9 +194,7 @@ export default function HomeHero() {
               variants={fadeUpVariants}
               className={[
                 "flex w-full flex-col items-center justify-center gap-3 sm:flex-row",
-                isRtl
-                  ? "lg:justify-end"
-                  : "lg:justify-start",
+                isRtl ? "lg:justify-end" : "lg:justify-start",
               ].join(" ")}
             >
               <Link
@@ -224,7 +219,10 @@ export default function HomeHero() {
               </Link>
             </motion.div>
 
-            <motion.div variants={fadeUpVariants} className="w-full max-w-xl lg:hidden lg:max-w-none">
+            <motion.div
+              variants={fadeUpVariants}
+              className="w-full max-w-xl lg:hidden lg:max-w-none"
+            >
               <ActivityTicker items={content.tickerItems} />
             </motion.div>
           </motion.div>

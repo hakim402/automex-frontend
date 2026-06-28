@@ -1011,7 +1011,7 @@ export function HowItWorks({
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(148_198_233/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.04)_1px,transparent_1px)] bg-size-[48px_48px]"
       />
 
-      <div className="mx-auto max-w-6xl space-y-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* ── Header ── */}
         <div className="text-center">
           {eyebrow && (

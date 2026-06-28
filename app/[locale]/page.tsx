@@ -250,11 +250,13 @@ export default async function HomePage({ params }: Props) {
       <div dir={isRtl ? "rtl" : "ltr"}>
         <Header />
         <HomeHero />
+
         <AiShowcase />
         <HowItWorksWrapper />
         <TechStackSection isRtl={isRtl} />
         <ConnectedModelSection isRtl={isRtl} />
         <FooterSection />
+
       </div>
     </>
   );

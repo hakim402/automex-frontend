@@ -10,7 +10,7 @@
     "headlineLead": "Automate, Scale &",
     "headlineAccent": "Grow with AI",
     "headlineSuffix": "",
-    "description": "IDWE builds intelligent automation systems, custom software, and AI-powered tools that free your team from repetitive work so you can focus on what actually moves your business forward.",
+    "description": "automex builds intelligent automation systems, custom software, and AI-powered tools that free your team from repetitive work so you can focus on what actually moves your business forward.",
     "primaryAction": "Start Your Project",
     "secondaryAction": "Explore Services",
     "tickerItems": [
@@ -134,10 +134,9 @@
     "eyebrow": "Integrations",
     "title": "Built on tools your team already uses",
     "accentWord": "tools your team",
-    "description": "IDWE integrates natively with the platforms that power modern businesses — from AI models and CRM systems to cloud infrastructure and team communication.",
+    "description": "automex integrates natively with the platforms that power modern businesses — from AI models and CRM systems to cloud infrastructure and team communication.",
     "allLabel": "All tools"
   },
-  
   "ConnectedModel": {
     "eyebrow": "One Connected Model",
     "headlineLead": "One trusted reality.",
@@ -148,15 +147,14 @@
     "primaryLabel": "Book a demo",
     "secondaryLabel": "Contact us"
   },
-  
   "Auth": {
     "common": {
-      "brand": "IDWE",
-      "brandShort": "IDWE",
-      "welcome": "Welcome to IDWE",
+      "brand": "automex",
+      "brandShort": "automex",
+      "welcome": "Welcome to automex",
       "backHome": "Back to home",
       "secureNote": "256-bit encrypted · SOC 2 compliant · Data never sold",
-      "footer": "© 2025 IDWE. All rights reserved. Enterprise AI & Digital Transformation.",
+      "footer": "© 2025 automex. All rights reserved. Enterprise AI & Digital Transformation.",
       "email": "Email address",
       "emailPlaceholder": "you@company.com",
       "password": "Password",
@@ -173,7 +171,7 @@
     "showcase": {
       "eyebrow": "Enterprise Platform",
       "title": "AI-powered tools built for serious teams",
-      "description": "IDWE helps you automate workflows, ship faster, and scale operations all in one secure, enterprise-grade platform.",
+      "description": "automex helps you automate workflows, ship faster, and scale operations all in one secure, enterprise-grade platform.",
       "points": [
         {
           "title": "Intelligent AI Agents",
@@ -191,7 +189,7 @@
     },
     "login": {
       "title": "Sign in to your account",
-      "description": "Enter your credentials to access your IDWE workspace.",
+      "description": "Enter your credentials to access your automex workspace.",
       "remember": "Keep me signed in",
       "forgot": "Forgot password?",
       "submit": "Sign in",
@@ -200,7 +198,7 @@
     },
     "signup": {
       "title": "Create your account",
-      "description": "Get started with IDWE. No credit card required.",
+      "description": "Get started with automex. No credit card required.",
       "passwordHint": "Must be at least 8 characters.",
       "passwordMismatch": "Passwords do not match.",
       "termsPrefix": "I agree to the",
@@ -214,7 +212,7 @@
     "forgotPassword": {
       "title": "Reset your password",
       "description": "We'll send a secure reset code to your email address.",
-      "emailHint": "Use the email address linked to your IDWE account.",
+      "emailHint": "Use the email address linked to your automex account.",
       "submit": "Send reset code",
       "backToLogin": "Back to sign in"
     },
@@ -230,7 +228,6 @@
       "backToLogin": "Back to sign in"
     }
   },
-
   "footer": {
     "tagline": "Enterprise grade AI, cybersecurity, software engineering, cloud infrastructure, and digital transformation all under one roof.",
     "location": "Remote-first team operating globally across the world.",
@@ -273,7 +270,7 @@
       }
     },
     "bottom": {
-      "copyright": "© {year} IDWE. All rights reserved.",
+      "copyright": "© {year} automex. All rights reserved.",
       "privacy": "Privacy",
       "terms": "Terms",
       "sitemap": "Sitemap"
@@ -290,21 +287,20 @@
       "enterprise": "Enterprise"
     }
   },
-
   "Contact": {
     "meta": {
-      "title": "Contact IDWE AI Automation & Enterprise Software",
-      "description": "Reach the IDWE team to discuss AI agents, workflow automation, custom software, and digital transformation for your business. We respond within 24 hours.",
-      "keywords": "contact IDWE, AI automation, enterprise software, digital transformation, custom software development, AI agents, business automation",
-      "ogTitle": "Contact IDWE Let's Build Something Together",
+      "title": "Contact automex AI Automation & Enterprise Software",
+      "description": "Reach the automex team to discuss AI agents, workflow automation, custom software, and digital transformation for your business. We respond within 24 hours.",
+      "keywords": "contact automex, AI automation, enterprise software, digital transformation, custom software development, AI agents, business automation",
+      "ogTitle": "Contact automex Let's Build Something Together",
       "ogDescription": "Talk to our team about AI-powered automation, custom software, and enterprise digital transformation. Fast response, real solutions.",
-      "ogImageAlt": "IDWE contact page AI & Enterprise Software"
+      "ogImageAlt": "automex contact page AI & Enterprise Software"
     },
     "hero": {
       "eyebrow": "Get in Touch",
       "headlineLead": "Let's build something",
       "headlineAccent": "extraordinary together",
-      "description": "Whether you're automating a workflow, launching a product, or transforming your entire operation the IDWE team is ready to help. Tell us what you need.",
+      "description": "Whether you're automating a workflow, launching a product, or transforming your entire operation the automex team is ready to help. Tell us what you need.",
       "stats": [
         {
           "value": "< 24h",
@@ -327,17 +323,17 @@
       "title": "Reach us any way you prefer",
       "description": "We operate across multiple time zones and channels. Pick whatever works best for you we aim to respond within one business day.",
       "emailLabel": "Email",
-      "email": "info@idwe.tech",
+      "email": "info@automex.tech",
       "phoneLabel": "Phone Afghanistan",
       "phoneAf": "+93 776 320 765",
       "phoneAfLabel": "Phone Afghanistan",
       "phoneUsLabel": "Phone United States",
       "phoneUs": "+1 (206) 470-9284",
       "websiteLabel": "Website",
-      "website": "idwe.tech",
+      "website": "automex.tech",
       "whatsappTitle": "Chat on WhatsApp",
       "whatsappSubtitle": "Quick questions? Message us directly.",
-      "whatsappMessage": "Hello IDWE team, I'd like to discuss a project.",
+      "whatsappMessage": "Hello automex team, I'd like to discuss a project.",
       "responseTimeLabel": "Response time",
       "responseTime": "Under 24 hours",
       "responseNote": "Business days, all time zones",
@@ -374,9 +370,9 @@
       "submit": "Send message",
       "submitting": "Sending…",
       "successTitle": "Message received!",
-      "successBody": "Thank you for reaching out. A member of the IDWE team will reply to your email within one business day.",
+      "successBody": "Thank you for reaching out. A member of the automex team will reply to your email within one business day.",
       "successReset": "Send another message",
-      "errorMessage": "Something went wrong sending your message. Please try again, or email us directly at info@idwe.tech.",
+      "errorMessage": "Something went wrong sending your message. Please try again, or email us directly at info@automex.tech.",
       "privacyNote": "By submitting this form you agree to our Privacy Policy. We never share your data with third parties."
     },
     "map": {
@@ -401,11 +397,11 @@
   },
   "About": {
     "meta": {
-      "title": "About IDWE AI Automation & Enterprise Software",
-      "description": "IDWE is a Seattle-based enterprise AI and software company. We build intelligent automation systems, custom software, and AI-powered products that help businesses worldwide move faster.",
-      "keywords": "about IDWE, AI automation company, enterprise software Seattle, AI agents, digital transformation, custom software team",
-      "ogTitle": "About IDWE Built to Automate the Future of Work",
-      "ogDescription": "From Seattle to the world IDWE designs and ships AI-powered automation, custom software, and enterprise products trusted by 50+ clients across 12 countries."
+      "title": "About automex AI Automation & Enterprise Software",
+      "description": "automex is a Seattle-based enterprise AI and software company. We build intelligent automation systems, custom software, and AI-powered products that help businesses worldwide move faster.",
+      "keywords": "about automex, AI automation company, enterprise software Seattle, AI agents, digital transformation, custom software team",
+      "ogTitle": "About automex Built to Automate the Future of Work",
+      "ogDescription": "From Seattle to the world automex designs and ships AI-powered automation, custom software, and enterprise products trusted by 50+ clients across 12 countries."
     },
     "hero": {
       "eyebrow": "Our Story",
@@ -414,7 +410,7 @@
       "headlineLine1": "Built to automate",
       "headlineLine2": "the future of work",
       "headlineSuffix": "",
-      "description": "IDWE is an enterprise AI and software company headquartered in Seattle, WA. We design and ship intelligent automation systems, custom software, and AI-powered products that free your team from repetitive work.",
+      "description": "automex is an enterprise AI and software company headquartered in Seattle, WA. We design and ship intelligent automation systems, custom software, and AI-powered products that free your team from repetitive work.",
       "locationUs": "Seattle, WA United States",
       "locationAf": "Kabul Afghanistan",
       "founded": "Est. 2020",
@@ -423,9 +419,9 @@
     "story": {
       "eyebrow": "How we got here",
       "title": "Started in Seattle. Built for the world.",
-      "pullQuote": "We started IDWE because great AI and automation tools shouldn't be a privilege of the Fortune 500.",
+      "pullQuote": "We started automex because great AI and automation tools shouldn't be a privilege of the Fortune 500.",
       "body1": "In 2020, we launched out of Seattle with a single belief: that every business not just the biggest ones deserves access to enterprise-grade automation and AI. We started by solving real operational problems for SMBs and quickly discovered that the need was far wider than the Pacific Northwest.",
-      "body2": "Today, IDWE operates from two continents, serving clients across 12 countries. Our team spans Seattle and Kabul, combining Silicon Valley-caliber engineering with the hunger and work ethic of a team that knows exactly what's at stake.",
+      "body2": "Today, automex operates from two continents, serving clients across 12 countries. Our team spans Seattle and Kabul, combining Silicon Valley-caliber engineering with the hunger and work ethic of a team that knows exactly what's at stake.",
       "chip": "Clients worldwide",
       "badge1": "Remote-first since day one",
       "badge2": "Two continents, one team",
@@ -467,7 +463,7 @@
       "eyebrow": "Our journey",
       "title": "Five years of building",
       "description": "From a one-person consultancy in Seattle to a global AI and software company with clients on four continents.",
-      "m1Title": "IDWE founded in Seattle",
+      "m1Title": "automex founded in Seattle",
       "m1Body": "Launched as a boutique software consultancy focused on automation and custom web applications for SMBs in the Pacific Northwest.",
       "m1Tag": "Origin",
       "m2Title": "First enterprise clients land",
@@ -488,14 +484,14 @@
     },
     "team": {
       "eyebrow": "Leadership",
-      "title": "The people behind IDWE",
+      "title": "The people behind automex",
       "description": "A small, senior team with deep expertise across AI, enterprise software, and product delivery. We stay lean on purpose it keeps us sharp and accountable.",
       "m1Name": "Miraj Hejran",
       "m1Role": "Founder & CEO",
-      "m1Bio": "Engineer turned entrepreneur. Miraj founded IDWE to bring enterprise-grade AI automation outside Silicon Valley. He leads product strategy, client relationships, and technical architecture across both offices.",
+      "m1Bio": "Engineer turned entrepreneur. Miraj founded automex to bring enterprise-grade AI automation outside Silicon Valley. He leads product strategy, client relationships, and technical architecture across both offices.",
       "m2Name": "Hakim Rahimi Safi",
       "m2Role": "CTO",
-      "m2Bio": "Full-stack engineer turned technology executive. Hakim now oversees technical strategy, innovation, and engineering culture. He ensures every product IDWE ships is reliable, secure, and built to outlast the trends.",
+      "m2Bio": "Full-stack engineer turned technology executive. Hakim now oversees technical strategy, innovation, and engineering culture. He ensures every product automex ships is reliable, secure, and built to outlast the trends.",
       "m3Name": "Abdullah Stanikzai",
       "m3Role": "Lead Engineer",
       "m3Bio": "Abdullah is a backend and infrastructure specialist with 7+ years of experience building high‑throughput microservices and real‑time systems. He leads the engineering team in implementing robust, scalable solutions and champions code quality and performance.",
@@ -516,7 +512,6 @@
       "secondary": "Explore our services"
     }
   },
-
   "Sidebar": {
     "menuLabel": "Menu",
     "dashboard": "Dashboard",
@@ -658,7 +653,7 @@
     "deleteAccountTitle": "Delete account",
     "deleteAccountDesc": "Permanently delete your account and all associated data. This cannot be undone.",
     "deleteAccountBtn": "Delete account",
-    "deleteContactSupport": "Account deletion is not yet available. Please contact support@idwe.tech.",
+    "deleteContactSupport": "Account deletion is not yet available. Please contact support@automex.tech.",
     "deleteDialogTitle": "Delete your account?",
     "deleteDialogDesc": "This will permanently erase your profile, requests, bookings, and all data. There is no recovery.",
     "deleteUnderstandCheck": "I understand this action is permanent and irreversible.",

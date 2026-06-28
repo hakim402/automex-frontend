@@ -666,7 +666,7 @@ export function ConnectedModel({
                    bg-size-[40px_40px]"
       />
 
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* ── Header ── */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <motion.p

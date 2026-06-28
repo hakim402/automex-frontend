@@ -421,27 +421,27 @@ function SocialRow({
 
 function BrandMark({ isRtl }: { isRtl: boolean }) {
   return (
-    <div className={cn("flex items-center gap-3", isRtl && "flex-row-reverse")}>
-      {/* Logo container using card token so it adapts to light/dark */}
-      <div className="relative size-10 rounded-2xl overflow-hidden border border-border/60 bg-card shadow-sm shrink-0">
-        <Image
-          src="/logo/cable-icon.jpg"
-          alt="Infinity Solutions logo"
-          fill
-          className="object-contain p-1"
-          sizes="40px"
-          priority
-        />
-      </div>
-      <div className={isRtl ? "text-right" : undefined}>
-        <p className="text-sm font-bold text-foreground leading-none tracking-tight">
-          IDWE
-        </p>
-        <p className="text-[10px] text-muted-foreground mt-0.5 font-medium">
-          AI &amp; Digital Transformation
-        </p>
-      </div>
-    </div>
+    <div className={cn("flex items-center gap-4", isRtl && "flex-row-reverse")}>
+  {/* Logo container – always light background */}
+  <div className="relative size-12 rounded-2xl overflow-hidden border border-border/60 bg-white shadow-sm shrink-0">
+    <Image
+      src="/logo/icon.png"
+      alt="Infinity Solutions logo"
+      fill
+      className="object-contain"
+      sizes="(max-width: 768px) 64px, (max-width: 1024px) 80px, 96px"
+      priority
+    />
+  </div>
+  <div className={isRtl ? "text-right" : undefined}>
+    <p className="text-sm font-bold text-foreground leading-none tracking-tight">
+      AUTOMEX
+    </p>
+    <p className="text-[10px] text-muted-foreground mt-0.5 font-medium">
+      AI &amp; Automation Solutions
+    </p>
+  </div>
+</div>
   );
 }
 
