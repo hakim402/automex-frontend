@@ -1,26 +1,10 @@
 "use client";
-
 // components/shared/ConnectedModel.tsx
 //
 // "One connected model" showcase — hub-and-spoke diagram.
-//
-// v2 changes:
-//   1. Mobile now gets REAL animated connector lines too — a vertical
-//      SVG overlay draws curves from each signal tile down to the hub,
-//      then from the hub down to each output card. Same flowing-dash
-//      technique as desktop, just a different path shape (vertical
-//      instead of horizontal).
-//   2. Output cards get an actual mini chart (animated SVG bar chart
-//      for Dashboard, animated line/sparkline for AI Agent) instead of
-//      bare counters — reads as a real product screenshot, not a stat strip.
-//   3. Middle column gets explicit breathing room: a min-width gutter on
-//      desktop (px-8 / lg:px-12) and generous vertical padding on mobile
-//      (py-10) so the hub never feels cramped between the two sides.
-//
-// Usage unchanged:
-//   <ConnectedModel {...config} isRtl={isRtl} />
+// All textual content is internationalized via props (from config).
 
-import { useRef, useState, useEffect, useId } from "react";
+import { useRef, useState, useEffect, useId, memo, useCallback } from "react";
 import { motion, useInView, animate } from "framer-motion";
 import Link from "next/link";
 import { Power, ArrowRight } from "lucide-react";
@@ -56,9 +40,7 @@ export interface OutputCard {
   description: string;
   icon: React.ElementType;
   metrics: OutputCardMetric[];
-  /** Which mini-chart to render in the card preview */
   chartType: "bars" | "line";
-  /** Raw data points driving the chart shape (relative values, any scale) */
   chartData: number[];
 }
 
@@ -69,6 +51,7 @@ export interface ConnectedModelProps {
   description: string;
   signalsLabel: string;
   outputsLabel: string;
+  hubLabel: string; // NEW: translatable label for the center hub
   signals: SignalSource[];
   outputs: [OutputCard, OutputCard];
   primaryLabel: string;
@@ -83,7 +66,7 @@ export interface ConnectedModelProps {
 // Animated metric counter
 // ─────────────────────────────────────────────────────────────────────────────
 
-function MetricCounter({
+const MetricCounter = memo(function MetricCounter({
   metric,
   delay,
 }: {
@@ -114,13 +97,19 @@ function MetricCounter({
   }, [inView, metric, delay]);
 
   return <span className="tabular-nums">{display}</span>;
-}
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Mini chart — animated bar chart (Dashboard card)
+// Mini chart components (memoized)
 // ─────────────────────────────────────────────────────────────────────────────
 
-function MiniBarChart({ data, color }: { data: number[]; color: string }) {
+const MiniBarChart = memo(function MiniBarChart({
+  data,
+  color,
+}: {
+  data: number[];
+  color: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const max = Math.max(...data, 1);
@@ -166,13 +155,15 @@ function MiniBarChart({ data, color }: { data: number[]; color: string }) {
       </svg>
     </div>
   );
-}
+});
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Mini chart — animated sparkline (AI Agent card)
-// ─────────────────────────────────────────────────────────────────────────────
-
-function MiniLineChart({ data, color }: { data: number[]; color: string }) {
+const MiniLineChart = memo(function MiniLineChart({
+  data,
+  color,
+}: {
+  data: number[];
+  color: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const max = Math.max(...data, 1);
@@ -246,13 +237,13 @@ function MiniLineChart({ data, color }: { data: number[]; color: string }) {
       </svg>
     </div>
   );
-}
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Signal tile
+// Signal tile (memoized)
 // ─────────────────────────────────────────────────────────────────────────────
 
-function SignalTile({
+const SignalTile = memo(function SignalTile({
   signal,
   index,
   tileRef,
@@ -283,7 +274,7 @@ function SignalTile({
       />
     </motion.div>
   );
-}
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Center hub node
@@ -309,6 +300,7 @@ function HubNode({
         transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
         className="relative flex size-16 items-center justify-center rounded-2xl
                    bg-color shadow-brand sm:size-20"
+        aria-label={label} // for accessibility
       >
         <motion.span
           aria-hidden="true"
@@ -327,10 +319,10 @@ function HubNode({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Output card with real chart preview
+// Output card (memoized)
 // ─────────────────────────────────────────────────────────────────────────────
 
-function OutputCardView({
+const OutputCardView = memo(function OutputCardView({
   card,
   index,
   cardRef,
@@ -397,7 +389,7 @@ function OutputCardView({
       </div>
     </motion.div>
   );
-}
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Connector path measurement (shared by desktop horizontal + mobile vertical)
@@ -419,57 +411,54 @@ function useConnectorPaths(
   const [outPaths, setOutPaths] = useState<string[]>([]);
   const [viewBox, setViewBox] = useState("0 0 1000 600");
 
+  const measure = useCallback(() => {
+    const container = containerRef.current;
+    const hub = hubRef.current;
+    if (!container || !hub) return;
+
+    const cRect = container.getBoundingClientRect();
+    if (cRect.width === 0 || cRect.height === 0) return;
+
+    setViewBox(`0 0 ${cRect.width} ${cRect.height}`);
+
+    const toLocal = (rect: DOMRect): Point => ({
+      x: rect.left - cRect.left + rect.width / 2,
+      y: rect.top - cRect.top + rect.height / 2,
+    });
+
+    const hubPt = toLocal(hub.getBoundingClientRect());
+
+    const newIn: string[] = [];
+    signalRefs.current.forEach((el) => {
+      if (!el) return;
+      const p = toLocal(el.getBoundingClientRect());
+      if (mode === "horizontal") {
+        const mx = (p.x + hubPt.x) / 2;
+        newIn.push(`M ${p.x} ${p.y} Q ${mx} ${p.y} ${hubPt.x} ${hubPt.y}`);
+      } else {
+        const my = (p.y + hubPt.y) / 2;
+        newIn.push(`M ${p.x} ${p.y} Q ${p.x} ${my} ${hubPt.x} ${hubPt.y}`);
+      }
+    });
+    setInPaths(newIn);
+
+    const newOut: string[] = [];
+    outputRefs.current.forEach((el) => {
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const p = toLocal(r);
+      if (mode === "horizontal") {
+        const mx = (hubPt.x + p.x) / 2;
+        newOut.push(`M ${hubPt.x} ${hubPt.y} Q ${mx} ${p.y} ${p.x} ${p.y}`);
+      } else {
+        const my = (hubPt.y + p.y) / 2;
+        newOut.push(`M ${hubPt.x} ${hubPt.y} Q ${hubPt.x} ${my} ${p.x} ${p.y}`);
+      }
+    });
+    setOutPaths(newOut);
+  }, [containerRef, signalRefs, hubRef, outputRefs, mode]);
+
   useEffect(() => {
-    function measure() {
-      const container = containerRef.current;
-      const hub = hubRef.current;
-      if (!container || !hub) return;
-
-      const cRect = container.getBoundingClientRect();
-      // Skip measuring if container has zero size (e.g. display:none on this breakpoint)
-      if (cRect.width === 0 || cRect.height === 0) return;
-
-      setViewBox(`0 0 ${cRect.width} ${cRect.height}`);
-
-      const toLocal = (rect: DOMRect): Point => ({
-        x: rect.left - cRect.left + rect.width / 2,
-        y: rect.top - cRect.top + rect.height / 2,
-      });
-
-      const hubPt = toLocal(hub.getBoundingClientRect());
-
-      const newIn: string[] = [];
-      signalRefs.current.forEach((el) => {
-        if (!el) return;
-        const p = toLocal(el.getBoundingClientRect());
-        if (mode === "horizontal") {
-          const mx = (p.x + hubPt.x) / 2;
-          newIn.push(`M ${p.x} ${p.y} Q ${mx} ${p.y} ${hubPt.x} ${hubPt.y}`);
-        } else {
-          const my = (p.y + hubPt.y) / 2;
-          newIn.push(`M ${p.x} ${p.y} Q ${p.x} ${my} ${hubPt.x} ${hubPt.y}`);
-        }
-      });
-      setInPaths(newIn);
-
-      const newOut: string[] = [];
-      outputRefs.current.forEach((el) => {
-        if (!el) return;
-        const r = el.getBoundingClientRect();
-        const p = toLocal(r);
-        if (mode === "horizontal") {
-          const mx = (hubPt.x + p.x) / 2;
-          newOut.push(`M ${hubPt.x} ${hubPt.y} Q ${mx} ${p.y} ${p.x} ${p.y}`);
-        } else {
-          const my = (hubPt.y + p.y) / 2;
-          newOut.push(
-            `M ${hubPt.x} ${hubPt.y} Q ${hubPt.x} ${my} ${p.x} ${p.y}`,
-          );
-        }
-      });
-      setOutPaths(newOut);
-    }
-
     measure();
     const ro = new ResizeObserver(measure);
     if (containerRef.current) ro.observe(containerRef.current);
@@ -482,8 +471,7 @@ function useConnectorPaths(
       window.removeEventListener("resize", measure);
       clearTimeout(t);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode]);
+  }, [measure]); // measure is stable due to useCallback
 
   return { inPaths, outPaths, viewBox };
 }
@@ -614,6 +602,7 @@ export function ConnectedModel({
   description,
   signalsLabel,
   outputsLabel,
+  hubLabel, // now used
   signals,
   outputs,
   primaryLabel,
@@ -625,7 +614,7 @@ export function ConnectedModel({
 }: ConnectedModelProps) {
   const gradId = useId().replace(/:/g, "");
 
-  // ── Desktop (horizontal) refs + measurement ──
+  // ── Desktop refs ──
   const desktopContainerRef = useRef<HTMLDivElement>(null);
   const desktopHubRef = useRef<HTMLDivElement | null>(null);
   const desktopSignalRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -639,7 +628,7 @@ export function ConnectedModel({
     "horizontal",
   );
 
-  // ── Mobile (vertical) refs + measurement — separate DOM subtree ──
+  // ── Mobile refs ──
   const mobileContainerRef = useRef<HTMLDivElement>(null);
   const mobileHubRef = useRef<HTMLDivElement | null>(null);
   const mobileSignalRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -692,9 +681,7 @@ export function ConnectedModel({
           </motion.p>
         </div>
 
-        {/* ════════════════════════════════════════════════════════════════
-            DESKTOP layout (lg+) — horizontal flow with side-by-side columns
-            ════════════════════════════════════════════════════════════════ */}
+        {/* ═══ DESKTOP (lg+) ═══ */}
         <div ref={desktopContainerRef} className="relative hidden lg:block">
           <ConnectorSVG
             inPaths={desktopPaths.inPaths}
@@ -703,9 +690,8 @@ export function ConnectedModel({
             gradId={`${gradId}-d`}
           />
 
-          {/* grid-cols with explicit middle gutter for breathing room */}
           <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-x-10 xl:gap-x-16">
-            {/* Left: signal grid */}
+            {/* Left: signals */}
             <div className="relative z-10">
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
                 {signalsLabel}
@@ -724,17 +710,17 @@ export function ConnectedModel({
               </div>
             </div>
 
-            {/* Middle: hub, with its own horizontal padding so lines never touch the columns */}
+            {/* Middle: hub */}
             <div className="relative z-10 flex justify-center px-6 xl:px-10">
               <HubNode
                 hubRef={(el) => {
                   desktopHubRef.current = el;
                 }}
-                label="One model"
+                label={hubLabel}
               />
             </div>
 
-            {/* Right: output cards */}
+            {/* Right: outputs */}
             <div className="relative z-10">
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
                 {outputsLabel}
@@ -756,10 +742,7 @@ export function ConnectedModel({
           </div>
         </div>
 
-        {/* ════════════════════════════════════════════════════════════════
-            MOBILE / TABLET layout (<lg) — vertical flow, top to bottom,
-            with real animated connector lines drawn down the column
-            ════════════════════════════════════════════════════════════════ */}
+        {/* ═══ MOBILE (<lg) ═══ */}
         <div
           ref={mobileContainerRef}
           className="relative flex flex-col items-center lg:hidden"
@@ -771,7 +754,7 @@ export function ConnectedModel({
             gradId={`${gradId}-m`}
           />
 
-          {/* Signal grid */}
+          {/* Signals */}
           <div className="relative z-10 w-full">
             <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
               {signalsLabel}
@@ -790,17 +773,17 @@ export function ConnectedModel({
             </div>
           </div>
 
-          {/* Hub — generous vertical breathing room above + below */}
+          {/* Hub */}
           <div className="relative z-10 py-10 sm:py-12">
             <HubNode
               hubRef={(el) => {
                 mobileHubRef.current = el;
               }}
-              label="One model"
+              label={hubLabel}
             />
           </div>
 
-          {/* Output cards */}
+          {/* Outputs */}
           <div className="relative z-10 w-full">
             <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
               {outputsLabel}

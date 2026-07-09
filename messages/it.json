@@ -4,26 +4,34 @@
     "about": "Chi siamo",
     "contact": "Contatti",
     "login": "Accedi",
-    "signUp": "Registrati"
+    "signUp": "Registrati",
+    "dashboard": "Dashboard",
+    "logout": "Esci"
   },
   "HomeHero": {
     "headlineLead": "Automatizza, scala e",
     "headlineAccent": "cresci con l'IA",
     "headlineSuffix": "",
-    "description": "automex costruisce sistemi di automazione intelligente, software personalizzati e strumenti basati sull'IA che liberano il tuo team dal lavoro ripetitivo, così puoi concentrarti su ciò che fa davvero avanzare la tua azienda.",
+    "description": "automex crea sistemi di automazione intelligente, software personalizzato e strumenti basati sull'IA che liberano il tuo team dal lavoro ripetitivo, così puoi concentrarti su ciò che fa davvero progredire la tua azienda.",
     "primaryAction": "Avvia il tuo progetto",
     "secondaryAction": "Esplora i servizi",
+    "liveLabel": "Live",
+    "floatingLabels": [
+      "Agenti IA",
+      "Web e mobile",
+      "Cloud e API"
+    ],
     "tickerItems": [
       {
         "icon": "bot",
-        "text": "Agente IA implementato per l'automazione CRM",
+        "text": "Agente IA implementato per l'automazione del CRM",
         "badge": "Live",
         "badgeVariant": "cyan"
       },
       {
         "icon": "zap",
         "text": "Flusso di lavoro automatizzato – 14 ore/settimana risparmiate",
-        "badge": "Completato",
+        "badge": "Fatto",
         "badgeVariant": "teal"
       },
       {
@@ -40,14 +48,14 @@
       },
       {
         "icon": "zap",
-        "text": "Bot vendite ha generato 38 lead qualificati oggi",
+        "text": "Bot di vendita ha generato 38 lead qualificati oggi",
         "badge": "In esecuzione",
         "badgeVariant": "cyan"
       },
       {
         "icon": "sparkles",
         "text": "App mobile pubblicata su App Store e Play Store",
-        "badge": "Pubblicata",
+        "badge": "Inviato",
         "badgeVariant": "teal"
       },
       {
@@ -59,18 +67,37 @@
       {
         "icon": "zap",
         "text": "Gateway di pagamento integrato in 48 ore",
-        "badge": "Completato",
+        "badge": "Fatto",
         "badgeVariant": "blue"
       }
     ]
   },
   "AiShowcase": {
+    "sectionTitle": "Vitrina IA – Automazione intelligente",
+    "orbit1": "Agenti IA",
+    "orbit2": "Automazione",
+    "orbit3": "Sviluppo web",
+    "orbit4": "App mobili",
+    "orbit5": "Integrazione API",
+    "orbit6": "Analisi",
+    "feedItem1Title": "Agente IA implementato",
+    "feedItem1Subtitle": "Bot di assistenza clienti — tasso di risoluzione del 98 %",
+    "feedItem1Badge": "Live",
+    "feedItem2Title": "Flusso di lavoro automatizzato",
+    "feedItem2Subtitle": "Sincronizzazione dati CRM — 18 ore/settimana risparmiate",
+    "feedItem2Badge": "Completo",
+    "feedItem3Title": "Bot WhatsApp attivo",
+    "feedItem3Subtitle": "Bot di generazione lead — 54 nuovi lead oggi",
+    "feedItem3Badge": "In esecuzione",
+    "feedItem4Title": "Piattaforma SaaS lanciata",
+    "feedItem4Subtitle": "Dashboard e-commerce — implementazione senza interruzioni",
+    "feedItem4Badge": "Implementato",
     "prop1Title": "Agenti IA che lavorano mentre dormi",
-    "prop1Body": "Realizziamo e implementiamo bot IA per supporto clienti, vendite, generazione di lead e operazioni interne su WhatsApp, Telegram, il tuo sito web e oltre.",
+    "prop1Body": "Costruiamo e implementiamo bot IA per assistenza clienti, vendite, generazione di lead e operazioni interne su WhatsApp, Telegram, il tuo sito web e oltre.",
     "prop2Title": "Automazione che elimina il lavoro noioso",
-    "prop2Body": "Dall'automazione di CRM ed ERP all'orchestrazione dei flussi di lavoro e ai report: mappiamo i tuoi processi e costruiamo sistemi che li eseguono in modo affidabile, senza sforzo manuale.",
+    "prop2Body": "Dall'automazione di CRM ed ERP all'orchestrazione dei flussi di lavoro e alla reportistica, mappiamo i tuoi processi e costruiamo sistemi che li eseguono in modo affidabile, senza sforzo manuale.",
     "prop3Title": "Software di tua proprietà, costruito per durare",
-    "prop3Body": "Ogni piattaforma, dashboard o app mobile che consegniamo è di livello produttivo, documentata e completamente tua. Nessun vendor lock‑in, nessuna scatola nera.",
+    "prop3Body": "Ogni piattaforma, dashboard o app mobile che consegniamo è di livello production, documentata e completamente tua. Niente vendor lock-in, niente scatole nere.",
     "cta": "Vedi tutti i servizi",
     "trust1": "Consegna pronta per la produzione",
     "trust2": "Tempi rapidi",
@@ -78,154 +105,215 @@
   },
   "HowItWorks": {
     "eyebrow": "Automazione IA",
-    "title": "Come funziona il nostro Agente IA",
+    "title": "Come funziona il nostro agente IA",
     "accentWord": "Agente IA",
-    "description": "Guarda come il nostro agente autonomo pensa, pianifica e agisce sui tuoi strumenti in tempo reale.",
-    "step1Title": "Innesco",
-    "step1Desc": "Un evento si attiva da CRM, modulo o webhook",
-    "step2Title": "Ragionare",
+    "description": "Guarda il nostro agente autonomo pensare, pianificare e agire in tempo reale attraverso i tuoi strumenti.",
+    "step1Title": "Trigger",
+    "step1Desc": "L'evento si attiva da CRM, modulo o webhook",
+    "step2Title": "Ragionamento",
     "step2Desc": "L'IA analizza il contesto e pianifica le azioni",
-    "step3Title": "Agire",
-    "step3Desc": "Chiama API, crea task, invia messaggi",
-    "step4Title": "Completare",
+    "step3Title": "Azione",
+    "step3Desc": "Chiama le API, crea attività, invia messaggi",
+    "step4Title": "Completamento",
     "step4Desc": "Registra i risultati e avvisa il team",
-    "sandboxTitle": "Demo dal vivo",
+    "pipelineLabel": "Pipeline live",
+    "pipelineNode1Label": "Nuovo lead",
+    "pipelineNode1Sub": "HubSpot CRM",
+    "pipelineNode2Label": "Agente IA",
+    "pipelineNode2Sub": "Elaborazione",
+    "pipelineNode3Label": "Asana",
+    "pipelineNode3Sub": "Attività creata",
+    "pipelineNode4Label": "Slack",
+    "pipelineNode4Sub": "Notificato",
+    "pipelineNode5Label": "Calendario",
+    "pipelineNode5Sub": "Programmato",
+    "sandboxSectionLabel": "Demo interattiva",
+    "scenarioLabel": "Scenario",
+    "idleTitle": "L'agente è in attesa",
+    "idleDescription": "Seleziona uno scenario a sinistra e premi «Esegui agente» per vederlo all'opera in tempo reale.",
+    "reasoningLabel": "Ragionamento dell'agente",
+    "actionsLabel": "Azioni",
+    "readyLabel": "Pronto",
+    "executingLabel": "In esecuzione…",
+    "sandboxTitle": "Demo live",
     "sandboxDescription": "Scegli uno scenario e guarda l'IA lavorare passo dopo passo",
     "runLabel": "Esegui agente",
-    "resetLabel": "Ripristina",
-    "thinkingLabel": "Ragionamento…",
+    "resetLabel": "Reimposta",
+    "thinkingLabel": "Ragionando…",
     "doneLabel": "Fatto",
     "task1Label": "Nuovo lead",
     "task1Thought1": "Nuovo lead inviato dal modulo del sito web.",
-    "task1Thought2": "Controllo CRM per contatto esistente…",
-    "task1Thought3": "Lead qualificato – alto potenziale aziendale.",
-    "task1Thought4": "Pianificazione sequenza di contatto.",
-    "task1Action1": "Recupera dati lead",
-    "task1Action2": "Arricchisci con informazioni aziendali",
-    "task1Action3": "Crea task Asana",
+    "task1Thought2": "Controllo nel CRM per contatto esistente…",
+    "task1Thought3": "Il lead è qualificato – alto potenziale aziendale.",
+    "task1Thought4": "Pianificazione della sequenza di contatto.",
+    "task1Action1": "Recupera dati del lead",
+    "task1Action2": "Arricchisci con approfondimenti sull'azienda",
+    "task1Action3": "Crea attività in Asana",
     "task1Action4": "Notifica canale Slack",
-    "task1Action5": "Pianifica invito calendario",
-    "task1Result": "Lead completamente elaborato e assegnato al team vendite.",
+    "task1Action5": "Programma invito calendario",
+    "task1Result": "Lead completamente elaborato e assegnato al team di vendita.",
     "task2Label": "Ticket di supporto",
-    "task2Thought1": "Nuovo ticket di supporto: problema di limite di velocità API.",
-    "task2Thought2": "Classificazione priorità e sentimento…",
-    "task2Thought3": "Ricerca nella knowledge base di soluzioni.",
-    "task2Action1": "Recupera dettagli ticket",
-    "task2Action2": "Analisi classificatore IA",
+    "task2Thought1": "Nuovo ticket di supporto: problema di limite di velocità dell'API.",
+    "task2Thought2": "Classificazione di priorità e sentiment…",
+    "task2Thought3": "Ricerca di soluzioni nella knowledge base.",
+    "task2Action1": "Recupera dettagli del ticket",
+    "task2Action2": "Analisi del classificatore IA",
     "task2Action3": "Genera bozza di risposta dalla knowledge base",
-    "task2Action4": "Escala a ingegnere senior",
-    "task2Result": "Ticket categorizzato ed escalato. Risposta suggerita pronta.",
+    "task2Action4": "Inoltra a ingegnere senior",
+    "task2Result": "Ticket categorizzato e inoltrato. Risposta suggerita pronta.",
     "task3Label": "Generazione report",
     "task3Thought1": "Report settimanale programmato.",
-    "task3Thought2": "Interrogazione data warehouse…",
-    "task3Thought3": "Analisi tendenze e valori anomali.",
+    "task3Thought2": "Interrogazione del data warehouse…",
+    "task3Thought3": "Analisi di tendenze e valori anomali.",
     "task3Action1": "Interroga data warehouse",
-    "task3Action2": "Approfondimenti analista IA",
+    "task3Action2": "Approfondimenti dell'analista IA",
     "task3Action3": "Genera PDF e pagina Notion",
     "task3Action4": "Distribuisci agli stakeholder",
-    "task3Result": "Report generato e consegnato alla leadership.",
+    "task3Result": "Report generato e consegnato alla direzione.",
     "metricTime": "Tempo di risposta",
     "metricSteps": "Azioni eseguite",
     "metricSaved": "Tempo risparmiato",
-    "metricResolution": "Affidabilità della risoluzione",
+    "metricResolution": "Fiducia nella risoluzione",
     "metricRows": "Righe elaborate"
   },
   "TechStack": {
     "eyebrow": "Integrazioni",
-    "title": "Costruito su strumenti che il tuo team usa già",
-    "accentWord": "strumenti del tuo team",
-    "description": "automex si integra nativamente con le piattaforme che alimentano le aziende moderne — dai modelli IA e sistemi CRM all'infrastruttura cloud e alla comunicazione di squadra.",
-    "allLabel": "Tutti gli strumenti"
+    "title": "Costruito su strumenti che il tuo team utilizza già",
+    "accentWord": "strumenti che il tuo team",
+    "description": "automex si integra nativamente con le piattaforme che alimentano le aziende moderne — dai modelli di IA e sistemi CRM all'infrastruttura cloud e alla comunicazione di team.",
+    "allLabel": "Tutti gli strumenti",
+    "tabListLabel": "Categorie di strumenti",
+    "counterIntegrations": "Integrazioni",
+    "counterIntegrationsValue": "{toolsCount}+",
+    "counterCategories": "Categorie",
+    "counterCategoriesValue": "{count}"
   },
   "ConnectedModel": {
     "eyebrow": "Un modello connesso",
     "headlineLead": "Una realtà affidabile.",
-    "headlineAccent": "Dashboard e IA in primo piano.",
-    "description": "I numeri di vendite, pubblicità e sito web spesso risiedono in app diverse, rendendo difficile capire come sta realmente andando la tua azienda. Noi li riuniamo in un unico posto. IA e dashboard usano gli stessi numeri, così non otterrai mai due risposte diverse.",
+    "headlineAccent": "Dashboard e IA al di sopra.",
+    "description": "I numeri di vendite, annunci e sito web spesso si trovano in app diverse, quindi è difficile vedere come sta davvero andando la tua azienda. Li riuniamo in un unico posto. L'IA e la dashboard utilizzano gli stessi numeri, quindi non riceverai mai due risposte diverse.",
     "signalsLabel": "Ogni segnale",
     "outputsLabel": "Stessi dati, due porte",
     "primaryLabel": "Prenota una demo",
+    "hubLabel": "Un modello",
     "secondaryLabel": "Contattaci"
   },
   "Auth": {
     "common": {
-      "brand": "automex",
+      "brand": "Automex",
       "brandShort": "automex",
-      "welcome": "Benvenuto su automex",
+      "welcome": "Benvenuto su Automex",
       "backHome": "Torna alla home",
-      "secureNote": "Crittografia a 256 bit · Conforme SOC 2 · Dati mai venduti",
-      "footer": "© 2025 automex. Tutti i diritti riservati. AI Enterprise & Trasformazione Digitale.",
+      "secureNote": "Crittografato a 256 bit · Conforme a SOC 2 · I dati non vengono mai venduti",
+      "footer": "© 2026 Automex. Tutti i diritti riservati. IA aziendale e trasformazione digitale.",
       "email": "Indirizzo email",
-      "emailPlaceholder": "tu@azienda.it",
+      "emailPlaceholder": "tuo@azienda.it",
       "password": "Password",
-      "passwordPlaceholder": "Inserisci la password",
+      "passwordPlaceholder": "Inserisci la tua password",
       "confirmPassword": "Conferma password",
       "confirmPasswordPlaceholder": "Reinserisci la password",
       "fullName": "Nome completo",
       "fullNamePlaceholder": "Mario Rossi",
-      "company": "Azienda (facoltativo)",
+      "company": "Azienda (opzionale)",
       "companyPlaceholder": "Acme Corp",
       "showPassword": "Mostra password",
-      "hidePassword": "Nascondi password"
-    },
-    "showcase": {
-      "eyebrow": "Piattaforma Enterprise",
-      "title": "Strumenti basati su IA per team ambiziosi",
-      "description": "automex ti aiuta ad automatizzare i flussi di lavoro, consegnare più velocemente e scalare le operazioni, tutto su una piattaforma sicura di livello enterprise.",
-      "points": [
-        {
-          "title": "Agenti IA intelligenti",
-          "description": "Distribuisci agenti IA per l'automazione del CRM, supporto, generazione di lead e altro su tutti i canali usati dalla tua azienda."
-        },
-        {
-          "title": "Software personalizzato ad alta velocità",
-          "description": "App web, app mobile, dashboard SaaS e integrazioni API pronte per la produzione e completamente tue."
-        },
-        {
-          "title": "Sicurezza di livello enterprise",
-          "description": "Infrastruttura conforme SOC 2, crittografia end-to-end e audit trail completi per ogni azione."
-        }
-      ]
+      "hidePassword": "Nascondi password",
+      "orContinueWith": "o continua con"
     },
     "login": {
+      "metaTitle": "Accedi | Automex",
+      "metaDescription": "Accedi al tuo account Automex per gestire i tuoi progetti di automazione IA.",
       "title": "Accedi al tuo account",
-      "description": "Inserisci le tue credenziali per accedere all'area di lavoro automex.",
-      "remember": "Resta connesso",
+      "description": "Inserisci le tue credenziali per accedere al tuo spazio di lavoro Automex.",
+      "remember": "Mantieni l'accesso",
       "forgot": "Password dimenticata?",
       "submit": "Accedi",
+      "signingIn": "Accesso in corso…",
       "noAccount": "Non hai un account?",
-      "signupLink": "Creane uno gratis"
+      "signupLink": "Crealo gratuitamente"
     },
     "signup": {
+      "metaTitle": "Crea account | Automex",
+      "metaDescription": "Unisciti a Automex per creare sistemi di automazione basati sull'IA per la tua azienda.",
       "title": "Crea il tuo account",
-      "description": "Inizia con automex. Nessuna carta di credito richiesta.",
-      "passwordHint": "Deve contenere almeno 8 caratteri.",
+      "description": "Inizia con Automex",
+      "passwordHint": "Deve essere di almeno 8 caratteri.",
       "passwordMismatch": "Le password non corrispondono.",
       "termsPrefix": "Accetto i",
       "terms": "Termini di servizio",
-      "and": "e",
+      "and": "e la",
       "privacy": "Informativa sulla privacy",
       "submit": "Crea account",
+      "creating": "Creazione account…",
       "haveAccount": "Hai già un account?",
-      "loginLink": "Accedi"
+      "loginLink": "Accedi",
+      "successTitle": "Controlla la tua casella di posta",
+      "successDescription": "Abbiamo inviato un link di verifica a",
+      "successAction": "Cliccalo per attivare il tuo account.",
+      "successHint": "Non l'hai ricevuto? Controlla la cartella spam o",
+      "tryAgain": "riprova"
     },
     "forgotPassword": {
+      "metaTitle": "Reimposta password | Automex",
+      "metaDescription": "Richiedi un link per reimpostare la password del tuo account Automex.",
       "title": "Reimposta la tua password",
-      "description": "Ti invieremo un codice di reset sicuro al tuo indirizzo email.",
-      "emailHint": "Usa l'indirizzo email collegato al tuo account automex.",
-      "submit": "Invia codice di reset",
-      "backToLogin": "Torna al login"
+      "description": "Invieremo un codice di reimpostazione sicuro al tuo indirizzo email.",
+      "emailHint": "Usa l'indirizzo email associato al tuo account automex.",
+      "submit": "Invia codice di reimpostazione",
+      "sending": "Invio…",
+      "backToLogin": "Torna all'accesso",
+      "successTitle": "Link di reimpostazione inviato",
+      "successDescription": "Se",
+      "successAction": "è registrato, riceverai a breve un link di reimpostazione. Controlla la cartella spam se non lo vedi."
+    },
+    "resetPassword": {
+      "metaTitle": "Imposta nuova password | Automex",
+      "metaDescription": "Scegli una nuova password per il tuo account Automex.",
+      "title": "Imposta nuova password",
+      "description": "Scegli una password sicura per il tuo account Automex.",
+      "submit": "Aggiorna password",
+      "updating": "Aggiornamento password…",
+      "backToLogin": "Torna all'accesso",
+      "success": "Password aggiornata. Effettua l'accesso con la tua nuova password.",
+      "invalidTitle": "Link di reimpostazione non valido",
+      "invalidDescription": "Questo link non contiene un token di reimpostazione. Usa il link dalla tua email o richiedine uno nuovo.",
+      "requestNew": "Richiedi un nuovo link di reimpostazione"
+    },
+    "verifyEmail": {
+      "metaTitle": "Verifica email | Automex",
+      "metaDescription": "Conferma il tuo indirizzo email per attivare il tuo account Automex.",
+      "loadingTitle": "Verifica della tua email…",
+      "loadingDescription": "Richiede solo un momento.",
+      "successTitle": "Email verificata!",
+      "successDescription": "Il tuo account è attivo. Ora puoi accedere al tuo spazio di lavoro Automex.",
+      "signIn": "Accedi al tuo account",
+      "errorTitle": "Verifica fallita",
+      "errorDefault": "Questo link potrebbe essere scaduto o già utilizzato.",
+      "noToken": "Nessun token di verifica trovato nell'URL. Usa il link dalla tua email.",
+      "goToSignIn": "Vai all'accesso",
+      "createAccount": "Crea un nuovo account"
+    },
+    "magicLink": {
+      "metaTitle": "Link magico | Automex",
+      "metaDescription": "Accedi a Automex utilizzando il tuo link magico.",
+      "loadingTitle": "Accesso in corso…",
+      "loadingDescription": "Verifica del tuo link magico. Verrai reindirizzato a breve.",
+      "errorTitle": "Link scaduto o non valido",
+      "errorDefault": "Questo link magico potrebbe essere scaduto o già utilizzato.",
+      "noToken": "Nessun token di link magico trovato. Richiedi un nuovo link.",
+      "backToSignIn": "Torna all'accesso"
     },
     "verifyOtp": {
       "title": "Controlla la tua casella di posta",
       "description": "Abbiamo inviato un codice a 6 cifre alla tua email. Inseriscilo qui sotto per continuare.",
       "codeLabel": "Codice di verifica",
       "digitLabel": "Cifra",
-      "hint": "Il codice scade tra 10 minuti. Controlla la cartella spam se non lo vedi.",
+      "hint": "Il codice scade in 10 minuti. Controlla la cartella spam se non lo vedi.",
       "submit": "Verifica e continua",
-      "resendText": "Non hai ricevuto un codice?",
+      "resendText": "Non hai ricevuto il codice?",
       "resendAction": "Invia di nuovo",
-      "backToLogin": "Torna al login"
+      "backToLogin": "Torna all'accesso"
     }
   },
   "footer": {
@@ -302,9 +390,18 @@
       "headlineAccent": "qualcosa di straordinario",
       "description": "Che tu stia automatizzando un flusso di lavoro, lanciando un prodotto o trasformando l'intera operatività, il team automex è pronto ad aiutarti. Raccontaci di cosa hai bisogno.",
       "stats": [
-        { "value": "< 24h", "label": "Tempo di risposta" },
-        { "value": "50+", "label": "Clienti serviti" },
-        { "value": "98%", "label": "Tasso di soddisfazione" }
+        {
+          "value": "< 24h",
+          "label": "Tempo di risposta"
+        },
+        {
+          "value": "50+",
+          "label": "Clienti serviti"
+        },
+        {
+          "value": "98%",
+          "label": "Tasso di soddisfazione"
+        }
       ],
       "ctaWhatsapp": "Chatta su WhatsApp",
       "ctaEmail": "Invia un'email"
@@ -371,8 +468,18 @@
       "description": "Team in remoto con due hub principali, al servizio di clienti in tutto il mondo.",
       "remoteBadge": "Remoto · Copertura 24/7",
       "offices": [
-        { "city": "Kabul", "country": "Afghanistan", "flag": "🇦🇫", "tz": "UTC+4:30" },
-        { "city": "Seattle", "country": "USA", "flag": "🇺🇸", "tz": "UTC-8 (PST)" }
+        {
+          "city": "Kabul",
+          "country": "Afghanistan",
+          "flag": "🇦🇫",
+          "tz": "UTC+4:30"
+        },
+        {
+          "city": "Seattle",
+          "country": "USA",
+          "flag": "🇺🇸",
+          "tz": "UTC-8 (PST)"
+        }
       ]
     }
   },

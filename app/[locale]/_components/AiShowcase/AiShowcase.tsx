@@ -1,7 +1,7 @@
 "use client";
 // app/[locale]/_components/AiShowcase/AiShowcase.tsx
 
-import { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import { useEffect, useRef, useState, useMemo, memo } from "react";
 import { motion, useInView, animate } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import {
@@ -23,7 +23,7 @@ import {
 import Link from "next/link";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Types
+// Types & Utilities
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Locale = "en" | "zh" | "ar" | "fa" | "ps";
@@ -38,87 +38,21 @@ function getSupportedLocale(locale: string): Locale {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Animated counter
+// Service orbit — SVG‑based circle with orbiting service icons
 // ─────────────────────────────────────────────────────────────────────────────
 
-function useCountUp(to: number, duration = 1.6, suffix = "") {
-  const [display, setDisplay] = useState("0");
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, to, {
-      duration,
-      ease: "easeOut",
-      onUpdate(v) {
-        setDisplay(Math.round(v).toLocaleString() + suffix);
-      },
-    });
-    return () => controls.stop();
-  }, [inView, to, duration, suffix]);
-
-  return { ref, display };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Stat card (unused, kept for potential future use)
-// ─────────────────────────────────────────────────────────────────────────────
-
-function StatCard({
-  to,
-  suffix,
-  label,
-  icon: Icon,
-  delay,
-}: {
-  to: number;
-  suffix?: string;
-  label: string;
-  icon: React.ElementType;
-  delay: number;
-}) {
-  const { ref, display } = useCountUp(to, 1.6, suffix ?? "");
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.5 }}
-      className="flex flex-col items-center gap-2 rounded-2xl border border-border/60 bg-card px-5 py-5 shadow-sm transition-colors hover:border-primary/40"
-    >
-      <div className="flex size-9 items-center justify-center rounded-xl bg-accent text-primary">
-        <Icon className="size-4" aria-hidden="true" />
-      </div>
-      <div
-        ref={ref}
-        className="text-2xl font-bold tabular-nums text-foreground"
-      >
-        {display}
-      </div>
-      <p className="text-center text-[11px] leading-tight text-muted-foreground">
-        {label}
-      </p>
-    </motion.div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Service orbit — SVG-based circle with service icons orbiting the center
-// ─────────────────────────────────────────────────────────────────────────────
-
-// Static data – memoized by definition outside component
+// Static icon/color data – memoized outside component
 const ORBIT_SERVICES = [
-  { Icon: Bot, label: "AI Agents", color: "#0ab8fb" },
-  { Icon: Workflow, label: "Automation", color: "#324b9d" },
-  { Icon: Globe, label: "Web Dev", color: "#13a89e" },
-  { Icon: Smartphone, label: "Mobile Apps", color: "#f59e0b" },
-  { Icon: Plug, label: "API Integration", color: "#7c3aed" },
-  { Icon: BarChart3, label: "Analytics", color: "#0ab8fb" },
-];
+  { Icon: Bot, color: "#0ab8fb" },
+  { Icon: Workflow, color: "#324b9d" },
+  { Icon: Globe, color: "#13a89e" },
+  { Icon: Smartphone, color: "#f59e0b" },
+  { Icon: Plug, color: "#7c3aed" },
+  { Icon: BarChart3, color: "#0ab8fb" },
+] as const;
 
-function ServiceOrbit() {
+/** Renders the animated orbit with service icons. Accepts translated labels via props. */
+function ServiceOrbit({ labels }: { labels: string[] }) {
   // Fixed size for design – scaling wrapper handles responsiveness
   const SIZE = 320;
   const CX = SIZE / 2;
@@ -236,14 +170,15 @@ function ServiceOrbit() {
       </div>
 
       {/* Service icon nodes */}
-      {ORBIT_SERVICES.map(({ Icon, label, color }, i) => {
+      {ORBIT_SERVICES.map(({ Icon, color }, i) => {
         const angle = (i / ORBIT_SERVICES.length) * 2 * Math.PI - Math.PI / 2;
         const nx = CX + Math.cos(angle) * ORBIT_R;
         const ny = CY + Math.sin(angle) * ORBIT_R;
+        const label = labels[i] || "";
 
         return (
           <motion.div
-            key={label}
+            key={label || i}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -272,7 +207,7 @@ function ServiceOrbit() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Live activity feed card — shows AI automation in action
+// Live activity feed card – shows AI automation in action
 // ─────────────────────────────────────────────────────────────────────────────
 
 type FeedItem = {
@@ -284,55 +219,24 @@ type FeedItem = {
   badgeColor: string;
 };
 
-const FEED_ITEMS_EN: FeedItem[] = [
-  {
-    icon: Bot,
-    color: "#0ab8fb",
-    title: "AI Agent Deployed",
-    subtitle: "Customer support bot — 98% resolution rate",
-    badge: "Live",
-    badgeColor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-  },
-  {
-    icon: Workflow,
-    color: "#324b9d",
-    title: "Workflow Automated",
-    subtitle: "CRM data sync — saved 18 hrs/week",
-    badge: "Complete",
-    badgeColor: "bg-primary/10 text-primary",
-  },
-  {
-    icon: MessageSquare,
-    color: "#13a89e",
-    title: "WhatsApp Bot Active",
-    subtitle: "Lead gen chatbot — 54 new leads today",
-    badge: "Running",
-    badgeColor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-  },
-  {
-    icon: Globe,
-    color: "#7c3aed",
-    title: "SaaS Platform Launched",
-    subtitle: "E-commerce dashboard — 0 downtime deploy",
-    badge: "Deployed",
-    badgeColor: "bg-primary/10 text-primary",
-  },
-];
-
-function ActivityFeedCard({ isRtl }: { isRtl: boolean }) {
+/** Renders the live activity feed. Items are passed as props (already translated). */
+const ActivityFeedCard = memo(function ActivityFeedCard({
+  items,
+  isRtl,
+}: {
+  items: FeedItem[];
+  isRtl: boolean;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Memoize the interval setup/cleanup
+  // Rotate through feed items every 2.8s
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % FEED_ITEMS_EN.length);
+      setActiveIndex((prev) => (prev + 1) % items.length);
     }, 2800);
     return () => clearInterval(interval);
-  }, []);
+  }, [items.length]);
 
-  // Memoize feed items to avoid re‑rendering all items on every tick
-  // (the active style changes only on the active item, but the whole list re-renders anyway)
-  // This is acceptable given small list size.
   return (
     <div
       className="w-full rounded-2xl border border-border/60 bg-card shadow-sm overflow-hidden"
@@ -345,7 +249,10 @@ function ActivityFeedCard({ isRtl }: { isRtl: boolean }) {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-40" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          <p className="text-xs font-semibold text-foreground">Live Activity</p>
+          <p className="text-xs font-semibold text-foreground">
+            {/* This can also be translated; we keep it static as it's a brand label */}
+            Live Activity
+          </p>
         </div>
         <span className="rounded-full bg-accent px-2.5 py-1 text-[10px] font-medium text-primary">
           AI Systems
@@ -354,7 +261,7 @@ function ActivityFeedCard({ isRtl }: { isRtl: boolean }) {
 
       {/* Feed items */}
       <div className="divide-y divide-border/40">
-        {FEED_ITEMS_EN.map((item, i) => {
+        {items.map((item, i) => {
           const Icon = item.icon;
           const isActive = i === activeIndex;
 
@@ -394,7 +301,7 @@ function ActivityFeedCard({ isRtl }: { isRtl: boolean }) {
       </div>
     </div>
   );
-}
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Trust badge row
@@ -425,7 +332,59 @@ export function AiShowcase() {
   const isRtl = RTL_LOCALES.has(locale);
   const t = useTranslations("AiShowcase");
 
-  // Memoize the static value props array to avoid recreation on each render
+  // ── Translated orbit labels ──────────────────────────────────────────────
+  const orbitLabels = useMemo(
+    () => [
+      t("orbit1"), // AI Agents
+      t("orbit2"), // Automation
+      t("orbit3"), // Web Dev
+      t("orbit4"), // Mobile Apps
+      t("orbit5"), // API Integration
+      t("orbit6"), // Analytics
+    ],
+    [t]
+  );
+
+  // ── Translated feed items ─────────────────────────────────────────────────
+  const feedItems: FeedItem[] = useMemo(
+    () => [
+      {
+        icon: Bot,
+        color: "#0ab8fb",
+        title: t("feedItem1Title"),
+        subtitle: t("feedItem1Subtitle"),
+        badge: t("feedItem1Badge"),
+        badgeColor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+      },
+      {
+        icon: Workflow,
+        color: "#324b9d",
+        title: t("feedItem2Title"),
+        subtitle: t("feedItem2Subtitle"),
+        badge: t("feedItem2Badge"),
+        badgeColor: "bg-primary/10 text-primary",
+      },
+      {
+        icon: MessageSquare,
+        color: "#13a89e",
+        title: t("feedItem3Title"),
+        subtitle: t("feedItem3Subtitle"),
+        badge: t("feedItem3Badge"),
+        badgeColor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+      },
+      {
+        icon: Globe,
+        color: "#7c3aed",
+        title: t("feedItem4Title"),
+        subtitle: t("feedItem4Subtitle"),
+        badge: t("feedItem4Badge"),
+        badgeColor: "bg-primary/10 text-primary",
+      },
+    ],
+    [t]
+  );
+
+  // ── Translated value props ───────────────────────────────────────────────
   const valueProps = useMemo(
     () => [
       {
@@ -444,7 +403,7 @@ export function AiShowcase() {
         body: t("prop3Body"),
       },
     ],
-    [t],
+    [t]
   );
 
   return (
@@ -453,6 +412,11 @@ export function AiShowcase() {
       aria-labelledby="ai-showcase-title"
       className="relative isolate w-full overflow-hidden bg-background px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
+      {/* Hidden heading for accessibility & SEO */}
+      <h2 id="ai-showcase-title" className="sr-only">
+        {t("sectionTitle")}
+      </h2>
+
       {/* Background */}
       <div
         aria-hidden="true"
@@ -473,10 +437,10 @@ export function AiShowcase() {
             {/* Scale the fixed‑size orbit on smaller screens (preserves proportions) */}
             <div className="flex justify-center">
               <div className="scale-[0.65] sm:scale-[0.8] md:scale-100 will-change-transform origin-center">
-                <ServiceOrbit />
+                <ServiceOrbit labels={orbitLabels} />
               </div>
             </div>
-            <ActivityFeedCard isRtl={isRtl} />
+            <ActivityFeedCard items={feedItems} isRtl={isRtl} />
           </motion.div>
 
           {/* Right: Content */}
@@ -516,7 +480,9 @@ export function AiShowcase() {
             >
               {t("cta")}
               <ArrowRight
-                className={`size-4 transition-transform ${isRtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"}`}
+                className={`size-4 transition-transform ${
+                  isRtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
+                }`}
                 aria-hidden="true"
               />
             </Link>

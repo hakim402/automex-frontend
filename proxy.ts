@@ -73,8 +73,8 @@ export default async function middleware(request: NextRequest) {
   }
 
   // ── Step 2: strip locale prefix for route matching ──────────────────────
-  const locales     = routing.locales as readonly string[];
-  const stripped    = stripLocale(pathname, locales);
+  const locales = routing.locales as readonly string[];
+  const stripped = stripLocale(pathname, locales);
 
   // Always-public token pages — skip auth check entirely
   if (matchesRoute(stripped, PUBLIC_ROUTES)) return intlResponse;
@@ -112,5 +112,7 @@ export default async function middleware(request: NextRequest) {
 // ─── Matcher ──────────────────────────────────────────────────────────────────
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)" ],
+  matcher: [
+    "/((?!api|_next|_vercel|.*\\..*|sitemap|robots|manifest|favicon).*)",
+  ],
 };

@@ -1,31 +1,6 @@
 "use client";
 
 // app/[locale]/dashboard/_components/Sidebar/Sidebar.tsx
-//
-// Fixed version — restores the design system instead of hardcoded hex colors.
-//
-// What was wrong with the previous version and what changed:
-//   1. Hardcoded #ffffff / #111827 / #2563eb etc. → replaced with your
-//      CSS variable tokens (bg-sidebar, text-sidebar-foreground, bg-color,
-//      shadow-brand) so light/dark mode "just works" via .dark class,
-//      no MutationObserver needed.
-//   2. Manual `document.querySelector("aside")` + style mutation → deleted.
-//      Tailwind's `dark:` variant (driven by next-themes) already repaints
-//      everything instantly with zero JS.
-//   3. Inline `style={{...}}` objects everywhere → replaced with Tailwind
-//      classes using `cn()`, matching the rest of your codebase.
-//   4. `usePathname()` called 3 times (once per nav item, inside .map) →
-//      called once at the top and reused — avoids redundant re-renders.
-//   5. Nav items renamed back to match your actual routing.ts paths
-//      (/dashboard/requests, /dashboard/bookings, /dashboard/consulting,
-//      /dashboard/support) instead of the drifted /dashboard/projects,
-//      /dashboard/services that don't exist in your pathnames config.
-//   6. isDesktop now read from the shared `useSidebar()` context concept
-//      via a resize listener, but kept local since layout width is a
-//      pure UI concern — still no flash because the lg: Tailwind classes
-//      handle the very first paint before JS hydrates.
-//   7. Brand color is consistent (bg-color / shadow-brand) instead of a
-//      random blue (#2563eb) that doesn't match your cyan→navy gradient.
 
 import {
   LayoutDashboard,
@@ -312,9 +287,8 @@ export function Sidebar({ isRtl }: SidebarProps) {
                 onClick={logout}
                 aria-label="Sign out"
                 className="flex size-7 shrink-0 items-center justify-center rounded-lg
-                           text-sidebar-foreground/40 opacity-0 transition-all
-                           group-hover:opacity-100
-                           hover:bg-destructive/10 hover:text-destructive"
+                           text-sidebar-foreground/40
+                           hover:bg-destructive/10 hover:text-destructive cursor-pointer"
               >
                 <LogOut className="size-3.5" />
               </button>

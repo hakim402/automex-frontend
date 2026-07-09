@@ -1,15 +1,6 @@
-/**
- * auth/reset-password/page.tsx — Set a new password using a reset token
- *
- * Flow:
- *   1. Backend sends email → link to /[locale]/auth/reset-password?token=XXX
- *   2. User enters new password + confirm
- *   3. Calls POST /auth/password-reset/confirm/
- *   4. On success → redirect to sign-in with a toast
- *
- * PUBLIC_ROUTE — accessible without auth.
- */
 "use client";
+
+// app/[locale]/(auth)/reset-password/page.tsx
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -19,19 +10,18 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import Head from "next/head";
 
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 
 import { confirmPasswordReset, getErrorMessage } from "@/lib/auth";
 
-import { AuthCard }      from "../../_components/AuthCard";
-import { AuthHeader }    from "../../_components/AuthHeader";
+import { AuthCard } from "../../_components/AuthCard";
+import { AuthHeader } from "../../_components/AuthHeader";
 import { AuthFormField } from "../../_components/AuthFormField";
 import { PasswordInput } from "../../_components/PasswordInput";
-import { BackToHome }    from "../../_components/BackToHome";
-
-// ─── Validation schema ────────────────────────────────────────────────────────
+import { BackToHome } from "../../_components/BackToHome";
 
 const resetSchema = z
   .object({
@@ -49,15 +39,12 @@ const resetSchema = z
 
 type ResetValues = z.infer<typeof resetSchema>;
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 export default function ResetPasswordPage() {
-  const t            = useTranslations("Auth");
+  const t = useTranslations("Auth");
   const searchParams = useSearchParams();
-  const router       = useRouter();
+  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-
   const token = searchParams.get("token") ?? "";
 
   const {
@@ -69,41 +56,39 @@ export default function ResetPasswordPage() {
     defaultValues: { password: "", password_confirm: "" },
   });
 
-  // Guard: show error if no token in URL
   if (!token) {
     return (
-      <div className="flex flex-col min-h-screen items-center justify-center px-5 py-12">
-        <BackToHome />
-        <div className="w-full max-w-md rounded-2xl border border-border/60
-                        bg-card/80 backdrop-blur-sm shadow-sm p-8 text-center space-y-4">
-          <h1 className="text-xl font-bold text-foreground">Invalid reset link</h1>
-          <p className="text-[14px] text-muted-foreground">
-            This link is missing a reset token. Please use the link from your email,
-            or request a new one.
-          </p>
-          <a
-            href="/auth/forgot-password"
-            className="inline-block text-[13px] font-semibold text-primary
-                       hover:underline underline-offset-4"
-          >
-            Request a new reset link
-          </a>
+      <>
+        <Head>
+          <title>{t("resetPassword.invalidTitle")}</title>
+          <meta name="description" content={t("resetPassword.invalidDescription")} />
+        </Head>
+        <div className="flex flex-col min-h-screen items-center justify-center px-5 py-12">
+          <BackToHome />
+          <div className="w-full max-w-md rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm p-8 text-center space-y-4">
+            <h1 className="text-xl font-bold text-foreground">{t("resetPassword.invalidTitle")}</h1>
+            <p className="text-[14px] text-muted-foreground">{t("resetPassword.invalidDescription")}</p>
+            <a
+              href="/forgot-password"
+              className="inline-block text-[13px] font-semibold text-primary hover:underline underline-offset-4"
+            >
+              {t("resetPassword.requestNew")}
+            </a>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
-  // ── Submit ──────────────────────────────────────────────────────────────
   async function onSubmit(values: ResetValues) {
     setLoading(true);
     try {
       await confirmPasswordReset({
         token,
-        password:         values.password,
+        password: values.password,
         password_confirm: values.password_confirm,
       });
-
-      toast.success("Password updated. Please sign in with your new password.");
+      toast.success(t("resetPassword.success"));
       router.push("/sign-in");
     } catch (err) {
       toast.error(getErrorMessage(err));
@@ -112,20 +97,18 @@ export default function ResetPasswordPage() {
     }
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
   return (
     <>
-      <BackToHome />
+      <Head>
+        <title>{t("resetPassword.metaTitle")}</title>
+        <meta name="description" content={t("resetPassword.metaDescription")} />
+      </Head>
 
-      <AuthHeader
-        title="Set new password"
-        description="Choose a strong password for your IDWE account."
-      />
+      <BackToHome />
+      <AuthHeader title={t("resetPassword.title")} description={t("resetPassword.description")} />
 
       <AuthCard>
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
-
-          {/* New password */}
           <AuthFormField
             id="password"
             label={t("common.password")}
@@ -135,7 +118,7 @@ export default function ResetPasswordPage() {
             <PasswordInput
               id="password"
               autoComplete="new-password"
-              placeholder="New password"
+              placeholder={t("common.passwordPlaceholder")}
               aria-invalid={!!errors.password}
               showLabel={t("common.showPassword")}
               hideLabel={t("common.hidePassword")}
@@ -143,7 +126,6 @@ export default function ResetPasswordPage() {
             />
           </AuthFormField>
 
-          {/* Confirm new password */}
           <AuthFormField
             id="password_confirm"
             label={t("common.confirmPassword")}
@@ -164,27 +146,24 @@ export default function ResetPasswordPage() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-color shadow-brand
-                       hover:-translate-y-0.5 transition-transform duration-200
-                       font-semibold"
+            className="w-full rounded-full bg-color shadow-brand hover:-translate-y-0.5 transition-transform duration-200 font-semibold"
           >
             {loading ? (
               <>
                 <Loader2 className="size-4 me-2 animate-spin" aria-hidden="true" />
-                Updating password…
+                {t("resetPassword.updating")}
               </>
             ) : (
-              "Update password"
+              t("resetPassword.submit")
             )}
           </Button>
 
           <div className="text-center">
             <Link
               href="/sign-in"
-              className="text-[13px] font-medium text-muted-foreground
-                         hover:text-foreground transition-colors hover:underline underline-offset-4"
+              className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-4"
             >
-              Back to sign in
+              {t("resetPassword.backToLogin")}
             </Link>
           </div>
         </form>

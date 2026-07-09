@@ -1,17 +1,6 @@
 "use client";
 
 // app/[locale]/_components/HowItWorksConfig.tsx
-//
-// Pre-configured HowItWorks data for the Home page.
-// Import this file and pass the result as props to <HowItWorks />.
-//
-// Every string is sourced from next-intl so all locales just work.
-// Icons and colors are hardcoded here — they don't need translation.
-//
-// Usage:
-//   import { useHowItWorksConfig } from "./_components/HowItWorksConfig";
-//   const config = useHowItWorksConfig();
-//   <HowItWorks {...config} isRtl={isRtl} />
 
 import { useTranslations } from "next-intl";
 import {
@@ -32,7 +21,13 @@ import {
   TrendingUp,
   RefreshCcw,
 } from "lucide-react";
-import type { HowItWorksProps, FlowStep, AgentTask } from "@/components/shared/HowItWorks";
+import type {
+  HowItWorksProps,
+  FlowStep,
+  AgentTask,
+  PipelineNode,
+  PipelineEdge,
+} from "@/components/shared/HowItWorks";
 
 export function useHowItWorksConfig(): HowItWorksProps {
   const t = useTranslations("HowItWorks");
@@ -65,9 +60,64 @@ export function useHowItWorksConfig(): HowItWorksProps {
     },
   ];
 
+  // ── Pipeline nodes & edges (fully translated) ──────────────────────────
+  const pipelineNodes: PipelineNode[] = [
+    {
+      id: "trigger",
+      label: t("pipelineNode1Label"),
+      sublabel: t("pipelineNode1Sub"),
+      icon: Database,
+      color: "#0ab8fb",
+      x: 50,
+      y: 15,
+    },
+    {
+      id: "agent",
+      label: t("pipelineNode2Label"),
+      sublabel: t("pipelineNode2Sub"),
+      icon: Brain,
+      color: "#7c3aed",
+      x: 50,
+      y: 42,
+    },
+    {
+      id: "asana",
+      label: t("pipelineNode3Label"),
+      sublabel: t("pipelineNode3Sub"),
+      icon: CheckCircle2,
+      color: "#13a89e",
+      x: 18,
+      y: 78,
+    },
+    {
+      id: "slack",
+      label: t("pipelineNode4Label"),
+      sublabel: t("pipelineNode4Sub"),
+      icon: MessageSquare,
+      color: "#f59e0b",
+      x: 50,
+      y: 78,
+    },
+    {
+      id: "cal",
+      label: t("pipelineNode5Label"),
+      sublabel: t("pipelineNode5Sub"),
+      icon: Calendar,
+      color: "#324b9d",
+      x: 82,
+      y: 78,
+    },
+  ];
+
+  const pipelineEdges: PipelineEdge[] = [
+    { from: "trigger", to: "agent", color: "#0ab8fb" },
+    { from: "agent", to: "asana", color: "#13a89e" },
+    { from: "agent", to: "slack", color: "#f59e0b" },
+    { from: "agent", to: "cal", color: "#324b9d" },
+  ];
+
   // ── Sandbox tasks ─────────────────────────────────────────────────────────
   const tasks: AgentTask[] = [
-    // ── Task 1: CRM → Asana → Slack → Calendar ───────────────────────────
     {
       label: t("task1Label"),
       icon: Database,
@@ -122,14 +172,12 @@ export function useHowItWorksConfig(): HowItWorksProps {
       result: {
         summary: t("task1Result"),
         metrics: [
-          { label: t("metricTime"),    value: "4.2s" },
-          { label: t("metricSteps"),   value: "5" },
-          { label: t("metricSaved"),   value: "38 min" },
+          { label: t("metricTime"), value: "4.2s" },
+          { label: t("metricSteps"), value: "5" },
+          { label: t("metricSaved"), value: "38 min" },
         ],
       },
     },
-
-    // ── Task 2: Support ticket → AI response → escalation ────────────────
     {
       label: t("task2Label"),
       icon: Mail,
@@ -175,14 +223,12 @@ export function useHowItWorksConfig(): HowItWorksProps {
       result: {
         summary: t("task2Result"),
         metrics: [
-          { label: t("metricTime"),       value: "3.1s" },
+          { label: t("metricTime"), value: "3.1s" },
           { label: t("metricResolution"), value: "94%" },
-          { label: t("metricSaved"),      value: "22 min" },
+          { label: t("metricSaved"), value: "22 min" },
         ],
       },
     },
-
-    // ── Task 3: Report generation ─────────────────────────────────────────
     {
       label: t("task3Label"),
       icon: TrendingUp,
@@ -228,26 +274,37 @@ export function useHowItWorksConfig(): HowItWorksProps {
       result: {
         summary: t("task3Result"),
         metrics: [
-          { label: t("metricTime"),   value: "6.8s" },
-          { label: t("metricRows"),   value: "2.3M" },
-          { label: t("metricSaved"),  value: "4 hrs" },
+          { label: t("metricTime"), value: "6.8s" },
+          { label: t("metricRows"), value: "2.3M" },
+          { label: t("metricSaved"), value: "4 hrs" },
         ],
       },
     },
   ];
 
   return {
-    eyebrow:            t("eyebrow"),
-    title:              t("title"),
-    accentWord:         t("accentWord"),
-    description:        t("description"),
+    eyebrow: t("eyebrow"),
+    title: t("title"),
+    accentWord: t("accentWord"),
+    description: t("description"),
     flowSteps,
     tasks,
-    sandboxTitle:       t("sandboxTitle"),
+    pipelineLabel: t("pipelineLabel"),
+    pipelineNodes,
+    pipelineEdges,
+    sandboxSectionLabel: t("sandboxSectionLabel"),
+    scenarioLabel: t("scenarioLabel"),
+    idleTitle: t("idleTitle"),
+    idleDescription: t("idleDescription"),
+    reasoningLabel: t("reasoningLabel"),
+    actionsLabel: t("actionsLabel"),
+    readyLabel: t("readyLabel"),
+    executingLabel: t("executingLabel"),
+    sandboxTitle: t("sandboxTitle"),
     sandboxDescription: t("sandboxDescription"),
-    runLabel:           t("runLabel"),
-    resetLabel:         t("resetLabel"),
-    thinkingLabel:      t("thinkingLabel"),
-    doneLabel:          t("doneLabel"),
+    runLabel: t("runLabel"),
+    resetLabel: t("resetLabel"),
+    thinkingLabel: t("thinkingLabel"),
+    doneLabel: t("doneLabel"),
   };
 }

@@ -10,113 +10,19 @@ export const routing = defineRouting({
   pathnames: {
     '/': '/',
 
+    // ─── Dashboard ──────────────────────────────────────────────────────────
     '/dashboard': {
       en: '/dashboard',
       es: '/dashboard',
       de: '/dashboard',
       fr: '/dashboard',
-      it: '/dashboard',    // or '/cruscotto'
-      nl: '/dashboard',    // or '/dashboard' (usually same)
+      it: '/dashboard',
+      nl: '/dashboard',
       zh: '/dashboard',
       ar: '/dashboard',
       fa: '/dashboard',
       ps: '/dashboard',
     },
-
-    '/admin': '/admin',
-
-    '/products': {
-      en: '/products',
-      es: '/products',     // or '/productos'
-      de: '/products',     // or '/produkte'
-      fr: '/products',     // or '/produits'
-      it: '/products',     // or '/prodotti'
-      nl: '/products',     // or '/producten'
-      zh: '/products',
-      ar: '/products',
-      fa: '/products',
-      ps: '/products',
-    },
-
-    '/services': {
-      en: '/services',
-      es: '/services',     // or '/servicios'
-      de: '/services',     // or '/dienstleistungen'
-      fr: '/services',     // or '/prestations'
-      it: '/services',     // or '/servizi'
-      nl: '/services',     // or '/diensten'
-      zh: '/services',
-      ar: '/services',
-      fa: '/services',
-      ps: '/services',
-    },
-
-    '/blogs': {
-      en: '/blogs',
-      es: '/blogs',
-      de: '/blogs',
-      fr: '/blogs',
-      it: '/blogs',
-      nl: '/blogs',
-      zh: '/blogs',
-      ar: '/blogs',
-      fa: '/blogs',
-      ps: '/blogs',
-    },
-
-    '/about': {
-      en: '/about',
-      es: '/about',       // or '/sobre-nosotros'
-      de: '/about',       // or '/ueber-uns'
-      fr: '/about',       // or '/a-propos'
-      it: '/about',       // or '/chi-siamo'
-      nl: '/about',       // or '/over-ons'
-      zh: '/about',
-      ar: '/about',
-      fa: '/about',
-      ps: '/about',
-    },
-
-    '/contact': {
-      en: '/contact',
-      es: '/contact',     // or '/contacto'
-      de: '/contact',     // or '/kontakt'
-      fr: '/contact',
-      it: '/contact',     // or '/contatti'
-      nl: '/contact',     // or '/contact'
-      zh: '/contact',
-      ar: '/contact',
-      fa: '/contact',
-      ps: '/contact',
-    },
-
-    '/sign-in': {
-      en: '/sign-in',
-      es: '/sign-in',     // or '/iniciar-sesion'
-      de: '/sign-in',     // or '/anmelden'
-      fr: '/sign-in',     // or '/connexion'
-      it: '/sign-in',     // or '/accedi'
-      nl: '/sign-in',     // or '/inloggen'
-      zh: '/sign-in',
-      ar: '/sign-in',
-      fa: '/sign-in',
-      ps: '/sign-in',
-    },
-
-    '/sign-up': {
-      en: '/sign-up',
-      es: '/sign-up',     // or '/registrarse'
-      de: '/sign-up',     // or '/registrieren'
-      fr: '/sign-up',     // or '/inscription'
-      it: '/sign-up',     // or '/registrati'
-      nl: '/sign-up',     // or '/registreren'
-      zh: '/sign-up',
-      ar: '/sign-up',
-      fa: '/sign-up',
-      ps: '/sign-up',
-    },
-
-    // Dashboard sub-routes
     '/dashboard/requests': {
       en: '/dashboard/requests',
       es: '/dashboard/requests',
@@ -129,7 +35,6 @@ export const routing = defineRouting({
       fa: '/dashboard/requests',
       ps: '/dashboard/requests',
     },
-
     '/dashboard/bookings': {
       en: '/dashboard/bookings',
       es: '/dashboard/bookings',
@@ -142,7 +47,6 @@ export const routing = defineRouting({
       fa: '/dashboard/bookings',
       ps: '/dashboard/bookings',
     },
-
     '/dashboard/consulting': {
       en: '/dashboard/consulting',
       es: '/dashboard/consulting',
@@ -155,7 +59,6 @@ export const routing = defineRouting({
       fa: '/dashboard/consulting',
       ps: '/dashboard/consulting',
     },
-
     '/dashboard/support': {
       en: '/dashboard/support',
       es: '/dashboard/support',
@@ -168,7 +71,6 @@ export const routing = defineRouting({
       fa: '/dashboard/support',
       ps: '/dashboard/support',
     },
-
     '/dashboard/notifications': {
       en: '/dashboard/notifications',
       es: '/dashboard/notifications',
@@ -180,6 +82,171 @@ export const routing = defineRouting({
       ar: '/dashboard/notifications',
       fa: '/dashboard/notifications',
       ps: '/dashboard/notifications',
+    },
+
+    // ─── Admin ──────────────────────────────────────────────────────────────
+    '/admin': '/admin',
+
+    // ─── Public pages ──────────────────────────────────────────────────────
+    '/products': {
+      en: '/products',
+      es: '/products',
+      de: '/products',
+      fr: '/products',
+      it: '/products',
+      nl: '/products',
+      zh: '/products',
+      ar: '/products',
+      fa: '/products',
+      ps: '/products',
+    },
+    '/services': {
+      en: '/services',
+      es: '/services',
+      de: '/services',
+      fr: '/services',
+      it: '/services',
+      nl: '/services',
+      zh: '/services',
+      ar: '/services',
+      fa: '/services',
+      ps: '/services',
+    },
+    '/blogs': {
+      en: '/blogs',
+      es: '/blogs',
+      de: '/blogs',
+      fr: '/blogs',
+      it: '/blogs',
+      nl: '/blogs',
+      zh: '/blogs',
+      ar: '/blogs',
+      fa: '/blogs',
+      ps: '/blogs',
+    },
+    '/about': {
+      en: '/about',
+      es: '/about',
+      de: '/about',
+      fr: '/about',
+      it: '/about',
+      nl: '/about',
+      zh: '/about',
+      ar: '/about',
+      fa: '/about',
+      ps: '/about',
+    },
+    '/contact': {
+      en: '/contact',
+      es: '/contact',
+      de: '/contact',
+      fr: '/contact',
+      it: '/contact',
+      nl: '/contact',
+      zh: '/contact',
+      ar: '/contact',
+      fa: '/contact',
+      ps: '/contact',
+    },
+
+    // ─── Auth pages ──────────────────────────────────────────────────────
+    '/sign-in': {
+      en: '/sign-in',
+      es: '/sign-in',
+      de: '/sign-in',
+      fr: '/sign-in',
+      it: '/sign-in',
+      nl: '/sign-in',
+      zh: '/sign-in',
+      ar: '/sign-in',
+      fa: '/sign-in',
+      ps: '/sign-in',
+    },
+    '/sign-up': {
+      en: '/sign-up',
+      es: '/sign-up',
+      de: '/sign-up',
+      fr: '/sign-up',
+      it: '/sign-up',
+      nl: '/sign-up',
+      zh: '/sign-up',
+      ar: '/sign-up',
+      fa: '/sign-up',
+      ps: '/sign-up',
+    },
+    '/forgot-password': {
+      en: '/forgot-password',
+      es: '/forgot-password',
+      de: '/forgot-password',
+      fr: '/forgot-password',
+      it: '/forgot-password',
+      nl: '/forgot-password',
+      zh: '/forgot-password',
+      ar: '/forgot-password',
+      fa: '/forgot-password',
+      ps: '/forgot-password',
+    },
+    '/reset-password': {
+      en: '/reset-password',
+      es: '/reset-password',
+      de: '/reset-password',
+      fr: '/reset-password',
+      it: '/reset-password',
+      nl: '/reset-password',
+      zh: '/reset-password',
+      ar: '/reset-password',
+      fa: '/reset-password',
+      ps: '/reset-password',
+    },
+    '/verify-email': {
+      en: '/verify-email',
+      es: '/verify-email',
+      de: '/verify-email',
+      fr: '/verify-email',
+      it: '/verify-email',
+      nl: '/verify-email',
+      zh: '/verify-email',
+      ar: '/verify-email',
+      fa: '/verify-email',
+      ps: '/verify-email',
+    },
+    '/magic-link': {
+      en: '/magic-link',
+      es: '/magic-link',
+      de: '/magic-link',
+      fr: '/magic-link',
+      it: '/magic-link',
+      nl: '/magic-link',
+      zh: '/magic-link',
+      ar: '/magic-link',
+      fa: '/magic-link',
+      ps: '/magic-link',
+    },
+
+    // ─── Legal pages ──────────────────────────────────────────────────────
+    '/terms': {
+      en: '/terms',
+      es: '/terms',
+      de: '/terms',
+      fr: '/terms',
+      it: '/terms',
+      nl: '/terms',
+      zh: '/terms',
+      ar: '/terms',
+      fa: '/terms',
+      ps: '/terms',
+    },
+    '/privacy': {
+      en: '/privacy',
+      es: '/privacy',
+      de: '/privacy',
+      fr: '/privacy',
+      it: '/privacy',
+      nl: '/privacy',
+      zh: '/privacy',
+      ar: '/privacy',
+      fa: '/privacy',
+      ps: '/privacy',
     },
   },
 });

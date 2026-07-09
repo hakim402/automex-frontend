@@ -1,14 +1,6 @@
 "use client";
 
 // app/[locale]/dashboard/_components/DashboardMain.tsx
-//
-// Owns the margin that pushes content away from the fixed Sidebar.
-// This is now the ONLY place that applies a width-based offset —
-// Sidebar.tsx no longer renders its own spacer, so the two can't
-// double up anymore (that was the bug: spacer + margin = 2x width).
-//
-// Width comes from useSidebar().sidebarWidth — the single source of
-// truth defined in sidebar-context.tsx. Never hardcode 256/72 here.
 
 import { useState, useEffect } from "react";
 import { useSidebar } from "@/contexts/sidebar-context";

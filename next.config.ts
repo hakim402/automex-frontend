@@ -1,3 +1,5 @@
+// next.config.ts
+
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -12,18 +14,12 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
-      // ── Your own CDN / storage — add when ready ────────────────────────────
-      // {
-      //   protocol: "https",
-      //   hostname: "cdn.idwe.tech",
-      //   pathname: "/**",
-      // },
-      // ── Supabase storage — uncomment if you use Supabase ──────────────────
-      // {
-      //   protocol: "https",
-      //   hostname: "*.supabase.co",
-      //   pathname: "/storage/v1/object/public/**",
-      // },
+
+      {
+        protocol: "https",
+        hostname: "cdn.automex.tech",  // Your CDN
+        pathname: "/**",
+      },
     ],
   },
 };

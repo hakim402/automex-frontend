@@ -9,6 +9,8 @@
  * Next.js Server Components, Route Handlers, and the browser equally.
  */
 
+// lib/api.ts
+
 import { getApiBaseUrl } from "./env";
 
 // ─── Types ───────────────────────────────────────────────────────────────────

@@ -1,5 +1,7 @@
 "use client";
 
+// app/[locale]/_components/Language/LocaleSync.tsx
+
 import { useEffect } from "react";
 
 const RTL_LOCALES = ["ar", "fa", "ps"] as const;

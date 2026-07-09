@@ -1,6 +1,6 @@
 "use client";
 
-import type { ElementType } from "react";
+import { memo, type ElementType } from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
@@ -24,7 +24,9 @@ type HomeHeroContent = {
   description: string;
   primaryAction: string;
   secondaryAction: string;
+  liveLabel: string;
   tickerItems: TickerItem[];
+  floatingLabels: string[];
 };
 
 const SUPPORTED_LOCALES: Locale[] = ["en", "zh", "ar", "fa", "ps"];
@@ -35,6 +37,28 @@ const TICKER_ICON_MAP: Record<string, ElementType> = {
   bot: Bot,
   zap: Zap,
   sparkles: Sparkles,
+};
+
+// Badge variant style mapping
+const BADGE_VARIANTS: Record<
+  TickerItem["badgeVariant"],
+  { border: string; bg: string; text: string }
+> = {
+  cyan: {
+    border: "border-cyan-500/20",
+    bg: "bg-cyan-500/10",
+    text: "text-cyan-600 dark:text-cyan-400",
+  },
+  blue: {
+    border: "border-blue-500/20",
+    bg: "bg-blue-500/10",
+    text: "text-blue-600 dark:text-blue-400",
+  },
+  teal: {
+    border: "border-teal-500/20",
+    bg: "bg-teal-500/10",
+    text: "text-teal-600 dark:text-teal-400",
+  },
 };
 
 const containerVariants: Variants = {
@@ -90,13 +114,25 @@ function useHomeHeroContent(): { locale: Locale; content: HomeHeroContent } {
       description: t("description"),
       primaryAction: t("primaryAction"),
       secondaryAction: t("secondaryAction"),
+      liveLabel: t("liveLabel"),
       tickerItems: getArrayValue<TickerItem>(t.raw("tickerItems"), []),
+      floatingLabels: getArrayValue<string>(t.raw("floatingLabels"), []),
     },
   };
 }
 
-function ActivityTicker({ items }: { items: TickerItem[] }) {
+function ActivityTicker({
+  items,
+  liveLabel,
+  isRtl,
+}: {
+  items: TickerItem[];
+  liveLabel: string;
+  isRtl: boolean;
+}) {
   const doubled = [...items, ...items];
+  // In RTL we animate from 0% to +50% (move right), in LTR from 0% to -50% (move left)
+  const direction = isRtl ? "50%" : "-50%";
 
   return (
     <div className="relative w-full">
@@ -111,18 +147,20 @@ function ActivityTicker({ items }: { items: TickerItem[] }) {
               <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-              Live
+              {liveLabel}
             </span>
           </div>
 
           <div className="min-w-0 overflow-hidden py-3">
             <motion.div
               className="flex gap-1 whitespace-nowrap"
-              animate={{ x: ["0%", "-50%"] }}
+              animate={{ x: ["0%", direction] }}
               transition={{ duration: 28, ease: "linear", repeat: Infinity }}
             >
               {doubled.map((item, i) => {
                 const Icon = TICKER_ICON_MAP[item.icon] ?? Sparkles;
+                const variantStyles =
+                  BADGE_VARIANTS[item.badgeVariant] || BADGE_VARIANTS.cyan;
 
                 return (
                   <span
@@ -133,7 +171,9 @@ function ActivityTicker({ items }: { items: TickerItem[] }) {
                       <Icon className="size-3" />
                     </span>
                     <span>{item.text}</span>
-                    <span className="rounded-full border border-primary/20 bg-primary/10 px-1.5 py-px text-[9px] font-bold leading-none text-primary">
+                    <span
+                      className={`rounded-full border px-1.5 py-px text-[9px] font-bold leading-none ${variantStyles.border} ${variantStyles.bg} ${variantStyles.text}`}
+                    >
                       {item.badge}
                     </span>
                     <span className="size-1 shrink-0 rounded-full bg-border" />
@@ -189,7 +229,7 @@ export default function HomeHero() {
               {content.description}
             </motion.p>
 
-            {/* CTA buttons – responsive alignment */}
+            {/* CTA buttons */}
             <motion.div
               variants={fadeUpVariants}
               className={[
@@ -199,7 +239,7 @@ export default function HomeHero() {
             >
               <Link
                 href={buildLocalePath(locale, "/contact")}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-color px-6 py-3 text-sm font-semibold shadow-brand transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-color px-6 py-3 text-sm font-semibold text-white shadow-brand transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
               >
                 {content.primaryAction}
                 <ArrowRight
@@ -223,7 +263,11 @@ export default function HomeHero() {
               variants={fadeUpVariants}
               className="w-full max-w-xl lg:hidden lg:max-w-none"
             >
-              <ActivityTicker items={content.tickerItems} />
+              <ActivityTicker
+                items={content.tickerItems}
+                liveLabel={content.liveLabel}
+                isRtl={isRtl}
+              />
             </motion.div>
           </motion.div>
 
@@ -239,7 +283,7 @@ export default function HomeHero() {
             />
 
             <div className="scale-[0.58] sm:scale-[0.72] lg:scale-[0.88] xl:scale-[0.92]">
-              <OrbitalSystem />
+              <OrbitalSystem floatingLabels={content.floatingLabels} />
             </div>
           </motion.div>
         </div>
@@ -248,7 +292,11 @@ export default function HomeHero() {
           variants={fadeUpVariants}
           className="hidden w-full max-w-xl lg:block lg:max-w-none"
         >
-          <ActivityTicker items={content.tickerItems} />
+          <ActivityTicker
+            items={content.tickerItems}
+            liveLabel={content.liveLabel}
+            isRtl={isRtl}
+          />
         </motion.div>
       </div>
     </section>

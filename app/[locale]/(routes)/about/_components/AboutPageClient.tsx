@@ -1,20 +1,7 @@
 "use client";
 
 // app/[locale]/about/_components/AboutPageClient.tsx
-//
-// Enterprise About page — Clean / Apple-Linear level polish.
-// Composed entirely of reusable shared components so every section
-// can be dropped into other pages with different data.
-//
-// Sections:
-//   1. Hero          — cinematic opener with scroll-parallax tagline
-//   2. Story         — editorial two-column photo + text block
-//   3. Mission/Vision— dual cards with live gradient top stripe
-//   4. StatsRow      — animated count-up metrics (shared)
-//   5. ValuesSection — 6-value grid with hover color glows (shared)
-//   6. Timeline      — scroll-animated spine + alternating cards (shared)
-//   7. TeamSection   — magazine-cover cards with hover reveal (shared)
-//   8. PageCTA       — gradient CTA band (shared)
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -84,7 +71,7 @@ function AboutHero({
       {/* Headline */}
       <motion.h1
         {...fadeUp(0)}
-        className="text-balance text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl"
+        className="text-balance text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl leading-tight"
       >
         {t("hero.headlineLead")}{" "}
         <span className="text-color">{t("hero.headlineAccent")}</span>

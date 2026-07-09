@@ -1,15 +1,6 @@
 "use client";
 
 // app/[locale]/contact/_components/ContactPageClient.tsx
-//
-// Single client entry point for the contact page.
-// Composed of four sections:
-//   1. Hero      — headline + two CTA buttons (WhatsApp & Email)
-//   2. Two-column — ContactInfo (left) + ContactForm (right)
-//   3. Map strip  — decorative location section at the bottom
-//
-// All copy is driven through next-intl translations (see en.json → "Contact").
-// RTL layout is handled via the `isRtl` prop passed from the server page.
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
@@ -129,7 +120,7 @@ function ContactHero({
       {/* Headline */}
       <motion.h1
         {...fadeUp(0)}
-        className="text-balance text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl"
+        className="text-balance text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl leading-tight"
       >
         {t("hero.headlineLead")}{" "}
         <span className="text-color">{t("hero.headlineAccent")}</span>

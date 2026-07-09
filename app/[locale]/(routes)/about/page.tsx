@@ -1,13 +1,12 @@
-// app/[locale]/about/page.tsx
-//
-// Server component — resolves locale, detects RTL, injects metadata.
-// Zero client-side logic here; everything visual is in AboutPageClient.
-
+// app/[locale]/(routes)/about/page.tsx
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import AboutPageClient from "./_components/AboutPageClient";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import { SUPPORTED_LOCALES, isRtlLocale } from "@/lib/locale";
 
-const RTL_LOCALES = new Set(["ar", "fa", "ps"]);
+// ─── Metadata ─────────────────────────────────────────
 
 export async function generateMetadata({
   params,
@@ -17,17 +16,15 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "About" });
 
-  return {
-    title: t("meta.title"),
-    description: t("meta.description"),
-    keywords: t("meta.keywords"),
-    openGraph: {
-      title: t("meta.ogTitle"),
-      description: t("meta.ogDescription"),
-      type: "website",
-    },
-  };
+  return generatePageMetadata({
+    pageType: "about",
+    locale: locale as any,
+    customTitle: t("meta.title"),
+    customDescription: t("meta.description"),
+  });
 }
+
+// ─── Page ─────────────────────────────────────────────
 
 export default async function AboutPage({
   params,
@@ -35,7 +32,22 @@ export default async function AboutPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const isRtl = RTL_LOCALES.has(locale);
+  const isRtl = isRtlLocale(locale);
 
-  return <AboutPageClient isRtl={isRtl} locale={locale} />;
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { name: "Home", url: `/${locale}` },
+    { name: "About", url: `/${locale}/about` },
+  ];
+
+  return (
+    <>
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <AboutPageClient isRtl={isRtl} locale={locale} />
+    </>
+  );
+}
+
+export function generateStaticParams() {
+  return SUPPORTED_LOCALES.map((locale) => ({ locale }));
 }

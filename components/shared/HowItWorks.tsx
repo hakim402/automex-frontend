@@ -1,14 +1,7 @@
 "use client";
-
 // components/shared/HowItWorks.tsx
-//
-// Layout (top → bottom):
-//   1. Section header
-//   2. FlowStepsRow  — 4 steps with working connector lines
-//   3. PipelineVisualizer — full-width SVG node graph
-//   4. InteractiveSandbox — full-width agent demo
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
@@ -56,6 +49,22 @@ export interface FlowStep {
   description: string;
 }
 
+export interface PipelineNode {
+  id: string;
+  label: string;
+  sublabel: string;
+  icon: React.ElementType;
+  color: string;
+  x: number; // percentage
+  y: number; // percentage
+}
+
+export interface PipelineEdge {
+  from: string;
+  to: string;
+  color: string;
+}
+
 export interface PipelineAction {
   icon: React.ElementType;
   system: string;
@@ -83,6 +92,19 @@ export interface HowItWorksProps {
   description?: string;
   flowSteps: FlowStep[];
   tasks: AgentTask[];
+  // New i18n props for static labels
+  pipelineLabel: string;
+  pipelineNodes: PipelineNode[];
+  pipelineEdges: PipelineEdge[];
+  sandboxSectionLabel: string;
+  scenarioLabel: string;
+  idleTitle: string;
+  idleDescription: string;
+  reasoningLabel: string;
+  actionsLabel: string;
+  readyLabel: string;
+  executingLabel: string;
+  // existing sandbox labels
   sandboxTitle: string;
   sandboxDescription: string;
   runLabel: string;
@@ -95,16 +117,12 @@ export interface HowItWorksProps {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1 — Flow Steps Row
-// FIX: connector is now a ::after-style absolute div that spans
-//      from the END of the current icon to the START of the next icon.
-//      We use a wrapping grid so each cell is equal width, then draw
-//      the line in the top-center area between cells.
 // ─────────────────────────────────────────────────────────────────────────────
 
 function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
   return (
     <div dir={isRtl ? "rtl" : "ltr"} className="relative">
-      {/* ── Desktop: horizontal row ── */}
+      {/* Desktop */}
       <div className="hidden sm:grid sm:grid-cols-4">
         {steps.map((step, i) => {
           const Icon = step.icon;
@@ -115,7 +133,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
               key={step.title}
               className="relative flex flex-col items-center text-center px-4"
             >
-              {/* ── Connector line (RTL aware) ── */}
               {!isLast && (
                 <div
                   aria-hidden="true"
@@ -123,7 +140,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                   style={
                     isRtl
                       ? {
-                          // In RTL, start from right side of icon and go leftwards
                           right: "calc(50% + 28px)",
                           left: "calc(-50% + 28px)",
                           background: `linear-gradient(to left, ${step.color}80, ${steps[i + 1].color}80)`,
@@ -135,7 +151,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                         }
                   }
                 >
-                  {/* Traveling dot – direction RTL aware */}
                   <motion.div
                     className="absolute top-1/2 -translate-y-1/2 size-2 rounded-full shadow-md"
                     style={{
@@ -157,7 +172,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                 </div>
               )}
 
-              {/* Icon badge – number positioning: always at top‑right in LTR, top‑left in RTL */}
               <div className="relative mb-4 z-10">
                 <motion.div
                   className="absolute inset-0 rounded-2xl"
@@ -175,7 +189,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                 >
                   <Icon className="size-6" aria-hidden="true" />
                 </div>
-                {/* Step number – RTL: move to top‑left */}
                 <div
                   className={`absolute -top-2 flex size-5 items-center justify-center rounded-full text-[9px] font-bold text-white ring-2 ring-background ${
                     isRtl ? "-inset-s-2" : "-inset-e-2"
@@ -197,7 +210,7 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
         })}
       </div>
 
-      {/* ── Mobile: vertical stack (RTL aware) ── */}
+      {/* Mobile */}
       <div className="flex flex-col gap-0 sm:hidden">
         {steps.map((step, i) => {
           const Icon = step.icon;
@@ -208,7 +221,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
               key={step.title}
               className={`relative flex items-start gap-4 ${isRtl ? "pe-2" : "ps-2"}`}
             >
-              {/* Vertical spine – positioned on the side appropriate for RTL */}
               {!isLast && (
                 <div
                   aria-hidden="true"
@@ -233,7 +245,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                 </div>
               )}
 
-              {/* Icon – order is the same (left in LTR, right in RTL) */}
               <div className="relative shrink-0 z-10 mb-8">
                 <div
                   className="flex size-11 items-center justify-center rounded-xl"
@@ -244,7 +255,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                 >
                   <Icon className="size-5" aria-hidden="true" />
                 </div>
-                {/* Step number – adjust edge */}
                 <div
                   className={`absolute -top-1.5 flex size-4 items-center justify-center rounded-full text-[8px] font-bold text-white ${
                     isRtl ? "-inset-s-1.5" : "-inset-e-1.5"
@@ -255,7 +265,6 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
                 </div>
               </div>
 
-              {/* Text – automatically aligned by parent dir */}
               <div className="pt-1.5 pb-8">
                 <h3 className="text-sm font-bold text-foreground">
                   {step.title}
@@ -273,74 +282,25 @@ function FlowStepsRow({ steps, isRtl }: { steps: FlowStep[]; isRtl: boolean }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2 — Pipeline Visualizer (full-width)
+// 2 — Pipeline Visualizer
 // ─────────────────────────────────────────────────────────────────────────────
 
-const PIPELINE_NODES = [
-  {
-    id: "trigger",
-    label: "New Lead",
-    sublabel: "HubSpot CRM",
-    icon: Database,
-    x: 50,
-    y: 15,
-    color: "#0ab8fb",
-  },
-  {
-    id: "agent",
-    label: "AI Agent",
-    sublabel: "Processing",
-    icon: Brain,
-    x: 50,
-    y: 42,
-    color: "#7c3aed",
-  },
-  {
-    id: "asana",
-    label: "Asana",
-    sublabel: "Task created",
-    icon: CheckCircle2,
-    x: 18,
-    y: 78,
-    color: "#13a89e",
-  },
-  {
-    id: "slack",
-    label: "Slack",
-    sublabel: "Notified",
-    icon: MessageSquare,
-    x: 50,
-    y: 78,
-    color: "#f59e0b",
-  },
-  {
-    id: "cal",
-    label: "Calendar",
-    sublabel: "Scheduled",
-    icon: Calendar,
-    x: 82,
-    y: 78,
-    color: "#324b9d",
-  },
-];
-
-const PIPELINE_EDGES = [
-  { from: "trigger", to: "agent", color: "#0ab8fb" },
-  { from: "agent", to: "asana", color: "#13a89e" },
-  { from: "agent", to: "slack", color: "#f59e0b" },
-  { from: "agent", to: "cal", color: "#324b9d" },
-];
-
-function PipelineVisualizer({
+const PipelineVisualizer = memo(function PipelineVisualizer({
+  nodes,
+  edges,
   activeActionIndex,
+  pipelineLabel,
 }: {
+  nodes: PipelineNode[];
+  edges: PipelineEdge[];
   activeActionIndex: number;
+  pipelineLabel: string;
 }) {
   const W = 600;
   const H = 280;
 
   const pos = (id: string) => {
-    const n = PIPELINE_NODES.find((n) => n.id === id)!;
+    const n = nodes.find((n) => n.id === id)!;
     return { x: (n.x / 100) * W, y: (n.y / 100) * H };
   };
 
@@ -351,27 +311,25 @@ function PipelineVisualizer({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgb(148_198_233/0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.05)_1px,transparent_1px)] bg-size-[32px_32px]"
       />
-      {/* Radial glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgb(10_184_251/4%),transparent)]"
       />
 
-      {/* Label */}
       <div className="absolute top-3 inset-s-4 flex items-center gap-2 z-10">
         <span className="relative flex size-1.5">
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60" />
           <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
         </span>
         <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Live Pipeline
+          {pipelineLabel}
         </span>
       </div>
 
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="w-full"
-        aria-label="AI pipeline visualization"
+        aria-label={pipelineLabel}
         style={{ height: 280 }}
       >
         <defs>
@@ -395,7 +353,7 @@ function PipelineVisualizer({
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          {PIPELINE_NODES.map((n) => (
+          {nodes.map((n) => (
             <radialGradient
               key={`grad-${n.id}`}
               id={`grad-${n.id}`}
@@ -410,18 +368,16 @@ function PipelineVisualizer({
         </defs>
 
         {/* Edges */}
-        {PIPELINE_EDGES.map((edge, ei) => {
+        {edges.map((edge, ei) => {
           const f = pos(edge.from);
           const t = pos(edge.to);
           const isActive = activeActionIndex >= ei;
-          // curved path
           const mx = (f.x + t.x) / 2;
           const my = (f.y + t.y) / 2;
           const d = `M ${f.x} ${f.y} Q ${mx} ${my} ${t.x} ${t.y}`;
 
           return (
             <g key={`${edge.from}-${edge.to}`}>
-              {/* Ghost */}
               <path
                 d={d}
                 fill="none"
@@ -430,7 +386,6 @@ function PipelineVisualizer({
                 strokeOpacity="0.12"
                 strokeDasharray="5 5"
               />
-              {/* Active fill */}
               {isActive && (
                 <motion.path
                   d={d}
@@ -443,7 +398,6 @@ function PipelineVisualizer({
                   transition={{ duration: 0.6, ease: EASE }}
                 />
               )}
-              {/* Traveling particle */}
               {isActive && (
                 <motion.circle
                   r="4"
@@ -464,7 +418,7 @@ function PipelineVisualizer({
         })}
 
         {/* Nodes */}
-        {PIPELINE_NODES.map((node, ni) => {
+        {nodes.map((node, ni) => {
           const Icon = node.icon;
           const isActive = ni === 0 || activeActionIndex >= ni - 1;
           const { x: cx, y: cy } = pos(node.id);
@@ -472,7 +426,6 @@ function PipelineVisualizer({
 
           return (
             <g key={node.id} filter={isActive ? "url(#nodeGlow)" : undefined}>
-              {/* Ambient halo */}
               {isActive && (
                 <motion.circle
                   cx={cx}
@@ -490,7 +443,6 @@ function PipelineVisualizer({
                   }}
                 />
               )}
-              {/* Main circle */}
               <circle
                 cx={cx}
                 cy={cy}
@@ -500,7 +452,6 @@ function PipelineVisualizer({
                 strokeWidth={isActive ? 1.5 : 0.8}
                 strokeOpacity={isActive ? 0.8 : 0.25}
               />
-              {/* Icon via foreignObject */}
               <foreignObject x={cx - 10} y={cy - 10} width={20} height={20}>
                 <div
                   className="flex size-full items-center justify-center"
@@ -509,7 +460,6 @@ function PipelineVisualizer({
                   <Icon size={14} />
                 </div>
               </foreignObject>
-              {/* Label */}
               <text
                 x={cx}
                 y={cy + R + 14}
@@ -538,10 +488,10 @@ function PipelineVisualizer({
       </svg>
     </div>
   );
-}
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3 — Interactive Sandbox (full-width)
+// 3 — Interactive Sandbox
 // ─────────────────────────────────────────────────────────────────────────────
 
 type SandboxState = "idle" | "thinking" | "running" | "done";
@@ -616,6 +566,13 @@ function InteractiveSandbox({
   resetLabel,
   thinkingLabel,
   doneLabel,
+  readyLabel,
+  executingLabel,
+  scenarioLabel,
+  idleTitle,
+  idleDescription,
+  reasoningLabel,
+  actionsLabel,
   isRtl,
   onActionChange,
 }: {
@@ -626,6 +583,13 @@ function InteractiveSandbox({
   resetLabel: string;
   thinkingLabel: string;
   doneLabel: string;
+  readyLabel: string;
+  executingLabel: string;
+  scenarioLabel: string;
+  idleTitle: string;
+  idleDescription: string;
+  reasoningLabel: string;
+  actionsLabel: string;
   isRtl: boolean;
   onActionChange: (index: number) => void;
 }) {
@@ -674,12 +638,10 @@ function InteractiveSandbox({
 
     const THOUGHT_GAP = 650;
 
-    // Reveal thoughts
     selected.thoughts.forEach((_, ti) => {
       addTimer(() => setThoughtIndex(ti + 1), THOUGHT_GAP * (ti + 1));
     });
 
-    // Start actions after all thoughts
     const actionStart = THOUGHT_GAP * (selected.thoughts.length + 1);
     addTimer(() => {
       setState("running");
@@ -709,7 +671,6 @@ function InteractiveSandbox({
       dir={isRtl ? "rtl" : "ltr"}
       className="rounded-2xl border border-border/60 bg-card shadow-sm overflow-hidden"
     >
-      {/* Card header */}
       <div className="relative border-b border-border/60 px-6 py-4">
         <div className="absolute inset-x-0 top-0 h-0.5 bg-color" />
         <div className="flex items-center justify-between gap-4">
@@ -727,7 +688,6 @@ function InteractiveSandbox({
             </div>
           </div>
 
-          {/* Status badge */}
           <AnimatePresence mode="wait">
             {state === "idle" && (
               <motion.span
@@ -738,7 +698,7 @@ function InteractiveSandbox({
                 className="hidden sm:flex items-center gap-1.5 rounded-full border border-border/60 bg-background px-3 py-1 text-[10px] font-medium text-muted-foreground"
               >
                 <span className="size-1.5 rounded-full bg-muted-foreground/40" />
-                Ready
+                {readyLabel}
               </motion.span>
             )}
             {state === "thinking" && (
@@ -750,7 +710,7 @@ function InteractiveSandbox({
                 className="flex items-center gap-1.5 rounded-full bg-violet-500/10 px-3 py-1 text-[10px] font-semibold text-violet-600 dark:text-violet-400"
               >
                 <Brain className="size-3 animate-pulse" />
-                Reasoning…
+                {thinkingLabel}
               </motion.span>
             )}
             {state === "running" && (
@@ -762,7 +722,7 @@ function InteractiveSandbox({
                 className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-semibold text-primary"
               >
                 <Zap className="size-3 animate-pulse" />
-                Executing…
+                {executingLabel}
               </motion.span>
             )}
             {state === "done" && (
@@ -781,13 +741,11 @@ function InteractiveSandbox({
         </div>
       </div>
 
-      {/* Body — two columns on md+ */}
       <div className="grid md:grid-cols-[auto_1fr] divide-y md:divide-y-0 md:divide-x divide-border/50">
-        {/* Left: task selector + run button */}
         <div className="flex flex-col gap-5 p-5 md:w-56 lg:w-64">
           <div>
             <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-              Scenario
+              {scenarioLabel}
             </p>
             <div className="flex flex-col gap-2">
               {tasks.map((task) => {
@@ -845,7 +803,6 @@ function InteractiveSandbox({
           </button>
         </div>
 
-        {/* Right: output feed */}
         <div className="min-h-80 p-5 overflow-y-auto">
           <AnimatePresence mode="wait">
             {state === "idle" && (
@@ -860,11 +817,10 @@ function InteractiveSandbox({
                   <GitBranch className="size-7 text-primary/50" />
                 </div>
                 <p className="text-sm font-medium text-foreground">
-                  Agent is standing by
+                  {idleTitle}
                 </p>
                 <p className="text-xs text-muted-foreground max-w-60">
-                  Select a scenario on the left and press{" "}
-                  <strong>Run agent</strong> to watch it work in real time.
+                  {idleDescription}
                 </p>
               </motion.div>
             )}
@@ -876,12 +832,11 @@ function InteractiveSandbox({
                 animate={{ opacity: 1 }}
                 className="flex flex-col gap-5"
               >
-                {/* Thoughts */}
                 {thoughtIndex > 0 && (
                   <div className="space-y-2">
                     <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">
                       <Brain className="size-3" />
-                      Agent reasoning
+                      {reasoningLabel}
                     </p>
                     <div className="space-y-2 rounded-xl border border-violet-500/15 bg-violet-500/4 px-4 py-3">
                       {selected.thoughts
@@ -897,12 +852,11 @@ function InteractiveSandbox({
                   </div>
                 )}
 
-                {/* Actions */}
                 {actionIndex >= 0 && (
                   <div className="space-y-2">
                     <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-primary">
                       <Zap className="size-3" />
-                      Actions
+                      {actionsLabel}
                     </p>
                     <div className="space-y-2">
                       {selected.actions
@@ -919,7 +873,6 @@ function InteractiveSandbox({
                   </div>
                 )}
 
-                {/* Result */}
                 <AnimatePresence>
                   {state === "done" && (
                     <motion.div
@@ -972,6 +925,17 @@ export function HowItWorks({
   description,
   flowSteps,
   tasks,
+  pipelineLabel,
+  pipelineNodes,
+  pipelineEdges,
+  sandboxSectionLabel,
+  scenarioLabel,
+  idleTitle,
+  idleDescription,
+  reasoningLabel,
+  actionsLabel,
+  readyLabel,
+  executingLabel,
   sandboxTitle,
   sandboxDescription,
   runLabel,
@@ -1001,7 +965,6 @@ export function HowItWorks({
       aria-labelledby="how-it-works-heading"
       className={`relative isolate px-4 py-20 sm:px-6 lg:px-8 lg:py-28 ${className}`}
     >
-      {/* Backgrounds */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgb(10_184_251/6%),transparent)]"
@@ -1012,7 +975,7 @@ export function HowItWorks({
       />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* ── Header ── */}
+        {/* Header */}
         <div className="text-center">
           {eyebrow && (
             <motion.p
@@ -1039,37 +1002,40 @@ export function HowItWorks({
           )}
         </div>
 
-        {/* ── Row 1: Flow steps ── */}
+        {/* Row 1: Flow steps */}
         <motion.div {...fadeUpInView(0.1)}>
           <FlowStepsRow steps={flowSteps} isRtl={isRtl} />
         </motion.div>
 
-        {/* ── Divider arrow ── */}
         <motion.div {...fadeUpInView(0.12)} className="flex justify-center">
           <div className="flex size-8 items-center justify-center rounded-full border border-border/60 bg-card text-muted-foreground shadow-sm">
             <ArrowDown className="size-4" />
           </div>
         </motion.div>
 
-        {/* ── Row 2: Pipeline visualizer (full width) ── */}
+        {/* Row 2: Pipeline visualizer */}
         <motion.div {...fadeUpInView(0.14)}>
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-            Live Pipeline
+            {pipelineLabel}
           </p>
-          <PipelineVisualizer activeActionIndex={activeActionIndex} />
+          <PipelineVisualizer
+            nodes={pipelineNodes}
+            edges={pipelineEdges}
+            activeActionIndex={activeActionIndex}
+            pipelineLabel={pipelineLabel}
+          />
         </motion.div>
 
-        {/* ── Divider arrow ── */}
         <motion.div {...fadeUpInView(0.15)} className="flex justify-center">
           <div className="flex size-8 items-center justify-center rounded-full border border-border/60 bg-card text-muted-foreground shadow-sm">
             <ArrowDown className="size-4" />
           </div>
         </motion.div>
 
-        {/* ── Row 3: Interactive sandbox (full width) ── */}
+        {/* Row 3: Interactive sandbox */}
         <motion.div {...fadeUpInView(0.17)}>
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-            Interactive Demo
+            {sandboxSectionLabel}
           </p>
           <InteractiveSandbox
             tasks={tasks}
@@ -1079,6 +1045,13 @@ export function HowItWorks({
             resetLabel={resetLabel}
             thinkingLabel={thinkingLabel}
             doneLabel={doneLabel}
+            readyLabel={readyLabel}
+            executingLabel={executingLabel}
+            scenarioLabel={scenarioLabel}
+            idleTitle={idleTitle}
+            idleDescription={idleDescription}
+            reasoningLabel={reasoningLabel}
+            actionsLabel={actionsLabel}
             isRtl={isRtl}
             onActionChange={setActiveActionIndex}
           />

@@ -6,6 +6,8 @@
  * UI components call these; they never call apiRequest directly.
  */
 
+// lib/auth.ts
+
 import { apiRequest, authRequest, TokenStorage } from "./api";
 
 // ─── Response Types ───────────────────────────────────────────────────────────

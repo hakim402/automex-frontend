@@ -115,6 +115,7 @@ export function useConnectedModelConfig(): Omit<ConnectedModelProps, "isRtl"> {
     description: t("description"),
     signalsLabel: t("signalsLabel"),
     outputsLabel: t("outputsLabel"),
+    hubLabel: t("hubLabel"),
     signals: SIGNALS,
     outputs: OUTPUTS,
     primaryLabel: t("primaryLabel"),

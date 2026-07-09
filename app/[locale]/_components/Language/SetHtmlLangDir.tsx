@@ -1,5 +1,7 @@
 "use client";
 
+// app/[locale]/_components/Language/SetHtmlLangDir.tsx
+
 import { useLocale } from "next-intl";
 import { useEffect } from "react";
 

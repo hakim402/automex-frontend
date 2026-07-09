@@ -23,13 +23,24 @@ export function AuthHeader({ title, description }: AuthHeaderProps) {
       className="mb-8"
     >
       {/* Mobile-only logo — the showcase panel shows it on desktop */}
-      <div className="flex lg:hidden mb-8">
+      <div className="flex justify-center lg:hidden mb-8">
+        {/* Light mode logo */}
         <Image
-          src="/logo/idwe.png"
-          alt="IDWE"
+          src="/logo/automex-dark.png"
+          alt="AUTOMEX"
           width={100}
           height={40}
-          className="h-9 w-auto object-contain dark:brightness-150"
+          className="h-50 w-auto object-contain block dark:hidden"
+          priority
+        />
+
+        {/* Dark mode logo */}
+        <Image
+          src="/logo/automex-light.png"
+          alt="AUTOMEX"
+          width={100}
+          height={40}
+          className="h-50 w-auto object-contain hidden dark:block"
           priority
         />
       </div>

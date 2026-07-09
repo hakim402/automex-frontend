@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "framer-motion";
 import {
   Zap,
@@ -72,11 +73,7 @@ const ORBITAL_RINGS: OrbitalRing[] = [
   },
 ];
 
-const FLOAT_LABELS = [
-  { text: "AI Agents", left: "71%", top: "8%", delay: 1.3 },
-  { text: "Web & Mobile", left: "66%", top: "82%", delay: 1.6 },
-  { text: "Cloud & APIs", left: "-2%", top: "58%", delay: 1.9 },
-];
+const FLOAT_LABELS_DEFAULT = ["AI Agents", "Web & Mobile", "Cloud & APIs"];
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -143,12 +140,26 @@ function OrbitalRingLayer({
   );
 }
 
-export default function OrbitalSystem() {
+// Memoized to avoid re-renders on parent updates
+const OrbitalSystem = memo(function OrbitalSystem({
+  floatingLabels = FLOAT_LABELS_DEFAULT,
+}: {
+  floatingLabels?: string[];
+}) {
   const outerRadius = ORBITAL_RINGS[ORBITAL_RINGS.length - 1].radius;
   const pad = 60;
   const containerSize = outerRadius * 2 + pad;
   const cx = containerSize / 2;
   const cy = containerSize / 2;
+
+  // Use provided labels or fallback
+  const labels = floatingLabels.length >= 3 ? floatingLabels : FLOAT_LABELS_DEFAULT;
+
+  const floatPositions = [
+    { left: "71%", top: "8%", delay: 1.3 },
+    { left: "66%", top: "82%", delay: 1.6 },
+    { left: "-2%", top: "58%", delay: 1.9 },
+  ];
 
   return (
     <div
@@ -212,18 +223,20 @@ export default function OrbitalSystem() {
         <Zap className="size-8 text-white" />
       </motion.div>
 
-      {FLOAT_LABELS.map(({ text, left, top, delay }) => (
+      {labels.map((text, i) => (
         <motion.div
           key={text}
           className="absolute whitespace-nowrap rounded-full border border-border/60 bg-background/80 px-2.5 py-1 text-[9px] font-semibold text-muted-foreground shadow-sm backdrop-blur-sm"
-          style={{ left, top }}
+          style={{ left: floatPositions[i].left, top: floatPositions[i].top }}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay, duration: 0.4 }}
+          transition={{ delay: floatPositions[i].delay, duration: 0.4 }}
         >
           {text}
         </motion.div>
       ))}
     </div>
   );
-}
+});
+
+export default OrbitalSystem;

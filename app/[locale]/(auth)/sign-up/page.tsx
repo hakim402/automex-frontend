@@ -1,15 +1,6 @@
-/**
- * sign-up/page.tsx — New account registration
- *
- * Features:
- *   • Full name, email, password, confirm password
- *   • Password strength indicator
- *   • Terms + privacy checkbox (required)
- *   • Google OAuth as alternative
- *   • On success → shows "check your email" confirmation state
- *   • Inline field errors + sonner toast for API errors
- */
 "use client";
+
+// app/[locale]/(auth)/sign-up/page.tsx
 
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -19,6 +10,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Loader2, MailCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,26 +28,17 @@ import { GoogleButton } from "../_components/GoogleButton";
 import { AuthFooterLink } from "../_components/AuthFooterLink";
 import { BackToHome } from "../_components/BackToHome";
 
-// ─── Validation schema ────────────────────────────────────────────────────────
-
 const signUpSchema = z
   .object({
-    full_name: z
-      .string()
-      .min(2, "Full name must be at least 2 characters"),
-    email: z
-      .string()
-      .min(1, "Email is required")
-      .email("Enter a valid email address"),
+    full_name: z.string().min(2, "Full name must be at least 2 characters"),
+    email: z.string().min(1, "Email is required").email("Enter a valid email address"),
     password: z
       .string()
       .min(8, "Password must be at least 8 characters")
       .regex(/[A-Z]/, "Include at least one uppercase letter")
       .regex(/[0-9]/, "Include at least one number"),
     password_confirm: z.string().min(1, "Please confirm your password"),
-    terms_accepted: z
-      .boolean()
-      .refine((v) => v === true, "You must accept the terms to continue"),
+    terms_accepted: z.boolean().refine((v) => v === true, "You must accept the terms to continue"),
   })
   .refine((d) => d.password === d.password_confirm, {
     message: "Passwords do not match",
@@ -63,8 +46,6 @@ const signUpSchema = z
   });
 
 type SignUpValues = z.infer<typeof signUpSchema>;
-
-// ─── Password strength helper ─────────────────────────────────────────────────
 
 function getPasswordStrength(pw: string): { score: number; label: string; color: string } {
   let score = 0;
@@ -79,39 +60,31 @@ function getPasswordStrength(pw: string): { score: number; label: string; color:
   return { score, label: "Strong", color: "bg-emerald-500" };
 }
 
-// ─── Success state ────────────────────────────────────────────────────────────
-
 function SuccessState({ email }: { email: string }) {
+  const t = useTranslations("Auth");
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full rounded-2xl border border-border/60
-                 bg-card/80 backdrop-blur-sm shadow-sm p-8
-                 flex flex-col items-center text-center gap-5"
+      className="w-full rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm p-8 flex flex-col items-center text-center gap-5"
     >
-      {/* Icon */}
-      <div className="flex size-16 items-center justify-center
-                      rounded-2xl bg-color shadow-brand">
+      <div className="flex size-16 items-center justify-center rounded-2xl bg-color shadow-brand">
         <MailCheck className="size-8 text-white" aria-hidden="true" />
       </div>
-
       <div>
-        <h2 className="text-xl font-bold text-foreground mb-2">
-          Check your inbox
-        </h2>
+        <h2 className="text-xl font-bold text-foreground mb-2">{t("signup.successTitle")}</h2>
         <p className="text-[14px] leading-6 text-muted-foreground">
-          We sent a verification link to{" "}
+          {t("signup.successDescription")}{" "}
           <span className="font-semibold text-foreground">{email}</span>.
-          Click it to activate your account.
+          {t("signup.successAction")}
         </p>
       </div>
-
       <p className="text-[12px] text-muted-foreground">
-        Didn&apos;t receive it? Check your spam folder or{" "}
+        {t("signup.successHint")}{" "}
         <Link href="/sign-up" className="text-primary hover:underline underline-offset-4">
-          try again
+          {t("signup.tryAgain")}
         </Link>
         .
       </p>
@@ -119,19 +92,16 @@ function SuccessState({ email }: { email: string }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 export default function SignUpPage() {
   const t = useTranslations("Auth");
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
 
   const {
     register,
-    control, // 👈 added for Controller
+    control,
     handleSubmit,
     formState: { errors },
     watch,
@@ -146,11 +116,9 @@ export default function SignUpPage() {
     },
   });
 
-  // Live password value for strength meter
   const watchedPassword = watch("password", "");
   const strength = getPasswordStrength(watchedPassword);
 
-  // ── Submit ──────────────────────────────────────────────────────────────
   async function onSubmit(values: SignUpValues) {
     setLoading(true);
     try {
@@ -170,36 +138,34 @@ export default function SignUpPage() {
     }
   }
 
-  // Show success state after registration
   if (submitted) {
     return (
       <>
+        <Head>
+          <title>{t("signup.metaTitle")}</title>
+          <meta name="description" content={t("signup.metaDescription")} />
+        </Head>
         <BackToHome />
         <SuccessState email={submittedEmail} />
       </>
     );
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
   return (
     <>
-      <BackToHome />
+      <Head>
+        <title>{t("signup.metaTitle")}</title>
+        <meta name="description" content={t("signup.metaDescription")} />
+      </Head>
 
-      <AuthHeader
-        title={t("signup.title")}
-        description={t("signup.description")}
-      />
+      <BackToHome />
+      <AuthHeader title={t("signup.title")} description={t("signup.description")} />
 
       <AuthCard>
-        {/* ── Google OAuth ── */}
         <GoogleButton />
-
         <AuthDivider />
 
-        {/* ── Registration form ── */}
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
-
-          {/* Full name */}
           <AuthFormField
             id="full_name"
             label={t("common.fullName")}
@@ -216,7 +182,6 @@ export default function SignUpPage() {
             />
           </AuthFormField>
 
-          {/* Email */}
           <AuthFormField
             id="email"
             label={t("common.email")}
@@ -233,7 +198,6 @@ export default function SignUpPage() {
             />
           </AuthFormField>
 
-          {/* Password + strength */}
           <AuthFormField
             id="password"
             label={t("common.password")}
@@ -250,24 +214,31 @@ export default function SignUpPage() {
               {...register("password")}
             />
 
-            {/* Strength bar — only shown when user starts typing */}
             {watchedPassword.length > 0 && (
               <div className="mt-2 space-y-1">
                 <div className="flex gap-1" aria-hidden="true">
                   {[1, 2, 3, 4].map((n) => (
                     <div
                       key={n}
-                      className={`h-1 flex-1 rounded-full transition-all duration-300 ${n <= strength.score ? strength.color : "bg-border"
-                        }`}
+                      className={`h-1 flex-1 rounded-full transition-all duration-300 ${
+                        n <= strength.score ? strength.color : "bg-border"
+                      }`}
                     />
                   ))}
                 </div>
                 <p className="text-[11px] text-muted-foreground">
                   {t("signup.passwordHint")} &middot;{" "}
-                  <span className={`font-semibold ${strength.score <= 1 ? "text-destructive" :
-                      strength.score === 2 ? "text-amber-500" :
-                        strength.score === 3 ? "text-primary" : "text-emerald-500"
-                    }`}>
+                  <span
+                    className={`font-semibold ${
+                      strength.score <= 1
+                        ? "text-destructive"
+                        : strength.score === 2
+                        ? "text-amber-500"
+                        : strength.score === 3
+                        ? "text-primary"
+                        : "text-emerald-500"
+                    }`}
+                  >
                     {strength.label}
                   </span>
                 </p>
@@ -275,7 +246,6 @@ export default function SignUpPage() {
             )}
           </AuthFormField>
 
-          {/* Confirm password */}
           <AuthFormField
             id="password_confirm"
             label={t("common.confirmPassword")}
@@ -293,7 +263,6 @@ export default function SignUpPage() {
             />
           </AuthFormField>
 
-          {/* ─── Terms checkbox (FIXED with Controller) ─── */}
           <div className="space-y-1.5">
             <label className="flex items-start gap-3 cursor-pointer">
               <Controller
@@ -319,7 +288,6 @@ export default function SignUpPage() {
                 </a>
               </span>
             </label>
-
             {errors.terms_accepted && (
               <p role="alert" className="text-[12px] text-destructive ms-7">
                 {errors.terms_accepted.message}
@@ -327,18 +295,15 @@ export default function SignUpPage() {
             )}
           </div>
 
-          {/* Submit */}
           <Button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-color shadow-brand
-                       hover:-translate-y-0.5 transition-transform duration-200
-                       font-semibold"
+            className="w-full rounded-full bg-color shadow-brand hover:-translate-y-0.5 transition-transform duration-200 font-semibold"
           >
             {loading ? (
               <>
                 <Loader2 className="size-4 me-2 animate-spin" aria-hidden="true" />
-                Creating account…
+                {t("signup.creating")}
               </>
             ) : (
               t("signup.submit")

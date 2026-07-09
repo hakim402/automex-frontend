@@ -20,7 +20,7 @@ export function AuthCard({ children, className }: AuthCardProps) {
         "w-full rounded-2xl border border-border/60",
         "bg-card/80 backdrop-blur-sm shadow-sm",
         "p-7 sm:p-8",
-        className
+        className,
       )}
     >
       {children}

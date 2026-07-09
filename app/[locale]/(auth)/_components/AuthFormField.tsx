@@ -23,10 +23,7 @@ export function AuthFormField({
 }: AuthFormFieldProps) {
   return (
     <div className={cn("flex flex-col gap-1.5", className)}>
-      <label
-        htmlFor={id}
-        className="text-[13px] font-medium text-foreground"
-      >
+      <label htmlFor={id} className="text-[13px] font-medium text-foreground">
         {label}
         {required && (
           <span className="text-destructive ms-0.5" aria-hidden="true">

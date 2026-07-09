@@ -18,6 +18,8 @@
 
 "use client";
 
+// app/[locale]/_components/Header/Header.tsx
+
 import {
   createContext,
   useCallback,

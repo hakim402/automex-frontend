@@ -2,7 +2,7 @@ import React from 'react'
 
 const SupportPage = () => {
   return (
-    <div>SupportPage</div>
+    <div>Comming soon!</div>
   )
 }
 

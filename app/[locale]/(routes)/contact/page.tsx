@@ -1,144 +1,71 @@
-// app/[locale]/contact/page.tsx
-
+// app/[locale]/(routes)/contact/page.tsx
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Header } from "../../_components/Header/Header";
 import { FooterSection } from "../../_components/Footer/FooterSections";
 import ContactPageClient from "./_components/ContactPageClient";
 import OrbitalSystem from "../../_components/HomeHero/OrbitalSystem";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import FAQSchema from "@/components/seo/FAQSchema";
+import { SUPPORTED_LOCALES, isRtlLocale } from "@/lib/locale";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SEO Metadata
-// ─────────────────────────────────────────────────────────────────────────────
+// ─── Metadata ─────────────────────────────────────────
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Contact");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Contact" });
 
-  return {
-    title:       t("meta.title"),
-    description: t("meta.description"),
-    keywords:    t("meta.keywords"),
-    alternates: {
-      canonical: "https://idwe.tech/contact",
-    },
-    openGraph: {
-      title:       t("meta.ogTitle"),
-      description: t("meta.ogDescription"),
-      url:         "https://idwe.tech/contact",
-      siteName:    "IDWE",
-      type:        "website",
-      images: [
-        {
-          url:    "https://idwe.tech/og/contact.png",
-          width:  1200,
-          height: 630,
-          alt:    t("meta.ogImageAlt"),
-        },
-      ],
-    },
-    twitter: {
-      card:        "summary_large_image",
-      title:       t("meta.ogTitle"),
-      description: t("meta.ogDescription"),
-      images:      ["https://idwe.tech/og/contact.png"],
-    },
-    robots: {
-      index:  true,
-      follow: true,
-      googleBot: {
-        index:               true,
-        follow:              true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet":       -1,
-      },
-    },
-  };
+  return generatePageMetadata({
+    pageType: "contact",
+    locale: locale as any,
+    customTitle: t("meta.title"),
+    customDescription: t("meta.description"),
+  });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// JSON-LD structured data
-// ─────────────────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────
 
-function JsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type":       "Organization",
-        "@id":         "https://idwe.tech/#organization",
-        name:          "IDWE",
-        url:           "https://idwe.tech",
-        logo:          "https://idwe.tech/logo/icon.png",
-        description:
-          "Enterprise AI automation, custom software, and digital transformation solutions.",
-        contactPoint: [
-          {
-            "@type":       "ContactPoint",
-            telephone:     "+93-776-320-765",
-            contactType:   "customer service",
-            areaServed:    "AF",
-            availableLanguage: ["English", "Dari", "Pashto"],
-          },
-          {
-            "@type":       "ContactPoint",
-            telephone:     "+1-206-470-9284",
-            contactType:   "customer service",
-            areaServed:    "US",
-            availableLanguage: ["English"],
-          },
-        ],
-        email:  "info@idwe.tech",
-        sameAs: [
-          "https://linkedin.com/company/idwe",
-          "https://instagram.com/idwe.tech",
-        ],
-      },
-      {
-        "@type":         "WebPage",
-        "@id":           "https://idwe.tech/contact#webpage",
-        url:             "https://idwe.tech/contact",
-        name:            "Contact IDWE — AI & Enterprise Software",
-        isPartOf:        { "@id": "https://idwe.tech/#website" },
-        about:           { "@id": "https://idwe.tech/#organization" },
-        description:
-          "Get in touch with the IDWE team to discuss AI automation, custom software, and digital transformation for your business.",
-        inLanguage: "en",
-      },
-    ],
-  };
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isRtl = isRtlLocale(locale);
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
-}
+  // ✅ Safely check if FAQ translations exist
+  const t = await getTranslations({ locale, namespace: "Contact" });
+  const hasFaq = t.has("faq");
+  const faqQuestions = hasFaq
+    ? (t.raw("faq") as { q: string; a: string }[] | undefined)
+    : undefined;
 
-// ─────────────────────────────────────────────────────────────────────────────
-// RTL helper
-// ─────────────────────────────────────────────────────────────────────────────
-
-const RTL_LOCALES = new Set(["ar", "fa", "ps"]);
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Page
-// ─────────────────────────────────────────────────────────────────────────────
-
-export default async function ContactPage() {
-  const locale = await getLocale();
-  const isRtl  = RTL_LOCALES.has(locale);
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { name: "Home", url: `/${locale}` },
+    { name: "Contact", url: `/${locale}/contact` },
+  ];
 
   return (
     <>
-      <JsonLd />
+      {/* ─── Schemas ────────────────────────────────── */}
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <LocalBusinessSchema />
+      {faqQuestions && faqQuestions.length > 0 && (
+        <FAQSchema faqs={faqQuestions} />
+      )}
 
       <main
         dir={isRtl ? "rtl" : "ltr"}
         className="relative isolate min-h-screen overflow-x-hidden bg-background text-foreground"
       >
-        {/* ── Page background ── */}
+        {/* Page background */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgb(10_184_251/10%),transparent)] dark:bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgb(10_184_251/7%),transparent)]"
@@ -150,15 +77,20 @@ export default async function ContactPage() {
         <Header />
 
         <ContactPageClient isRtl={isRtl} />
-           {/* Optional: decorative orbital after the main content */}
+
+        {/* Decorative orbital */}
         <div className="relative mt-16 mb-20 w-full overflow-hidden py-10">
           <div className="flex justify-center opacity-60">
             <OrbitalSystem />
           </div>
         </div>
-        
+
         <FooterSection />
       </main>
     </>
   );
+}
+
+export function generateStaticParams() {
+  return SUPPORTED_LOCALES.map((locale) => ({ locale }));
 }

@@ -1,5 +1,7 @@
 "use client";
 
+// app/[locale]/_components/Language/LanguageSwitcher.tsx
+
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
 import { useState, useRef, useEffect } from "react";
