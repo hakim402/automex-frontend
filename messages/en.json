@@ -720,5 +720,45 @@
     "deleteConfirmBtn": "Yes, delete my account",
     "deleting": "Deleting…",
     "cancel": "Cancel"
+  },
+  "CrmForms": {
+  "contact": {
+    "fullNameLabel": "Full name",
+    "fullNamePlaceholder": "Your name",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@company.com",
+    "phoneLabel": "Phone (optional)",
+    "phonePlaceholder": "+1 555 000 0000",
+    "companyLabel": "Company (optional)",
+    "companyPlaceholder": "Your company",
+    "serviceLabel": "What are you interested in? (optional)",
+    "servicePlaceholder": "Select a service",
+    "budgetLabel": "Budget range",
+    "timelineLabel": "Timeline",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell us about your project...",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "successTitle": "Message sent",
+    "successBody": "Thanks for reaching out — our team will get back to you shortly.",
+    "sendAnother": "Send another message",
+    "genericError": "Something went wrong. Please try again.",
+    "rateLimitError": "Too many requests — please wait a moment and try again.",
+    "validationError": "Please check the highlighted fields.",
+    "budgetOptions": {
+      "not_specified": "Not specified",
+      "under_10k": "Under $10,000",
+      "10k_50k": "$10,000 – $50,000",
+      "50k_150k": "$50,000 – $150,000",
+      "150k_plus": "$150,000+"
+    },
+    "timelineOptions": {
+      "asap": "ASAP",
+      "within_1_month": "Within 1 month",
+      "within_3_months": "Within 3 months",
+      "within_6_months": "Within 6 months",
+      "flexible": "Flexible"
+    }
   }
+}
 }

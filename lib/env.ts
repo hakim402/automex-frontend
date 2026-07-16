@@ -97,3 +97,12 @@ export function validateEnv(): void {
     );
   }
 }
+
+/**
+ * Alias for APP_URL, used specifically for SEO purposes (canonical URLs,
+ * OG tags, sitemap.ts) per the AUTOMEX data-fetching roadmap's
+ * NEXT_PUBLIC_SITE_URL. Same value as APP_URL — kept as a named alias
+ * rather than a duplicate env var so there's one source of truth for
+ * "what is our own frontend's public URL."
+ */
+export const getSiteUrl = getAppUrl;
