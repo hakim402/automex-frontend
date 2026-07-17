@@ -3,8 +3,15 @@ import { SupportedLocale } from "@/lib/locale";
 
 export type Locale = SupportedLocale;
 
-export type PageType = "home" | "about" | "contact";
-
+export type PageType = 
+  | "home"
+  | "about"
+  | "contact"
+  | "crm"            // CRM overview
+  | "bookCall"       // book a call
+  | "contactSales"   // contact sales
+  | "quote";         // request a quote
+  
 export interface SeoMetadataOptions {
   pageType: PageType;
   locale: Locale;

@@ -7,9 +7,9 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "AUTOMEX",
     description: "AI solutions, software development, and digital transformation services.",
     start_url: "/",
-    display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#4f46e5",
+   display: "standalone",
+    background_color: "#f8fbff",
+    theme_color: "#245ea9",
     icons: [
       {
         src: "/logo/icon.png",

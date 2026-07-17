@@ -113,6 +113,15 @@ export function getKeywords({
   } else if (pageType === "contact") {
     pageSpecific = ["Get in Touch", "Contact Sales", "AI Consultation"];
   }
+  else if (pageType === "crm") {
+    pageSpecific = ["CRM", "Lead Management", "Customer Relationship", "Sales Automation"];
+  } else if (pageType === "bookCall") {
+    pageSpecific = ["Book a Call", "Free Consultation", "AI Strategy Session"];
+  } else if (pageType === "contactSales") {
+    pageSpecific = ["Contact Sales", "Enterprise Sales", "AI Sales Team"];
+  } else if (pageType === "quote") {
+    pageSpecific = ["Request a Quote", "Project Quote", "AI Development Quote"];
+  }
 
   const combined = [...primary, ...pageSpecific];
   return [...new Set(combined)];

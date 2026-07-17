@@ -1,9 +1,7 @@
 "use client";
 
-// app/[locale]/_components/Header/Header.tsx
-
 import { useState, useEffect } from "react";
-import { Menu, X, LogOut } from "lucide-react";
+import { Menu, X, ChevronDown, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -19,17 +17,20 @@ export const Header = () => {
   const { user, loading, logout } = useAuth();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [crmOpen, setCrmOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const isRtl = ["ar", "fa", "ps"].includes(locale);
   const isAuthenticated = !!user && !loading;
 
-  // ✅ Use 'as const' to preserve literal types for href
-  const menuItems = [
-    { name: t("home"), href: "/" as const },
-    { name: t("about"), href: "/about" as const },
-    { name: t("contact"), href: "/contact" as const },
-  ];
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setMenuOpen(false);
+      if (window.innerWidth >= 1024) setCrmOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -37,18 +38,18 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) setMenuOpen(false);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const handleLogout = async () => {
     await logout();
     setMenuOpen(false);
   };
+
+  // 👇 Fixed: use `as const` to keep literal types
+  const crmLinks = [
+    { name: t("crmOverview"), href: "/crm" as const },
+    { name: t("bookCall"), href: "/crm/book-a-call" as const },
+    { name: t("requestQuote"), href: "/crm/quote" as const },
+    { name: t("contactSales"), href: "/crm/contact-sales" as const },
+  ];
 
   return (
     <header>
@@ -58,7 +59,7 @@ export const Header = () => {
           "fixed top-4 z-50 w-full transition-all duration-300",
           scrolled
             ? "border-border/40 backdrop-blur-lg border-b shadow-sm top-0 p-4"
-            : "bg-transparent",
+            : "bg-transparent"
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -85,11 +86,51 @@ export const Header = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:items-center lg:gap-6">
-              {menuItems.map((item) => (
-                <Button key={item.href} asChild variant="ghost" size="sm">
-                  <Link href={item.href}>{item.name}</Link>
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/">{t("home")}</Link>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/about">{t("about")}</Link>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/contact">{t("contact")}</Link>
+              </Button>
+
+              {/* CRM Dropdown */}
+              <div className="relative">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setCrmOpen(!crmOpen)}
+                  className="gap-1"
+                >
+                  {t("crm")}
+                  <ChevronDown
+                    className={cn("size-4 transition-transform", crmOpen && "rotate-180")}
+                  />
                 </Button>
-              ))}
+
+                {crmOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setCrmOpen(false)}
+                    />
+                    <div className="absolute top-full mt-1 z-50 w-56 rounded-xl border border-border bg-popover p-2 shadow-brand backdrop-blur-sm">
+                      {crmLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="block rounded-lg px-3 py-2 text-sm text-popover-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                          onClick={() => setCrmOpen(false)}
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
 
             {/* Right side actions */}
@@ -148,21 +189,39 @@ export const Header = () => {
             "absolute left-0 right-0 top-16 bg-background border-border border-b shadow-lg transition-all duration-300 lg:hidden",
             menuOpen
               ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-2 pointer-events-none",
+              : "opacity-0 -translate-y-2 pointer-events-none"
           )}
         >
           <div className="container mx-auto px-4 py-6 space-y-4">
             <div className="flex flex-col space-y-2">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              <Link
+                href="/"
+                className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("home")}
+              </Link>
+              <Link
+                href="/about"
+                className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("about")}
+              </Link>
+              <Link
+                href="/contact"
+                className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("contact")}
+              </Link>
+
+              {/* CRM Accordion */}
+              <MobileCrmAccordion
+                label={t("crm")}
+                links={crmLinks}
+                onLinkClick={() => setMenuOpen(false)}
+              />
             </div>
 
             {!loading && (
@@ -211,3 +270,52 @@ export const Header = () => {
     </header>
   );
 };
+
+// Mobile CRM Accordion – Fixed prop type
+function MobileCrmAccordion({
+  label,
+  links,
+  onLinkClick,
+}: {
+  label: string;
+  links: { name: string; href: React.ComponentProps<typeof Link>["href"] }[];
+  onLinkClick: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center justify-between w-full px-3 py-2 text-muted-foreground hover:text-foreground rounded-md hover:bg-accent transition-colors"
+      >
+        <span>{label}</span>
+        <ChevronDown
+          className={cn("size-4 transition-transform", open && "rotate-180")}
+        />
+      </button>
+      <div
+        className={cn(
+          "overflow-hidden transition-all duration-200",
+          open ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <div className="pt-1 pb-2 pl-4">
+          {links.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-accent transition-colors"
+              onClick={() => {
+                onLinkClick();
+                setOpen(false);
+              }}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

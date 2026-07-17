@@ -8,9 +8,6 @@ import { HowItWorksWrapper } from "./_components/Wrappers/HowItWorksWrapper";
 import { TechStackSection } from "./_components/Wrappers/TechStackSection";
 import { ConnectedModelSection } from "./_components/Wrappers/ConnectedModelSection";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { ContactForm } from "@/components/crm/ContactForm";
-import { fetchServiceCategories } from "@/lib/automex/content";
-
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -77,9 +74,6 @@ export default async function HomePage({ params }: Props) {
   const t = content[locale as keyof typeof content] ?? content.en;
   const isRtl = ["ar", "fa", "ps"].includes(locale);
 
-  const services = await fetchServiceCategories(locale as any);
-  const serviceOptions = services.map((s) => ({ id: s.id, name: s.name }));
-
   return (
     <div dir={isRtl ? "rtl" : "ltr"}>
       <Header />
@@ -88,10 +82,6 @@ export default async function HomePage({ params }: Props) {
       <HowItWorksWrapper />
       <TechStackSection isRtl={isRtl} />
       <ConnectedModelSection isRtl={isRtl} />
-      <ContactForm
-  variant="full"
-  serviceOptions={serviceOptions}
-/>
       <FooterSection />
     </div>
   );

@@ -87,6 +87,56 @@ export const routing = defineRouting({
     // ─── Admin ──────────────────────────────────────────────────────────────
     '/admin': '/admin',
 
+    // ─── CRM pages ──────────────────────────────────────────────────────────
+    '/crm': {
+      en: '/crm',
+      es: '/crm',
+      de: '/crm',
+      fr: '/crm',
+      it: '/crm',
+      nl: '/crm',
+      zh: '/crm',
+      ar: '/crm',
+      fa: '/crm',
+      ps: '/crm',
+    },
+    '/crm/book-a-call': {
+      en: '/crm/book-a-call',
+      es: '/crm/book-a-call',
+      de: '/crm/book-a-call',
+      fr: '/crm/book-a-call',
+      it: '/crm/book-a-call',
+      nl: '/crm/book-a-call',
+      zh: '/crm/book-a-call',
+      ar: '/crm/book-a-call',
+      fa: '/crm/book-a-call',
+      ps: '/crm/book-a-call',
+    },
+    '/crm/contact-sales': {
+      en: '/crm/contact-sales',
+      es: '/crm/contact-sales',
+      de: '/crm/contact-sales',
+      fr: '/crm/contact-sales',
+      it: '/crm/contact-sales',
+      nl: '/crm/contact-sales',
+      zh: '/crm/contact-sales',
+      ar: '/crm/contact-sales',
+      fa: '/crm/contact-sales',
+      ps: '/crm/contact-sales',
+    },
+    '/crm/quote': {
+      en: '/crm/quote',
+      es: '/crm/quote',
+      de: '/crm/quote',
+      fr: '/crm/quote',
+      it: '/crm/quote',
+      nl: '/crm/quote',
+      zh: '/crm/quote',
+      ar: '/crm/quote',
+      fa: '/crm/quote',
+      ps: '/crm/quote',
+    },
+
     // ─── Public pages ──────────────────────────────────────────────────────
     '/products': {
       en: '/products',
