@@ -1,0 +1,4 @@
+- Locale routes are async server components that destructure `params` as a `Promise<{ locale: string }>` and await it before reading values.
+- Per-page and per-layout SEO metadata is produced through a shared `generatePageMetadata({ pageType, locale })` helper rather than ad-hoc objects.
+- RTL detection is centralized on a whitelist of locales (`ar`, `fa`, `ps`) and applied both via `isRtlLocale(locale)` in the layout and inline checks in pages, then propagated as `dir="rtl"` on the nearest wrapper element.
+- Global theming uses CSS custom properties inside `@theme inline` and `:root` / `.dark` blocks, with Tailwind `@apply` shorthands (`bg-background`, `text-foreground`, etc.) instead of raw hex values in components.

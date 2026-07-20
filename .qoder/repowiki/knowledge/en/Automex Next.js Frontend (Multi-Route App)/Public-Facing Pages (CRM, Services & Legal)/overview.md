@@ -1,0 +1,1 @@
+Next.js App Router route groups under app/[locale]/(routes) that expose the site's public pages — CRM lead-capture funnels, services catalog, and static legal/about/contact pages.

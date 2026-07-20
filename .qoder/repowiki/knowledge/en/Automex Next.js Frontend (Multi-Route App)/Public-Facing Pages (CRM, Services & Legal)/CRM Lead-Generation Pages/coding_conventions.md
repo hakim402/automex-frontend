@@ -1,0 +1,4 @@
+- Server `page.tsx` files are async, read `params` and `searchParams` as Promises, and only compose data before passing it to a `<XxxClientPage />` child.
+- Every route exports `generateMetadata` using `generatePageMetadata({ pageType, locale, pathSegment, customTitle, customDescription })` with a namespace under `CrmPages.*`.
+- Content fetching uses `fetchServices`, `fetchIndustries`, or `fetchProcessSteps` from `@/lib/automex/content` keyed by the resolved `SupportedLocale`.
+- Form UI lives in `_components/crm-shared/` (schemas, field wrappers, booking pickers) and is imported by each route's client page rather than duplicated.

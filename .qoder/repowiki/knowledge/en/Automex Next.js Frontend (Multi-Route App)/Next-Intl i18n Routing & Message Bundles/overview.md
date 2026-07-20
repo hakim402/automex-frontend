@@ -1,0 +1,1 @@
+Provides Next.js internationalization via next-intl: locale routing configuration, request-time message loading, and per-locale JSON translation bundles for all UI sections.

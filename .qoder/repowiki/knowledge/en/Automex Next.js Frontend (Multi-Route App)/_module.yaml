@@ -1,0 +1,19 @@
+schema_version: 1
+module_path: ""
+title: Automex Next.js Frontend (Multi-Route App)
+scope:
+    - README.md
+    - package.json
+    - next.config.ts
+    - tailwind.config.ts
+    - tsconfig.json
+    - components.json
+    - eslint.config.mjs
+    - postcss.config.mjs
+    - .gitignore
+    - proxy.ts
+    - AGENTS.md
+    - CLAUDE.md
+source_files: []
+depends_on: []
+related_to: []

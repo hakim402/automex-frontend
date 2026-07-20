@@ -750,5 +750,26 @@
     "deleteConfirmBtn": "Sì, elimina il mio account",
     "deleting": "Eliminazione in corso…",
     "cancel": "Annulla"
+  },
+  "Shared": {
+    "teamDialog": {
+      "close": "Close",
+      "role": "Role",
+      "department": "Department",
+      "bio": "About",
+      "social": "Connect"
+    },
+    "testimonial": {
+      "source": {
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "clutch": "Clutch",
+        "direct": "Direct",
+        "trustpilot": "Trustpilot",
+        "other": "Review"
+      },
+      "carouselPrev": "Previous",
+      "carouselNext": "Next"
+    }
   }
 }

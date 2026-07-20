@@ -1,0 +1,4 @@
+- Every context file exports both a `*Provider` component and a matching `useXxx()` hook that reads the context and throws a descriptive error when used outside the provider.
+- Context value shapes are declared as explicit TypeScript interfaces (e.g. `AuthContextValue`, `SidebarContextValue`) rather than inferred types, and the context itself is created with a `| null` default before being guarded in the hook.
+- State setters are memoised with `useCallback` and exposed alongside derived toggles (`toggleCollapsed`, `toggleMobile`) so consumers call stable function references.
+- All provider/context files opt into client rendering with the `'use client'` directive at the top of the file.

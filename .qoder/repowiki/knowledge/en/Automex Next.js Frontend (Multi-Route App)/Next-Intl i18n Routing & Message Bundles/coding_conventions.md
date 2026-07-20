@@ -1,0 +1,4 @@
+- Every route in `pathnames` is declared as an object mapping each of the 10 locales to its URL string, even when the URL is identical across locales.
+- Translation keys in `messages/*.json` are grouped under top-level namespaces that mirror React component or page names (e.g. `Header`, `Auth.*`, `CrmForms.*`, `ServicesPage.*`, `ServiceDetail.*`).
+- Locale identifiers used in `routing.locales` match the filename suffix of the corresponding JSON file in `messages/` (two-letter ISO codes like `en`, `ar`, `fa`, `ps`).
+- The `Locale` TypeScript type is derived from `typeof routing.locales[number]` rather than hand-written, keeping the type in sync with the runtime locale list.

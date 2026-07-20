@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: dashboard/profile
+title: User Profile Management Page
+scope:
+    - app/[locale]/dashboard/(routes)/profile/
+source_files: []
+depends_on: []
+related_to: []

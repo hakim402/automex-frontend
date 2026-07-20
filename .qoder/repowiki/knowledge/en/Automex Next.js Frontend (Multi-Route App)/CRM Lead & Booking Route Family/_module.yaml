@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: crm_feature
+title: CRM Lead & Booking Route Family
+scope:
+    - app/[locale]/(routes)/crm/
+source_files: []
+depends_on: []
+related_to: []

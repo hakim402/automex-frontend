@@ -1,0 +1,1 @@
+Renders the authenticated dashboard chrome — a collapsible sidebar, sticky header, and RTL-aware main content area that wraps per-page route components.

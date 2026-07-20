@@ -1,0 +1,1 @@
+Client-side Next.js route that lets users review their security posture, change passwords, manage active sessions, and perform destructive account actions.

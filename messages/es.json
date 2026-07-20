@@ -390,9 +390,18 @@
       "headlineAccent": "extraordinario juntos",
       "description": "Ya sea que esté automatizando un flujo de trabajo, lanzando un producto o transformando toda su operación, el equipo de automex está listo para ayudarle. Cuéntenos qué necesita.",
       "stats": [
-        { "value": "< 24h", "label": "Tiempo de respuesta" },
-        { "value": "50+", "label": "Clientes atendidos" },
-        { "value": "98%", "label": "Tasa de satisfacción" }
+        {
+          "value": "< 24h",
+          "label": "Tiempo de respuesta"
+        },
+        {
+          "value": "50+",
+          "label": "Clientes atendidos"
+        },
+        {
+          "value": "98%",
+          "label": "Tasa de satisfacción"
+        }
       ],
       "ctaWhatsapp": "Chatear por WhatsApp",
       "ctaEmail": "Enviar un correo"
@@ -459,8 +468,18 @@
       "description": "Equipo remoto operando desde dos centros principales, atendiendo a clientes en todo el mundo.",
       "remoteBadge": "Remoto · cobertura 24/7",
       "offices": [
-        { "city": "Kabul", "country": "Afganistán", "flag": "🇦🇫", "tz": "UTC+4:30" },
-        { "city": "Seattle", "country": "EE. UU.", "flag": "🇺🇸", "tz": "UTC-8 (PST)" }
+        {
+          "city": "Kabul",
+          "country": "Afganistán",
+          "flag": "🇦🇫",
+          "tz": "UTC+4:30"
+        },
+        {
+          "city": "Seattle",
+          "country": "EE. UU.",
+          "flag": "🇺🇸",
+          "tz": "UTC-8 (PST)"
+        }
       ]
     }
   },
@@ -731,5 +750,26 @@
     "deleteConfirmBtn": "Sí, eliminar mi cuenta",
     "deleting": "Eliminando…",
     "cancel": "Cancelar"
+  },
+  "Shared": {
+    "teamDialog": {
+      "close": "Close",
+      "role": "Role",
+      "department": "Department",
+      "bio": "About",
+      "social": "Connect"
+    },
+    "testimonial": {
+      "source": {
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "clutch": "Clutch",
+        "direct": "Direct",
+        "trustpilot": "Trustpilot",
+        "other": "Review"
+      },
+      "carouselPrev": "Previous",
+      "carouselNext": "Next"
+    }
   }
 }

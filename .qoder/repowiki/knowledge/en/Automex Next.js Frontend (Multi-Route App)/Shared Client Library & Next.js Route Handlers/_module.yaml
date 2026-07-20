@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: lib_and_api
+title: Shared Client Library & Next.js Route Handlers
+scope:
+    - lib/
+    - app/api/
+source_files: []
+depends_on: []
+related_to: []

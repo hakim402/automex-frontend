@@ -750,5 +750,26 @@
     "deleteConfirmBtn": "是，删除我的账户",
     "deleting": "删除中…",
     "cancel": "取消"
+  },
+  "Shared": {
+    "teamDialog": {
+      "close": "Close",
+      "role": "Role",
+      "department": "Department",
+      "bio": "About",
+      "social": "Connect"
+    },
+    "testimonial": {
+      "source": {
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "clutch": "Clutch",
+        "direct": "Direct",
+        "trustpilot": "Trustpilot",
+        "other": "Review"
+      },
+      "carouselPrev": "Previous",
+      "carouselNext": "Next"
+    }
   }
 }

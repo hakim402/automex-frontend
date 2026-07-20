@@ -1,0 +1,1 @@
+React Server Components with "use client" boundaries; react-hook-form + zod for validation; next-intl for i18n; sonner for toast notifications; lucide-react icons; shadcn/ui primitives (`Button`, `Input`, `Select`).

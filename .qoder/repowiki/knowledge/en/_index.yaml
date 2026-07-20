@@ -1,0 +1,201 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: main
+nodes_managed: true
+exported_at: "2026-07-19T18:32:24Z"
+modules:
+    "":
+        dir_name: Automex Next.js Frontend (Multi-Route App)
+        title: Automex Next.js Frontend (Multi-Route App)
+        scope:
+            - README.md
+            - package.json
+            - next.config.ts
+            - tailwind.config.ts
+            - tsconfig.json
+            - components.json
+            - eslint.config.mjs
+            - postcss.config.mjs
+            - .gitignore
+            - proxy.ts
+            - AGENTS.md
+            - CLAUDE.md
+        source_files: []
+        children:
+            - auth_flows
+            - crm_feature
+            - dashboard
+            - i18n
+            - lib_and_api
+            - providers_and_contexts
+            - public_pages
+            - root_layout_assets
+            - shared_components
+        depends_on: []
+        related_to: []
+    auth_flows:
+        dir_name: Authentication & Account-Management Pages
+        title: Authentication & Account-Management Pages
+        scope:
+            - app/[locale]/(auth)/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    crm_feature:
+        dir_name: CRM Lead & Booking Route Family
+        title: CRM Lead & Booking Route Family
+        scope:
+            - app/[locale]/(routes)/crm/
+        source_files: []
+        children:
+            - crm_feature/shared_components
+        depends_on: []
+        related_to: []
+    crm_feature/shared_components:
+        dir_name: CRM Shared Form & Page Components
+        title: CRM Shared Form & Page Components
+        scope:
+            - app/[locale]/(routes)/crm/_components/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    dashboard:
+        dir_name: Dashboard Application Shell
+        title: Dashboard Application Shell
+        scope:
+            - app/[locale]/dashboard/
+        source_files: []
+        children:
+            - dashboard/dashboard_layout
+            - dashboard/profile
+            - dashboard/security
+        depends_on: []
+        related_to: []
+    dashboard/dashboard_layout:
+        dir_name: Dashboard Shell Layout & Navigation
+        title: Dashboard Shell Layout & Navigation
+        scope:
+            - app/[locale]/dashboard/layout.tsx
+            - app/[locale]/dashboard/page.tsx
+            - app/[locale]/dashboard/_components/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    dashboard/profile:
+        dir_name: User Profile Management Page
+        title: User Profile Management Page
+        scope:
+            - app/[locale]/dashboard/(routes)/profile/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    dashboard/security:
+        dir_name: Account Security & Session Management Dashboard
+        title: Account Security & Session Management Dashboard
+        scope:
+            - app/[locale]/dashboard/(routes)/security/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    i18n:
+        dir_name: Next-Intl i18n Routing & Message Bundles
+        title: Next-Intl i18n Routing & Message Bundles
+        scope:
+            - i18n/
+            - messages/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    lib_and_api:
+        dir_name: Shared Client Library & Next.js Route Handlers
+        title: Shared Client Library & Next.js Route Handlers
+        scope:
+            - lib/
+            - app/api/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    providers_and_contexts:
+        dir_name: App-Level Providers & Shared React Contexts
+        title: App-Level Providers & Shared React Contexts
+        scope:
+            - providers/
+            - contexts/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    public_pages:
+        dir_name: Public-Facing Pages (CRM, Services & Legal)
+        title: Public-Facing Pages (CRM, Services & Legal)
+        scope:
+            - app/[locale]/(routes)/
+        source_files: []
+        children:
+            - public_pages/crm_sub_pages
+            - public_pages/services
+        depends_on: []
+        related_to: []
+    public_pages/crm_sub_pages:
+        dir_name: CRM Lead-Generation Pages
+        title: CRM Lead-Generation Pages
+        scope:
+            - app/[locale]/(routes)/crm/
+        source_files: []
+        children:
+            - public_pages/crm_sub_pages/shared_components
+        depends_on: []
+        related_to: []
+    public_pages/crm_sub_pages/shared_components:
+        dir_name: CRM Shared Form Components & Server Actions
+        title: CRM Shared Form Components & Server Actions
+        scope:
+            - app/[locale]/(routes)/crm/_components/
+            - app/[locale]/(routes)/crm/actions.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    public_pages/services:
+        dir_name: Services Catalog & Detail Pages
+        title: Services Catalog & Detail Pages
+        scope:
+            - app/[locale]/(routes)/services/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    root_layout_assets:
+        dir_name: Root Layout, i18n Shell & Global Assets
+        title: Root Layout, i18n Shell & Global Assets
+        scope:
+            - app/layout.tsx
+            - app/globals.css
+            - app/manifest.ts
+            - app/robots.ts
+            - app/sitemap.ts
+            - app/[locale]/layout.tsx
+            - app/[locale]/page.tsx
+            - app/[locale]/_components/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    shared_components:
+        dir_name: Shared UI Components, SEO Primitives & Page Configs
+        title: Shared UI Components, SEO Primitives & Page Configs
+        scope:
+            - components/
+            - config/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

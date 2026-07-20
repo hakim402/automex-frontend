@@ -1,0 +1,6 @@
+- RTL awareness is derived from a fixed set of locales (`ar`, `fa`, `ps`) checked either via a `Set` at the layout level or an `includes(locale)` call in client components, and applied through both `dir="rtl"` attributes and conditional margin/transform classes.
+- Navigation entries are declared as plain data arrays of `{ icon, labelKey, href, badge? }` and rendered by mapping over them, keeping routes declarative and decoupled from rendering logic.
+- Client-side state that must be shared across the shell (sidebar collapse, mobile open, width) lives in the `@/contexts/sidebar-context` provider rather than local component state.
+- User identity and logout actions are consumed exclusively through `useAuth()` from `@/contexts/AuthContext`, never read directly from props or URL search params.
+- Animated transitions for collapsing/expanding text and overlays use `framer-motion`'s `AnimatePresence` keyed by `collapsed` state, with consistent `duration: 0.2` transitions.
+- Accessible labels are provided via `aria-label` on interactive controls (menu, close, sign out, notifications) and `aria-hidden="true"` on decorative elements.

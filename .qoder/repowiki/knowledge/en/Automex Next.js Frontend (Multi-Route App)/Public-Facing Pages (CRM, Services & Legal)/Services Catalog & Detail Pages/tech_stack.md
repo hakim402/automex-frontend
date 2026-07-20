@@ -1,0 +1,1 @@
+Next.js App Router with React Server Components for data loading, next-intl for i18n, lucide-react icons, Tailwind CSS for styling, and a custom ActionResult<T> wrapper around server actions.

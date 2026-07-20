@@ -99,7 +99,7 @@ export function LanguageSwitcher() {
   const FlagComponent = active.flag;
 
   const handleChange = (newLocale: string) => {
-    router.push(pathname, { locale: newLocale });
+    router.push(pathname as any, { locale: newLocale });
     setOpen(false);
   };
 

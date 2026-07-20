@@ -1,0 +1,5 @@
+- Every component file starts with a JSDoc block describing its responsibility, data flow, and API surface before the `"use client"` directive.
+- All user-facing strings are pulled through `useTranslations("Profile")` rather than hard-coded literals.
+- Form fields are declared once in a top-level Zod schema and bound via `register`/`watch`/`setValue`, with errors surfaced through the shared `FormRow` wrapper.
+- Each major section is wrapped in `SectionCard` with an icon, title, and description, keeping visual structure consistent across editable and read-only areas.
+- Post-mutation UI sync follows the pattern `await updateMe(...) → await reloadUser() → toast.success(...)` so the global `AuthContext` stays in step.

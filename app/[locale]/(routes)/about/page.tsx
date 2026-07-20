@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import AboutPageClient from "./_components/AboutPageClient";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import { fetchTeamMembers } from "@/lib/automex/content";
 import { SUPPORTED_LOCALES, isRtlLocale } from "@/lib/locale";
 
 // ─── Metadata ─────────────────────────────────────────
@@ -34,6 +35,9 @@ export default async function AboutPage({
   const { locale } = await params;
   const isRtl = isRtlLocale(locale);
 
+  // Fetch team members from API
+  const teamMembers = await fetchTeamMembers(locale as any);
+
   // Breadcrumb items
   const breadcrumbItems = [
     { name: "Home", url: `/${locale}` },
@@ -43,7 +47,11 @@ export default async function AboutPage({
   return (
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
-      <AboutPageClient isRtl={isRtl} locale={locale} />
+      <AboutPageClient
+        isRtl={isRtl}
+        locale={locale}
+        teamMembers={teamMembers}
+      />
     </>
   );
 }

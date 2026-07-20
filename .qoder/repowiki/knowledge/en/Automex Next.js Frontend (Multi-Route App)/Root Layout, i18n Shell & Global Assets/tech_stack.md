@@ -1,0 +1,1 @@
+Next.js App Router with `next-intl` for i18n, `next/font/google` for variable-font loading, Tailwind v4 (`@import "tailwindcss"`) plus `tw-animate-css` and ShadCN's Tailwind layer; PWA via `app/manifest.ts`; SEO via `@next/third-parties/google` Analytics and JSON-LD schema components.

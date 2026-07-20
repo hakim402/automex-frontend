@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: dashboard/dashboard_layout
+title: Dashboard Shell Layout & Navigation
+scope:
+    - app/[locale]/dashboard/layout.tsx
+    - app/[locale]/dashboard/page.tsx
+    - app/[locale]/dashboard/_components/
+source_files: []
+depends_on: []
+related_to: []

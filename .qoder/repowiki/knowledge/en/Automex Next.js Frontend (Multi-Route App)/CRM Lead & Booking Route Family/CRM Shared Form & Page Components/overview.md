@@ -1,0 +1,1 @@
+Reusable client-side React components, Zod schemas, and a form-submit hook used across CRM route pages for lead/contact forms, booking pickers, and the CRM hub page.

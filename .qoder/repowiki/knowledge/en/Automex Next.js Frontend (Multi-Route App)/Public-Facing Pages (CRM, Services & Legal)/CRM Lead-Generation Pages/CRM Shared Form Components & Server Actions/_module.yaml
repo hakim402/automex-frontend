@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: public_pages/crm_sub_pages/shared_components
+title: CRM Shared Form Components & Server Actions
+scope:
+    - app/[locale]/(routes)/crm/_components/
+    - app/[locale]/(routes)/crm/actions.ts
+source_files: []
+depends_on: []
+related_to: []

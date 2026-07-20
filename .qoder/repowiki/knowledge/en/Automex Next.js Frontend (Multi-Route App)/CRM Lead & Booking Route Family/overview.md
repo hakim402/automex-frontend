@@ -1,0 +1,1 @@
+Next.js route group that exposes the CRM hub and three lead-capture sub-routes (quote, contact-sales, book-a-call) sharing one server-actions file and a common form component library.

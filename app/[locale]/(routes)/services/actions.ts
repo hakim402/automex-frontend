@@ -23,6 +23,6 @@ export async function loadMoreServicesAction(
     return { success: true, data: { items: result.results, hasMore: result.next !== null } };
   } catch (err) {
     console.error("[loadMoreServicesAction]", err);
-    return { success: false, kind: "generic" };
+    return { success: false, message: "Something went wrong loading more services. Please try again." };
   }
 }

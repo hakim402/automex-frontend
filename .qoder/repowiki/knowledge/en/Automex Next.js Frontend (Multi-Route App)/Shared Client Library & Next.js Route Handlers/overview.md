@@ -1,0 +1,1 @@
+Client-side API client, auth helpers, environment and locale utilities plus two Next.js Route Handlers for session cookie sync and contact-form email delivery.

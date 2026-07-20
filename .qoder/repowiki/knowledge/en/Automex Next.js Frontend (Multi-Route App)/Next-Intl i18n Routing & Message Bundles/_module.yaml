@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: i18n
+title: Next-Intl i18n Routing & Message Bundles
+scope:
+    - i18n/
+    - messages/
+source_files: []
+depends_on: []
+related_to: []

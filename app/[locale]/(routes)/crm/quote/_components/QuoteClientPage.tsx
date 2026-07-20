@@ -1,7 +1,6 @@
 "use client";
 
-// app/[locale]/(routes)/crm/quote/_components/QuoteClientPage.tsx
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -12,26 +11,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAuth } from "@/contexts/AuthContext";
 import type { SupportedLocale } from "@/lib/locale";
 
 import { CrmFormField } from "../../_components/crm-shared/CrmFormField";
+import { AuthEmailField } from "../../_components/crm-shared/AuthEmailField";
 import { BudgetTimelineFields } from "../../_components/crm-shared/fields/BudgetTimelineFields";
 import { ServiceMultiSelect } from "../../_components/crm-shared/fields/ServiceMultiSelect";
 import { useCrmFormSubmit } from "../../_components/hooks/useCrmFormSubmit";
-import { leadContactFields, budgetTimelineFields } from "../../_components/crm-shared/schemas";
+import { budgetTimelineFields } from "../../_components/crm-shared/schemas";
 
 import { submitQuoteRequestAction } from "../../actions";
-
-const quoteSchema = z.object({
-  ...leadContactFields,
-  industry: z.string().optional(),
-  requested_services: z.array(z.string()).min(1, "Select at least one service"),
-  ...budgetTimelineFields,
-  project_description: z.string().min(10, "Please add a few more details (at least 10 characters)"),
-  estimated_budget_min: z.string().optional(),
-  estimated_budget_max: z.string().optional(),
-});
-type QuoteFormValues = z.infer<typeof quoteSchema>;
 
 interface QuoteClientPageProps {
   serviceOptions: { id: string; name: string }[];
@@ -44,6 +34,26 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
   const tPage = useTranslations("CrmPages.quote");
   const locale = useLocale() as SupportedLocale;
   const [submitted, setSubmitted] = useState(false);
+  const { user, loading } = useAuth();
+  const isAuthenticated = !!user && !loading;
+
+  const schema = useMemo(
+    () =>
+      z.object({
+        full_name: z.string().min(2, "Please enter your full name"),
+        email: z.string().min(1, "Email is required").email("Enter a valid email address"),
+        phone: isAuthenticated ? z.string().optional() : z.string().min(1, "Phone number is required"),
+        company: z.string().optional(),
+        industry: z.string().optional(),
+        requested_services: z.array(z.string()).min(1, "Select at least one service"),
+        ...budgetTimelineFields,
+        project_description: z.string().min(10, "Please add a few more details (at least 10 characters)"),
+        estimated_budget_min: z.string().optional(),
+        estimated_budget_max: z.string().optional(),
+      }),
+    [isAuthenticated]
+  );
+  type QuoteFormValues = z.infer<typeof schema>;
 
   const {
     register,
@@ -53,15 +63,16 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
     setError,
     formState: { errors },
   } = useForm<QuoteFormValues>({
-    resolver: zodResolver(quoteSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       budget_range: "not_specified",
       requested_services: defaultServiceId ? [defaultServiceId] : [],
+      email: isAuthenticated ? user?.email ?? "" : "",
     },
   });
 
   const { submit, isPending } = useCrmFormSubmit(
-    (values: QuoteFormValues) =>
+    (values) =>
       submitQuoteRequestAction(
         {
           full_name: values.full_name,
@@ -85,7 +96,6 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:py-24">
-
       <div className="text-center mb-10">
         <p className="text-[13px] font-semibold uppercase tracking-wider text-primary mb-2">{tPage("hero.eyebrow")}</p>
         <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{tPage("hero.title")}</h1>
@@ -107,13 +117,18 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
             <CrmFormField id="full_name" label={t("fullNameLabel")} required error={errors.full_name?.message}>
               <Input id="full_name" placeholder={t("fullNamePlaceholder")} {...register("full_name")} />
             </CrmFormField>
-            <CrmFormField id="email" label={t("emailLabel")} required error={errors.email?.message}>
-              <Input id="email" type="email" placeholder={t("emailPlaceholder")} {...register("email")} />
-            </CrmFormField>
+            <AuthEmailField
+              id="email"
+              label={t("emailLabel")}
+              placeholder={t("emailPlaceholder")}
+              registration={register("email")}
+              error={errors.email}
+              required
+            />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <CrmFormField id="phone" label={t("phoneLabel")} error={errors.phone?.message}>
+            <CrmFormField id="phone" label={t("phoneLabel")} required={!isAuthenticated} error={errors.phone?.message}>
               <Input id="phone" type="tel" placeholder={t("phonePlaceholder")} {...register("phone")} />
             </CrmFormField>
             <CrmFormField id="company" label={t("companyLabel")} error={errors.company?.message}>

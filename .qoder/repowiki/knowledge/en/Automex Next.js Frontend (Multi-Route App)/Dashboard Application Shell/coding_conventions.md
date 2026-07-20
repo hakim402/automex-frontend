@@ -1,0 +1,3 @@
+- Feature pages are organised as `(routes)/<feature>/page.tsx` inside a Next.js route group so they share the dashboard layout without extra URL segments.
+- Each feature page keeps its own `_components/` folder of small presentational components rather than importing shared ones, keeping routes self-contained.
+- Layout concerns (sidebar state, RTL direction) are provided once via `SidebarProvider` from `@/contexts/sidebar-context` instead of being re-implemented per page.

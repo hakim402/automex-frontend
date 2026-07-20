@@ -7,7 +7,7 @@
 // field on the step-2 details form. Intercepting it explicitly and
 // bouncing back to step 1 is the correct UX for that specific case.
 
-import { useState, useEffect, useTransition } from "react";
+import { useState, useEffect, useTransition, useMemo } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -19,24 +19,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAuth } from "@/contexts/AuthContext";
 import type { SupportedLocale } from "@/lib/locale";
 import type { AvailableSlot } from "@/lib/automex/types";
 
 import { CrmFormField } from "../../_components/crm-shared/CrmFormField";
+import { AuthEmailField } from "../../_components/crm-shared/AuthEmailField";
 import { DatePicker } from "../../_components/crm-shared/booking/DatePicker";
 import { SlotPicker } from "../../_components/crm-shared/booking/SlotPicker";
-import { leadContactFields, MEETING_TYPE_VALUES } from "../../_components/crm-shared/schemas";
+import { MEETING_TYPE_VALUES } from "../../_components/crm-shared/schemas";
 
 import { fetchAvailabilityAction, submitConsultationBookingAction } from "../../actions";
-
-const detailsSchema = z.object({
-  ...leadContactFields,
-  job_title: z.string().optional(),
-  message: z.string().optional(),
-  meeting_type: z.enum(MEETING_TYPE_VALUES),
-  notes: z.string().optional(),
-});
-type DetailsValues = z.infer<typeof detailsSchema>;
 
 interface BookCallClientPageProps {
   defaultServiceInterest?: string;
@@ -47,6 +40,8 @@ export function BookCallClientPage({ defaultServiceInterest }: BookCallClientPag
   const tShared = useTranslations("CrmForms.shared");
   const tPage = useTranslations("CrmPages.booking");
   const locale = useLocale() as SupportedLocale;
+  const { user, loading } = useAuth();
+  const isAuthenticated = !!user && !loading;
 
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [slots, setSlots] = useState<AvailableSlot[]>([]);
@@ -73,6 +68,22 @@ export function BookCallClientPage({ defaultServiceInterest }: BookCallClientPag
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
 
+  const schema = useMemo(
+    () =>
+      z.object({
+        full_name: z.string().min(2, "Please enter your full name"),
+        email: z.string().min(1, "Email is required").email("Enter a valid email address"),
+        phone: isAuthenticated ? z.string().optional() : z.string().min(1, "Phone number is required"),
+        company: z.string().optional(),
+        job_title: z.string().optional(),
+        message: z.string().optional(),
+        meeting_type: z.enum(MEETING_TYPE_VALUES),
+        notes: z.string().optional(),
+      }),
+    [isAuthenticated]
+  );
+  type DetailsValues = z.infer<typeof schema>;
+
   const {
     register,
     handleSubmit,
@@ -80,8 +91,11 @@ export function BookCallClientPage({ defaultServiceInterest }: BookCallClientPag
     setError,
     formState: { errors },
   } = useForm<DetailsValues>({
-    resolver: zodResolver(detailsSchema),
-    defaultValues: { meeting_type: "video" },
+    resolver: zodResolver(schema),
+    defaultValues: {
+      meeting_type: "video",
+      email: isAuthenticated ? user?.email ?? "" : "",
+    },
   });
 
   function onSubmitDetails(values: DetailsValues) {
@@ -121,7 +135,7 @@ export function BookCallClientPage({ defaultServiceInterest }: BookCallClientPag
       }
       if (result.fieldErrors) {
         for (const [field, messages] of Object.entries(result.fieldErrors)) {
-          if (field in detailsSchema.shape) {
+          if (field in schema.shape) {
             setError(field as keyof DetailsValues, { message: messages[0] });
           }
         }
@@ -184,13 +198,18 @@ export function BookCallClientPage({ defaultServiceInterest }: BookCallClientPag
             <CrmFormField id="full_name" label={t("fullNameLabel")} required error={errors.full_name?.message}>
               <Input id="full_name" {...register("full_name")} />
             </CrmFormField>
-            <CrmFormField id="email" label={t("emailLabel")} required error={errors.email?.message}>
-              <Input id="email" type="email" {...register("email")} />
-            </CrmFormField>
+            <AuthEmailField
+              id="email"
+              label={t("emailLabel")}
+              placeholder="you@company.com"
+              registration={register("email")}
+              error={errors.email}
+              required
+            />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <CrmFormField id="phone" label={t("phoneLabel")} error={errors.phone?.message}>
+            <CrmFormField id="phone" label={t("phoneLabel")} required={!isAuthenticated} error={errors.phone?.message}>
               <Input id="phone" type="tel" {...register("phone")} />
             </CrmFormField>
             <CrmFormField id="company" label={t("companyLabel")} error={errors.company?.message}>

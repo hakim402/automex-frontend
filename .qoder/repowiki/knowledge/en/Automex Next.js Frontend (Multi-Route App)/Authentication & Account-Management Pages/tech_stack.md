@@ -1,0 +1,1 @@
+Next.js App Router with Route Groups, `next-intl` for i18n (including RTL detection), `react-hook-form` + `zod` for schema-driven forms, `sonner` for toast notifications, `framer-motion` for entrance animations, and `lucide-react` icons.

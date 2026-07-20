@@ -1,0 +1,5 @@
+Two-layer design built on `next-intl`:
+- `i18n/routing.ts` is the single source of truth for supported locales (`['en','es','de','fr','it','nl','zh','ar','fa','ps']`) and a flat `pathnames` map covering every route (dashboard, admin, CRM, public, auth, legal). It re-exports typed helpers — `Link`, `redirect`, `usePathname`, `useRouter` — via `createNavigation(routing)` and exposes a `Locale` type derived from the locale array.
+- `i18n/request.ts` is the server-side entry point that calls `getRequestConfig`, resolves the active locale against `routing.locales` (falling back to `defaultLocale`), and dynamically imports the matching `../messages/<locale>.json` bundle at request time.
+- `messages/*.json` holds one flat namespace-per-file translation bundle per locale; keys are grouped by React component/page section (e.g. `Header`, `Auth.login`, `CrmForms.quote`, `ServicesPage.hero`).
+Dependency direction is strictly one-way: `request.ts` → `routing.ts` → `messages/<locale>.json`; no application code imports messages directly.

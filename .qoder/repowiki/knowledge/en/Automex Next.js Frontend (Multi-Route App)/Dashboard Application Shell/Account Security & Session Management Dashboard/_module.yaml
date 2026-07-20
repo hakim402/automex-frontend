@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: dashboard/security
+title: Account Security & Session Management Dashboard
+scope:
+    - app/[locale]/dashboard/(routes)/security/
+source_files: []
+depends_on: []
+related_to: []

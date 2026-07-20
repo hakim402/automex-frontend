@@ -390,9 +390,18 @@
       "headlineAccent": "etwas Außergewöhnliches schaffen",
       "description": "Ob Sie einen Workflow automatisieren, ein Produkt auf den Markt bringen oder Ihren gesamten Betrieb transformieren möchten – das automex-Team ist bereit zu helfen. Sagen Sie uns, was Sie brauchen.",
       "stats": [
-        { "value": "< 24h", "label": "Reaktionszeit" },
-        { "value": "50+", "label": "Betreute Kunden" },
-        { "value": "98%", "label": "Zufriedenheitsrate" }
+        {
+          "value": "< 24h",
+          "label": "Reaktionszeit"
+        },
+        {
+          "value": "50+",
+          "label": "Betreute Kunden"
+        },
+        {
+          "value": "98%",
+          "label": "Zufriedenheitsrate"
+        }
       ],
       "ctaWhatsapp": "Über WhatsApp chatten",
       "ctaEmail": "E-Mail senden"
@@ -459,8 +468,18 @@
       "description": "Remote-First-Team mit zwei Kernstandorten, das Kunden weltweit betreut.",
       "remoteBadge": "Remote First · 24/7 Abdeckung",
       "offices": [
-        { "city": "Kabul", "country": "Afghanistan", "flag": "🇦🇫", "tz": "UTC+4:30" },
-        { "city": "Seattle", "country": "USA", "flag": "🇺🇸", "tz": "UTC-8 (PST)" }
+        {
+          "city": "Kabul",
+          "country": "Afghanistan",
+          "flag": "🇦🇫",
+          "tz": "UTC+4:30"
+        },
+        {
+          "city": "Seattle",
+          "country": "USA",
+          "flag": "🇺🇸",
+          "tz": "UTC-8 (PST)"
+        }
       ]
     }
   },
@@ -731,5 +750,26 @@
     "deleteConfirmBtn": "Ja, mein Konto löschen",
     "deleting": "Wird gelöscht…",
     "cancel": "Abbrechen"
+  },
+  "Shared": {
+    "teamDialog": {
+      "close": "Close",
+      "role": "Role",
+      "department": "Department",
+      "bio": "About",
+      "social": "Connect"
+    },
+    "testimonial": {
+      "source": {
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "clutch": "Clutch",
+        "direct": "Direct",
+        "trustpilot": "Trustpilot",
+        "other": "Review"
+      },
+      "carouselPrev": "Previous",
+      "carouselNext": "Next"
+    }
   }
 }

@@ -1,0 +1,1 @@
+Next.js 16 monorepo root wiring internationalized public, CRM, and dashboard route groups behind a single middleware that enforces locale routing and session-based access control.

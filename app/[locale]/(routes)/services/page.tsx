@@ -2,7 +2,12 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchServices, fetchServiceCategories } from "@/lib/automex/content";
+import {
+  fetchServices,
+  fetchServiceCategories,
+  fetchTechnologies,
+  fetchIndustries,
+} from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
@@ -32,10 +37,13 @@ export default async function ServicesPage({ params, searchParams }: Props) {
   const { category } = await searchParams;
   const t = await getTranslations({ locale, namespace: "ServicesPage" });
 
-  const [initialServices, categories] = await Promise.all([
-    fetchServices({ category, page: 1 }, locale),
-    fetchServiceCategories(locale),
-  ]);
+  const [initialServices, categories, technologies, industries] =
+    await Promise.all([
+      fetchServices({ category, page: 1 }, locale),
+      fetchServiceCategories(locale),
+      fetchTechnologies(undefined, locale),
+      fetchIndustries(locale),
+    ]);
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -63,6 +71,8 @@ export default async function ServicesPage({ params, searchParams }: Props) {
         categories={categories}
         activeCategory={category}
         totalCount={initialServices.count}
+        techCount={technologies.length}
+        industryCount={industries.length}
       />
     </>
   );

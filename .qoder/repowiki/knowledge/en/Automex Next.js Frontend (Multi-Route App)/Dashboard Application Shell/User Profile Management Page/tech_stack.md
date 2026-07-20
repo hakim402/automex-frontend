@@ -1,0 +1,1 @@
+React Server Components route with `"use client"`; form state via `react-hook-form` resolved by `@hookform/resolvers/zod` against a Zod schema; validation messages and labels sourced from `next-intl`; notifications via `sonner`; icons from `lucide-react`; animations from `framer-motion`.

@@ -10,7 +10,10 @@ export type PageType =
   | "crm"            // CRM overview
   | "bookCall"       // book a call
   | "contactSales"   // contact sales
-  | "quote";         // request a quote
+  | "quote"          // request a quote
+  | "services"       // services listing
+  | "blogs"          // blog listing
+  | "caseStudies";   // case studies listing
   
 export interface SeoMetadataOptions {
   pageType: PageType;

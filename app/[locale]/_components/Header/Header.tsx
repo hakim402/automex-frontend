@@ -93,7 +93,13 @@ export const Header = () => {
                 <Link href="/about">{t("about")}</Link>
               </Button>
               <Button asChild variant="ghost" size="sm">
+                <Link href="/services">{t("services")}</Link>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
                 <Link href="/contact">{t("contact")}</Link>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/blogs">{t("blogs")}</Link>
               </Button>
 
               {/* CRM Dropdown */}
@@ -209,11 +215,25 @@ export const Header = () => {
                 {t("about")}
               </Link>
               <Link
+                href="/services"
+                className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("services")}
+              </Link>
+              <Link
                 href="/contact"
                 className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {t("contact")}
+              </Link>
+              <Link
+                href="/blogs"
+                className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md hover:bg-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {t("blogs")}
               </Link>
 
               {/* CRM Accordion */}

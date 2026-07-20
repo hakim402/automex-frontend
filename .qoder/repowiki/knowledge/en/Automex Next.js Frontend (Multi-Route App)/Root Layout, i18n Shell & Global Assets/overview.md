@@ -1,0 +1,1 @@
+Next.js root layout, per-locale shell, and global assets (CSS theme, manifest, robots, sitemap) that bootstrap the AUTOMEX site with fonts, providers, SEO metadata, and RTL support.

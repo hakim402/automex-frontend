@@ -750,5 +750,26 @@
     "deleteConfirmBtn": "هو، زما حساب ړنګ کړئ",
     "deleting": "ړنګېږي…",
     "cancel": "لغوه کول"
+  },
+  "Shared": {
+    "teamDialog": {
+      "close": "Close",
+      "role": "Role",
+      "department": "Department",
+      "bio": "About",
+      "social": "Connect"
+    },
+    "testimonial": {
+      "source": {
+        "google": "Google",
+        "linkedin": "LinkedIn",
+        "clutch": "Clutch",
+        "direct": "Direct",
+        "trustpilot": "Trustpilot",
+        "other": "Review"
+      },
+      "carouselPrev": "Previous",
+      "carouselNext": "Next"
+    }
   }
 }

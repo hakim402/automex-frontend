@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: public_pages
+title: Public-Facing Pages (CRM, Services & Legal)
+scope:
+    - app/[locale]/(routes)/
+source_files: []
+depends_on: []
+related_to: []

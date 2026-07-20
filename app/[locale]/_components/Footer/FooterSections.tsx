@@ -127,6 +127,7 @@ const COLUMNS: FooterColumn[] = [
       { labelKey: "columns.company.about", href: "/about" },
       { labelKey: "columns.company.services", href: "/services" },
       { labelKey: "columns.company.blogs", href: "/blogs" },
+      { labelKey: "columns.company.caseStudies", href: "/case-studies" },
       { labelKey: "columns.company.contact", href: "/contact" },
       { labelKey: "columns.company.privacy", href: "/privacy" },
       { labelKey: "columns.company.terms", href: "/terms" },

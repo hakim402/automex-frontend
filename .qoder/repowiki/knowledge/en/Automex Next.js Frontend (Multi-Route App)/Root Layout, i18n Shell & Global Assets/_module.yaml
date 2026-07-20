@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: root_layout_assets
+title: Root Layout, i18n Shell & Global Assets
+scope:
+    - app/layout.tsx
+    - app/globals.css
+    - app/manifest.ts
+    - app/robots.ts
+    - app/sitemap.ts
+    - app/[locale]/layout.tsx
+    - app/[locale]/page.tsx
+    - app/[locale]/_components/
+source_files: []
+depends_on: []
+related_to: []
