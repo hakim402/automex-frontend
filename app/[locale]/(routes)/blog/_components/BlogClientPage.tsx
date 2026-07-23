@@ -17,7 +17,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 import type { SupportedLocale } from "@/lib/locale";
-import type { BlogPostListItem, BlogCategory, BlogTag } from "@/lib/automex/types";
+import type {
+  BlogPostListItem,
+  BlogCategory,
+  BlogTag,
+} from "@/lib/automex/types";
 import { getMediaUrl } from "@/lib/env";
 
 import { loadMoreBlogPostsAction } from "../actions";
@@ -52,7 +56,13 @@ function tagName(tag: BlogTag): string {
 
 // ─── Featured Carousel ────────────────────────────────────────────────
 
-function FeaturedCarousel({ posts, t }: { posts: BlogPostListItem[]; t: ReturnType<typeof useTranslations> }) {
+function FeaturedCarousel({
+  posts,
+  t,
+}: {
+  posts: BlogPostListItem[];
+  t: ReturnType<typeof useTranslations>;
+}) {
   const [current, setCurrent] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -92,7 +102,7 @@ function FeaturedCarousel({ posts, t }: { posts: BlogPostListItem[]; t: ReturnTy
           alt={post.cover_image?.alt_text || post.title}
           className={cn(
             "absolute inset-0 size-full object-cover transition-opacity duration-700",
-            post.cover_image?.url ? "opacity-100" : "opacity-0"
+            post.cover_image?.url ? "opacity-100" : "opacity-0",
           )}
         />
 
@@ -135,7 +145,9 @@ function FeaturedCarousel({ posts, t }: { posts: BlogPostListItem[]; t: ReturnTy
               {post.reading_time_minutes != null && (
                 <span className="flex items-center gap-1">
                   <BookOpen className="size-3.5" aria-hidden="true" />
-                  {t("listing.post.minRead", { minutes: post.reading_time_minutes })}
+                  {t("listing.post.minRead", {
+                    minutes: post.reading_time_minutes,
+                  })}
                 </span>
               )}
             </div>
@@ -144,7 +156,10 @@ function FeaturedCarousel({ posts, t }: { posts: BlogPostListItem[]; t: ReturnTy
               className="inline-flex items-center gap-1.5 rounded-lg bg-brand-gradient text-white px-5 py-2.5 text-[14px] font-semibold shadow-brand hover:opacity-90 transition-opacity"
             >
               {t("listing.post.readMore")}
-              <ArrowRight className="size-4 rtl:rotate-180" aria-hidden="true" />
+              <ArrowRight
+                className="size-4 rtl:rotate-180"
+                aria-hidden="true"
+              />
             </Link>
           </div>
         </div>
@@ -181,7 +196,7 @@ function FeaturedCarousel({ posts, t }: { posts: BlogPostListItem[]; t: ReturnTy
                 "size-2 rounded-full transition-all duration-300",
                 i === current
                   ? "bg-white w-6"
-                  : "bg-white/50 hover:bg-white/70"
+                  : "bg-white/50 hover:bg-white/70",
               )}
               aria-label={`Slide ${i + 1}`}
             />
@@ -223,7 +238,7 @@ export function BlogClientPage({
         activeTag,
         searchQuery,
         nextPage,
-        locale
+        locale,
       );
       if (result.success) {
         setPosts((prev) => [...prev, ...result.data.items]);
@@ -236,7 +251,10 @@ export function BlogClientPage({
   return (
     <div className="relative overflow-hidden">
       {/* Background decoration */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
         <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
         <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
@@ -253,8 +271,12 @@ export function BlogClientPage({
           </span>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            <span className="text-brand-gradient">{t("listing.hero.headlineLead")}</span>{" "}
-            <span className="text-foreground">{t("listing.hero.headlineAccent")}</span>
+            <span className="text-brand-gradient">
+              {t("listing.hero.headlineLead")}
+            </span>{" "}
+            <span className="text-foreground">
+              {t("listing.hero.headlineAccent")}
+            </span>
           </h1>
 
           <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -267,12 +289,15 @@ export function BlogClientPage({
           {categories.length > 0 && (
             <div className="flex flex-wrap items-center gap-2">
               <Link
-                href={{ pathname: "/blog", query: { tag: activeTag, search: searchQuery } as any }}
+                href={{
+                  pathname: "/blog",
+                  query: { tag: activeTag, search: searchQuery } as any,
+                }}
                 className={cn(
                   "rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200",
                   !activeCategory
                     ? "bg-brand-gradient text-white shadow-brand"
-                    : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                    : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80",
                 )}
               >
                 {t("listing.filters.all")}
@@ -280,12 +305,19 @@ export function BlogClientPage({
               {categories.map((cat) => (
                 <Link
                   key={cat.id}
-                  href={{ pathname: "/blog", query: { category: cat.slug, tag: activeTag, search: searchQuery } as any }}
+                  href={{
+                    pathname: "/blog",
+                    query: {
+                      category: cat.slug,
+                      tag: activeTag,
+                      search: searchQuery,
+                    } as any,
+                  }}
                   className={cn(
                     "rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200",
                     activeCategory === cat.slug
                       ? "bg-brand-gradient text-white shadow-brand"
-                      : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                      : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80",
                   )}
                 >
                   {cat.name}
@@ -302,12 +334,19 @@ export function BlogClientPage({
               {tags.slice(0, 12).map((tg) => (
                 <Link
                   key={tg.id}
-                  href={{ pathname: "/blog", query: { tag: tg.slug, category: activeCategory, search: searchQuery } as any }}
+                  href={{
+                    pathname: "/blog",
+                    query: {
+                      tag: tg.slug,
+                      category: activeCategory,
+                      search: searchQuery,
+                    } as any,
+                  }}
                   className={cn(
                     "rounded-full px-3 py-1 text-[12px] font-medium transition-all duration-200",
                     activeTag === tg.slug
                       ? "bg-brand-gradient text-white shadow-brand"
-                      : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                      : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80",
                   )}
                 >
                   {tagName(tg)}
@@ -321,20 +360,27 @@ export function BlogClientPage({
         <p className="text-center text-[12px] text-muted-foreground mb-10">
           {totalCount}{" "}
           {activeCategory
-            ? t("listing.filters.articlesCount", { count: totalCount, plural: totalCount !== 1 ? "s" : "" }).replace(
-                "{count}",
-                String(totalCount)
-              )
+            ? t("listing.filters.articlesCount", {
+                count: totalCount,
+                plural: totalCount !== 1 ? "s" : "",
+              }).replace("{count}", String(totalCount))
             : "article" + (totalCount !== 1 ? "s" : "")}
-          {activeCategory && ` in "${categories.find((c) => c.slug === activeCategory)?.name || activeCategory}"`}
-          {activeTag && ` tagged "${tagName(tags.find((tg) => tg.slug === activeTag)!)}"`}
+          {activeCategory &&
+            ` in "${categories.find((c) => c.slug === activeCategory)?.name || activeCategory}"`}
+          {activeTag &&
+            ` tagged "${tagName(tags.find((tg) => tg.slug === activeTag)!)}"`}
         </p>
 
         {/* ═══ Posts grid ══════════════════════════════════════════ */}
         {posts.length === 0 ? (
           <div className="text-center py-20">
-            <BookOpen className="size-10 text-muted-foreground/30 mx-auto mb-4" aria-hidden="true" />
-            <p className="text-[14px] text-muted-foreground">{t("listing.post.noPosts")}</p>
+            <BookOpen
+              className="size-10 text-muted-foreground/30 mx-auto mb-4"
+              aria-hidden="true"
+            />
+            <p className="text-[14px] text-muted-foreground">
+              {t("listing.post.noPosts")}
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -355,7 +401,10 @@ export function BlogClientPage({
                     />
                   ) : (
                     <div className="flex size-full items-center justify-center">
-                      <BookOpen className="size-10 text-primary/30" aria-hidden="true" />
+                      <BookOpen
+                        className="size-10 text-primary/30"
+                        aria-hidden="true"
+                      />
                     </div>
                   )}
 
@@ -410,7 +459,9 @@ export function BlogClientPage({
                               {post.author.full_name?.charAt(0) || "?"}
                             </span>
                           )}
-                          <span className="font-medium text-foreground/80">{post.author.full_name}</span>
+                          <span className="font-medium text-foreground/80">
+                            {post.author.full_name}
+                          </span>
                         </span>
                       )}
                     </div>
@@ -418,7 +469,9 @@ export function BlogClientPage({
                       {post.reading_time_minutes != null && (
                         <span className="inline-flex items-center gap-1">
                           <BookOpen className="size-3" aria-hidden="true" />
-                          {t("listing.post.minRead", { minutes: post.reading_time_minutes })}
+                          {t("listing.post.minRead", {
+                            minutes: post.reading_time_minutes,
+                          })}
                         </span>
                       )}
                       <span className="inline-flex items-center gap-1">
@@ -435,7 +488,10 @@ export function BlogClientPage({
                       className="inline-flex items-center gap-1 text-[13px] font-medium text-primary hover:text-[#0ab8fb] transition-colors"
                     >
                       {t("listing.post.readMore")}
-                      <ArrowRight className="size-3.5 rtl:rotate-180 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                      <ArrowRight
+                        className="size-3.5 rtl:rotate-180 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
                     </Link>
                   </div>
                 </div>
@@ -480,13 +536,25 @@ export function BlogClientPage({
             {t("listing.cta.description")}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" className="bg-brand-gradient shadow-brand">
+            <Button
+              asChild
+              size="lg"
+              className="bg-brand-gradient shadow-brand"
+            >
               <Link href="/crm/quote">
                 {t("listing.cta.quote")}
-                <ArrowRight className="size-4 ml-1.5 rtl:rotate-180" aria-hidden="true" />
+                <ArrowRight
+                  className="size-4 ml-1.5 rtl:rotate-180"
+                  aria-hidden="true"
+                />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-brand-gradient">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-brand-gradient"
+            >
               <Link href="/crm/book-a-call">{t("listing.cta.booking")}</Link>
             </Button>
           </div>

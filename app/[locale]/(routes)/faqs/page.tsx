@@ -26,7 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function FaqsPage({ params }: Props) {
   const { locale } = await params;
-  const faqs = await fetchFAQs({}, locale as SupportedLocale);
+  let faqs: Awaited<ReturnType<typeof fetchFAQs>>;
+  try {
+    faqs = await fetchFAQs({}, locale as SupportedLocale);
+  } catch {
+    faqs = [];
+  }
 
   return (
     <>

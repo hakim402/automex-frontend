@@ -36,7 +36,12 @@ export default async function AboutPage({
   const isRtl = isRtlLocale(locale);
 
   // Fetch team members from API
-  const teamMembers = await fetchTeamMembers(locale as any);
+  let teamMembers: Awaited<ReturnType<typeof fetchTeamMembers>>;
+  try {
+    teamMembers = await fetchTeamMembers(locale as any);
+  } catch {
+    teamMembers = [];
+  }
 
   // Breadcrumb items
   const breadcrumbItems = [

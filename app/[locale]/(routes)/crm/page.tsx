@@ -22,6 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CrmOverviewPage({ params }: Props) {
   const { locale } = await params;
-  const processSteps = await fetchProcessSteps(locale);
+  let processSteps: Awaited<ReturnType<typeof fetchProcessSteps>>;
+  try {
+    processSteps = await fetchProcessSteps(locale);
+  } catch {
+    processSteps = [];
+  }
   return <CrmClientPage processSteps={processSteps} />;
 }
