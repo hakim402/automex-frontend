@@ -1,0 +1,1 @@
+React Server Components with `"use client"` opt-in; Radix UI primitives (`Slot`, `AlertDialog`, `Dialog`, `Popover`, `Select`) composed into branded UI; styling via Tailwind + `class-variance-authority` variants + `clsx`/`tailwind-merge` (`cn`); icons from `lucide-react` and `react-icons/fa`; i18n via `next-intl` (`useTranslations`).

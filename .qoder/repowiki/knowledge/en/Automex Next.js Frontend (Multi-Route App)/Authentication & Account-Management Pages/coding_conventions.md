@@ -1,0 +1,6 @@
+- Every page file starts with the `"use client"` directive and a comment header matching its path.
+- Form validation is declared as a local Zod schema and passed to `useForm({ resolver: zodResolver(schema) })`; field errors surface via `errors.<field>.message` on `AuthFormField`.
+- User-facing text is always read through `useTranslations("Auth")` keys (e.g. `Auth.login.title`, `Auth.common.email`) rather than hard-coded strings.
+- Navigation between routes uses the i18n-aware `<Link href="...">` from `@/i18n/routing`; programmatic redirects use `router.push` / `router.replace` with a locale-prefixed destination.
+- API calls go through `@/lib/auth` helpers and any thrown error is surfaced via `getErrorMessage(err)` into a `sonner` toast; success paths set AuthContext state then redirect.
+- Pages that complete an action render a local `SuccessState` component wrapped in a `motion.div` with a standard initial/animate transition instead of navigating away.

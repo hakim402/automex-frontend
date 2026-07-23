@@ -1,0 +1,6 @@
+- Every client component starts with a `"use client"` directive at the top of the file before any imports.
+- Zod enum literals are exported as `as const` arrays (`BUDGET_VALUES`, `TIMELINE_VALUES`, `MEETING_TYPE_VALUES`) and referenced both by schema factories and UI option lists to keep validation and display in sync.
+- All form fields are wrapped in `CrmFormField` so labels, required asterisks, and error messages share identical markup and Tailwind classes.
+- Server Action results follow the `ActionResult<T>` shape with `{ success, message, fieldErrors }`; `useCrmFormSubmit` is the single place that interprets it and calls `setError` / `toast.error`.
+- User-facing strings go through `useTranslations('CrmForms.shared' | 'CrmPages.hub')` rather than inline literals, keyed by section (e.g. `budgetOptions.${v}`, `paths.${key}.title`).
+- Generic form-field components are typed with `<T extends FieldValues>` and cast field names via `as Path<T>` instead of using string literals directly.

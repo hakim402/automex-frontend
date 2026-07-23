@@ -1,0 +1,1 @@
+Next.js App Router pages and shared UI for sign-in, sign-up, forgot-password, magic-link login, password reset, and email verification flows.

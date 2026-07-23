@@ -1,0 +1,1 @@
+`npm run generate-types` fetches the OpenAPI schema from `https://api.automex.tech/api/schema` and writes it into `lib/automex/types/generated.ts`, which is the single type contract consumed by every feature's server actions and client API calls.

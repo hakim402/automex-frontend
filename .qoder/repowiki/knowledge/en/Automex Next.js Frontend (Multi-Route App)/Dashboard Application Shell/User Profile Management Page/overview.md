@@ -1,0 +1,1 @@
+Next.js App Router client page that lets authenticated users view and edit their personal profile information and view read-only account metadata.

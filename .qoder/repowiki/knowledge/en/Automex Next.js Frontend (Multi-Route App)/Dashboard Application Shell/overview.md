@@ -1,0 +1,1 @@
+Next.js App Router route group that mounts the authenticated dashboard chrome and exposes per-feature sub-routes (profile, security, projects, etc.) under a shared sidebar layout.

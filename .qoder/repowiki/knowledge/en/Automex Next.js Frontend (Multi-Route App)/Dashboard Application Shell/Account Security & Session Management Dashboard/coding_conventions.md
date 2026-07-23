@@ -1,0 +1,6 @@
+- Every component file begins with a JSDoc block listing the HTTP endpoints it calls and the UX features it implements, serving as inline API documentation.
+- User-facing strings are never hardcoded; all labels, descriptions, and error messages go through `useTranslations("Security")` keyed by a consistent namespace.
+- Destructive operations follow an optimistic-update pattern: mutate local state immediately, then rollback on failure and surface errors via `toast.error(getErrorMessage(err))`.
+- Loading states use dedicated skeleton components (e.g. `SessionSkeleton`, `SecuritySkeleton`) built with Tailwind `animate-pulse` placeholders instead of generic spinners.
+- Each section is wrapped in the shared `SectionCard` from `../../profile/_components/SectionCard` with an icon, title, description, and staggered `delay` prop for entrance animation.
+- Device/browser detection is done via simple substring heuristics on `device_name` (e.g. checking for 'mobile', 'chrome') to pick a matching `lucide-react` icon.

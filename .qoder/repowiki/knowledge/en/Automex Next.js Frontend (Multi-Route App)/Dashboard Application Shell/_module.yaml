@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: dashboard
+title: Dashboard Application Shell
+scope:
+    - app/[locale]/dashboard/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,1 @@
+Next.js App Router routes that render CRM lead-capture pages (overview, contact sales, book-a-call, quote) and funnel submissions through a shared server-actions entrypoint.

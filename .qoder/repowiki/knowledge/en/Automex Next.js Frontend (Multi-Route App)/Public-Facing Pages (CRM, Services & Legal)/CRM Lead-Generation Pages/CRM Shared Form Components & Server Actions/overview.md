@@ -1,0 +1,1 @@
+Shared CRM UI primitives (forms, booking pickers, field wrappers) and the single Next.js server-actions entrypoint that routes every CRM form submission to the Automex backend.

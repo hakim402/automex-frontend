@@ -1,0 +1,5 @@
+- Complex page sections follow a two-file pattern: a presentational component in `components/shared/` plus a `useXxxConfig()` hook in `config/` that supplies all text/data via `useTranslations`, keeping copy out of the component source.
+- All client-side components start with the `"use client"` directive at the top of the file before any imports.
+- UI primitives in `components/ui/` are built as single-export files using `cva` for variant/size styles and `Slot.Root` for `asChild` passthrough, following shadcn-style conventions.
+- SEO schema components wrap `JsonLd` with strongly-typed interfaces per schema type (Breadcrumb, FAQ, LocalBusiness, Organization) rather than passing raw objects.
+- Barrel exports in `components/shared/index.ts` re-export both named values and their corresponding TypeScript types so consumers can import `{ StatsRow, StatItem }` from a single path.

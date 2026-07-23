@@ -1,0 +1,1 @@
+React Context API wrapped by `next-themes` for theme switching and `@react-oauth/google` for Google Sign-In; token persistence goes through `TokenStorage` in `@/lib/api` and user data via `getMe`/`logout` in `@/lib/auth`.

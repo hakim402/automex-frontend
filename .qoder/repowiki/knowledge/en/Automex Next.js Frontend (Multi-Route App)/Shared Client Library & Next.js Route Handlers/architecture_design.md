@@ -1,0 +1,11 @@
+Two adjacent scopes with a one-way dependency direction: `app/api/*` (Next.js Route Handlers) call the backend directly; `lib/*` is consumed by both client components and server code.
+
+- `lib/api.ts` — single fetch wrapper exposing `apiRequest()` (public) and `authRequest()` (protected). It owns token storage (`TokenStorage`, localStorage keys `access`/`refresh`/`access_expires_at`), proactive refresh before each request, and reactive 401 retry with a singleton `_refreshPromise` to deduplicate parallel refresh calls. Errors are normalised into an `ApiError` shape that recognises DRF responses (`detail`, `non_field_errors`, field-level arrays).
+- `lib/auth.ts` — pure async functions mirroring every `/auth/*` backend endpoint (register, login, Google OAuth, logout, magic link, password reset, sessions, profile CRUD). Each function maps 1-to-1 with a route and never calls `apiRequest` directly — it goes through `apiRequest`/`authRequest`. On successful login flows it persists tokens via `TokenStorage.set` and posts to `/api/auth/session` to mirror state into a cookie for middleware consumption.
+- `lib/env.ts` — lazy getters (`getApiBaseUrl`, `getGoogleClientId`, `getAppUrl`) so Next.js static replacement runs before values are read; `validateEnv()` is a server-only startup check called once from `app/layout.tsx`. Backwards-compatible constants (`API_BASE_URL`, etc.) are computed via module-level IIFEs.
+- `lib/locale.ts` — declares `SUPPORTED_LOCALES`, `RTL_LOCALES`, and `getOgLocale` used by SEO metadata.
+- `lib/utils.ts` — thin `cn(...)` helper wrapping `clsx` + `tailwind-merge`.
+- `app/api/auth/session/route.ts` — sets/clears the lightweight `auth_status` cookie (`POST`/`DELETE`) so Edge Middleware can detect authentication without seeing the JWT; `GET` exposes current state.
+- `app/api/contact/route.ts` — validates incoming JSON, builds an HTML email via `nodemailer` using Gmail App Passwords, and returns a simple `{ ok }` response.
+
+Dependency graph: `auth.ts → api.ts → env.ts`; `auth.ts` also POSTs to `/api/auth/session` (self-referential via HTTP, not import); `env.ts` has no internal deps. No file in `lib/` imports anything under `app/`.

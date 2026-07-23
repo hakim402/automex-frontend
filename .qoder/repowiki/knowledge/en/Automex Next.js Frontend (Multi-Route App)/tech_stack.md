@@ -1,0 +1,1 @@
+Next.js 16 + React 19 + TypeScript 5; styling via Tailwind v4 + Radix UI primitives + shadcn/ui; i18n via next-intl 4 with per-locale JSON bundles; form validation through react-hook-form + zod across all feature pages; server-side email via nodemailer in shared Route Handlers.

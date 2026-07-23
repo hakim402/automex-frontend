@@ -1,0 +1,1 @@
+Next.js App Router routes that list paginated services with category filtering and render individual service detail pages with related items, SEO metadata, and JSON-LD.

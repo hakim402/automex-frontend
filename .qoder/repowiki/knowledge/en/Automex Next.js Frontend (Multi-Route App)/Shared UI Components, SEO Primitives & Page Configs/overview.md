@@ -1,0 +1,1 @@
+Reusable React components (page sections, Radix-based UI primitives, JSON-LD helpers) plus per-page data configuration hooks consumed by layout pages.

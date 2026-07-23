@@ -1,0 +1,1 @@
+Root React provider wrappers (theme, Google OAuth) and shared client-side contexts for authentication state and sidebar layout consumed across the Next.js app.

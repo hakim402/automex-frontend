@@ -1,0 +1,1 @@
+Next.js App Router client components, `next-intl` for i18n, `sonner` for toast notifications, `framer-motion` + `AnimatePresence` for enter/exit animations, `lucide-react` icons, and shadcn/ui primitives (`Button`, `Input`, `Checkbox`, `Dialog`).

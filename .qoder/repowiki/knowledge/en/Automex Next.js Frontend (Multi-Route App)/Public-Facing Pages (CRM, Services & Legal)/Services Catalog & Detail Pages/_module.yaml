@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: public_pages/services
+title: Services Catalog & Detail Pages
+scope:
+    - app/[locale]/(routes)/services/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,1 @@
+next-intl v3+ with `defineRouting`/`createNavigation` for client navigation and `getRequestConfig` for server-side message loading; dynamic `import()` of per-locale JSON files.

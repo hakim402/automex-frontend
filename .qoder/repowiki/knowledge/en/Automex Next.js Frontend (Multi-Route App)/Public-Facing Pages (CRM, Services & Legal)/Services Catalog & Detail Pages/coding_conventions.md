@@ -1,0 +1,6 @@
+- Server components own all data fetching (fetchServices, fetchServiceBySlug, etc.) and pass only plain data as props to a sibling 'use client' component — no client-side data fetching in these routes.
+- SEO is produced server-side: each route exports generateMetadata and injects BreadcrumbSchema + JsonLd before the client component, using generatePageMetadata or hand-built structured data objects.
+- Category filtering uses real crawlable links (Link href={{ pathname: '/services', query: { category } }}) driven by searchParams rather than client-only state, so the listing URL stays shareable.
+- Infinite pagination is split across a 'use server' action (loadMoreServicesAction) and a client component that calls it via startTransition and appends results to local state.
+- Icon resolution follows a shared ICON_MAP + resolveIcon(icon) helper that strips a leading lucide: prefix and falls back to Sparkles when unmapped.
+- Rich-text sections (overview, problems_we_solve, features, benefits) are rendered through SafeHTML; when the field is not HTML they fall back to newline-split lists.

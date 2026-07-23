@@ -31,7 +31,8 @@ import {
   type ValueItem,
 } from "@/components/shared/ValuesSection";
 import { Timeline, type TimelineItem } from "@/components/shared/Timeline";
-import { TeamSection, type TeamMember } from "@/components/shared/TeamSection";
+import { TeamCarousel } from "@/components/shared/TeamCarousel";
+import type { TeamMember } from "@/lib/automex/types";
 import { PageCTA } from "@/components/shared/PageCTA";
 import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
@@ -350,9 +351,11 @@ function MissionVision({
 export default function AboutPageClient({
   isRtl,
   locale,
+  teamMembers,
 }: {
   isRtl: boolean;
   locale: string;
+  teamMembers: TeamMember[];
 }) {
   const t = useTranslations("About");
 
@@ -462,46 +465,7 @@ export default function AboutPageClient({
     },
   ];
 
-  // ── Team data ─────────────────────────────────────────────────────────────
-  const team: TeamMember[] = [
-    {
-      name: t("team.m1Name"),
-      role: t("team.m1Role"),
-      bio: t("team.m1Bio"),
-      photo: "/teams/miraj-hejran.png",
-      initials: "HI",
-      color: "#0ab8fb",
-      skills: [t("team.skill1"), t("team.skill2"), t("team.skill3")],
-      social: {
-        linkedin: "https://linkedin.com/in/miraj-hejran",
-      },
-    },
-    {
-      name: t("team.m2Name"),
-      role: t("team.m2Role"),
-      bio: t("team.m2Bio"),
-      photo: "/teams/hakim-rahimi-safi.jpg",
-      initials: "HR",
-      color: "#324b9d",
-      skills: [t("team.skill4"), t("team.skill5"), t("team.skill6")],
-      social: {
-        linkedin: "https://linkedin.com/in/hakim-rahimi-safi",
-        twitter: "https://twitter.com/hakimrs",
-      },
-    },
-    {
-      name: t("team.m3Name"),
-      role: t("team.m3Role"),
-      bio: t("team.m3Bio"),
-      photo: "",
-      initials: "AS",
-      color: "#f59e0b",
-      skills: [t("team.skill7"), t("team.skill8"), t("team.skill9")],
-      social: {
-        linkedin: "https://linkedin.com/in/abdullah-stanikzai",
-      },
-    },
-  ];
+  // ── Team data (from API) ──────────────────────────────────────────────────
 
   return (
     <main
@@ -552,13 +516,15 @@ export default function AboutPageClient({
         isRtl={isRtl}
       />
 
-      {/* ── 7. Team (shared) ── */}
-      <TeamSection
-        members={team}
+      {/* ── 7. Team (from API) ── */}
+      <TeamCarousel
+        members={teamMembers}
+        variant="grid"
         eyebrow={t("team.eyebrow")}
         title={t("team.title")}
         description={t("team.description")}
         isRtl={isRtl}
+        leadershipOnly
       />
 
       {/* ── 8. CTA (shared) ── */}

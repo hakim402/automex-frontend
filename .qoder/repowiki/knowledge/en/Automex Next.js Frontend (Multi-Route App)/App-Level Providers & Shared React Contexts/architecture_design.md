@@ -1,0 +1,5 @@
+Two sibling sub-folders with distinct responsibilities:
+- `providers/` — top-level `<Provider>` components that compose third-party providers. `GoogleOauthProvider.tsx` is the single composition root: it nests `ThemeProvider` (next-themes), `GoogleOAuthProvider` (@react-oauth/google), and `AuthProvider` in a fixed order so child pages get all three simultaneously.
+- `contexts/` — per-domain React contexts paired with a typed `useXxx()` hook. `AuthContext.tsx` owns session rehydration on mount via `getMe()`, exposes `user/loading/reloadUser/logout/setUser`, and ships convenience selectors `useIsAuthenticated` and `useRequireUser`. `sidebar-context.tsx` centralises sidebar collapse + mobile-open state plus the width constants (`SIDEBAR_EXPANDED_W=256`, `SIDEBAR_COLLAPSED_W=72`) to avoid duplication between `Sidebar.tsx` and `DashboardMain.tsx`.
+
+Dependency direction is one-way: providers depend on contexts (the root provider composes them), but contexts never import providers. All files are marked `"use client"` so they can only be consumed from client components/layouts.

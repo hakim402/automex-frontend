@@ -1,0 +1,1 @@
+Next.js App Router with `next-intl` for i18n (server `getLocale` in layout, client `useLocale`/`useTranslations` in components), Tailwind CSS for styling, `lucide-react` icons, `framer-motion` for collapse/enter animations, and shadcn `Button` from `@/components/ui/button`.

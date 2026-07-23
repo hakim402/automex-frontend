@@ -1,0 +1,4 @@
+- Every route page is an async function that reads `params.locale` via `await params`, builds metadata with `generatePageMetadata({ pageType, locale, pathSegment })`, then returns a `<XxxClientPage>`.
+- All server-side mutations are declared in the single `actions.ts` at the group root; client pages never call `@/lib/automex/crm` directly.
+- Server actions accept inputs of the form `Omit<InputType, 'language'>` plus a `SupportedLocale` parameter and always return `ActionResult<T>`.
+- Validation errors from `AutomexApiError` with kind `validation` are mapped to `{ success: false, fieldErrors }` so the shared `useCrmFormSubmit` hook can surface them uniformly.

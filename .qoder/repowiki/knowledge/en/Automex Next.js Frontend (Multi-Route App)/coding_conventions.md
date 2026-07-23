@@ -1,0 +1,4 @@
+- All route groups live under `app/[locale]/(...)` folders and rely on `proxy.ts` for locale stripping and auth checks rather than duplicating guards inside layouts.
+- Server-side logic uses Next.js Route Handlers or Server Actions backed by Zod schemas defined in `lib_and_api`; client code consumes the same schemas via the generated OpenAPI types.
+- Shared UI is pulled from `shared_components` and styled exclusively through Tailwind utility classes combined with class-variance-authority variants — no inline CSS.
+- Internationalization strings are never hardcoded in components; every visible string goes through the next-intl message bundle keyed by section name.

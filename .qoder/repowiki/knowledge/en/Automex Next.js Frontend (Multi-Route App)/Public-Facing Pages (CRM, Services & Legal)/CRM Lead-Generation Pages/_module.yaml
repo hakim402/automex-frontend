@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: public_pages/crm_sub_pages
+title: CRM Lead-Generation Pages
+scope:
+    - app/[locale]/(routes)/crm/
+source_files: []
+depends_on: []
+related_to: []
