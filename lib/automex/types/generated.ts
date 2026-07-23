@@ -4,6 +4,40 @@
  */
 
 export interface paths {
+    "/api/v1/ai-capabilities/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_ai_capabilities_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/ai-capabilities/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_ai_capabilities_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/assistant/chat/": {
         parameters: {
             query?: never;
@@ -14,6 +48,46 @@ export interface paths {
         get?: never;
         put?: never;
         post: operations["v1_assistant_chat_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/assistant/conversations/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my conversations
+         * @description GET /api/v1/assistant/conversations/ — list user's past conversations.
+         */
+        get: operations["v1_assistant_conversations_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/assistant/conversations/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Conversation detail with messages
+         * @description GET /api/v1/assistant/conversations/{id}/ — full transcript.
+         */
+        get: operations["v1_assistant_conversations_retrieve"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -513,6 +587,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/certifications/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_certifications_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/certifications/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_certifications_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/crm/bookings/availability/": {
         parameters: {
             query?: never;
@@ -540,6 +648,372 @@ export interface paths {
         get?: never;
         put?: never;
         post: operations["v1_crm_bookings_consultations_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Dashboard summary stats
+         * @description GET /api/v1/crm/dashboard/ — aggregated stats for the user.
+         */
+        get: operations["v1_crm_dashboard_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/bookings/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my bookings
+         * @description GET /api/v1/crm/dashboard/bookings/ — list user's bookings.
+         */
+        get: operations["v1_crm_dashboard_bookings_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/bookings/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Booking detail
+         * @description GET /api/v1/crm/dashboard/bookings/{id}/ — booking detail.
+         */
+        get: operations["v1_crm_dashboard_bookings_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/bookings/{id}/cancel/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Cancel booking
+         * @description POST /api/v1/crm/dashboard/bookings/{id}/cancel/ — cancel a booking.
+         */
+        post: operations["v1_crm_dashboard_bookings_cancel_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/bookings/{id}/reschedule/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Request booking reschedule
+         * @description POST /api/v1/crm/dashboard/bookings/{id}/reschedule/ — request reschedule.
+         */
+        post: operations["v1_crm_dashboard_bookings_reschedule_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/calculations/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my calculations
+         * @description GET /api/v1/crm/dashboard/calculations/ — user's past estimates.
+         */
+        get: operations["v1_crm_dashboard_calculations_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/calculations/{id}/convert/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Convert estimate to lead
+         * @description POST /api/v1/crm/dashboard/calculations/{id}/convert/ — convert estimate to lead.
+         */
+        post: operations["v1_crm_dashboard_calculations_convert_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/requests/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my requests
+         * @description GET /api/v1/crm/dashboard/requests/ — list user's leads/requests.
+         */
+        get: operations["v1_crm_dashboard_requests_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/requests/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Request detail
+         * @description GET /api/v1/crm/dashboard/requests/{id}/ — detail + activity timeline.
+         */
+        get: operations["v1_crm_dashboard_requests_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/requests/{id}/message/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Send message on request
+         * @description POST /api/v1/crm/dashboard/requests/{id}/message/ — send message on a request.
+         */
+        post: operations["v1_crm_dashboard_requests_message_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/tickets/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my tickets
+         * @description GET  /api/v1/crm/dashboard/tickets/ — list user's support tickets
+         *     POST /api/v1/crm/dashboard/tickets/ — create new support ticket
+         */
+        get: operations["v1_crm_dashboard_tickets_list"];
+        put?: never;
+        /**
+         * Create support ticket
+         * @description GET  /api/v1/crm/dashboard/tickets/ — list user's support tickets
+         *     POST /api/v1/crm/dashboard/tickets/ — create new support ticket
+         */
+        post: operations["v1_crm_dashboard_tickets_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/tickets/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Ticket detail
+         * @description GET /api/v1/crm/dashboard/tickets/{id}/ — ticket detail + messages.
+         */
+        get: operations["v1_crm_dashboard_tickets_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/dashboard/tickets/{id}/messages/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reply to ticket
+         * @description POST /api/v1/crm/dashboard/tickets/{id}/messages/ — reply to ticket.
+         */
+        post: operations["v1_crm_dashboard_tickets_messages_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/guest/requests/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Lookup guest requests by tracking token
+         * @description GET /api/v1/crm/guest/requests/?token=XXX — lookup guest requests by token.
+         */
+        get: operations["v1_crm_guest_requests_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/guest/requests/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Guest request detail
+         * @description GET /api/v1/crm/guest/requests/{id}/?token=XXX — guest request detail.
+         */
+        get: operations["v1_crm_guest_requests_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/guest/tickets/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Guest create support ticket
+         * @description POST /api/v1/crm/guest/tickets/ — guest creates support ticket.
+         */
+        post: operations["v1_crm_guest_tickets_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/guest/tickets/{id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Guest ticket detail
+         * @description GET /api/v1/crm/guest/tickets/{id}/?token=XXX — guest ticket detail.
+         */
+        get: operations["v1_crm_guest_tickets_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/crm/guest/tickets/{id}/messages/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Guest reply to ticket
+         * @description POST /api/v1/crm/guest/tickets/{id}/messages/?token=XXX — guest replies.
+         */
+        post: operations["v1_crm_guest_tickets_messages_create"];
         delete?: never;
         options?: never;
         head?: never;
@@ -668,6 +1142,180 @@ export interface paths {
          *     the currently-resolved language instead, via parler's `.translated()`.
          */
         get: operations["v1_industries_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/notifications/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my notifications
+         * @description GET /api/v1/notifications/ — list user's notifications.
+         */
+        get: operations["v1_notifications_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/notifications/{id}/mark-read/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mark notification as read
+         * @description POST /api/v1/notifications/{id}/mark-read/ — mark single as read.
+         */
+        post: operations["v1_notifications_mark_read_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/notifications/mark-all-read/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mark all notifications as read
+         * @description POST /api/v1/notifications/mark-all-read/ — mark all as read.
+         */
+        post: operations["v1_notifications_mark_all_read_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/notifications/preferences/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get notification preferences
+         * @description GET  /api/v1/notifications/preferences/ — get preferences
+         *     PUT  /api/v1/notifications/preferences/ — update preferences
+         */
+        get: operations["v1_notifications_preferences_list"];
+        /**
+         * Update notification preferences
+         * @description GET  /api/v1/notifications/preferences/ — get preferences
+         *     PUT  /api/v1/notifications/preferences/ — update preferences
+         */
+        put: operations["v1_notifications_preferences_update"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/notifications/unread-count/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Unread notification count
+         * @description GET /api/v1/notifications/unread-count/ — unread count for badge.
+         */
+        get: operations["v1_notifications_unread_count_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/partners/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_partners_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/partners/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_partners_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/portfolio/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_portfolio_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/portfolio/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_portfolio_retrieve"];
         put?: never;
         post?: never;
         delete?: never;
@@ -859,6 +1507,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/tech-expertise/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_tech_expertise_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/tech-expertise/{slug}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Mix into any ReadOnlyModelViewSet exposing published content publicly. */
+        get: operations["v1_tech_expertise_retrieve"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/technologies/": {
         parameters: {
             query?: never;
@@ -931,6 +1613,48 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        AICapability: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly name: string;
+            slug: string;
+            readonly description: string;
+            category: components["schemas"]["AICapabilityCategoryEnum"];
+            readonly category_display: string;
+            maturity_level?: components["schemas"]["MaturityLevelEnum"];
+            readonly maturity_level_display: string;
+            /** @description Icon class or emoji. */
+            icon?: string;
+            /** Format: uri */
+            demo_url?: string;
+            readonly cover_image: components["schemas"]["MediaAsset"];
+            related_services?: string[];
+            readonly technologies: components["schemas"]["Technology"][];
+            /** Active */
+            is_active?: boolean;
+            /** Display order */
+            order?: number;
+        };
+        /**
+         * @description * `nlp` - NLP
+         *     * `computer_vision` - Computer Vision
+         *     * `predictive_analytics` - Predictive Analytics
+         *     * `generative_ai` - Generative AI
+         *     * `automation` - Automation
+         *     * `rag_agents` - RAG & Agents
+         *     * `mlops` - MLOps
+         * @enum {string}
+         */
+        AICapabilityCategoryEnum: "nlp" | "computer_vision" | "predictive_analytics" | "generative_ai" | "automation" | "rag_agents" | "mlops";
+        /** @description Lightweight message serializer for conversation history. */
+        AIMessageHistory: {
+            /** Format: uuid */
+            id: string;
+            role: string;
+            content: string;
+            /** Format: date-time */
+            created_at: string;
+        };
         AvailableSlot: {
             /** Format: uuid */
             id: string;
@@ -950,13 +1674,19 @@ export interface components {
             /** Format: uuid */
             id: string;
             readonly full_name: string;
+            readonly bio: string;
+            readonly role_title: string;
+            slug: string;
+            avatar: components["schemas"]["MediaAsset"] | null;
+            linkedin_url: string;
+            github_url: string;
         };
         BlogCategory: {
             /** Format: uuid */
             readonly id: string;
-            name: string;
+            readonly name: string;
             slug: string;
-            description?: string;
+            readonly description: string;
             /** Display order */
             order?: number;
         };
@@ -1009,7 +1739,7 @@ export interface components {
         BlogTag: {
             /** Format: uuid */
             readonly id: string;
-            name: string;
+            readonly name: string;
             slug: string;
         };
         /**
@@ -1062,7 +1792,7 @@ export interface components {
             /** Format: uuid */
             id: string;
             media: components["schemas"]["MediaAsset"];
-            caption: string;
+            readonly caption: string;
             order: number;
         };
         CaseStudyList: {
@@ -1080,6 +1810,25 @@ export interface components {
             /** Format: date-time */
             published_at?: string | null;
         };
+        Certification: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly name: string;
+            readonly issuer: string;
+            readonly badge_image: components["schemas"]["MediaAsset"];
+            /** Format: uri */
+            credential_url?: string;
+            credential_id?: string;
+            /** Format: date */
+            issue_date?: string | null;
+            /** Format: date */
+            expiry_date?: string | null;
+            related_services?: string[];
+            /** Active */
+            is_active?: boolean;
+            /** Display order */
+            order?: number;
+        };
         /**
          * @description Allows authenticated users to change their own password.
          *     OAuth-only users (no local password) should use the reset flow instead.
@@ -1090,6 +1839,15 @@ export interface components {
             new_password_confirm: string;
             current_refresh?: string;
         };
+        /**
+         * @description * `email` - Email
+         *     * `sms` - SMS
+         *     * `whatsapp` - WhatsApp
+         *     * `slack` - Slack
+         *     * `in_app` - In-App
+         * @enum {string}
+         */
+        ChannelEnum: "email" | "sms" | "whatsapp" | "slack" | "in_app";
         ChatRequestRequest: {
             session_id?: string;
             message: string;
@@ -1101,7 +1859,16 @@ export interface components {
             session_id: string;
             reply: string;
             lead_captured: boolean;
+            lead_captured_this_turn: boolean;
         };
+        /**
+         * @description * `basic` - Basic
+         *     * `standard` - Standard
+         *     * `advanced` - Advanced
+         *     * `enterprise` - Enterprise
+         * @enum {string}
+         */
+        ComplexityTierEnum: "basic" | "standard" | "advanced" | "enterprise";
         ConsultationBookingAck: {
             /** Format: uuid */
             readonly id: string;
@@ -1112,18 +1879,8 @@ export interface components {
             readonly scheduled_time: string;
             readonly timezone: string;
             readonly meeting_type: components["schemas"]["MeetingTypeEnum"];
-            readonly status: components["schemas"]["ConsultationBookingAckStatusEnum"];
+            readonly status: components["schemas"]["Status32aEnum"];
         };
-        /**
-         * @description * `pending` - Pending Confirmation
-         *     * `confirmed` - Confirmed
-         *     * `rescheduled` - Rescheduled
-         *     * `completed` - Completed
-         *     * `cancelled` - Cancelled
-         *     * `no_show` - No Show
-         * @enum {string}
-         */
-        ConsultationBookingAckStatusEnum: "pending" | "confirmed" | "rescheduled" | "completed" | "cancelled" | "no_show";
         ConsultationBookingCreateRequest: {
             full_name: string;
             /** Format: email */
@@ -1182,6 +1939,210 @@ export interface components {
             /** @default en */
             language: string;
         };
+        /** @description Full conversation with all messages. */
+        ConversationHistory: {
+            /** Format: uuid */
+            id: string;
+            session_id: string;
+            channel: string;
+            language: string;
+            lead_captured: boolean;
+            /** Format: date-time */
+            started_at: string;
+            /** Format: date-time */
+            ended_at: string | null;
+            page_url: string;
+            messages: components["schemas"]["AIMessageHistory"][];
+        };
+        /**
+         * @description Summary serializer for conversation list view.
+         *
+         *     Expects annotated _message_count, _last_role, _last_content,
+         *     _last_created_at from the view's queryset — avoids N+1.
+         */
+        ConversationList: {
+            /** Format: uuid */
+            id: string;
+            session_id: string;
+            channel: string;
+            language: string;
+            lead_captured: boolean;
+            /** Format: date-time */
+            started_at: string;
+            readonly message_count: string;
+            readonly last_message: string;
+        };
+        /** @description For creating a new support ticket. */
+        CreateTicketRequest: {
+            title: string;
+            description: string;
+            ticket_type: components["schemas"]["TicketTypeEnum"];
+            /** @default normal */
+            priority: components["schemas"]["PriorityEnum"];
+            /** Format: uuid */
+            related_lead?: string | null;
+            /** Format: uuid */
+            related_service?: string | null;
+        };
+        DashboardBooking: {
+            /** Format: uuid */
+            readonly id: string;
+            /** Format: uuid */
+            readonly lead: string;
+            /** Format: date */
+            readonly scheduled_date: string;
+            /** Format: time */
+            readonly scheduled_time: string;
+            readonly timezone: string;
+            readonly meeting_type: components["schemas"]["MeetingTypeEnum"];
+            readonly meeting_type_display: string;
+            readonly status: components["schemas"]["Status32aEnum"];
+            readonly status_display: string;
+            /** Format: uri */
+            readonly meeting_link: string;
+            /** Internal notes */
+            readonly notes: string;
+            readonly reschedule_count: number;
+            /** Format: date-time */
+            readonly confirmed_at: string | null;
+            /** Format: date-time */
+            readonly cancelled_at: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        DashboardCalculation: {
+            /** Format: uuid */
+            readonly id: string;
+            /** Format: uuid */
+            readonly selected_service: string | null;
+            readonly service_name: string;
+            readonly complexity_tier: components["schemas"]["ComplexityTierEnum"];
+            readonly selected_features: unknown;
+            /**
+             * Estimated price (min)
+             * Format: decimal
+             */
+            readonly estimated_price_min: string | null;
+            /**
+             * Estimated price (max)
+             * Format: decimal
+             */
+            readonly estimated_price_max: string | null;
+            readonly currency: string;
+            readonly converted: boolean;
+            /** Format: uuid */
+            readonly converted_lead: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        DashboardLead: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly lead_type: components["schemas"]["LeadTypeEnum"];
+            readonly lead_type_display: string;
+            readonly status: components["schemas"]["Status021Enum"];
+            readonly status_display: string;
+            readonly priority: components["schemas"]["PriorityEnum"];
+            readonly priority_display: string;
+            readonly full_name: string;
+            /** Format: email */
+            readonly email: string;
+            readonly company: string;
+            /**
+             * Service of interest
+             * Format: uuid
+             */
+            readonly service_interest: string | null;
+            readonly message: string;
+            readonly quote_detail: components["schemas"]["QuoteRequestDetail"];
+            /**
+             * Guest tracking token
+             * @description Random token allowing guests to track their request status.
+             */
+            readonly guest_token: string | null;
+            readonly tags: unknown;
+            /** Format: date */
+            readonly expected_close_date: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+        };
+        /** @description For sending a message on a lead (visible to staff). */
+        DashboardLeadMessageRequest: {
+            message: string;
+        };
+        /** @description For requesting a reschedule of a booking. */
+        DashboardRescheduleRequest: {
+            /** Format: date */
+            new_date: string;
+            /** Format: time */
+            new_time: string;
+            reason?: string;
+        };
+        DashboardSummary: {
+            total_requests: number;
+            active_requests: number;
+            total_bookings: number;
+            upcoming_bookings: number;
+            total_tickets: number;
+            open_tickets: number;
+            total_calculations: number;
+        };
+        DashboardTicket: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly title: string;
+            readonly slug: string;
+            readonly ticket_type: components["schemas"]["TicketTypeEnum"];
+            readonly ticket_type_display: string;
+            readonly status: components["schemas"]["StatusAd7Enum"];
+            readonly status_display: string;
+            readonly priority: components["schemas"]["PriorityEnum"];
+            readonly priority_display: string;
+            readonly description: string;
+            /** Format: uuid */
+            readonly assigned_to: string | null;
+            /** Format: uuid */
+            readonly related_lead: string | null;
+            /** Format: uuid */
+            readonly related_service: string | null;
+            readonly resolution_summary: string;
+            /** Format: date-time */
+            readonly resolved_at: string | null;
+            /** Format: date-time */
+            readonly closed_at: string | null;
+            readonly messages: components["schemas"]["SupportTicketMessage"][];
+            readonly unread_message_count: string;
+            /** Guest tracking token */
+            readonly guest_token: string | null;
+            /** Format: email */
+            readonly guest_email: string;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+        };
+        /** @description Lighter serializer for ticket list views (no messages). */
+        DashboardTicketList: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly title: string;
+            readonly slug: string;
+            readonly ticket_type: components["schemas"]["TicketTypeEnum"];
+            readonly ticket_type_display: string;
+            readonly status: components["schemas"]["StatusAd7Enum"];
+            readonly status_display: string;
+            readonly priority: components["schemas"]["PriorityEnum"];
+            readonly priority_display: string;
+            /** Format: uuid */
+            readonly assigned_to: string | null;
+            readonly unread_message_count: string;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+        };
         /**
          * @description * `engineering` - Engineering
          *     * `design` - Design
@@ -1195,6 +2156,13 @@ export interface components {
          */
         DepartmentEnum: "engineering" | "design" | "ai" | "devops" | "management" | "sales" | "qa" | "other";
         /**
+         * @description * `instant` - Instant
+         *     * `daily` - Daily
+         *     * `weekly` - Weekly
+         * @enum {string}
+         */
+        DigestFrequencyEnum: "instant" | "daily" | "weekly";
+        /**
          * @description Standard credential login.
          *     Returns the validated user object via .validated_data["user"].
          */
@@ -1207,6 +2175,34 @@ export interface components {
         EmailVerifyRequest: {
             token: string;
         };
+        /**
+         * @description * `lead_created` - Lead Created
+         *     * `lead_assigned` - Lead Assigned
+         *     * `lead_status_changed` - Lead Status Changed
+         *     * `quote_requested` - Quote Requested
+         *     * `consultation_booked` - Consultation Booked
+         *     * `consultation_reminder` - Consultation Reminder
+         *     * `consultation_cancelled` - Consultation Cancelled
+         *     * `newsletter_subscribed` - Newsletter Subscribed
+         *     * `ai_lead_captured` - AI Assistant Captured Lead
+         *     * `content_submitted_for_review` - Content Submitted for Review
+         *     * `content_approved` - Content Approved
+         *     * `content_published` - Content Published
+         *     * `content_rejected` - Content Rejected
+         *     * `system_alert` - System Alert
+         *     * `custom` - Custom
+         *     * `ticket_created` - Ticket Created
+         *     * `ticket_updated` - Ticket Updated
+         *     * `ticket_message` - Ticket Message
+         *     * `ticket_resolved` - Ticket Resolved
+         *     * `quote_received` - Quote Received
+         *     * `booking_confirmed` - Booking Confirmed
+         *     * `booking_reminder` - Booking Reminder
+         *     * `request_status_changed` - Request Status Changed
+         *     * `request_submitted` - Request Submitted
+         * @enum {string}
+         */
+        EventTypeEnum: "lead_created" | "lead_assigned" | "lead_status_changed" | "quote_requested" | "consultation_booked" | "consultation_reminder" | "consultation_cancelled" | "newsletter_subscribed" | "ai_lead_captured" | "content_submitted_for_review" | "content_approved" | "content_published" | "content_rejected" | "system_alert" | "custom" | "ticket_created" | "ticket_updated" | "ticket_message" | "ticket_resolved" | "quote_received" | "booking_confirmed" | "booking_reminder" | "request_status_changed" | "request_submitted";
         FAQ: {
             /** Format: uuid */
             readonly id: string;
@@ -1257,6 +2253,100 @@ export interface components {
             /** @description Google ID token returned by @react-oauth/google. */
             credential: string;
         };
+        /** @description For guests creating a support ticket. */
+        GuestCreateTicketRequest: {
+            title: string;
+            description: string;
+            ticket_type: components["schemas"]["TicketTypeEnum"];
+            /** Format: email */
+            guest_email: string;
+            /** @default normal */
+            priority: components["schemas"]["PriorityEnum"];
+        };
+        GuestLead: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly lead_type: components["schemas"]["LeadTypeEnum"];
+            readonly lead_type_display: string;
+            readonly status: components["schemas"]["Status021Enum"];
+            readonly status_display: string;
+            readonly full_name: string;
+            /** Format: email */
+            readonly email: string;
+            readonly company: string;
+            readonly message: string;
+            /**
+             * Guest tracking token
+             * @description Random token allowing guests to track their request status.
+             */
+            readonly guest_token: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+        };
+        /** @description Extended serializer with activity timeline for guest view. */
+        GuestLeadDetail: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly lead_type: components["schemas"]["LeadTypeEnum"];
+            readonly lead_type_display: string;
+            readonly status: components["schemas"]["Status021Enum"];
+            readonly status_display: string;
+            readonly full_name: string;
+            /** Format: email */
+            readonly email: string;
+            readonly company: string;
+            readonly message: string;
+            /**
+             * Guest tracking token
+             * @description Random token allowing guests to track their request status.
+             */
+            readonly guest_token: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+            readonly activities: string;
+        };
+        GuestTicket: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly title: string;
+            readonly slug: string;
+            readonly ticket_type: components["schemas"]["TicketTypeEnum"];
+            readonly ticket_type_display: string;
+            readonly status: components["schemas"]["StatusAd7Enum"];
+            readonly status_display: string;
+            readonly priority: components["schemas"]["PriorityEnum"];
+            readonly description: string;
+            /** Format: email */
+            readonly guest_email: string;
+            /** Guest tracking token */
+            readonly guest_token: string | null;
+            readonly messages: components["schemas"]["GuestTicketMessage"][];
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+        };
+        GuestTicketMessage: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly author_name: string;
+            readonly author_display: string;
+            /** Staff message */
+            readonly author_is_staff: boolean;
+            /** Message */
+            readonly body: string;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        /** @description For guests adding a message to their ticket. */
+        GuestTicketMessageCreateRequest: {
+            body: string;
+            author_name?: string;
+        };
         Industry: {
             /** Format: uuid */
             readonly id: string;
@@ -1272,22 +2362,10 @@ export interface components {
             readonly id: string;
             readonly lead_type: components["schemas"]["LeadTypeEnum"];
             readonly lead_type_display: string;
-            readonly status: components["schemas"]["LeadAckStatusEnum"];
+            readonly status: components["schemas"]["Status021Enum"];
             /** Format: date-time */
             readonly created_at: string;
         };
-        /**
-         * @description * `new` - New
-         *     * `contacted` - Contacted
-         *     * `qualified` - Qualified
-         *     * `proposal_sent` - Proposal Sent
-         *     * `negotiation` - Negotiation
-         *     * `won` - Won
-         *     * `lost` - Lost
-         *     * `spam` - Spam
-         * @enum {string}
-         */
-        LeadAckStatusEnum: "new" | "contacted" | "qualified" | "proposal_sent" | "negotiation" | "won" | "lost" | "spam";
         /**
          * @description * `contact` - Contact Form
          *     * `quote` - Quote Request
@@ -1317,6 +2395,13 @@ export interface components {
         MagicLinkVerifyRequest: {
             token: string;
         };
+        /**
+         * @description * `research` - Research
+         *     * `production` - Production
+         *     * `experimental` - Experimental
+         * @enum {string}
+         */
+        MaturityLevelEnum: "research" | "production" | "experimental";
         MediaAsset: {
             /** Format: uuid */
             readonly id: string;
@@ -1353,6 +2438,65 @@ export interface components {
             /** Format: date-time */
             readonly subscribed_at: string;
         };
+        NotificationList: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly event_type: components["schemas"]["EventTypeEnum"];
+            readonly event_type_display: string;
+            readonly channel: components["schemas"]["ChannelEnum"];
+            readonly channel_display: string;
+            readonly subject: string;
+            /** Rendered body */
+            readonly body: string;
+            readonly priority: components["schemas"]["PriorityEnum"];
+            readonly priority_display: string;
+            readonly status: components["schemas"]["NotificationListStatusEnum"];
+            readonly status_display: string;
+            /** Read */
+            readonly is_read: boolean;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly sent_at: string | null;
+            /** Format: date-time */
+            readonly read_at: string | null;
+        };
+        /**
+         * @description * `pending` - Pending
+         *     * `queued` - Queued
+         *     * `sent` - Sent
+         *     * `delivered` - Delivered
+         *     * `read` - Read
+         *     * `failed` - Failed
+         *     * `cancelled` - Cancelled
+         * @enum {string}
+         */
+        NotificationListStatusEnum: "pending" | "queued" | "sent" | "delivered" | "read" | "failed" | "cancelled";
+        NotificationPreference: {
+            /** Format: uuid */
+            readonly id: string;
+            event_type: components["schemas"]["EventTypeEnum"];
+            readonly event_type_display: string;
+            channel: components["schemas"]["ChannelEnum"];
+            readonly channel_display: string;
+            /** Enabled */
+            is_enabled?: boolean;
+            digest_frequency?: components["schemas"]["DigestFrequencyEnum"];
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
+        };
+        /** @description Bulk update notification preferences. */
+        NotificationPreferenceUpdateRequest: {
+            /** @description List of {event_type, channel, is_enabled, digest_frequency} dicts. */
+            preferences: {
+                [key: string]: unknown;
+            }[];
+        };
+        NotificationUnreadCount: {
+            unread_count: number;
+        };
         Organization: {
             legal_name: string;
             logo: string | null;
@@ -1362,6 +2506,21 @@ export interface components {
             /** Format: email */
             contact_email: string;
             contact_phone: string;
+        };
+        PaginatedAICapabilityList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["AICapability"][];
         };
         PaginatedBlogCategoryList: {
             /** @example 123 */
@@ -1423,6 +2582,81 @@ export interface components {
             previous?: string | null;
             results: components["schemas"]["CaseStudyList"][];
         };
+        PaginatedCertificationList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["Certification"][];
+        };
+        PaginatedDashboardBookingList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["DashboardBooking"][];
+        };
+        PaginatedDashboardCalculationList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["DashboardCalculation"][];
+        };
+        PaginatedDashboardLeadList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["DashboardLead"][];
+        };
+        PaginatedDashboardTicketListList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["DashboardTicketList"][];
+        };
         PaginatedFAQList: {
             /** @example 123 */
             count: number;
@@ -1452,6 +2686,36 @@ export interface components {
              */
             previous?: string | null;
             results: components["schemas"]["Industry"][];
+        };
+        PaginatedPartnerList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["Partner"][];
+        };
+        PaginatedPortfolioProjectListList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["PortfolioProjectList"][];
         };
         PaginatedProcessStepList: {
             /** @example 123 */
@@ -1513,6 +2777,21 @@ export interface components {
             previous?: string | null;
             results: components["schemas"]["TeamMember"][];
         };
+        PaginatedTechExpertiseAreaList: {
+            /** @example 123 */
+            count: number;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=4
+             */
+            next?: string | null;
+            /**
+             * Format: uri
+             * @example http://api.example.org/accounts/?page=2
+             */
+            previous?: string | null;
+            results: components["schemas"]["TechExpertiseArea"][];
+        };
         PaginatedTechnologyList: {
             /** @example 123 */
             count: number;
@@ -1543,6 +2822,33 @@ export interface components {
             previous?: string | null;
             results: components["schemas"]["Testimonial"][];
         };
+        Partner: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly name: string;
+            slug: string;
+            readonly logo: components["schemas"]["MediaAsset"];
+            /** Format: uri */
+            website_url?: string;
+            partner_type: components["schemas"]["PartnerTypeEnum"];
+            readonly partner_type_display: string;
+            tier?: components["schemas"]["TierEnum"] | components["schemas"]["BlankEnum"];
+            readonly tier_display: string;
+            readonly description: string;
+            /** Active */
+            is_active?: boolean;
+            /** Display order */
+            order?: number;
+        };
+        /**
+         * @description * `technology` - Technology
+         *     * `implementation` - Implementation
+         *     * `cloud` - Cloud
+         *     * `integration` - Integration
+         *     * `reseller` - Reseller
+         * @enum {string}
+         */
+        PartnerTypeEnum: "technology" | "implementation" | "cloud" | "integration" | "reseller";
         /** @description Validates the raw reset token and new password. */
         PasswordResetConfirmRequest: {
             token: string;
@@ -1566,6 +2872,71 @@ export interface components {
             privacy_accepted_version?: string | null;
             profile?: components["schemas"]["UserProfileRequest"];
         };
+        PortfolioGalleryImage: {
+            /** Format: uuid */
+            id: string;
+            image: components["schemas"]["MediaAsset"];
+            readonly caption: string;
+            order: number;
+        };
+        PortfolioProjectDetail: {
+            /** Format: uuid */
+            readonly id: string;
+            slug: string;
+            readonly title: string;
+            readonly short_description: string;
+            readonly cover_image: components["schemas"]["MediaAsset"];
+            readonly services: string;
+            readonly technologies: components["schemas"]["Technology"][];
+            readonly industry: components["schemas"]["Industry"];
+            /** Format: uri */
+            project_url?: string;
+            readonly client_name: string;
+            completion_year?: number | null;
+            readonly gallery: components["schemas"]["PortfolioGalleryImage"][];
+            /** Featured */
+            is_featured?: boolean;
+            /** Published */
+            is_published?: boolean;
+            /** Display order */
+            order?: number;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
+        PortfolioProjectList: {
+            /** Format: uuid */
+            readonly id: string;
+            slug: string;
+            readonly title: string;
+            readonly short_description: string;
+            readonly cover_image: components["schemas"]["MediaAsset"];
+            readonly client_name: string;
+            completion_year?: number | null;
+            readonly industry: components["schemas"]["Industry"];
+            /** Featured */
+            is_featured?: boolean;
+            /** Published */
+            is_published?: boolean;
+            /** Display order */
+            order?: number;
+        };
+        /**
+         * @description * `fixed` - Fixed Price
+         *     * `hourly` - Hourly Rate
+         *     * `quote` - Custom Quote
+         *     * `subscription` - Subscription
+         *     * `retainer` - Retainer
+         * @enum {string}
+         */
+        PricingModelEnum: "fixed" | "hourly" | "quote" | "subscription" | "retainer";
+        /**
+         * @description * `low` - Low
+         *     * `normal` - Normal
+         *     * `high` - High
+         *     * `urgent` - Urgent
+         * @enum {string}
+         */
+        PriorityEnum: "low" | "normal" | "high" | "urgent";
         ProcessStep: {
             /** Format: uuid */
             readonly id: string;
@@ -1607,6 +2978,36 @@ export interface components {
             /** @default USD */
             currency: string;
         };
+        QuoteRequestDetail: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly requested_services: string[];
+            readonly requested_service_names: string;
+            readonly project_description: string;
+            /**
+             * Estimated budget (min)
+             * Format: decimal
+             */
+            readonly estimated_budget_min: string | null;
+            /**
+             * Estimated budget (max)
+             * Format: decimal
+             */
+            readonly estimated_budget_max: string | null;
+            readonly currency: string;
+            readonly version: number;
+            /**
+             * Quoted price (min)
+             * Format: decimal
+             */
+            readonly quoted_price_min: string | null;
+            /**
+             * Quoted price (max)
+             * Format: decimal
+             */
+            readonly quoted_price_max: string | null;
+            readonly quoted_currency: string;
+        };
         SEOSettingsResponse: {
             site_name: string;
             default_meta_title_suffix: string;
@@ -1620,7 +3021,7 @@ export interface components {
         ServiceCategory: {
             /** Format: uuid */
             readonly id: string;
-            name: string;
+            readonly name: string;
             slug: string;
             /** @description Icon identifier used by the frontend, e.g. 'lucide:cpu'. */
             icon?: string;
@@ -1644,26 +3045,86 @@ export interface components {
             readonly problems_we_solve: string;
             readonly features: string;
             readonly benefits: string;
+            /** @description Icon identifier used by the frontend, e.g. 'lucide:code'. */
             icon?: string;
             readonly hero_image: components["schemas"]["MediaAsset"];
+            readonly thumbnail_image: components["schemas"]["MediaAsset"];
+            readonly video_presentation: components["schemas"]["MediaAsset"];
+            readonly brochure: components["schemas"]["MediaAsset"];
             readonly category: components["schemas"]["ServiceCategory"];
-            readonly technologies: components["schemas"]["Technology"][];
-            readonly industries: components["schemas"]["Industry"][];
-            readonly faqs: string;
+            /**
+             * @description Tier used for filtering and pricing display.
+             *
+             *     * `standard` - Standard
+             *     * `premium` - Premium
+             *     * `enterprise` - Enterprise
+             */
+            service_level?: components["schemas"]["ServiceLevelEnum"];
+            readonly service_level_display: string;
+            /**
+             * Enterprise service
+             * @description Flag for dedicated enterprise-grade service pages.
+             */
+            is_enterprise?: boolean;
             /** Featured */
             is_featured?: boolean;
+            readonly technologies: components["schemas"]["Technology"][];
+            /**
+             * Grouped tech stack
+             * @description Structured technology groups for display, e.g. {"Frontend": ["React", "Next.js"], "Backend": ["Django", "Node.js"], "Cloud": ["AWS", "GCP"]}.
+             */
+            tech_stack_grouped?: unknown;
+            readonly industries: components["schemas"]["Industry"][];
+            pricing_model?: components["schemas"]["PricingModelEnum"] | components["schemas"]["BlankEnum"];
+            readonly pricing_model_display: string;
+            /**
+             * Format: decimal
+             * @description Indicative starting price for display purposes.
+             */
+            starting_price?: string | null;
+            /** @description ISO 4217 currency code, e.g. 'USD', 'EUR'. */
+            currency?: string;
+            /** @description e.g. '4-6 weeks', '2-3 months'. Shown on the service page. */
+            delivery_time_estimate?: string;
+            /** @description e.g. '3-8 engineers', 'Dedicated team of 5+'. */
+            team_size_range?: string;
+            readonly cta_text: string;
+            readonly cta_url: string;
+            /** @description Structured metrics for display, e.g. {"projects_delivered": 150, "client_satisfaction": 98, "years_experience": 12}. */
+            key_metrics?: unknown;
+            /** @description List of enterprise-tier capabilities, e.g. ["Dedicated team", "SLA guarantee", "24/7 support", "Custom integrations"]. */
+            enterprise_features?: unknown;
+            readonly hero_images: string;
+            readonly process_steps: string;
+            readonly deliverables: string;
+            readonly add_ons: string;
+            readonly comparison_rows: string;
+            readonly client_logos: string;
+            readonly service_testimonials: string;
+            readonly documents: string;
+            readonly slas: string;
+            readonly related_services: string;
+            readonly faqs: string;
             /** Format: date-time */
             published_at?: string | null;
             readonly seo: {
                 [key: string]: unknown;
             };
         };
+        /**
+         * @description * `standard` - Standard
+         *     * `premium` - Premium
+         *     * `enterprise` - Enterprise
+         * @enum {string}
+         */
+        ServiceLevelEnum: "standard" | "premium" | "enterprise";
         ServiceList: {
             /** Format: uuid */
             readonly id: string;
             readonly slug: string;
             readonly name: string;
             readonly short_description: string;
+            /** @description Icon identifier used by the frontend, e.g. 'lucide:code'. */
             icon?: string;
             readonly hero_image: components["schemas"]["MediaAsset"];
             readonly category: components["schemas"]["ServiceCategory"];
@@ -1688,14 +3149,65 @@ export interface components {
          * @enum {string}
          */
         SourceEnum: "manual" | "clutch" | "google" | "linkedin" | "trustpilot";
+        /**
+         * @description * `new` - New
+         *     * `contacted` - Contacted
+         *     * `qualified` - Qualified
+         *     * `proposal_sent` - Proposal Sent
+         *     * `negotiation` - Negotiation
+         *     * `won` - Won
+         *     * `lost` - Lost
+         *     * `spam` - Spam
+         * @enum {string}
+         */
+        Status021Enum: "new" | "contacted" | "qualified" | "proposal_sent" | "negotiation" | "won" | "lost" | "spam";
+        /**
+         * @description * `pending` - Pending Confirmation
+         *     * `confirmed` - Confirmed
+         *     * `rescheduled` - Rescheduled
+         *     * `completed` - Completed
+         *     * `cancelled` - Cancelled
+         *     * `no_show` - No Show
+         * @enum {string}
+         */
+        Status32aEnum: "pending" | "confirmed" | "rescheduled" | "completed" | "cancelled" | "no_show";
+        /**
+         * @description * `open` - Open
+         *     * `in_progress` - In Progress
+         *     * `waiting_customer` - Waiting on Customer
+         *     * `waiting_admin` - Waiting on Admin
+         *     * `resolved` - Resolved
+         *     * `closed` - Closed
+         * @enum {string}
+         */
+        StatusAd7Enum: "open" | "in_progress" | "waiting_customer" | "waiting_admin" | "resolved" | "closed";
+        SupportTicketMessage: {
+            /** Format: uuid */
+            readonly id: string;
+            /**
+             * Author
+             * Format: uuid
+             */
+            readonly author_user: string | null;
+            readonly author_name: string;
+            readonly author_display: string;
+            /** Staff message */
+            readonly author_is_staff: boolean;
+            /** Message */
+            readonly body: string;
+            /** Read */
+            readonly is_read: boolean;
+            /** Format: date-time */
+            readonly created_at: string;
+        };
         TeamMember: {
             /** Format: uuid */
             readonly id: string;
-            full_name: string;
+            readonly full_name: string;
             slug: string;
-            role_title: string;
+            readonly role_title: string;
             department?: components["schemas"]["DepartmentEnum"];
-            bio?: string;
+            readonly bio: string;
             readonly photo: components["schemas"]["MediaAsset"];
             /** Format: uri */
             linkedin_url?: string;
@@ -1711,10 +3223,39 @@ export interface components {
             /** Display order */
             order?: number;
         };
+        TechExpertiseArea: {
+            /** Format: uuid */
+            readonly id: string;
+            readonly name: string;
+            slug: string;
+            readonly description: string;
+            /** @description Icon class or emoji. */
+            icon?: string;
+            category: components["schemas"]["TechExpertiseAreaCategoryEnum"];
+            readonly category_display: string;
+            readonly technologies: components["schemas"]["Technology"][];
+            case_studies?: string[];
+            /** Active */
+            is_active?: boolean;
+            /** Display order */
+            order?: number;
+        };
+        /**
+         * @description * `architecture` - Architecture
+         *     * `cloud` - Cloud
+         *     * `data_engineering` - Data Engineering
+         *     * `ai` - AI
+         *     * `security` - Security
+         *     * `mobile` - Mobile
+         *     * `devops` - DevOps
+         *     * `qa` - QA
+         * @enum {string}
+         */
+        TechExpertiseAreaCategoryEnum: "architecture" | "cloud" | "data_engineering" | "ai" | "security" | "mobile" | "devops" | "qa";
         Technology: {
             /** Format: uuid */
             readonly id: string;
-            name: string;
+            readonly name: string;
             slug: string;
             category: components["schemas"]["TechnologyCategoryEnum"];
             icon?: string;
@@ -1739,11 +3280,11 @@ export interface components {
         Testimonial: {
             /** Format: uuid */
             readonly id: string;
-            client_name: string;
-            client_role?: string;
-            client_company?: string;
+            readonly client_name: string;
+            readonly client_role: string;
+            readonly client_company: string;
             readonly client_avatar: components["schemas"]["MediaAsset"];
-            quote: string;
+            readonly quote: string;
             /** @description 1 to 5 stars. */
             rating?: number;
             source?: components["schemas"]["SourceEnum"];
@@ -1758,6 +3299,28 @@ export interface components {
             /** Display order */
             order?: number;
         };
+        /** @description For adding a message to a ticket. */
+        TicketMessageCreateRequest: {
+            body: string;
+        };
+        /**
+         * @description * `general_inquiry` - General Inquiry
+         *     * `technical_support` - Technical Support
+         *     * `project_request` - Project Request
+         *     * `bug_report` - Bug Report
+         *     * `feedback` - Feedback
+         *     * `partnership` - Partnership
+         * @enum {string}
+         */
+        TicketTypeEnum: "general_inquiry" | "technical_support" | "project_request" | "bug_report" | "feedback" | "partnership";
+        /**
+         * @description * `silver` - Silver
+         *     * `gold` - Gold
+         *     * `platinum` - Platinum
+         *     * `diamond` - Diamond
+         * @enum {string}
+         */
+        TierEnum: "silver" | "gold" | "platinum" | "diamond";
         /**
          * @description * `asap` - ASAP
          *     * `within_1_month` - Within 1 month
@@ -1895,6 +3458,55 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    v1_ai_capabilities_list: {
+        parameters: {
+            query?: {
+                category?: string;
+                maturity_level?: string;
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedAICapabilityList"];
+                };
+            };
+        };
+    };
+    v1_ai_capabilities_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AICapability"];
+                };
+            };
+        };
+    };
     v1_assistant_chat_create: {
         parameters: {
             query?: never;
@@ -1916,6 +3528,46 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ChatResponse"];
+                };
+            };
+        };
+    };
+    v1_assistant_conversations_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConversationList"][];
+                };
+            };
+        };
+    };
+    v1_assistant_conversations_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConversationHistory"];
                 };
             };
         };
@@ -2483,6 +4135,55 @@ export interface operations {
             };
         };
     };
+    v1_certifications_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                related_services?: string[];
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedCertificationList"];
+                };
+            };
+        };
+    };
+    v1_certifications_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description A UUID string identifying this certification. */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Certification"];
+                };
+            };
+        };
+    };
     v1_crm_bookings_availability_list: {
         parameters: {
             query?: never;
@@ -2523,6 +4224,453 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ConsultationBookingAck"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardSummary"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_bookings_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedDashboardBookingList"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_bookings_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardBooking"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_bookings_cancel_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        detail?: string;
+                    };
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_bookings_reschedule_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DashboardRescheduleRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["DashboardRescheduleRequest"];
+                "multipart/form-data": components["schemas"]["DashboardRescheduleRequest"];
+            };
+        };
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    v1_crm_dashboard_calculations_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedDashboardCalculationList"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_calculations_convert_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardLead"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_requests_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedDashboardLeadList"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_requests_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardLead"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_requests_message_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DashboardLeadMessageRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["DashboardLeadMessageRequest"];
+                "multipart/form-data": components["schemas"]["DashboardLeadMessageRequest"];
+            };
+        };
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    v1_crm_dashboard_tickets_list: {
+        parameters: {
+            query?: {
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedDashboardTicketListList"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_tickets_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateTicketRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["CreateTicketRequest"];
+                "multipart/form-data": components["schemas"]["CreateTicketRequest"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardTicket"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_tickets_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardTicket"];
+                };
+            };
+        };
+    };
+    v1_crm_dashboard_tickets_messages_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TicketMessageCreateRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["TicketMessageCreateRequest"];
+                "multipart/form-data": components["schemas"]["TicketMessageCreateRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SupportTicketMessage"];
+                };
+            };
+        };
+    };
+    v1_crm_guest_requests_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuestLead"][];
+                };
+            };
+        };
+    };
+    v1_crm_guest_requests_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuestLeadDetail"];
+                };
+            };
+        };
+    };
+    v1_crm_guest_tickets_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GuestCreateTicketRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["GuestCreateTicketRequest"];
+                "multipart/form-data": components["schemas"]["GuestCreateTicketRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuestTicket"];
+                };
+            };
+        };
+    };
+    v1_crm_guest_tickets_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuestTicket"];
+                };
+            };
+        };
+    };
+    v1_crm_guest_tickets_messages_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GuestTicketMessageCreateRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["GuestTicketMessageCreateRequest"];
+                "multipart/form-data": components["schemas"]["GuestTicketMessageCreateRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GuestTicketMessage"];
                 };
             };
         };
@@ -2701,6 +4849,227 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Industry"];
+                };
+            };
+        };
+    };
+    v1_notifications_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationList"][];
+                };
+            };
+        };
+    };
+    v1_notifications_mark_read_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    v1_notifications_mark_all_read_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No response body */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    v1_notifications_preferences_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationPreference"][];
+                };
+            };
+        };
+    };
+    v1_notifications_preferences_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["NotificationPreferenceUpdateRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["NotificationPreferenceUpdateRequest"];
+                "multipart/form-data": components["schemas"]["NotificationPreferenceUpdateRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationPreference"][];
+                };
+            };
+        };
+    };
+    v1_notifications_unread_count_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NotificationUnreadCount"];
+                };
+            };
+        };
+    };
+    v1_partners_list: {
+        parameters: {
+            query?: {
+                is_active?: boolean;
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                partner_type?: string;
+                /** @description A search term. */
+                search?: string;
+                tier?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedPartnerList"];
+                };
+            };
+        };
+    };
+    v1_partners_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Partner"];
+                };
+            };
+        };
+    };
+    v1_portfolio_list: {
+        parameters: {
+            query?: {
+                industry?: string;
+                is_featured?: boolean;
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+                service?: string;
+                technology?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedPortfolioProjectListList"];
+                };
+            };
+        };
+    };
+    v1_portfolio_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PortfolioProjectDetail"];
                 };
             };
         };
@@ -2933,6 +5302,54 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TeamMember"];
+                };
+            };
+        };
+    };
+    v1_tech_expertise_list: {
+        parameters: {
+            query?: {
+                category?: string;
+                /** @description Which field to use when ordering the results. */
+                ordering?: string;
+                /** @description A page number within the paginated result set. */
+                page?: number;
+                /** @description A search term. */
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginatedTechExpertiseAreaList"];
+                };
+            };
+        };
+    };
+    v1_tech_expertise_retrieve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TechExpertiseArea"];
                 };
             };
         };

@@ -9,7 +9,7 @@
 import "server-only";
 
 export function getAutomexApiKey(): string {
-  return process.env.AUTOMEX_API_KEY?.trim() ?? "";
+  return (process.env.AUTOMEX_API_KEY ?? process.env.NEXT_PUBLIC_AUTOMEX_API_KEY ?? "").trim();
 }
 
 /**

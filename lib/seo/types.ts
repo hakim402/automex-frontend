@@ -7,6 +7,8 @@ export type PageType =
   | "home"
   | "about"
   | "contact"
+  | "services"       // services listing
+  | "serviceDetail"  // individual service
   | "crm"            // CRM overview
   | "bookCall"       // book a call
   | "contactSales"   // contact sales
@@ -20,6 +22,7 @@ export interface SeoMetadataOptions {
   customDescription?: string | null;
   ogImageUrl?: string | null;
   ogImageAlt?: string | null;
+  canonicalUrl?: string | null;
   noIndex?: boolean;
 }
 

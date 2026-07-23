@@ -1,18 +1,108 @@
 {
   "Header": {
-  "home": "Home",
-  "about": "About",
-  "contact": "Contact",
-  "crm": "CRM",
-  "crmOverview": "CRM Overview",
-  "bookCall": "Book a Call",
-  "requestQuote": "Request a Quote",
-  "contactSales": "Contact Sales",
-  "login": "Sign In",
-  "signUp": "Sign Up",
-  "dashboard": "Dashboard",
-  "logout": "Logout"
-},
+    "about": "About",
+    "aboutUs": "About Us",
+    "aiAgents": "AI Agents",
+    "aiAgentsDesc": "Autonomous agents that handle customer support, lead generation, and internal operations across channels.",
+    "aiAutomation": "Business Automation",
+    "aiAutomationDesc": "End-to-end workflow automation that connects your CRM, ERP, and business tools.",
+    "aiCapabilities": "AI Capabilities",
+    "aiComputerVision": "Computer Vision",
+    "aiComputerVisionDesc": "Image recognition, object detection, and visual inspection powered by deep learning.",
+    "aiGenerative": "Generative AI",
+    "aiGenerativeDesc": "Custom LLM-powered solutions for content generation, summarization, and intelligent assistants.",
+    "aiNlp": "Natural Language Processing",
+    "aiNlpDesc": "Text analysis, sentiment detection, translation, and document understanding at scale.",
+    "aiRag": "RAG Systems",
+    "aiRagDesc": "Retrieval-augmented generation that grounds AI responses in your proprietary data and documents.",
+    "aiSolutions": "AI Solutions",
+    "aiSolutionsDescription": "Explore our full range of AI capabilities — from generative models to computer vision and intelligent automation.",
+    "aiVoice": "Voice AI",
+    "aiVoiceDesc": "Speech recognition, voice bots, and real-time audio processing for customer-facing applications.",
+    "blog": "Blog",
+    "blogCategories": "Blog Categories",
+    "bookCall": "Book a Call",
+    "bookCallDesc": "Schedule a free 30-minute consultation with our AI and software experts.",
+    "careers": "Careers",
+    "caseStudies": "Case Studies",
+    "closeMenu": "Close menu",
+    "company": "Company",
+    "contact": "Contact",
+    "contactSales": "Contact Sales",
+    "contactSalesDesc": "Reach our sales team for enterprise-grade solutions and partnership opportunities.",
+    "crm": "CRM",
+    "crmOverview": "CRM Overview",
+    "crmOverviewDesc": "Your all-in-one hub for quotes, bookings, and support — track everything in one place.",
+    "dashboard": "Dashboard",
+    "downloads": "Downloads",
+    "expertise": "Expertise",
+    "faqs": "FAQs",
+    "featuredDescription": "Modernize your business with our end-to-end digital transformation services.",
+    "featuredTitle": "Digital Transformation",
+    "home": "Home",
+    "industries": "Industries",
+    "industriesDescription": "Industry-specific solutions tailored to the unique challenges and regulations of your sector.",
+    "industryConstruction": "Construction",
+    "industryConstructionDesc": "Project management, BIM integration, and IoT-driven site monitoring.",
+    "industryEducation": "Education",
+    "industryEducationDesc": "EdTech platforms, LMS solutions, and AI-powered personalized learning tools.",
+    "industryFinance": "Finance",
+    "industryFinanceDesc": "Fintech platforms, risk modeling, fraud detection, and regulatory compliance automation.",
+    "industryGovernment": "Government",
+    "industryGovernmentDesc": "Secure citizen portals, digital service delivery, and data-driven policy tools.",
+    "industryHealthcare": "Healthcare",
+    "industryHealthcareDesc": "HIPAA-compliant systems, telemedicine platforms, and AI-driven clinical workflows.",
+    "industryHospitality": "Hospitality",
+    "industryConstructionDesc": "Project management, BIM integration, and IoT-driven site monitoring.",
+    "industryEducation": "Education",
+    "industryEducationDesc": "EdTech platforms, LMS solutions, and AI-powered personalized learning tools.",
+    "industryFinance": "Finance",
+    "industryFinanceDesc": "Fintech platforms, risk modeling, fraud detection, and regulatory compliance automation.",
+    "industryGovernment": "Government",
+    "industryGovernmentDesc": "Secure citizen portals, digital service delivery, and data-driven policy tools.",
+    "industryHealthcare": "Healthcare",
+    "industryHealthcareDesc": "HIPAA-compliant systems, telemedicine platforms, and AI-driven clinical workflows.",
+    "industryHospitality": "Hospitality",
+    "industryHospitalityDesc": "Booking engines, guest experience platforms, and revenue management automation.",
+    "industryLogistics": "Logistics",
+    "industryLogisticsDesc": "Supply chain visibility, route optimization, and warehouse automation systems.",
+    "industryManufacturing": "Manufacturing",
+    "industryManufacturingDesc": "Smart factory solutions, predictive maintenance, and production line automation.",
+    "industryRetail": "Retail",
+    "industryRetailDesc": "E-commerce platforms, omnichannel POS, and AI-driven personalization engines.",
+    "leadership": "Leadership",
+    "learnMore": "Learn More",
+    "login": "Sign In",
+    "logout": "Logout",
+    "menu": "Menu",
+    "moreServices": "More Services",
+    "navigation": "Navigation",
+    "openMenu": "Open menu",
+    "partners": "Partners",
+    "portfolio": "Portfolio",
+    "requestQuote": "Request a Quote",
+    "requestQuoteDesc": "Tell us about your project and get a detailed, no-obligation estimate within one business day.",
+    "resources": "Resources",
+    "search": "Search",
+    "searchEmpty": "No results found.",
+    "searchPlaceholder": "Search services, solutions & resources...",
+    "services": "Services",
+    "servicesDescription": "End-to-end digital solutions",
+    "signUp": "Sign Up",
+    "solutions": "Solutions",
+    "techExpertise": "Tech Expertise",
+    "viewAll": "View All",
+    "viewAllAiSolutions": "View All AI Solutions",
+    "viewAllIndustries": "View All Industries",
+    "viewAllPortfolio": "View All Projects",
+    "viewAllServices": "View All Services",
+    "latestBlogs": "Latest Blog Posts",
+    "viewAllBlog": "View All Blog Posts",
+    "latestCaseStudies": "Latest Case Studies",
+    "viewAllCaseStudies": "View All Case Studies",
+    "latestTechExpertise": "Latest Tech Expertise",
+    "portfolioDesc": "Explore our work"
+  },
   "HomeHero": {
     "headlineLead": "Automate, Scale &",
     "headlineAccent": "Grow with AI",
@@ -726,208 +816,645 @@
     "deleting": "Deleting…",
     "cancel": "Cancel"
   },
- "CrmForms": {
-  "shared": {
-    "budgetLabel": "Budget range",
-    "timelineLabel": "Timeline",
-    "budgetOptions": {
-      "not_specified": "Not specified",
-      "under_10k": "Under $10,000",
-      "10k_50k": "$10,000 – $50,000",
-      "50k_150k": "$50,000 – $150,000",
-      "150k_plus": "$150,000+"
+  "Blog": {
+    "listing": {
+      "hero": {
+        "eyebrow": "Our Blog",
+        "headlineLead": "Insights",
+        "headlineAccent": "on AI, Software & Technology",
+        "description": "Articles, tutorials, and deep dives from the AUTOMEX engineering team."
+      },
+      "filters": {
+        "all": "All",
+        "tagsLabel": "Tags:",
+        "articlesCount": "{count} article{plural}"
+      },
+      "post": {
+        "readMore": "Read more",
+        "featured": "Featured",
+        "minRead": "{minutes} min read",
+        "noPosts": "No blog posts found."
+      },
+      "loadMore": "Load More",
+      "cta": {
+        "eyebrow": "Let's Build",
+        "title": "Have a project in mind?",
+        "description": "Share your ideas and we'll help turn them into reality. Get a free consultation today.",
+        "quote": "Request a Quote",
+        "booking": "Book a Free Call"
+      }
     },
-    "timelineOptions": {
-      "asap": "ASAP",
-      "within_1_month": "Within 1 month",
-      "within_3_months": "Within 3 months",
-      "within_6_months": "Within 6 months",
-      "flexible": "Flexible"
+    "detail": {
+      "back": "Back to Blog",
+      "by": "By",
+      "published": "Published",
+      "minRead": "{minutes} min read",
+      "views": "{count} views",
+      "featured": "Featured",
+      "tagsLabel": "Tags",
+      "tableOfContents": "On this page",
+      "share": "Share",
+      "copyLink": "Copy link",
+      "copied": "Copied!",
+      "cta": {
+        "eyebrow": "Let's Build",
+        "title": "Ready to start your next project?",
+        "description": "Let's discuss how we can bring your ideas to life.",
+        "quote": "Request a Quote"
+      }
+    }
+  },
+  "AICapabilities": {
+    "listing": {
+      "hero": {
+        "eyebrow": "AI Solutions",
+        "headline": "AI Capabilities",
+        "description": "From NLP to computer vision, explore our AI and machine learning capabilities that power intelligent solutions."
+      },
+      "filters": {
+        "all": "All",
+        "count": "{count} AI capabilit{plural}"
+      },
+      "card": {
+        "learnMore": "Learn more"
+      },
+      "empty": "No AI capabilities found.",
+      "loadMore": "Load More",
+      "cta": {
+        "eyebrow": "Let's Build",
+        "title": "Ready to leverage AI?",
+        "description": "Let's discuss how these AI capabilities can be applied to your specific business challenges.",
+        "quote": "Request a Quote",
+        "booking": "Book a Free Call"
+      },
+      "maturity": {
+        "research": "Research",
+        "production": "Production",
+        "experimental": "Experimental"
+      }
     },
-    "meetingTypeOptions": {
-      "video": "Video call",
-      "phone": "Phone call",
-      "in_person": "In person"
+    "detail": {
+      "back": "Back to AI Capabilities",
+      "about": "About This Capability",
+      "technologies": "Technologies",
+      "relatedServices": "Related Services",
+      "demo": "View Live Demo",
+      "maturity": {
+        "research": "Research",
+        "production": "Production",
+        "experimental": "Experimental"
+      },
+      "cta": {
+        "eyebrow": "Get Started",
+        "title": "Interested in {name}?",
+        "description": "Let's discuss how this AI capability can address your specific business needs.",
+        "quote": "Request a Quote"
+      }
+    }
+  },
+  "TechExpertise": {
+    "listing": {
+      "hero": {
+        "eyebrow": "Our Expertise",
+        "headline": "Tech Expertise",
+        "description": "Deep expertise across the full technology stack — from cloud architecture to AI, DevOps, security, and everything in between."
+      },
+      "filters": {
+        "all": "All"
+      },
+      "card": {
+        "technologies": "{count} technolog{plural}",
+        "explore": "Explore"
+      },
+      "empty": "No tech expertise areas found.",
+      "cta": {
+        "eyebrow": "Let's Build",
+        "title": "Need this expertise for your project?",
+        "description": "Our team brings deep technical knowledge to every engagement. Let's discuss your requirements.",
+        "quote": "Request a Quote",
+        "booking": "Book a Free Call"
+      }
     },
-    "genericError": "Something went wrong. Please try again.",
-    "rateLimitError": "Too many requests — please wait a moment and try again.",
-    "validationError": "Please check the highlighted fields."
+    "detail": {
+      "back": "Back to Tech Expertise",
+      "about": "About This Expertise",
+      "technologies": "Technologies",
+      "caseStudies": {
+        "title": "Related Case Studies",
+        "viewAll": "View all case studies"
+      },
+      "cta": {
+        "eyebrow": "Get Started",
+        "title": "Need {name} expertise?",
+        "description": "Our team brings deep expertise and real-world experience. Let's discuss how we can help.",
+        "quote": "Request a Quote"
+      }
+    }
   },
-  "contact": {
-    "fullNameLabel": "Full name",
-    "fullNamePlaceholder": "Your name",
-    "emailLabel": "Email address",
-    "emailPlaceholder": "you@company.com",
-    "phoneLabel": "Phone (optional)",
-    "phonePlaceholder": "+1 555 000 0000",
-    "companyLabel": "Company (optional)",
-    "companyPlaceholder": "Your company",
-    "serviceLabel": "What are you interested in? (optional)",
-    "servicePlaceholder": "Select a service",
-    "messageLabel": "Message",
-    "messagePlaceholder": "Tell us about your project...",
-    "submit": "Send message",
-    "submitting": "Sending…",
-    "successTitle": "Message sent",
-    "successBody": "Thanks for reaching out — our team will get back to you shortly.",
-    "sendAnother": "Send another message"
-  },
-  "quote": {
-    "fullNameLabel": "Full name",
-    "fullNamePlaceholder": "Your name",
-    "emailLabel": "Email address",
-    "emailPlaceholder": "you@company.com",
-    "phoneLabel": "Phone (optional)",
-    "phonePlaceholder": "+1 555 000 0000",
-    "companyLabel": "Company (optional)",
-    "companyPlaceholder": "Your company",
-    "industryLabel": "Industry (optional)",
-    "industryPlaceholder": "Select your industry",
-    "servicesLabel": "Which services are you interested in?",
-    "descriptionLabel": "Project description",
-    "descriptionPlaceholder": "Tell us what you're looking to build...",
-    "budgetMinLabel": "Estimated budget min (optional)",
-    "budgetMaxLabel": "Estimated budget max (optional)",
-    "submit": "Request a quote",
-    "submitting": "Sending…",
-    "successTitle": "Quote request sent",
-    "successBody": "Thanks — our team will review your project and follow up with a tailored quote shortly.",
-    "sendAnother": "Send another request"
-  },
-  "newsletter": {
-    "emailLabel": "Email address",
-    "emailPlaceholder": "you@company.com",
-    "submit": "Subscribe",
-    "successMessage": "You're subscribed!"
-  },
-  "booking": {
-    "dateLabel": "Pick a date",
-    "noSlots": "No available slots on this date — try another day.",
-    "continue": "Continue",
-    "backToSlots": "Back to date & time",
-    "selectedSlotLabel": "Selected time",
-    "slotTaken": "That slot was just booked — please pick another time.",
-    "fullNameLabel": "Full name",
-    "emailLabel": "Email address",
-    "phoneLabel": "Phone (optional)",
-    "companyLabel": "Company (optional)",
-    "meetingTypeLabel": "Meeting type",
-    "notesLabel": "Anything else we should know? (optional)",
-    "submit": "Confirm booking",
-    "submitting": "Booking…",
-    "successTitle": "Consultation booked",
-    "successBody": "You're all set — we've sent a confirmation to your email with the meeting details."
-  }
-},
-"CrmPages": {
-  "hub": {
-    "meta": {
-      "title": "Work With AUTOMEX — AI‑Powered CRM, Quotes & Consultation",
-      "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response — start building with confidence."
+  "Portfolio": {
+    "listing": {
+      "hero": {
+        "eyebrow": "Our Work",
+        "headline": "Portfolio",
+        "description": "Explore our projects — custom software, AI solutions, and digital products we've built for clients worldwide."
+      },
+      "filters": {
+        "allIndustries": "All Industries",
+        "allTechnologies": "All Technologies",
+        "featured": "Featured",
+        "searchPlaceholder": "Search projects...",
+        "clearSearch": "Clear search",
+        "sortLabel": "Sort by",
+        "showLess": "Show less",
+        "more": "more",
+        "clearAll": "Clear all"
+      },
+      "card": {
+        "explore": "Explore project",
+        "featured": "Featured"
+      },
+      "count": {
+        "singular": "{count} project",
+        "plural": "{count} projects"
+      },
+      "empty": "No portfolio projects found matching your criteria.",
+      "loadMore": "Load More",
+      "cta": {
+        "eyebrow": "Let's Build",
+        "title": "Have a project in mind?",
+        "description": "We'd love to add your success story here. Let's discuss your idea.",
+        "quote": "Request a Quote",
+        "booking": "Book a Free Call"
+      }
     },
+    "detail": {
+      "back": "Back to Portfolio",
+      "featured": "Featured",
+      "about": "Overview",
+      "services": "Services",
+      "technologies": "Technologies Used",
+      "liveProject": "Live project",
+      "gallery": "Gallery",
+      "cta": {
+        "eyebrow": "Let's Build",
+        "title": "Want a similar project?",
+        "description": "Let's discuss how we can build something great together.",
+        "quote": "Request a Quote"
+      }
+    }
+  },
+  "Partners": {
+    "listing": {
+      "hero": {
+        "eyebrow": "Our Ecosystem",
+        "headline": "Partners",
+        "description": "We collaborate with leading technology providers, cloud platforms, and implementation experts to deliver world-class solutions."
+      },
+      "filters": {
+        "allTypes": "All Types",
+        "allTiers": "All Tiers",
+        "clearAll": "Clear all"
+      },
+      "card": {
+        "visitWebsite": "Visit website"
+      },
+      "count": {
+        "singular": "{count} partner",
+        "plural": "{count} partners"
+      },
+      "empty": "No partners found matching your criteria.",
+      "cta": {
+        "eyebrow": "Become a Partner",
+        "title": "Interested in partnering with us?",
+        "description": "We're always looking for innovative technology and implementation partners to collaborate with.",
+        "quote": "Get in Touch"
+      }
+    }
+  },
+  "IndustriesPage": {
     "hero": {
-      "eyebrow": "Work With Us",
-      "headlineLead": "Let's build something",
-      "headlineAccent": "that actually works",
-      "description": "Whether you have a clear scope or just a rough idea, we've made it easy to take the next step. Pick the path that fits below.",
+      "eyebrow": "Industries We Serve",
+      "headline": "Industry Solutions",
+      "description": "We deliver tailored technology solutions across healthcare, finance, education, and more."
+    },
+    "breadcrumbHome": "Home",
+    "breadcrumbIndustries": "Industries",
+    "cta": {
+      "title": "Ready to transform your industry?",
+      "description": "Let's discuss how our technology solutions can drive results for your business.",
+      "button": "Get Started"
+    }
+  },
+  "CrmForms": {
+    "shared": {
+      "budgetLabel": "Budget range",
+      "timelineLabel": "Timeline",
+      "budgetOptions": {
+        "not_specified": "Not specified",
+        "under_10k": "Under $10,000",
+        "10k_50k": "$10,000 – $50,000",
+        "50k_150k": "$50,000 – $150,000",
+        "150k_plus": "$150,000+"
+      },
+      "timelineOptions": {
+        "asap": "ASAP",
+        "within_1_month": "Within 1 month",
+        "within_3_months": "Within 3 months",
+        "within_6_months": "Within 6 months",
+        "flexible": "Flexible"
+      },
+      "meetingTypeOptions": {
+        "video": "Video call",
+        "phone": "Phone call",
+        "in_person": "In person"
+      },
+      "industryPlaceholder": "Select your industry",
+      "genericError": "Something went wrong. Please try again.",
+      "rateLimitError": "Too many requests — please wait a moment and try again.",
+      "validationError": "Please check the highlighted fields."
+    },
+    "contact": {
+      "fullNameLabel": "Full name",
+      "fullNamePlaceholder": "Your name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@company.com",
+      "phoneLabel": "Phone (optional)",
+      "phonePlaceholder": "+1 555 000 0000",
+      "companyLabel": "Company (optional)",
+      "companyPlaceholder": "Your company",
+      "jobTitleLabel": "Job title (optional)",
+      "jobTitlePlaceholder": "Your role",
+      "serviceLabel": "What are you interested in? (optional)",
+      "servicePlaceholder": "Select a service",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "successTitle": "Message sent",
+      "successBody": "Thanks for reaching out — our team will get back to you shortly.",
+      "sendAnother": "Send another message"
+    },
+    "quote": {
+      "fullNameLabel": "Full name",
+      "fullNamePlaceholder": "Your name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@company.com",
+      "phoneLabel": "Phone (optional)",
+      "phonePlaceholder": "+1 555 000 0000",
+      "companyLabel": "Company (optional)",
+      "companyPlaceholder": "Your company",
+      "jobTitleLabel": "Job title (optional)",
+      "jobTitlePlaceholder": "Your role",
+      "industryLabel": "Industry (optional)",
+      "industryPlaceholder": "Select your industry",
+      "servicesLabel": "Which services are you interested in?",
+      "descriptionLabel": "Project description",
+      "descriptionPlaceholder": "Tell us what you're looking to build...",
+      "budgetMinLabel": "Estimated budget min (optional)",
+      "budgetMaxLabel": "Estimated budget max (optional)",
+      "submit": "Request a quote",
+      "submitting": "Sending…",
+      "successTitle": "Quote request sent",
+      "successBody": "Thanks — our team will review your project and follow up with a tailored quote shortly.",
+      "sendAnother": "Send another request"
+    },
+    "newsletter": {
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@company.com",
+      "submit": "Subscribe",
+      "successMessage": "You're subscribed!"
+    },
+    "booking": {
+      "dateLabel": "Pick a date",
+      "noSlots": "No available slots on this date — try another day.",
+      "spotsLeft": "spots left",
+      "continue": "Continue",
+      "backToSlots": "Back to date & time",
+      "selectedSlotLabel": "Selected time",
+      "slotTaken": "That slot was just booked — please pick another time.",
+      "stepSlot": "Choose time",
+      "stepDetails": "Your details",
+      "stepSlotTitle": "Pick a date & time",
+      "stepDetailsTitle": "Tell us about you",
+      "fullNameLabel": "Full name",
+      "fullNamePlaceholder": "Your name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@company.com",
+      "phoneLabel": "Phone (optional)",
+      "phonePlaceholder": "+1 555 000 0000",
+      "companyLabel": "Company (optional)",
+      "companyPlaceholder": "Your company",
+      "jobTitleLabel": "Job title (optional)",
+      "jobTitlePlaceholder": "Your role",
+      "industryLabel": "Industry (optional)",
+      "meetingTypeLabel": "Meeting type",
+      "messageLabel": "What would you like to discuss? (optional)",
+      "messagePlaceholder": "Tell us a bit about your project or goals...",
+      "notesLabel": "Anything else we should know? (optional)",
+      "notesPlaceholder": "Any specific questions or preferences...",
+      "submit": "Confirm booking",
+      "submitting": "Booking…",
+      "sendAnother": "Book another call",
+      "successTitle": "Consultation booked",
+      "successBody": "You're all set — we've sent a confirmation to your email with the meeting details."
+    }
+  },
+  "CrmPages": {
+    "overview": {
+      "meta": {
+        "title": "Work With AUTOMEX — AI‑Powered CRM, Quotes & Consultation",
+        "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response — start building with confidence."
+      },
+      "hero": {
+        "eyebrow": "Work With Us",
+        "headlineLead": "Let's build something",
+        "headlineAccent": "that actually works",
+        "description": "Whether you have a clear scope or just a rough idea, we've made it easy to take the next step. Pick the path that fits below.",
+        "ctaQuote": "Request a Quote",
+        "ctaBooking": "Book a Free Call"
+      },
+      "stats": {
+        "response": "< 2 min response",
+        "followUp": "24h follow‑up",
+        "projects": "150+ projects"
+      },
+      "howItWorks": {
+        "eyebrow": "How It Works",
+        "title": "A simple, transparent process",
+        "description": "No black boxes. Here's exactly what happens after you reach out — from initial conversation to final delivery."
+      },
+      "paths": {
+        "eyebrow": "Choose Your Path",
+        "title": "Three ways to get started",
+        "quote": {
+          "title": "Request a Quote",
+          "description": "Already know what you need? Tell us about your project and get a detailed, no‑obligation quote for AI, software, or automation.",
+          "cta": "Get a quote"
+        },
+        "booking": {
+          "title": "Book a Free Call",
+          "description": "Not sure yet? Grab 30 minutes with our team to discuss AI strategies, timelines, and the best approach for your business.",
+          "cta": "Pick a time"
+        },
+        "contact": {
+          "title": "Send a Message",
+          "description": "Have a quick question or want a personalised walkthrough? We'll reply within one business day.",
+          "cta": "Contact us"
+        }
+      },
+      "newsletter": {
+        "eyebrow": "Stay in the Loop",
+        "title": "Get occasional updates, no spam",
+        "description": "Product news, AI insights, and engineering write‑ups — a few times a month at most."
+      },
+      "trust": {
+        "confidential": "100% Confidential & Secure",
+        "expertise": "AI & Software Experts",
+        "timely": "Fast Turnaround & Delivery"
+      }
+    },
+    "quote": {
+      "meta": {
+        "title": "Request a Quote — AI, Software & Automation | AUTOMEX",
+        "description": "Get a tailored, no‑obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
+      },
+      "hero": {
+        "eyebrow": "Request a Quote",
+        "title": "Let's scope your project",
+        "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate — usually within one business day."
+      }
+    },
+    "bookCall": {
+      "meta": {
+        "title": "Book a Free Consultation — AI & Software Strategy | AUTOMEX",
+        "description": "Schedule a free 30‑minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
+      },
+      "hero": {
+        "eyebrow": "Book a Call",
+        "title": "Talk it through, no pressure",
+        "description": "Pick a time that works for you — just a friendly conversation about what you're building and how we can help."
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact AUTOMEX — Quick Enquiries, Sales & Partnerships",
+        "description": "Reach our team for quick questions, partnership opportunities, or enterprise‑grade AI solutions. We'll respond within one business day."
+      },
+      "hero": {
+        "eyebrow": "Get in Touch",
+        "title": "Send us a message",
+        "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project — we're here to listen."
+      }
+    },
+    "contactSales": {
+      "meta": {
+        "title": "Contact AUTOMEX Sales — Enterprise AI & Software Solutions",
+        "description": "Get in touch with our sales team for enterprise‑grade AI solutions, custom software, and digital transformation services."
+      }
+    },
+    "subNav": {
+      "overview": "Overview",
+      "quote": "Get a Quote",
+      "booking": "Book a Call",
+      "contact": "Contact Us"
+    },
+    "guest": {
+      "meta": {
+        "title": "Track Your Request — AUTOMEX",
+        "description": "Check the status of your quote, booking, or enquiry. View activity history and communicate with our team."
+      },
+      "hero": {
+        "eyebrow": "Request Tracker",
+        "headlineLead": "Track your",
+        "headlineAccent": "request status",
+        "description": "Enter the tracking token you received after submitting a form — or from your confirmation email — to check progress, view activities, and stay in touch with our team."
+      },
+      "token": {
+        "title": "Enter your tracking token",
+        "description": "You received this via email after submitting a contact, quote, or booking form. Paste it below to check your request status.",
+        "placeholder": "Paste your token here…",
+        "submit": "Look up requests"
+      },
+      "back": {
+        "toToken": "Change token",
+        "toRequests": "Back to requests"
+      },
+      "requests": {
+        "empty": "No requests found",
+        "emptyHint": "This token doesn't match any submissions. Check that you've copied it correctly, or try a different email.",
+        "viewDetail": "View details"
+      },
+      "request": {
+        "submitted": "Submitted",
+        "activities": "Activity Timeline",
+        "noActivities": "No activity recorded yet. Our team will update this as your request progresses."
+      },
+      "createTicket": {
+        "cta": "New Support Ticket",
+        "success": "Ticket created successfully.",
+        "formTitle": "Create a support ticket",
+        "formDescription": "Need help or have a question? Open a ticket and our team will respond within one business day.",
+        "titleLabel": "Subject",
+        "titlePlaceholder": "Brief summary of your issue…",
+        "typeLabel": "Ticket type",
+        "priorityLabel": "Priority",
+        "emailLabel": "Your email",
+        "emailPlaceholder": "you@company.com",
+        "descriptionLabel": "Details",
+        "descriptionPlaceholder": "Describe what you need help with in as much detail as possible…",
+        "submit": "Submit ticket"
+      },
+      "ticket": {
+        "messages": "Messages",
+        "noMessages": "No messages yet. Our team will reply here.",
+        "reply": "Reply",
+        "replyPlaceholder": "Type your message…",
+        "sendReply": "Send reply"
+      },
+      "ticketTypes": {
+        "general_inquiry": "General Inquiry",
+        "technical_support": "Technical Support",
+        "project_request": "Project Request",
+        "bug_report": "Bug Report",
+        "feedback": "Feedback",
+        "partnership": "Partnership"
+      },
+      "priorityLabels": {
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High",
+        "urgent": "Urgent"
+      },
+      "statusLabels": {
+        "open": "Open",
+        "in_progress": "In Progress",
+        "closed": "Closed",
+        "resolved": "Resolved",
+        "pending": "Pending"
+      },
+      "errors": {
+        "tokenRequired": "Please enter a tracking token.",
+        "invalidToken": "We couldn't find any requests for that token. Please double-check and try again.",
+        "generic": "Something went wrong. Please try again later."
+      }
+    }
+  },
+  "ServicesPage": {
+    "meta": {
+      "title": "Our Services – AUTOMEX",
+      "description": "Explore AUTOMEX's full range of services — AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
+    },
+    "breadcrumbHome": "Home",
+    "breadcrumbServices": "Services",
+    "hero": {
+      "eyebrow": "What We Do",
+      "title": "Services built for real business outcomes",
+      "titleGradient": "Services",
+      "titleRest": "built for real business outcomes",
+      "description": "From AI strategy to full-scale software delivery — explore what we can build together."
+    },
+    "stats": {
+      "services": "Services",
+      "categories": "Categories",
+      "clientSatisfaction": "Client Satisfaction",
+      "projectsDelivered": "Projects Delivered"
+    },
+    "filters": {
+      "all": "All Services"
+    },
+    "resultsCount": "{count, plural, =0 {No services found} one {# service} other {# services}}",
+    "featuredBadge": "Featured",
+    "cardCta": "Get a Quote",
+    "loadMore": "Load More",
+    "empty": "No services found in this category yet.",
+    "bottomCta": {
+      "title": "Not sure which service fits?",
+      "description": "Tell us what you're trying to build and we'll point you in the right direction.",
       "ctaQuote": "Request a Quote",
       "ctaBooking": "Book a Free Call"
     },
-    "howItWorks": {
-      "eyebrow": "How It Works",
-      "title": "A simple, transparent process",
-      "description": "No black boxes. Here's exactly what happens after you reach out — from initial conversation to final delivery."
+    "trust": {
+      "whyAutomex": "Why AUTOMEX",
+      "headline": "Your technology partner, not just a vendor",
+      "enterpriseSecurity": "Enterprise-grade security",
+      "onTimeDelivery": "On-time delivery — 98% track record",
+      "dedicatedSupport": "Dedicated support & maintenance",
+      "aiPowered": "AI-powered development workflows",
+      "enterprise": "Enterprise",
+      "standard": "Standard"
     },
-    "paths": {
-      "eyebrow": "Choose Your Path",
-      "title": "Three ways to get started",
-      "quote": {
-        "title": "Request a Quote",
-        "description": "Already know what you need? Tell us about your project and get a detailed, no‑obligation quote for AI, software, or automation.",
-        "cta": "Get a quote"
-      },
-      "booking": {
-        "title": "Book a Free Call",
-        "description": "Not sure yet? Grab 30 minutes with our team to discuss AI strategies, timelines, and the best approach for your business.",
-        "cta": "Pick a time"
-      },
-      "contact": {
-        "title": "Send a Message",
-        "description": "Have a quick question or want a personalised walkthrough? We'll reply within one business day.",
-        "cta": "Contact us"
-      }
-    },
-    "newsletter": {
-      "eyebrow": "Stay in the Loop",
-      "title": "Get occasional updates, no spam",
-      "description": "Product news, AI insights, and engineering write‑ups — a few times a month at most."
-    }
+    "letsBuild": "Let's Build"
   },
-  "quote": {
-    "meta": {
-      "title": "Request a Quote — AI, Software & Automation | AUTOMEX",
-      "description": "Get a tailored, no‑obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
-    },
-    "hero": {
-      "eyebrow": "Request a Quote",
-      "title": "Let's scope your project",
-      "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate — usually within one business day."
-    }
-  },
-  "booking": {
-    "meta": {
-      "title": "Book a Free Consultation — AI & Software Strategy | AUTOMEX",
-      "description": "Schedule a free 30‑minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
-    },
-    "hero": {
-      "eyebrow": "Book a Call",
-      "title": "Talk it through, no pressure",
-      "description": "Pick a time that works for you — just a friendly conversation about what you're building and how we can help."
-    }
-  },
-  "contact": {
-    "meta": {
-      "title": "Contact AUTOMEX — Quick Enquiries, Sales & Partnerships",
-      "description": "Reach our team for quick questions, partnership opportunities, or enterprise‑grade AI solutions. We'll respond within one business day."
-    },
-    "hero": {
-      "eyebrow": "Get in Touch",
-      "title": "Send us a message",
-      "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project — we're here to listen."
-    }
-  },
-  "subNav": {
+  "ServicesDetail": {
     "overview": "Overview",
-    "quote": "Get a Quote",
-    "booking": "Book a Call",
-    "contact": "Contact Us"
+    "problemsWeSolve": "Problems We Solve",
+    "keyFeatures": "Key Features",
+    "benefits": "Benefits",
+    "technologyStack": "Technology Stack",
+    "industriesServed": "Industries Served",
+    "ourProcess": "Our Process",
+    "deliverables": "Deliverables",
+    "planComparison": "Plan Comparison",
+    "availableAddOns": "Available Add‑Ons",
+    "trustedBy": "Trusted By",
+    "clientTestimonials": "Client Testimonials",
+    "serviceGuarantees": "Service Guarantees",
+    "resourcesDocuments": "Resources & Documents",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "pricing": "Pricing",
+    "relatedServices": "Related Services",
+    "getStarted": "Get Started",
+    "requestQuote": "Request a Quote",
+    "bookFreeCall": "Book a Free Call",
+    "getCustomQuote": "Get a Custom Quote",
+    "lastUpdated": "Last updated",
+    "cover": "Cover",
+    "featured": "Featured",
+    "delivery": "Delivery",
+    "team": "Team",
+    "pricingLabel": "Pricing",
+    "standard": "Standard",
+    "premium": "Premium",
+    "enterprise": "Enterprise",
+    "popular": "Popular",
+    "includedInEnterprise": "Included in Enterprise",
+    "additionalResources": "Additional Resources",
+    "videoPresentation": "Video Presentation",
+    "serviceBrochure": "Service Brochure",
+    "serviceThumbnail": "Service Thumbnail",
+    "startingAt": "Starting at",
+    "model": "Model",
+    "feature": "Feature",
+    "enterpriseFeatures": "Enterprise Features",
+    "readyToBuild": "Ready to build with {name}?",
+    "letsDiscuss": "Let's discuss your requirements and create a tailored solution for your business.",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "resumeSlideshow": "Resume slideshow",
+    "pauseSlideshow": "Pause slideshow",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right",
+    "goToSlide": "Go to slide {n}",
+    "getQuote": "Get a Quote",
+    "thumbnail": "Thumbnail"
+  },
+  "FaqsPage": {
+    "categoryAll": "All",
+    "categoryGeneral": "General",
+    "categoryPricing": "Pricing",
+    "categoryProcess": "Process",
+    "categoryService": "Service-specific",
+    "noResults": "No FAQs found for this category.",
+    "hero": {
+      "eyebrow": "Your Questions, Answered",
+      "headline": "Frequently Asked Questions",
+      "description": "Find clear answers to common questions about our services, process, pricing, and more. Can't find what you need? Reach out to our team."
+    },
+    "cta": {
+      "eyebrow": "Still Have Questions?",
+      "title": "We're Here to Help",
+      "description": "Our team is ready to answer any questions you have about our services, process, or technology solutions.",
+      "button": "Contact Us"
+    }
   }
-},
-"ServicesPage": {
-  "meta": {
-    "title": "Our Services – AUTOMEX",
-    "description": "Explore AUTOMEX's full range of services — AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
-  },
-  "breadcrumbHome": "Home",
-  "breadcrumbServices": "Services",
-  "hero": {
-    "eyebrow": "What We Do",
-    "title": "Services built for real business outcomes",
-    "description": "From AI strategy to full-scale software delivery — explore what we can build together."
-  },
-  "filters": {
-    "all": "All Services"
-  },
-  "resultsCount": "{count, plural, =0 {No services found} one {# service} other {# services}}",
-  "featuredBadge": "Featured",
-  "cardCta": "Get a Quote",
-  "loadMore": "Load More",
-  "empty": "No services found in this category yet.",
-  "bottomCta": {
-    "title": "Not sure which service fits?",
-    "description": "Tell us what you're trying to build and we'll point you in the right direction.",
-    "ctaQuote": "Request a Quote",
-    "ctaBooking": "Book a Free Call"
-  }
-}
 }

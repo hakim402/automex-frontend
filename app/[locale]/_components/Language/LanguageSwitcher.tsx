@@ -3,7 +3,6 @@
 // app/[locale]/_components/Language/LanguageSwitcher.tsx
 
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/routing";
 import { useState, useRef, useEffect } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -90,16 +89,57 @@ const LOCALES = [
 
 export function LanguageSwitcher() {
   const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const active = LOCALES.find((l) => l.value === locale) ?? LOCALES[0];
   const FlagComponent = active.flag;
 
-  const handleChange = (newLocale: string) => {
-    router.push(pathname, { locale: newLocale });
+  const handleClick = async (newLocale: string) => {
+    const currentPath = window.location.pathname;
+    const segments = currentPath.split("/").filter(Boolean);
+    // segments[0] = current locale, segments[1] = route name, segments[2+] = slug parts
+
+    // Detect dynamic routes with translated slugs and map to model type
+    let model: string | null = null;
+    let slugIndex = -1;
+
+    if (segments[1] === "services" && segments.length >= 3) {
+      model = "service";
+      slugIndex = 2;
+    } else if (segments[1] === "blog" && segments.length >= 3) {
+      model = "blog-post";
+      slugIndex = 2;
+    } else if (segments[1] === "case-studies" && segments.length >= 3) {
+      model = "case-study";
+      slugIndex = 2;
+    } else if (segments[1] === "portfolio" && segments.length >= 3) {
+      model = "portfolio";
+      slugIndex = 2;
+    }
+
+    if (model && slugIndex >= 0) {
+      const currentSlug = segments[slugIndex];
+      try {
+        const res = await fetch(
+          `/api/resolve-slug?model=${model}&slug=${encodeURIComponent(currentSlug)}&lang=${newLocale}`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          segments[slugIndex] = data.slug;
+          const newPath = "/" + segments.join("/");
+          window.location.href = newPath;
+          setOpen(false);
+          return;
+        }
+      } catch {
+        // If resolution fails, fall through to simple locale swap
+      }
+    }
+
+    // Default: just swap the locale prefix (for static pages or if slug resolution fails)
+    const newPath = currentPath.replace(/^\/[^\/]+/, `/${newLocale}`);
+    window.location.href = newPath;
     setOpen(false);
   };
 
@@ -152,7 +192,8 @@ export function LanguageSwitcher() {
               return (
                 <button
                   key={l.value}
-                  onClick={() => handleChange(l.value)}
+                  type="button"
+                  onClick={() => handleClick(l.value)}
                   className={cn(
                     "flex items-center gap-2.5 w-full px-2.5 py-2 rounded-lg text-xs font-medium transition-colors text-left",
                     isActive

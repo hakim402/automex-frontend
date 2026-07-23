@@ -33,6 +33,14 @@ import type {
   BlogPostDetail,
   TeamMember,
   Testimonial,
+  AICapability,
+  Partner,
+  Certification,
+  PortfolioProjectList,
+  PortfolioProjectDetail,
+  TechExpertiseArea,
+  SEOSettingsResponse,
+  SitemapEntry,
 } from "./types";
 
 import type { SupportedLocale } from "@/lib/locale";
@@ -43,6 +51,10 @@ const REVALIDATE = {
   content: 600, // Services/CaseStudies/BlogPosts — 5-15 min band, middle value
   taxonomy: 3600, // Technologies/Industries/ProcessSteps/Categories — changes rarely
   people: 1200, // Team/Testimonials — 15-30 min band, middle value
+  ai: 600, // AI Capabilities — 5-15 min band
+  portfolio: 600, // Portfolio projects — 5-15 min band
+  partners: 3600, // Partners — changes rarely
+  seo: 3600, // SEO settings — changes rarely
 } as const;
 
 /** Resolves a 404 to null; rethrows everything else. */
@@ -219,6 +231,16 @@ export async function fetchIndustries(lang?: SupportedLocale): Promise<Industry[
   return unwrapPaginated<Industry>(data);
 }
 
+export function fetchIndustryBySlug(slug: string, lang?: SupportedLocale): Promise<Industry | null> {
+  return orNull(
+    automexFetch<Industry>(`/industries/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.taxonomy,
+      tags: ["industries", `industry:${slug}`],
+    })
+  );
+}
+
 export async function fetchProcessSteps(lang?: SupportedLocale): Promise<ProcessStep[]> {
   const data = await automexFetch<unknown>(`/process-steps/`, {
     lang,
@@ -270,4 +292,174 @@ export async function fetchTestimonials(
     tags: ["testimonials"],
   });
   return unwrapPaginated<Testimonial>(data);
+}
+
+// ─── AI Capabilities ───────────────────────────────────────────────────
+
+export interface AICapabilityListParams {
+  category?: string; // slug: nlp | computer_vision | predictive_analytics | generative_ai | automation | rag_agents | mlops
+  maturity_level?: string; // research | production | experimental
+  page?: number;
+}
+
+export async function fetchAICapabilities(
+  params: AICapabilityListParams = {},
+  lang?: SupportedLocale
+): Promise<Paginated<AICapability>> {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined) query.set(key, String(value));
+  }
+  const qs = query.toString();
+  return automexFetch<Paginated<AICapability>>(`/ai-capabilities/${qs ? `?${qs}` : ""}`, {
+    lang,
+    revalidate: REVALIDATE.ai,
+    tags: ["ai-capabilities"],
+  });
+}
+
+export function fetchAICapabilityBySlug(slug: string, lang?: SupportedLocale): Promise<AICapability | null> {
+  return orNull(
+    automexFetch<AICapability>(`/ai-capabilities/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.ai,
+      tags: ["ai-capabilities", `ai-capability:${slug}`],
+    })
+  );
+}
+
+// ─── Partners ──────────────────────────────────────────────────────────
+
+export interface PartnerListParams {
+  partner_type?: string; // technology | implementation | cloud | integration | reseller
+  tier?: string;          // silver | gold | platinum | diamond
+}
+
+export async function fetchPartners(
+  params: PartnerListParams = {},
+  lang?: SupportedLocale
+): Promise<Partner[]> {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined) query.set(key, String(value));
+  }
+  const qs = query.toString();
+  const data = await automexFetch<unknown>(`/partners/${qs ? `?${qs}` : ""}`, {
+    lang,
+    revalidate: REVALIDATE.partners,
+    tags: ["partners"],
+  });
+  return unwrapPaginated<Partner>(data);
+}
+
+export function fetchPartnerBySlug(slug: string, lang?: SupportedLocale): Promise<Partner | null> {
+  return orNull(
+    automexFetch<Partner>(`/partners/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.partners,
+      tags: ["partners", `partner:${slug}`],
+    })
+  );
+}
+
+// ─── Certifications ────────────────────────────────────────────────────
+
+export async function fetchCertifications(lang?: SupportedLocale): Promise<Certification[]> {
+  const data = await automexFetch<unknown>(`/certifications/`, {
+    lang,
+    revalidate: REVALIDATE.partners,
+    tags: ["certifications"],
+  });
+  return unwrapPaginated<Certification>(data);
+}
+
+// ─── Portfolio ─────────────────────────────────────────────────────────
+
+export interface PortfolioListParams {
+  industry?: string;   // slug: e-commerce | healthcare | finance | ...
+  technology?: string; // slug: python | react | docker | ...
+  service?: string;    // slug: custom-software-development | ...
+  is_featured?: boolean;
+  search?: string;
+  ordering?: string;   // order | completion_year | created_at
+  page?: number;
+}
+
+export async function fetchPortfolioProjects(
+  params: PortfolioListParams = {},
+  lang?: SupportedLocale
+): Promise<Paginated<PortfolioProjectList>> {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined) query.set(key, String(value));
+  }
+  const qs = query.toString();
+  return automexFetch<Paginated<PortfolioProjectList>>(`/portfolio/${qs ? `?${qs}` : ""}`, {
+    lang,
+    revalidate: REVALIDATE.portfolio,
+    tags: ["portfolio"],
+  });
+}
+
+export function fetchPortfolioBySlug(slug: string, lang?: SupportedLocale): Promise<PortfolioProjectDetail | null> {
+  return orNull(
+    automexFetch<PortfolioProjectDetail>(`/portfolio/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.portfolio,
+      tags: ["portfolio", `portfolio:${slug}`],
+    })
+  );
+}
+
+// ─── Tech Expertise ────────────────────────────────────────────────────
+
+export interface TechExpertiseListParams {
+  category?: string; // slug: architecture | cloud | data_engineering | ai | security | mobile | devops | qa
+}
+
+export async function fetchTechExpertiseAreas(
+  params: TechExpertiseListParams = {},
+  lang?: SupportedLocale
+): Promise<TechExpertiseArea[]> {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined) query.set(key, String(value));
+  }
+  const qs = query.toString();
+  const data = await automexFetch<unknown>(`/tech-expertise/${qs ? `?${qs}` : ""}`, {
+    lang,
+    revalidate: REVALIDATE.ai,
+    tags: ["tech-expertise"],
+  });
+  return unwrapPaginated<TechExpertiseArea>(data);
+}
+
+export function fetchTechExpertiseBySlug(slug: string, lang?: SupportedLocale): Promise<TechExpertiseArea | null> {
+  return orNull(
+    automexFetch<TechExpertiseArea>(`/tech-expertise/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.ai,
+      tags: ["tech-expertise", `tech-expertise:${slug}`],
+    })
+  );
+}
+
+// ─── SEO Settings ──────────────────────────────────────────────────────
+
+export async function fetchSEOSettings(lang?: SupportedLocale): Promise<SEOSettingsResponse> {
+  return automexFetch<SEOSettingsResponse>(`/seo/settings/`, {
+    lang,
+    revalidate: REVALIDATE.seo,
+    tags: ["seo-settings"],
+  });
+}
+
+// ─── Sitemap URLs ────────────────────────────────────────────────────────
+
+/** GET /seo/sitemap-urls/ — flat list of all published content URLs for sitemap generation. */
+export async function fetchSitemapUrls(): Promise<SitemapEntry[]> {
+  return automexFetch<SitemapEntry[]>(`/seo/sitemap-urls/`, {
+    revalidate: 3600,
+    tags: ["sitemap-urls"],
+  });
 }

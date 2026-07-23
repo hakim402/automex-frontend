@@ -1,7 +1,6 @@
 // app/[locale]/(routes)/contact/page.tsx
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
-import { Header } from "../../_components/Header/Header";
 import { FooterSection } from "../../_components/Footer/FooterSections";
 import ContactPageClient from "./_components/ContactPageClient";
 import OrbitalSystem from "../../_components/HomeHero/OrbitalSystem";
@@ -74,8 +73,6 @@ export default async function ContactPage({
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(148_198_233/0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.05)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)"
         />
-        <Header />
-
         <ContactPageClient isRtl={isRtl} />
 
         {/* Decorative orbital */}

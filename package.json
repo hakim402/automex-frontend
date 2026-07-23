@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate-types": "openapi-typescript https://api.automex.tech/api/schema -o lib/automex/types/generated.ts"
+    "generate-types": "openapi-typescript http://127.0.0.1:8001/api/schema -o lib/automex/types/generated.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

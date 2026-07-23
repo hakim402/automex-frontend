@@ -9,6 +9,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { automexFetch } from "@/lib/automex/client";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -223,6 +224,26 @@ export async function POST(request: NextRequest) {
       ]
         .filter((l) => l !== undefined)
         .join("\n"),
+    });
+
+    // 6. Also submit to the CRM API so the lead is tracked in the pipeline.
+    //    Fire-and-forget — CRM failure must not block the email response.
+    const crmMessage = payload.subject
+      ? `[${payload.subject}] ${payload.message}`
+      : payload.message;
+
+    automexFetch("/crm/leads/contact/", {
+      method: "POST",
+      body: JSON.stringify({
+        full_name: payload.name,
+        email: payload.email,
+        company: payload.company,
+        message: crmMessage,
+        language: "en",
+        source_page: "contact-form",
+      }),
+    }).catch((err) => {
+      console.warn("[contact] CRM submission failed (email was sent successfully):", err.message);
     });
 
     return NextResponse.json({ ok: true }, { status: 200 });

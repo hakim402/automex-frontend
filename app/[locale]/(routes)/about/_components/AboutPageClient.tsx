@@ -33,7 +33,6 @@ import {
 import { Timeline, type TimelineItem } from "@/components/shared/Timeline";
 import { TeamSection, type TeamMember } from "@/components/shared/TeamSection";
 import { PageCTA } from "@/components/shared/PageCTA";
-import { Header } from "@/app/[locale]/_components/Header/Header";
 import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -514,8 +513,6 @@ export default function AboutPageClient({
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 -z-50 bg-[linear-gradient(to_right,rgb(148_198_233/0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.03)_1px,transparent_1px)] bg-size-[64px_64px]"
       />
-
-      <Header />
 
       {/* ── 1. Hero ── */}
       <div className="px-4 pt-32 pb-10 sm:px-6 lg:px-8 lg:pt-52 lg:pb-24">

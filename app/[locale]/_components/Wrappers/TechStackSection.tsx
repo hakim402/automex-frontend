@@ -20,13 +20,33 @@
 
 import { TechStack } from "@/components/shared/TechStack";
 import { useTechStackConfig } from "@/config/TechStackConfig"; // adjust path if needed
+import type { Technology } from "@/lib/automex/types";
 
 interface TechStackSectionProps {
   isRtl: boolean;
+  liveTechnologies?: Technology[];
 }
 
-export function TechStackSection({ isRtl }: TechStackSectionProps) {
+export function TechStackSection({ isRtl, liveTechnologies }: TechStackSectionProps) {
   const config = useTechStackConfig();
 
-  return <TechStack {...config} isRtl={isRtl} />;
+  // Merge live data into config when available: group by category
+  const mergedConfig = liveTechnologies?.length
+    ? {
+        ...config,
+        groups: (() => {
+          const grouped: Record<string, Technology[]> = {};
+          for (const tech of liveTechnologies) {
+            const cat = tech.category || "other";
+            (grouped[cat] ??= []).push(tech);
+          }
+          return Object.entries(grouped).map(([category, techs]) => ({
+            category,
+            techs: techs.map((t) => ({ name: t.name, icon: t.icon ?? undefined, slug: t.slug })),
+          }));
+        })(),
+      }
+    : config;
+
+  return <TechStack {...mergedConfig} isRtl={isRtl} />;
 }

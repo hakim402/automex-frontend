@@ -92,6 +92,30 @@ const titleTemplates: Record<PageType, Record<SupportedLocale, string>> = {
     fa: "درخواست پیش‌فاکتور – AUTOMEX هوش مصنوعی و توسعه",
     ps: "د نرخ غوښتنه – AUTOMEX AI او پراختیا",
   },
+  services: {
+    en: "Services – AUTOMEX AI, Software & Digital Transformation",
+    es: "Servicios – AUTOMEX IA, Software y Transformación Digital",
+    de: "Dienstleistungen – AUTOMEX KI, Software & Digitale Transformation",
+    fr: "Services – AUTOMEX IA, Logiciel & Transformation Digitale",
+    it: "Servizi – AUTOMEX IA, Software & Trasformazione Digitale",
+    nl: "Diensten – AUTOMEX AI, Software & Digitale Transformatie",
+    zh: "服务 – AUTOMEX AI、软件与数字化转型",
+    ar: "الخدمات – AUTOMEX الذكاء الاصطناعي والبرمجيات والتحول الرقمي",
+    fa: "خدمات – AUTOMEX هوش مصنوعی، نرم‌افزار و تحول دیجیتال",
+    ps: "خدمات – AUTOMEX AI، سافټویر او ډیجیټل بدلون",
+  },
+  serviceDetail: {
+    en: "AUTOMEX – AI & Software Development Service",
+    es: "AUTOMEX – Servicio de Desarrollo de IA y Software",
+    de: "AUTOMEX – KI- und Softwareentwicklungsdienst",
+    fr: "AUTOMEX – Service de Développement IA et Logiciel",
+    it: "AUTOMEX – Servizio di Sviluppo IA e Software",
+    nl: "AUTOMEX – AI- en Softwareontwikkelingsdienst",
+    zh: "AUTOMEX – AI与软件开发服务",
+    ar: "AUTOMEX – خدمة تطوير الذكاء الاصطناعي والبرمجيات",
+    fa: "AUTOMEX – سرویس توسعه هوش مصنوعی و نرم‌افزار",
+    ps: "AUTOMEX – د AI او سافټویر پراختیا خدمت",
+  },
 };
 
 const defaultDescriptions: Record<PageType, Record<SupportedLocale, string>> = {
@@ -171,13 +195,37 @@ const defaultDescriptions: Record<PageType, Record<SupportedLocale, string>> = {
     en: "Tell us about your project and receive a detailed, no‑obligation quote from AUTOMEX. We'll analyse your requirements and provide a transparent cost breakdown.",
     es: "Cuéntenos sobre su proyecto y reciba un presupuesto detallado y sin compromiso de AUTOMEX. Analizaremos sus requisitos y le proporcionaremos un desglose de costes transparente.",
     de: "Erzählen Sie uns von Ihrem Projekt und erhalten Sie ein detailliertes, unverbindliches Angebot von AUTOMEX. Wir analysieren Ihre Anforderungen und erstellen eine transparente Kostenaufstellung.",
-    fr: "Parlez-nous de votre projet et recevez un devis détaillé et sans engagement d’AUTOMEX. Nous analyserons vos besoins et vous fournirons une répartition transparente des coûts.",
+    fr: "Parlez-nous de votre projet et recevez un devis détaillé et sans engagement d'AUTOMEX. Nous analyserons vos besoins et vous fournirons une répartition transparente des coûts.",
     it: "Raccontaci del tuo progetto e ricevi un preventivo dettagliato e senza impegno da AUTOMEX. Analizzeremo i tuoi requisiti e ti forniremo una ripartizione dei costi trasparente.",
     nl: "Vertel ons over uw project en ontvang een gedetailleerde, vrijblijvende offerte van AUTOMEX. Wij analyseren uw wensen en geven een transparante kostenspecificatie.",
     zh: "告诉我们您的项目，即可获得AUTOMEX提供的详细、无义务报价。我们将分析您的需求并提供透明的费用明细。",
     ar: "أخبرنا عن مشروعك واحصل على عرض سعر مفصل وغير ملزم من AUTOMEX. سنقوم بتحليل متطلباتك وتزويدك بتفصيل شفاف للتكاليف.",
     fa: "درباره پروژه خود به ما بگویید و یک پیش‌فاکتور دقیق و بدون تعهد از AUTOMEX دریافت کنید. ما نیازهای شما را تحلیل کرده و یک تفکیک هزینه شفاف ارائه می‌دهیم.",
     ps: "موږ ته د خپلې پروژې په اړه ووایاست او د AUTOMEX څخه مفصل، پرته له ژمنې نرخ ترلاسه کړئ. موږ به ستاسو اړتیاوې تحلیل کړو او یو روښانه لګښت تحلیل به درکړو.",
+  },
+  services: {
+    en: "Explore AUTOMEX services — AI-powered software development, web & mobile apps, cloud solutions, and digital transformation consulting.",
+    es: "Explore los servicios de AUTOMEX — desarrollo de software impulsado por IA, aplicaciones web y móviles, soluciones en la nube y consultoría de transformación digital.",
+    de: "Entdecken Sie AUTOMEX-Dienste — KI-gestützte Softwareentwicklung, Web- und Mobile-Apps, Cloud-Lösungen und Beratung zur digitalen Transformation.",
+    fr: "Découvrez les services AUTOMEX — développement logiciel alimenté par l'IA, applications web et mobiles, solutions cloud et conseil en transformation digitale.",
+    it: "Esplora i servizi AUTOMEX — sviluppo software basato su IA, app web e mobili, soluzioni cloud e consulenza per la trasformazione digitale.",
+    nl: "Ontdek AUTOMEX-diensten — AI-aangedreven softwareontwikkeling, web- en mobiele apps, cloudoplossingen en digitale transformatieadvies.",
+    zh: "探索AUTOMEX服务——AI驱动的软件开发、网页与移动应用、云解决方案和数字化转型咨询。",
+    ar: "استكشف خدمات AUTOMEX — تطوير البرمجيات المدعوم بالذكاء الاصطناعي، وتطبيقات الويب والجوال، والحلول السحابية، واستشارات التحول الرقمي.",
+    fa: "خدمات AUTOMEX را کاوش کنید — توسعه نرم‌افزار مبتنی بر هوش مصنوعی، اپلیکیشن‌های وب و موبایل، راهکارهای ابری و مشاوره تحول دیجیتال.",
+    ps: "د AUTOMEX خدمتونه وپلټئ — د AI ځواکمن سافټویر پراختیا، ویب او موبایل اپلیکیشنونه، کلاوډ حل لارې او ډیجیټل بدلون مشوره.",
+  },
+  serviceDetail: {
+    en: "Learn more about this AUTOMEX service — AI-driven development, expert delivery, and tailored technology solutions for your business.",
+    es: "Obtenga más información sobre este servicio de AUTOMEX — desarrollo impulsado por IA, entrega experta y soluciones tecnológicas a medida para su negocio.",
+    de: "Erfahren Sie mehr über diesen AUTOMEX-Dienst — KI-gesteuerte Entwicklung, fachkundige Lieferung und maßgeschneiderte Technologielösungen für Ihr Unternehmen.",
+    fr: "En savoir plus sur ce service AUTOMEX — développement piloté par l'IA, livraison experte et solutions technologiques sur mesure pour votre entreprise.",
+    it: "Scopri di più su questo servizio AUTOMEX — sviluppo guidato dall'IA, consegna esperta e soluzioni tecnologiche su misura per la tua azienda.",
+    nl: "Lees meer over deze AUTOMEX-service — AI-gestuurde ontwikkeling, deskundige oplevering en op maat gemaakte technologieoplossingen voor uw bedrijf.",
+    zh: "了解更多关于此AUTOMEX服务——AI驱动开发、专业交付以及为您的企业量身定制的技术解决方案。",
+    ar: "تعرف على المزيد حول خدمة AUTOMEX هذه — تطوير مدعوم بالذكاء الاصطناعي، وتسليم خبير، وحلول تقنية مخصصة لعملك.",
+    fa: "درباره این سرویس AUTOMEX بیشتر بدانید — توسعه مبتنی بر هوش مصنوعی، تحویل تخصصی و راهکارهای فناوری متناسب با کسب‌وکار شما.",
+    ps: "د دې AUTOMEX خدمت په اړه نور معلومات ترلاسه کړئ — د AI لخوا پرمخ وړل شوې پراختیا، متخصص تحویل، او ستاسو سوداګرۍ لپاره مناسب ټکنالوژۍ حل لارې.",
   },
 };
 
@@ -190,6 +238,7 @@ export function generatePageMetadata(options: SeoMetadataOptions): Metadata {
     customDescription,
     ogImageUrl,
     ogImageAlt,
+    canonicalUrl,
     noIndex = false,
   } = options;
 
@@ -212,7 +261,7 @@ export function generatePageMetadata(options: SeoMetadataOptions): Metadata {
   const image = ogImageUrl || `${BASE_URL}/logo/automex.png`;
   const imageAlt = ogImageAlt || title;
 
-  return {
+  const metadata: Metadata = {
     title,
     description,
     keywords: keywords.join(", "),
@@ -240,4 +289,13 @@ export function generatePageMetadata(options: SeoMetadataOptions): Metadata {
       "max-video-preview": -1,
     },
   };
+
+  if (canonicalUrl) {
+    metadata.alternates = {
+      ...metadata.alternates,
+      canonical: canonicalUrl,
+    };
+  }
+
+  return metadata;
 }

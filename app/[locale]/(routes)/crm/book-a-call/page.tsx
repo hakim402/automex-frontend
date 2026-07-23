@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/seo/metadata";
+import { fetchIndustries } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
 import { BookCallClientPage } from "./_components/BookCallClientPage";
 
@@ -22,7 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default async function BookACallPage({ searchParams }: Props) {
+export default async function BookACallPage({ params, searchParams }: Props) {
+  const { locale } = await params;
   const { service } = await searchParams;
-  return <BookCallClientPage defaultServiceInterest={service} />;
+  const industries = await fetchIndustries(locale);
+
+  return (
+    <BookCallClientPage
+      defaultServiceInterest={service}
+      industryOptions={industries.map((i) => ({ id: i.id, name: i.name }))}
+    />
+  );
 }

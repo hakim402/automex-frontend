@@ -18,8 +18,9 @@
  * show "please wait a moment") rather than retry immediately.
  */
 import { automexFetch } from "./client";
+import { authRequest } from "@/lib/api";
 import type { SupportedLocale } from "@/lib/locale";
-import type { ChatResponse } from "./types";
+import type { ChatResponse, ConversationList, ConversationHistory } from "./types";
 
 export interface SendChatMessageParams {
   message: string;
@@ -45,4 +46,16 @@ export function sendChatMessage({
       page_url: pageUrl,
     }),
   });
+}
+
+// ─── Conversation history (JWT-authenticated) ─────────────────────────
+
+/** GET /assistant/conversations/ — list user's past conversations (requires auth). */
+export function fetchConversations(): Promise<ConversationList[]> {
+  return authRequest<ConversationList[]>("/assistant/conversations/");
+}
+
+/** GET /assistant/conversations/{id}/ — full transcript of a single conversation. */
+export function fetchConversationDetail(id: string): Promise<ConversationHistory> {
+  return authRequest<ConversationHistory>(`/assistant/conversations/${id}/`);
 }

@@ -106,3 +106,22 @@ export function validateEnv(): void {
  * "what is our own frontend's public URL."
  */
 export const getSiteUrl = getAppUrl;
+
+/**
+ * Converts a backend-relative media path (e.g. /media/media_library/2026/07/img.jpg)
+ * into a full absolute URL pointing at the Django backend (e.g. http://127.0.0.1:8001/media/...).
+ *
+ * Already-absolute URLs (http/https) are returned as-is.
+ * Falsy inputs return an empty string so img[src] degrades gracefully.
+ */
+export function getMediaUrl(path: string | null | undefined): string {
+  if (!path) return "";
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  try {
+    const apiBase = getApiBaseUrl(); // e.g. http://127.0.0.1:8001/api/v1
+    const backendOrigin = new URL(apiBase).origin; // e.g. http://127.0.0.1:8001
+    return `${backendOrigin}${path}`;
+  } catch {
+    return path; // fallback: return the relative path as-is
+  }
+}
