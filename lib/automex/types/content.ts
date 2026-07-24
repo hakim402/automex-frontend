@@ -128,6 +128,65 @@ export interface TechStackGrouped {
   [category: string]: string[];
 }
 
+// ─── Blog sub-models (typed correctly — generated has them as `string`) ───
+
+export interface BlogHeroImage {
+  id: string;
+  image: MediaAsset;
+  caption: string;
+  is_cover?: boolean;
+  order: number;
+}
+
+export interface BlogRelatedService {
+  id: string;
+  slug: string;
+  name: string;
+  short_description: string;
+}
+
+export interface BlogRelatedCaseStudy {
+  id: string;
+  slug: string;
+  title: string;
+  overview: string;
+}
+
+/**
+ * Full blog post detail with properly typed sub-model arrays.
+ * Use for /blog/posts/{slug}/ page. The generated BlogPostDetail
+ * has hero_images, related_services, related_case_studies typed
+ * as `string` — use this instead. Also makes cover_image /
+ * thumbnail_image nullable since runtime may return null.
+ */
+export interface BlogPostDetailFull {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: Schemas["BlogCategory"];
+  tags: Schemas["BlogTag"][];
+  cover_image: MediaAsset | null;
+  thumbnail_image: MediaAsset | null;
+  author: Schemas["BlogAuthor"];
+  content_type?: Schemas["ContentTypeEnum"];
+  content_type_display: string;
+  reading_time_minutes?: number | null;
+  views_count?: number;
+  is_featured?: boolean;
+  is_premium?: boolean;
+  video_embed_url?: string;
+  external_url?: string;
+  hero_images: BlogHeroImage[];
+  related_services: BlogRelatedService[];
+  related_case_studies: BlogRelatedCaseStudy[];
+  published_at?: string | null;
+  created_at: string;
+  updated_at: string;
+  seo: Schemas["BlogPostDetail"]["seo"];
+}
+
 /** Lightweight ref used in related_services. */
 export interface ServiceListItemRef {
   id: string;

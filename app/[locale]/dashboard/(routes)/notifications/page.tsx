@@ -1,9 +1,7 @@
-import React from 'react'
+// app/[locale]/dashboard/(routes)/notifications/page.tsx
 
-const NorificationsPage = () => {
-  return (
-    <div>Comming soon!</div>
-  )
+import { NotificationsPageClient } from "./_components/NotificationsPageClient";
+
+export default function NotificationsPage() {
+  return <NotificationsPageClient />;
 }
-
-export default NorificationsPage

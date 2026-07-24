@@ -11,12 +11,17 @@
  */
 "use client";
 
+import { useRef, useState } from "react";
 import { motion }          from "framer-motion";
-import { CheckCircle, AlertCircle, Calendar, Shield } from "lucide-react";
+import { CheckCircle, AlertCircle, Calendar, Shield, Camera, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image               from "next/image";
 import { type User }       from "@/lib/auth";
+import { uploadProfilePicture, getErrorMessage } from "@/lib/auth";
+import { useAuth }         from "@/contexts/AuthContext";
 import { cn }              from "@/lib/utils";
+import { getMediaUrl }      from "@/lib/env";
+import { toast }           from "sonner";
 
 interface ProfileHeaderProps {
   user: User;
@@ -24,7 +29,48 @@ interface ProfileHeaderProps {
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   const t       = useTranslations("Profile");
+  const { reloadUser } = useAuth();
   const initial = user.full_name?.charAt(0).toUpperCase() ?? "U";
+
+  // ── Profile picture upload state ──────────────────────────────────────────
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      toast.error(t("uploadNotImage"));
+      return;
+    }
+
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error(t("uploadTooLarge"));
+      return;
+    }
+
+    setUploading(true);
+    try {
+      await uploadProfilePicture(file);
+      await reloadUser();
+      toast.success(t("uploadSuccess"));
+    } catch (err) {
+      toast.error(getErrorMessage(err));
+    } finally {
+      setUploading(false);
+      // Reset input so same file can be selected again
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
+  // ── Avatar source: profile_picture > google_picture_url > initials ──────
+  const avatarUrl =
+    getMediaUrl(user.profile?.profile_picture) ||
+    user.google_picture_url ||
+    null;
 
   const memberSince = new Date(user.created_at).toLocaleDateString("en-US", {
     year: "numeric", month: "long",
@@ -49,13 +95,14 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
 
         {/* Avatar */}
         <div className="relative shrink-0">
-          {user.google_picture_url ? (
+          {avatarUrl ? (
             <Image
-              src={user.google_picture_url}
+              src={avatarUrl}
               alt={user.full_name}
               width={80}
               height={80}
               className="size-20 rounded-2xl object-cover ring-2 ring-border/40"
+              unoptimized
             />
           ) : (
             <div className="size-20 rounded-2xl bg-color shadow-brand
@@ -64,6 +111,32 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               {initial}
             </div>
           )}
+
+          {/* Click-to-upload overlay */}
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploading}
+            className="absolute inset-0 flex items-center justify-center
+                       rounded-2xl bg-black/0 hover:bg-black/40
+                       transition-colors cursor-pointer group"
+            aria-label={t("uploadPicture")}
+          >
+            {uploading ? (
+              <Loader2 className="size-5 text-white opacity-0 group-hover:opacity-100 animate-spin" />
+            ) : (
+              <Camera className="size-5 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+            )}
+          </button>
+
+          {/* Hidden file input */}
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleFileChange}
+          />
 
           {/* Verified dot */}
           <div className={cn(

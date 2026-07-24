@@ -61,6 +61,10 @@ export type {
   ServiceListItemRef,
   TechStackGrouped,
   PaginatedResponse,
+  BlogHeroImage,
+  BlogRelatedService,
+  BlogRelatedCaseStudy,
+  BlogPostDetailFull,
 } from "./content";
 
 // ─── CRM domain — inputs (request bodies) ─────────────────────────────
@@ -89,6 +93,20 @@ export type DashboardTicket = Schemas["DashboardTicket"];
 export type DashboardTicketList = Schemas["DashboardTicketList"];
 export type CreateTicketRequest = Schemas["CreateTicketRequest"];
 export type SupportTicketMessage = Schemas["SupportTicketMessage"];
+
+/** Lead activity timeline entry (returned by /crm/dashboard/requests/{id}/). */
+export interface LeadActivity {
+  id: string;
+  action: string;
+  description: string;
+  actor: string;
+  created_at: string;
+}
+
+/** DashboardLead with activities timeline from the detail endpoint. */
+export type DashboardLeadWithActivities = DashboardLead & {
+  activities?: LeadActivity[];
+};
 
 // ─── CRM Guest domain (API key + guest_token) ─────────────────────────
 

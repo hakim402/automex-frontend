@@ -74,10 +74,11 @@ export async function subscribeNewsletterAction(
 
 export async function submitContactLeadAction(
   input: Omit<ContactLeadInput, "language">,
-  locale: SupportedLocale
+  locale: SupportedLocale,
+  accessToken?: string | null
 ): Promise<ActionResult<LeadAck>> {
   try {
-    return { success: true, data: await submitContactLead(input, locale) };
+    return { success: true, data: await submitContactLead(input, locale, accessToken) };
   } catch (err) {
     return handleAutomexError<LeadAck>(err, locale);
   }
@@ -87,10 +88,11 @@ export async function submitContactLeadAction(
 
 export async function submitQuoteRequestAction(
   input: Omit<QuoteRequestInput, "language">,
-  locale: SupportedLocale
+  locale: SupportedLocale,
+  accessToken?: string | null
 ): Promise<ActionResult<LeadAck>> {
   try {
-    return { success: true, data: await submitQuoteRequest(input, locale) };
+    return { success: true, data: await submitQuoteRequest(input, locale, accessToken) };
   } catch (err) {
     return handleAutomexError<LeadAck>(err, locale);
   }
@@ -109,10 +111,11 @@ export async function fetchAvailabilityAction(date: string, locale: SupportedLoc
 
 export async function submitConsultationBookingAction(
   input: Omit<ConsultationBookingInput, "language">,
-  locale: SupportedLocale
+  locale: SupportedLocale,
+  accessToken?: string | null
 ): Promise<ActionResult<ConsultationBookingAck>> {
   try {
-    return { success: true, data: await submitConsultationBooking(input, locale) };
+    return { success: true, data: await submitConsultationBooking(input, locale, accessToken) };
   } catch (err) {
     return handleAutomexError<ConsultationBookingAck>(err, locale);
   }

@@ -1,7 +1,7 @@
 "use client";
 
 // app/[locale]/(routes)/crm/contact/_components/ContactClientPage.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,6 +14,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import type { SupportedLocale } from "@/lib/locale";
+import { useAuth } from "@/contexts/AuthContext";
+import { TokenStorage } from "@/lib/api";
 
 import { CrmFormField } from "../../_components/crm-shared/CrmFormField";
 import { BudgetTimelineFields } from "../../_components/crm-shared/fields/BudgetTimelineFields";
@@ -40,6 +42,7 @@ export function ContactClientPage({ serviceOptions, defaultServiceInterest }: Co
   const tPage = useTranslations("CrmPages.contact");
   const locale = useLocale() as SupportedLocale;
   const [submitted, setSubmitted] = useState(false);
+  const { user } = useAuth();
 
   const {
     register,
@@ -52,6 +55,19 @@ export function ContactClientPage({ serviceOptions, defaultServiceInterest }: Co
     resolver: zodResolver(contactSchema),
     defaultValues: { budget_range: "not_specified", service_interest: defaultServiceInterest },
   });
+
+  // Pre-fill form fields when user is authenticated
+  useEffect(() => {
+    if (user) {
+      reset({
+        full_name: user.full_name || "",
+        email: user.email || "",
+        phone: user.profile?.phone_number || "",
+        budget_range: "not_specified",
+        service_interest: defaultServiceInterest,
+      });
+    }
+  }, [user, reset, defaultServiceInterest]);
 
   const { submit, isPending } = useCrmFormSubmit(
     (values: ContactFormValues) =>
@@ -67,7 +83,8 @@ export function ContactClientPage({ serviceOptions, defaultServiceInterest }: Co
           timeline: values.timeline,
           message: values.message,
         },
-        locale
+        locale,
+        TokenStorage.getAccess()
       ),
     setError,
     () => setSubmitted(true)

@@ -11,6 +11,11 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
+  Search,
+  SlidersHorizontal,
+  Crown,
+  ExternalLink,
+  Play,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -37,6 +42,7 @@ interface BlogClientPageProps {
   activeTag?: string;
   searchQuery?: string;
   totalCount: number;
+  currentOrdering?: string;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────
@@ -98,11 +104,11 @@ function FeaturedCarousel({
       <div className="relative aspect-[21/9] sm:aspect-[21/7] bg-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={post.cover_image?.url ? getMediaUrl(post.cover_image.url) : ""}
+          src={post.cover_image?.url && post.cover_image.file_type !== "video" ? getMediaUrl(post.cover_image.url) : ""}
           alt={post.cover_image?.alt_text || post.title}
           className={cn(
             "absolute inset-0 size-full object-cover transition-opacity duration-700",
-            post.cover_image?.url ? "opacity-100" : "opacity-0",
+            post.cover_image?.url && post.cover_image.file_type !== "video" ? "opacity-100" : "opacity-0",
           )}
         />
 
@@ -126,12 +132,18 @@ function FeaturedCarousel({
             <div className="flex flex-wrap items-center gap-4 text-[13px] text-muted-foreground mb-4">
               {post.author && (
                 <span className="flex items-center gap-2">
-                  {post.author.avatar?.url && (
+                  {post.author.avatar?.url && post.author.avatar.file_type !== "video" ? (
                     <img
                       src={getMediaUrl(post.author.avatar.url)}
                       alt={post.author.full_name}
                       className="size-6 rounded-full object-cover"
                     />
+                  ) : (
+                    post.author.full_name && (
+                      <span className="size-6 rounded-full bg-brand-gradient flex items-center justify-center text-[10px] text-white font-semibold">
+                        {post.author.full_name.charAt(0).toUpperCase()}
+                      </span>
+                    )
                   )}
                   {post.author.full_name}
                 </span>
@@ -218,6 +230,7 @@ export function BlogClientPage({
   activeTag,
   searchQuery,
   totalCount,
+  currentOrdering,
 }: BlogClientPageProps) {
   const locale = useLocale() as SupportedLocale;
   const t = useTranslations("Blog");
@@ -226,6 +239,8 @@ export function BlogClientPage({
   const [hasMore, setHasMore] = useState(hasMoreInitial);
   const [page, setPage] = useState(1);
   const [isPending, startTransition] = useTransition();
+  const [searchInput, setSearchInput] = useState(searchQuery || "");
+  const [ordering, setOrdering] = useState(currentOrdering || "-published_at");
 
   // Featured posts for carousel
   const featuredPosts = posts.filter((p) => p.is_featured);
@@ -237,6 +252,7 @@ export function BlogClientPage({
         activeCategory,
         activeTag,
         searchQuery,
+        ordering,
         nextPage,
         locale,
       );
@@ -285,7 +301,51 @@ export function BlogClientPage({
         </section>
 
         {/* ═══ Filters ═════════════════════════════════════════════ */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <div className="flex flex-col gap-4 mb-10">
+          {/* Search + Sort controls */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-3xl mx-auto">
+            {/* Search input */}
+            <div className="relative flex-1 w-full">
+              <Search className="absolute inset-s-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    const params = new URLSearchParams(window.location.search);
+                    if (searchInput) params.set("search", searchInput);
+                    else params.delete("search");
+                    window.location.href = `/blog?${params.toString()}`;
+                  }
+                }}
+                placeholder={t("listing.filters.searchPlaceholder")}
+                className="w-full rounded-full border border-border/50 bg-card/80 backdrop-blur-sm ps-9 pe-4 py-2.5 text-[14px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+              />
+            </div>
+
+            {/* Sort dropdown */}
+            <div className="flex items-center gap-2">
+              <SlidersHorizontal className="size-4 text-muted-foreground" />
+              <select
+                value={ordering}
+                onChange={(e) => {
+                  setOrdering(e.target.value);
+                  const params = new URLSearchParams(window.location.search);
+                  params.set("ordering", e.target.value);
+                  window.location.href = `/blog?${params.toString()}`;
+                }}
+                className="rounded-full border border-border/50 bg-card/80 backdrop-blur-sm px-4 py-2.5 text-[13px] text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all cursor-pointer"
+              >
+                <option value="-published_at">{t("listing.filters.sortNewest")}</option>
+                <option value="published_at">{t("listing.filters.sortOldest")}</option>
+                <option value="-views_count">{t("listing.filters.sortPopular")}</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Category + Tag filters */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
           {categories.length > 0 && (
             <div className="flex flex-wrap items-center gap-2">
               <Link
@@ -320,7 +380,7 @@ export function BlogClientPage({
                       : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted/80",
                   )}
                 >
-                  {cat.name}
+                  {cat.name || cat.slug}
                 </Link>
               ))}
             </div>
@@ -354,6 +414,7 @@ export function BlogClientPage({
               ))}
             </div>
           )}
+          </div>
         </div>
 
         {/* ═══ Results count ════════════════════════════════════════ */}
@@ -391,10 +452,10 @@ export function BlogClientPage({
               >
                 {/* Cover image */}
                 <div className="relative h-44 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
-                  {post.cover_image?.url ? (
+                  {post.cover_image?.url && post.cover_image.file_type !== "video" ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={getMediaUrl(post.cover_image.url)}
+                      src={getMediaUrl(post.thumbnail_image?.url || post.cover_image.url)}
                       alt={post.cover_image.alt_text || post.title}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
@@ -414,11 +475,30 @@ export function BlogClientPage({
                     className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card/90 via-card/40 to-transparent"
                   />
 
-                  {/* Featured badge */}
-                  {post.is_featured && (
-                    <span className="absolute top-3 start-3 inline-flex items-center gap-1 rounded-full bg-brand-gradient text-white text-[11px] font-semibold px-2.5 py-1 shadow-brand">
-                      <Sparkles className="size-3" aria-hidden="true" />
-                      {t("listing.post.featured")}
+                  {/* Badges row */}
+                  <div className="absolute top-3 start-3 flex items-center gap-2">
+                    {/* Featured badge */}
+                    {post.is_featured && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-brand-gradient text-white text-[11px] font-semibold px-2.5 py-1 shadow-brand">
+                        <Sparkles className="size-3" aria-hidden="true" />
+                        {t("listing.post.featured")}
+                      </span>
+                    )}
+                    {/* Premium badge */}
+                    {post.is_premium && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-500 text-white text-[11px] font-semibold px-2.5 py-1 shadow-sm">
+                        <Crown className="size-3" aria-hidden="true" />
+                        {t("listing.post.premium")}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Content type badge (bottom-right) */}
+                  {post.content_type_display && (
+                    <span className="absolute bottom-3 end-3 inline-flex items-center gap-1 rounded-full bg-background/90 backdrop-blur-sm px-2.5 py-1 text-[10px] font-medium text-foreground/80 border border-border/30">
+                      {post.content_type_display === "Video" && <Play className="size-3" />}
+                      {post.content_type_display === "External" && <ExternalLink className="size-3" />}
+                      {post.content_type_display}
                     </span>
                   )}
                 </div>
@@ -428,7 +508,7 @@ export function BlogClientPage({
                   {/* Category */}
                   {post.category && (
                     <span className="text-[11px] font-medium uppercase tracking-wider text-primary">
-                      {post.category.name}
+                      {post.category.name || post.category.slug}
                     </span>
                   )}
 
@@ -448,7 +528,7 @@ export function BlogClientPage({
                     <div className="flex items-center gap-3">
                       {post.author && (
                         <span className="flex items-center gap-1.5">
-                          {post.author.avatar?.url ? (
+                          {post.author.avatar?.url && post.author.avatar.file_type !== "video" ? (
                             <img
                               src={getMediaUrl(post.author.avatar.url)}
                               alt={post.author.full_name}

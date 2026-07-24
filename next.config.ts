@@ -21,6 +21,13 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
 
+      // ── Google OAuth profile pictures ─────────────────────────────
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "/**",
+      },
+
       // ── Django backend (development) ────────────────────────────────
       {
         protocol: "http",

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { fetchBlogPostBySlug, fetchBlogPosts } from "@/lib/automex/content";
+import type { BlogPostDetailFull } from "@/lib/automex/types";
 import type { SupportedLocale } from "@/lib/locale";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
@@ -29,10 +30,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const post = await fetchBlogPostBySlug(slug, locale);
     if (!post) return { title: "Blog Post Not Found" };
 
-    const seoTitle = (post.seo as Record<string, string>)?.meta_title || post.title;
-    const seoDesc = (post.seo as Record<string, string>)?.meta_description || post.excerpt;
-    const seoOgImage = (post.seo as Record<string, string>)?.og_image || null;
-    const seoCanonical = (post.seo as Record<string, string>)?.canonical_url || null;
+    // Use proper typing for SEO object
+    const seo = post.seo as {
+      meta_title?: string;
+      meta_description?: string;
+      og_image?: string;
+      canonical_url?: string;
+    };
+
+    const seoTitle = seo?.meta_title || post.title;
+    const seoDesc = seo?.meta_description || post.excerpt;
+    const coverImageUrl = post.cover_image?.url ?? null;
 
     return generatePageMetadata({
       pageType: "services",
@@ -40,9 +48,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       pathSegment: `blog/${slug}`,
       customTitle: `${seoTitle} – AUTOMEX Blog`,
       customDescription: seoDesc,
-      ogImageUrl: seoOgImage || post.cover_image?.url || null,
+      ogImageUrl: seo?.og_image || coverImageUrl || null,
       ogImageAlt: post.cover_image?.alt_text || post.title,
-      canonicalUrl: seoCanonical,
+      canonicalUrl: seo?.canonical_url || null,
     });
   } catch {
     return { title: "Blog Post – AUTOMEX" };
@@ -52,13 +60,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogDetailPage({ params }: Props) {
   const { locale, slug } = await params;
 
-  let post: Awaited<ReturnType<typeof fetchBlogPostBySlug>>;
+  let post: BlogPostDetailFull;
   try {
-    post = await fetchBlogPostBySlug(slug, locale);
+    const raw = await fetchBlogPostBySlug(slug, locale);
+    if (!raw) notFound();
+    post = raw as unknown as BlogPostDetailFull;
   } catch {
     notFound();
   }
-  if (!post) notFound();
 
   const articleSchema = {
     "@context": "https://schema.org",

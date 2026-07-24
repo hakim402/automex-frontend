@@ -1,9 +1,7 @@
-import React from 'react'
+// app/[locale]/dashboard/(routes)/support/page.tsx
 
-const SupportPage = () => {
-  return (
-    <div>Comming soon!</div>
-  )
+import { SupportTicketsPageClient } from "./_components/SupportTicketsPageClient";
+
+export default function SupportPage() {
+  return <SupportTicketsPageClient />;
 }
-
-export default SupportPage

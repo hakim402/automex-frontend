@@ -36,7 +36,8 @@ const COLOR_PALETTE = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 
-function deriveInitials(fullName: string): string {
+function deriveInitials(fullName: string | null | undefined): string {
+  if (!fullName) return "?";
   const parts = fullName.trim().split(/\s+/);
   if (parts.length === 0) return "?";
   if (parts.length === 1) return parts[0].charAt(0).toUpperCase();

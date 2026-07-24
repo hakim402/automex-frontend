@@ -250,6 +250,22 @@ export async function updateMe(payload: UpdateMePayload): Promise<User> {
   });
 }
 
+// ─── 8b. Upload Profile Picture ─────────────────────────────────────────────
+
+/**
+ * Upload a new profile picture via multipart/form-data.
+ * The backend stores the file and returns the full User object.
+ */
+export async function uploadProfilePicture(file: File): Promise<User> {
+  const formData = new FormData();
+  formData.append("profile.profile_picture", file);
+
+  return authRequest<User>("/auth/me/update/", {
+    method: "PATCH",
+    body: formData,
+  });
+}
+
 // ─── 9. Change Password ───────────────────────────────────────────────────────
 
 export interface ChangePasswordPayload {

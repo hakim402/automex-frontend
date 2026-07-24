@@ -22,7 +22,30 @@ import type {
   DashboardTicketList,
   CreateTicketRequest,
   SupportTicketMessage,
+  DashboardLeadWithActivities,
+  ConversationList,
+  ConversationHistory,
+  LeadStatus,
+  LeadType,
+  ConsultationBookingStatus,
+  TicketStatus,
+  TicketTypeEnum,
 } from "./types";
+
+/** Standard DRF paginated response wrapper. */
+interface PaginatedResponse<T> {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+}
+
+/** Return type for paginated list fetchers. */
+export interface PaginatedResult<T> {
+  results: T[];
+  hasNext: boolean;
+  count: number;
+}
 
 // ─── Summary ───────────────────────────────────────────────────────────
 
@@ -33,14 +56,27 @@ export function fetchDashboardSummary(): Promise<DashboardSummary> {
 
 // ─── Requests / Leads ──────────────────────────────────────────────────
 
-/** GET /crm/dashboard/requests/ — paginated list of user's leads. */
-export function fetchDashboardLeads(page = 1): Promise<DashboardLead[]> {
-  return authRequest<DashboardLead[]>(`/crm/dashboard/requests/?page=${page}`);
+/** Filters for GET /crm/dashboard/requests/ */
+export interface LeadFilters {
+  status?: LeadStatus | "all";
+  lead_type?: LeadType | "all";
+}
+
+/** GET /crm/dashboard/requests/ — paginated list of user's leads with optional server-side filters. */
+export async function fetchDashboardLeads(
+  page = 1,
+  filters?: LeadFilters
+): Promise<PaginatedResult<DashboardLead>> {
+  const params = new URLSearchParams({ page: String(page) });
+  if (filters?.status && filters.status !== "all") params.set("status", filters.status);
+  if (filters?.lead_type && filters.lead_type !== "all") params.set("lead_type", filters.lead_type);
+  const res = await authRequest<PaginatedResponse<DashboardLead>>(`/crm/dashboard/requests/?${params}`);
+  return { results: res.results ?? [], hasNext: !!res.next, count: res.count };
 }
 
 /** GET /crm/dashboard/requests/{id}/ — lead detail with activities timeline. */
-export function fetchDashboardLeadDetail(id: string): Promise<DashboardLead> {
-  return authRequest<DashboardLead>(`/crm/dashboard/requests/${id}/`);
+export function fetchDashboardLeadDetail(id: string): Promise<DashboardLeadWithActivities> {
+  return authRequest<DashboardLeadWithActivities>(`/crm/dashboard/requests/${id}/`);
 }
 
 /** POST /crm/dashboard/requests/{id}/message/ — send a message to staff about this lead. */
@@ -56,9 +92,20 @@ export function sendDashboardLeadMessage(
 
 // ─── Bookings ──────────────────────────────────────────────────────────
 
-/** GET /crm/dashboard/bookings/ — paginated list of user's bookings. */
-export function fetchDashboardBookings(page = 1): Promise<DashboardBooking[]> {
-  return authRequest<DashboardBooking[]>(`/crm/dashboard/bookings/?page=${page}`);
+/** Filters for GET /crm/dashboard/bookings/ */
+export interface BookingFilters {
+  status?: ConsultationBookingStatus | "all";
+}
+
+/** GET /crm/dashboard/bookings/ — paginated list of user's bookings with optional server-side filters. */
+export async function fetchDashboardBookings(
+  page = 1,
+  filters?: BookingFilters
+): Promise<PaginatedResult<DashboardBooking>> {
+  const params = new URLSearchParams({ page: String(page) });
+  if (filters?.status && filters.status !== "all") params.set("status", filters.status);
+  const res = await authRequest<PaginatedResponse<DashboardBooking>>(`/crm/dashboard/bookings/?${params}`);
+  return { results: res.results ?? [], hasNext: !!res.next, count: res.count };
 }
 
 /** GET /crm/dashboard/bookings/{id}/ — full booking detail. */
@@ -86,9 +133,22 @@ export function cancelDashboardBooking(id: string): Promise<DashboardBooking> {
 
 // ─── Support Tickets ───────────────────────────────────────────────────
 
-/** GET /crm/dashboard/tickets/ — paginated ticket list (no messages). */
-export function fetchDashboardTickets(page = 1): Promise<DashboardTicketList[]> {
-  return authRequest<DashboardTicketList[]>(`/crm/dashboard/tickets/?page=${page}`);
+/** Filters for GET /crm/dashboard/tickets/ */
+export interface TicketFilters {
+  status?: TicketStatus | "all";
+  ticket_type?: TicketTypeEnum | "all";
+}
+
+/** GET /crm/dashboard/tickets/ — paginated ticket list with optional server-side filters. */
+export async function fetchDashboardTickets(
+  page = 1,
+  filters?: TicketFilters
+): Promise<PaginatedResult<DashboardTicketList>> {
+  const params = new URLSearchParams({ page: String(page) });
+  if (filters?.status && filters.status !== "all") params.set("status", filters.status);
+  if (filters?.ticket_type && filters.ticket_type !== "all") params.set("ticket_type", filters.ticket_type);
+  const res = await authRequest<PaginatedResponse<DashboardTicketList>>(`/crm/dashboard/tickets/?${params}`);
+  return { results: res.results ?? [], hasNext: !!res.next, count: res.count };
 }
 
 /** GET /crm/dashboard/tickets/{id}/ — ticket detail with messages + unread count. */
@@ -120,8 +180,9 @@ export function sendDashboardTicketMessage(
 // ─── Calculator Estimates ──────────────────────────────────────────────
 
 /** GET /crm/dashboard/calculations/ — past cost estimates, paginated. */
-export function fetchDashboardCalculations(page = 1): Promise<DashboardCalculation[]> {
-  return authRequest<DashboardCalculation[]>(`/crm/dashboard/calculations/?page=${page}`);
+export async function fetchDashboardCalculations(page = 1): Promise<PaginatedResult<DashboardCalculation>> {
+  const res = await authRequest<PaginatedResponse<DashboardCalculation>>(`/crm/dashboard/calculations/?page=${page}`);
+  return { results: res.results ?? [], hasNext: !!res.next, count: res.count };
 }
 
 /** POST /crm/dashboard/calculations/{id}/convert/ — convert estimate to a lead. */
@@ -129,4 +190,16 @@ export function convertDashboardCalculation(id: string): Promise<DashboardCalcul
   return authRequest<DashboardCalculation>(`/crm/dashboard/calculations/${id}/convert/`, {
     method: "POST",
   });
+}
+
+// ─── AI Conversation History (JWT) ───────────────────────────────────────
+
+/** GET /assistant/conversations/ — list user's past conversations (max 50). */
+export function fetchConversations(): Promise<ConversationList[]> {
+  return authRequest<ConversationList[]>("/assistant/conversations/");
+}
+
+/** GET /assistant/conversations/{id}/ — full conversation with all messages. */
+export function fetchConversationDetail(id: string): Promise<ConversationHistory> {
+  return authRequest<ConversationHistory>(`/assistant/conversations/${id}/`);
 }

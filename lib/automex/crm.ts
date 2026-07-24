@@ -29,11 +29,13 @@ import type {
 
 export function submitContactLead(
   input: Omit<ContactLeadInput, "language">,
-  locale: SupportedLocale
+  locale: SupportedLocale,
+  accessToken?: string | null
 ): Promise<LeadAck> {
   return automexFetch<LeadAck>("/crm/leads/contact/", {
     method: "POST",
     body: JSON.stringify({ ...input, language: locale }),
+    ...(accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {}),
   });
 }
 
@@ -41,11 +43,13 @@ export function submitContactLead(
 
 export function submitQuoteRequest(
   input: Omit<QuoteRequestInput, "language">,
-  locale: SupportedLocale
+  locale: SupportedLocale,
+  accessToken?: string | null
 ): Promise<LeadAck> {
   return automexFetch<LeadAck>("/crm/leads/quote/", {
     method: "POST",
     body: JSON.stringify({ ...input, language: locale }),
+    ...(accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {}),
   });
 }
 
@@ -74,11 +78,13 @@ export async function fetchAvailability(date: string): Promise<AvailableSlot[]> 
  */
 export function submitConsultationBooking(
   input: Omit<ConsultationBookingInput, "language">,
-  locale: SupportedLocale
+  locale: SupportedLocale,
+  accessToken?: string | null
 ): Promise<ConsultationBookingAck> {
   return automexFetch<ConsultationBookingAck>("/crm/bookings/consultations/", {
     method: "POST",
     body: JSON.stringify({ ...input, language: locale }),
+    ...(accessToken ? { headers: { Authorization: `Bearer ${accessToken}` } } : {}),
   });
 }
 

@@ -1687,6 +1687,10 @@ export interface components {
             readonly name: string;
             slug: string;
             readonly description: string;
+            /** @description Icon identifier for the frontend, e.g. 'lucide:book-open'. */
+            icon?: string;
+            /** Active */
+            is_active?: boolean;
             /** Display order */
             order?: number;
         };
@@ -1707,14 +1711,39 @@ export interface components {
             readonly category: components["schemas"]["BlogCategory"];
             readonly tags: components["schemas"]["BlogTag"][];
             readonly cover_image: components["schemas"]["MediaAsset"];
+            readonly thumbnail_image: components["schemas"]["MediaAsset"];
             readonly author: components["schemas"]["BlogAuthor"];
+            content_type?: components["schemas"]["ContentTypeEnum"];
+            readonly content_type_display: string;
             /** Reading time (minutes) */
             reading_time_minutes?: number | null;
             views_count?: number;
             /** Featured */
             is_featured?: boolean;
+            /**
+             * Premium content
+             * @description If True, this content is gated for lead generation.
+             */
+            is_premium?: boolean;
+            /**
+             * Format: uri
+             * @description YouTube or Vimeo embed URL for video posts.
+             */
+            video_embed_url?: string;
+            /**
+             * Format: uri
+             * @description For Medium/LinkedIn cross-posts — the original article URL.
+             */
+            external_url?: string;
+            readonly hero_images: string;
+            readonly related_services: string;
+            readonly related_case_studies: string;
             /** Format: date-time */
             published_at?: string | null;
+            /** Format: date-time */
+            readonly created_at: string;
+            /** Format: date-time */
+            readonly updated_at: string;
             readonly seo: {
                 [key: string]: unknown;
             };
@@ -1728,11 +1757,24 @@ export interface components {
             readonly category: components["schemas"]["BlogCategory"];
             readonly tags: components["schemas"]["BlogTag"][];
             readonly cover_image: components["schemas"]["MediaAsset"];
+            readonly thumbnail_image: components["schemas"]["MediaAsset"];
             readonly author: components["schemas"]["BlogAuthor"];
+            content_type?: components["schemas"]["ContentTypeEnum"];
+            readonly content_type_display: string;
             /** Reading time (minutes) */
             reading_time_minutes?: number | null;
             /** Featured */
             is_featured?: boolean;
+            /**
+             * Premium content
+             * @description If True, this content is gated for lead generation.
+             */
+            is_premium?: boolean;
+            /**
+             * Format: uri
+             * @description YouTube or Vimeo embed URL for video posts.
+             */
+            video_embed_url?: string;
             /** Format: date-time */
             published_at?: string | null;
         };
@@ -1770,9 +1812,36 @@ export interface components {
             client_name?: string;
             readonly client_industry: components["schemas"]["Industry"];
             readonly client_logo: components["schemas"]["MediaAsset"];
+            /**
+             * Format: uri
+             * @description Link to the client's website.
+             */
+            client_website?: string;
             readonly thumbnail: components["schemas"]["MediaAsset"];
+            project_type?: components["schemas"]["ProjectTypeEnum"] | components["schemas"]["BlankEnum"];
+            readonly project_type_display: string;
+            /** @description Number of people who delivered this project. */
+            team_size?: number | null;
+            /** @description Year the project was delivered. */
+            project_year?: number | null;
+            /**
+             * Project duration
+             * @description Human-readable duration, e.g. '6 months', '12 weeks'.
+             */
+            project_duration_display?: string;
+            /** @description Structured business impact data, e.g. {"roi_increase": 340, "cost_reduction": "45%", "performance_gain": "10x"}. */
+            key_metrics?: unknown;
+            /**
+             * AI/ML project
+             * @description Flag for AI/ML specific projects.
+             */
+            is_ai_project?: boolean;
+            /** @description List of AI/ML models or techniques used, e.g. ["GPT-4", "Computer Vision", "RAG", "Fine-tuning"]. */
+            ai_models_used?: unknown;
             readonly technologies: components["schemas"]["Technology"][];
             readonly gallery: components["schemas"]["CaseStudyGalleryImage"][];
+            readonly related_services: string;
+            readonly testimonial: components["schemas"]["Testimonial"];
             /**
              * Live project URL
              * Format: uri
@@ -1793,6 +1862,9 @@ export interface components {
             id: string;
             media: components["schemas"]["MediaAsset"];
             readonly caption: string;
+            is_before_after: boolean;
+            image_type: string;
+            readonly image_type_display: string;
             order: number;
         };
         CaseStudyList: {
@@ -1800,9 +1872,20 @@ export interface components {
             readonly id: string;
             readonly slug: string;
             readonly title: string;
+            readonly overview: string;
             client_name?: string;
             readonly client_industry: components["schemas"]["Industry"];
+            readonly client_logo: components["schemas"]["MediaAsset"];
             readonly thumbnail: components["schemas"]["MediaAsset"];
+            project_type?: components["schemas"]["ProjectTypeEnum"] | components["schemas"]["BlankEnum"];
+            readonly project_type_display: string;
+            /** @description Structured business impact data, e.g. {"roi_increase": 340, "cost_reduction": "45%", "performance_gain": "10x"}. */
+            key_metrics?: unknown;
+            /**
+             * AI/ML project
+             * @description Flag for AI/ML specific projects.
+             */
+            is_ai_project?: boolean;
             /** Featured */
             is_featured?: boolean;
             /** Display order */
@@ -1939,6 +2022,16 @@ export interface components {
             /** @default en */
             language: string;
         };
+        /**
+         * @description * `article` - Article
+         *     * `tutorial` - Tutorial
+         *     * `case_study` - Case Study Summary
+         *     * `whitepaper` - Whitepaper
+         *     * `news` - News
+         *     * `video_post` - Video Post
+         * @enum {string}
+         */
+        ContentTypeEnum: "article" | "tutorial" | "case_study" | "whitepaper" | "news" | "video_post";
         /** @description Full conversation with all messages. */
         ConversationHistory: {
             /** Format: uuid */
@@ -2000,13 +2093,18 @@ export interface components {
             readonly status_display: string;
             /** Format: uri */
             readonly meeting_link: string;
+            /** Format: uri */
+            readonly calendar_event_link: string;
             /** Internal notes */
             readonly notes: string;
+            readonly cancellation_reason: string;
             readonly reschedule_count: number;
             /** Format: date-time */
             readonly confirmed_at: string | null;
             /** Format: date-time */
             readonly cancelled_at: string | null;
+            /** Format: date-time */
+            readonly completed_at: string | null;
             /** Format: date-time */
             readonly created_at: string;
         };
@@ -2047,14 +2145,25 @@ export interface components {
             readonly full_name: string;
             /** Format: email */
             readonly email: string;
+            readonly phone: string;
             readonly company: string;
+            readonly job_title: string;
             /**
              * Service of interest
              * Format: uuid
              */
             readonly service_interest: string | null;
+            /** Format: uuid */
+            readonly industry: string | null;
             readonly message: string;
             readonly quote_detail: components["schemas"]["QuoteRequestDetail"];
+            readonly budget_range: components["schemas"]["BudgetRangeEnum"];
+            readonly budget_range_display: string;
+            /** Project timeline */
+            readonly timeline: components["schemas"]["TimelineEnum"];
+            readonly timeline_display: string;
+            readonly source_channel: components["schemas"]["SourceChannelEnum"];
+            readonly source_channel_display: string;
             /**
              * Guest tracking token
              * @description Random token allowing guests to track their request status.
@@ -2063,6 +2172,9 @@ export interface components {
             readonly tags: unknown;
             /** Format: date */
             readonly expected_close_date: string | null;
+            readonly lost_reason: string;
+            /** Format: date-time */
+            readonly converted_at: string | null;
             /** Format: date-time */
             readonly created_at: string;
             /** Format: date-time */
@@ -2135,6 +2247,13 @@ export interface components {
             readonly status_display: string;
             readonly priority: components["schemas"]["PriorityEnum"];
             readonly priority_display: string;
+            readonly description: string;
+            /** Format: uuid */
+            readonly related_lead: string | null;
+            /** Format: uuid */
+            readonly related_service: string | null;
+            /** Format: email */
+            readonly guest_email: string;
             /** Format: uuid */
             readonly assigned_to: string | null;
             readonly unread_message_count: string;
@@ -2214,6 +2333,11 @@ export interface components {
              * Format: uuid
              */
             service?: string | null;
+            /**
+             * Prominent
+             * @description If True, this FAQ is shown in the hero/above-fold area rather than at the bottom of the page.
+             */
+            is_prominent?: boolean;
             /** Display order */
             order?: number;
         };
@@ -2262,6 +2386,8 @@ export interface components {
             guest_email: string;
             /** @default normal */
             priority: components["schemas"]["PriorityEnum"];
+            /** Format: uuid */
+            related_service?: string | null;
         };
         GuestLead: {
             /** Format: uuid */
@@ -2273,8 +2399,22 @@ export interface components {
             readonly full_name: string;
             /** Format: email */
             readonly email: string;
+            readonly phone: string;
             readonly company: string;
+            readonly job_title: string;
             readonly message: string;
+            /**
+             * Service of interest
+             * Format: uuid
+             */
+            readonly service_interest: string | null;
+            /** Format: uuid */
+            readonly industry: string | null;
+            readonly budget_range: components["schemas"]["BudgetRangeEnum"];
+            readonly budget_range_display: string;
+            /** Project timeline */
+            readonly timeline: components["schemas"]["TimelineEnum"];
+            readonly timeline_display: string;
             /**
              * Guest tracking token
              * @description Random token allowing guests to track their request status.
@@ -2296,8 +2436,22 @@ export interface components {
             readonly full_name: string;
             /** Format: email */
             readonly email: string;
+            readonly phone: string;
             readonly company: string;
+            readonly job_title: string;
             readonly message: string;
+            /**
+             * Service of interest
+             * Format: uuid
+             */
+            readonly service_interest: string | null;
+            /** Format: uuid */
+            readonly industry: string | null;
+            readonly budget_range: components["schemas"]["BudgetRangeEnum"];
+            readonly budget_range_display: string;
+            /** Project timeline */
+            readonly timeline: components["schemas"]["TimelineEnum"];
+            readonly timeline_display: string;
             /**
              * Guest tracking token
              * @description Random token allowing guests to track their request status.
@@ -2320,6 +2474,8 @@ export interface components {
             readonly status_display: string;
             readonly priority: components["schemas"]["PriorityEnum"];
             readonly description: string;
+            /** Format: uuid */
+            readonly related_service: string | null;
             /** Format: email */
             readonly guest_email: string;
             /** Guest tracking token */
@@ -2339,6 +2495,9 @@ export interface components {
             readonly author_is_staff: boolean;
             /** Message */
             readonly body: string;
+            /** Format: uuid */
+            readonly attachment: string | null;
+            readonly attachment_url: string;
             /** Format: date-time */
             readonly created_at: string;
         };
@@ -2354,6 +2513,9 @@ export interface components {
             readonly slug: string;
             readonly description: string;
             icon?: string;
+            readonly icon_image: components["schemas"]["MediaAsset"];
+            /** @description List of compliance frameworks relevant to this industry, e.g. ["HIPAA", "SOC2", "PCI-DSS"]. */
+            compliance_standards?: unknown;
             /** Display order */
             order?: number;
         };
@@ -2943,9 +3105,30 @@ export interface components {
             readonly title: string;
             readonly description: string;
             icon?: string;
+            /** @description e.g. '2-3 weeks', '1 sprint'. */
+            estimated_duration?: string;
+            /** @description List of outputs from this step, e.g. ["Requirements document", "Wireframes", "Technical spec"]. */
+            deliverables?: unknown;
             /** Display order */
             order?: number;
         };
+        /**
+         * @description * `expert` - Expert
+         *     * `advanced` - Advanced
+         *     * `intermediate` - Intermediate
+         * @enum {string}
+         */
+        ProficiencyLevelEnum: "expert" | "advanced" | "intermediate";
+        /**
+         * @description * `web_app` - Web Application
+         *     * `mobile` - Mobile App
+         *     * `ai_ml` - AI / Machine Learning
+         *     * `enterprise_integration` - Enterprise Integration
+         *     * `data_engineering` - Data Engineering
+         *     * `consulting` - Consulting
+         * @enum {string}
+         */
+        ProjectTypeEnum: "web_app" | "mobile" | "ai_ml" | "enterprise_integration" | "data_engineering" | "consulting";
         QuoteRequestCreateRequest: {
             full_name: string;
             /** Format: email */
@@ -3025,6 +3208,13 @@ export interface components {
             slug: string;
             /** @description Icon identifier used by the frontend, e.g. 'lucide:cpu'. */
             icon?: string;
+            readonly icon_image: components["schemas"]["MediaAsset"];
+            readonly description: string;
+            /**
+             * Visible in navigation
+             * @description Control whether this category appears in the main navigation menu.
+             */
+            is_visible_on_nav?: boolean;
             /** Display order */
             order?: number;
         };
@@ -3127,9 +3317,33 @@ export interface components {
             /** @description Icon identifier used by the frontend, e.g. 'lucide:code'. */
             icon?: string;
             readonly hero_image: components["schemas"]["MediaAsset"];
+            readonly thumbnail_image: components["schemas"]["MediaAsset"];
             readonly category: components["schemas"]["ServiceCategory"];
+            /**
+             * @description Tier used for filtering and pricing display.
+             *
+             *     * `standard` - Standard
+             *     * `premium` - Premium
+             *     * `enterprise` - Enterprise
+             */
+            service_level?: components["schemas"]["ServiceLevelEnum"];
+            readonly service_level_display: string;
+            /**
+             * Enterprise service
+             * @description Flag for dedicated enterprise-grade service pages.
+             */
+            is_enterprise?: boolean;
             /** Featured */
             is_featured?: boolean;
+            pricing_model?: components["schemas"]["PricingModelEnum"] | components["schemas"]["BlankEnum"];
+            readonly pricing_model_display: string;
+            /**
+             * Format: decimal
+             * @description Indicative starting price for display purposes.
+             */
+            starting_price?: string | null;
+            /** @description ISO 4217 currency code, e.g. 'USD', 'EUR'. */
+            currency?: string;
             /** Display order */
             order?: number;
         };
@@ -3140,6 +3354,16 @@ export interface components {
             /** Format: double */
             priority: number;
         };
+        /**
+         * @description * `website` - Website
+         *     * `linkedin` - LinkedIn
+         *     * `referral` - Referral
+         *     * `partner` - Partner
+         *     * `event` - Event
+         *     * `other` - Other
+         * @enum {string}
+         */
+        SourceChannelEnum: "website" | "linkedin" | "referral" | "partner" | "event" | "other";
         /**
          * @description * `manual` - Manual
          *     * `clutch` - Clutch
@@ -3195,6 +3419,9 @@ export interface components {
             readonly author_is_staff: boolean;
             /** Message */
             readonly body: string;
+            /** Format: uuid */
+            readonly attachment: string | null;
+            readonly attachment_url: string;
             /** Read */
             readonly is_read: boolean;
             /** Format: date-time */
@@ -3207,8 +3434,14 @@ export interface components {
             slug: string;
             readonly role_title: string;
             department?: components["schemas"]["DepartmentEnum"];
+            readonly department_display: string;
             readonly bio: string;
             readonly photo: components["schemas"]["MediaAsset"];
+            /**
+             * Public email
+             * Format: email
+             */
+            email?: string;
             /** Format: uri */
             linkedin_url?: string;
             /** Format: uri */
@@ -3220,6 +3453,18 @@ export interface components {
             twitter_url?: string;
             /** Leadership */
             is_leadership?: boolean;
+            /** Available for consulting */
+            is_available_for_consulting?: boolean;
+            /** @description List of specialization areas, e.g. ["NLP", "MLOps"] */
+            specializations?: unknown;
+            /** @description List of certifications, e.g. ["AWS Solutions Architect", "Google Cloud Professional"] */
+            certifications?: unknown;
+            years_of_experience?: number | null;
+            /** @description List of education entries, e.g. [{"degree": "MSc", "institution": "MIT", "year": 2015}]. */
+            education?: unknown;
+            /** @description List of spoken languages, e.g. ["English", "Spanish"] */
+            languages?: unknown;
+            projects_showcase?: string[];
             /** Display order */
             order?: number;
         };
@@ -3259,8 +3504,19 @@ export interface components {
             slug: string;
             category: components["schemas"]["TechnologyCategoryEnum"];
             icon?: string;
+            readonly logo: components["schemas"]["MediaAsset"];
             /** Format: uri */
             website_url?: string;
+            readonly description: string;
+            /**
+             * @description AUTOMEX's expertise depth in this technology.
+             *
+             *     * `expert` - Expert
+             *     * `advanced` - Advanced
+             *     * `intermediate` - Intermediate
+             */
+            proficiency_level?: components["schemas"]["ProficiencyLevelEnum"];
+            readonly proficiency_level_display: string;
             /** Display order */
             order?: number;
         };
@@ -3288,6 +3544,7 @@ export interface components {
             /** @description 1 to 5 stars. */
             rating?: number;
             source?: components["schemas"]["SourceEnum"];
+            readonly source_display: string;
             /** Format: uri */
             source_url?: string;
             /** Format: uuid */
@@ -3298,6 +3555,14 @@ export interface components {
             is_featured?: boolean;
             /** Display order */
             order?: number;
+            /** Format: uri */
+            video_url?: string;
+            readonly video_thumbnail: components["schemas"]["MediaAsset"];
+            /** @description Key impact metrics, e.g. {"revenue_increase": "40%", "cost_savings": "$2M"} */
+            project_impact?: unknown;
+            readonly client_industry: components["schemas"]["Industry"];
+            /** Video testimonial */
+            is_video_testimonial?: boolean;
         };
         /** @description For adding a message to a ticket. */
         TicketMessageCreateRequest: {
@@ -3991,7 +4256,9 @@ export interface operations {
         parameters: {
             query?: {
                 category?: string;
+                content_type?: string;
                 is_featured?: boolean;
+                is_premium?: boolean;
                 /** @description Which field to use when ordering the results. */
                 ordering?: string;
                 /** @description A page number within the paginated result set. */
@@ -4088,11 +4355,13 @@ export interface operations {
         parameters: {
             query?: {
                 industry?: string;
+                is_ai_project?: boolean;
                 is_featured?: boolean;
                 /** @description Which field to use when ordering the results. */
                 ordering?: string;
                 /** @description A page number within the paginated result set. */
                 page?: number;
+                project_type?: string;
                 /** @description A search term. */
                 search?: string;
                 service?: string;
@@ -5212,13 +5481,16 @@ export interface operations {
             query?: {
                 category?: string;
                 industry?: string;
+                is_enterprise?: boolean;
                 is_featured?: boolean;
                 /** @description Which field to use when ordering the results. */
                 ordering?: string;
                 /** @description A page number within the paginated result set. */
                 page?: number;
+                pricing_model?: string;
                 /** @description A search term. */
                 search?: string;
+                service_level?: string;
                 technology?: string;
             };
             header?: never;

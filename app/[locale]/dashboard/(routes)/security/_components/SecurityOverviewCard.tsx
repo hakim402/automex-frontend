@@ -22,6 +22,7 @@ import {
   Mail,
   Users,
   Fingerprint,
+  AlertTriangle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { type User } from "@/lib/auth";
@@ -165,6 +166,22 @@ export function SecurityOverviewCard({
           status="info"
         />
       </div>
+
+      {/* Unverified email notice */}
+      {!user.is_email_verified && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          className="flex items-start gap-3 rounded-xl border border-amber-500/20
+                     bg-amber-500/5 px-4 py-3 mt-4"
+        >
+          <AlertTriangle className="size-4 text-amber-500 shrink-0 mt-0.5" />
+          <p className="text-[12px] text-amber-600 dark:text-amber-400 leading-5">
+            {t("verifyEmailHint")}
+          </p>
+        </motion.div>
+      )}
     </SectionCard>
   );
 }

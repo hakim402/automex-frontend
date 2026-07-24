@@ -84,6 +84,23 @@ export function AccountInfoCard({ user }: AccountInfoCardProps) {
       })
     : "—";
 
+  const updatedAt = user.profile?.updated_at
+    ? new Date(user.profile.updated_at).toLocaleDateString("en-US", {
+        year: "numeric", month: "short", day: "numeric",
+        hour: "2-digit", minute: "2-digit",
+      })
+    : "—";
+
+  // Language display map
+  const LANG_NAMES: Record<string, string> = {
+    en: "English", ar: "العربية", de: "Deutsch", es: "Español",
+    fa: "فارسی", fr: "Français", it: "Italiano", nl: "Nederlands",
+    ps: "پښتو", zh: "中文",
+  };
+  const langDisplay = user.profile?.language
+    ? (LANG_NAMES[user.profile.language] ?? user.profile.language)
+    : "—";
+
   return (
     <SectionCard
       icon={Info}
@@ -94,6 +111,9 @@ export function AccountInfoCard({ user }: AccountInfoCardProps) {
       <div className="divide-y divide-border/30">
         <InfoRow label={t("fieldAccountId")} value={user.id}       copyable mono />
         <InfoRow label={t("fieldEmail")}     value={user.email}    copyable />
+        {user.profile?.alternate_email && (
+          <InfoRow label={t("fieldAltEmail")} value={user.profile.alternate_email} copyable />
+        )}
         <InfoRow label={t("fieldRole")}      value={user.role} />
         <InfoRow
           label={t("fieldSignInMethod")}
@@ -101,6 +121,8 @@ export function AccountInfoCard({ user }: AccountInfoCardProps) {
         />
         <InfoRow label={t("fieldMemberSince")}   value={createdAt} />
         <InfoRow label={t("fieldTermsAccepted")} value={termsAt}   />
+        <InfoRow label={t("fieldLastUpdated")}   value={updatedAt} />
+        <InfoRow label={t("fieldLanguage")}      value={langDisplay} />
       </div>
     </SectionCard>
   );

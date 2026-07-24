@@ -3,9 +3,10 @@
  *
  * Fields:
  *   Top level:  full_name
- *   profile.*:  bio, phone_number, date_of_birth,
+ *   profile.*:  bio, phone_number, alternate_email, date_of_birth,
  *               address_line1, address_line2, city,
- *               state_province, postal_code, country
+ *               state_province, postal_code, country,
+ *               timezone, language
  *
  * On save → PATCH /auth/me/update/ → reloadUser() to sync AuthContext.
  */
@@ -17,7 +18,7 @@ import { zodResolver }     from "@hookform/resolvers/zod";
 import { z }               from "zod";
 import { useTranslations } from "next-intl";
 import { toast }           from "sonner";
-import { Loader2, Save, User, MapPin, Phone, FileText, Calendar } from "lucide-react";
+import { Loader2, Save, User, MapPin, Phone, FileText, Calendar, Mail, Globe } from "lucide-react";
 import { motion }          from "framer-motion";
 
 import { Button }   from "@/components/ui/button";
@@ -64,20 +65,37 @@ const TIMEZONES = [
   "Australia/Sydney",
 ];
 
+// ─── Language list (matches supported locales) ────────────────────────────────
+
+const LANGUAGES = [
+  { code: "en", name: "English" },
+  { code: "ar", name: "العربية" },
+  { code: "de", name: "Deutsch" },
+  { code: "es", name: "Español" },
+  { code: "fa", name: "فارسی" },
+  { code: "fr", name: "Français" },
+  { code: "it", name: "Italiano" },
+  { code: "nl", name: "Nederlands" },
+  { code: "ps", name: "پښتو" },
+  { code: "zh", name: "中文" },
+] as const;
+
 // ─── Zod schema ───────────────────────────────────────────────────────────────
 
 const schema = z.object({
-  full_name:      z.string().min(2, "Full name must be at least 2 characters"),
-  bio:            z.string().max(300, "Bio must be under 300 characters").optional(),
-  phone_number:   z.string().max(20).optional(),
-  date_of_birth:  z.string().optional(),
-  address_line1:  z.string().max(100).optional(),
-  address_line2:  z.string().max(100).optional(),
-  city:           z.string().max(60).optional(),
-  state_province: z.string().max(60).optional(),
-  postal_code:    z.string().max(20).optional(),
-  country:        z.string().max(2).optional(),
-  timezone:       z.string().optional(),
+  full_name:       z.string().min(2, "Full name must be at least 2 characters"),
+  bio:             z.string().max(300, "Bio must be under 300 characters").optional(),
+  phone_number:    z.string().max(20).optional(),
+  alternate_email: z.string().email("Invalid email").or(z.literal("")).optional(),
+  date_of_birth:   z.string().optional(),
+  address_line1:   z.string().max(100).optional(),
+  address_line2:   z.string().max(100).optional(),
+  city:            z.string().max(60).optional(),
+  state_province:  z.string().max(60).optional(),
+  postal_code:     z.string().max(20).optional(),
+  country:         z.string().max(2).optional(),
+  timezone:        z.string().optional(),
+  language:        z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -102,34 +120,38 @@ export function PersonalInfoForm({ user }: PersonalInfoFormProps) {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      full_name:      user.full_name,
-      bio:            user.profile.bio            ?? "",
-      phone_number:   user.profile.phone_number   ?? "",
-      date_of_birth:  user.profile.date_of_birth  ?? "",
-      address_line1:  user.profile.address_line1  ?? "",
-      address_line2:  user.profile.address_line2  ?? "",
-      city:           user.profile.city           ?? "",
-      state_province: user.profile.state_province ?? "",
-      postal_code:    user.profile.postal_code    ?? "",
-      country:        user.profile.country        ?? "",
-      timezone:       user.profile.timezone       ?? "UTC",
+      full_name:       user.full_name,
+      bio:             user.profile.bio             ?? "",
+      phone_number:    user.profile.phone_number    ?? "",
+      alternate_email: user.profile.alternate_email ?? "",
+      date_of_birth:   user.profile.date_of_birth   ?? "",
+      address_line1:   user.profile.address_line1   ?? "",
+      address_line2:   user.profile.address_line2   ?? "",
+      city:            user.profile.city            ?? "",
+      state_province:  user.profile.state_province  ?? "",
+      postal_code:     user.profile.postal_code     ?? "",
+      country:         user.profile.country         ?? "",
+      timezone:        user.profile.timezone        ?? "UTC",
+      language:        user.profile.language        ?? "en",
     },
   });
 
   // Keep form in sync if user object changes externally
   useEffect(() => {
     reset({
-      full_name:      user.full_name,
-      bio:            user.profile.bio            ?? "",
-      phone_number:   user.profile.phone_number   ?? "",
-      date_of_birth:  user.profile.date_of_birth  ?? "",
-      address_line1:  user.profile.address_line1  ?? "",
-      address_line2:  user.profile.address_line2  ?? "",
-      city:           user.profile.city           ?? "",
-      state_province: user.profile.state_province ?? "",
-      postal_code:    user.profile.postal_code    ?? "",
-      country:        user.profile.country        ?? "",
-      timezone:       user.profile.timezone       ?? "UTC",
+      full_name:       user.full_name,
+      bio:             user.profile.bio             ?? "",
+      phone_number:    user.profile.phone_number    ?? "",
+      alternate_email: user.profile.alternate_email ?? "",
+      date_of_birth:   user.profile.date_of_birth   ?? "",
+      address_line1:   user.profile.address_line1   ?? "",
+      address_line2:   user.profile.address_line2   ?? "",
+      city:            user.profile.city            ?? "",
+      state_province:  user.profile.state_province  ?? "",
+      postal_code:     user.profile.postal_code     ?? "",
+      country:         user.profile.country         ?? "",
+      timezone:        user.profile.timezone        ?? "UTC",
+      language:        user.profile.language        ?? "en",
     });
   }, [user, reset]);
 
@@ -139,16 +161,18 @@ export function PersonalInfoForm({ user }: PersonalInfoFormProps) {
       await updateMe({
         full_name: values.full_name,
         profile: {
-          bio:            values.bio            || "",
-          phone_number:   values.phone_number   || null,
-          date_of_birth:  values.date_of_birth  || null,
-          address_line1:  values.address_line1  || "",
-          address_line2:  values.address_line2  || "",
-          city:           values.city           || "",
-          state_province: values.state_province || "",
-          postal_code:    values.postal_code    || "",
-          country:        values.country        || "",
-          timezone:       values.timezone       || "UTC",
+          bio:             values.bio             || "",
+          phone_number:    values.phone_number    || null,
+          alternate_email: values.alternate_email || null,
+          date_of_birth:   values.date_of_birth   || null,
+          address_line1:   values.address_line1   || "",
+          address_line2:   values.address_line2   || "",
+          city:            values.city            || "",
+          state_province:  values.state_province  || "",
+          postal_code:     values.postal_code     || "",
+          country:         values.country         || "",
+          timezone:        values.timezone        || "UTC",
+          language:        values.language        || "en",
         },
       });
 
@@ -196,6 +220,20 @@ export function PersonalInfoForm({ user }: PersonalInfoFormProps) {
               />
             </div>
           </FormRow>
+
+          <FormRow id="alternate_email" label={t("fieldAltEmail")} error={errors.alternate_email?.message}>
+            <div className="relative">
+              <Mail className="absolute inset-s-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+              <Input
+                id="alternate_email"
+                type="email"
+                placeholder="backup@example.com"
+                autoComplete="email"
+                className="ps-9"
+                {...register("alternate_email")}
+              />
+            </div>
+          </FormRow>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
@@ -222,6 +260,24 @@ export function PersonalInfoForm({ user }: PersonalInfoFormProps) {
               <SelectContent>
                 {TIMEZONES.map((tz) => (
                   <SelectItem key={tz} value={tz}>{tz}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </FormRow>
+
+          <FormRow id="language" label={t("fieldLanguage")} error={errors.language?.message}>
+            <Select
+              value={watch("language")}
+              onValueChange={(v) => setValue("language", v, { shouldDirty: true })}
+            >
+              <SelectTrigger id="language">
+                <SelectValue placeholder="English" />
+              </SelectTrigger>
+              <SelectContent>
+                {LANGUAGES.map((lang) => (
+                  <SelectItem key={lang.code} value={lang.code}>
+                    {lang.name}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import {
   Clock,
   ArrowLeft,
+  ArrowRight,
   Eye,
   BookOpen,
   Tag,
@@ -13,11 +14,17 @@ import {
   Copy,
   Check,
   ExternalLink,
+  Play,
+  Crown,
+  RefreshCcw,
+  Briefcase,
+  FileText,
+  Images,
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { getMediaUrl } from "@/lib/env";
 import { cn } from "@/lib/utils";
-import type { BlogPostDetail } from "@/lib/automex/types";
+import type { BlogPostDetailFull, BlogHeroImage, BlogRelatedService, BlogRelatedCaseStudy } from "@/lib/automex/types";
 import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Helpers ──────────────────────────────────────────────────────────
@@ -31,7 +38,7 @@ function formatDate(iso: string | null | undefined): string {
   });
 }
 
-function tagName(tag: BlogPostDetail["tags"][number]): string {
+function tagName(tag: BlogPostDetailFull["tags"][number]): string {
   return tag.name || tag.slug;
 }
 
@@ -120,11 +127,11 @@ function ShareButtons({ url, title, t }: { url: string; title: string; t: Return
 
 // ─── Component ────────────────────────────────────────────────────────
 
-export function BlogDetailClientPage({ post }: { post: BlogPostDetail }) {
+export function BlogDetailClientPage({ post }: { post: BlogPostDetailFull }) {
   const t = useTranslations("Blog");
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const coverUrl = post.cover_image?.url ? getMediaUrl(post.cover_image.url) : null;
+  const coverUrl = (post.cover_image?.url && post.cover_image.file_type !== "video") ? getMediaUrl(post.cover_image.url) : null;
   const coverAlt = post.cover_image?.alt_text || post.title;
 
   // Current page URL for sharing
@@ -157,17 +164,30 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetail }) {
             {t("detail.back")}
           </Link>
 
-          {/* Category + featured badge */}
-          <div className="flex items-center gap-3 mb-4">
+          {/* Category + featured/premium badges */}
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             {post.category && (
               <span className="text-[11px] font-medium uppercase tracking-wider text-primary">
-                {post.category.name}
+                {post.category.name || post.category.slug}
+              </span>
+            )}
+            {post.content_type_display && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-foreground/80">
+                {post.content_type_display === "Video" && <Play className="size-3" />}
+                {post.content_type_display === "External" && <ExternalLink className="size-3" />}
+                {post.content_type_display}
               </span>
             )}
             {post.is_featured && (
               <span className="inline-flex items-center gap-1 rounded-full bg-brand-gradient text-white text-[11px] font-semibold px-2.5 py-1 shadow-brand">
                 <Sparkles className="size-3" aria-hidden="true" />
                 {t("detail.featured")}
+              </span>
+            )}
+            {post.is_premium && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500 text-white text-[11px] font-semibold px-2.5 py-1 shadow-sm" title={t("detail.premiumBadgeTooltip")}>
+                <Crown className="size-3" aria-hidden="true" />
+                {t("detail.premium")}
               </span>
             )}
           </div>
@@ -188,6 +208,12 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetail }) {
               <span className="inline-flex items-center gap-1">
                 <Clock className="size-3.5" aria-hidden="true" />
                 {formatDate(post.published_at)}
+              </span>
+            )}
+            {post.updated_at && post.updated_at !== post.published_at && (
+              <span className="inline-flex items-center gap-1 text-[12px]">
+                <RefreshCcw className="size-3.5" aria-hidden="true" />
+                {t("detail.updated")} {formatDate(post.updated_at)}
               </span>
             )}
             {post.reading_time_minutes != null && (
@@ -223,6 +249,68 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetail }) {
               {/* Gradient overlay at bottom */}
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
             </figure>
+          </div>
+        )}
+
+        {/* ═══ Video Embed (if video post) ════════════════════════ */}
+        {post.video_embed_url && (
+          <div className="mx-auto max-w-5xl px-4 mb-10">
+            <div className="relative aspect-video rounded-2xl overflow-hidden border border-border/30 shadow-brand bg-black">
+              <iframe
+                src={post.video_embed_url}
+                title={post.title}
+                className="absolute inset-0 size-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <div className="flex items-center justify-center gap-2 mt-4">
+              <Play className="size-4 text-primary" />
+              <span className="text-[14px] font-medium text-foreground">
+                {t("detail.watchVideo")}
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ═══ External URL Link (if cross-posted) ════════════════ */}
+        {post.external_url && (
+          <div className="mx-auto max-w-4xl px-4 mb-10">
+            <a
+              href={post.external_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-4 py-2.5 text-[14px] font-medium text-primary hover:bg-primary/10 transition-colors"
+            >
+              <ExternalLink className="size-4" />
+              {t("detail.readOriginal")}
+            </a>
+          </div>
+        )}
+
+        {/* ═══ Hero Images Gallery ═══════════════════════════════ */}
+        {post.hero_images.length > 0 && (
+          <div className="mx-auto max-w-5xl px-4 mb-12">
+            <h3 className="text-[14px] font-semibold text-foreground mb-4 flex items-center gap-2">
+              <Images className="size-4 text-primary" />
+              {t("detail.heroImages")}
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {post.hero_images.map((img: BlogHeroImage, i: number) => (
+                <figure
+                  key={i}
+                  className="relative aspect-square rounded-xl overflow-hidden border border-border/30 group"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={getMediaUrl(img.image?.url)}
+                    alt={img.image?.alt_text || img.caption || `${post.title} - ${i + 1}`}
+                    className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </figure>
+              ))}
+            </div>
           </div>
         )}
 
@@ -346,6 +434,68 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetail }) {
             </aside>
           </div>
 
+          {/* ═══ Related Services ════════════════════════════════ */}
+          {post.related_services.length > 0 && (
+            <section className="mb-12">
+              <h3 className="text-[16px] font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Briefcase className="size-5 text-primary" />
+                {t("detail.relatedServices")}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {post.related_services.map((service: BlogRelatedService) => (
+                  <Link
+                    key={service.id}
+                    href={`/services/${service.slug}` as any}
+                    className="flex items-start gap-3 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-4 hover:bg-card/80 hover:border-primary/30 transition-all group"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[14px] font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                        {service.name}
+                      </p>
+                      {service.short_description && (
+                        <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2">
+                          {service.short_description}
+                        </p>
+                      )}
+                    </div>
+                    <ArrowRight className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all rtl:rotate-180" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* ═══ Related Case Studies ════════════════════════════ */}
+          {post.related_case_studies.length > 0 && (
+            <section className="mb-12">
+              <h3 className="text-[16px] font-semibold text-foreground mb-4 flex items-center gap-2">
+                <FileText className="size-5 text-primary" />
+                {t("detail.relatedCaseStudies")}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {post.related_case_studies.map((caseStudy: BlogRelatedCaseStudy) => (
+                  <Link
+                    key={caseStudy.id}
+                    href={`/case-studies/${caseStudy.slug}` as any}
+                    className="flex items-start gap-3 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-4 hover:bg-card/80 hover:border-primary/30 transition-all group"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[14px] font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                        {caseStudy.title}
+                      </p>
+                      {caseStudy.overview && (
+                        <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2">
+                          {caseStudy.overview}
+                        </p>
+                      )}
+                    </div>
+                    <ArrowRight className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all rtl:rotate-180" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* ═══ Bottom CTA ═══════════════════════════════════════ */}
           <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center mb-24">
             <div
@@ -378,14 +528,14 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetail }) {
 
 // ─── Author Card ──────────────────────────────────────────────────────
 
-function AuthorCard({ post, t }: { post: BlogPostDetail; t: ReturnType<typeof useTranslations> }) {
+function AuthorCard({ post, t }: { post: BlogPostDetailFull; t: ReturnType<typeof useTranslations> }) {
   if (!post.author) return null;
   const { author } = post;
 
   return (
     <div className="rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-5">
       <div className="flex items-center gap-3 mb-3">
-        {author.avatar?.url ? (
+        {author.avatar?.url && author.avatar.file_type !== "video" ? (
           <img
             src={getMediaUrl(author.avatar.url)}
             alt={author.full_name}

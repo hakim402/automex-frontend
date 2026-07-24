@@ -132,8 +132,12 @@ async function coreFetch<T = unknown>(
     accessToken,
   } = options;
 
+  // ── FormData: let the browser set Content-Type with boundary ──────
+  const isFormData =
+    typeof FormData !== "undefined" && body instanceof FormData;
+
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
+    ...(isFormData ? {} : { "Content-Type": "application/json" }),
     ...extraHeaders,
   };
 
@@ -149,7 +153,9 @@ async function coreFetch<T = unknown>(
   };
 
   if (body !== undefined) {
-    fetchOptions.body = JSON.stringify(body);
+    fetchOptions.body = isFormData
+      ? (body as FormData)
+      : JSON.stringify(body);
   }
 
   const url = `${getApiBaseUrl()}${path}`;

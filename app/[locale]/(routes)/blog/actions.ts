@@ -9,11 +9,12 @@ export async function loadMoreBlogPostsAction(
   category: string | undefined,
   tag: string | undefined,
   search: string | undefined,
+  ordering: string | undefined,
   page: number,
   locale: SupportedLocale
 ): Promise<ActionResult<{ items: BlogPostListItem[]; hasMore: boolean }>> {
   try {
-    const result = await fetchBlogPosts({ category, tag, search, page }, locale);
+    const result = await fetchBlogPosts({ category, tag, search, ordering, page }, locale);
     return { success: true, data: { items: result.results, hasMore: result.next !== null } };
   } catch (err) {
     console.error("[loadMoreBlogPostsAction]", err);

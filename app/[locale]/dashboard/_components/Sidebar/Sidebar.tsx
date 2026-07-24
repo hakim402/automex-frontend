@@ -4,10 +4,11 @@
 
 import {
   LayoutDashboard,
-  PackageSearch,
-  Video,
-  BriefcaseBusiness,
+  FileText,
+  Calendar,
   BotMessageSquare,
+  Calculator,
+  Bot,
   Bell,
   UserCircle,
   ShieldCheck,
@@ -23,6 +24,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/contexts/sidebar-context";
 import { useAuth } from "@/contexts/AuthContext";
+import { getMediaUrl } from "@/lib/env";
 import { motion, AnimatePresence } from "framer-motion";
 
 // ─── Nav item type ────────────────────────────────────────────────────────────
@@ -38,14 +40,11 @@ interface NavItem {
 
 const MAIN_NAV: NavItem[] = [
   { icon: LayoutDashboard, labelKey: "dashboard", href: "/dashboard" },
-  { icon: PackageSearch, labelKey: "projects", href: "/dashboard/projects" },
-  { icon: Video, labelKey: "services", href: "/dashboard/services" },
-  {
-    icon: BriefcaseBusiness,
-    labelKey: "consulting",
-    href: "/dashboard/consulting",
-  },
+  { icon: FileText, labelKey: "requests", href: "/dashboard/requests" },
+  { icon: Calendar, labelKey: "bookings", href: "/dashboard/bookings" },
   { icon: BotMessageSquare, labelKey: "support", href: "/dashboard/support" },
+  { icon: Calculator, labelKey: "calculations", href: "/dashboard/calculations" },
+  { icon: Bot, labelKey: "conversations", href: "/dashboard/conversations" },
 ];
 
 const BOTTOM_NAV: NavItem[] = [
@@ -75,6 +74,12 @@ export function Sidebar({ isRtl }: SidebarProps) {
       : pathname.startsWith(href);
 
   const initial = user?.full_name?.charAt(0).toUpperCase() ?? "U";
+
+  // Avatar source: profile_picture > google_picture_url > initials
+  const avatarUrl =
+    getMediaUrl(user?.profile?.profile_picture) ||
+    user?.google_picture_url ||
+    null;
 
   return (
     <>
@@ -247,13 +252,25 @@ export function Sidebar({ isRtl }: SidebarProps) {
         <div className="shrink-0 border-t border-sidebar-border/15 p-2">
           {collapsed ? (
             <div className="flex flex-col items-center gap-2">
-              <div
-                className="flex size-9 shrink-0 items-center justify-center rounded-xl
-                           bg-color text-[13px] font-bold text-white shadow-brand"
-                title={user?.full_name ?? "User"}
-              >
-                {initial}
-              </div>
+              {avatarUrl ? (
+                <Image
+                  src={avatarUrl}
+                  alt={user?.full_name ?? "User"}
+                  width={36}
+                  height={36}
+                  className="size-9 shrink-0 rounded-xl object-cover ring-1 ring-sidebar-border/20"
+                  title={user?.full_name ?? "User"}
+                  unoptimized
+                />
+              ) : (
+                <div
+                  className="flex size-9 shrink-0 items-center justify-center rounded-xl
+                             bg-color text-[13px] font-bold text-white shadow-brand"
+                  title={user?.full_name ?? "User"}
+                >
+                  {initial}
+                </div>
+              )}
               <button
                 onClick={logout}
                 aria-label="Sign out"
@@ -269,12 +286,23 @@ export function Sidebar({ isRtl }: SidebarProps) {
               className="group flex items-center gap-3 rounded-xl p-2.5
                             transition-colors hover:bg-sidebar-accent/10"
             >
-              <div
-                className="flex size-9 shrink-0 items-center justify-center rounded-xl
+              {avatarUrl ? (
+                <Image
+                  src={avatarUrl}
+                  alt={user?.full_name ?? "User"}
+                  width={36}
+                  height={36}
+                  className="size-9 shrink-0 rounded-xl object-cover ring-1 ring-sidebar-border/20"
+                  unoptimized
+                />
+              ) : (
+                <div
+                  className="flex size-9 shrink-0 items-center justify-center rounded-xl
                               bg-color text-[13px] font-bold text-white shadow-brand"
-              >
-                {initial}
-              </div>
+                >
+                  {initial}
+                </div>
+              )}
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[13px] font-semibold text-sidebar-foreground">
                   {user?.full_name ?? "User"}

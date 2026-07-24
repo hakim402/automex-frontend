@@ -3,12 +3,15 @@
 // app/[locale]/dashboard/_components/Header/DashboardHeader.tsx
 
 import { useLocale } from "next-intl";
-import { Menu, Bell } from "lucide-react";
+import { Menu } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/app/[locale]/_components/Theme/theme-toggle";
 import { LanguageSwitcher } from "@/app/[locale]/_components/Language/LanguageSwitcher";
+import { NotificationBell } from "./NotificationBell";
 import { useSidebar } from "@/contexts/sidebar-context";
 import { useAuth } from "@/contexts/AuthContext";
+import { getMediaUrl } from "@/lib/env";
 
 interface DashboardHeaderProps {
   /** Optional page title shown in the header */
@@ -24,6 +27,12 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
   const isRtl = ["ar", "fa", "ps"].includes(locale);
 
   const initial = user?.full_name?.charAt(0).toUpperCase() ?? "U";
+
+  // Avatar source: profile_picture > google_picture_url > initials
+  const avatarUrl =
+    getMediaUrl(user?.profile?.profile_picture) ||
+    user?.google_picture_url ||
+    null;
 
   return (
     <header
@@ -61,16 +70,8 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
 
           <div className="h-5 w-px bg-border/20 mx-1" aria-hidden="true" />
 
-          {/* Notification bell icon (non‑interactive for now) */}
-          <button
-            aria-label="Notifications"
-            className="relative flex size-9 items-center justify-center rounded-xl
-                       text-muted-foreground hover:text-foreground
-                       hover:bg-accent/40 transition-colors"
-            // Future: add onClick to navigate to /dashboard/notifications
-          >
-            <Bell className="size-4.25" />
-          </button>
+          {/* Notification bell icon with unread count */}
+          <NotificationBell />
 
           <div className="h-5 w-px bg-border/20 mx-1" aria-hidden="true" />
 
@@ -78,11 +79,24 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           <a
             href="/dashboard/profile"
             aria-label={`Profile — ${user?.full_name ?? "User"}`}
-            className="flex size-8 items-center justify-center rounded-xl
-                       bg-color text-white text-[13px] font-bold shadow-brand
+            className="flex size-8 items-center justify-center rounded-xl overflow-hidden
                        hover:opacity-90 transition-opacity"
           >
-            {initial}
+            {avatarUrl ? (
+              <Image
+                src={avatarUrl}
+                alt={user?.full_name ?? "User"}
+                width={32}
+                height={32}
+                className="size-8 object-cover"
+                unoptimized
+              />
+            ) : (
+              <span className="flex size-8 items-center justify-center rounded-xl
+                               bg-color text-white text-[13px] font-bold shadow-brand">
+                {initial}
+              </span>
+            )}
           </a>
         </div>
       </div>

@@ -33,6 +33,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import type { SupportedLocale } from "@/lib/locale";
 import type { AvailableSlot } from "@/lib/automex/types";
+import { useAuth } from "@/contexts/AuthContext";
+import { TokenStorage } from "@/lib/api";
 
 import { CrmFormField } from "../../_components/crm-shared/CrmFormField";
 import { DatePicker } from "../../_components/crm-shared/booking/DatePicker";
@@ -60,6 +62,7 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
   const tShared = useTranslations("CrmForms.shared");
   const tPage = useTranslations("CrmPages.bookCall");
   const locale = useLocale() as SupportedLocale;
+  const { user } = useAuth();
 
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [slots, setSlots] = useState<AvailableSlot[]>([]);
@@ -90,12 +93,25 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
     register,
     handleSubmit,
     control,
+    reset,
     setError,
     formState: { errors },
   } = useForm<DetailsValues>({
     resolver: zodResolver(detailsSchema),
     defaultValues: { meeting_type: "video" },
   });
+
+  // Pre-fill form fields when user is authenticated
+  useEffect(() => {
+    if (user) {
+      reset((prev) => ({
+        ...prev,
+        full_name: user.full_name || "",
+        email: user.email || "",
+        phone: user.profile?.phone_number || "",
+      }));
+    }
+  }, [user, reset]);
 
   function onSubmitDetails(values: DetailsValues) {
     if (!selectedSlot) return;
@@ -119,7 +135,8 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           notes: values.notes || undefined,
         },
-        locale
+        locale,
+        TokenStorage.getAccess()
       );
 
       if (result.success) {

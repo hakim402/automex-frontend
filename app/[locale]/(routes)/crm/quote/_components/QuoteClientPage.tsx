@@ -1,7 +1,7 @@
 "use client";
 
 // app/[locale]/(routes)/crm/quote/_components/QuoteClientPage.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,6 +14,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import type { SupportedLocale } from "@/lib/locale";
+import { useAuth } from "@/contexts/AuthContext";
+import { TokenStorage } from "@/lib/api";
 
 import { CrmFormField } from "../../_components/crm-shared/CrmFormField";
 import { BudgetTimelineFields } from "../../_components/crm-shared/fields/BudgetTimelineFields";
@@ -45,6 +47,7 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
   const tPage = useTranslations("CrmPages.quote");
   const locale = useLocale() as SupportedLocale;
   const [submitted, setSubmitted] = useState(false);
+  const { user } = useAuth();
 
   const {
     register,
@@ -60,6 +63,18 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
       requested_services: defaultServiceId ? [defaultServiceId] : [],
     },
   });
+
+  // Pre-fill form fields when user is authenticated
+  useEffect(() => {
+    if (user) {
+      reset((prev) => ({
+        ...prev,
+        full_name: user.full_name || "",
+        email: user.email || "",
+        phone: user.profile?.phone_number || "",
+      }));
+    }
+  }, [user, reset]);
 
   const { submit, isPending } = useCrmFormSubmit(
     (values: QuoteFormValues) =>
@@ -79,7 +94,8 @@ export function QuoteClientPage({ serviceOptions, industryOptions, defaultServic
           estimated_budget_max: values.estimated_budget_max || null,
           currency: "USD",
         },
-        locale
+        locale,
+        TokenStorage.getAccess()
       ),
     setError,
     () => setSubmitted(true)

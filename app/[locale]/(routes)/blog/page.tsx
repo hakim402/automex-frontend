@@ -11,7 +11,7 @@ const BASE_URL = "https://automex.tech";
 
 type Props = {
   params: Promise<{ locale: SupportedLocale }>;
-  searchParams: Promise<{ category?: string; tag?: string; search?: string }>;
+  searchParams: Promise<{ category?: string; tag?: string; search?: string; ordering?: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -27,13 +27,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPage({ params, searchParams }: Props) {
   const { locale } = await params;
-  const { category, tag, search } = await searchParams;
+  const { category, tag, search, ordering } = await searchParams;
 
-  const [initialPosts, categories, tags] = await Promise.all([
-    fetchBlogPosts({ category, tag, search, page: 1 }, locale),
-    fetchBlogCategories(locale),
-    fetchBlogTags(locale),
-  ]);
+  let initialPosts: Awaited<ReturnType<typeof fetchBlogPosts>>;
+  try {
+    initialPosts = await fetchBlogPosts({ category, tag, search, ordering, page: 1 }, locale);
+  } catch {
+    initialPosts = { count: 0, next: null, previous: null, results: [] };
+  }
+
+  let categories: Awaited<ReturnType<typeof fetchBlogCategories>>;
+  try {
+    categories = await fetchBlogCategories(locale);
+  } catch {
+    categories = [];
+  }
+
+  let tags: Awaited<ReturnType<typeof fetchBlogTags>>;
+  try {
+    tags = await fetchBlogTags(locale);
+  } catch {
+    tags = [];
+  }
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -64,6 +79,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
         activeTag={tag}
         searchQuery={search}
         totalCount={initialPosts.count}
+        currentOrdering={ordering}
       />
     </>
   );
