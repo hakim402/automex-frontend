@@ -15,15 +15,20 @@ import {
   ShoppingBag,
   HardHat,
   Utensils,
+  ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import type { Industry, ServiceListItem, CaseStudyListItem } from "@/lib/automex/types";
+import type {
+  IndustryFull,
+  ServiceListItem,
+  CaseStudyListItem,
+} from "@/lib/automex/types";
 import { getMediaUrl } from "@/lib/env";
 
 interface IndustryDetailClientPageProps {
-  industry: Industry;
+  industry: IndustryFull;
   relatedServices: ServiceListItem[];
   relatedCaseStudies: CaseStudyListItem[];
 }
@@ -53,12 +58,21 @@ export function IndustryDetailClientPage({
 }: IndustryDetailClientPageProps) {
   const t = useTranslations("IndustriesPage");
   const Icon = getIndustryIcon(industry.icon);
+  const imageUrl = industry.icon_image?.url
+    ? getMediaUrl(industry.icon_image.url)
+    : null;
+  const safeCompliance = Array.isArray(industry.compliance_standards)
+    ? industry.compliance_standards
+    : [];
 
   return (
-    <div className="relative overflow-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-        <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+    <div className="relative overflow-hidden mt-24">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-24 right-0 size-112.5 rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+        <div className="absolute top-1/3 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-4xl px-4 py-12 sm:py-20">
@@ -73,10 +87,21 @@ export function IndustryDetailClientPage({
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start gap-6 mb-10">
-          {/* Icon */}
-          <div className="flex size-20 sm:size-24 shrink-0 items-center justify-center rounded-2xl border border-border/40 bg-card/50 backdrop-blur-sm">
-            <Icon className="size-10 text-primary" aria-hidden="true" />
-          </div>
+          {/* Visual: icon_image or lucide icon fallback */}
+          {imageUrl ? (
+            <div className="flex size-20 sm:size-24 shrink-0 items-center justify-center rounded-2xl border border-border/40 bg-card/50 backdrop-blur-sm overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageUrl}
+                alt={industry.icon_image?.alt_text || industry.name}
+                className="size-full object-contain p-3"
+              />
+            </div>
+          ) : (
+            <div className="flex size-20 sm:size-24 shrink-0 items-center justify-center rounded-2xl border border-border/40 bg-card/50 backdrop-blur-sm">
+              <Icon className="size-10 text-primary" aria-hidden="true" />
+            </div>
+          )}
 
           <div className="flex-1">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-3">
@@ -90,6 +115,24 @@ export function IndustryDetailClientPage({
               <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
                 {industry.description}
               </p>
+            )}
+
+            {/* Compliance badges */}
+            {safeCompliance.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2 mt-4">
+                <ShieldCheck
+                  className="size-3.5 text-green-500/70 shrink-0"
+                  aria-hidden="true"
+                />
+                {safeCompliance.map((std) => (
+                  <span
+                    key={std}
+                    className="inline-block rounded-full border border-green-500/20 bg-green-500/5 px-2.5 py-0.5 text-[11px] font-medium text-green-600/80"
+                  >
+                    {std}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
         </div>
@@ -129,7 +172,10 @@ export function IndustryDetailClientPage({
                       </p>
                     )}
                   </div>
-                  <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground/40 group-hover:text-primary transition-colors mt-1" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="size-3.5 shrink-0 text-muted-foreground/40 group-hover:text-primary transition-colors mt-1"
+                    aria-hidden="true"
+                  />
                 </Link>
               ))}
             </div>
@@ -177,7 +223,10 @@ export function IndustryDetailClientPage({
 
         {/* Bottom CTA */}
         <section className="mt-8 relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
+          />
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
             <Building2 className="size-3" aria-hidden="true" />
             {t("hero.eyebrow")}
@@ -186,13 +235,21 @@ export function IndustryDetailClientPage({
             Need {industry.name} solutions?
           </h2>
           <p className="text-[14px] text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-            Let&apos;s discuss how our {industry.name.toLowerCase()} expertise can help your business.
+            Let&apos;s discuss how our {industry.name.toLowerCase()} expertise
+            can help your business.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" className="bg-brand-gradient shadow-brand">
+            <Button
+              asChild
+              size="lg"
+              className="bg-brand-gradient shadow-brand"
+            >
               <Link href="/crm/quote">
                 {t("cta.button")}
-                <ArrowRight className="size-4 ml-1.5 rtl:rotate-180" aria-hidden="true" />
+                <ArrowRight
+                  className="size-4 ml-1.5 rtl:rotate-180"
+                  aria-hidden="true"
+                />
               </Link>
             </Button>
           </div>

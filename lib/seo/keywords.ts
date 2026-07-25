@@ -121,6 +121,10 @@ export function getKeywords({
     pageSpecific = ["Contact Sales", "Enterprise Sales", "AI Sales Team"];
   } else if (pageType === "quote") {
     pageSpecific = ["Request a Quote", "Project Quote", "AI Development Quote"];
+  } else if (pageType === "blog") {
+    pageSpecific = ["AI Blog", "Technology Insights", "Software Development Articles", "Tech Tutorials"];
+  } else if (pageType === "blogDetail") {
+    pageSpecific = ["Tech Article", "AI Insights", "Software Engineering Blog"];
   }
 
   const combined = [...primary, ...pageSpecific];

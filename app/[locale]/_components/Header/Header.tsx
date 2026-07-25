@@ -558,10 +558,10 @@ export const Header = ({
       <nav
         dir={isRtl ? "rtl" : "ltr"}
         className={cn(
-          "fixed top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300",
+          "fixed top-0 z-50 w-full border-b transition-all duration-300",
           scrolled
-            ? "border-border/60 bg-background/80 shadow-sm shadow-black/3"
-            : "border-border/30 bg-background/55",
+            ? "border-border/60 bg-background/80 shadow-sm shadow-black/[0.03] backdrop-blur-xl"
+            : "border-transparent bg-transparent backdrop-blur-0"
         )}
       >
         {/* ── Row 1: logo · search · account/theme/language ─────────── */}
@@ -713,16 +713,18 @@ export const Header = ({
               label={t("resources")}
               columns={resourcesColumns}
               rightPanel={resourcesRightPanel}
+              align="end"
               isRtl={isRtl}
             />
 
             <MegaMenu
               label={t("company")}
               simple={companyItems}
+              align="end"
               isRtl={isRtl}
             />
 
-            <MegaMenu label={t("crm")} cards={crmLinks} isRtl={isRtl} />
+            <MegaMenu label={t("crm")} cards={crmLinks} align="end" isRtl={isRtl} />
           </div>
         </div>
       </nav>

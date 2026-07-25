@@ -18,11 +18,9 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    pageType: "services",
+    pageType: "techExpertise",
     locale,
     pathSegment: "tech-expertise",
-    customTitle: "Tech Expertise – AUTOMEX Technology Capabilities",
-    customDescription: "Explore AUTOMEX technology expertise areas across architecture, cloud, AI, data engineering, DevOps, mobile, security, and QA.",
   });
 }
 

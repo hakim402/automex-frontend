@@ -972,6 +972,7 @@
       },
       "card": {
         "technologies": "{count} technolog{plural}",
+        "caseStudies": "{count} caso{plural} de estudio",
         "explore": "Explore"
       },
       "empty": "No tech expertise areas found.",
@@ -984,12 +985,24 @@
       }
     },
     "detail": {
-      "back": "Back to Tech Expertise",
-      "about": "About This Expertise",
-      "technologies": "Technologies",
+      "back": "Volver a Experiencia Técnica",
+      "stats": {
+        "technologies": "{count} tecnologías",
+        "caseStudies": "{count} casos de estudio"
+      },
+      "about": {
+        "title": "Acerca de Esta Experiencia",
+        "eyebrow": "Descripción General"
+      },
+      "technologies": {
+        "eyebrow": "Stack Tecnológico",
+        "title": "Tecnologías y Herramientas"
+      },
       "caseStudies": {
-        "title": "Related Case Studies",
-        "viewAll": "View all case studies"
+        "eyebrow": "Resultados Comprobados",
+        "title": "Casos de Estudio Relacionados",
+        "viewAll": "Ver todos los casos de estudio",
+        "readCaseStudy": "Leer caso de estudio"
       },
       "cta": {
         "eyebrow": "Get Started",
@@ -1049,6 +1062,69 @@
         "description": "Let's discuss how we can build something great together.",
         "quote": "Request a Quote"
       }
+    }
+  },
+  "CaseStudyDetail": {
+    "backToCaseStudies": "Back to Case Studies",
+    "featuredBadge": "Featured",
+    "hero": {
+      "clientLabel": "Client"
+    },
+    "stats": {
+      "weeks": "Weeks",
+      "technologies": "Technologies",
+      "industry": "Industry",
+      "teamSize": "Team Size",
+      "liveUrl": "Live Project",
+      "viewProject": "View Project",
+      "clientSite": "Client Website",
+      "viewClient": "Visit"
+    },
+    "overview": {
+      "eyebrow": "Context",
+      "title": "Overview"
+    },
+    "challenge": {
+      "eyebrow": "The Problem",
+      "title": "Challenge"
+    },
+    "solution": {
+      "eyebrow": "Our Approach",
+      "title": "Solution"
+    },
+    "results": {
+      "eyebrow": "Outcome",
+      "title": "Results"
+    },
+    "metrics": {
+      "eyebrow": "Impact",
+      "title": "Key Metrics"
+    },
+    "technologies": {
+      "eyebrow": "Stack",
+      "title": "Technologies Used"
+    },
+    "services": {
+      "eyebrow": "Related",
+      "title": "Related Services"
+    },
+    "gallery": {
+      "eyebrow": "Visuals",
+      "title": "Project Gallery",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "related": {
+      "eyebrow": "More Stories",
+      "title": "Related Case Studies",
+      "readCaseStudy": "Read case study"
+    },
+    "cta": {
+      "title": "Want similar results?",
+      "description": "Let's discuss how we can help your business achieve transformative outcomes.",
+      "primary": "Request a Quote",
+      "secondary": "Book a Free Call"
     }
   },
   "Partners": {

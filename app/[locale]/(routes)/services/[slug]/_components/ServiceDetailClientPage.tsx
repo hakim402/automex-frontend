@@ -57,7 +57,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
-import type { ServiceDetail, ServiceListItem } from "@/lib/automex/types";
+import type { ServiceDetailFull, ServiceListItem, ServiceListItemRef } from "@/lib/automex/types";
 import type {
   ServiceHeroImage,
   ServiceProcessStep,
@@ -69,7 +69,6 @@ import type {
   ServiceDocument,
   ServiceSLA,
   ServiceFAQSub,
-  ServiceListItemRef,
 } from "@/lib/automex/types";
 import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
@@ -655,7 +654,7 @@ function HeroCarousel({
   service,
 }: {
   images: ServiceHeroImage[];
-  service: ServiceDetail;
+  service: ServiceDetailFull;
 }) {
   const t = useTranslations("ServicesDetail");
   const [current, setCurrent] = useState(0);
@@ -683,7 +682,7 @@ function HeroCarousel({
   const isCover = currentImage?.is_cover;
 
   return (
-    <section className="relative mb-10 sm:mb-14">
+    <section className="relative mx-auto max-w-full mt-6 mb-10 sm:mb-14 px-4">
       {/* Ambient gradient blobs behind the carousel */}
       <div
         aria-hidden="true"
@@ -705,16 +704,18 @@ function HeroCarousel({
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="relative h-[420px] sm:h-[520px] md:h-[560px]">
-          {/* Image layers with smooth crossfade */}
+        <div className="relative h-105 sm:h-130 md:h-140">
+          {/* ✨ Image layers with parallax zoom */}
           {images.map((img, idx) => (
             <div
               key={img.id}
               className={cn(
-                "absolute inset-0 transition-all duration-1000 ease-in-out",
+                "absolute inset-0 transition-all duration-1000 ease-out",
+                // Active: fully visible, normal scale
+                // Inactive: hidden, zoomed out (gives depth on exit)
                 idx === current
-                  ? "opacity-100 scale-100 z-0"
-                  : "opacity-0 scale-105 z-0",
+                  ? "opacity-100 z-0 scale-100"
+                  : "opacity-0 z-0 scale-110",
               )}
             >
               {img.image?.url && (
@@ -731,7 +732,7 @@ function HeroCarousel({
           {/* Diagonal gradient overlay — dark on left/bottom, fading to transparent */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 z-[1]"
+            className="absolute inset-0 z-1"
             style={{
               background:
                 "linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05) 100%)",
@@ -740,11 +741,11 @@ function HeroCarousel({
           {/* Bottom gradient for controls visibility */}
           <div
             aria-hidden="true"
-            className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent z-[1]"
+            className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-black/60 to-transparent z-1"
           />
 
           {/* Glass-morphism info card on the left */}
-          <div className="absolute inset-0 flex items-center z-[2]">
+          <div className="absolute inset-0 flex items-center z-2">
             <div className="px-6 sm:px-10 lg:px-14 max-w-xl space-y-5">
               {/* Badges row */}
               <div className="flex flex-wrap items-center gap-2">
@@ -787,20 +788,8 @@ function HeroCarousel({
                 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight"
                 style={{ textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
               >
-                {service.name}
+                {currentImage?.title || service.name}
               </h1>
-
-              {/* Description */}
-              <p className="text-[15px] sm:text-base text-white/85 max-w-lg leading-relaxed">
-                {service.short_description}
-              </p>
-
-              {/* Image caption (shows caption of current slide) */}
-              {currentImage?.caption && (
-                <p className="text-[12px] text-white/50 italic">
-                  {currentImage.caption}
-                </p>
-              )}
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3 pt-1">
@@ -828,7 +817,7 @@ function HeroCarousel({
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 hover:text-white backdrop-blur-md"
+                  className="border-white/30 text-black hover:bg-white/10 hover:text-white backdrop-blur-md"
                 >
                   <Link href="/crm/book-a-call">
                     <PhoneCall
@@ -903,7 +892,6 @@ function HeroCarousel({
     </section>
   );
 }
-
 // ─── Scroll Carousel (smooth horizontal scroll + arrows) ───────────────
 
 function ScrollCarousel({
@@ -992,8 +980,8 @@ function ScrollCarousel({
 // ─── Props ─────────────────────────────────────────────────────────────
 
 interface ServiceDetailClientPageProps {
-  service: ServiceDetail;
-  relatedServices: ServiceListItem[];
+  service: ServiceDetailFull;
+  relatedServices: (ServiceListItem | ServiceListItemRef)[];
 }
 
 export function ServiceDetailClientPage({
@@ -1003,23 +991,19 @@ export function ServiceDetailClientPage({
   const locale = useLocale();
   const t = useTranslations("ServicesDetail");
 
-  // Extract sub-arrays (cast from generated 'string' type)
-  const heroImages = asArr<ServiceHeroImage>(service.hero_images);
-  const processSteps = asArr<ServiceProcessStep>(service.process_steps);
-  const deliverables = asArr<ServiceDeliverable>(service.deliverables);
-  const addOns = asArr<ServiceAddOn>(service.add_ons);
-  const comparisonRows = asArr<ServiceComparisonRow>(service.comparison_rows);
-  const clientLogos = asArr<ServiceClientLogo>(service.client_logos);
-  const testimonials = asArr<ServiceTestimonialSub>(
-    service.service_testimonials,
-  );
-  const documents = asArr<ServiceDocument>(service.documents);
-  const slas = asArr<ServiceSLA>(service.slas);
-  const faqs = asArr<ServiceFAQSub>(service.faqs);
-  const relatedSvcs = asArr<ServiceListItemRef>(service.related_services);
-  const enterpriseFeatures = Array.isArray(service.enterprise_features)
-    ? (service.enterprise_features as string[])
-    : [];
+  // Sub-arrays are now properly typed via ServiceDetailFull — no more asArr() casts
+  const heroImages = service.hero_images;
+  const processSteps = service.process_steps;
+  const deliverables = service.deliverables;
+  const addOns = service.add_ons;
+  const comparisonRows = service.comparison_rows;
+  const clientLogos = service.client_logos;
+  const testimonials = service.service_testimonials;
+  const documents = service.documents;
+  const slas = service.slas;
+  const faqs = service.faqs;
+  const relatedSvcs = service.related_services;
+  const enterpriseFeatures = service.enterprise_features;
   const keyMetrics = (service.key_metrics ?? {}) as Record<string, number>;
   const techStack = (service.tech_stack_grouped ?? {}) as Record<
     string,
@@ -1042,7 +1026,7 @@ export function ServiceDetailClientPage({
 
   return (
     <>
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden mt-24">
         {/* ─── Background decoration ─────────────────────────────── */}
         <div
           aria-hidden="true"
@@ -1162,7 +1146,7 @@ export function ServiceDetailClientPage({
                       )}
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center h-64 sm:h-80 rounded-2xl border border-border/50 bg-gradient-to-br from-[#0ab8fb]/10 to-[#324b9d]/10">
+                    <div className="flex items-center justify-center h-64 sm:h-80 rounded-2xl border border-border/50 bg-linear-to-br from-[#0ab8fb]/10 to-[#324b9d]/10">
                       <div className="text-center">
                         <div className="text-5xl mb-3">
                           {service.icon
@@ -1414,7 +1398,7 @@ export function ServiceDetailClientPage({
                       </p>
                     )}
                     {/* Decorative gradient bar */}
-                    <div className="mt-3 h-0.5 w-0 group-hover:w-full rounded-full bg-gradient-to-r from-[#0ab8fb] to-[#324b9d] transition-all duration-500" />
+                    <div className="mt-3 h-0.5 w-0 group-hover:w-full rounded-full bg-linear-to-r from-[#0ab8fb] to-[#324b9d] transition-all duration-500" />
                   </div>
                 ))}
               </div>
@@ -1435,14 +1419,14 @@ export function ServiceDetailClientPage({
                   aria-hidden="true"
                   className="absolute top-8 left-4 right-4 hidden sm:block"
                 >
-                  <div className="h-0.5 bg-gradient-to-r from-[#0ab8fb]/20 via-[#324b9d]/30 to-[#0ab8fb]/20" />
+                  <div className="h-0.5 bg-linear-to-r from-[#0ab8fb]/20 via-[#324b9d]/30 to-[#0ab8fb]/20" />
                 </div>
 
                 <ScrollCarousel>
                   {processSteps.map((step, i) => (
                     <li
                       key={step.id}
-                      className="relative flex flex-col items-center text-center rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 snap-start shrink-0 w-[220px] sm:w-[240px] transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+                      className="relative flex flex-col items-center text-center rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 snap-start shrink-0 w-55 sm:w-60 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
                     >
                       <span className="flex size-9 items-center justify-center rounded-full bg-brand-gradient text-[13px] font-bold text-white shadow-brand mb-3">
                         {i + 1}
@@ -1474,7 +1458,7 @@ export function ServiceDetailClientPage({
                 {deliverables.map((d) => (
                   <div
                     key={d.id}
-                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 snap-start shrink-0 w-[260px] sm:w-[280px]"
+                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 snap-start shrink-0 w-65 sm:w-70"
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-primary">{iconFor(d.icon)}</span>
@@ -1686,7 +1670,7 @@ export function ServiceDetailClientPage({
                 {testimonials.map((t) => (
                   <div
                     key={t.id}
-                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 snap-start shrink-0 w-[320px] sm:w-[380px]"
+                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 snap-start shrink-0 w-[320px] sm:w-95"
                   >
                     <div className="flex items-center gap-2 mb-3">
                       {Array.from({ length: 5 }).map((_, i) => (
@@ -1837,65 +1821,6 @@ export function ServiceDetailClientPage({
           )}
 
           {/* ═══════════════════════════════════════════════════════════
-            PRICING CTA
-           ═══════════════════════════════════════════════════════════ */}
-          {(service.starting_price || service.pricing_model_display) && (
-            <section className="mb-16 sm:mb-20">
-              <div className="rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-6 sm:p-8 text-center">
-                <h2 className="text-lg font-bold text-foreground mb-2">
-                  {t("pricing")}
-                </h2>
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  {service.starting_price && (
-                    <div className="text-center">
-                      <p className="text-[12px] text-muted-foreground uppercase tracking-wider">
-                        {t("startingAt")}
-                      </p>
-                      <p className="text-3xl font-bold text-brand-gradient">
-                        ${Number(service.starting_price).toLocaleString()}
-                        <span className="text-sm text-muted-foreground font-normal">
-                          {" "}
-                          {service.currency || "USD"}
-                        </span>
-                      </p>
-                    </div>
-                  )}
-                  {service.pricing_model_display && (
-                    <div className="text-center border-l border-border/30 pl-4">
-                      <p className="text-[12px] text-muted-foreground uppercase tracking-wider">
-                        {t("model")}
-                      </p>
-                      <p className="text-lg font-semibold text-foreground">
-                        {service.pricing_model_display}
-                      </p>
-                    </div>
-                  )}
-                </div>
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-brand-gradient shadow-brand"
-                >
-                  <Link
-                    href={
-                      {
-                        pathname: ctaUrl,
-                        query: { service: service.id },
-                      } as any
-                    }
-                  >
-                    {t("getCustomQuote")}
-                    <ArrowRight
-                      className="size-4 ml-1.5 rtl:rotate-180"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </Button>
-              </div>
-            </section>
-          )}
-
-          {/* ═══════════════════════════════════════════════════════════
             RELATED SERVICES
            ═══════════════════════════════════════════════════════════ */}
           {(relatedServices.length > 0 || relatedSvcs.length > 0) && (
@@ -1938,7 +1863,7 @@ export function ServiceDetailClientPage({
                           />
                         </div>
                       ) : (
-                        <div className="h-32 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center" />
+                        <div className="h-32 bg-linear-to-br from-primary/10 to-primary/5 flex items-center justify-center" />
                       )}
                       <div className="p-4">
                         <h3 className="text-[14px] font-semibold text-foreground group-hover:text-primary transition-colors">

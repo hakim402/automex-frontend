@@ -1,10 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowRight, Sparkles, Code2, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Sparkles, Code2, ArrowUpRight, Folders } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { getMediaUrl } from "@/lib/env";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import type { TechExpertiseArea } from "@/lib/automex/types";
@@ -89,8 +90,8 @@ export function TechExpertiseClientPage({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-        <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+        <div className="absolute -top-24 right-0 size-112.5 rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+        <div className="absolute top-1/3 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24">
@@ -177,7 +178,7 @@ export function TechExpertiseClientPage({
                       </h2>
                     </div>
                     <div
-                      className="h-px flex-1 bg-gradient-to-r from-border/40 to-transparent"
+                      className="h-px flex-1 bg-linear-to-r from-border/40 to-transparent"
                       aria-hidden="true"
                     />
                   </div>
@@ -187,10 +188,12 @@ export function TechExpertiseClientPage({
                     {items.map((area) => {
                       const displayName = area.name || titleCase(area.slug);
                       const AreaIcon = resolveLucideIcon(area.icon);
+                      const previewTechs = area.technologies.slice(0, 4);
 
                       return (
-                        <div
+                        <Link
                           key={area.id}
+                          href={`/tech-expertise/${area.slug}` as any}
                           className="group relative flex flex-col rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/5 hover:border-primary/40"
                         >
                           {/* Icon badge */}
@@ -210,29 +213,73 @@ export function TechExpertiseClientPage({
                             </p>
                           )}
 
-                          {/* Technology count */}
-                          {area.technologies.length > 0 && (
-                            <p className="text-[12px] text-muted-foreground mb-3">
-                              {t("listing.card.technologies", {
-                                count: area.technologies.length,
-                                plural:
-                                  area.technologies.length !== 1 ? "ies" : "y",
+                          {/* Technology preview row */}
+                          {previewTechs.length > 0 && (
+                            <div className="flex items-center gap-2 mb-3">
+                              <div className="flex -space-x-2">
+                                {previewTechs.map((tech) => {
+                                  const logoUrl = tech.logo?.url ? getMediaUrl(tech.logo.url) : null;
+                                  const TechIcon = resolveLucideIcon(tech.icon);
+                                  return logoUrl ? (
+                                    <div
+                                      key={tech.id}
+                                      className="flex items-center justify-center size-7 rounded-full bg-muted/60 border-2 border-background p-1"
+                                      title={tech.name}
+                                    >
+                                      <img
+                                        src={logoUrl}
+                                        alt={tech.logo?.alt_text || tech.name}
+                                        className="size-full object-contain rounded-full"
+                                        loading="lazy"
+                                      />
+                                    </div>
+                                  ) : (
+                                    <div
+                                      key={tech.id}
+                                      className="flex items-center justify-center size-7 rounded-full bg-muted/60 border-2 border-background"
+                                      title={tech.name}
+                                    >
+                                      <TechIcon className="size-3.5 text-muted-foreground" />
+                                    </div>
+                                  );
+                                })}
+                                {area.technologies.length > 4 && (
+                                  <div className="flex items-center justify-center size-7 rounded-full bg-brand-gradient/10 border-2 border-background">
+                                    <span className="text-[9px] font-bold text-primary">
+                                      +{area.technologies.length - 4}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                              <span className="text-[12px] text-muted-foreground ml-1">
+                                {t("listing.card.technologies", {
+                                  count: area.technologies.length,
+                                  plural:
+                                    area.technologies.length !== 1 ? "ies" : "y",
+                                })}
+                              </span>
+                            </div>
+                          )}
+
+                          {/* Case studies count */}
+                          {area.case_studies && area.case_studies.length > 0 && (
+                            <p className="text-[12px] text-muted-foreground mb-3 flex items-center gap-1.5">
+                              <Folders className="size-3 shrink-0 text-primary/50" aria-hidden="true" />
+                              {t("listing.card.caseStudies", {
+                                count: area.case_studies.length,
                               })}
                             </p>
                           )}
 
                           {/* Explore link */}
-                          <Link
-                            href={`/tech-expertise/${area.slug}` as any}
-                            className="inline-flex items-center gap-1 text-[13px] font-medium text-primary hover:underline mt-auto"
-                          >
+                          <span className="inline-flex items-center gap-1 text-[13px] font-medium text-primary group-hover:underline mt-auto">
                             {t("listing.card.explore")}
                             <ArrowUpRight
                               className="size-3.5 rtl:rotate-180"
                               aria-hidden="true"
                             />
-                          </Link>
-                        </div>
+                          </span>
+                        </Link>
                       );
                     })}
                   </div>
@@ -246,7 +293,7 @@ export function TechExpertiseClientPage({
         <section className="mt-8 relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
+            className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
           />
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
             <Sparkles className="size-3" aria-hidden="true" />

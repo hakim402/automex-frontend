@@ -17,11 +17,9 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    pageType: "services",
+    pageType: "caseStudies",
     locale,
     pathSegment: "case-studies",
-    customTitle: "Case Studies – AUTOMEX Success Stories",
-    customDescription: "Explore AUTOMEX case studies showcasing AI solutions, custom software, and digital transformation across industries.",
   });
 }
 

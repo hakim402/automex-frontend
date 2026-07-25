@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { fetchIndustries } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
+import type { IndustryFull } from "@/lib/automex/types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
 import { IndustriesClientPage } from "./_components/IndustriesClientPage";
@@ -14,7 +15,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    pageType: "services",
+    pageType: "industries",
     locale,
     pathSegment: "industries",
     customTitle: "Industries – AUTOMEX Industry Solutions",
@@ -46,7 +47,7 @@ export default async function IndustriesPage({ params }: Props) {
         ]}
       />
       <JsonLd data={itemListSchema} id="industries-itemlist-schema" />
-      <IndustriesClientPage industries={industries} />
+      <IndustriesClientPage industries={industries as IndustryFull[]} />
     </>
   );
 }

@@ -2,8 +2,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchPortfolioBySlug, fetchPortfolioProjects } from "@/lib/automex/content";
+import {
+  fetchPortfolioBySlug,
+  fetchPortfolioProjects,
+} from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
+import type { PortfolioProjectDetailFull } from "@/lib/automex/types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
 import { PortfolioDetailClientPage } from "./_components/PortfolioDetailClientPage";
@@ -30,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!proj) return { title: "Project Not Found" };
 
     return generatePageMetadata({
-      pageType: "services",
+      pageType: "portfolioDetail",
       locale,
       pathSegment: `portfolio/${slug}`,
       customTitle: `${proj.title} – AUTOMEX Portfolio`,
@@ -45,9 +49,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PortfolioDetailPage({ params }: Props) {
   const { locale, slug } = await params;
-  let proj: Awaited<ReturnType<typeof fetchPortfolioBySlug>>;
+  let proj: PortfolioProjectDetailFull;
   try {
-    proj = await fetchPortfolioBySlug(slug, locale);
+    proj = (await fetchPortfolioBySlug(
+      slug,
+      locale,
+    )) as unknown as PortfolioProjectDetailFull;
   } catch {
     notFound();
   }
@@ -70,7 +77,11 @@ export default async function PortfolioDetailPage({ params }: Props) {
           description: proj.short_description,
           image: proj.cover_image?.url || undefined,
           dateCreated: proj.created_at,
-          publisher: { "@type": "Organization", name: "AUTOMEX", url: BASE_URL },
+          publisher: {
+            "@type": "Organization",
+            name: "AUTOMEX",
+            url: BASE_URL,
+          },
           url: `${BASE_URL}/${locale}/portfolio/${slug}`,
         }}
         id="portfolio-detail-schema"

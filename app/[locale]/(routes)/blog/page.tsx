@@ -17,11 +17,9 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    pageType: "services",
+    pageType: "blog",
     locale,
     pathSegment: "blog",
-    customTitle: "Blog – AUTOMEX Insights on AI, Software & Technology",
-    customDescription: "Read the latest articles, tutorials, and insights on AI, software development, cloud computing, and digital transformation from the AUTOMEX engineering team.",
   });
 }
 

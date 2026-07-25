@@ -2,7 +2,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchTechExpertiseBySlug, fetchTechExpertiseAreas } from "@/lib/automex/content";
+import { fetchTechExpertiseBySlug, fetchTechExpertiseAreas, fetchCaseStudies } from "@/lib/automex/content";
+import type { TechExpertiseArea, CaseStudyListItem } from "@/lib/automex/types";
 import type { SupportedLocale } from "@/lib/locale";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!area) return { title: "Expertise Not Found" };
 
     return generatePageMetadata({
-      pageType: "services",
+      pageType: "techExpertiseDetail",
       locale,
       pathSegment: `tech-expertise/${slug}`,
       customTitle: `${area.name} – AUTOMEX Tech Expertise`,
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TechExpertiseDetailPage({ params }: Props) {
   const { locale, slug } = await params;
-  let area: Awaited<ReturnType<typeof fetchTechExpertiseBySlug>>;
+  let area: TechExpertiseArea | null;
   try {
     area = await fetchTechExpertiseBySlug(slug, locale);
   } catch {
@@ -51,10 +52,26 @@ export default async function TechExpertiseDetailPage({ params }: Props) {
   }
   if (!area) notFound();
 
+  // Resolve case study UUIDs to displayable names/slugs
+  let resolvedCaseStudies: Pick<CaseStudyListItem, "id" | "slug" | "title">[] = [];
+  if (area.case_studies?.length) {
+    try {
+      const all = await fetchCaseStudies({}, locale);
+      const uuidSet = new Set(area.case_studies);
+      resolvedCaseStudies = all.results
+        .filter((cs) => uuidSet.has(cs.id))
+        .map((cs) => ({ id: cs.id, slug: cs.slug, title: cs.title }));
+    } catch {
+      // Non-critical — fall through to empty array
+    }
+  }
+
+  const displayName = area.name || area.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
   const breadcrumbItems = [
     { name: "Home", url: `/${locale}` },
     { name: "Tech Expertise", url: `/${locale}/tech-expertise` },
-    { name: area.name, url: `/${locale}/tech-expertise/${slug}` },
+    { name: displayName, url: `/${locale}/tech-expertise/${slug}` },
   ];
 
   return (
@@ -71,7 +88,7 @@ export default async function TechExpertiseDetailPage({ params }: Props) {
         }}
         id="tech-expertise-detail-techarticle-schema"
       />
-      <TechExpertiseDetailClientPage area={area} />
+      <TechExpertiseDetailClientPage area={area} resolvedCaseStudies={resolvedCaseStudies} />
     </>
   );
 }

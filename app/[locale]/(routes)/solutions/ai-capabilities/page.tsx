@@ -17,7 +17,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    pageType: "services",
+    pageType: "aiCapabilities",
     locale,
     pathSegment: "solutions/ai-capabilities",
     customTitle: "AI Capabilities – AUTOMEX Artificial Intelligence Solutions",

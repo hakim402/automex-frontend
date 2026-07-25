@@ -92,7 +92,12 @@ export async function automexFetch<T>(path: string, options: AutomexFetchOptions
   const apiKey = getAutomexApiKey();
 
   const url = new URL(`${baseUrl}${path}`);
-  if (lang) url.searchParams.set("lang", lang);
+  if (lang) {
+    // Map frontend locale codes to backend language codes.
+    // E.g. frontend uses "zh" in routes, backend expects "zh-hans".
+    const API_LANG_MAP: Partial<Record<string, string>> = { zh: "zh-hans" };
+    url.searchParams.set("lang", API_LANG_MAP[lang] ?? lang);
+  }
 
   let res: Response;
   try {

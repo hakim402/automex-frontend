@@ -65,6 +65,14 @@ interface MegaMenuProps {
   isRtl?: boolean;
   /** Force a fixed-width, multi-column panel even for a single group. */
   wide?: boolean;
+  /**
+   * Which edge of the trigger the panel hangs from. "start" (default) grows
+   * toward the end of the row — fine for menus near the left of the nav.
+   * "end" anchors the panel's trailing edge to the trigger's trailing edge
+   * and grows backward instead — use this for menus near the right of the
+   * nav row so a wide panel doesn't run off the edge of the viewport.
+   */
+  align?: "start" | "end";
 }
 
 export function MegaMenu({
@@ -79,6 +87,7 @@ export function MegaMenu({
   rightPanel,
   isRtl = false,
   wide = false,
+  align = "start",
 }: MegaMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -132,10 +141,17 @@ export function MegaMenu({
   const isMultiColumn = !!columns && columns.length > 1;
   // A featured card sits alongside the content and needs its own room, so it
   // forces the wide layout even when there's only a single link column.
-  const forceWide = wide || isMultiColumn || !!featured || !!cards || !!rightPanel;
+  // `rightPanel` support (not just an active rightPanel value) also forces
+  // wide — the panel must reserve its full width up front so switching the
+  // right-side content on click never resizes the panel itself.
+  const supportsRightPanel = rightPanel !== undefined;
+  const forceWide = wide || isMultiColumn || !!featured || !!cards || supportsRightPanel;
   const panelWidthClass = forceWide
     ? "w-[calc(100vw-2rem)] max-w-[38rem] lg:max-w-[46rem]"
     : "w-64";
+
+  // Resolve which edge the panel hangs from, accounting for RTL.
+  const hangFromLeft = isRtl ? align === "end" : align === "start";
 
   return (
     <div
@@ -160,8 +176,8 @@ export function MegaMenu({
         dir={isRtl ? "rtl" : "ltr"}
         role="menu"
         className={cn(
-          "absolute top-full z-50 mt-2 origin-top overflow-hidden rounded-2xl border border-border bg-popover/95 shadow-2xl shadow-black/5 backdrop-blur-xl transition-all duration-150",
-          isRtl ? "right-0" : "left-0",
+          "absolute top-full z-50 mt-2 overflow-hidden rounded-2xl border border-border bg-popover/95 shadow-2xl shadow-black/5 backdrop-blur-xl transition-all duration-150",
+          hangFromLeft ? "left-0 origin-top-left" : "right-0 origin-top-right",
           panelWidthClass,
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
@@ -253,40 +269,52 @@ export function MegaMenu({
             )}
           </div>
 
-          {/* Right-side dynamic panel (e.g. latest blog posts on hover) */}
-          {rightPanel && rightPanel.items.length > 0 && (
-            <div className="hidden w-60 shrink-0 flex-col overflow-hidden border-s border-border/60 bg-brand-soft/40 p-5 sm:flex">
-              <p className="mb-3 flex items-center text-xs font-semibold uppercase tracking-wide text-muted-foreground/80">
-                <span className="mr-1.5 inline-block size-1.5 rounded-full bg-brand-gradient align-middle" />
-                {rightPanel.heading}
-              </p>
-              <div className="flex-1 space-y-1 overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
-                {rightPanel.items.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                    className="block rounded-lg px-2.5 py-2 text-sm font-medium text-popover-foreground transition-colors hover:bg-background/80"
-                  >
-                    <span className="block truncate">{item.name}</span>
-                    {item.description && (
-                      <span className="mt-0.5 block truncate text-xs text-muted-foreground">
-                        {item.description}
-                      </span>
-                    )}
-                  </Link>
-                ))}
-              </div>
-              {rightPanel.viewAllHref && rightPanel.viewAllLabel && (
-                <Link
-                  href={rightPanel.viewAllHref}
-                  onClick={() => setOpen(false)}
-                  className="mt-3 flex items-center justify-center gap-1 rounded-lg border border-border/50 bg-background/50 px-3 py-2 text-xs font-medium text-primary transition-colors hover:bg-background hover:border-border"
-                >
-                  {rightPanel.viewAllLabel}
-                  <ArrowRight className="size-3 rtl:rotate-180" />
-                </Link>
+          {/* Right-side dynamic panel (e.g. latest blog posts on hover).
+              Always rendered (width toggles via CSS) once a menu declares
+              rightPanel support, so switching sections never resizes the
+              overall dropdown — only the content inside crossfades. */}
+          {supportsRightPanel && (
+            <div
+              className={cn(
+                "hidden shrink-0 flex-col overflow-hidden border-s border-border/60 bg-brand-soft/40 transition-all duration-300 ease-out sm:flex",
+                rightPanel && rightPanel.items.length > 0 ? "w-60 p-5 opacity-100" : "w-0 p-0 opacity-0"
+              )}
+            >
+              {rightPanel && rightPanel.items.length > 0 && (
+                <div key={rightPanel.heading} className="flex h-full flex-col animate-in fade-in slide-in-from-left-1 duration-200">
+                  <p className="mb-3 flex items-center text-xs font-semibold uppercase tracking-wide text-muted-foreground/80">
+                    <span className="mr-1.5 inline-block size-1.5 rounded-full bg-brand-gradient align-middle" />
+                    {rightPanel.heading}
+                  </p>
+                  <div className="flex-1 space-y-1 overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
+                    {rightPanel.items.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        role="menuitem"
+                        onClick={() => setOpen(false)}
+                        className="block rounded-lg px-2.5 py-2 text-sm font-medium text-popover-foreground transition-colors hover:bg-background/80"
+                      >
+                        <span className="block truncate">{item.name}</span>
+                        {item.description && (
+                          <span className="mt-0.5 block truncate text-xs text-muted-foreground">
+                            {item.description}
+                          </span>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                  {rightPanel.viewAllHref && rightPanel.viewAllLabel && (
+                    <Link
+                      href={rightPanel.viewAllHref}
+                      onClick={() => setOpen(false)}
+                      className="mt-3 flex items-center justify-center gap-1 rounded-lg border border-border/50 bg-background/50 px-3 py-2 text-xs font-medium text-primary transition-colors hover:border-border hover:bg-background"
+                    >
+                      {rightPanel.viewAllLabel}
+                      <ArrowRight className="size-3 rtl:rotate-180" />
+                    </Link>
+                  )}
+                </div>
               )}
             </div>
           )}

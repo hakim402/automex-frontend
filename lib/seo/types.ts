@@ -7,11 +7,23 @@ export type PageType =
   | "home"
   | "about"
   | "contact"
-  | "services"       // services listing
-  | "serviceDetail"  // individual service
+  | "services"          // services listing
+  | "serviceDetail"     // individual service
+  | "techExpertise"     // tech expertise listing
+  | "techExpertiseDetail" // individual tech expertise area
+  | "industries"     // industries listing
+  | "industryDetail" // individual industry
+  | "aiCapabilities"     // AI capabilities listing
+  | "aiCapabilityDetail" // individual AI capability
+  | "portfolio"      // portfolio listing
+  | "portfolioDetail" // individual portfolio project
+  | "blog"           // blog listing
+  | "blogDetail"     // individual blog post
   | "crm"            // CRM overview
   | "bookCall"       // book a call
   | "contactSales"   // contact sales
+  | "caseStudies"      // case studies listing
+  | "caseStudyDetail" // individual case study
   | "quote";          // request a quote
   
 export interface SeoMetadataOptions {

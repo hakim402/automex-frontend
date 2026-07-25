@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchBlogPostBySlug, fetchBlogPosts } from "@/lib/automex/content";
-import type { BlogPostDetailFull } from "@/lib/automex/types";
+import { fetchBlogPostBySlugFull, fetchBlogPosts } from "@/lib/automex/content";
+import type { BlogPostDetailFull, BlogPostSEO } from "@/lib/automex/types";
 import type { SupportedLocale } from "@/lib/locale";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
@@ -27,30 +27,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   try {
-    const post = await fetchBlogPostBySlug(slug, locale);
+    const post = await fetchBlogPostBySlugFull(slug, locale);
     if (!post) return { title: "Blog Post Not Found" };
 
-    // Use proper typing for SEO object
-    const seo = post.seo as {
-      meta_title?: string;
-      meta_description?: string;
-      og_image?: string;
-      canonical_url?: string;
-    };
-
-    const seoTitle = seo?.meta_title || post.title;
-    const seoDesc = seo?.meta_description || post.excerpt;
+    const seo = post.seo as BlogPostSEO;
     const coverImageUrl = post.cover_image?.url ?? null;
 
     return generatePageMetadata({
-      pageType: "services",
+      pageType: "blog",
       locale,
       pathSegment: `blog/${slug}`,
-      customTitle: `${seoTitle} – AUTOMEX Blog`,
-      customDescription: seoDesc,
-      ogImageUrl: seo?.og_image || coverImageUrl || null,
+      customTitle: seo.meta_title || `${post.title} – AUTOMEX Blog`,
+      customDescription: seo.meta_description || post.excerpt,
+      ogImageUrl: seo.og_image || coverImageUrl || null,
       ogImageAlt: post.cover_image?.alt_text || post.title,
-      canonicalUrl: seo?.canonical_url || null,
+      canonicalUrl: seo.canonical_url || null,
     });
   } catch {
     return { title: "Blog Post – AUTOMEX" };
@@ -62,24 +53,27 @@ export default async function BlogDetailPage({ params }: Props) {
 
   let post: BlogPostDetailFull;
   try {
-    const raw = await fetchBlogPostBySlug(slug, locale);
-    if (!raw) notFound();
-    post = raw as unknown as BlogPostDetailFull;
+    const data = await fetchBlogPostBySlugFull(slug, locale);
+    if (!data) notFound();
+    post = data;
   } catch {
     notFound();
   }
 
+  const seo = post.seo as BlogPostSEO;
+
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": seo.structured_data_type || "Article",
     headline: post.title,
-    description: post.excerpt,
-    image: post.cover_image?.url || undefined,
+    description: seo.meta_description || post.excerpt,
+    image: seo.og_image || post.cover_image?.url || undefined,
     author: {
       "@type": "Person",
       name: post.author?.full_name || "AUTOMEX Team",
     },
     datePublished: post.published_at,
+    dateModified: post.updated_at || post.published_at,
     publisher: {
       "@type": "Organization",
       name: "AUTOMEX",

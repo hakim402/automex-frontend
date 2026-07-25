@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchServiceBySlug, fetchServices } from "@/lib/automex/content";
+import { fetchServiceBySlugFull, fetchServices } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
+import { getMediaUrl } from "@/lib/env";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
 import { ServiceDetailClientPage } from "./_components/ServiceDetailClientPage";
@@ -27,24 +28,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   try {
-    const service = await fetchServiceBySlug(slug, locale);
+    const service = await fetchServiceBySlugFull(slug, locale);
     if (!service) return { title: "Service Not Found" };
-
-    const seoTitle = (service.seo as Record<string, string>)?.meta_title || service.name;
-    const seoDesc = (service.seo as Record<string, string>)?.meta_description || service.short_description;
-    const seoOgImage = (service.seo as Record<string, string>)?.og_image || null;
-    const seoCanonical = (service.seo as Record<string, string>)?.canonical_url || null;
-    const heroImage = (service as any).hero_image;
 
     return generatePageMetadata({
       pageType: "serviceDetail",
       locale,
       pathSegment: `services/${slug}`,
-      customTitle: `${seoTitle} – AUTOMEX`,
-      customDescription: seoDesc,
-      ogImageUrl: seoOgImage || heroImage?.url || null,
-      ogImageAlt: heroImage?.alt_text || service.name,
-      canonicalUrl: seoCanonical,
+      customTitle: service.seo.meta_title || `${service.name} – AUTOMEX`,
+      customDescription: service.seo.meta_description || service.short_description,
+      ogImageUrl: service.seo.og_image || getMediaUrl(service.hero_image?.url) || null,
+      ogImageAlt: service.hero_image?.alt_text || service.name,
+      canonicalUrl: service.seo.canonical_url || null,
     });
   } catch {
     return { title: "Service – AUTOMEX" };
@@ -55,20 +50,18 @@ export default async function ServiceDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "ServicesPage" });
 
-  let service: Awaited<ReturnType<typeof fetchServiceBySlug>>;
-  try {
-    service = await fetchServiceBySlug(slug, locale);
-  } catch {
-    notFound();
-  }
+  const service = await fetchServiceBySlugFull(slug, locale);
   if (!service) notFound();
 
-  // Fetch related services (use category if available)
-  const relatedServices = service.category?.slug
-    ? (await fetchServices({ category: service.category.slug, page: 1 }, locale)).results
-        .filter((s) => s.slug !== slug)
-        .slice(0, 3)
-    : [];
+  // Related services: API's curated list first, then category-based fallback
+  const relatedServices = service.related_services.length > 0
+    ? service.related_services.slice(0, 3)
+    : service.category?.slug
+      ? (await fetchServices({ category: service.category.slug, page: 1 }, locale))
+          .results
+          .filter((s) => s.slug !== slug)
+          .slice(0, 3)
+      : [];
 
   // Breadcrumb schema
   const breadcrumbItems = [

@@ -8,6 +8,7 @@ import {
   fetchCaseStudies,
 } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
+import type { IndustryFull } from "@/lib/automex/types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
 import { IndustryDetailClientPage } from "./_components/IndustryDetailClientPage";
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!industry) return { title: "Industry Not Found" };
 
     return generatePageMetadata({
-      pageType: "services",
+      pageType: "industryDetail",
       locale,
       pathSegment: `industries/${slug}`,
       customTitle: `${industry.name} Industry Solutions – AUTOMEX`,
@@ -47,6 +48,8 @@ export default async function IndustryDetailPage({ params }: Props) {
   }
   if (!industry) notFound();
 
+  const typedIndustry = industry as IndustryFull;
+
   const [servicesRes, caseStudiesRes] = await Promise.all([
     fetchServices({ industry: slug, page: 1 }, locale),
     fetchCaseStudies({ industry: slug, page: 1 }, locale),
@@ -58,7 +61,7 @@ export default async function IndustryDetailPage({ params }: Props) {
   const breadcrumbItems = [
     { name: "Home", url: `/${locale}` },
     { name: "Industries", url: `/${locale}/industries` },
-    { name: industry.name, url: `/${locale}/industries/${slug}` },
+    { name: typedIndustry.name, url: `/${locale}/industries/${slug}` },
   ];
 
   return (
@@ -68,8 +71,8 @@ export default async function IndustryDetailPage({ params }: Props) {
         data={{
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: `AUTOMEX ${industry.name} Solutions`,
-          description: industry.description,
+          name: `AUTOMEX ${typedIndustry.name} Solutions`,
+          description: typedIndustry.description,
           itemListElement: [
             ...relatedServices.map((s, i) => ({
               "@type": "ListItem" as const,
@@ -94,7 +97,7 @@ export default async function IndustryDetailPage({ params }: Props) {
         id="industry-detail-schema"
       />
       <IndustryDetailClientPage
-        industry={industry}
+        industry={typedIndustry}
         relatedServices={relatedServices}
         relatedCaseStudies={relatedCaseStudies}
       />

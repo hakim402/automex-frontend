@@ -2,8 +2,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchAICapabilityBySlug, fetchAICapabilities } from "@/lib/automex/content";
+import { fetchAICapabilityBySlug, fetchAICapabilities, fetchServices } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
+import type { ServiceListItem } from "@/lib/automex/types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
 import { AICapabilityDetailClientPage } from "./_components/AICapabilityDetailClientPage";
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!cap) return { title: "AI Capability Not Found" };
 
     return generatePageMetadata({
-      pageType: "services",
+      pageType: "aiCapabilityDetail",
       locale,
       pathSegment: `solutions/ai-capabilities/${slug}`,
       customTitle: `${cap.name} – AUTOMEX AI Capabilities`,
@@ -52,6 +53,18 @@ export default async function AICapabilityDetailPage({ params }: Props) {
     notFound();
   }
   if (!cap) notFound();
+
+  // Resolve related_services UUIDs to ServiceListItem objects
+  let relatedServices: ServiceListItem[] = [];
+  if (cap.related_services && cap.related_services.length > 0) {
+    try {
+      const servicesRes = await fetchServices({ page: 1 }, locale);
+      const serviceIds = new Set(cap.related_services);
+      relatedServices = servicesRes.results.filter((s) => serviceIds.has(s.id));
+    } catch {
+      // Non-critical — page still renders without related services
+    }
+  }
 
   const breadcrumbItems = [
     { name: "Home", url: `/${locale}` },
@@ -75,7 +88,7 @@ export default async function AICapabilityDetailPage({ params }: Props) {
         }}
         id="ai-capability-detail-techarticle-schema"
       />
-      <AICapabilityDetailClientPage capability={cap} />
+      <AICapabilityDetailClientPage capability={cap} relatedServices={relatedServices} />
     </>
   );
 }

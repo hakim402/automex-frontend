@@ -16,9 +16,39 @@ type MediaAsset = Schemas["MediaAsset"];
 type ServiceCategory = Schemas["ServiceCategory"];
 type Technology = Schemas["Technology"];
 type Industry = Schemas["Industry"];
-type SEOObject = Schemas["ServiceDetail"]["seo"];
 type ServiceLevel = Schemas["ServiceLevelEnum"];
 type PricingModel = Schemas["PricingModelEnum"];
+
+/** Full SEO object returned by service detail endpoint. */
+export interface ServiceSEO {
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  canonical_url: string;
+  og_title: string;
+  og_description: string;
+  og_image: string | null;
+  og_type: string;
+  twitter_card: string;
+  robots_meta_content: string;
+  sitemap_priority: string;
+  sitemap_changefreq: string;
+  structured_data_type: string;
+}
+
+// ─── Industry (full typed override — generated has compliance_standards as `unknown`) ──
+
+export interface IndustryFull {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  icon?: string;
+  icon_image: MediaAsset | null;
+  /** Compliance frameworks relevant to this industry, e.g. ["HIPAA", "SOC2", "PCI-DSS"]. */
+  compliance_standards: string[];
+  order?: number;
+}
 
 // ─── Paginated wrapper ─────────────────────────────────────────────────
 
@@ -34,6 +64,7 @@ export interface PaginatedResponse<T> {
 export interface ServiceHeroImage {
   id: string;
   image: MediaAsset;
+  title: string;
   caption: string;
   is_cover: boolean;
   order: number;
@@ -184,7 +215,24 @@ export interface BlogPostDetailFull {
   published_at?: string | null;
   created_at: string;
   updated_at: string;
-  seo: Schemas["BlogPostDetail"]["seo"];
+  seo: BlogPostSEO;
+}
+
+/** Full SEO object shape returned by blog post detail endpoint. */
+export interface BlogPostSEO {
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  canonical_url: string;
+  og_title: string;
+  og_description: string;
+  og_image: string | null;
+  og_type: string;
+  twitter_card: string;
+  robots_meta_content: string;
+  sitemap_priority: string;
+  sitemap_changefreq: string;
+  structured_data_type: string;
 }
 
 /** Lightweight ref used in related_services. */
@@ -250,5 +298,85 @@ export interface ServiceDetailFull {
   faqs: ServiceFAQ[];
   related_services: ServiceListItemRef[];
   published_at: string;
-  seo: SEOObject;
+  seo: ServiceSEO;
+}
+
+// ─── Case Studies (full typed override — generated has related_services as `string`) ──
+
+/** Service reference returned by case study detail endpoint. */
+export interface CaseStudyServiceRef {
+  id: string;
+  slug: string;
+  name: string;
+  short_description: string;
+  icon?: string;
+  hero_image: MediaAsset | null;
+}
+
+/**
+ * Full case study detail with properly typed related_services array.
+ * The generated CaseStudyDetail has `related_services: string` because
+ * the OpenAPI schema doesn't deeply type nested serializers.
+ */
+export interface CaseStudyDetailFull {
+  id: string;
+  slug: string;
+  title: string;
+  overview: string;
+  challenge: string;
+  solution: string;
+  results: string;
+  client_name?: string;
+  client_industry: IndustryFull | null;
+  client_logo: MediaAsset | null;
+  client_website?: string;
+  thumbnail: MediaAsset | null;
+  project_type?: string;
+  project_type_display?: string;
+  team_size?: number | null;
+  project_year?: number | null;
+  project_duration_display?: string;
+  key_metrics?: Record<string, unknown>;
+  is_ai_project?: boolean;
+  ai_models_used?: string[];
+  technologies: Technology[];
+  gallery: Schemas["CaseStudyGalleryImage"][];
+  related_services: CaseStudyServiceRef[];
+  testimonial: Schemas["Testimonial"] | null;
+  project_url?: string;
+  project_duration_weeks?: number | null;
+  is_featured?: boolean;
+  published_at?: string | null;
+  seo: Record<string, unknown>;
+}
+
+/** Portfolio service reference returned by detail endpoint. */
+export interface PortfolioServiceRef {
+  id: string;
+  slug: string;
+  name: string;
+}
+
+/**
+ * Full portfolio project detail with properly typed services array.
+ * The generated PortfolioProjectDetail has `services: string` because
+ * the OpenAPI schema doesn't deeply type nested serializers.
+ */
+export interface PortfolioProjectDetailFull {
+  id: string;
+  slug: string;
+  title: string;
+  short_description: string;
+  cover_image: MediaAsset | null;
+  services: PortfolioServiceRef[];
+  technologies: Technology[];
+  industry: IndustryFull | null;
+  project_url?: string;
+  client_name: string;
+  completion_year?: number | null;
+  gallery: Schemas["PortfolioGalleryImage"][];
+  is_featured?: boolean;
+  is_published?: boolean;
+  order?: number;
+  created_at: string;
 }

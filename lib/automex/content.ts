@@ -20,6 +20,7 @@ import { automexFetch, unwrapPaginated, AutomexApiError, type Paginated } from "
 import type {
   ServiceListItem,
   ServiceDetail,
+  ServiceDetailFull,
   ServiceCategory,
   Technology,
   Industry,
@@ -31,6 +32,7 @@ import type {
   BlogTag,
   BlogPostListItem,
   BlogPostDetail,
+  BlogPostDetailFull,
   TeamMember,
   Testimonial,
   AICapability,
@@ -98,6 +100,21 @@ export async function fetchServices(
 export function fetchServiceBySlug(slug: string, lang?: SupportedLocale): Promise<ServiceDetail | null> {
   return orNull(
     automexFetch<ServiceDetail>(`/services/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.content,
+      tags: ["services", `service:${slug}`],
+    })
+  );
+}
+
+/**
+ * Fetch service detail with properly typed sub-model arrays
+ * (hero_images, process_steps, deliverables, etc. as full objects
+ * instead of `string`). Use on /services/[slug]/ page.
+ */
+export function fetchServiceBySlugFull(slug: string, lang?: SupportedLocale): Promise<ServiceDetailFull | null> {
+  return orNull(
+    automexFetch<ServiceDetailFull>(`/services/${slug}/`, {
       lang,
       revalidate: REVALIDATE.content,
       tags: ["services", `service:${slug}`],
@@ -182,6 +199,21 @@ export async function fetchBlogPosts(
 export function fetchBlogPostBySlug(slug: string, lang?: SupportedLocale): Promise<BlogPostDetail | null> {
   return orNull(
     automexFetch<BlogPostDetail>(`/blog/posts/${slug}/`, {
+      lang,
+      revalidate: REVALIDATE.content,
+      tags: ["blog-posts", `blog-post:${slug}`],
+    })
+  );
+}
+
+/**
+ * Fetch blog post detail with properly typed sub-model arrays
+ * (hero_images, related_services, related_case_studies typed
+ * as full objects instead of `string`). Use on /blog/[slug]/ page.
+ */
+export function fetchBlogPostBySlugFull(slug: string, lang?: SupportedLocale): Promise<BlogPostDetailFull | null> {
+  return orNull(
+    automexFetch<BlogPostDetailFull>(`/blog/posts/${slug}/`, {
       lang,
       revalidate: REVALIDATE.content,
       tags: ["blog-posts", `blog-post:${slug}`],

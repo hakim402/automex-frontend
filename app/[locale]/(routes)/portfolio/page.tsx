@@ -1,7 +1,11 @@
 // app/[locale]/(routes)/portfolio/page.tsx
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchPortfolioProjects, fetchTechnologies, fetchIndustries } from "@/lib/automex/content";
+import {
+  fetchPortfolioProjects,
+  fetchTechnologies,
+  fetchIndustries,
+} from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import JsonLd from "@/components/seo/JsonLd";
@@ -24,28 +28,30 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    pageType: "services",
+    pageType: "portfolio",
     locale,
     pathSegment: "portfolio",
-    customTitle: "Portfolio – AUTOMEX Projects & Work",
-    customDescription: "Browse AUTOMEX portfolio of custom software, AI solutions, and digital transformation projects across industries.",
   });
 }
 
 export default async function PortfolioPage({ params, searchParams }: Props) {
   const { locale } = await params;
-  const { industry, technology, service, featured, search, ordering } = await searchParams;
+  const { industry, technology, service, featured, search, ordering } =
+    await searchParams;
 
   const [initialProjects, technologies, industries] = await Promise.all([
-    fetchPortfolioProjects({
-      industry,
-      technology,
-      service,
-      is_featured: featured === "true" ? true : undefined,
-      search,
-      ordering,
-      page: 1,
-    }, locale),
+    fetchPortfolioProjects(
+      {
+        industry,
+        technology,
+        service,
+        is_featured: featured === "true" ? true : undefined,
+        search,
+        ordering,
+        page: 1,
+      },
+      locale,
+    ),
     fetchTechnologies(undefined, locale),
     fetchIndustries(locale),
   ]);

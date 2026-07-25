@@ -1,11 +1,35 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowLeft, Calendar, Globe, FolderCode, Sparkles, ExternalLink, Briefcase, Layers } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  Globe,
+  FolderCode,
+  Sparkles,
+  ExternalLink,
+  Briefcase,
+  Layers,
+  ShieldCheck,
+  ArrowUpRight,
+  Server,
+  Layout,
+  Database,
+  Cloud,
+  Brain,
+  Building2,
+  Smartphone,
+  GitBranch,
+  Clock,
+  Users,
+  CheckCircle2,
+} from "lucide-react";
+import { useMemo } from "react";
 import * as LucideIcons from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { getMediaUrl } from "@/lib/env";
-import type { PortfolioProjectDetail } from "@/lib/automex/types";
+import { cn } from "@/lib/utils";
+import type { PortfolioProjectDetailFull } from "@/lib/automex/types";
 
 /** Resolve a lucide:icon-name string to a lucide-react component. */
 function resolveLucideIcon(iconName: string | undefined): React.ElementType {
@@ -19,59 +43,179 @@ function resolveLucideIcon(iconName: string | undefined): React.ElementType {
   return map[pascal] || FolderCode;
 }
 
-export function PortfolioDetailClientPage({ project }: { project: PortfolioProjectDetail }) {
+// ─── Category meta for technologies ──────────────────────────────────
+
+const CATEGORY_META: Record<
+  string,
+  { label: string; Icon: React.ElementType }
+> = {
+  backend: { label: "Backend", Icon: Server },
+  frontend: { label: "Frontend", Icon: Layout },
+  database: { label: "Database", Icon: Database },
+  cloud: { label: "Cloud & Infrastructure", Icon: Cloud },
+  ai: { label: "AI & Machine Learning", Icon: Brain },
+  enterprise: { label: "Enterprise", Icon: Building2 },
+  mobile: { label: "Mobile", Icon: Smartphone },
+  devops: { label: "DevOps", Icon: GitBranch },
+};
+
+// ─── Sub‑components ──────────────────────────────────────────────────
+
+function CategoryTaggedTechnologies({
+  technologies,
+}: {
+  technologies: PortfolioProjectDetailFull["technologies"];
+}) {
+  const grouped = useMemo(() => {
+    const map = new Map<string, typeof technologies>();
+    for (const tech of technologies) {
+      const cat = tech.category || "other";
+      if (!map.has(cat)) map.set(cat, []);
+      map.get(cat)!.push(tech);
+    }
+    return map;
+  }, [technologies]);
+
+  if (technologies.length === 0) return null;
+
+  return (
+    <div className="space-y-6">
+      {Array.from(grouped.entries()).map(([category, techs]) => {
+        const meta = CATEGORY_META[category] ?? {
+          label: category.charAt(0).toUpperCase() + category.slice(1),
+          Icon: FolderCode,
+        };
+        return (
+          <div key={category}>
+            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground/70">
+              <meta.Icon className="size-4 text-primary" aria-hidden="true" />
+              {meta.label}
+              <span className="text-xs font-normal normal-case text-muted-foreground/50">
+                ({techs.length})
+              </span>
+            </h3>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {techs.map((tech) => {
+                const TechIcon = resolveLucideIcon(tech.icon);
+                const card = (
+                  <div className="group flex items-start gap-3 rounded-xl border border-border/30 bg-card/60 p-4 backdrop-blur-sm transition-all hover:border-primary/30 hover:shadow-md">
+                    {/* Logo / icon */}
+                    <div className="shrink-0">
+                      {tech.logo?.url ? (
+                        <img
+                          src={getMediaUrl(tech.logo.url)}
+                          alt={tech.logo.alt_text || tech.name}
+                          className="size-10 rounded-lg object-contain bg-muted/30"
+                        />
+                      ) : (
+                        <span className="inline-flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                          <TechIcon className="size-5" />
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <h4 className="truncate text-sm font-semibold text-foreground">
+                          {tech.name}
+                        </h4>
+                        <span className="inline-flex shrink-0 rounded-full bg-muted/40 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-muted-foreground">
+                          {tech.proficiency_level_display}
+                        </span>
+                      </div>
+                      {tech.description && (
+                        <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                          {tech.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+
+                return tech.website_url ? (
+                  <a
+                    key={tech.id}
+                    href={tech.website_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    {card}
+                  </a>
+                ) : (
+                  <div key={tech.id}>{card}</div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Main Component ──────────────────────────────────────────────────
+
+export function PortfolioDetailClientPage({
+  project,
+}: {
+  project: PortfolioProjectDetailFull;
+}) {
   const t = useTranslations("Portfolio");
   const locale = useLocale();
 
+  const coverUrl = project.cover_image?.url
+    ? getMediaUrl(project.cover_image.url)
+    : null;
+  const coverAlt = project.cover_image?.alt_text || project.title;
+
   return (
-    <>
-      <div className="relative overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-          <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
-        </div>
+    <div className="relative overflow-hidden mt-32">
+      {/* ─── Background decoration ─────────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-24 right-0 size-96 rounded-full bg-primary/4 blur-3xl" />
+        <div className="absolute top-1/3 -left-32 size-80 rounded-full bg-accent/30 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 size-72 rounded-full bg-primary/3 blur-3xl -translate-x-1/2" />
+      </div>
 
-        <article className="mx-auto max-w-4xl px-4 py-16 sm:py-24">
-          {/* Back link */}
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="size-3.5 rtl:rotate-180" aria-hidden="true" />
-            {t("detail.back")}
-          </Link>
+      <article className="mx-auto max-w-4xl px-4 pb-16 sm:pb-24">
 
-          {/* Industry + featured badge */}
-          <div className="flex items-center gap-3 mb-4">
-            {project.industry && (
-              <span className="text-[11px] font-medium uppercase tracking-wider text-primary">
-                {project.industry.name}
-              </span>
-            )}
+        {/* ─── Header ───────────────────────────────────────────── */}
+        <header className="mb-8 text-center">
+          {/* Badges */}
+          <div className="mb-3 flex flex-wrap items-center justify-center gap-2">
             {project.is_featured && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-brand-gradient text-white text-[11px] font-semibold px-2.5 py-1 shadow-brand">
+              <span className="inline-flex items-center gap-1 rounded-full bg-brand-gradient px-3 py-1 text-xs font-semibold text-white shadow-brand">
                 <Sparkles className="size-3" aria-hidden="true" />
                 {t("detail.featured")}
               </span>
             )}
+            {project.industry && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary/80">
+                <Briefcase className="size-3.5" aria-hidden="true" />
+                {project.industry.name}
+              </span>
+            )}
           </div>
 
-          {/* Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
             {project.title}
           </h1>
 
           {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-4 text-[13px] text-muted-foreground mb-8 pb-6 border-b border-border/30">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
             {project.client_name && (
-              <span className="font-medium text-foreground flex items-center gap-1.5">
-                <Briefcase className="size-3.5" aria-hidden="true" />
+              <span className="flex items-center gap-1.5">
+                <Users className="size-4" aria-hidden="true" />
                 {project.client_name}
               </span>
             )}
             {project.completion_year && (
-              <span className="inline-flex items-center gap-1">
-                <Calendar className="size-3.5" aria-hidden="true" />
+              <span className="flex items-center gap-1.5">
+                <Calendar className="size-4" aria-hidden="true" />
                 {project.completion_year}
               </span>
             )}
@@ -80,135 +224,196 @@ export function PortfolioDetailClientPage({ project }: { project: PortfolioProje
                 href={project.project_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-primary hover:underline"
+                className="flex items-center gap-1.5 text-primary transition-colors hover:underline"
               >
-                <Globe className="size-3.5" aria-hidden="true" />
+                <Globe className="size-4" aria-hidden="true" />
                 {t("detail.liveProject")}
+                <ExternalLink className="size-3.5" aria-hidden="true" />
               </a>
             )}
           </div>
+        </header>
 
-          {/* Cover image */}
-          {project.cover_image?.url && (
-            <figure className="relative mb-10 rounded-2xl overflow-hidden border border-border/30 shadow-brand">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={getMediaUrl(project.cover_image.url)}
-                alt={project.cover_image.alt_text || project.title}
-                className="w-full h-auto max-h-[500px] object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
-            </figure>
-          )}
+        {/* ─── Cover Image ──────────────────────────────────────── */}
+        {coverUrl && (
+          <div className="mb-10 overflow-hidden rounded-2xl border border-border/20 shadow-lg">
+            <img
+              src={coverUrl}
+              alt={coverAlt}
+              className="h-auto max-h-120 w-full object-cover"
+            />
+          </div>
+        )}
 
-          {/* Description */}
-          {project.short_description && (
-            <section className="mb-10">
-              <h2 className="text-xl font-bold text-foreground mb-4">{t("detail.about")}</h2>
-              <p className="text-[15px] text-muted-foreground leading-relaxed">
-                {project.short_description}
-              </p>
-            </section>
-          )}
-
-          {/* Services */}
-          {Array.isArray(project.services) && project.services.length > 0 && (
-            <section className="mb-10">
-              <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Layers className="size-5 text-primary" aria-hidden="true" />
-                {t("detail.services")}
-                <span className="text-[13px] font-normal text-muted-foreground">({project.services.length})</span>
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {project.services.map((svc: any) => (
-                  <a
-                    key={svc.id || svc.slug}
-                    href={`/${locale}/services/${svc.slug}`}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-muted/30 px-3 py-2 text-[13px] text-foreground/80 hover:border-primary/30 hover:bg-muted/50 hover:text-primary transition-all"
-                  >
-                    {svc.name}
-                  </a>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Technologies */}
-          {project.technologies.length > 0 && (
-            <section className="mb-10">
-              <h2 className="text-xl font-bold text-foreground mb-4">{t("detail.technologies")}</h2>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => {
-                  const TechIcon = resolveLucideIcon(tech.icon);
-                  const chip = (
-                    <span className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-muted/30 px-2.5 py-1.5 text-[12px] text-foreground/80 hover:border-primary/30 hover:bg-muted/50 transition-colors">
-                      <TechIcon className="size-3.5 shrink-0" aria-hidden="true" />
-                      {tech.name}
-                    </span>
-                  );
-                  return tech.website_url ? (
-                    <a
-                      key={tech.id}
-                      href={tech.website_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {chip}
-                    </a>
-                  ) : (
-                    <span key={tech.id}>{chip}</span>
-                  );
-                })}
-              </div>
-            </section>
-          )}
-
-          {/* Gallery */}
-          {project.gallery.length > 0 && (
-            <section className="mb-10">
-              <h2 className="text-xl font-bold text-foreground mb-4">{t("detail.gallery")}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {project.gallery.map((img) => (
-                  <figure key={img.id} className="group rounded-xl overflow-hidden border border-border/30 bg-muted/20">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={getMediaUrl(img.image.url)}
-                      alt={img.caption || project.title}
-                      className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {img.caption && (
-                      <figcaption className="text-[12px] text-muted-foreground p-3 text-center">
-                        {img.caption}
-                      </figcaption>
-                    )}
-                  </figure>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Bottom CTA */}
-          <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5" />
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
-              <Sparkles className="size-3" aria-hidden="true" />
-              {t("detail.cta.eyebrow")}
-            </span>
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
-              {t("detail.cta.title")}
-            </h2>
-            <p className="text-[14px] text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">
-              {t("detail.cta.description")}
+        {/* ─── Short Description ────────────────────────────────── */}
+        {project.short_description && (
+          <section className="mb-10">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {project.short_description}
             </p>
+          </section>
+        )}
+
+        {/* ─── Industry Card ────────────────────────────────────── */}
+        {project.industry && (
+          <section className="mb-10">
+            <h2 className="mb-4 text-xl font-bold text-foreground">
+              {t("detail.industry")}
+            </h2>
             <Link
-              href="/crm/quote"
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-gradient text-white px-6 py-3 text-[14px] font-semibold shadow-brand hover:opacity-90 transition-opacity"
+              href={`/industries/${project.industry.slug}` as any}
+              className="group block rounded-2xl border border-border/30 bg-card/60 p-5 backdrop-blur-sm transition-all hover:border-primary/30 hover:shadow-md"
             >
-              {t("detail.cta.quote")}
+              <div className="flex items-start gap-4">
+                {/* Industry icon/image */}
+                <div className="shrink-0">
+                  {project.industry.icon_image?.url ? (
+                    <img
+                      src={getMediaUrl(project.industry.icon_image.url)}
+                      alt={
+                        project.industry.icon_image.alt_text ||
+                        project.industry.name
+                      }
+                      className="size-12 rounded-xl object-cover"
+                    />
+                  ) : (
+                    <span className="inline-flex size-12 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-brand">
+                      {(() => {
+                        const IndIcon = resolveLucideIcon(
+                          project.industry.icon,
+                        );
+                        return <IndIcon className="size-5" />;
+                      })()}
+                    </span>
+                  )}
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <h3 className="flex items-center gap-1.5 text-base font-semibold text-foreground transition-colors group-hover:text-primary">
+                    {project.industry.name}
+                    <ArrowUpRight
+                      className="size-3.5 shrink-0 text-muted-foreground/40 transition-colors group-hover:text-primary"
+                      aria-hidden="true"
+                    />
+                  </h3>
+                  {project.industry.description && (
+                    <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
+                      {project.industry.description}
+                    </p>
+                  )}
+
+                  {/* Compliance badges */}
+                  {project.industry.compliance_standards?.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {project.industry.compliance_standards
+                        .slice(0, 4)
+                        .map((std) => (
+                          <span
+                            key={std}
+                            className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400"
+                          >
+                            <ShieldCheck
+                              className="size-2.5"
+                              aria-hidden="true"
+                            />
+                            {std}
+                          </span>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </Link>
           </section>
-        </article>
-      </div>
-    </>
+        )}
+
+        {/* ─── Services ────────────────────────────────────────── */}
+        {project.services.length > 0 && (
+          <section className="mb-10">
+            <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-foreground">
+              <Layers className="size-5 text-primary" aria-hidden="true" />
+              {t("detail.services")}
+              <span className="text-sm font-normal text-muted-foreground">
+                ({project.services.length})
+              </span>
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {project.services.map((svc) => (
+                <Link
+                  key={svc.id}
+                  href={`/services/${svc.slug}` as any}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border/30 bg-muted/30 px-3 py-2 text-sm text-foreground/80 transition-all hover:border-primary/30 hover:bg-muted/50 hover:text-primary"
+                >
+                  {svc.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ─── Technologies ────────────────────────────────────── */}
+        {project.technologies.length > 0 && (
+          <section className="mb-10">
+            <h2 className="mb-4 text-xl font-bold text-foreground">
+              {t("detail.technologies")}
+            </h2>
+            <CategoryTaggedTechnologies technologies={project.technologies} />
+          </section>
+        )}
+
+        {/* ─── Gallery ──────────────────────────────────────────── */}
+        {project.gallery.length > 0 && (
+          <section className="mb-10">
+            <h2 className="mb-4 text-xl font-bold text-foreground">
+              {t("detail.gallery")}
+            </h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {project.gallery.map((img) => (
+                <figure
+                  key={img.id}
+                  className="group overflow-hidden rounded-xl border border-border/20 bg-muted/20 transition-all hover:shadow-md"
+                >
+                  <img
+                    src={getMediaUrl(img.image.url)}
+                    alt={img.caption || project.title}
+                    className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {img.caption && (
+                    <figcaption className="p-3 text-center text-xs text-muted-foreground">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ─── Bottom CTA ──────────────────────────────────────── */}
+        <section className="relative mt-12 overflow-hidden rounded-2xl border border-border/20 bg-brand-soft/40 p-8 text-center backdrop-blur-sm sm:p-10">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-background/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary/80">
+            <Sparkles className="size-3" aria-hidden="true" />
+            {t("detail.cta.eyebrow")}
+          </span>
+          <h2 className="mb-2 text-xl font-bold text-foreground sm:text-2xl">
+            {t("detail.cta.title")}
+          </h2>
+          <p className="mx-auto mb-6 max-w-md text-sm text-muted-foreground">
+            {t("detail.cta.description")}
+          </p>
+          <Link
+            href="/crm/quote"
+            className="inline-flex items-center gap-2 rounded-lg bg-brand-gradient px-7 py-3 text-sm font-semibold text-white shadow-brand transition-opacity hover:opacity-90"
+          >
+            {t("detail.cta.quote")}
+            <LucideIcons.ArrowRight
+              className="size-4 rtl:rotate-180"
+              aria-hidden="true"
+            />
+          </Link>
+        </section>
+      </article>
+    </div>
   );
 }

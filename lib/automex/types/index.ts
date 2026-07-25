@@ -59,12 +59,19 @@ export type {
   ServiceSLA,
   ServiceFAQ as ServiceFAQSub,
   ServiceListItemRef,
+  ServiceSEO,
   TechStackGrouped,
+  IndustryFull,
   PaginatedResponse,
   BlogHeroImage,
   BlogRelatedService,
   BlogRelatedCaseStudy,
   BlogPostDetailFull,
+  BlogPostSEO,
+  PortfolioProjectDetailFull,
+  PortfolioServiceRef,
+  CaseStudyDetailFull,
+  CaseStudyServiceRef,
 } from "./content";
 
 // ─── CRM domain — inputs (request bodies) ─────────────────────────────

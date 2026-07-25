@@ -1,12 +1,19 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowLeft, ExternalLink, Sparkles, Layers, Cpu } from "lucide-react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Sparkles,
+  Layers,
+  Cpu,
+  ArrowUpRight,
+} from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { getMediaUrl } from "@/lib/env";
 import { cn } from "@/lib/utils";
-import type { AICapability } from "@/lib/automex/types";
+import type { AICapability, ServiceListItem } from "@/lib/automex/types";
 
 const MATURITY_COLORS: Record<string, string> = {
   research: "bg-purple-500/10 text-purple-500 border-purple-500/20",
@@ -26,7 +33,13 @@ function resolveLucideIcon(iconName: string | undefined): React.ElementType {
   return map[pascal] || Cpu;
 }
 
-export function AICapabilityDetailClientPage({ capability: cap }: { capability: AICapability }) {
+export function AICapabilityDetailClientPage({
+  capability: cap,
+  relatedServices,
+}: {
+  capability: AICapability;
+  relatedServices: ServiceListItem[];
+}) {
   const t = useTranslations("AICapabilities");
   const CapIcon = resolveLucideIcon(cap.icon);
 
@@ -41,9 +54,12 @@ export function AICapabilityDetailClientPage({ capability: cap }: { capability: 
   return (
     <>
       <div className="relative overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-          <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+        >
+          <div className="absolute -top-24 right-0 size-112.5 rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+          <div className="absolute top-1/3 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
         </div>
 
         <article className="mx-auto max-w-4xl px-4 py-16 sm:py-24">
@@ -65,7 +81,8 @@ export function AICapabilityDetailClientPage({ capability: cap }: { capability: 
               <span
                 className={cn(
                   "inline-flex items-center rounded-full border text-[10px] font-semibold px-2 py-0.5",
-                  MATURITY_COLORS[cap.maturity_level] || "bg-muted/50 text-muted-foreground border-border/20"
+                  MATURITY_COLORS[cap.maturity_level] ||
+                    "bg-muted/50 text-muted-foreground border-border/20",
                 )}
               >
                 {maturityLabel(cap.maturity_level)}
@@ -75,7 +92,10 @@ export function AICapabilityDetailClientPage({ capability: cap }: { capability: 
 
           {/* Title with icon in a styled badge */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight leading-tight flex items-center gap-4">
-            <span className="inline-flex items-center justify-center size-12 sm:size-14 rounded-2xl bg-brand-gradient text-white shrink-0 shadow-brand" aria-hidden="true">
+            <span
+              className="inline-flex items-center justify-center size-12 sm:size-14 rounded-2xl bg-brand-gradient text-white shrink-0 shadow-brand"
+              aria-hidden="true"
+            >
               <CapIcon className="size-6 sm:size-7" />
             </span>
             {cap.name}
@@ -88,16 +108,18 @@ export function AICapabilityDetailClientPage({ capability: cap }: { capability: 
               <img
                 src={getMediaUrl(cap.cover_image.url)}
                 alt={cap.cover_image.alt_text || cap.name}
-                className="w-full h-auto max-h-[500px] object-cover"
+                className="w-full h-auto max-h-125 object-cover"
               />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
             </figure>
           )}
 
           {/* Description */}
           {cap.description && (
             <section className="mb-10">
-              <h2 className="text-xl font-bold text-foreground mb-4">{t("detail.about")}</h2>
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                {t("detail.about")}
+              </h2>
               <div className="prose text-[15px] text-muted-foreground leading-relaxed space-y-3">
                 {cap.description.split("\n").map((para, i) => (
                   <p key={i}>{para}</p>
@@ -109,43 +131,75 @@ export function AICapabilityDetailClientPage({ capability: cap }: { capability: 
           {/* Technologies */}
           {cap.technologies.length > 0 && (
             <section className="mb-10">
-              <h2 className="text-xl font-bold text-foreground mb-4">{t("detail.technologies")}</h2>
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                {t("detail.technologies")}
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {cap.technologies.map((tech) => {
-                const TechIcon = resolveLucideIcon(tech.icon);
-                const chip = (
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-muted/30 px-2.5 py-1.5 text-[12px] text-foreground/80 hover:border-primary/30 hover:bg-muted/50 transition-colors"
-                  >
-                    <TechIcon className="size-3.5 shrink-0" aria-hidden="true" />
-                    {tech.name}
-                  </span>
-                );
-                return tech.website_url ? (
-                  <a
-                    key={tech.id}
-                    href={tech.website_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {chip}
-                  </a>
-                ) : (
-                  <span key={tech.id}>{chip}</span>
-                );
-              })}
+                  const TechIcon = resolveLucideIcon(tech.icon);
+                  const chip = (
+                    <span className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-muted/30 px-2.5 py-1.5 text-[12px] text-foreground/80 hover:border-primary/30 hover:bg-muted/50 transition-colors">
+                      <TechIcon
+                        className="size-3.5 shrink-0"
+                        aria-hidden="true"
+                      />
+                      {tech.name}
+                    </span>
+                  );
+                  return tech.website_url ? (
+                    <a
+                      key={tech.id}
+                      href={tech.website_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {chip}
+                    </a>
+                  ) : (
+                    <span key={tech.id}>{chip}</span>
+                  );
+                })}
               </div>
             </section>
           )}
 
           {/* Related Services */}
-          {cap.related_services && cap.related_services.length > 0 && (
+          {relatedServices.length > 0 && (
             <section className="mb-10">
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                 <Layers className="size-5 text-primary" aria-hidden="true" />
                 {t("detail.relatedServices")}
-                <span className="text-[13px] font-normal text-muted-foreground">({cap.related_services.length})</span>
+                <span className="text-[13px] font-normal text-muted-foreground">
+                  ({relatedServices.length})
+                </span>
               </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {relatedServices.map((service) => (
+                  <Link
+                    key={service.id}
+                    href={`/services/${service.slug}` as any}
+                    className="group flex items-start gap-3 rounded-xl border border-border/40 bg-card/50 backdrop-blur-sm p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-brand/5 hover:border-primary/40"
+                  >
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-gradient/5 text-primary/60 mt-0.5">
+                      <Cpu className="size-4" aria-hidden="true" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
+                        {service.name}
+                      </h3>
+                      {service.short_description && (
+                        <p className="text-[12px] text-muted-foreground leading-relaxed line-clamp-2">
+                          {service.short_description}
+                        </p>
+                      )}
+                    </div>
+                    <ArrowUpRight
+                      className="size-3.5 shrink-0 text-muted-foreground/40 group-hover:text-primary transition-colors mt-1"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                ))}
+              </div>
             </section>
           )}
 
@@ -166,7 +220,10 @@ export function AICapabilityDetailClientPage({ capability: cap }: { capability: 
 
           {/* Bottom CTA */}
           <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
+            />
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
               <Sparkles className="size-3" aria-hidden="true" />
               {t("detail.cta.eyebrow")}

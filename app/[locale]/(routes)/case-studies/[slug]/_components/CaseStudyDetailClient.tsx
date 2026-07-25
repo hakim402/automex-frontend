@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   Building2,
   Calendar,
   Cpu,
@@ -13,7 +14,18 @@ import {
   Sparkles,
   Target,
   Trophy,
+  TrendingUp,
+  Percent,
+  Zap,
+  DollarSign,
   X,
+  Server,
+  Layout,
+  Database,
+  Cloud,
+  Brain,
+  Smartphone,
+  GitBranch,
   type LucideIcon,
 } from "lucide-react";
 
@@ -21,10 +33,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 import { SafeHTML } from "@/components/shared/SafeHTML";
+import { getMediaUrl } from "@/lib/env";
 import type { SupportedLocale } from "@/lib/locale";
-import type { CaseStudyDetail, CaseStudyListItem, Technology } from "@/lib/automex/types";
+import type { CaseStudyDetailFull, CaseStudyListItem, Technology } from "@/lib/automex/types";
 
-// ─── Tech icon map (same as ServiceDetail) ─────────────────────────────
+// ─── Icon resolver ───────────────────────────────────────────────────
 
 const ICON_MAP: Record<string, LucideIcon> = {
   cpu: Cpu,
@@ -53,14 +66,14 @@ function resolveText(value: unknown): string {
 // ─── Props ────────────────────────────────────────────────────────────
 
 interface CaseStudyDetailClientProps {
-  caseStudy: CaseStudyDetail;
+  caseStudy: CaseStudyDetailFull;
   relatedCaseStudies: CaseStudyListItem[];
   locale: SupportedLocale;
 }
 
 // ─── Gallery lightbox ─────────────────────────────────────────────────
 
-function GallerySection({ caseStudy, t }: { caseStudy: CaseStudyDetail; t: ReturnType<typeof useTranslations<"CaseStudyDetail">> }) {
+function GallerySection({ caseStudy, t }: { caseStudy: CaseStudyDetailFull; t: ReturnType<typeof useTranslations<"CaseStudyDetail">> }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!caseStudy.gallery || caseStudy.gallery.length === 0) return null;
@@ -99,7 +112,7 @@ function GallerySection({ caseStudy, t }: { caseStudy: CaseStudyDetail; t: Retur
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={img.media.url ?? ""}
+              src={getMediaUrl(img.media.url ?? "")}
               alt={img.caption || caseStudy.title}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -139,7 +152,7 @@ function GallerySection({ caseStudy, t }: { caseStudy: CaseStudyDetail; t: Retur
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={images[lightboxIndex].media.url ?? ""}
+              src={getMediaUrl(images[lightboxIndex].media.url ?? "")}
               alt={images[lightboxIndex].caption || caseStudy.title}
               className="max-h-[85vh] max-w-full rounded-xl object-contain"
             />
@@ -172,8 +185,8 @@ export function CaseStudyDetailClient({
   const t = useTranslations("CaseStudyDetail");
   const isRtl = ["ar", "fa", "ps"].includes(locale);
 
-  const thumbUrl = caseStudy.thumbnail?.url;
-  const logoUrl = caseStudy.client_logo?.url;
+  const thumbUrl = caseStudy.thumbnail?.url ? getMediaUrl(caseStudy.thumbnail.url) : undefined;
+  const logoUrl = caseStudy.client_logo?.url ? getMediaUrl(caseStudy.client_logo.url) : undefined;
   const techCount = caseStudy.technologies?.length ?? 0;
   const overview = resolveText(caseStudy.overview);
   const challenge = resolveText(caseStudy.challenge);
@@ -209,10 +222,18 @@ export function CaseStudyDetailClient({
 
           {/* Industry badge */}
           <div className="mb-4 flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[12px] font-medium text-emerald-600 dark:text-emerald-400">
-              <Building2 className="size-3.5" aria-hidden="true" />
-              {caseStudy.client_industry.name}
-            </span>
+            {caseStudy.client_industry && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[12px] font-medium text-emerald-600 dark:text-emerald-400">
+                <Building2 className="size-3.5" aria-hidden="true" />
+                {caseStudy.client_industry.name}
+              </span>
+            )}
+            {caseStudy.is_ai_project && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 px-3 py-1 text-[12px] font-medium text-violet-600 dark:text-violet-400">
+                <Brain className="size-3.5" aria-hidden="true" />
+                AI Project
+              </span>
+            )}
             {caseStudy.is_featured && (
               <span className="rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                 {t("featuredBadge")}
@@ -280,11 +301,20 @@ export function CaseStudyDetailClient({
               <p className="text-[11px] text-muted-foreground">{t("stats.technologies")}</p>
             </div>
           )}
-          <div className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center">
-            <Building2 className="size-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-            <p className="text-lg font-bold text-foreground">{caseStudy.client_industry.name}</p>
-            <p className="text-[11px] text-muted-foreground">{t("stats.industry")}</p>
-          </div>
+          {caseStudy.client_industry && (
+            <div className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center">
+              <Building2 className="size-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              <p className="text-lg font-bold text-foreground truncate max-w-full px-1">{caseStudy.client_industry.name}</p>
+              <p className="text-[11px] text-muted-foreground">{t("stats.industry")}</p>
+            </div>
+          )}
+          {caseStudy.team_size != null && (
+            <div className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center">
+              <Building2 className="size-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              <p className="text-lg font-bold text-foreground">{caseStudy.team_size}</p>
+              <p className="text-[11px] text-muted-foreground">{t("stats.teamSize")}</p>
+            </div>
+          )}
           {caseStudy.project_url && (
             <div className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center">
               <ExternalLink className="size-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
@@ -297,6 +327,20 @@ export function CaseStudyDetailClient({
                 {t("stats.liveUrl")}
               </a>
               <p className="text-[11px] text-muted-foreground">{t("stats.viewProject")}</p>
+            </div>
+          )}
+          {caseStudy.client_website && (
+            <div className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center">
+              <ExternalLink className="size-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              <a
+                href={caseStudy.client_website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] font-medium text-primary hover:underline"
+              >
+                {t("stats.clientSite")}
+              </a>
+              <p className="text-[11px] text-muted-foreground">{t("stats.viewClient")}</p>
             </div>
           )}
         </div>
@@ -386,40 +430,78 @@ export function CaseStudyDetailClient({
       )}
 
       {/* ═══════════════════════════════════════════════════════════
+                      KEY METRICS
+      ═══════════════════════════════════════════════════════════ */}
+      {caseStudy.key_metrics && Object.keys(caseStudy.key_metrics).length > 0 && (
+        <section className="mx-auto max-w-4xl px-4 py-8 sm:py-12">
+          <div className="mb-8 text-center">
+            <p className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              {t("metrics.eyebrow")}
+            </p>
+            <h2 className="text-2xl font-bold text-foreground">{t("metrics.title")}</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {Object.entries(caseStudy.key_metrics).map(([key, value]) => (
+              <div key={key} className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center">
+                <TrendingUp className="size-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                <p className="text-lg font-bold text-foreground">{String(value)}</p>
+                <p className="text-[11px] text-muted-foreground capitalize">{key.replace(/_/g, " ")}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════
                       TECHNOLOGY STACK
       ═══════════════════════════════════════════════════════════ */}
       {caseStudy.technologies && caseStudy.technologies.length > 0 && (
-        <section className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+        <CategoryTaggedTechnologies technologies={caseStudy.technologies} t={t} />
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════
+                      RELATED SERVICES
+      ═══════════════════════════════════════════════════════════ */}
+      {caseStudy.related_services && caseStudy.related_services.length > 0 && (
+        <section className="mx-auto max-w-4xl px-4 py-8 sm:py-12">
           <div className="mb-8 text-center">
             <p className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-              {t("technologies.eyebrow")}
+              {t("services.eyebrow")}
             </p>
-            <h2 className="text-2xl font-bold text-foreground">{t("technologies.title")}</h2>
+            <h2 className="text-2xl font-bold text-foreground">{t("services.title")}</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {(caseStudy.technologies as Technology[]).map((tech) => {
-              const TechIcon = resolveIcon(tech.icon);
-              return (
-                <div
-                  key={tech.id}
-                  className="flex items-center gap-2 rounded-full border border-border/60 bg-card/80 backdrop-blur-sm px-4 py-2 text-[13px] font-medium text-foreground transition-colors hover:border-emerald-500/40"
-                >
-                  <TechIcon className="size-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-                  {tech.name}
-                  {tech.website_url && (
-                    <a
-                      href={tech.website_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-1 text-muted-foreground hover:text-emerald-600"
-                      aria-label={`${tech.name} website`}
-                    >
-                      <ExternalLink className="size-3" />
-                    </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {caseStudy.related_services.map((svc) => (
+              <Link
+                key={svc.id}
+                href={`/services/${svc.slug}` as any}
+                className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 hover:border-emerald-500/40 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="shrink-0">
+                  {svc.hero_image?.url ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={getMediaUrl(svc.hero_image.url)}
+                      alt={svc.hero_image.alt_text || svc.name}
+                      className="size-12 rounded-xl object-cover"
+                    />
+                  ) : (
+                    <span className="inline-flex items-center justify-center size-12 rounded-xl bg-emerald-500/10 text-emerald-500">
+                      {(() => { const SvcIcon = resolveIcon(svc.icon); return <SvcIcon className="size-5" />; })()}
+                    </span>
                   )}
                 </div>
-              );
-            })}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-[15px] font-semibold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    {svc.name}
+                    <ArrowUpRight className="size-3.5 opacity-0 -translate-y-0.5 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                  </h3>
+                  {svc.short_description && (
+                    <p className="text-[13px] text-muted-foreground mt-1 leading-relaxed line-clamp-2">{svc.short_description}</p>
+                  )}
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
       )}
@@ -512,5 +594,122 @@ export function CaseStudyDetailClient({
         </div>
       </section>
     </div>
+  );
+}
+
+// ─── Category-grouped technologies ───────────────────────────────────
+
+const CATEGORY_META: Record<string, { label: string; Icon: LucideIcon }> = {
+  backend: { label: "Backend", Icon: Server },
+  frontend: { label: "Frontend", Icon: Layout },
+  database: { label: "Database", Icon: Database },
+  cloud: { label: "Cloud", Icon: Cloud },
+  ai: { label: "AI & ML", Icon: Brain },
+  enterprise: { label: "Enterprise", Icon: Building2 },
+  mobile: { label: "Mobile", Icon: Smartphone },
+  devops: { label: "DevOps", Icon: GitBranch },
+};
+
+function CategoryTaggedTechnologies({
+  technologies,
+  t,
+}: {
+  technologies: Technology[];
+  t: ReturnType<typeof useTranslations<"CaseStudyDetail">>;
+}) {
+  const grouped = useMemo(() => {
+    const map = new Map<string, Technology[]>();
+    for (const tech of technologies) {
+      const cat = tech.category || "other";
+      if (!map.has(cat)) map.set(cat, []);
+      map.get(cat)!.push(tech);
+    }
+    return map;
+  }, [technologies]);
+
+  return (
+    <section className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+      <div className="mb-8 text-center">
+        <p className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+          {t("technologies.eyebrow")}
+        </p>
+        <h2 className="text-2xl font-bold text-foreground">{t("technologies.title")}</h2>
+      </div>
+      {Array.from(grouped.entries()).map(([category, techs]) => {
+        const meta = CATEGORY_META[category] || { label: category, Icon: Cpu };
+        return (
+          <div key={category} className="mb-8 last:mb-0">
+            <div className="flex items-center gap-2 mb-4">
+              <meta.Icon className="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              <h3 className="text-[14px] font-semibold text-foreground">
+                {meta.label}
+                <span className="ml-1.5 text-[12px] font-normal text-muted-foreground">({techs.length})</span>
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {techs.map((tech) => {
+                const TechIcon = resolveIcon(tech.icon);
+                const logoUrl = tech.logo?.url;
+                const cardContent = (
+                  <>
+                    <div className="shrink-0">
+                      {logoUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={getMediaUrl(logoUrl)}
+                          alt={tech.logo?.alt_text || tech.name}
+                          className="size-9 rounded-lg object-cover"
+                        />
+                      ) : (
+                        <span className="inline-flex items-center justify-center size-9 rounded-lg bg-emerald-500/10 text-emerald-500">
+                          <TechIcon className="size-4" />
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[13px] font-semibold text-foreground">{tech.name}</span>
+                        {tech.proficiency_level_display && (
+                          <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                            {tech.proficiency_level_display}
+                          </span>
+                        )}
+                      </div>
+                      {tech.description && (
+                        <p className="text-[12px] text-muted-foreground mt-1 leading-relaxed line-clamp-2">{tech.description}</p>
+                      )}
+                    </div>
+                  </>
+                );
+
+                const cardClasses =
+                  "flex items-start gap-3 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-sm";
+
+                if (tech.website_url) {
+                  return (
+                    <a
+                      key={tech.id}
+                      href={tech.website_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(cardClasses, "cursor-pointer")}
+                    >
+                      {cardContent}
+                      <ExternalLink className="size-3 shrink-0 text-muted-foreground mt-1" />
+                    </a>
+                  );
+                }
+
+                return (
+                  <div key={tech.id} className={cardClasses}>
+                    {cardContent}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </section>
   );
 }
