@@ -16,6 +16,7 @@ import { useState, useEffect, useRef, useId } from "react";
 import { ChevronDown, ArrowRight, Sparkles, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
+import { getMediaUrl } from "@/lib/env";
 
 type LinkHref = React.ComponentProps<typeof Link>["href"];
 
@@ -23,6 +24,10 @@ export interface MegaMenuItem {
   name: string;
   href: LinkHref;
   icon?: LucideIcon;
+  /** Optional image URL — takes priority over icon when set. */
+  imageUrl?: string;
+  /** Alt text for the image, used as fallback when imageUrl is set. */
+  imageAlt?: string;
   description?: string;
   /** Fires on click — when present, the default navigate+close behaviour is skipped. */
   onClick?: () => void;
@@ -353,6 +358,7 @@ export function MegaMenu({
 
 function CardLink({ item, onNavigate }: { item: MegaMenuItem; onNavigate: () => void }) {
   const Icon = item.icon;
+  const imageSrc = item.imageUrl ? getMediaUrl(item.imageUrl) : null;
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (item.onClick) {
       e.preventDefault();
@@ -368,11 +374,20 @@ function CardLink({ item, onNavigate }: { item: MegaMenuItem; onNavigate: () => 
       onClick={handleClick}
       className="group/card relative flex items-start gap-3 rounded-xl border border-transparent p-3 transition-all duration-150 hover:border-border hover:bg-accent hover:shadow-sm"
     >
-      {Icon && (
+      {imageSrc ? (
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-soft/50 p-1 transition-transform duration-150 group-hover/card:scale-105">
+          <img
+            src={imageSrc}
+            alt={item.imageAlt || item.name}
+            className="size-full object-contain"
+            loading="lazy"
+          />
+        </span>
+      ) : Icon ? (
         <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-primary transition-transform duration-150 group-hover/card:scale-105">
           <Icon className="size-4.5" />
         </span>
-      )}
+      ) : null}
       <span className="min-w-0 pt-0.5">
         <span className="block truncate text-sm font-medium text-popover-foreground">{item.name}</span>
         {item.description && (

@@ -17,6 +17,8 @@
     "aiRagDesc": "Retrieval-augmented generation that grounds AI responses in your proprietary data and documents.",
     "aiSolutions": "AI Solutions",
     "aiSolutionsDescription": "Explore our full range of AI capabilities — from generative models to computer vision and intelligent automation.",
+    "solutionsDescription": "Cutting-edge AI and software solutions that automate, scale, and transform your business operations.",
+    "viewAllSolutions": "View All Solutions",
     "aiVoice": "Voice AI",
     "aiVoiceDesc": "Speech recognition, voice bots, and real-time audio processing for customer-facing applications.",
     "blog": "Blog",
@@ -25,6 +27,8 @@
     "bookCallDesc": "Schedule a free 30-minute consultation with our AI and software experts.",
     "careers": "Careers",
     "caseStudies": "Case Studies",
+    "caseStudiesDescription": "Real-world success stories — see how we've delivered results for clients across industries.",
+    "caseStudiesDesc": "Explore our client success stories",
     "closeMenu": "Close menu",
     "company": "Company",
     "contact": "Contact",
@@ -36,6 +40,14 @@
     "dashboard": "Dashboard",
     "downloads": "Downloads",
     "expertise": "Expertise",
+    "expertiseDescription": "Deep technical expertise across the full technology stack.",
+    "expertiseML": "Machine Learning Engineering",
+    "expertiseMLDesc": "End-to-end ML pipelines, model training, and production-grade AI deployment.",
+    "expertiseDevSecOps": "DevSecOps",
+    "expertiseDevSecOpsDesc": "Secure CI/CD pipelines, infrastructure as code, and cloud-native operations.",
+    "expertiseMobile": "iOS & Android Development",
+    "expertiseMobileDesc": "Native and cross-platform mobile apps with seamless user experiences.",
+    "viewAllExpertise": "View All Expertise",
     "faqs": "FAQs",
     "featuredDescription": "Modernize your business with our end-to-end digital transformation services.",
     "featuredTitle": "Digital Transformation",
@@ -69,6 +81,10 @@
     "navigation": "Navigation",
     "openMenu": "Open menu",
     "partners": "Partners",
+    "partnersDescription": "Technology and implementation partners we collaborate with to deliver end-to-end solutions.",
+    "partnersDesc": "Explore our partner ecosystem",
+    "viewAllPartners": "View All Partners",
+    "other": "Other",
     "portfolio": "Portfolio",
     "requestQuote": "Request a Quote",
     "requestQuoteDesc": "Tell us about your project and get a detailed, no-obligation estimate within one business day.",
@@ -972,7 +988,7 @@
       },
       "card": {
         "technologies": "{count} technolog{plural}",
-        "caseStudies": "{count} د قضیې مطالعه",
+        "caseStudies": "{count} case stud{plural}",
         "explore": "Explore"
       },
       "empty": "No tech expertise areas found.",
@@ -985,24 +1001,24 @@
       }
     },
     "detail": {
-      "back": "تخنیکي تخصص ته بیرته",
+      "back": "Back to Tech Expertise",
       "stats": {
-        "technologies": "{count} ټکنالوژۍ",
-        "caseStudies": "{count} د قضیې مطالعې"
+        "technologies": "{count} technologies",
+        "caseStudies": "{count} case studies"
       },
       "about": {
-        "title": "د دې تخصص په اړه",
-        "eyebrow": "عمومي کتنه"
+        "title": "About This Expertise",
+        "eyebrow": "Overview"
       },
       "technologies": {
-        "eyebrow": "ټکنالوژۍ سټک",
-        "title": "ټکنالوژۍ او وسیلې"
+        "eyebrow": "Tech Stack",
+        "title": "Technologies & Tools"
       },
       "caseStudies": {
-        "eyebrow": "ثابتې شوې پایلې",
-        "title": "اړوندې د قضیې مطالعې",
-        "viewAll": "ټولې د قضیې مطالعې وګورئ",
-        "readCaseStudy": "د قضیې مطالعه ولولئ"
+        "eyebrow": "Proven Results",
+        "title": "Related Case Studies",
+        "viewAll": "View all case studies",
+        "readCaseStudy": "Read case study"
       },
       "cta": {
         "eyebrow": "Get Started",
@@ -1052,6 +1068,7 @@
       "back": "Back to Portfolio",
       "featured": "Featured",
       "about": "Overview",
+      "industry": "Industry",
       "services": "Services",
       "technologies": "Technologies Used",
       "liveProject": "Live project",
@@ -1496,6 +1513,9 @@
       "description": "Tell us what you're trying to build and we'll point you in the right direction.",
       "ctaQuote": "Request a Quote",
       "ctaBooking": "Book a Free Call"
+    },
+    "carousel": {
+      "viewService": "View Service"
     },
     "trust": {
       "whyAutomex": "Why AUTOMEX",

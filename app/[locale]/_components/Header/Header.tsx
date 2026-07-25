@@ -22,6 +22,7 @@ import {
   Sparkles,
   Layers,
   Cpu,
+  Code2,
   Mic,
   ScanText,
   Users,
@@ -38,6 +39,12 @@ import {
   CalendarClock,
   Receipt,
   Headset,
+  Cloud,
+  Smartphone,
+  GitBranch,
+  Database,
+  Brain,
+  Server,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -49,26 +56,30 @@ import { Link, usePathname } from "@/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
 import { MegaMenu, type MegaMenuColumn, type MegaMenuItem } from "./MegaMenu";
 import { SearchCommandPalette, type CommandItem } from "./SearchCommandPalette";
-import type { ServiceCategory, BlogCategory, Industry, AICapability, PortfolioProjectList, BlogPostListItem, CaseStudyListItem } from "@/lib/automex/types";
+import type { ServiceCategory, ServiceListItem, Industry, AICapability, PortfolioProjectList, BlogPostListItem, CaseStudyListItem, TechExpertiseArea, Partner } from "@/lib/automex/types";
 
 interface HeaderProps {
   serviceCategories?: ServiceCategory[];
-  blogCategories?: BlogCategory[];
+  services?: ServiceListItem[];
   industries?: Industry[];
   aiCapabilities?: AICapability[];
   portfolioProjects?: PortfolioProjectList[];
   latestBlogs?: BlogPostListItem[];
   latestCaseStudies?: CaseStudyListItem[];
+  techExpertiseAreas?: TechExpertiseArea[];
+  partners?: Partner[];
 }
 
 export const Header = ({
   serviceCategories,
-  blogCategories,
+  services,
   industries,
   aiCapabilities,
   portfolioProjects,
   latestBlogs,
   latestCaseStudies,
+  techExpertiseAreas,
+  partners,
 }: HeaderProps = {}) => {
   const t = useTranslations("Header");
   const locale = useLocale();
@@ -114,27 +125,63 @@ export const Header = ({
       : pathname === href || pathname.startsWith(`${href}/`);
 
   // ── Static nav data ──────────────────────────────────────────────────
-  // Services stays fully dynamic (fed by the CMS via `serviceCategories`).
-  // Industries / AI Solutions / Company are static, i18n-keyed link sets —
-  // the same pattern already used for `crmLinks` — until/unless a real
-  // fetchIndustries()/fetchAICapabilities() endpoint exists to swap in.
+  // Services grouped by their category, each showing name + thumbnail.
+
+  // ── Icon map for services ──────────────────────────────────────────
+  const SERVICE_ICON_MAP: Record<string, typeof Code2> = {
+    "lucide:code-2": Code2,
+    "lucide:code": Code2,
+    "lucide:cpu": Cpu,
+    "lucide:cloud": Cloud,
+    "lucide:smartphone": Smartphone,
+    "lucide:database": Database,
+    "lucide:brain": Brain,
+    "lucide:shield-check": ShieldCheck,
+    "lucide:bot": Bot,
+    "lucide:sparkles": Sparkles,
+    "lucide:layers": Layers,
+  };
+
+  function getServiceIcon(iconName?: string): typeof Code2 | undefined {
+    if (iconName && SERVICE_ICON_MAP[iconName]) return SERVICE_ICON_MAP[iconName];
+    return undefined;
+  }
 
   const serviceColumns: MegaMenuColumn[] = useMemo(() => {
-    const links: MegaMenuItem[] = (serviceCategories ?? []).map((cat) => ({
-      name: cat.name,
-      href: { pathname: "/services" as const, query: { category: cat.slug } },
+    if (!services || services.length === 0) {
+      // Fallback: show categories
+      const links: MegaMenuItem[] = (serviceCategories ?? []).map((cat) => ({
+        name: cat.name,
+        href: { pathname: "/services" as const, query: { category: cat.slug } },
+      }));
+      if (links.length === 0) return [];
+      const mid = Math.ceil(links.length / 2);
+      return links.length > 6
+        ? [
+            { heading: t("services"), links: links.slice(0, mid) },
+            { heading: t("moreServices"), links: links.slice(mid) },
+          ]
+        : [{ heading: t("services"), links }];
+    }
+    // Group services by their category name
+    const grouped = new Map<string, MegaMenuItem[]>();
+    for (const svc of services) {
+      const catName = svc.category?.name || t("other");
+      if (!grouped.has(catName)) grouped.set(catName, []);
+      grouped.get(catName)!.push({
+        name: svc.name,
+        description: svc.short_description?.slice(0, 80),
+        href: `/services/${svc.slug}` as any,
+        icon: getServiceIcon(svc.icon),
+        imageUrl: svc.thumbnail_image?.url || undefined,
+        imageAlt: svc.thumbnail_image?.alt_text || svc.name,
+      });
+    }
+    return Array.from(grouped.entries()).map(([heading, links]) => ({
+      heading,
+      links,
     }));
-    if (links.length === 0) return [];
-    // Split a long flat list into two even columns without inventing groups
-    // that aren't in the data.
-    const mid = Math.ceil(links.length / 2);
-    return links.length > 6
-      ? [
-          { heading: t("services"), links: links.slice(0, mid) },
-          { heading: t("moreServices"), links: links.slice(mid) },
-        ]
-      : [{ heading: t("services"), links }];
-  }, [serviceCategories, t]);
+  }, [services, serviceCategories, t]);
 
   // ── Icon map for dynamic industries ──────────────────────────────────
   const INDUSTRY_ICON_MAP: Record<string, typeof Landmark> = {
@@ -335,6 +382,63 @@ export const Header = ({
     return fallbackAISolutions;
   }, [aiCapabilities, fallbackAISolutions]);
 
+  // ── Icon map for dynamic tech expertise areas ────────────────────────
+  const TECH_EXPERTISE_ICON_MAP: Record<string, typeof Cpu> = {
+    "lucide:brain": Brain,
+    "lucide:cpu": Cpu,
+    "lucide:cloud": Cloud,
+    "lucide:shield-check": ShieldCheck,
+    "lucide:smartphone": Smartphone,
+    "lucide:git-branch": GitBranch,
+    "lucide:database": Database,
+    "lucide:server": Server,
+    "lucide:sparkles": Sparkles,
+    "lucide:bot": Bot,
+    "lucide:layers": Layers,
+  };
+
+  function getTechExpertiseIcon(iconName?: string): typeof Cpu | undefined {
+    if (iconName && TECH_EXPERTISE_ICON_MAP[iconName]) return TECH_EXPERTISE_ICON_MAP[iconName];
+    return undefined;
+  }
+
+  // Hardcoded fallback for tech expertise — only when API is unavailable
+  const fallbackExpertise = useMemo<MegaMenuItem[]>(
+    () => [
+      {
+        name: t("expertiseML"),
+        description: t("expertiseMLDesc"),
+        href: "/tech-expertise/machine-learning-engineering",
+        icon: Brain,
+      } as unknown as MegaMenuItem,
+      {
+        name: t("expertiseDevSecOps"),
+        description: t("expertiseDevSecOpsDesc"),
+        href: "/tech-expertise/devsecops",
+        icon: ShieldCheck,
+      } as unknown as MegaMenuItem,
+      {
+        name: t("expertiseMobile"),
+        description: t("expertiseMobileDesc"),
+        href: "/tech-expertise/ios-android-development",
+        icon: Smartphone,
+      } as unknown as MegaMenuItem,
+    ],
+    [t],
+  );
+
+  const expertiseItems: MegaMenuItem[] = useMemo(() => {
+    if (techExpertiseAreas && techExpertiseAreas.length > 0) {
+      return techExpertiseAreas.map((area) => ({
+        name: area.name,
+        description: area.description,
+        href: `/tech-expertise/${area.slug}` as any,
+        icon: getTechExpertiseIcon(area.icon),
+      }));
+    }
+    return fallbackExpertise;
+  }, [techExpertiseAreas, fallbackExpertise]);
+
   // ── Portfolio items (dynamic from API, fallback to simple link) ──────
   const portfolioItems: MegaMenuItem[] = useMemo(() => {
     if (portfolioProjects && portfolioProjects.length > 0) {
@@ -356,8 +460,49 @@ export const Header = ({
     ];
   }, [portfolioProjects, t]);
 
+  // ── Case Studies items (dynamic from API) ────────────────────────────
+  const caseStudiesItems: MegaMenuItem[] = useMemo(() => {
+    if (latestCaseStudies && latestCaseStudies.length > 0) {
+      return latestCaseStudies.map((cs) => ({
+        name: cs.title,
+        description: cs.client_name || cs.overview?.slice(0, 80),
+        href: `/case-studies/${cs.slug}` as any,
+        icon: BookOpen,
+      }));
+    }
+    return [
+      {
+        name: t("caseStudies"),
+        description: t("caseStudiesDesc") || "",
+        href: "/case-studies" as any,
+        icon: BookOpen,
+      },
+    ];
+  }, [latestCaseStudies, t]);
+
+  // ── Partners items (dynamic from API) ───────────────────────────────
+  const partnersItems: MegaMenuItem[] = useMemo(() => {
+    if (partners && partners.length > 0) {
+      return partners.map((p) => ({
+        name: p.name,
+        description: p.description?.slice(0, 80),
+        href: `/partners/${p.slug}` as any,
+        imageUrl: p.logo?.url || undefined,
+        imageAlt: p.logo?.alt_text || p.name,
+      }));
+    }
+    return [
+      {
+        name: t("partners"),
+        description: t("partnersDesc") || "",
+        href: "/partners" as any,
+        icon: Handshake,
+      },
+    ];
+  }, [partners, t]);
+
   // ── Resources right-panel toggle state ───────────────────────────────
-  type ResourceSection = "blog" | "case-studies" | "tech-expertise" | null;
+  type ResourceSection = "blog" | null;
   const [activeResourceSection, setActiveResourceSection] =
     useState<ResourceSection>(null);
 
@@ -377,18 +522,6 @@ export const Header = ({
         href: "/blog" as const,
         icon: Newspaper,
         onClick: () => toggleResourceSection("blog"),
-      },
-      {
-        name: t("caseStudies"),
-        href: "/case-studies" as const,
-        icon: BookOpen,
-        onClick: () => toggleResourceSection("case-studies"),
-      },
-      {
-        name: t("techExpertise"),
-        href: "/tech-expertise" as const,
-        icon: FileText,
-        onClick: () => toggleResourceSection("tech-expertise"),
       },
       { name: t("faqs"), href: "/faqs" as const, icon: HelpCircle },
       { name: t("downloads"), href: "/downloads" as const, icon: Download },
@@ -417,36 +550,10 @@ export const Header = ({
           viewAllLabel: t("viewAllBlog"),
         };
       }
-      case "case-studies": {
-        if (!latestCaseStudies || latestCaseStudies.length === 0) return null;
-        return {
-          heading: t("latestCaseStudies"),
-          items: latestCaseStudies.map((cs) => ({
-            name: cs.title,
-            description: cs.client_name,
-            href: `/case-studies/${cs.slug}` as any,
-          })),
-          viewAllHref: "/case-studies" as const,
-          viewAllLabel: t("viewAllCaseStudies"),
-        };
-      }
-      case "tech-expertise": {
-        if (!aiCapabilities || aiCapabilities.length === 0) return null;
-        return {
-          heading: t("latestTechExpertise"),
-          items: aiCapabilities.slice(0, 5).map((tc) => ({
-            name: tc.name,
-            description: tc.description?.slice(0, 80),
-            href: `/solutions/ai-capabilities/${tc.slug}` as any,
-          })),
-          viewAllHref: "/solutions/ai-capabilities" as const,
-          viewAllLabel: t("viewAllAiSolutions"),
-        };
-      }
       default:
         return null;
     }
-  }, [activeResourceSection, latestBlogs, latestCaseStudies, aiCapabilities, t]);
+  }, [activeResourceSection, latestBlogs, t]);
 
   const companyItems: MegaMenuItem[] = useMemo(
     () => [
@@ -457,7 +564,6 @@ export const Header = ({
         icon: Award,
       },
       { name: t("careers"), href: "/careers" as const, icon: Briefcase },
-      { name: t("partners"), href: "/partners" as const, icon: Handshake },
       { name: t("contact"), href: "/contact" as const, icon: MessageSquare },
     ],
     [t],
@@ -514,24 +620,38 @@ export const Header = ({
     };
     const items: CommandItem[] = [
       { name: t("home"), href: "/", group: t("navigation") },
-      { name: t("contact"), href: "/contact", group: t("navigation") },
-      ...portfolioItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("portfolio"),
-      })),
       ...serviceColumns
         .flatMap((c) => c.links)
         .map((l) => ({ name: l.name, href: toHref(l), group: t("services") })),
+      ...aiSolutionsItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("solutions"),
+      })),
       ...industriesItems.map((l) => ({
         name: l.name,
         href: toHref(l),
         group: t("industries"),
       })),
-      ...aiSolutionsItems.map((l) => ({
+      ...expertiseItems.map((l) => ({
         name: l.name,
         href: toHref(l),
-        group: t("aiSolutions"),
+        group: t("expertise"),
+      })),
+      ...portfolioItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("portfolio"),
+      })),
+      ...caseStudiesItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("caseStudies"),
+      })),
+      ...partnersItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("partners"),
       })),
       ...resourcesColumns
         .flatMap((c) => c.links)
@@ -548,7 +668,10 @@ export const Header = ({
     serviceColumns,
     industriesItems,
     aiSolutionsItems,
+    expertiseItems,
     portfolioItems,
+    caseStudiesItems,
+    partnersItems,
     resourcesColumns,
     companyItems,
   ]);
@@ -683,6 +806,15 @@ export const Header = ({
             />
 
             <MegaMenu
+              label={t("solutions")}
+              description={t("solutionsDescription")}
+              cards={aiSolutionsItems}
+              viewAllHref="/solutions/ai-capabilities"
+              viewAllLabel={t("viewAllSolutions")}
+              isRtl={isRtl}
+            />
+
+            <MegaMenu
               label={t("industries")}
               description={t("industriesDescription")}
               cards={industriesItems}
@@ -692,11 +824,11 @@ export const Header = ({
             />
 
             <MegaMenu
-              label={t("aiSolutions")}
-              description={t("aiSolutionsDescription")}
-              cards={aiSolutionsItems}
-              viewAllHref="/solutions/ai-capabilities"
-              viewAllLabel={t("viewAllAiSolutions")}
+              label={t("expertise")}
+              description={t("expertiseDescription")}
+              cards={expertiseItems}
+              viewAllHref="/tech-expertise"
+              viewAllLabel={t("viewAllExpertise")}
               isRtl={isRtl}
             />
 
@@ -706,6 +838,25 @@ export const Header = ({
               cards={portfolioItems}
               viewAllHref="/portfolio"
               viewAllLabel={t("viewAllPortfolio")}
+              isRtl={isRtl}
+            />
+
+            <MegaMenu
+              label={t("caseStudies")}
+              description={t("caseStudiesDescription")}
+              cards={caseStudiesItems}
+              viewAllHref="/case-studies"
+              viewAllLabel={t("viewAllCaseStudies")}
+              isRtl={isRtl}
+            />
+
+            <MegaMenu
+              label={t("partners")}
+              description={t("partnersDescription")}
+              cards={partnersItems}
+              viewAllHref="/partners"
+              viewAllLabel={t("viewAllPartners")}
+              align="end"
               isRtl={isRtl}
             />
 
@@ -783,16 +934,28 @@ export const Header = ({
                 links={serviceColumns.flatMap((c) => c.links)}
               />
               <MobileAccordion
+                label={t("solutions")}
+                links={aiSolutionsItems}
+              />
+              <MobileAccordion
                 label={t("industries")}
                 links={industriesItems}
               />
               <MobileAccordion
-                label={t("aiSolutions")}
-                links={aiSolutionsItems}
+                label={t("expertise")}
+                links={expertiseItems}
               />
               <MobileAccordion
                 label={t("portfolio")}
                 links={portfolioItems}
+              />
+              <MobileAccordion
+                label={t("caseStudies")}
+                links={caseStudiesItems}
+              />
+              <MobileAccordion
+                label={t("partners")}
+                links={partnersItems}
               />
               <MobileAccordion
                 label={t("resources")}
