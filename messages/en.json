@@ -1482,18 +1482,11 @@
   },
   "ServicesPage": {
     "meta": {
-      "title": "Our Services – AUTOMEX",
+      "title": "Our Services - AUTOMEX",
       "description": "Explore AUTOMEX's full range of services — AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
     },
     "breadcrumbHome": "Home",
     "breadcrumbServices": "Services",
-    "hero": {
-      "eyebrow": "What We Do",
-      "title": "Services built for real business outcomes",
-      "titleGradient": "Services",
-      "titleRest": "built for real business outcomes",
-      "description": "From AI strategy to full-scale software delivery — explore what we can build together."
-    },
     "stats": {
       "services": "Services",
       "categories": "Categories",
@@ -1521,11 +1514,17 @@
       "whyAutomex": "Why AUTOMEX",
       "headline": "Your technology partner, not just a vendor",
       "enterpriseSecurity": "Enterprise-grade security",
-      "onTimeDelivery": "On-time delivery — 98% track record",
+      "onTimeDelivery": "On time delivery 98% track record",
       "dedicatedSupport": "Dedicated support & maintenance",
       "aiPowered": "AI-powered development workflows",
       "enterprise": "Enterprise",
       "standard": "Standard"
+    },
+    "search": {
+      "placeholder": "Search services...",
+      "label": "Search services",
+      "clear": "Clear search",
+      "results": "Found {count} results"
     },
     "letsBuild": "Let's Build"
   },
@@ -1539,7 +1538,7 @@
     "ourProcess": "Our Process",
     "deliverables": "Deliverables",
     "planComparison": "Plan Comparison",
-    "availableAddOns": "Available Add‑Ons",
+    "availableAddOns": "Available Add Ons",
     "trustedBy": "Trusted By",
     "clientTestimonials": "Client Testimonials",
     "serviceGuarantees": "Service Guarantees",
@@ -1587,7 +1586,7 @@
     "categoryGeneral": "General",
     "categoryPricing": "Pricing",
     "categoryProcess": "Process",
-    "categoryService": "Service-specific",
+    "categoryService": "Service specific",
     "noResults": "No FAQs found for this category.",
     "hero": {
       "eyebrow": "Your Questions, Answered",

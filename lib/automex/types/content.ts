@@ -154,6 +154,7 @@ export interface ServiceFAQ {
   category: string;
   service: string;
   order: number;
+  is_prominent?: boolean;
 }
 
 export interface TechStackGrouped {
@@ -276,7 +277,8 @@ export interface ServiceDetailFull {
   order: number;
   technologies: Technology[];
   tech_stack_grouped: TechStackGrouped;
-  industries: Industry[];
+  // industries: Industry[];
+  industries: IndustryFull[];
   pricing_model: PricingModel;
   pricing_model_display: string;
   starting_price: string | null;

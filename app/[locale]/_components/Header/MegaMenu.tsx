@@ -223,14 +223,18 @@ export function MegaMenu({
                   )}
                 >
                   {columns.map((col, i) => (
-                    <div key={col.heading} className={cn(i > 0 && "border-s border-border/60 ps-8")}>
+                    <div key={col.heading ? `${col.heading}-${i}` : `col-${i}`} className={cn(i > 0 && "border-s border-border/60 ps-8")}>
                       <p className="mb-2.5 flex items-center text-xs font-semibold uppercase tracking-wide text-muted-foreground/80">
                         <HeadingDot />
                         {col.heading}
                       </p>
                       <ul className="space-y-0.5">
-                        {col.links.map((item) => (
-                          <MenuLink key={item.name} item={item} onNavigate={() => setOpen(false)} />
+                        {col.links.map((item, idx) => (
+                          <MenuLink 
+                            key={item.name ? `${item.name}-${idx}` : `link-${idx}`} 
+                            item={item} 
+                            onNavigate={() => setOpen(false)} 
+                          />
                         ))}
                       </ul>
                     </div>
@@ -245,16 +249,24 @@ export function MegaMenu({
                     simple.length > 6 && "grid-cols-2"
                   )}
                 >
-                  {simple.map((item) => (
-                    <MenuLink key={item.name} item={item} onNavigate={() => setOpen(false)} />
+                  {simple.map((item, index) => (
+                    <MenuLink 
+                      key={item.name ? `${item.name}-${index}` : `link-${index}`} 
+                      item={item} 
+                      onNavigate={() => setOpen(false)} 
+                    />
                   ))}
                 </ul>
               )}
 
               {cards && (
                 <div className={cn("grid gap-1.5", cards.length > 4 && "grid-cols-2")}>
-                  {cards.map((item) => (
-                    <CardLink key={item.name} item={item} onNavigate={() => setOpen(false)} />
+                  {cards.map((item, index) => (
+                    <CardLink 
+                      key={item.name ? `${item.name}-${index}` : `card-${index}`} 
+                      item={item} 
+                      onNavigate={() => setOpen(false)} 
+                    />
                   ))}
                 </div>
               )}
@@ -292,9 +304,9 @@ export function MegaMenu({
                     {rightPanel.heading}
                   </p>
                   <div className="flex-1 space-y-1 overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
-                    {rightPanel.items.map((item) => (
+                    {rightPanel.items.map((item, index) => (
                       <Link
-                        key={item.name}
+                        key={item.name ? `${item.name}-${index}` : `right-${index}`}
                         href={item.href}
                         role="menuitem"
                         onClick={() => setOpen(false)}

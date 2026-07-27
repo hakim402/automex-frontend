@@ -1097,11 +1097,17 @@ function MobileAccordion({
         )}
       >
         <div className="py-1 pl-3">
-          {links.map((link) => {
+          {links.map((link, index) => {
             const Icon = link.icon;
+            // Generate a stable key using name and index, falling back to href if name is missing
+            const key = link.name
+              ? `${link.name}-${index}`
+              : link.href
+                ? `link-${String(link.href)}-${index}`
+                : `link-${index}`;
             return (
               <Link
-                key={link.name}
+                key={key}
                 href={link.href}
                 className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
