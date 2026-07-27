@@ -953,6 +953,8 @@ function useIntersectionObserver(
 // per spec. Fully lucide, no emoji fallback.
 // ─────────────────────────────────────────────────────────────────────────
 
+// ─── Hero Skeleton (image-left/text-right layout) ──────────────────────
+
 function HeroSkeleton({
   service,
   hasThumbnail,
@@ -969,8 +971,8 @@ function HeroSkeleton({
     <section className="relative mb-16 sm:mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <BlueprintGrid className="rounded-2xl" />
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
-        {/* Image / icon panel — always first, per spec (image, then text) */}
-        <div className="lg:col-span-2 order-1">
+        {/* ─── Image / icon panel — always on the LEFT on desktop ─── */}
+        <div className="lg:col-span-2 order-1 lg:order-1">
           {hasThumbnail ? (
             <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-lg group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1012,8 +1014,9 @@ function HeroSkeleton({
           )}
         </div>
 
-        {/* Text panel — always second */}
-        <div className="lg:col-span-3 order-2 space-y-6">
+        {/* ─── Text panel — always on the RIGHT on desktop ────────── */}
+        <div className="lg:col-span-3 order-2 lg:order-2 space-y-6">
+          {/* Badges */}
           <div className="flex flex-wrap items-center gap-2">
             {service.category && (
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
@@ -1043,14 +1046,17 @@ function HeroSkeleton({
             )}
           </div>
 
+          {/* Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             {service.name}
           </h1>
 
+          {/* Short description */}
           <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
             {service.short_description}
           </p>
 
+          {/* CTAs */}
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
               asChild
