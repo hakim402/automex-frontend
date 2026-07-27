@@ -7,6 +7,7 @@
  * This file provides the correct typed shapes so the frontend can
  * safely destructure these arrays.
  */
+// lib/automex/types/content.ts
 
 import type { components } from "./generated";
 

@@ -8,6 +8,10 @@
  * All functions use automexFetch (X-API-Key server-side auth) and
  * pass the guest_token as a query parameter or header.
  */
+
+
+// lib/automex/guest.ts
+
 import { automexFetch } from "./client";
 import type {
   GuestLead,

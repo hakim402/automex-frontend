@@ -17,6 +17,9 @@
  * ordinary writes) — a 429 here should back off the UI (disable send,
  * show "please wait a moment") rather than retry immediately.
  */
+
+// lib/automex/assistant.ts
+
 import { automexFetch } from "./client";
 import { authRequest } from "@/lib/api";
 import type { SupportedLocale } from "@/lib/locale";

@@ -3,6 +3,9 @@
  * One generic type reused by contact, quote, booking, and newsletter
  * actions, so every form component handles errors the exact same way.
  */
+
+// lib/automex/action-result.ts
+
 export type ActionResult<T> =
   | { success: true; data: T }
   | {

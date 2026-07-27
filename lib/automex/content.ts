@@ -16,6 +16,9 @@
  * those aren't "this page doesn't exist," they're "something is broken,"
  * and should surface to an error boundary rather than a fake 404.
  */
+
+// lib/automex/content.ts
+
 import { automexFetch, unwrapPaginated, AutomexApiError, type Paginated } from "./client";
 import type {
   ServiceListItem,

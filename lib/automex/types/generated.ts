@@ -3,6 +3,8 @@
  * Do not make direct changes to the file.
  */
 
+// lib/automex/types/generated.ts
+
 export interface paths {
     "/api/v1/ai-capabilities/": {
         parameters: {

@@ -17,8 +17,8 @@
     "aiRagDesc": "Retrieval-augmented generation that grounds AI responses in your proprietary data and documents.",
     "aiSolutions": "AI Solutions",
     "aiSolutionsDescription": "Explore our full range of AI capabilities — from generative models to computer vision and intelligent automation.",
-    "solutionsDescription": "Solutions d'IA et de logiciels de pointe qui automatisent, échelonnent et transforment vos opérations commerciales.",
-    "viewAllSolutions": "Voir Toutes les Solutions",
+    "solutionsDescription": "Cutting-edge AI and software solutions that automate, scale, and transform your business operations.",
+    "viewAllSolutions": "View All Solutions",
     "aiVoice": "Voice AI",
     "aiVoiceDesc": "Speech recognition, voice bots, and real-time audio processing for customer-facing applications.",
     "blog": "Blog",
@@ -40,14 +40,14 @@
     "dashboard": "Dashboard",
     "downloads": "Downloads",
     "expertise": "Expertise",
-    "expertiseDescription": "Expertise technique approfondie dans l'ensemble de la pile technologique.",
-    "expertiseML": "Ingénierie Machine Learning",
-    "expertiseMLDesc": "Pipelines ML de bout en bout, entraînement de modèles et déploiement d'IA en production.",
+    "expertiseDescription": "Deep technical expertise across the full technology stack.",
+    "expertiseML": "Machine Learning Engineering",
+    "expertiseMLDesc": "End-to-end ML pipelines, model training, and production-grade AI deployment.",
     "expertiseDevSecOps": "DevSecOps",
-    "expertiseDevSecOpsDesc": "Pipelines CI/CD sécurisées, infrastructure as code et opérations cloud-native.",
-    "expertiseMobile": "Développement iOS & Android",
-    "expertiseMobileDesc": "Applications mobiles natives et multiplateformes avec des expériences utilisateur fluides.",
-    "viewAllExpertise": "Voir Toute l'Expertise",
+    "expertiseDevSecOpsDesc": "Secure CI/CD pipelines, infrastructure as code, and cloud-native operations.",
+    "expertiseMobile": "iOS & Android Development",
+    "expertiseMobileDesc": "Native and cross-platform mobile apps with seamless user experiences.",
+    "viewAllExpertise": "View All Expertise",
     "faqs": "FAQs",
     "featuredDescription": "Modernize your business with our end-to-end digital transformation services.",
     "featuredTitle": "Digital Transformation",
@@ -988,7 +988,7 @@
       },
       "card": {
         "technologies": "{count} technolog{plural}",
-        "caseStudies": "{count} étude{plural} de cas",
+        "caseStudies": "{count} case stud{plural}",
         "explore": "Explore"
       },
       "empty": "No tech expertise areas found.",
@@ -1001,24 +1001,24 @@
       }
     },
     "detail": {
-      "back": "Retour à l'Expertise Technique",
+      "back": "Back to Tech Expertise",
       "stats": {
         "technologies": "{count} technologies",
-        "caseStudies": "{count} études de cas"
+        "caseStudies": "{count} case studies"
       },
       "about": {
-        "title": "À Propos de Cette Expertise",
-        "eyebrow": "Aperçu"
+        "title": "About This Expertise",
+        "eyebrow": "Overview"
       },
       "technologies": {
-        "eyebrow": "Stack Technique",
-        "title": "Technologies et Outils"
+        "eyebrow": "Tech Stack",
+        "title": "Technologies & Tools"
       },
       "caseStudies": {
-        "eyebrow": "Résultats Prouvés",
-        "title": "Études de Cas Associées",
-        "viewAll": "Voir toutes les études de cas",
-        "readCaseStudy": "Lire l'étude de cas"
+        "eyebrow": "Proven Results",
+        "title": "Related Case Studies",
+        "viewAll": "View all case studies",
+        "readCaseStudy": "Read case study"
       },
       "cta": {
         "eyebrow": "Get Started",
@@ -1068,6 +1068,7 @@
       "back": "Back to Portfolio",
       "featured": "Featured",
       "about": "Overview",
+      "industry": "Industry",
       "services": "Services",
       "technologies": "Technologies Used",
       "liveProject": "Live project",
@@ -1512,6 +1513,9 @@
       "description": "Tell us what you're trying to build and we'll point you in the right direction.",
       "ctaQuote": "Request a Quote",
       "ctaBooking": "Book a Free Call"
+    },
+    "carousel": {
+      "viewService": "View Service"
     },
     "trust": {
       "whyAutomex": "Why AUTOMEX",

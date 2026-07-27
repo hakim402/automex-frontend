@@ -6,6 +6,9 @@
  * ever imports this file (directly or transitively)  the API key must
  * never reach the browser bundle.
  */
+
+// lib/automex/env.server.ts
+
 import "server-only";
 
 export function getAutomexApiKey(): string {

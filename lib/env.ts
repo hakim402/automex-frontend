@@ -15,6 +15,8 @@
  *   and is called once from app/layout.tsx.
  */
 
+// lib/env.ts
+
 // ─── Internal helpers ────────────────────────────────────────────────────────
 
 function readEnv(key: string): string {

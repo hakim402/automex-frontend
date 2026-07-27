@@ -10,6 +10,9 @@
  *
  * All functions use authRequest (Bearer token) from lib/api.ts.
  */
+
+// lib/automex/dashboard.ts
+
 import { authRequest } from "@/lib/api";
 import type {
   DashboardSummary,

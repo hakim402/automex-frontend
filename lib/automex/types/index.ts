@@ -10,6 +10,8 @@
  * ./content.ts (generated schema types those fields as `string`).
  */
 
+// lib/automex/types/index.ts
+
 import type { components } from "./generated";
 
 type Schemas = components["schemas"];
