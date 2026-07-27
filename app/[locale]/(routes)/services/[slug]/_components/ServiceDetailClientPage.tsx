@@ -955,6 +955,8 @@ function useIntersectionObserver(
 
 // ─── Hero Skeleton (image-left/text-right layout) ──────────────────────
 
+// ─── Hero Skeleton (text-left / image-right layout) ──────────────────
+
 function HeroSkeleton({
   service,
   hasThumbnail,
@@ -968,11 +970,85 @@ function HeroSkeleton({
   const CategoryIcon = resolveIcon(service.category?.icon);
 
   return (
-    <section className="relative mb-16 sm:mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:mt-24">
       <BlueprintGrid className="rounded-2xl" />
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
-        {/* ─── Image / icon panel — always on the LEFT on desktop ─── */}
-        <div className="lg:col-span-2 order-1 lg:order-1">
+        {/* ─── Text panel — always on the LEFT on desktop ────────── */}
+        <div className="lg:col-span-3 order-2 lg:order-1 space-y-6">
+          <div className="flex flex-wrap items-center gap-2">
+            {service.category && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
+                <CategoryIcon className="size-3" aria-hidden="true" />
+                {service.category.name}
+              </span>
+            )}
+            {service.service_level_display && (
+              <span
+                className={cn(
+                  "inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider",
+                  service.service_level === "enterprise"
+                    ? "bg-[#324b9d]/10 text-[#324b9d] border border-[#324b9d]/20"
+                    : service.service_level === "premium"
+                      ? "bg-[#13a89e]/10 text-[#13a89e] border border-[#13a89e]/20"
+                      : "bg-muted text-muted-foreground border border-border/40",
+                )}
+              >
+                {service.service_level_display}
+              </span>
+            )}
+            {service.is_featured && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2.5 py-1 text-[11px] font-semibold">
+                <Star className="size-3" aria-hidden="true" />
+                {t("featured")}
+              </span>
+            )}
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            {service.name}
+          </h1>
+
+          <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
+            {service.short_description}
+          </p>
+
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Button
+              asChild
+              size="lg"
+              className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all"
+            >
+              <Link
+                href={
+                  { pathname: ctaUrl, query: { service: service.id } } as any
+                }
+              >
+                {t("getQuote")}
+                <ArrowRight
+                  className="size-4 ml-1.5 rtl:rotate-180"
+                  aria-hidden="true"
+                />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-brand-gradient hover:border-primary/50 transition-all"
+            >
+              <Link href="/crm/book-a-call">
+                <PhoneCall
+                  className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
+                  aria-hidden="true"
+                />
+                {t("bookFreeCall")}
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* ─── Image / icon panel — always on the RIGHT on desktop ── */}
+        <div className="lg:col-span-2 order-1 lg:order-2">
           {hasThumbnail ? (
             <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-lg group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1012,84 +1088,6 @@ function HeroSkeleton({
               </div>
             </div>
           )}
-        </div>
-
-        {/* ─── Text panel — always on the RIGHT on desktop ────────── */}
-        <div className="lg:col-span-3 order-2 lg:order-2 space-y-6">
-          {/* Badges */}
-          <div className="flex flex-wrap items-center gap-2">
-            {service.category && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
-                <CategoryIcon className="size-3" aria-hidden="true" />
-                {service.category.name}
-              </span>
-            )}
-            {service.service_level_display && (
-              <span
-                className={cn(
-                  "inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider",
-                  service.service_level === "enterprise"
-                    ? "bg-[#324b9d]/10 text-[#324b9d] border border-[#324b9d]/20"
-                    : service.service_level === "premium"
-                      ? "bg-[#13a89e]/10 text-[#13a89e] border border-[#13a89e]/20"
-                      : "bg-muted text-muted-foreground border border-border/40",
-                )}
-              >
-                {service.service_level_display}
-              </span>
-            )}
-            {service.is_featured && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2.5 py-1 text-[11px] font-semibold">
-                <Star className="size-3" aria-hidden="true" />
-                {t("featured")}
-              </span>
-            )}
-          </div>
-
-          {/* Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            {service.name}
-          </h1>
-
-          {/* Short description */}
-          <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
-            {service.short_description}
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Button
-              asChild
-              size="lg"
-              className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all"
-            >
-              <Link
-                href={
-                  { pathname: ctaUrl, query: { service: service.id } } as any
-                }
-              >
-                {t("getQuote")}
-                <ArrowRight
-                  className="size-4 ml-1.5 rtl:rotate-180"
-                  aria-hidden="true"
-                />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-brand-gradient hover:border-primary/50 transition-all"
-            >
-              <Link href="/crm/book-a-call">
-                <PhoneCall
-                  className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
-                  aria-hidden="true"
-                />
-                {t("bookFreeCall")}
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
     </section>
