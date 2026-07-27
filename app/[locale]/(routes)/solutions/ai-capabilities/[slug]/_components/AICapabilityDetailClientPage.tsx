@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import {
-  ArrowLeft,
   ExternalLink,
   Sparkles,
   Layers,
@@ -33,6 +33,92 @@ function resolveLucideIcon(iconName: string | undefined): React.ElementType {
   return map[pascal] || Cpu;
 }
 
+/**
+ * Improved sanitizer – removes <style>, classes, ids, inline styles,
+ * and keeps only safe basic HTML tags.
+ */
+function sanitizeHtml(html: string | undefined | null): string {
+  if (!html) return "";
+
+  let cleaned = html;
+
+  // 1. Remove <style> tags and their contents (CSS)
+  cleaned = cleaned.replace(
+    /<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi,
+    "",
+  );
+
+  // 2. Remove <script> tags and their contents
+  cleaned = cleaned.replace(
+    /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+    "",
+  );
+
+  // 3. Remove event handler attributes
+  cleaned = cleaned.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, "");
+  cleaned = cleaned.replace(/\s*on\w+\s*=\s*[^\s>]+/gi, "");
+
+  // 4. Remove javascript: URIs
+  cleaned = cleaned.replace(/href\s*=\s*["']\s*javascript:[^"']*["']/gi, "");
+  cleaned = cleaned.replace(/src\s*=\s*["']\s*javascript:[^"']*["']/gi, "");
+
+  // 5. Remove class, id, style attributes entirely
+  cleaned = cleaned.replace(/\s+class\s*=\s*["'][^"']*["']/gi, "");
+  cleaned = cleaned.replace(/\s+id\s*=\s*["'][^"']*["']/gi, "");
+  cleaned = cleaned.replace(/\s+style\s*=\s*["'][^"']*["']/gi, "");
+
+  // 6. Allowed tags – keep only these, strip everything else
+  const allowedTags = new Set([
+    "p",
+    "br",
+    "strong",
+    "b",
+    "em",
+    "i",
+    "u",
+    "s",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "ul",
+    "ol",
+    "li",
+    "a",
+    "blockquote",
+    "pre",
+    "code",
+    "hr",
+    "sub",
+    "sup",
+  ]);
+
+  // Remove disallowed tags (keep their inner content)
+  cleaned = cleaned.replace(
+    /<(\/?)([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>/g,
+    (match, slash, tagName) => {
+      const lowerTag = tagName.toLowerCase();
+      if (allowedTags.has(lowerTag)) {
+        return match; // Keep allowed tags
+      }
+      return ""; // Remove disallowed tags, keep inner content
+    },
+  );
+
+  // 7. Remove empty divs and spans that might have been stripped
+  cleaned = cleaned.replace(/<div\b[^>]*>/gi, "");
+  cleaned = cleaned.replace(/<\/div>/gi, "");
+  cleaned = cleaned.replace(/<span\b[^>]*>/gi, "");
+  cleaned = cleaned.replace(/<\/span>/gi, "");
+
+  // 8. Clean up extra whitespace and line breaks
+  cleaned = cleaned.replace(/\s+/g, " ").trim();
+
+  return cleaned;
+}
+
 export function AICapabilityDetailClientPage({
   capability: cap,
   relatedServices,
@@ -43,13 +129,17 @@ export function AICapabilityDetailClientPage({
   const t = useTranslations("AICapabilities");
   const CapIcon = resolveLucideIcon(cap.icon);
 
-  function maturityLabel(level: string): string {
-    try {
-      return t(`detail.maturity.${level}` as any);
-    } catch {
-      return t(`listing.maturity.${level}` as any);
-    }
-  }
+  const maturityLabel = cap.maturity_level
+    ? (() => {
+        try {
+          return t(`detail.maturity.${cap.maturity_level}` as any);
+        } catch {
+          return cap.maturity_level_display || cap.maturity_level;
+        }
+      })()
+    : null;
+
+  const sanitizedDescription = sanitizeHtml(cap.description);
 
   return (
     <>
@@ -63,72 +153,72 @@ export function AICapabilityDetailClientPage({
         </div>
 
         <article className="mx-auto max-w-4xl px-4 py-16 sm:py-24">
-          {/* Back link */}
-          <Link
-            href="/solutions/ai-capabilities"
-            className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="size-3.5 rtl:rotate-180" aria-hidden="true" />
-            {t("detail.back")}
-          </Link>
+          {/* ─── Cover Image (top) ─────────────────────────────── */}
+          {cap.cover_image?.url && (
+            <figure className="relative mb-8 rounded-2xl overflow-hidden border border-border/30 shadow-brand">
+              <Image
+                src={getMediaUrl(cap.cover_image.url)}
+                alt={cap.cover_image.alt_text || cap.name}
+                width={1200}
+                height={600}
+                className="w-full h-auto max-h-125 object-cover"
+                priority
+                unoptimized
+              />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
+            </figure>
+          )}
 
-          {/* Category + maturity */}
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-[11px] font-medium uppercase tracking-wider text-primary">
-              {cap.category_display}
-            </span>
-            {cap.maturity_level && (
-              <span
-                className={cn(
-                  "inline-flex items-center rounded-full border text-[10px] font-semibold px-2 py-0.5",
-                  MATURITY_COLORS[cap.maturity_level] ||
-                    "bg-muted/50 text-muted-foreground border-border/20",
-                )}
-              >
-                {maturityLabel(cap.maturity_level)}
-              </span>
-            )}
-          </div>
-
-          {/* Title with icon in a styled badge */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight leading-tight flex items-center gap-4">
+          {/* ─── Title with Icon (below image) ─────────────────── */}
+          <div className="flex items-center gap-4 mb-4">
             <span
               className="inline-flex items-center justify-center size-12 sm:size-14 rounded-2xl bg-brand-gradient text-white shrink-0 shadow-brand"
               aria-hidden="true"
             >
               <CapIcon className="size-6 sm:size-7" />
             </span>
-            {cap.name}
-          </h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight leading-tight">
+              {cap.name}
+            </h1>
+          </div>
 
-          {/* Cover image */}
-          {cap.cover_image?.url && (
-            <figure className="relative mb-10 rounded-2xl overflow-hidden border border-border/30 shadow-brand">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={getMediaUrl(cap.cover_image.url)}
-                alt={cap.cover_image.alt_text || cap.name}
-                className="w-full h-auto max-h-125 object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
-            </figure>
-          )}
+          {/* ─── Category + maturity badges ────────────────────── */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-[11px] font-medium uppercase tracking-wider text-primary">
+              {cap.category_display}
+            </span>
+            {maturityLabel && (
+              <span
+                className={cn(
+                  "inline-flex items-center rounded-full border text-[10px] font-semibold px-2 py-0.5",
+                  MATURITY_COLORS[cap.maturity_level || ""] ||
+                    "bg-muted/50 text-muted-foreground border-border/20",
+                )}
+              >
+                {maturityLabel}
+              </span>
+            )}
+            {cap.is_active && (
+              <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 text-[10px] font-semibold px-2 py-0.5">
+                Active
+              </span>
+            )}
+          </div>
 
-          {/* Description */}
-          {cap.description && (
+          {/* ─── Description (sanitized HTML) ───────────────────── */}
+          {sanitizedDescription && (
             <section className="mb-10">
               <h2 className="text-xl font-bold text-foreground mb-4">
                 {t("detail.about")}
               </h2>
-              <div className="prose text-[15px] text-muted-foreground leading-relaxed space-y-3">
-                {cap.description.split("\n").map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-              </div>
+              <div
+                className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-ul:text-muted-foreground prose-li:text-muted-foreground prose-blockquote:border-primary prose-blockquote:bg-muted/30 prose-blockquote:p-4 prose-blockquote:rounded-xl prose-pre:bg-muted/50 prose-code:text-primary prose-code:bg-muted/30 prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
+                dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+              />
             </section>
           )}
 
-          {/* Technologies */}
+          {/* ─── Technologies ────────────────────────────────────── */}
           {cap.technologies.length > 0 && (
             <section className="mb-10">
               <h2 className="text-xl font-bold text-foreground mb-4">
@@ -163,7 +253,7 @@ export function AICapabilityDetailClientPage({
             </section>
           )}
 
-          {/* Related Services */}
+          {/* ─── Related Services ────────────────────────────────── */}
           {relatedServices.length > 0 && (
             <section className="mb-10">
               <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
@@ -203,7 +293,7 @@ export function AICapabilityDetailClientPage({
             </section>
           )}
 
-          {/* Demo URL */}
+          {/* ─── Demo URL ────────────────────────────────────────── */}
           {cap.demo_url && (
             <section className="mb-10">
               <a
@@ -218,7 +308,7 @@ export function AICapabilityDetailClientPage({
             </section>
           )}
 
-          {/* Bottom CTA */}
+          {/* ─── Bottom CTA ──────────────────────────────────────── */}
           <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
             <div
               aria-hidden="true"

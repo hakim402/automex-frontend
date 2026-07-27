@@ -1,5 +1,5 @@
 "use client";
-// app/(routes)/_components/Header/Header.tsx
+// app/[locale]/_components/Header/Header.tsx
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import {
@@ -9,43 +9,10 @@ import {
   ChevronRight,
   LogOut,
   Search,
-  Bot,
-  Building2,
-  Landmark,
-  GraduationCap,
-  Factory,
-  Truck,
-  ShoppingBag,
-  HardHat,
-  Hotel,
-  ShieldCheck,
   Sparkles,
-  Layers,
-  Cpu,
-  Code2,
-  Mic,
-  ScanText,
-  Users,
-  Award,
-  Handshake,
-  Briefcase,
-  MessageSquare,
-  BookOpen,
-  FileText,
-  HelpCircle,
-  Download,
-  Newspaper,
-  LayoutDashboard,
-  CalendarClock,
-  Receipt,
-  Headset,
-  Cloud,
-  Smartphone,
-  GitBranch,
-  Database,
-  Brain,
-  Server,
+  type LucideIcon,
 } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -56,7 +23,17 @@ import { Link, usePathname } from "@/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
 import { MegaMenu, type MegaMenuColumn, type MegaMenuItem } from "./MegaMenu";
 import { SearchCommandPalette, type CommandItem } from "./SearchCommandPalette";
-import type { ServiceCategory, ServiceListItem, Industry, AICapability, PortfolioProjectList, BlogPostListItem, CaseStudyListItem, TechExpertiseArea, Partner } from "@/lib/automex/types";
+import type {
+  ServiceCategory,
+  ServiceListItem,
+  Industry,
+  AICapability,
+  PortfolioProjectList,
+  BlogPostListItem,
+  CaseStudyListItem,
+  TechExpertiseArea,
+  Partner,
+} from "@/lib/automex/types";
 
 interface HeaderProps {
   serviceCategories?: ServiceCategory[];
@@ -68,6 +45,18 @@ interface HeaderProps {
   latestCaseStudies?: CaseStudyListItem[];
   techExpertiseAreas?: TechExpertiseArea[];
   partners?: Partner[];
+}
+
+/** Resolve any lucide:icon-name string to a Lucide component, with fallback. */
+function resolveLucideIcon(iconName: string | undefined): LucideIcon {
+  if (!iconName) return Sparkles;
+  const name = iconName.startsWith("lucide:") ? iconName.slice(7) : iconName;
+  const pascal = name
+    .split("-")
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join("");
+  const map = LucideIcons as unknown as Record<string, LucideIcon>;
+  return map[pascal] || Sparkles;
 }
 
 export const Header = ({
@@ -108,7 +97,6 @@ export const Header = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock the top-level route so the mobile drawer + search close on navigation.
   useEffect(() => {
     setMenuOpen(false);
     setSearchOpen(false);
@@ -124,57 +112,26 @@ export const Header = ({
       ? pathname === "/"
       : pathname === href || pathname.startsWith(`${href}/`);
 
-  // ── Static nav data ──────────────────────────────────────────────────
-  // Services grouped by their category, each showing name + thumbnail.
-
-  // ── Icon map for services ──────────────────────────────────────────
-  const SERVICE_ICON_MAP: Record<string, typeof Code2> = {
-    "lucide:code-2": Code2,
-    "lucide:code": Code2,
-    "lucide:cpu": Cpu,
-    "lucide:cloud": Cloud,
-    "lucide:smartphone": Smartphone,
-    "lucide:database": Database,
-    "lucide:brain": Brain,
-    "lucide:shield-check": ShieldCheck,
-    "lucide:bot": Bot,
-    "lucide:sparkles": Sparkles,
-    "lucide:layers": Layers,
-  };
-
-  function getServiceIcon(iconName?: string): typeof Code2 | undefined {
-    if (iconName && SERVICE_ICON_MAP[iconName]) return SERVICE_ICON_MAP[iconName];
-    return undefined;
-  }
-
+  // ── Services menu: grouped by category ──────────────────────────────
   const serviceColumns: MegaMenuColumn[] = useMemo(() => {
     if (!services || services.length === 0) {
-      // Fallback: show categories
-      const links: MegaMenuItem[] = (serviceCategories ?? []).map((cat) => ({
+      if (!serviceCategories || serviceCategories.length === 0) return [];
+      const links = serviceCategories.map((cat) => ({
         name: cat.name,
         href: { pathname: "/services" as const, query: { category: cat.slug } },
+        icon: resolveLucideIcon(cat.icon),
       }));
-      if (links.length === 0) return [];
-      const mid = Math.ceil(links.length / 2);
-      return links.length > 6
-        ? [
-            { heading: t("services"), links: links.slice(0, mid) },
-            { heading: t("moreServices"), links: links.slice(mid) },
-          ]
-        : [{ heading: t("services"), links }];
+      return [{ heading: t("services"), links }];
     }
-    // Group services by their category name
+
     const grouped = new Map<string, MegaMenuItem[]>();
     for (const svc of services) {
       const catName = svc.category?.name || t("other");
       if (!grouped.has(catName)) grouped.set(catName, []);
       grouped.get(catName)!.push({
         name: svc.name,
-        description: svc.short_description?.slice(0, 80),
         href: `/services/${svc.slug}` as any,
-        icon: getServiceIcon(svc.icon),
-        imageUrl: svc.thumbnail_image?.url || undefined,
-        imageAlt: svc.thumbnail_image?.alt_text || svc.name,
+        icon: resolveLucideIcon(svc.icon),
       });
     }
     return Array.from(grouped.entries()).map(([heading, links]) => ({
@@ -183,433 +140,150 @@ export const Header = ({
     }));
   }, [services, serviceCategories, t]);
 
-  // ── Icon map for dynamic industries ──────────────────────────────────
-  const INDUSTRY_ICON_MAP: Record<string, typeof Landmark> = {
-    "lucide:code-2": Cpu,
-    "lucide:heart-pulse": Landmark,
-    "lucide:graduation-cap": GraduationCap,
-    "lucide:landmark": Landmark,
-    "lucide:factory": Factory,
-    "lucide:truck": Truck,
-    "lucide:shopping-bag": ShoppingBag,
-    "lucide:hard-hat": HardHat,
-    "lucide:utensils": Hotel,
-    "lucide:building-2": Building2,
-    "lucide:shield-check": ShieldCheck,
-  };
-
-  function getIndustryIcon(iconName?: string): typeof Landmark | undefined {
-    if (iconName && INDUSTRY_ICON_MAP[iconName]) return INDUSTRY_ICON_MAP[iconName];
-    return undefined;
-  }
-
-  // Hardcoded fallback — mirrors the old static list so the header still
-  // works even when the API is unreachable.  Only used when industries is
-  // empty or undefined.
-  const fallbackIndustries: MegaMenuItem[] = useMemo(
-    () => [
-      {
-        name: t("industryHealthcare"),
-        description: t("industryHealthcareDesc"),
-        href: "/industries/healthcare" as const,
-        icon: Landmark,
-      },
-      {
-        name: t("industryFinance"),
-        description: t("industryFinanceDesc"),
-        href: "/industries/finance" as const,
-        icon: Building2,
-      },
-      {
-        name: t("industryEducation"),
-        description: t("industryEducationDesc"),
-        href: "/industries/education" as const,
-        icon: GraduationCap,
-      },
-      {
-        name: t("industryGovernment"),
-        description: t("industryGovernmentDesc"),
-        href: "/industries/government" as const,
-        icon: ShieldCheck,
-      },
-      {
-        name: t("industryManufacturing"),
-        description: t("industryManufacturingDesc"),
-        href: "/industries/manufacturing" as const,
-        icon: Factory,
-      },
-      {
-        name: t("industryLogistics"),
-        description: t("industryLogisticsDesc"),
-        href: "/industries/logistics" as const,
-        icon: Truck,
-      },
-      {
-        name: t("industryRetail"),
-        description: t("industryRetailDesc"),
-        href: "/industries/retail" as const,
-        icon: ShoppingBag,
-      },
-      {
-        name: t("industryConstruction"),
-        description: t("industryConstructionDesc"),
-        href: "/industries/construction" as const,
-        icon: HardHat,
-      },
-      {
-        name: t("industryHospitality"),
-        description: t("industryHospitalityDesc"),
-        href: "/industries/hospitality" as const,
-        icon: Hotel,
-      },
-    ],
-    [t],
-  );
+  // ── All other menus use `simple` (icon + name, no descriptions) ─────
 
   const industriesItems: MegaMenuItem[] = useMemo(() => {
-    if (industries && industries.length > 0) {
-      return industries.map((ind) => ({
-        name: ind.name,
-        description: ind.description,
-        href: `/industries/${ind.slug}` as any,
-        icon: getIndustryIcon(ind.icon),
-      }));
-    }
-    return fallbackIndustries;
-  }, [industries, fallbackIndustries]);
-
-  // ── Icon map for dynamic AI capabilities ────────────────────────────
-  const AI_ICON_MAP: Record<string, typeof Sparkles> = {
-    "lucide:sparkles": Sparkles,
-    "lucide:bot": Bot,
-    "lucide:layers": Layers,
-    "lucide:message-square": MessageSquare,
-    "lucide:scan-text": ScanText,
-    "lucide:mic": Mic,
-    "lucide:cpu": Cpu,
-    "lucide:file-text": FileText,
-    "lucide:brain": Cpu,
-    "lucide:wand-sparkles": Sparkles,
-  };
-
-  function getAIIcon(iconName?: string): typeof Sparkles | undefined {
-    if (iconName && AI_ICON_MAP[iconName]) return AI_ICON_MAP[iconName];
-    return undefined;
-  }
-
-  // Hardcoded fallback — only used when AI capabilities are not available
-  const fallbackAISolutions: MegaMenuItem[] = useMemo(
-    () => [
-      {
-        name: t("aiGenerative"),
-        description: t("aiGenerativeDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "generative-ai" },
-        },
-        icon: Sparkles,
-      },
-      {
-        name: t("aiAgents"),
-        description: t("aiAgentsDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "ai-agents" },
-        },
-        icon: Bot,
-      },
-      {
-        name: t("aiRag"),
-        description: t("aiRagDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "rag-systems" },
-        },
-        icon: Layers,
-      },
-      {
-        name: t("aiNlp"),
-        description: t("aiNlpDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "nlp" },
-        },
-        icon: MessageSquare,
-      },
-      {
-        name: t("aiComputerVision"),
-        description: t("aiComputerVisionDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "computer-vision" },
-        },
-        icon: ScanText,
-      },
-      {
-        name: t("aiVoice"),
-        description: t("aiVoiceDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "voice-ai" },
-        },
-        icon: Mic,
-      },
-      {
-        name: t("aiAutomation"),
-        description: t("aiAutomationDesc"),
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: "business-automation" },
-        },
-        icon: Cpu,
-      },
-    ],
-    [t],
-  );
+    if (!industries || industries.length === 0) return [];
+    return industries.map((ind) => ({
+      name: ind.name,
+      href: `/industries/${ind.slug}` as any,
+      icon: resolveLucideIcon(ind.icon),
+    }));
+  }, [industries]);
 
   const aiSolutionsItems: MegaMenuItem[] = useMemo(() => {
-    if (aiCapabilities && aiCapabilities.length > 0) {
-      return aiCapabilities.map((cap) => ({
-        name: cap.name,
-        description: cap.description,
-        href: {
-          pathname: "/solutions/ai-capabilities/[slug]" as const,
-          params: { slug: cap.slug },
-        },
-        icon: getAIIcon(cap.icon),
-      }));
-    }
-    return fallbackAISolutions;
-  }, [aiCapabilities, fallbackAISolutions]);
-
-  // ── Icon map for dynamic tech expertise areas ────────────────────────
-  const TECH_EXPERTISE_ICON_MAP: Record<string, typeof Cpu> = {
-    "lucide:brain": Brain,
-    "lucide:cpu": Cpu,
-    "lucide:cloud": Cloud,
-    "lucide:shield-check": ShieldCheck,
-    "lucide:smartphone": Smartphone,
-    "lucide:git-branch": GitBranch,
-    "lucide:database": Database,
-    "lucide:server": Server,
-    "lucide:sparkles": Sparkles,
-    "lucide:bot": Bot,
-    "lucide:layers": Layers,
-  };
-
-  function getTechExpertiseIcon(iconName?: string): typeof Cpu | undefined {
-    if (iconName && TECH_EXPERTISE_ICON_MAP[iconName]) return TECH_EXPERTISE_ICON_MAP[iconName];
-    return undefined;
-  }
-
-  // Hardcoded fallback for tech expertise — only when API is unavailable
-  const fallbackExpertise = useMemo<MegaMenuItem[]>(
-    () => [
-      {
-        name: t("expertiseML"),
-        description: t("expertiseMLDesc"),
-        href: "/tech-expertise/machine-learning-engineering",
-        icon: Brain,
-      } as unknown as MegaMenuItem,
-      {
-        name: t("expertiseDevSecOps"),
-        description: t("expertiseDevSecOpsDesc"),
-        href: "/tech-expertise/devsecops",
-        icon: ShieldCheck,
-      } as unknown as MegaMenuItem,
-      {
-        name: t("expertiseMobile"),
-        description: t("expertiseMobileDesc"),
-        href: "/tech-expertise/ios-android-development",
-        icon: Smartphone,
-      } as unknown as MegaMenuItem,
-    ],
-    [t],
-  );
+    if (!aiCapabilities || aiCapabilities.length === 0) return [];
+    return aiCapabilities.map((cap) => ({
+      name: cap.name,
+      href: {
+        pathname: "/solutions/ai-capabilities/[slug]" as const,
+        params: { slug: cap.slug },
+      },
+      icon: resolveLucideIcon(cap.icon),
+    }));
+  }, [aiCapabilities]);
 
   const expertiseItems: MegaMenuItem[] = useMemo(() => {
-    if (techExpertiseAreas && techExpertiseAreas.length > 0) {
-      return techExpertiseAreas.map((area) => ({
-        name: area.name,
-        description: area.description,
-        href: `/tech-expertise/${area.slug}` as any,
-        icon: getTechExpertiseIcon(area.icon),
-      }));
-    }
-    return fallbackExpertise;
-  }, [techExpertiseAreas, fallbackExpertise]);
+    if (!techExpertiseAreas || techExpertiseAreas.length === 0) return [];
+    return techExpertiseAreas.map((area) => ({
+      name: area.name,
+      href: `/tech-expertise/${area.slug}` as any,
+      icon: resolveLucideIcon(area.icon),
+    }));
+  }, [techExpertiseAreas]);
 
-  // ── Portfolio items (dynamic from API, fallback to simple link) ──────
   const portfolioItems: MegaMenuItem[] = useMemo(() => {
-    if (portfolioProjects && portfolioProjects.length > 0) {
-      return portfolioProjects.map((p) => ({
-        name: p.title,
-        description: p.short_description?.slice(0, 100),
-        href: `/portfolio/${p.slug}` as any,
-        icon: Briefcase,
-      }));
-    }
-    // Fallback: single card linking to /portfolio
-    return [
-      {
-        name: t("portfolio"),
-        description: t("portfolioDesc") || "",
-        href: "/portfolio" as const,
-        icon: Briefcase,
-      },
-    ];
-  }, [portfolioProjects, t]);
+    if (!portfolioProjects || portfolioProjects.length === 0) return [];
+    return portfolioProjects.map((p) => ({
+      name: p.title,
+      href: `/portfolio/${p.slug}` as any,
+      // some portfolio items may not have an `icon` field in the API type
+      icon: resolveLucideIcon((p as any).icon || undefined),
+    }));
+  }, [portfolioProjects]);
 
-  // ── Case Studies items (dynamic from API) ────────────────────────────
   const caseStudiesItems: MegaMenuItem[] = useMemo(() => {
-    if (latestCaseStudies && latestCaseStudies.length > 0) {
-      return latestCaseStudies.map((cs) => ({
-        name: cs.title,
-        description: cs.client_name || cs.overview?.slice(0, 80),
-        href: `/case-studies/${cs.slug}` as any,
-        icon: BookOpen,
-      }));
-    }
-    return [
-      {
-        name: t("caseStudies"),
-        description: t("caseStudiesDesc") || "",
-        href: "/case-studies" as any,
-        icon: BookOpen,
-      },
-    ];
-  }, [latestCaseStudies, t]);
+    if (!latestCaseStudies || latestCaseStudies.length === 0) return [];
+    return latestCaseStudies.map((cs) => ({
+      name: cs.title,
+      href: `/case-studies/${cs.slug}` as any,
+      icon: resolveLucideIcon((cs as any).icon || undefined),
+    }));
+  }, [latestCaseStudies]);
 
-  // ── Partners items (dynamic from API) ───────────────────────────────
   const partnersItems: MegaMenuItem[] = useMemo(() => {
-    if (partners && partners.length > 0) {
-      return partners.map((p) => ({
-        name: p.name,
-        description: p.description?.slice(0, 80),
-        href: `/partners/${p.slug}` as any,
-        imageUrl: p.logo?.url || undefined,
-        imageAlt: p.logo?.alt_text || p.name,
-      }));
-    }
-    return [
-      {
-        name: t("partners"),
-        description: t("partnersDesc") || "",
-        href: "/partners" as any,
-        icon: Handshake,
-      },
-    ];
-  }, [partners, t]);
+    if (!partners || partners.length === 0) return [];
+    return partners.map((p) => ({
+      name: p.name,
+      href: `/partners/${p.slug}` as any,
+      imageUrl: p.logo?.url || undefined,
+      imageAlt: p.logo?.alt_text || p.name,
+    }));
+  }, [partners]);
 
-  // ── Resources right-panel toggle state ───────────────────────────────
-  type ResourceSection = "blog" | null;
-  const [activeResourceSection, setActiveResourceSection] =
-    useState<ResourceSection>(null);
+  // ── Resources menu ──────────────────────────────────────────────────
+  const [activeResourceSection, setActiveResourceSection] = useState<"blog" | null>(null);
 
-  const toggleResourceSection = useCallback(
-    (section: ResourceSection) => {
-      setActiveResourceSection((prev) =>
-        prev === section ? null : section,
-      );
-    },
-    [],
-  );
+  const toggleResourceSection = useCallback((section: "blog" | null) => {
+    setActiveResourceSection((prev) => (prev === section ? null : section));
+  }, []);
 
   const resourcesColumns: MegaMenuColumn[] = useMemo(() => {
-    const staticLinks: MegaMenuItem[] = [
+    const links: MegaMenuItem[] = [
       {
         name: t("blog"),
         href: "/blog" as const,
-        icon: Newspaper,
+        icon: resolveLucideIcon("newspaper"),
         onClick: () => toggleResourceSection("blog"),
       },
-      { name: t("faqs"), href: "/faqs" as const, icon: HelpCircle },
-      { name: t("downloads"), href: "/downloads" as const, icon: Download },
+      { name: t("faqs"), href: "/faqs" as const, icon: resolveLucideIcon("help-circle") },
+      { name: t("downloads"), href: "/downloads" as const, icon: resolveLucideIcon("download") },
     ];
-    const columns: MegaMenuColumn[] = [
-      { heading: t("resources"), links: staticLinks },
-    ];
-    return columns;
+    return [{ heading: t("resources"), links }];
   }, [t, toggleResourceSection]);
 
-  // ── Dynamic right panel for Resources mega menu ─────────────────────
   const resourcesRightPanel = useMemo(() => {
-    if (!activeResourceSection) return null;
-
-    switch (activeResourceSection) {
-      case "blog": {
-        if (!latestBlogs || latestBlogs.length === 0) return null;
-        return {
-          heading: t("latestBlogs"),
-          items: latestBlogs.map((b) => ({
-            name: b.title,
-            description: b.excerpt?.slice(0, 80),
-            href: `/blog/${b.slug}` as any,
-          })),
-          viewAllHref: "/blog" as const,
-          viewAllLabel: t("viewAllBlog"),
-        };
-      }
-      default:
-        return null;
-    }
+    if (!activeResourceSection || activeResourceSection !== "blog") return null;
+    if (!latestBlogs || latestBlogs.length === 0) return null;
+    return {
+      heading: t("latestBlogs"),
+      items: latestBlogs.map((b) => ({
+        name: b.title,
+        href: `/blog/${b.slug}` as any,
+      })),
+      viewAllHref: "/blog" as const,
+      viewAllLabel: t("viewAllBlog"),
+    };
   }, [activeResourceSection, latestBlogs, t]);
 
+  // ── Company menu ─────────────────────────────────────────────────────
   const companyItems: MegaMenuItem[] = useMemo(
     () => [
-      { name: t("aboutUs"), href: "/about" as const, icon: Users },
+      { name: t("aboutUs"), href: "/about" as const, icon: resolveLucideIcon("users") },
       {
         name: t("leadership"),
         href: "/about/leadership" as const,
-        icon: Award,
+        icon: resolveLucideIcon("award"),
       },
-      { name: t("careers"), href: "/careers" as const, icon: Briefcase },
-      { name: t("contact"), href: "/contact" as const, icon: MessageSquare },
+      { name: t("careers"), href: "/careers" as const, icon: resolveLucideIcon("briefcase") },
+      { name: t("contact"), href: "/contact" as const, icon: resolveLucideIcon("message-square") },
     ],
     [t],
   );
 
+  // ── CRM menu ─────────────────────────────────────────────────────────
   const crmLinks: MegaMenuItem[] = useMemo(
     () => [
       {
         name: t("crmOverview"),
-        description: t("crmOverviewDesc"),
         href: "/crm" as const,
-        icon: LayoutDashboard,
+        icon: resolveLucideIcon("layout-dashboard"),
       },
       {
         name: t("bookCall"),
-        description: t("bookCallDesc"),
         href: "/crm/book-a-call" as const,
-        icon: CalendarClock,
+        icon: resolveLucideIcon("calendar-clock"),
       },
       {
         name: t("requestQuote"),
-        description: t("requestQuoteDesc"),
         href: "/crm/quote" as const,
-        icon: Receipt,
+        icon: resolveLucideIcon("receipt"),
       },
       {
         name: t("contactSales"),
-        description: t("contactSalesDesc"),
         href: "/crm/contact-sales" as const,
-        icon: Headset,
+        icon: resolveLucideIcon("headset"),
       },
     ],
     [t],
   );
 
-  // ── Flat, groupable dataset for the command palette ─────────────────
+  // ── Command Palette items ────────────────────────────────────────────
   const commandItems: CommandItem[] = useMemo(() => {
     const toHref = (item: MegaMenuItem): string => {
       const h = item.href;
       if (typeof h === "string") return h;
-      // Resolve dynamic route params (e.g. [slug] → "digital-transformation")
-      const obj = h as {
-        pathname: string;
-        params?: Record<string, string>;
-        query?: Record<string, string>;
-      };
+      const obj = h as { pathname: string; params?: Record<string, string> };
       let pathname = obj.pathname;
       if (obj.params) {
         for (const [key, value] of Object.entries(obj.params)) {
@@ -618,63 +292,40 @@ export const Header = ({
       }
       return pathname;
     };
-    const items: CommandItem[] = [
+
+    const allItems: CommandItem[] = [
       { name: t("home"), href: "/", group: t("navigation") },
-      ...serviceColumns
-        .flatMap((c) => c.links)
-        .map((l) => ({ name: l.name, href: toHref(l), group: t("services") })),
-      ...aiSolutionsItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("solutions"),
-      })),
-      ...industriesItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("industries"),
-      })),
-      ...expertiseItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("expertise"),
-      })),
-      ...portfolioItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("portfolio"),
-      })),
-      ...caseStudiesItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("caseStudies"),
-      })),
-      ...partnersItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("partners"),
-      })),
-      ...resourcesColumns
-        .flatMap((c) => c.links)
-        .map((l) => ({ name: l.name, href: toHref(l), group: t("resources") })),
-      ...companyItems.map((l) => ({
-        name: l.name,
-        href: toHref(l),
-        group: t("company"),
-      })),
+      ...serviceColumns.flatMap((c) =>
+        c.links.map((l) => ({ name: l.name, href: toHref(l), group: t("services") }))
+      ),
+      ...aiSolutionsItems.map((l) => ({ name: l.name, href: toHref(l), group: t("solutions") })),
+      ...industriesItems.map((l) => ({ name: l.name, href: toHref(l), group: t("industries") })),
+      ...expertiseItems.map((l) => ({ name: l.name, href: toHref(l), group: t("expertise") })),
+      ...portfolioItems.map((l) => ({ name: l.name, href: toHref(l), group: t("portfolio") })),
+      ...caseStudiesItems.map((l) => ({ name: l.name, href: toHref(l), group: t("caseStudies") })),
+      ...partnersItems.map((l) => ({ name: l.name, href: toHref(l), group: t("partners") })),
+      ...resourcesColumns.flatMap((c) =>
+        c.links.map((l) => ({ name: l.name, href: toHref(l), group: t("resources") }))
+      ),
+      ...companyItems.map((l) => ({ name: l.name, href: toHref(l), group: t("company") })),
+      ...crmLinks.map((l) => ({ name: l.name, href: toHref(l), group: t("crm") })),
     ];
-    return items;
+    return allItems;
   }, [
     t,
     serviceColumns,
-    industriesItems,
     aiSolutionsItems,
+    industriesItems,
     expertiseItems,
     portfolioItems,
     caseStudiesItems,
     partnersItems,
     resourcesColumns,
     companyItems,
+    crmLinks,
   ]);
+
+  // ── Render ────────────────────────────────────────────────────────────
 
   return (
     <header>
@@ -683,13 +334,12 @@ export const Header = ({
         className={cn(
           "fixed top-0 z-50 w-full border-b transition-all duration-300",
           scrolled
-            ? "border-border/60 bg-background/80 shadow-sm shadow-black/[0.03] backdrop-blur-xl"
+            ? "border-border/60 bg-background/80 shadow-sm shadow-black/3 backdrop-blur-xl"
             : "border-transparent bg-transparent backdrop-blur-0"
         )}
       >
-        {/* ── Row 1: logo · search · account/theme/language ─────────── */}
+        {/* Row 1: logo · search · account/theme/language */}
         <div className="mx-auto grid h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
               src="/logo/automex-dark.png"
@@ -709,7 +359,6 @@ export const Header = ({
             />
           </Link>
 
-          {/* Centered search bar — opens the command palette */}
           <div className="flex justify-center">
             <button
               onClick={() => setSearchOpen(true)}
@@ -724,7 +373,6 @@ export const Header = ({
             </button>
           </div>
 
-          {/* Account / theme / language */}
           <div className="flex items-center justify-end gap-1.5">
             <button
               onClick={() => setSearchOpen(true)}
@@ -782,84 +430,107 @@ export const Header = ({
           </div>
         </div>
 
-        {/* ── Row 2: primary nav / mega menus (desktop only) ─────────── */}
+        {/* Row 2: primary nav / mega menus (desktop only) */}
         <div className="hidden border-t border-border/60 lg:block">
           <div className="mx-auto flex h-12 max-w-7xl items-center justify-center gap-0.5 px-4 sm:px-6 lg:px-8">
             <NavLink href="/" label={t("home")} active={isActive("/")} />
 
-            <MegaMenu
-              label={t("services")}
-              description={t("servicesDescription")}
-              columns={serviceColumns}
-              viewAllHref="/services"
-              viewAllLabel={t("viewAllServices")}
-              featured={{
-                title: t("featuredTitle"),
-                description: t("featuredDescription"),
-                href: {
-                  pathname: "/services/[slug]" as const,
-                  params: { slug: "digital-transformation" },
-                },
-                ctaLabel: t("learnMore"),
-              }}
-              isRtl={isRtl}
-            />
+            {/* ── Services: uses `columns` with featured, already wide ── */}
+            {serviceColumns.length > 0 && (
+              <MegaMenu
+                label={t("services")}
+                description={t("servicesDescription")}
+                columns={serviceColumns}
+                viewAllHref="/services"
+                viewAllLabel={t("viewAllServices")}
+                featured={{
+                  title: t("featuredTitle"),
+                  description: t("featuredDescription"),
+                  href: {
+                    pathname: "/services/[slug]" as const,
+                    params: { slug: "digital-transformation" },
+                  },
+                  ctaLabel: t("learnMore"),
+                }}
+                isRtl={isRtl}
+              />
+            )}
 
-            <MegaMenu
-              label={t("solutions")}
-              description={t("solutionsDescription")}
-              cards={aiSolutionsItems}
-              viewAllHref="/solutions/ai-capabilities"
-              viewAllLabel={t("viewAllSolutions")}
-              isRtl={isRtl}
-            />
+            {/* ── All other menus use `simple` + `wide={true}` to match width ── */}
+            {aiSolutionsItems.length > 0 && (
+              <MegaMenu
+                label={t("solutions")}
+                description={t("solutionsDescription")}
+                simple={aiSolutionsItems}
+                viewAllHref="/solutions/ai-capabilities"
+                viewAllLabel={t("viewAllSolutions")}
+                wide={true}
+                isRtl={isRtl}
+              />
+            )}
 
-            <MegaMenu
-              label={t("industries")}
-              description={t("industriesDescription")}
-              cards={industriesItems}
-              viewAllHref="/industries"
-              viewAllLabel={t("viewAllIndustries")}
-              isRtl={isRtl}
-            />
+            {industriesItems.length > 0 && (
+              <MegaMenu
+                label={t("industries")}
+                description={t("industriesDescription")}
+                simple={industriesItems}
+                viewAllHref="/industries"
+                viewAllLabel={t("viewAllIndustries")}
+                wide={true}
+                isRtl={isRtl}
+              />
+            )}
 
-            <MegaMenu
-              label={t("expertise")}
-              description={t("expertiseDescription")}
-              cards={expertiseItems}
-              viewAllHref="/tech-expertise"
-              viewAllLabel={t("viewAllExpertise")}
-              isRtl={isRtl}
-            />
+            {expertiseItems.length > 0 && (
+              <MegaMenu
+                label={t("expertise")}
+                description={t("expertiseDescription")}
+                simple={expertiseItems}
+                viewAllHref="/tech-expertise"
+                viewAllLabel={t("viewAllExpertise")}
+                wide={true}
+                isRtl={isRtl}
+              />
+            )}
 
-            <MegaMenu
-              label={t("portfolio")}
-              description={t("portfolioDesc")}
-              cards={portfolioItems}
-              viewAllHref="/portfolio"
-              viewAllLabel={t("viewAllPortfolio")}
-              isRtl={isRtl}
-            />
+            {portfolioItems.length > 0 && (
+              <MegaMenu
+                label={t("portfolio")}
+                description={t("portfolioDesc")}
+                simple={portfolioItems}
+                viewAllHref="/portfolio"
+                viewAllLabel={t("viewAllPortfolio")}
+                wide={true}
+                isRtl={isRtl}
+              />
+            )}
 
-            <MegaMenu
-              label={t("caseStudies")}
-              description={t("caseStudiesDescription")}
-              cards={caseStudiesItems}
-              viewAllHref="/case-studies"
-              viewAllLabel={t("viewAllCaseStudies")}
-              isRtl={isRtl}
-            />
+            {caseStudiesItems.length > 0 && (
+              <MegaMenu
+                label={t("caseStudies")}
+                description={t("caseStudiesDescription")}
+                simple={caseStudiesItems}
+                viewAllHref="/case-studies"
+                viewAllLabel={t("viewAllCaseStudies")}
+                wide={true}
+                isRtl={isRtl}
+              />
+            )}
 
-            <MegaMenu
-              label={t("partners")}
-              description={t("partnersDescription")}
-              cards={partnersItems}
-              viewAllHref="/partners"
-              viewAllLabel={t("viewAllPartners")}
-              align="end"
-              isRtl={isRtl}
-            />
+            {partnersItems.length > 0 && (
+              <MegaMenu
+                label={t("partners")}
+                description={t("partnersDescription")}
+                simple={partnersItems}
+                viewAllHref="/partners"
+                viewAllLabel={t("viewAllPartners")}
+                wide={true}
+                align="end"
+                isRtl={isRtl}
+              />
+            )}
 
+            {/* ── Resources: uses `columns` + rightPanel, already wide ── */}
             <MegaMenu
               label={t("resources")}
               columns={resourcesColumns}
@@ -868,22 +539,31 @@ export const Header = ({
               isRtl={isRtl}
             />
 
+            {/* ── Company ── */}
             <MegaMenu
               label={t("company")}
               simple={companyItems}
+              wide={true}
               align="end"
               isRtl={isRtl}
             />
 
-            <MegaMenu label={t("crm")} cards={crmLinks} align="end" isRtl={isRtl} />
+            {/* ── CRM ── */}
+            <MegaMenu
+              label={t("crm")}
+              simple={crmLinks}
+              wide={true}
+              align="end"
+              isRtl={isRtl}
+            />
           </div>
         </div>
       </nav>
 
-      {/* Mobile drawer — full height, slide-in from the trailing edge */}
+      {/* Mobile drawer – unchanged */}
       <div
         className={cn(
-          "fixed inset-0 z-[90] lg:hidden",
+          "fixed inset-0 z-90 lg:hidden",
           menuOpen ? "pointer-events-auto" : "pointer-events-none",
         )}
         aria-hidden={!menuOpen}
@@ -900,73 +580,46 @@ export const Header = ({
           className={cn(
             "absolute top-0 flex h-full w-[85%] max-w-sm flex-col bg-background shadow-2xl transition-transform duration-300 ease-out",
             isRtl ? "left-0" : "right-0",
-            menuOpen
-              ? "translate-x-0"
-              : isRtl
-                ? "-translate-x-full"
-                : "translate-x-full",
+            menuOpen ? "translate-x-0" : isRtl ? "-translate-x-full" : "translate-x-full",
           )}
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-4">
-            <span className="text-sm font-semibold text-foreground">
-              {t("menu")}
-            </span>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMenuOpen(false)}
-              aria-label={t("closeMenu")}
-            >
+            <span className="text-sm font-semibold text-foreground">{t("menu")}</span>
+            <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)} aria-label={t("closeMenu")}>
               <X size={18} />
             </Button>
           </div>
 
           <div className="flex-1 overflow-y-auto px-3 py-4">
             <div className="flex flex-col gap-1">
-              <MobileLink
-                href="/"
-                label={t("home")}
-                active={isActive("/")}
-                onClick={() => setMenuOpen(false)}
-              />
-              <MobileAccordion
-                label={t("services")}
-                links={serviceColumns.flatMap((c) => c.links)}
-              />
-              <MobileAccordion
-                label={t("solutions")}
-                links={aiSolutionsItems}
-              />
-              <MobileAccordion
-                label={t("industries")}
-                links={industriesItems}
-              />
-              <MobileAccordion
-                label={t("expertise")}
-                links={expertiseItems}
-              />
-              <MobileAccordion
-                label={t("portfolio")}
-                links={portfolioItems}
-              />
-              <MobileAccordion
-                label={t("caseStudies")}
-                links={caseStudiesItems}
-              />
-              <MobileAccordion
-                label={t("partners")}
-                links={partnersItems}
-              />
-              <MobileAccordion
-                label={t("resources")}
-                links={resourcesColumns.flatMap((c) => c.links)}
-              />
+              <MobileLink href="/" label={t("home")} active={isActive("/")} onClick={() => setMenuOpen(false)} />
+              {serviceColumns.length > 0 && (
+                <MobileAccordion label={t("services")} links={serviceColumns.flatMap((c) => c.links)} />
+              )}
+              {aiSolutionsItems.length > 0 && (
+                <MobileAccordion label={t("solutions")} links={aiSolutionsItems} />
+              )}
+              {industriesItems.length > 0 && (
+                <MobileAccordion label={t("industries")} links={industriesItems} />
+              )}
+              {expertiseItems.length > 0 && (
+                <MobileAccordion label={t("expertise")} links={expertiseItems} />
+              )}
+              {portfolioItems.length > 0 && (
+                <MobileAccordion label={t("portfolio")} links={portfolioItems} />
+              )}
+              {caseStudiesItems.length > 0 && (
+                <MobileAccordion label={t("caseStudies")} links={caseStudiesItems} />
+              )}
+              {partnersItems.length > 0 && (
+                <MobileAccordion label={t("partners")} links={partnersItems} />
+              )}
+              <MobileAccordion label={t("resources")} links={resourcesColumns.flatMap((c) => c.links)} />
               <MobileAccordion label={t("company")} links={companyItems} />
               <MobileAccordion label={t("crm")} links={crmLinks} />
             </div>
           </div>
 
-          {/* Fixed footer: search + auth CTAs stay reachable without scrolling */}
           <div className="border-t border-border p-4">
             <button
               onClick={() => {
@@ -988,10 +641,7 @@ export const Header = ({
                         {t("login")}
                       </Link>
                     </Button>
-                    <Button
-                      asChild
-                      className="w-full bg-color text-white shadow-brand hover:opacity-90"
-                    >
+                    <Button asChild className="w-full bg-color text-white shadow-brand hover:opacity-90">
                       <Link href="/sign-up" onClick={() => setMenuOpen(false)}>
                         {t("signUp")}
                       </Link>
@@ -999,22 +649,12 @@ export const Header = ({
                   </>
                 ) : (
                   <>
-                    <Button
-                      asChild
-                      className="w-full bg-color text-white shadow-brand hover:opacity-90"
-                    >
-                      <Link
-                        href="/dashboard"
-                        onClick={() => setMenuOpen(false)}
-                      >
+                    <Button asChild className="w-full bg-color text-white shadow-brand hover:opacity-90">
+                      <Link href="/dashboard" onClick={() => setMenuOpen(false)}>
                         {t("dashboard")}
                       </Link>
                     </Button>
-                    <Button
-                      variant="outline"
-                      className="w-full text-destructive hover:bg-destructive/10"
-                      onClick={handleLogout}
-                    >
+                    <Button variant="outline" className="w-full text-destructive hover:bg-destructive/10" onClick={handleLogout}>
                       <LogOut className="size-4 me-2" />
                       {t("logout")}
                     </Button>
@@ -1037,41 +677,24 @@ export const Header = ({
   );
 };
 
-function NavLink({
-  href,
-  label,
-  active,
-}: {
-  href: string;
-  label: string;
-  active: boolean;
-}) {
+// ─── Subcomponents ──────────────────────────────────────────────────────
+
+function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
   return (
     <Link
       href={href as never}
       className={cn(
         "relative rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors",
-        active
-          ? "text-foreground"
-          : "text-muted-foreground hover:bg-accent hover:text-foreground",
+        active ? "text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground",
       )}
     >
       {label}
-      {active && (
-        <span className="absolute inset-x-2.5 -bottom-[1px] h-0.5 rounded-full bg-brand-gradient" />
-      )}
+      {active && <span className="absolute inset-x-2.5 -bottom-px h-0.5 rounded-full bg-brand-gradient" />}
     </Link>
   );
 }
 
-// Mobile Accordion — generic dropdown for mega-menu groups
-function MobileAccordion({
-  label,
-  links,
-}: {
-  label: string;
-  links: MegaMenuItem[];
-}) {
+function MobileAccordion({ label, links }: { label: string; links: MegaMenuItem[] }) {
   const [open, setOpen] = useState(false);
   if (links.length === 0) return null;
 
@@ -1083,28 +706,13 @@ function MobileAccordion({
         aria-expanded={open}
       >
         <span>{label}</span>
-        <ChevronDown
-          className={cn(
-            "size-4 text-muted-foreground transition-transform",
-            open && "rotate-180",
-          )}
-        />
+        <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
       </button>
-      <div
-        className={cn(
-          "overflow-hidden transition-all duration-200",
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
-        )}
-      >
+      <div className={cn("overflow-hidden transition-all duration-200", open ? "max-h-96 opacity-100" : "max-h-0 opacity-0")}>
         <div className="py-1 pl-3">
           {links.map((link, index) => {
             const Icon = link.icon;
-            // Generate a stable key using name and index, falling back to href if name is missing
-            const key = link.name
-              ? `${link.name}-${index}`
-              : link.href
-                ? `link-${String(link.href)}-${index}`
-                : `link-${index}`;
+            const key = link.name ? `${link.name}-${index}` : `link-${index}`;
             return (
               <Link
                 key={key}
@@ -1122,26 +730,14 @@ function MobileAccordion({
   );
 }
 
-function MobileLink({
-  href,
-  label,
-  active,
-  onClick,
-}: {
-  href: string;
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) {
+function MobileLink({ href, label, active, onClick }: { href: string; label: string; active: boolean; onClick: () => void }) {
   return (
     <Link
       href={href as never}
       onClick={onClick}
       className={cn(
         "flex items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
-        active
-          ? "bg-accent text-foreground"
-          : "text-muted-foreground hover:bg-accent hover:text-foreground",
+        active ? "bg-accent text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground",
       )}
     >
       {label}

@@ -189,7 +189,7 @@ export function MegaMenu({
             : "pointer-events-none -translate-y-1 opacity-0"
         )}
       >
-        <div className="h-[3px] w-full bg-brand-gradient" aria-hidden="true" />
+        <div className="h-0.75 w-full bg-brand-gradient" aria-hidden="true" />
         <div className="flex">
           {/* Main content */}
           <div className="flex flex-1 flex-col p-6">
@@ -214,7 +214,7 @@ export function MegaMenu({
 
             {/* Scrollable list region — keeps the panel at a standard height
                 no matter how many links a menu ends up with. */}
-            <div className="max-h-[22rem] overflow-y-auto pe-1 -me-1 [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
+            <div className="max-h-88 overflow-y-auto pe-1 -me-1 scrollbar-thin [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
               {columns && (
                 <div
                   className={cn(
@@ -303,7 +303,7 @@ export function MegaMenu({
                     <span className="mr-1.5 inline-block size-1.5 rounded-full bg-brand-gradient align-middle" />
                     {rightPanel.heading}
                   </p>
-                  <div className="flex-1 space-y-1 overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
+                  <div className="flex-1 space-y-1 overflow-y-auto scrollbar-thin [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent">
                     {rightPanel.items.map((item, index) => (
                       <Link
                         key={item.name ? `${item.name}-${index}` : `right-${index}`}
@@ -430,7 +430,7 @@ function MenuLink({ item, onNavigate }: { item: MegaMenuItem; onNavigate: () => 
         onClick={handleClick}
         className="group/link relative flex items-start gap-2.5 rounded-lg px-2 py-1.5 text-sm text-popover-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
       >
-        <span className="absolute inset-y-1.5 start-0 w-0.5 scale-y-0 rounded-full bg-brand-gradient transition-transform duration-150 group-hover/link:scale-y-100" />
+        <span className="absolute inset-y-1.5 inset-s-0 w-0.5 scale-y-0 rounded-full bg-brand-gradient transition-transform duration-150 group-hover/link:scale-y-100" />
         {Icon && <Icon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />}
         <span className="min-w-0">
           <span className="block truncate">{item.name}</span>

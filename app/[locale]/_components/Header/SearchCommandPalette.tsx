@@ -104,7 +104,7 @@ export function SearchCommandPalette({
   }, {});
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-start justify-center pt-24 sm:pt-32">
+    <div className="fixed inset-0 z-100 flex items-start justify-center pt-24 sm:pt-32">
       <div
         className="fixed inset-0 bg-background/70 backdrop-blur-sm"
         onClick={() => onOpenChange(false)}

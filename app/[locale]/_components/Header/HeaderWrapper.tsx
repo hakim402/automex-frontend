@@ -1,8 +1,7 @@
 // app/[locale]/_components/Header/HeaderWrapper.tsx
 //
-// Server component that fetches navigation data (categories, etc.) from the
-// Django API and passes it to the client <Header />.  Split this way because
-// automexFetch is server-only but the Header needs interactivity ("use client").
+// Server component that fetches navigation data from the Django API and passes it to the client <Header />.
+// Only fetches what's actually needed for the header menus.
 
 import { Header } from "./Header";
 import {
@@ -34,6 +33,7 @@ async function safeFetch<T>(promise: Promise<T>): Promise<T | undefined> {
 export async function HeaderWrapper({ locale }: HeaderWrapperProps) {
   const lang = locale as SupportedLocale;
 
+  // Fetch only what the header actually uses
   const [
     serviceCategories,
     servicesPaginated,
