@@ -2,7 +2,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { fetchAICapabilityBySlug, fetchAICapabilities, fetchServices } from "@/lib/automex/content";
+import {
+  fetchAICapabilityBySlug,
+  fetchAICapabilities,
+  fetchServices,
+} from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
 import type { ServiceListItem } from "@/lib/automex/types";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
@@ -83,12 +87,19 @@ export default async function AICapabilityDetailPage({ params }: Props) {
           headline: cap.name,
           description: cap.description,
           image: cap.cover_image?.url || undefined,
-          publisher: { "@type": "Organization", name: "AUTOMEX", url: BASE_URL },
+          publisher: {
+            "@type": "Organization",
+            name: "AUTOMEX",
+            url: BASE_URL,
+          },
           url: `${BASE_URL}/${locale}/solutions/ai-capabilities/${slug}`,
         }}
         id="ai-capability-detail-techarticle-schema"
       />
-      <AICapabilityDetailClientPage capability={cap} relatedServices={relatedServices} />
+      <AICapabilityDetailClientPage
+        capability={cap}
+        relatedServices={relatedServices}
+      />
     </>
   );
 }

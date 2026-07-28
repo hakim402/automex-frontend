@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import type { IndustryFull } from "@/lib/automex/types";
 import { getMediaUrl } from "@/lib/env";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 interface IndustriesClientPageProps {
   industries: IndustryFull[];
@@ -51,7 +52,7 @@ export function IndustriesClientPage({
   const t = useTranslations("IndustriesPage");
 
   return (
-    <div className="relative overflow-hidden mt-24">
+    <div className="relative overflow-hidden mt-10 md:mt-20">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
@@ -63,10 +64,6 @@ export function IndustriesClientPage({
       <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24">
         {/* Hero */}
         <section className="text-center mb-10 sm:mb-14">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
-            <Building2 className="size-3" aria-hidden="true" />
-            {t("hero.eyebrow")}
-          </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
             <span className="text-brand-gradient">{t("hero.headline")}</span>
           </h1>
@@ -194,6 +191,7 @@ export function IndustriesClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }

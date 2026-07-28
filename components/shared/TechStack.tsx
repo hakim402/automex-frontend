@@ -289,6 +289,9 @@ const ToolGrid = memo(function ToolGrid({
   );
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Root export
+// ─────────────────────────────────────────────────────────────────────────────
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Root export
@@ -355,41 +358,34 @@ export function TechStack({
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10 text-center">
-          <motion.p
-            {...fadeUpInView(0)}
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary"
-          >
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
             {t("eyebrow")}
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             id="techstack-heading"
-            {...fadeUpInView(0.07)}
             className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
           >
             {renderTitle()}
-          </motion.h2>
-          <motion.p
-            {...fadeUpInView(0.14)}
-            className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground"
-          >
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
             {t("description")}
-          </motion.p>
+          </p>
         </div>
 
         {/* Tab bar */}
-        <motion.div {...fadeUpInView(0.18)} className="mb-8">
+        <div className="mb-8">
           <TabBar
             categories={categories}
             active={activeCategory}
             onChange={setActiveCategory}
             isRtl={isRtl}
           />
-        </motion.div>
+        </div>
 
         {/* Tool grid */}
-        <motion.div {...fadeUpInView(0.22)}>
+        <div>
           <ToolGrid tools={tools} activeCategory={activeCategory} />
-        </motion.div>
+        </div>
       </div>
 
       <style>{`

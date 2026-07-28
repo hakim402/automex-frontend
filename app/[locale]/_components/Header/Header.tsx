@@ -177,7 +177,6 @@ export const Header = ({
     return portfolioProjects.map((p) => ({
       name: p.title,
       href: `/portfolio/${p.slug}` as any,
-      // some portfolio items may not have an `icon` field in the API type
       icon: resolveLucideIcon((p as any).icon || undefined),
     }));
   }, [portfolioProjects]);
@@ -201,52 +200,43 @@ export const Header = ({
     }));
   }, [partners]);
 
-  // ── Resources menu ──────────────────────────────────────────────────
-  const [activeResourceSection, setActiveResourceSection] = useState<"blog" | null>(null);
-
-  const toggleResourceSection = useCallback((section: "blog" | null) => {
-    setActiveResourceSection((prev) => (prev === section ? null : section));
-  }, []);
-
-  const resourcesColumns: MegaMenuColumn[] = useMemo(() => {
-    const links: MegaMenuItem[] = [
-      {
-        name: t("blog"),
-        href: "/blog" as const,
-        icon: resolveLucideIcon("newspaper"),
-        onClick: () => toggleResourceSection("blog"),
-      },
-      { name: t("faqs"), href: "/faqs" as const, icon: resolveLucideIcon("help-circle") },
-      { name: t("downloads"), href: "/downloads" as const, icon: resolveLucideIcon("download") },
-    ];
-    return [{ heading: t("resources"), links }];
-  }, [t, toggleResourceSection]);
-
-  const resourcesRightPanel = useMemo(() => {
-    if (!activeResourceSection || activeResourceSection !== "blog") return null;
-    if (!latestBlogs || latestBlogs.length === 0) return null;
-    return {
-      heading: t("latestBlogs"),
-      items: latestBlogs.map((b) => ({
-        name: b.title,
-        href: `/blog/${b.slug}` as any,
-      })),
-      viewAllHref: "/blog" as const,
-      viewAllLabel: t("viewAllBlog"),
-    };
-  }, [activeResourceSection, latestBlogs, t]);
+  // ── Blog menu ──────────────────────────────────────────────────────
+  const blogItems: MegaMenuItem[] = useMemo(() => {
+    if (!latestBlogs || latestBlogs.length === 0) {
+      // Fallback: just a link to /blog
+      return [
+        {
+          name: t("blog"),
+          href: "/blog" as const,
+          icon: resolveLucideIcon("newspaper"),
+        },
+      ];
+    }
+    return latestBlogs.slice(0, 8).map((b) => ({
+      name: b.title,
+      href: `/blog/${b.slug}` as any,
+      icon: resolveLucideIcon("newspaper"), // or maybe custom icon per post? keep consistent
+    }));
+  }, [latestBlogs, t]);
 
   // ── Company menu ─────────────────────────────────────────────────────
   const companyItems: MegaMenuItem[] = useMemo(
     () => [
-      { name: t("aboutUs"), href: "/about" as const, icon: resolveLucideIcon("users") },
       {
-        name: t("leadership"),
-        href: "/about/leadership" as const,
-        icon: resolveLucideIcon("award"),
+        name: t("aboutUs"),
+        href: "/about" as const,
+        icon: resolveLucideIcon("users"),
       },
-      { name: t("careers"), href: "/careers" as const, icon: resolveLucideIcon("briefcase") },
-      { name: t("contact"), href: "/contact" as const, icon: resolveLucideIcon("message-square") },
+      {
+        name: t("contact"),
+        href: "/contact" as const,
+        icon: resolveLucideIcon("message-square"),
+      },
+      {
+        name: t("faqs"),
+        href: "/faqs" as const,
+        icon: resolveLucideIcon("help-circle"),
+      },
     ],
     [t],
   );
@@ -296,19 +286,57 @@ export const Header = ({
     const allItems: CommandItem[] = [
       { name: t("home"), href: "/", group: t("navigation") },
       ...serviceColumns.flatMap((c) =>
-        c.links.map((l) => ({ name: l.name, href: toHref(l), group: t("services") }))
+        c.links.map((l) => ({
+          name: l.name,
+          href: toHref(l),
+          group: t("services"),
+        })),
       ),
-      ...aiSolutionsItems.map((l) => ({ name: l.name, href: toHref(l), group: t("solutions") })),
-      ...industriesItems.map((l) => ({ name: l.name, href: toHref(l), group: t("industries") })),
-      ...expertiseItems.map((l) => ({ name: l.name, href: toHref(l), group: t("expertise") })),
-      ...portfolioItems.map((l) => ({ name: l.name, href: toHref(l), group: t("portfolio") })),
-      ...caseStudiesItems.map((l) => ({ name: l.name, href: toHref(l), group: t("caseStudies") })),
-      ...partnersItems.map((l) => ({ name: l.name, href: toHref(l), group: t("partners") })),
-      ...resourcesColumns.flatMap((c) =>
-        c.links.map((l) => ({ name: l.name, href: toHref(l), group: t("resources") }))
-      ),
-      ...companyItems.map((l) => ({ name: l.name, href: toHref(l), group: t("company") })),
-      ...crmLinks.map((l) => ({ name: l.name, href: toHref(l), group: t("crm") })),
+      ...aiSolutionsItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("solutions"),
+      })),
+      ...industriesItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("industries"),
+      })),
+      ...expertiseItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("expertise"),
+      })),
+      ...portfolioItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("portfolio"),
+      })),
+      ...caseStudiesItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("caseStudies"),
+      })),
+      ...partnersItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("partners"),
+      })),
+      ...blogItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("blog"),
+      })),
+      ...companyItems.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("company"),
+      })),
+      ...crmLinks.map((l) => ({
+        name: l.name,
+        href: toHref(l),
+        group: t("crm"),
+      })),
     ];
     return allItems;
   }, [
@@ -320,7 +348,7 @@ export const Header = ({
     portfolioItems,
     caseStudiesItems,
     partnersItems,
-    resourcesColumns,
+    blogItems,
     companyItems,
     crmLinks,
   ]);
@@ -335,7 +363,7 @@ export const Header = ({
           "fixed top-0 z-50 w-full border-b transition-all duration-300",
           scrolled
             ? "border-border/60 bg-background/80 shadow-sm shadow-black/3 backdrop-blur-xl"
-            : "border-transparent bg-transparent backdrop-blur-0"
+            : "border-transparent bg-transparent backdrop-blur-0",
         )}
       >
         {/* Row 1: logo · search · account/theme/language */}
@@ -383,7 +411,7 @@ export const Header = ({
             </button>
 
             <ThemeToggle />
-            <LanguageSwitcher />
+            {/* <LanguageSwitcher /> */}
 
             {!loading && (
               <>
@@ -530,20 +558,25 @@ export const Header = ({
               />
             )}
 
-            {/* ── Resources: uses `columns` + rightPanel, already wide ── */}
-            <MegaMenu
-              label={t("resources")}
-              columns={resourcesColumns}
-              rightPanel={resourcesRightPanel}
-              align="end"
-              isRtl={isRtl}
-            />
+            {/* ── Blog: top-level, uses `simple` with recent posts ── */}
+            {blogItems.length > 0 && (
+              <MegaMenu
+                label={t("blog")}
+                description={t("blogDescription")}
+                simple={blogItems}
+                viewAllHref="/blog"
+                viewAllLabel={t("viewAllBlog")}
+                wide={true}
+                align="end"
+                isRtl={isRtl}
+              />
+            )}
 
             {/* ── Company ── */}
             <MegaMenu
               label={t("company")}
               simple={companyItems}
-              wide={true}
+              wide={false}
               align="end"
               isRtl={isRtl}
             />
@@ -552,7 +585,7 @@ export const Header = ({
             <MegaMenu
               label={t("crm")}
               simple={crmLinks}
-              wide={true}
+              wide={false}
               align="end"
               isRtl={isRtl}
             />
@@ -580,41 +613,77 @@ export const Header = ({
           className={cn(
             "absolute top-0 flex h-full w-[85%] max-w-sm flex-col bg-background shadow-2xl transition-transform duration-300 ease-out",
             isRtl ? "left-0" : "right-0",
-            menuOpen ? "translate-x-0" : isRtl ? "-translate-x-full" : "translate-x-full",
+            menuOpen
+              ? "translate-x-0"
+              : isRtl
+                ? "-translate-x-full"
+                : "translate-x-full",
           )}
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-4">
-            <span className="text-sm font-semibold text-foreground">{t("menu")}</span>
-            <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)} aria-label={t("closeMenu")}>
+            <span className="text-sm font-semibold text-foreground">
+              {t("menu")}
+            </span>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setMenuOpen(false)}
+              aria-label={t("closeMenu")}
+            >
               <X size={18} />
             </Button>
           </div>
 
           <div className="flex-1 overflow-y-auto px-3 py-4">
             <div className="flex flex-col gap-1">
-              <MobileLink href="/" label={t("home")} active={isActive("/")} onClick={() => setMenuOpen(false)} />
+              <MobileLink
+                href="/"
+                label={t("home")}
+                active={isActive("/")}
+                onClick={() => setMenuOpen(false)}
+              />
               {serviceColumns.length > 0 && (
-                <MobileAccordion label={t("services")} links={serviceColumns.flatMap((c) => c.links)} />
+                <MobileAccordion
+                  label={t("services")}
+                  links={serviceColumns.flatMap((c) => c.links)}
+                />
               )}
               {aiSolutionsItems.length > 0 && (
-                <MobileAccordion label={t("solutions")} links={aiSolutionsItems} />
+                <MobileAccordion
+                  label={t("solutions")}
+                  links={aiSolutionsItems}
+                />
               )}
               {industriesItems.length > 0 && (
-                <MobileAccordion label={t("industries")} links={industriesItems} />
+                <MobileAccordion
+                  label={t("industries")}
+                  links={industriesItems}
+                />
               )}
               {expertiseItems.length > 0 && (
-                <MobileAccordion label={t("expertise")} links={expertiseItems} />
+                <MobileAccordion
+                  label={t("expertise")}
+                  links={expertiseItems}
+                />
               )}
               {portfolioItems.length > 0 && (
-                <MobileAccordion label={t("portfolio")} links={portfolioItems} />
+                <MobileAccordion
+                  label={t("portfolio")}
+                  links={portfolioItems}
+                />
               )}
               {caseStudiesItems.length > 0 && (
-                <MobileAccordion label={t("caseStudies")} links={caseStudiesItems} />
+                <MobileAccordion
+                  label={t("caseStudies")}
+                  links={caseStudiesItems}
+                />
               )}
               {partnersItems.length > 0 && (
                 <MobileAccordion label={t("partners")} links={partnersItems} />
               )}
-              <MobileAccordion label={t("resources")} links={resourcesColumns.flatMap((c) => c.links)} />
+              {blogItems.length > 0 && (
+                <MobileAccordion label={t("blog")} links={blogItems} />
+              )}
               <MobileAccordion label={t("company")} links={companyItems} />
               <MobileAccordion label={t("crm")} links={crmLinks} />
             </div>
@@ -641,7 +710,10 @@ export const Header = ({
                         {t("login")}
                       </Link>
                     </Button>
-                    <Button asChild className="w-full bg-color text-white shadow-brand hover:opacity-90">
+                    <Button
+                      asChild
+                      className="w-full bg-color text-white shadow-brand hover:opacity-90"
+                    >
                       <Link href="/sign-up" onClick={() => setMenuOpen(false)}>
                         {t("signUp")}
                       </Link>
@@ -649,12 +721,22 @@ export const Header = ({
                   </>
                 ) : (
                   <>
-                    <Button asChild className="w-full bg-color text-white shadow-brand hover:opacity-90">
-                      <Link href="/dashboard" onClick={() => setMenuOpen(false)}>
+                    <Button
+                      asChild
+                      className="w-full bg-color text-white shadow-brand hover:opacity-90"
+                    >
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setMenuOpen(false)}
+                      >
                         {t("dashboard")}
                       </Link>
                     </Button>
-                    <Button variant="outline" className="w-full text-destructive hover:bg-destructive/10" onClick={handleLogout}>
+                    <Button
+                      variant="outline"
+                      className="w-full text-destructive hover:bg-destructive/10"
+                      onClick={handleLogout}
+                    >
                       <LogOut className="size-4 me-2" />
                       {t("logout")}
                     </Button>
@@ -679,22 +761,40 @@ export const Header = ({
 
 // ─── Subcomponents ──────────────────────────────────────────────────────
 
-function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
+function NavLink({
+  href,
+  label,
+  active,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+}) {
   return (
     <Link
       href={href as never}
       className={cn(
         "relative rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors",
-        active ? "text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground",
+        active
+          ? "text-foreground"
+          : "text-muted-foreground hover:bg-accent hover:text-foreground",
       )}
     >
       {label}
-      {active && <span className="absolute inset-x-2.5 -bottom-px h-0.5 rounded-full bg-brand-gradient" />}
+      {active && (
+        <span className="absolute inset-x-2.5 -bottom-px h-0.5 rounded-full bg-brand-gradient" />
+      )}
     </Link>
   );
 }
 
-function MobileAccordion({ label, links }: { label: string; links: MegaMenuItem[] }) {
+function MobileAccordion({
+  label,
+  links,
+}: {
+  label: string;
+  links: MegaMenuItem[];
+}) {
   const [open, setOpen] = useState(false);
   if (links.length === 0) return null;
 
@@ -706,9 +806,19 @@ function MobileAccordion({ label, links }: { label: string; links: MegaMenuItem[
         aria-expanded={open}
       >
         <span>{label}</span>
-        <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
+        <ChevronDown
+          className={cn(
+            "size-4 text-muted-foreground transition-transform",
+            open && "rotate-180",
+          )}
+        />
       </button>
-      <div className={cn("overflow-hidden transition-all duration-200", open ? "max-h-96 opacity-100" : "max-h-0 opacity-0")}>
+      <div
+        className={cn(
+          "overflow-hidden transition-all duration-200",
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+        )}
+      >
         <div className="py-1 pl-3">
           {links.map((link, index) => {
             const Icon = link.icon;
@@ -730,14 +840,26 @@ function MobileAccordion({ label, links }: { label: string; links: MegaMenuItem[
   );
 }
 
-function MobileLink({ href, label, active, onClick }: { href: string; label: string; active: boolean; onClick: () => void }) {
+function MobileLink({
+  href,
+  label,
+  active,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
   return (
     <Link
       href={href as never}
       onClick={onClick}
       className={cn(
         "flex items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
-        active ? "bg-accent text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground",
+        active
+          ? "bg-accent text-foreground"
+          : "text-muted-foreground hover:bg-accent hover:text-foreground",
       )}
     >
       {label}

@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(async () => {
     await authLogout();
     setUser(null);
-    router.push("/login");
+    router.push("/sign-in");
   }, [router]);
 
   // ── Initial session rehydration ─────────────────────────────────────────
@@ -107,7 +107,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [reloadUser]);
 
   return (
-    <AuthContext.Provider value={{ user, loading, reloadUser, logout, setUser }}>
+    <AuthContext.Provider
+      value={{ user, loading, reloadUser, logout, setUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -127,7 +129,7 @@ export function useAuth(): AuthContextValue {
   if (!context) {
     throw new Error(
       "[useAuth] must be used inside <AuthProvider>.\n" +
-        "Make sure <Providers> wraps your layout."
+        "Make sure <Providers> wraps your layout.",
     );
   }
 
@@ -153,7 +155,7 @@ export function useRequireUser(): User {
   if (!user) {
     throw new Error(
       "[useRequireUser] No authenticated user. " +
-        "This hook should only be used in pages protected by middleware."
+        "This hook should only be used in pages protected by middleware.",
     );
   }
 

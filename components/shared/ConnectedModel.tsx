@@ -3,20 +3,11 @@
 //
 // "One connected model" showcase — hub-and-spoke diagram.
 // All textual content is internationalized via props (from config).
+// No motion animations — static rendering for performance, but connector lines are still animated via CSS.
 
 import { useRef, useState, useEffect, useId, memo, useCallback } from "react";
-import { motion, useInView, animate } from "framer-motion";
 import Link from "next/link";
 import { Power, ArrowRight } from "lucide-react";
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const fadeUpInView = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { delay, duration: 0.6, ease: EASE },
-});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -51,7 +42,7 @@ export interface ConnectedModelProps {
   description: string;
   signalsLabel: string;
   outputsLabel: string;
-  hubLabel: string; // NEW: translatable label for the center hub
+  hubLabel: string;
   signals: SignalSource[];
   outputs: [OutputCard, OutputCard];
   primaryLabel: string;
@@ -63,44 +54,24 @@ export interface ConnectedModelProps {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Animated metric counter
+// Metric display (static, no animation)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const MetricCounter = memo(function MetricCounter({
+const MetricDisplay = memo(function MetricDisplay({
   metric,
-  delay,
 }: {
   metric: OutputCardMetric;
-  delay: number;
 }) {
-  const [display, setDisplay] = useState("0");
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!inView) return;
-    const t = setTimeout(() => {
-      const controls = animate(0, metric.value, {
-        duration: 1.6,
-        ease: "easeOut",
-        onUpdate(v) {
-          const rounded =
-            metric.value % 1 !== 0
-              ? v.toFixed(1)
-              : Math.round(v).toLocaleString();
-          setDisplay(`${metric.prefix ?? ""}${rounded}${metric.suffix ?? ""}`);
-        },
-      });
-      return () => controls.stop();
-    }, delay * 1000);
-    return () => clearTimeout(t);
-  }, [inView, metric, delay]);
-
+  const value =
+    metric.value % 1 !== 0
+      ? metric.value.toFixed(1)
+      : Math.round(metric.value).toLocaleString();
+  const display = `${metric.prefix ?? ""}${value}${metric.suffix ?? ""}`;
   return <span className="tabular-nums">{display}</span>;
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Mini chart components (memoized)
+// Mini chart components (static)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const MiniBarChart = memo(function MiniBarChart({
@@ -110,8 +81,6 @@ const MiniBarChart = memo(function MiniBarChart({
   data: number[];
   color: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
   const max = Math.max(...data, 1);
   const W = 240;
   const H = 64;
@@ -119,7 +88,7 @@ const MiniBarChart = memo(function MiniBarChart({
   const barW = (W - gap * (data.length - 1)) / data.length;
 
   return (
-    <div ref={ref} className="w-full">
+    <div className="w-full">
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="w-full"
@@ -136,19 +105,14 @@ const MiniBarChart = memo(function MiniBarChart({
           const h = (v / max) * (H - 4);
           const x = i * (barW + gap);
           return (
-            <motion.rect
+            <rect
               key={i}
               x={x}
               width={barW}
+              height={h}
+              y={H - h}
               rx={2}
               fill="url(#bar-grad)"
-              initial={{ height: 0, y: H }}
-              animate={inView ? { height: h, y: H - h } : { height: 0, y: H }}
-              transition={{
-                delay: 0.15 + i * 0.05,
-                duration: 0.55,
-                ease: EASE,
-              }}
             />
           );
         })}
@@ -164,8 +128,6 @@ const MiniLineChart = memo(function MiniLineChart({
   data: number[];
   color: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
   const max = Math.max(...data, 1);
   const min = Math.min(...data, 0);
   const range = max - min || 1;
@@ -185,7 +147,7 @@ const MiniLineChart = memo(function MiniLineChart({
   const areaPath = `${linePath} L ${points[points.length - 1].x} ${H} L ${points[0].x} ${H} Z`;
 
   return (
-    <div ref={ref} className="w-full">
+    <div className="w-full">
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="w-full"
@@ -198,40 +160,22 @@ const MiniLineChart = memo(function MiniLineChart({
             <stop offset="100%" stopColor={color} stopOpacity="0" />
           </linearGradient>
         </defs>
-
-        <motion.path
-          d={areaPath}
-          fill="url(#line-grad)"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        />
-        <motion.path
+        <path d={areaPath} fill="url(#line-grad)" />
+        <path
           d={linePath}
           fill="none"
           stroke={color}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-          transition={{ delay: 0.15, duration: 0.9, ease: EASE }}
         />
         {points.map((p, i) => (
-          <motion.circle
+          <circle
             key={i}
             cx={p.x}
             cy={p.y}
             r={i === points.length - 1 ? 3 : 0}
             fill={color}
-            initial={{ scale: 0 }}
-            animate={inView ? { scale: 1 } : { scale: 0 }}
-            transition={{
-              delay: 1.1,
-              duration: 0.3,
-              type: "spring",
-              bounce: 0.5,
-            }}
           />
         ))}
       </svg>
@@ -240,27 +184,20 @@ const MiniLineChart = memo(function MiniLineChart({
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Signal tile (memoized)
+// Signal tile (static, with ref for connector measurement)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SignalTile = memo(function SignalTile({
   signal,
-  index,
   tileRef,
 }: {
   signal: SignalSource;
-  index: number;
   tileRef: (el: HTMLDivElement | null) => void;
 }) {
   const Icon = signal.icon;
-
   return (
-    <motion.div
+    <div
       ref={tileRef}
-      initial={{ opacity: 0, scale: 0.85 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.03 * index, duration: 0.4, ease: EASE }}
       className="group relative flex size-12 shrink-0 items-center justify-center
                  rounded-xl border border-border/50 bg-card shadow-sm
                  transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md
@@ -272,12 +209,12 @@ const SignalTile = memo(function SignalTile({
         style={{ color: signal.color }}
         aria-hidden="true"
       />
-    </motion.div>
+    </div>
   );
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Center hub node
+// Center hub node (with ref)
 // ─────────────────────────────────────────────────────────────────────────────
 
 function HubNode({
@@ -292,56 +229,44 @@ function HubNode({
       <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
         {label}
       </p>
-      <motion.div
+      <div
         ref={hubRef}
-        initial={{ opacity: 0, scale: 0.7 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
         className="relative flex size-16 items-center justify-center rounded-2xl
                    bg-color shadow-brand sm:size-20"
-        aria-label={label} // for accessibility
+        aria-label={label}
       >
-        <motion.span
+        <span
           aria-hidden="true"
-          className="absolute inset-0 rounded-2xl bg-primary/30"
-          animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 rounded-2xl bg-primary/30 animate-pulse"
         />
         <Power
           className="relative size-7 text-white sm:size-9"
           strokeWidth={2.25}
           aria-hidden="true"
         />
-      </motion.div>
+      </div>
     </div>
   );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Output card (memoized)
+// Output card (with ref for connector measurement)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const OutputCardView = memo(function OutputCardView({
   card,
-  index,
   cardRef,
   accentColor,
 }: {
   card: OutputCard;
-  index: number;
   cardRef: (el: HTMLDivElement | null) => void;
   accentColor: string;
 }) {
   const Icon = card.icon;
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
-      initial={{ opacity: 0, x: 24 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.15 + index * 0.12, duration: 0.6, ease: EASE }}
       className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl
                  border border-border/60 bg-card p-6 shadow-sm
                  transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
@@ -376,10 +301,10 @@ const OutputCardView = memo(function OutputCardView({
 
       {/* Live metrics strip */}
       <div className="relative grid grid-cols-3 gap-2 rounded-xl border border-border/40 bg-background/50 p-3">
-        {card.metrics.map((m, i) => (
+        {card.metrics.map((m) => (
           <div key={m.label} className="flex flex-col items-center text-center">
             <span className="text-base font-bold text-foreground sm:text-lg">
-              <MetricCounter metric={m} delay={0.3 + i * 0.1} />
+              <MetricDisplay metric={m} />
             </span>
             <span className="mt-0.5 text-[10px] leading-tight text-muted-foreground">
               {m.label}
@@ -387,12 +312,12 @@ const OutputCardView = memo(function OutputCardView({
           </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Connector path measurement (shared by desktop horizontal + mobile vertical)
+// Connector path measurement (shared)
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface Point {
@@ -463,7 +388,6 @@ function useConnectorPaths(
     const ro = new ResizeObserver(measure);
     if (containerRef.current) ro.observe(containerRef.current);
     window.addEventListener("resize", measure);
-    // Re-measure after fonts/layout settle
     const t = setTimeout(measure, 300);
 
     return () => {
@@ -471,7 +395,7 @@ function useConnectorPaths(
       window.removeEventListener("resize", measure);
       clearTimeout(t);
     };
-  }, [measure]); // measure is stable due to useCallback
+  }, [measure]);
 
   return { inPaths, outPaths, viewBox };
 }
@@ -602,7 +526,7 @@ export function ConnectedModel({
   description,
   signalsLabel,
   outputsLabel,
-  hubLabel, // now used
+  hubLabel,
   signals,
   outputs,
   primaryLabel,
@@ -658,27 +582,20 @@ export function ConnectedModel({
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* ── Header ── */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <motion.p
-            {...fadeUpInView(0)}
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary"
-          >
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
             {eyebrow}
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             id="connected-model-heading"
-            {...fadeUpInView(0.07)}
             className="mt-3 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl"
           >
             {headlineLead}
             <br />
             <span className="text-color">{headlineAccent}</span>
-          </motion.h2>
-          <motion.p
-            {...fadeUpInView(0.14)}
-            className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
-          >
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             {description}
-          </motion.p>
+          </p>
         </div>
 
         {/* ═══ DESKTOP (lg+) ═══ */}
@@ -701,7 +618,6 @@ export function ConnectedModel({
                   <SignalTile
                     key={signal.name}
                     signal={signal}
-                    index={i}
                     tileRef={(el) => {
                       desktopSignalRefs.current[i] = el;
                     }}
@@ -730,11 +646,10 @@ export function ConnectedModel({
                   <OutputCardView
                     key={card.title}
                     card={card}
-                    index={i}
-                    accentColor={i === 0 ? "#0ab8fb" : "#7c3aed"}
                     cardRef={(el) => {
                       desktopOutputRefs.current[i] = el;
                     }}
+                    accentColor={i === 0 ? "#0ab8fb" : "#7c3aed"}
                   />
                 ))}
               </div>
@@ -764,7 +679,6 @@ export function ConnectedModel({
                 <SignalTile
                   key={signal.name}
                   signal={signal}
-                  index={i}
                   tileRef={(el) => {
                     mobileSignalRefs.current[i] = el;
                   }}
@@ -793,11 +707,10 @@ export function ConnectedModel({
                 <OutputCardView
                   key={card.title}
                   card={card}
-                  index={i}
-                  accentColor={i === 0 ? "#0ab8fb" : "#7c3aed"}
                   cardRef={(el) => {
                     mobileOutputRefs.current[i] = el;
                   }}
+                  accentColor={i === 0 ? "#0ab8fb" : "#7c3aed"}
                 />
               ))}
             </div>
@@ -805,10 +718,7 @@ export function ConnectedModel({
         </div>
 
         {/* ── CTA row ── */}
-        <motion.div
-          {...fadeUpInView(0.3)}
-          className="mt-14 flex flex-wrap items-center justify-center gap-3"
-        >
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={secondaryHref}
             className="inline-flex items-center justify-center rounded-full border
@@ -830,7 +740,7 @@ export function ConnectedModel({
               aria-hidden="true"
             />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,203 @@
+/**
+ * content-blocks.css
+ *
+ * Global styling for CMS rich-text content rendered via
+ * sanitizeRichHtml() (see lib/automex/rich-content.ts).
+ *
+ * HOW TO USE:
+ * Merge this into your globals.css (or `@import` it there). Then wrap any
+ * sanitized rich-text output in a `.prose-content` container:
+ *
+ *   <div
+ *     className="prose-content prose prose-lg max-w-none ..."
+ *     dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+ *   />
+ *
+ * From then on, any CMS author can type these exact classes into the rich
+ * text editor's HTML source and they will render consistently, with zero
+ * per-post CSS:
+ *
+ *   <div class="callout callout-info">Heads up — this needs review.</div>
+ *   <div class="callout callout-success">Ready to ship.</div>
+ *   <div class="callout callout-warning">Double-check pricing here.</div>
+ *   <div class="callout callout-danger">Breaking change.</div>
+ *   <span class="highlight">key term</span>
+ *   <p class="text-center">Centered caption text</p>
+ *
+ * IMPORTANT: only class names listed in CONTENT_CLASS_ALLOWLIST
+ * (lib/automex/rich-content.ts) survive sanitization. If you add a new
+ * class here, add the matching token to that allow-list too — one without
+ * the other does nothing (CSS with no matching class, or an allowed class
+ * with no styling).
+ *
+ * Structural tags (img, table, figure, blockquote, code, etc.) are styled
+ * by tag selector below, scoped to .prose-content, so authors don't need
+ * any class at all for those — just write plain <table>, <img>, etc. in
+ * the source and it inherits the design system automatically.
+ */
+
+.prose-content {
+    /* ── Callouts ─────────────────────────────────────────────── */
+}
+
+.prose-content .callout {
+    position: relative;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem 1rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    border-left-width: 3px;
+    background: color-mix(in srgb, var(--muted) 40%, transparent);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.prose-content .callout-info {
+    border-left-color: #0ab8fb;
+    background: color-mix(in srgb, #0ab8fb 6%, transparent);
+}
+
+.prose-content .callout-success {
+    border-left-color: #13a89e;
+    background: color-mix(in srgb, #13a89e 6%, transparent);
+}
+
+.prose-content .callout-warning {
+    border-left-color: #f5a524;
+    background: color-mix(in srgb, #f5a524 8%, transparent);
+}
+
+.prose-content .callout-danger {
+    border-left-color: #ef4444;
+    background: color-mix(in srgb, #ef4444 6%, transparent);
+}
+
+/* ── Inline emphasis ────────────────────────────────────────── */
+
+.prose-content .highlight {
+    background: color-mix(in srgb, #0ab8fb 14%, transparent);
+    color: var(--foreground);
+    padding: 0.05em 0.35em;
+    border-radius: 0.3em;
+    font-weight: 600;
+}
+
+.prose-content .text-center {
+    text-align: center;
+}
+
+/* ── Structural tags — no class required, styled by tag ──────── */
+
+.prose-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.prose-content th {
+    background: color-mix(in srgb, var(--muted) 60%, transparent);
+    font-weight: 600;
+    text-align: left;
+}
+
+.prose-content th,
+.prose-content td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.prose-content tr:last-child td {
+    border-bottom: none;
+}
+
+.prose-content figure {
+    margin: 1.75rem 0;
+}
+
+.prose-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+}
+
+.prose-content figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+    text-align: center;
+}
+
+/* ── Icons ────────────────────────────────────────────────────
+ * Raw <svg> is NOT allowed through the sanitizer (an inline <use> or
+ * <foreignObject> is a real way to smuggle content past a sanitizer, so
+ * that door stays closed). Instead: a fixed `icon-*` class renders a real
+ * lucide SVG file saved once under /public/icons/, referenced here via
+ * mask-image so it inherits the surrounding text color exactly like the
+ * lucide-react icons used elsewhere on the site.
+ *
+ * Adding a new icon = 3 steps, see docs/writing-posts.md:
+ *   1. Copy the SVG from lucide.dev/icons/<name> into
+ *      /public/icons/<name>.svg (unmodified, as downloaded)
+ *   2. Add "icon-<name>" to CONTENT_CLASS_ALLOWLIST in rich-content.ts
+ *   3. Add the two rules below (base pattern, swap the name + path)
+ */
+
+.prose-content .icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    margin-inline-end: 0.35em;
+}
+
+.prose-content .icon-check {
+    -webkit-mask-image: url("/icons/check.svg");
+    mask-image: url("/icons/check.svg");
+}
+
+.prose-content .icon-info {
+    -webkit-mask-image: url("/icons/info.svg");
+    mask-image: url("/icons/info.svg");
+}
+
+.prose-content .icon-warning {
+    -webkit-mask-image: url("/icons/alert-triangle.svg");
+    mask-image: url("/icons/alert-triangle.svg");
+}
+
+.prose-content .icon-star {
+    -webkit-mask-image: url("/icons/star.svg");
+    mask-image: url("/icons/star.svg");
+}
+
+.prose-content .icon-zap {
+    -webkit-mask-image: url("/icons/zap.svg");
+    mask-image: url("/icons/zap.svg");
+}
+
+.prose-content .icon-shield {
+    -webkit-mask-image: url("/icons/shield-check.svg");
+    mask-image: url("/icons/shield-check.svg");
+}
+
+.prose-content .icon-rocket {
+    -webkit-mask-image: url("/icons/rocket.svg");
+    mask-image: url("/icons/rocket.svg");
+}
+
+.prose-content .icon-arrow-right {
+    -webkit-mask-image: url("/icons/arrow-right.svg");
+    mask-image: url("/icons/arrow-right.svg");
+}

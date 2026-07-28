@@ -637,6 +637,18 @@ export const routing = defineRouting({
       fa: '/partners',
       ps: '/partners',
     },
+    '/partners/[slug]': {
+      en: '/partners/[slug]',
+      es: '/partners/[slug]',
+      de: '/partners/[slug]',
+      fr: '/partners/[slug]',
+      it: '/partners/[slug]',
+      nl: '/partners/[slug]',
+      zh: '/partners/[slug]',
+      ar: '/partners/[slug]',
+      fa: '/partners/[slug]',
+      ps: '/partners/[slug]',
+    },
     '/tech-expertise': {
       en: '/tech-expertise',
       es: '/tech-expertise',

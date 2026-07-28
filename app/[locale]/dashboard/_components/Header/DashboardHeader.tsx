@@ -65,7 +65,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
 
         {/* Right: actions */}
         <div className="flex items-center gap-1">
-          <LanguageSwitcher />
+          {/* <LanguageSwitcher /> */}
           <ThemeToggle />
 
           <div className="h-5 w-px bg-border/20 mx-1" aria-hidden="true" />

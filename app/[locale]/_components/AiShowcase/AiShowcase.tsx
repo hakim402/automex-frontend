@@ -2,7 +2,6 @@
 // app/[locale]/_components/AiShowcase/AiShowcase.tsx
 
 import { useEffect, useRef, useState, useMemo, memo } from "react";
-import { motion, useInView, animate } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import {
   Bot,
@@ -38,7 +37,7 @@ function getSupportedLocale(locale: string): Locale {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Service orbit — SVG‑based circle with orbiting service icons
+// Service orbit — SVG‑based circle with orbiting service icons (CSS animations)
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Static icon/color data – memoized outside component
@@ -89,8 +88,8 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
         {/* Center ambient glow */}
         <circle cx={CX} cy={CY} r={72} fill="url(#orbitCenterGlow)" />
 
-        {/* Orbit ring */}
-        <motion.circle
+        {/* Orbit ring – rotating via CSS animation */}
+        <circle
           cx={CX}
           cy={CY}
           r={ORBIT_R}
@@ -98,8 +97,7 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
           stroke="rgb(10 184 251 / 0.15)"
           strokeWidth="1"
           strokeDasharray="5 8"
-          animate={{ rotate: 360 } as never}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          className="animate-orbit-spin"
           style={{ willChange: "transform" }}
         />
 
@@ -114,9 +112,9 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
           strokeDasharray="3 10"
         />
 
-        {/* Pulse rings */}
+        {/* Pulse rings – CSS animation */}
         {[0, 0.9, 1.8].map((delay, i) => (
-          <motion.circle
+          <circle
             key={`pulse-${i}`}
             cx={CX}
             cy={CY}
@@ -124,25 +122,18 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
             fill="none"
             stroke="#0ab8fb"
             strokeWidth="1.5"
-            initial={{ r: 46, opacity: 0.5 } as never}
-            animate={{ r: 108, opacity: 0 } as never}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeOut",
-              delay,
-            }}
-            style={{ willChange: "r, opacity" }}
+            className="animate-orbit-pulse"
+            style={{ animationDelay: `${delay}s` }}
           />
         ))}
 
-        {/* Connection lines from center to nodes */}
+        {/* Connection lines – static (no motion) */}
         {ORBIT_SERVICES.map(({ color }, i) => {
           const angle = (i / ORBIT_SERVICES.length) * 2 * Math.PI - Math.PI / 2;
           const nx = CX + Math.cos(angle) * ORBIT_R;
           const ny = CY + Math.sin(angle) * ORBIT_R;
           return (
-            <motion.line
+            <line
               key={`line-${i}`}
               x1={CX}
               y1={CY}
@@ -152,10 +143,6 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
               strokeWidth="1"
               strokeOpacity="0.3"
               strokeDasharray="3 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ delay: 0.4 + i * 0.1, duration: 0.6 }}
-              style={{ willChange: "pathLength, opacity" }}
             />
           );
         })}
@@ -169,7 +156,7 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
         <Zap className="size-7 text-white" aria-hidden="true" />
       </div>
 
-      {/* Service icon nodes */}
+      {/* Service icon nodes – static with hover effect */}
       {ORBIT_SERVICES.map(({ Icon, color }, i) => {
         const angle = (i / ORBIT_SERVICES.length) * 2 * Math.PI - Math.PI / 2;
         const nx = CX + Math.cos(angle) * ORBIT_R;
@@ -177,16 +164,8 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
         const label = labels[i] || "";
 
         return (
-          <motion.div
+          <div
             key={label || i}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: 0.5 + i * 0.1,
-              duration: 0.4,
-              type: "spring",
-              bounce: 0.4,
-            }}
             className="absolute flex flex-col items-center gap-1 group"
             style={{ left: nx, top: ny, transform: "translate(-50%, -50%)" }}
           >
@@ -199,9 +178,36 @@ function ServiceOrbit({ labels }: { labels: string[] }) {
             <span className="whitespace-nowrap rounded-full border border-border/40 bg-background/80 px-2 py-0.5 text-[9px] font-semibold text-muted-foreground backdrop-blur-sm">
               {label}
             </span>
-          </motion.div>
+          </div>
         );
       })}
+
+      <style jsx>{`
+        @keyframes orbit-spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes orbit-pulse {
+          0% {
+            r: 46;
+            opacity: 0.5;
+          }
+          100% {
+            r: 108;
+            opacity: 0;
+          }
+        }
+        .animate-orbit-spin {
+          animation: orbit-spin 40s linear infinite;
+        }
+        .animate-orbit-pulse {
+          animation: orbit-pulse 3s ease-out infinite;
+        }
+      `}</style>
     </div>
   );
 }
@@ -249,10 +255,7 @@ const ActivityFeedCard = memo(function ActivityFeedCard({
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-40" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          <p className="text-xs font-semibold text-foreground">
-            {/* This can also be translated; we keep it static as it's a brand label */}
-            Live Activity
-          </p>
+          <p className="text-xs font-semibold text-foreground">Live Activity</p>
         </div>
         <span className="rounded-full bg-accent px-2.5 py-1 text-[10px] font-medium text-primary">
           AI Systems
@@ -342,7 +345,7 @@ export function AiShowcase() {
       t("orbit5"), // API Integration
       t("orbit6"), // Analytics
     ],
-    [t]
+    [t],
   );
 
   // ── Translated feed items ─────────────────────────────────────────────────
@@ -381,7 +384,7 @@ export function AiShowcase() {
         badgeColor: "bg-primary/10 text-primary",
       },
     ],
-    [t]
+    [t],
   );
 
   // ── Translated value props ───────────────────────────────────────────────
@@ -403,14 +406,14 @@ export function AiShowcase() {
         body: t("prop3Body"),
       },
     ],
-    [t]
+    [t],
   );
 
   return (
     <section
       dir={isRtl ? "rtl" : "ltr"}
       aria-labelledby="ai-showcase-title"
-      className="relative isolate w-full overflow-hidden bg-background px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
+      className="hidden md:block relative isolate w-full overflow-hidden bg-background px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
       {/* Hidden heading for accessibility & SEO */}
       <h2 id="ai-showcase-title" className="sr-only">
@@ -427,13 +430,7 @@ export function AiShowcase() {
         {/* ── Main two-column layout ── */}
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           {/* Left: Service orbit – responsive scaling wrapper */}
-          <motion.div
-            initial={{ opacity: 0, x: isRtl ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col items-center gap-8"
-          >
+          <div className="flex flex-col items-center gap-8">
             {/* Scale the fixed‑size orbit on smaller screens (preserves proportions) */}
             <div className="flex justify-center">
               <div className="scale-[0.65] sm:scale-[0.8] md:scale-100 will-change-transform origin-center">
@@ -441,16 +438,10 @@ export function AiShowcase() {
               </div>
             </div>
             <ActivityFeedCard items={feedItems} isRtl={isRtl} />
-          </motion.div>
+          </div>
 
           {/* Right: Content */}
-          <motion.div
-            initial={{ opacity: 0, x: isRtl ? -30 : 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="flex flex-col gap-8"
-          >
+          <div className="flex flex-col gap-8">
             {/* Value props */}
             <div className="space-y-4">
               {valueProps.map(({ icon: Icon, title, body }) => (
@@ -481,7 +472,9 @@ export function AiShowcase() {
               {t("cta")}
               <ArrowRight
                 className={`size-4 transition-transform ${
-                  isRtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
+                  isRtl
+                    ? "rotate-180 group-hover:-translate-x-1"
+                    : "group-hover:translate-x-1"
                 }`}
                 aria-hidden="true"
               />
@@ -493,7 +486,7 @@ export function AiShowcase() {
               <TrustBadge icon={Clock} label={t("trust2")} />
               <TrustBadge icon={Users} label={t("trust3")} />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

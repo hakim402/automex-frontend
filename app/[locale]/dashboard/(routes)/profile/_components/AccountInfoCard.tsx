@@ -122,7 +122,7 @@ export function AccountInfoCard({ user }: AccountInfoCardProps) {
         <InfoRow label={t("fieldMemberSince")}   value={createdAt} />
         <InfoRow label={t("fieldTermsAccepted")} value={termsAt}   />
         <InfoRow label={t("fieldLastUpdated")}   value={updatedAt} />
-        <InfoRow label={t("fieldLanguage")}      value={langDisplay} />
+        <InfoRow label={t("fieldLanguage1")}      value={langDisplay} />
       </div>
     </SectionCard>
   );

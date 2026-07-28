@@ -23,7 +23,12 @@ import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { getMediaUrl } from "@/lib/env";
 import { cn } from "@/lib/utils";
-import type { TechExpertiseArea, CaseStudyListItem, Technology } from "@/lib/automex/types";
+import type {
+  TechExpertiseArea,
+  CaseStudyListItem,
+  Technology,
+} from "@/lib/automex/types";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Category metadata for tech cards ────────────────────────────────────
 
@@ -84,15 +89,15 @@ function CategoryTaggedTechnologies({
   return (
     <section className="mb-12">
       {/* Section header */}
-      <div className="mb-2">
+      <div className="mb-2 justify-center items-center text-center">
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
           <Server className="size-3" aria-hidden="true" />
           {t("detail.technologies.eyebrow")}
         </span>
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 mt-6">
+          {t("detail.technologies.title")}
+        </h2>
       </div>
-      <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-        {t("detail.technologies.title")}
-      </h2>
 
       {Array.from(grouped.entries()).map(([category, techs]) => {
         const meta = CATEGORY_META[category] || CATEGORY_META.other;
@@ -108,7 +113,8 @@ function CategoryTaggedTechnologies({
                 {meta.label}
               </h3>
               <span className="text-[11px] text-muted-foreground font-medium">
-                {techs.length} {techs.length === 1 ? "technology" : "technologies"}
+                {techs.length}{" "}
+                {techs.length === 1 ? "technology" : "technologies"}
               </span>
             </div>
 
@@ -116,7 +122,9 @@ function CategoryTaggedTechnologies({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {techs.map((tech) => {
                 const TechIcon = resolveLucideIcon(tech.icon);
-                const logoUrl = tech.logo?.url ? getMediaUrl(tech.logo.url) : null;
+                const logoUrl = tech.logo?.url
+                  ? getMediaUrl(tech.logo.url)
+                  : null;
 
                 const cardContent = (
                   <>
@@ -215,11 +223,14 @@ export function TechExpertiseDetailClientPage({
   const hasCaseStudies = resolvedCaseStudies.length > 0;
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden mt-14 md:mt-24">
       {/* Background decorations */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-        <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-24 right-0 size-112.5 rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+        <div className="absolute top-1/3 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
 
       <article className="mx-auto max-w-4xl px-4 py-16 sm:py-24">
@@ -235,18 +246,14 @@ export function TechExpertiseDetailClientPage({
         {/* Category badge */}
         <div className="mb-4">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
-            {(area as any).category_display || (area as any).category || "Technology"}
+            {(area as any).category_display ||
+              (area as any).category ||
+              "Technology"}
           </span>
         </div>
 
         {/* Title with icon */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight leading-tight flex items-center gap-4 flex-wrap">
-          <span
-            className="inline-flex items-center justify-center size-12 sm:size-14 rounded-2xl bg-brand-gradient text-white shadow-brand shrink-0"
-            aria-hidden="true"
-          >
-            <AreaIcon className="size-6 sm:size-7" />
-          </span>
           <span className="text-brand-gradient">{displayName}</span>
         </h1>
 
@@ -254,14 +261,24 @@ export function TechExpertiseDetailClientPage({
         <div className="flex flex-wrap items-center gap-3 mb-8">
           {area.technologies.length > 0 && (
             <span className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground">
-              <Code2 className="size-3.5 shrink-0 text-primary/60" aria-hidden="true" />
-              {t("detail.stats.technologies", { count: area.technologies.length })}
+              <Code2
+                className="size-3.5 shrink-0 text-primary/60"
+                aria-hidden="true"
+              />
+              {t("detail.stats.technologies", {
+                count: area.technologies.length,
+              })}
             </span>
           )}
           {hasCaseStudies && (
             <span className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground">
-              <Folders className="size-3.5 shrink-0 text-primary/60" aria-hidden="true" />
-              {t("detail.stats.caseStudies", { count: resolvedCaseStudies.length })}
+              <Folders
+                className="size-3.5 shrink-0 text-primary/60"
+                aria-hidden="true"
+              />
+              {t("detail.stats.caseStudies", {
+                count: resolvedCaseStudies.length,
+              })}
             </span>
           )}
         </div>
@@ -286,23 +303,20 @@ export function TechExpertiseDetailClientPage({
         )}
 
         {/* Technologies — category-grouped cards */}
-        <CategoryTaggedTechnologies
-          technologies={area.technologies}
-          t={t}
-        />
+        <CategoryTaggedTechnologies technologies={area.technologies} t={t} />
 
         {/* Related Case Studies — resolved names with cards */}
         {hasCaseStudies && (
           <section className="mb-12">
-            <div className="mb-2">
+            <div className="mb-2 justify-center items-center text-center">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
                 <Folders className="size-3" aria-hidden="true" />
                 {t("detail.caseStudies.eyebrow")}
               </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 mt-6">
+                {t("detail.caseStudies.title")}
+              </h2>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              {t("detail.caseStudies.title")}
-            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {resolvedCaseStudies.map((cs) => (
                 <Link
@@ -321,21 +335,29 @@ export function TechExpertiseDetailClientPage({
                       {t("detail.caseStudies.readCaseStudy")}
                     </p>
                   </div>
-                  <ArrowUpRight className="size-4 rtl:rotate-180 text-muted-foreground group-hover:text-primary shrink-0 transition-colors" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="size-4 rtl:rotate-180 text-muted-foreground group-hover:text-primary shrink-0 transition-colors"
+                    aria-hidden="true"
+                  />
                 </Link>
               ))}
             </div>
-            {area.case_studies && area.case_studies.length > resolvedCaseStudies.length && resolvedCaseStudies.length > 0 && (
-              <div className="mt-3 text-center">
-                <Link
-                  href="/case-studies"
-                  className="inline-flex items-center gap-1 text-[13px] font-medium text-primary hover:underline"
-                >
-                  {t("detail.caseStudies.viewAll")}
-                  <ArrowUpRight className="size-3.5 rtl:rotate-180" aria-hidden="true" />
-                </Link>
-              </div>
-            )}
+            {area.case_studies &&
+              area.case_studies.length > resolvedCaseStudies.length &&
+              resolvedCaseStudies.length > 0 && (
+                <div className="mt-3 text-center">
+                  <Link
+                    href="/case-studies"
+                    className="inline-flex items-center gap-1 text-[13px] font-medium text-primary hover:underline"
+                  >
+                    {t("detail.caseStudies.viewAll")}
+                    <ArrowUpRight
+                      className="size-3.5 rtl:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </div>
+              )}
           </section>
         )}
 
@@ -343,7 +365,7 @@ export function TechExpertiseDetailClientPage({
         <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
+            className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
           />
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
             <Sparkles className="size-3" aria-hidden="true" />
@@ -360,10 +382,14 @@ export function TechExpertiseDetailClientPage({
             className="inline-flex items-center gap-2 rounded-lg bg-brand-gradient text-white px-6 py-3 text-[14px] font-semibold shadow-brand hover:opacity-90 transition-opacity"
           >
             {t("detail.cta.quote")}
-            <ArrowUpRight className="size-4 rtl:rotate-180" aria-hidden="true" />
+            <ArrowUpRight
+              className="size-4 rtl:rotate-180"
+              aria-hidden="true"
+            />
           </Link>
         </section>
       </article>
+      <FooterSection />
     </div>
   );
 }

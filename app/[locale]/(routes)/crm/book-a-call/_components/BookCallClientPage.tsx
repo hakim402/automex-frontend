@@ -29,7 +29,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import type { SupportedLocale } from "@/lib/locale";
 import type { AvailableSlot } from "@/lib/automex/types";
@@ -39,9 +45,16 @@ import { TokenStorage } from "@/lib/api";
 import { CrmFormField } from "../../_components/crm-shared/CrmFormField";
 import { DatePicker } from "../../_components/crm-shared/booking/DatePicker";
 import { SlotPicker } from "../../_components/crm-shared/booking/SlotPicker";
-import { leadContactFields, MEETING_TYPE_VALUES } from "../../_components/crm-shared/schemas";
+import {
+  leadContactFields,
+  MEETING_TYPE_VALUES,
+} from "../../_components/crm-shared/schemas";
 
-import { fetchAvailabilityAction, submitConsultationBookingAction } from "../../actions";
+import {
+  fetchAvailabilityAction,
+  submitConsultationBookingAction,
+} from "../../actions";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 const detailsSchema = z.object({
   ...leadContactFields,
@@ -57,7 +70,10 @@ interface BookCallClientPageProps {
   industryOptions?: { id: string; name: string }[];
 }
 
-export function BookCallClientPage({ defaultServiceInterest, industryOptions = [] }: BookCallClientPageProps) {
+export function BookCallClientPage({
+  defaultServiceInterest,
+  industryOptions = [],
+}: BookCallClientPageProps) {
   const t = useTranslations("CrmForms.booking");
   const tShared = useTranslations("CrmForms.shared");
   const tPage = useTranslations("CrmPages.bookCall");
@@ -136,7 +152,7 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
           notes: values.notes || undefined,
         },
         locale,
-        TokenStorage.getAccess()
+        TokenStorage.getAccess(),
       );
 
       if (result.success) {
@@ -164,12 +180,15 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
   return (
     <div className="relative overflow-hidden">
       {/* Background decoration */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[#13a89e]/4 blur-3xl" />
-        <div className="absolute top-1/3 -right-40 size-[350px] rounded-full bg-[#0ab8fb]/4 blur-3xl" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 size-150 rounded-full bg-[#13a89e]/4 blur-3xl" />
+        <div className="absolute top-1/3 -right-40 size-87.5 rounded-full bg-[#0ab8fb]/4 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24 mt-10 md:mt-20">
         {/* ─── Header ──────────────────────────────────────────── */}
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#13a89e]/20 bg-[#13a89e]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#13a89e] mb-5">
@@ -189,7 +208,12 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
         {step !== "done" && (
           <div className="mb-8 flex items-center justify-center gap-3">
             {[
-              { num: 1, label: t("stepSlot"), active: step === "slot", done: step === "details" },
+              {
+                num: 1,
+                label: t("stepSlot"),
+                active: step === "slot",
+                done: step === "details",
+              },
               { num: 2, label: t("stepDetails"), active: step === "details" },
             ].map((s, i) => (
               <div key={s.num} className="flex items-center gap-3">
@@ -199,7 +223,7 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
                       "flex size-7 items-center justify-center rounded-full text-[12px] font-bold transition-all",
                       s.active && "bg-brand-gradient text-white shadow-brand",
                       s.done && "bg-emerald-500 text-white",
-                      !s.active && !s.done && "bg-muted text-muted-foreground"
+                      !s.active && !s.done && "bg-muted text-muted-foreground",
                     )}
                   >
                     {s.num}
@@ -209,14 +233,19 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
                       "text-[13px] font-semibold hidden sm:inline",
                       s.active && "text-foreground",
                       s.done && "text-emerald-600 dark:text-emerald-400",
-                      !s.active && !s.done && "text-muted-foreground"
+                      !s.active && !s.done && "text-muted-foreground",
                     )}
                   >
                     {s.label}
                   </span>
                 </div>
                 {i === 0 && (
-                  <div className={cn("h-px w-10 sm:w-16", step === "details" ? "bg-emerald-500/40" : "bg-border")} />
+                  <div
+                    className={cn(
+                      "h-px w-10 sm:w-16",
+                      step === "details" ? "bg-emerald-500/40" : "bg-border",
+                    )}
+                  />
                 )}
               </div>
             ))}
@@ -228,11 +257,14 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
           <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-8 sm:p-10 text-center">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-emerald-500/5 via-transparent to-[#13a89e]/5"
+              className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-emerald-500/5 via-transparent to-[#13a89e]/5"
             />
 
             <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-emerald-500/10 mb-5">
-              <CheckCircle2 className="size-7 text-emerald-500" aria-hidden="true" />
+              <CheckCircle2
+                className="size-7 text-emerald-500"
+                aria-hidden="true"
+              />
             </div>
 
             <h2 className="text-xl font-bold text-foreground mb-2">
@@ -249,10 +281,16 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
           <div className="rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm">
             <div className="flex items-center gap-2 mb-5">
               <Calendar className="size-4 text-primary" aria-hidden="true" />
-              <h2 className="text-[14px] font-semibold text-foreground">{t("stepSlotTitle")}</h2>
+              <h2 className="text-[14px] font-semibold text-foreground">
+                {t("stepSlotTitle")}
+              </h2>
             </div>
 
-            <DatePicker value={date} onChange={setDate} label={t("dateLabel")} />
+            <DatePicker
+              value={date}
+              onChange={setDate}
+              label={t("dateLabel")}
+            />
 
             {isLoadingSlots ? (
               <div className="flex items-center justify-center py-10 text-muted-foreground">
@@ -279,7 +317,10 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
                 className="w-full bg-brand-gradient shadow-brand"
               >
                 {t("continue")}
-                <ArrowRight className="size-4 ml-1.5 rtl:rotate-180" aria-hidden="true" />
+                <ArrowRight
+                  className="size-4 ml-1.5 rtl:rotate-180"
+                  aria-hidden="true"
+                />
               </Button>
             </div>
           </div>
@@ -288,10 +329,16 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
         {/* ─── Step 2: Your details ────────────────────────────── */}
         {step === "details" && (
           <div className="rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-6 sm:p-8 shadow-sm">
-            <form onSubmit={handleSubmit(onSubmitDetails)} className="flex flex-col gap-5" noValidate>
+            <form
+              onSubmit={handleSubmit(onSubmitDetails)}
+              className="flex flex-col gap-5"
+              noValidate
+            >
               <div className="flex items-center gap-2">
                 <User className="size-4 text-primary" aria-hidden="true" />
-                <h2 className="text-[14px] font-semibold text-foreground">{t("stepDetailsTitle")}</h2>
+                <h2 className="text-[14px] font-semibold text-foreground">
+                  {t("stepDetailsTitle")}
+                </h2>
               </div>
 
               {/* Back button */}
@@ -300,61 +347,114 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
                 onClick={() => setStep("slot")}
                 className="flex items-center gap-1 text-[13px] text-muted-foreground hover:text-foreground self-start transition-colors"
               >
-                <ArrowLeft className="size-3.5 rtl:rotate-180" aria-hidden="true" />
+                <ArrowLeft
+                  className="size-3.5 rtl:rotate-180"
+                  aria-hidden="true"
+                />
                 {t("backToSlots")}
               </button>
 
               {/* Selected slot info */}
               {selectedSlot && (
                 <div className="flex items-center gap-3 rounded-xl border border-[#13a89e]/20 bg-[#13a89e]/5 px-4 py-3">
-                  <Clock className="size-4 text-[#13a89e] shrink-0" aria-hidden="true" />
+                  <Clock
+                    className="size-4 text-[#13a89e] shrink-0"
+                    aria-hidden="true"
+                  />
                   <div>
                     <p className="text-[13px] font-semibold text-foreground">
                       {date}{" "}
                       <span className="text-primary">
-                        {selectedSlot.start_time.slice(0, 5)} – {selectedSlot.end_time.slice(0, 5)}
+                        {selectedSlot.start_time.slice(0, 5)} –{" "}
+                        {selectedSlot.end_time.slice(0, 5)}
                       </span>
                     </p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">{t("selectedSlotLabel")}</p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5">
+                      {t("selectedSlotLabel")}
+                    </p>
                   </div>
                 </div>
               )}
 
               {/* Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <CrmFormField id="full_name" label={t("fullNameLabel")} required error={errors.full_name?.message}>
-                  <Input id="full_name" placeholder={t("fullNamePlaceholder")} {...register("full_name")} />
+                <CrmFormField
+                  id="full_name"
+                  label={t("fullNameLabel")}
+                  required
+                  error={errors.full_name?.message}
+                >
+                  <Input
+                    id="full_name"
+                    placeholder={t("fullNamePlaceholder")}
+                    {...register("full_name")}
+                  />
                 </CrmFormField>
-                <CrmFormField id="email" label={t("emailLabel")} required error={errors.email?.message}>
-                  <Input id="email" type="email" placeholder={t("emailPlaceholder")} {...register("email")} />
+                <CrmFormField
+                  id="email"
+                  label={t("emailLabel")}
+                  required
+                  error={errors.email?.message}
+                >
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder={t("emailPlaceholder")}
+                    {...register("email")}
+                  />
                 </CrmFormField>
               </div>
 
               {/* Phone & Company */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <CrmFormField id="phone" label={t("phoneLabel")} error={errors.phone?.message}>
+                <CrmFormField
+                  id="phone"
+                  label={t("phoneLabel")}
+                  error={errors.phone?.message}
+                >
                   <Input id="phone" type="tel" {...register("phone")} />
                 </CrmFormField>
-                <CrmFormField id="company" label={t("companyLabel")} error={errors.company?.message}>
+                <CrmFormField
+                  id="company"
+                  label={t("companyLabel")}
+                  error={errors.company?.message}
+                >
                   <Input id="company" {...register("company")} />
                 </CrmFormField>
               </div>
 
               {/* Job Title & Industry */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <CrmFormField id="job_title" label={t("jobTitleLabel")} error={errors.job_title?.message}>
-                  <Input id="job_title" placeholder={t("jobTitlePlaceholder")} {...register("job_title")} />
+                <CrmFormField
+                  id="job_title"
+                  label={t("jobTitleLabel")}
+                  error={errors.job_title?.message}
+                >
+                  <Input
+                    id="job_title"
+                    placeholder={t("jobTitlePlaceholder")}
+                    {...register("job_title")}
+                  />
                 </CrmFormField>
 
                 {industryOptions.length > 0 && (
-                  <CrmFormField id="industry" label={t("industryLabel")} error={errors.industry?.message}>
+                  <CrmFormField
+                    id="industry"
+                    label={t("industryLabel")}
+                    error={errors.industry?.message}
+                  >
                     <Controller
                       name="industry"
                       control={control}
                       render={({ field }) => (
-                        <Select value={field.value} onValueChange={field.onChange}>
+                        <Select
+                          value={field.value}
+                          onValueChange={field.onChange}
+                        >
                           <SelectTrigger id="industry" className="w-full">
-                            <SelectValue placeholder={tShared("industryPlaceholder")} />
+                            <SelectValue
+                              placeholder={tShared("industryPlaceholder")}
+                            />
                           </SelectTrigger>
                           <SelectContent>
                             {industryOptions.map((i) => (
@@ -371,7 +471,12 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
               </div>
 
               {/* Meeting Type */}
-              <CrmFormField id="meeting_type" label={t("meetingTypeLabel")} required error={errors.meeting_type?.message}>
+              <CrmFormField
+                id="meeting_type"
+                label={t("meetingTypeLabel")}
+                required
+                error={errors.meeting_type?.message}
+              >
                 <Controller
                   name="meeting_type"
                   control={control}
@@ -393,13 +498,31 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
               </CrmFormField>
 
               {/* Message */}
-              <CrmFormField id="message" label={t("messageLabel")} error={errors.message?.message}>
-                <Textarea id="message" rows={3} placeholder={t("messagePlaceholder")} {...register("message")} />
+              <CrmFormField
+                id="message"
+                label={t("messageLabel")}
+                error={errors.message?.message}
+              >
+                <Textarea
+                  id="message"
+                  rows={3}
+                  placeholder={t("messagePlaceholder")}
+                  {...register("message")}
+                />
               </CrmFormField>
 
               {/* Notes */}
-              <CrmFormField id="notes" label={t("notesLabel")} error={errors.notes?.message}>
-                <Textarea id="notes" rows={2} placeholder={t("notesPlaceholder")} {...register("notes")} />
+              <CrmFormField
+                id="notes"
+                label={t("notesLabel")}
+                error={errors.notes?.message}
+              >
+                <Textarea
+                  id="notes"
+                  rows={2}
+                  placeholder={t("notesPlaceholder")}
+                  {...register("notes")}
+                />
               </CrmFormField>
 
               {/* Divider + Submit */}
@@ -412,7 +535,8 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="size-4 animate-spin" /> {t("submitting")}
+                      <Loader2 className="size-4 animate-spin" />{" "}
+                      {t("submitting")}
                     </>
                   ) : (
                     <>
@@ -426,6 +550,7 @@ export function BookCallClientPage({ defaultServiceInterest, industryOptions = [
           </div>
         )}
       </div>
+      <FooterSection />
     </div>
   );
 }

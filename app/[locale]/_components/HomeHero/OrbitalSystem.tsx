@@ -1,7 +1,6 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
 import {
   Zap,
   Brain,
@@ -75,8 +74,6 @@ const ORBITAL_RINGS: OrbitalRing[] = [
 
 const FLOAT_LABELS_DEFAULT = ["AI Agents", "Web & Mobile", "Cloud & APIs"];
 
-const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
 function OrbitalRingLayer({
   ring,
   ringIndex,
@@ -88,7 +85,7 @@ function OrbitalRingLayer({
   const nodeSize = [40, 44, 48][ringIndex] ?? 44;
 
   return (
-    <motion.div
+    <div
       className="absolute"
       style={{
         width: size,
@@ -97,20 +94,23 @@ function OrbitalRingLayer({
         left: "50%",
         marginTop: -ring.radius,
         marginLeft: -ring.radius,
+        opacity: 0, // start hidden, fade in via CSS
+        animation: `orbital-fade-in 0.7s ease ${0.35 + ringIndex * 0.18}s forwards`,
       }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.35 + ringIndex * 0.18, duration: 0.7, ease: smoothEase }}
     >
-      <motion.div
+      <div
         className="absolute inset-0"
-        animate={{ rotate: ring.clockwise ? 360 : -360 }}
-        transition={{ duration: ring.duration, ease: "linear", repeat: Infinity }}
+        style={{
+          animation: `orbital-spin ${ring.duration}s linear infinite`,
+          animationDirection: ring.clockwise ? "normal" : "reverse",
+        }}
       >
         {ring.nodes.map((node, ni) => {
           const angleRad = ((node.offset - 90) * Math.PI) / 180;
-          const x = ring.radius + ring.radius * Math.cos(angleRad) - nodeSize / 2;
-          const y = ring.radius + ring.radius * Math.sin(angleRad) - nodeSize / 2;
+          const x =
+            ring.radius + ring.radius * Math.cos(angleRad) - nodeSize / 2;
+          const y =
+            ring.radius + ring.radius * Math.sin(angleRad) - nodeSize / 2;
 
           return (
             <div
@@ -118,10 +118,12 @@ function OrbitalRingLayer({
               className="absolute"
               style={{ left: x, top: y, width: nodeSize, height: nodeSize }}
             >
-              <motion.div
+              <div
                 className="size-full"
-                animate={{ rotate: ring.clockwise ? -360 : 360 }}
-                transition={{ duration: ring.duration, ease: "linear", repeat: Infinity }}
+                style={{
+                  animation: `orbital-spin ${ring.duration}s linear infinite`,
+                  animationDirection: ring.clockwise ? "reverse" : "normal",
+                }}
               >
                 <div
                   className="flex size-full items-center justify-center rounded-full border border-border/60 bg-card shadow-sm transition-transform duration-300 hover:scale-125"
@@ -129,14 +131,17 @@ function OrbitalRingLayer({
                     boxShadow: `0 0 14px ${node.color}28, 0 2px 8px rgb(0 0 0 / 0.12)`,
                   }}
                 >
-                  <node.Icon className="size-[44%]" style={{ color: node.color }} />
+                  <node.Icon
+                    className="size-[44%]"
+                    style={{ color: node.color }}
+                  />
                 </div>
-              </motion.div>
+              </div>
             </div>
           );
         })}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
 
@@ -153,7 +158,8 @@ const OrbitalSystem = memo(function OrbitalSystem({
   const cy = containerSize / 2;
 
   // Use provided labels or fallback
-  const labels = floatingLabels.length >= 3 ? floatingLabels : FLOAT_LABELS_DEFAULT;
+  const labels =
+    floatingLabels.length >= 3 ? floatingLabels : FLOAT_LABELS_DEFAULT;
 
   const floatPositions = [
     { left: "71%", top: "8%", delay: 1.3 },
@@ -206,7 +212,7 @@ const OrbitalSystem = memo(function OrbitalSystem({
         <OrbitalRingLayer key={i} ring={ring} ringIndex={i} />
       ))}
 
-      <motion.div
+      <div
         className="absolute flex items-center justify-center rounded-full bg-color shadow-brand"
         style={{
           width: 72,
@@ -215,26 +221,48 @@ const OrbitalSystem = memo(function OrbitalSystem({
           left: "50%",
           marginTop: -36,
           marginLeft: -36,
+          opacity: 0,
+          transform: "scale(0) rotate(-180deg)",
+          animation: `orbital-center-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards`,
         }}
-        initial={{ opacity: 0, scale: 0, rotate: -180 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ delay: 0.15, duration: 0.7, type: "spring", bounce: 0.5 }}
       >
         <Zap className="size-8 text-white" />
-      </motion.div>
+      </div>
 
       {labels.map((text, i) => (
-        <motion.div
+        <div
           key={text}
           className="absolute whitespace-nowrap rounded-full border border-border/60 bg-background/80 px-2.5 py-1 text-[9px] font-semibold text-muted-foreground shadow-sm backdrop-blur-sm"
-          style={{ left: floatPositions[i].left, top: floatPositions[i].top }}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: floatPositions[i].delay, duration: 0.4 }}
+          style={{
+            left: floatPositions[i].left,
+            top: floatPositions[i].top,
+            opacity: 0,
+            transform: "translateY(6px)",
+            animation: `orbital-float-in 0.4s ease ${floatPositions[i].delay}s forwards`,
+          }}
         >
           {text}
-        </motion.div>
+        </div>
       ))}
+
+      <style>{`
+        @keyframes orbital-spin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        @keyframes orbital-fade-in {
+          0%   { opacity: 0; transform: scale(0.5); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes orbital-center-in {
+          0%   { opacity: 0; transform: scale(0) rotate(-180deg); }
+          100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        @keyframes orbital-float-in {
+          0%   { opacity: 0; transform: translateY(6px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 });

@@ -1,9 +1,22 @@
 "use client";
 
+// app/[locale]/(routes)/solutions/ai-capablity/_components/AICapabilityClientPage.tsx
+
 import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
-import { Loader2, ArrowRight, Sparkles, Brain, Cpu } from "lucide-react";
+import {
+  Loader2,
+  ArrowRight,
+  Sparkles,
+  Brain,
+  Cpu,
+  BadgeCheck,
+  FlaskConical,
+  Rocket,
+  Beaker,
+  ImageOff,
+  type LucideIcon,
+} from "lucide-react";
 import * as LucideIcons from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -11,9 +24,11 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 import type { SupportedLocale } from "@/lib/locale";
 import type { AICapability, Technology } from "@/lib/automex/types";
-import { getMediaUrl } from "@/lib/env";
+import { htmlToPlainText } from "@/lib/automex/rich-content";
+import { MediaImage } from "@/components/MediaImage";
 
 import { loadMoreAICapabilitiesAction } from "../actions";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 interface AICapabilitiesClientPageProps {
   initialCapabilities: AICapability[];
@@ -29,21 +44,27 @@ const MATURITY_COLORS: Record<string, string> = {
   experimental: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
 };
 
-const MATURITY_LABELS: Record<string, string> = {
+const MATURITY_FALLBACK_LABELS: Record<string, string> = {
   research: "Research",
   production: "Production",
   experimental: "Experimental",
 };
 
+const MATURITY_ICONS: Record<string, LucideIcon> = {
+  research: Beaker,
+  production: Rocket,
+  experimental: FlaskConical,
+};
+
 /** Resolve a lucide:icon-name string to a lucide-react component. */
-function resolveLucideIcon(iconName: string | undefined): React.ElementType {
+function resolveLucideIcon(iconName: string | undefined): LucideIcon {
   if (!iconName) return Cpu;
   const name = iconName.startsWith("lucide:") ? iconName.slice(7) : iconName;
   const pascal = name
     .split("-")
     .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
     .join("");
-  const map = LucideIcons as unknown as Record<string, React.ElementType>;
+  const map = LucideIcons as unknown as Record<string, LucideIcon>;
   return map[pascal] || Cpu;
 }
 
@@ -58,6 +79,26 @@ function extractCategories(
       return true;
     })
     .map((c) => ({ value: c.category, label: c.category_display }));
+}
+
+function BlueprintGrid({ className }: { className?: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={cn("pointer-events-none absolute inset-0 -z-10", className)}
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, currentColor 1px, transparent 1px)",
+        backgroundSize: "22px 22px",
+        color: "var(--border)",
+        opacity: 0.35,
+        maskImage:
+          "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+        WebkitMaskImage:
+          "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+      }}
+    />
+  );
 }
 
 export function AICapabilitiesClientPage({
@@ -93,22 +134,19 @@ export function AICapabilitiesClientPage({
   const categories = extractCategories(initialCapabilities);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden mt-10 md:mt-20">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-        <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+        <div className="absolute -top-24 right-0 size-112.5 rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+        <div className="absolute top-1/3 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24">
-        {/* Hero */}
-        <section className="text-center mb-8 sm:mb-12">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
-            <Brain className="size-3" aria-hidden="true" />
-            {t("listing.hero.eyebrow")}
-          </span>
+        {/* ─── Hero ─────────────────────────────────────────────── */}
+        <section className="relative text-center mb-8 sm:mb-12">
+          <BlueprintGrid className="rounded-3xl" />
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
             <span className="text-brand-gradient">
               {t("listing.hero.headline")}
@@ -119,7 +157,7 @@ export function AICapabilitiesClientPage({
           </p>
         </section>
 
-        {/* Category filters */}
+        {/* ─── Category filters ─────────────────────────────────── */}
         {categories.length > 0 && (
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             <Link
@@ -163,11 +201,11 @@ export function AICapabilitiesClientPage({
           })}
         </p>
 
-        {/* Grid */}
+        {/* ─── Grid ──────────────────────────────────────────────── */}
         {capabilities.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-4xl mb-4 opacity-30">
-              <Brain className="size-10 mx-auto" aria-hidden="true" />
+            <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-muted/40 text-muted-foreground/50">
+              <ImageOff className="size-6" aria-hidden="true" />
             </div>
             <p className="text-[14px] text-muted-foreground">
               {t("listing.empty")}
@@ -177,59 +215,47 @@ export function AICapabilitiesClientPage({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((cap) => {
               const Icon = resolveLucideIcon(cap.icon);
-              const imageUrl = cap.cover_image?.url
-                ? getMediaUrl(cap.cover_image.url)
+              const MaturityIcon = cap.maturity_level
+                ? (MATURITY_ICONS[cap.maturity_level] ?? BadgeCheck)
                 : null;
-              const imageAlt = cap.cover_image?.alt_text || cap.name;
+              // API's localized display value takes priority; hardcoded map is only a fallback.
               const maturityLabel = cap.maturity_level
-                ? MATURITY_LABELS[cap.maturity_level] ||
-                  cap.maturity_level_display
+                ? cap.maturity_level_display ||
+                  MATURITY_FALLBACK_LABELS[cap.maturity_level]
                 : null;
+              const excerpt = htmlToPlainText(cap.description, 110);
 
               return (
                 <article
                   key={cap.id}
                   className="group relative flex flex-col rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/5 hover:border-primary/40"
                 >
-                  <div className="relative h-44 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
-                    {imageUrl ? (
-                      <Image
-                        src={imageUrl}
-                        alt={imageAlt}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading="lazy"
-                        unoptimized
-                      />
-                    ) : (
-                      <div className="flex size-full items-center justify-center">
-                        <Brain
-                          className="size-10 text-primary/30"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    )}
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <MediaImage
+                      src={cap.cover_image?.url}
+                      alt={cap.cover_image?.alt_text || cap.name}
+                      fallbackIcon={Icon}
+                      imgClassName="transition-transform duration-500 group-hover:scale-105"
+                    />
                     <div
                       aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card/90 via-card/40 to-transparent"
+                      className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-card/90 via-card/40 to-transparent"
                     />
 
-                    {/* Maturity badge */}
-                    {maturityLabel && (
+                    {maturityLabel && MaturityIcon && (
                       <span
                         className={cn(
-                          "absolute top-3 end-3 inline-flex items-center rounded-full border text-[10px] font-semibold px-2 py-0.5",
+                          "absolute top-3 inset-e-3 inline-flex items-center gap-1 rounded-full border text-[10px] font-semibold px-2 py-0.5",
                           MATURITY_COLORS[cap.maturity_level || ""] ||
                             "bg-muted/50 text-muted-foreground border-border/20",
                         )}
                       >
+                        <MaturityIcon className="size-2.5" aria-hidden="true" />
                         {maturityLabel}
                       </span>
                     )}
 
-                    {/* Icon badge */}
-                    <span className="absolute top-3 start-3 inline-flex items-center justify-center size-7 rounded-lg bg-background/80 backdrop-blur-sm border border-border/30 shadow-sm">
+                    <span className="absolute top-3 inset-s-3 inline-flex items-center justify-center size-7 rounded-lg bg-background/80 backdrop-blur-sm border border-border/30 shadow-sm">
                       <Icon
                         className="size-3.5 text-primary"
                         aria-hidden="true"
@@ -244,7 +270,11 @@ export function AICapabilitiesClientPage({
                     <h2 className="text-[16px] font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                       {cap.name}
                     </h2>
-                    {/* Description removed – it contains HTML/CSS/JS tags that are not suitable for listing cards */}
+                    {excerpt && (
+                      <p className="text-[13px] text-muted-foreground leading-relaxed line-clamp-2">
+                        {excerpt}
+                      </p>
+                    )}
                     <div className="mt-auto pt-3">
                       <Link
                         href={`/solutions/ai-capabilities/${cap.slug}` as any}
@@ -271,7 +301,7 @@ export function AICapabilitiesClientPage({
               size="lg"
               onClick={handleLoadMore}
               disabled={isPending}
-              className="min-w-[160px] border-brand-gradient"
+              className="min-w-40 border-brand-gradient"
             >
               {isPending ? (
                 <Loader2 className="size-4 animate-spin" aria-hidden="true" />
@@ -282,11 +312,12 @@ export function AICapabilitiesClientPage({
           </div>
         )}
 
-        {/* Bottom CTA */}
+        {/* ─── Bottom CTA ───────────────────────────────────────── */}
         <section className="mt-16 sm:mt-20 relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
+          <BlueprintGrid />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
+            className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
           />
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
             <Sparkles className="size-3" aria-hidden="true" />
@@ -323,6 +354,7 @@ export function AICapabilitiesClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }

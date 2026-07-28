@@ -978,62 +978,36 @@ export function HowItWorks({
         {/* Header */}
         <div className="text-center">
           {eyebrow && (
-            <motion.p
-              {...fadeUpInView(0)}
-              className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary"
-            >
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
               {eyebrow}
-            </motion.p>
+            </p>
           )}
-          <motion.h2
+          <h2
             id="how-it-works-heading"
-            {...fadeUpInView(0.07)}
             className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
           >
             {renderTitle()}
-          </motion.h2>
+          </h2>
           {description && (
-            <motion.p
-              {...fadeUpInView(0.14)}
-              className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground"
-            >
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
               {description}
-            </motion.p>
+            </p>
           )}
         </div>
 
         {/* Row 1: Flow steps */}
-        <motion.div {...fadeUpInView(0.1)}>
+        <div className="mt-8">
           <FlowStepsRow steps={flowSteps} isRtl={isRtl} />
-        </motion.div>
+        </div>
 
-        <motion.div {...fadeUpInView(0.12)} className="flex justify-center">
+        <div className="flex justify-center my-8">
           <div className="flex size-8 items-center justify-center rounded-full border border-border/60 bg-card text-muted-foreground shadow-sm">
             <ArrowDown className="size-4" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Row 2: Pipeline visualizer */}
-        <motion.div {...fadeUpInView(0.14)}>
-          <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-            {pipelineLabel}
-          </p>
-          <PipelineVisualizer
-            nodes={pipelineNodes}
-            edges={pipelineEdges}
-            activeActionIndex={activeActionIndex}
-            pipelineLabel={pipelineLabel}
-          />
-        </motion.div>
-
-        <motion.div {...fadeUpInView(0.15)} className="flex justify-center">
-          <div className="flex size-8 items-center justify-center rounded-full border border-border/60 bg-card text-muted-foreground shadow-sm">
-            <ArrowDown className="size-4" />
-          </div>
-        </motion.div>
-
-        {/* Row 3: Interactive sandbox */}
-        <motion.div {...fadeUpInView(0.17)}>
+        <div>
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
             {sandboxSectionLabel}
           </p>
@@ -1055,7 +1029,26 @@ export function HowItWorks({
             isRtl={isRtl}
             onActionChange={setActiveActionIndex}
           />
-        </motion.div>
+        </div>
+
+        <div className="flex justify-center my-8">
+          <div className="flex size-8 items-center justify-center rounded-full border border-border/60 bg-card text-muted-foreground shadow-sm">
+            <ArrowDown className="size-4" />
+          </div>
+        </div>
+
+        {/* Row 3: Interactive sandbox */}
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+            {pipelineLabel}
+          </p>
+          <PipelineVisualizer
+            nodes={pipelineNodes}
+            edges={pipelineEdges}
+            activeActionIndex={activeActionIndex}
+            pipelineLabel={pipelineLabel}
+          />
+        </div>
       </div>
     </section>
   );

@@ -19,25 +19,17 @@ import {
   RefreshCcw,
   Briefcase,
   FileText,
-  Images,
-  Code2,
-  Cpu,
-  Globe,
-  ShieldCheck,
-  Cloud,
-  Smartphone,
-  Palette,
-  BarChart3,
   X,
   ChevronLeft,
   ChevronRight,
-  ZoomIn,
   CalendarDays,
   Send,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import { getMediaUrl } from "@/lib/env";
+import { resolveMediaUrl } from "@/lib/automex/media";
+import { sanitizeRichHtml } from "@/lib/automex/rich-content";
 import { cn } from "@/lib/utils";
 import type {
   BlogPostDetailFull,
@@ -47,7 +39,20 @@ import type {
 } from "@/lib/automex/types";
 import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
-// ─── Custom Icons (inline SVG to avoid lucide-react import issues) ──
+// ─── Custom social SVG icons ──────────────────────────────────────────
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -60,77 +65,6 @@ function LinkedinIcon({ className }: { className?: string }) {
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
   );
-}
-
-function GithubIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z" />
-    </svg>
-  );
-}
-
-// ─── Server‑safe HTML entity decoder ─────────────────────────────────
-
-function decodeHtml(html: string): string {
-  if (!html) return "";
-
-  // HTML entity mappings (common ones)
-  const entities: Record<string, string> = {
-    "&amp;": "&",
-    "&lt;": "<",
-    "&gt;": ">",
-    "&quot;": '"',
-    "&#039;": "'",
-    "&#39;": "'",
-    "&apos;": "'",
-    "&nbsp;": " ",
-    "&copy;": "©",
-    "&reg;": "®",
-    "&trade;": "™",
-    "&hellip;": "…",
-    "&mdash;": "—",
-    "&ndash;": "–",
-    "&lsquo;": "‘",
-    "&rsquo;": "’",
-    "&ldquo;": "“",
-    "&rdquo;": "”",
-    "&bull;": "•",
-    "&deg;": "°",
-    "&plusmn;": "±",
-    "&times;": "×",
-    "&divide;": "÷",
-    "&euro;": "€",
-    "&pound;": "£",
-    "&yen;": "¥",
-    "&cent;": "¢",
-  };
-
-  let result = html;
-
-  // Replace named entities
-  for (const [entity, char] of Object.entries(entities)) {
-    result = result.replaceAll(entity, char);
-  }
-
-  // Replace numeric entities (e.g., &#123;)
-  result = result.replace(/&#(\d+);/g, (_, num) => {
-    const code = parseInt(num, 10);
-    return String.fromCharCode(code);
-  });
-
-  // Replace hex entities (e.g., &#x2F;)
-  result = result.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => {
-    const code = parseInt(hex, 16);
-    return String.fromCharCode(code);
-  });
-
-  return result;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────
@@ -151,16 +85,16 @@ function tagName(tag: BlogPostDetailFull["tags"][number]): string {
 // ─── Category icon resolver ───────────────────────────────────────────
 
 const BLOG_ICON_MAP: Record<string, LucideIcon> = {
-  "lucide:code-2": Code2,
-  "lucide:cpu": Cpu,
-  "lucide:globe": Globe,
-  "lucide:shield-check": ShieldCheck,
-  "lucide:cloud": Cloud,
-  "lucide:smartphone": Smartphone,
-  "lucide:palette": Palette,
-  "lucide:bar-chart-3": BarChart3,
+  "lucide:code-2": BookOpen,
+  "lucide:cpu": BookOpen,
+  "lucide:globe": BookOpen,
+  "lucide:shield-check": BookOpen,
+  "lucide:cloud": BookOpen,
+  "lucide:smartphone": BookOpen,
+  "lucide:palette": BookOpen,
+  "lucide:bar-chart-3": BookOpen,
   "lucide:book-open": BookOpen,
-  "lucide:sparkles": Sparkles,
+  "lucide:sparkles": BookOpen,
 };
 
 function categoryIcon(iconName: string | undefined): LucideIcon | null {
@@ -294,7 +228,7 @@ function StickyMiniHeader({
   );
 }
 
-// ─── Share Buttons (Enhanced UI) ─────────────────────────────────────
+// ─── Share Buttons ─────────────────────────────────────────────────────
 
 function ShareButtons({ url, title }: { url: string; title: string }) {
   const [copied, setCopied] = useState(false);
@@ -326,12 +260,7 @@ function ShareButtons({ url, title }: { url: string; title: string }) {
         className="group inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-border/30 bg-card/40 text-muted-foreground transition-all hover:border-[#1DA1F2] hover:bg-[#1DA1F2]/10 hover:text-[#1DA1F2]"
         aria-label="Share on Twitter"
       >
-        <svg
-          className="h-4 w-4 fill-current transition-colors group-hover:text-[#1DA1F2]"
-          viewBox="0 0 24 24"
-        >
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
+        <X className="h-4 w-4 transition-colors group-hover:text-[#1DA1F2]" />
       </button>
 
       <button
@@ -339,12 +268,7 @@ function ShareButtons({ url, title }: { url: string; title: string }) {
         className="group inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-border/30 bg-card/40 text-muted-foreground transition-all hover:border-[#1877F2] hover:bg-[#1877F2]/10 hover:text-[#1877F2]"
         aria-label="Share on Facebook"
       >
-        <svg
-          className="h-4 w-4 fill-current transition-colors group-hover:text-[#1877F2]"
-          viewBox="0 0 24 24"
-        >
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
+        <FacebookIcon className="h-4 w-4 transition-colors group-hover:text-[#1877F2]" />
       </button>
 
       <button
@@ -360,13 +284,7 @@ function ShareButtons({ url, title }: { url: string; title: string }) {
         className="group inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-border/30 bg-card/40 text-muted-foreground transition-all hover:border-[#25D366] hover:bg-[#25D366]/10 hover:text-[#25D366]"
         aria-label="Share on WhatsApp"
       >
-        <svg
-          className="h-4 w-4 fill-current transition-colors group-hover:text-[#25D366]"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm0 18.23c-1.5 0-2.96-.4-4.23-1.11l-.3-.18-3.12.82.83-3.04-.2-.31c-.78-1.31-1.19-2.81-1.19-4.34 0-4.6 3.74-8.34 8.34-8.34 4.6 0 8.34 3.74 8.34 8.34 0 4.6-3.74 8.34-8.34 8.34z" />
-          <path d="M16.6 13.49c-.25-.12-1.48-.73-1.71-.81-.23-.08-.4-.12-.56.12-.16.24-.63.81-.77.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.02-.47-.02-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.57.18 1.09.15 1.5.09.46-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.19-.06-.11-.22-.18-.47-.3z" />
-        </svg>
+        <MessageCircle className="h-4 w-4 transition-colors group-hover:text-[#25D366]" />
       </button>
 
       <button
@@ -461,7 +379,7 @@ function GalleryLightbox({
 
       <figure className="relative z-1 max-h-[85vh] max-w-4xl">
         <Image
-          src={getMediaUrl(current.url)}
+          src={resolveMediaUrl(current.url) ?? ""}
           alt={current.alt_text || current.caption || ""}
           width={1200}
           height={800}
@@ -483,7 +401,7 @@ function GalleryLightbox({
   );
 }
 
-// ─── Table of Contents (Enhanced UI) ──────────────────────────────────
+// ─── Table of Contents ────────────────────────────────────────────────
 
 function TableOfContents({
   headings,
@@ -635,7 +553,7 @@ function GalleryCarousel({
               onClick={() => onImageClick(idx)}
             >
               <Image
-                src={getMediaUrl(img.url)}
+                src={resolveMediaUrl(img.url) ?? ""}
                 alt={img.alt_text || img.caption || ""}
                 fill
                 className="object-cover transition-transform duration-300 hover:scale-[1.02]"
@@ -647,7 +565,6 @@ function GalleryCarousel({
                   <p className="text-sm text-white/90">{img.caption}</p>
                 </div>
               )}
-              {/* Auto‑play indicator (optional) */}
               {totalSlides > 1 && (
                 <div className="absolute top-3 right-3 z-10 flex items-center gap-1 rounded-full bg-black/30 px-2 py-0.5 text-xs text-white/70 backdrop-blur-sm">
                   <span>{idx + 1}</span>
@@ -702,12 +619,12 @@ function GalleryCarousel({
   );
 }
 
-// ─── Author Bio (full – at bottom) ──────────────────────────────────
+// ─── Author Bio ──────────────────────────────────────────────────────
 
 function AuthorBioFull({ author }: { author: BlogPostDetailFull["author"] }) {
   if (!author) return null;
 
-  const avatarUrl = author.avatar?.url ? getMediaUrl(author.avatar.url) : null;
+  const avatarUrl = author.avatar?.url ? resolveMediaUrl(author.avatar.url) : null;
 
   return (
     <div className="border-t border-border/20 pt-6">
@@ -758,7 +675,13 @@ function AuthorBioFull({ author }: { author: BlogPostDetailFull["author"] }) {
                   rel="noopener noreferrer"
                   className="group inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-muted/50 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
                 >
-                  <GithubIcon className="size-3.5 transition-transform group-hover:scale-110" />
+                  <svg
+                    className="size-3.5 transition-transform group-hover:scale-110"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z" />
+                  </svg>
                   GitHub
                 </a>
               )}
@@ -784,7 +707,7 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetailFull }) {
   // Cover image
   const coverUrl =
     post.cover_image?.url && post.cover_image.file_type !== "video"
-      ? getMediaUrl(post.cover_image.url)
+      ? resolveMediaUrl(post.cover_image.url)
       : null;
   const coverAlt = post.cover_image?.alt_text || post.title;
 
@@ -796,16 +719,16 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetailFull }) {
       caption: img.caption || "",
     })) || [];
 
-  // Decode content — uses server‑safe decoder
-  const decodedContent = useMemo(() => {
+  // Sanitize content – use sanitizeRichHtml on the body content
+  const contentBody = useMemo(() => {
     const raw = extractBodyHtml(post.content);
-    return decodeHtml(raw);
+    return sanitizeRichHtml(raw);
   }, [post.content]);
 
-  // Inject heading ids for TOC
+  // Inject heading ids for TOC (after sanitization)
   const { html: contentWithIds, headings } = useMemo(
-    () => injectHeadingIds(decodedContent),
-    [decodedContent],
+    () => injectHeadingIds(contentBody),
+    [contentBody],
   );
 
   // Scroll-spy for active heading
@@ -895,7 +818,7 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetailFull }) {
         copied={false}
       />
 
-      <div className="relative overflow-hidden mt-24">
+      <div className="relative overflow-hidden">
         {/* Background decorations */}
         <div
           aria-hidden="true"
@@ -905,7 +828,7 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetailFull }) {
           <div className="absolute top-1/3 -left-32 size-80 rounded-full bg-accent/30 blur-3xl" />
         </div>
 
-        <article className="mx-auto max-w-7xl px-4 py-12 sm:py-16 lg:py-20">
+        <article className="mx-auto max-w-5xl px-4 py-12 sm:py-16 lg:py-20 mt-12 md:mt-24">
           {/* ─── Header: Centered, editorial ──────────────────── */}
           <header className="mb-8 text-center">
             {/* Category + badges */}
@@ -1046,9 +969,9 @@ export function BlogDetailClientPage({ post }: { post: BlogPostDetailFull }) {
                 </details>
               )}
 
-              {/* Main content */}
+              {/* Main content – now uses sanitizeRichHtml + content-blocks CSS */}
               <div
-                className="prose prose-lg max-w-none scroll-mt-24"
+                className="prose-content prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-ul:text-muted-foreground prose-li:text-muted-foreground prose-blockquote:border-primary prose-blockquote:bg-muted/30 prose-blockquote:p-4 prose-blockquote:rounded-xl prose-pre:bg-muted/50 prose-code:text-primary prose-code:bg-muted/30 prose-code:px-1 prose-code:py-0.5 prose-code:rounded scroll-mt-24"
                 dangerouslySetInnerHTML={{ __html: contentWithIds }}
               />
 

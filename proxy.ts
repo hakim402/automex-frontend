@@ -23,6 +23,13 @@ const intlMiddleware = createIntlMiddleware(routing);
 /** Require a valid session — redirect to /sign-in if missing. */
 const PROTECTED_ROUTES = [
   "/dashboard",
+  "/requests",
+  "/bookings",
+  "/conversations",
+  "/calculations",
+  "/conversations",
+  "/notifications",
+  "/support",
   "/profile",
   "/security",
   "/settings",

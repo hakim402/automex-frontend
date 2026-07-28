@@ -50,10 +50,16 @@ import {
   createGuestTicketAction,
   sendGuestTicketMessageAction,
 } from "../../actions";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Types ────────────────────────────────────────────────────────────────
 
-type View = "token" | "requests" | "requestDetail" | "ticketDetail" | "createTicket";
+type View =
+  | "token"
+  | "requests"
+  | "requestDetail"
+  | "ticketDetail"
+  | "createTicket";
 
 interface ActivityItem {
   action?: string;
@@ -90,7 +96,10 @@ function formatDateShort(iso: string): string {
   }).format(new Date(iso));
 }
 
-const LEAD_TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+const LEAD_TYPE_ICONS: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   contact: Mail,
   quote: FileText,
   booking: PhoneCall,
@@ -112,7 +121,10 @@ const PRIORITY_COLORS: Record<string, string> = {
   urgent: "bg-red-500/10 text-red-500",
 };
 
-const TICKET_TYPES: { value: string; icon: React.ComponentType<{ className?: string }> }[] = [
+const TICKET_TYPES: {
+  value: string;
+  icon: React.ComponentType<{ className?: string }>;
+}[] = [
   { value: "general_inquiry", icon: MessageSquare },
   { value: "technical_support", icon: Zap },
   { value: "project_request", icon: FileText },
@@ -140,8 +152,11 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
 
   // ── Data state ────────────────────────────────────────────────────────
   const [requests, setRequests] = useState<GuestLead[]>([]);
-  const [selectedRequest, setSelectedRequest] = useState<GuestLeadDetail | null>(null);
-  const [selectedTicket, setSelectedTicket] = useState<GuestTicket | null>(null);
+  const [selectedRequest, setSelectedRequest] =
+    useState<GuestLeadDetail | null>(null);
+  const [selectedTicket, setSelectedTicket] = useState<GuestTicket | null>(
+    null,
+  );
   const [replyBody, setReplyBody] = useState("");
 
   // ── Form state ────────────────────────────────────────────────────────
@@ -185,7 +200,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
         setError(result.message ?? t("errors.invalidToken"));
       }
     },
-    [locale, t]
+    [locale, t],
   );
 
   function handleTokenSubmit(e: React.FormEvent) {
@@ -232,7 +247,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
           guest_email: ticketEmail,
           priority: ticketPriority as "normal",
         },
-        locale
+        locale,
       );
       if (result.success) {
         setSuccessMsg(t("createTicket.success"));
@@ -259,7 +274,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
         selectedTicket.id,
         token,
         { body: replyBody.trim() },
-        locale
+        locale,
       );
       if (result.success) {
         setReplyBody("");
@@ -267,7 +282,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
         const refreshed = await fetchGuestTicketDetailAction(
           selectedTicket.id,
           token,
-          locale
+          locale,
         );
         if (refreshed.success) {
           setSelectedTicket(refreshed.data);
@@ -301,7 +316,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
       <span
         className={cn(
           "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider",
-          color
+          color,
         )}
       >
         {t(`statusLabels.${status}`) || status}
@@ -315,7 +330,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
       <span
         className={cn(
           "inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider",
-          color
+          color,
         )}
       >
         {t(`priorityLabels.${priority}`) || priority}
@@ -328,11 +343,14 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
   return (
     <>
       {/* ═══ Hero ═══════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden mt-10 md:mt-20">
         {/* Background decoration */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-40 -right-40 size-[500px] rounded-full bg-[#0ab8fb]/5 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 size-[400px] rounded-full bg-[#324b9d]/5 blur-3xl" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+        >
+          <div className="absolute -top-40 -right-40 size-125 rounded-full bg-[#0ab8fb]/5 blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 size-100 rounded-full bg-[#324b9d]/5 blur-3xl" />
         </div>
 
         <div className="mx-auto max-w-4xl px-4 pt-20 pb-8 sm:pt-28 sm:pb-12 text-center">
@@ -343,7 +361,9 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
             {t("hero.headlineLead")}{" "}
-            <span className="text-brand-gradient">{t("hero.headlineAccent")}</span>
+            <span className="text-brand-gradient">
+              {t("hero.headlineAccent")}
+            </span>
           </h1>
 
           <p className="text-[15px] sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
@@ -383,7 +403,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                 {t("token.description")}
               </p>
 
-              <form onSubmit={handleTokenSubmit} className="flex flex-col gap-3">
+              <form
+                onSubmit={handleTokenSubmit}
+                className="flex flex-col gap-3"
+              >
                 <Input
                   value={token}
                   onChange={(e) => setToken(e.target.value)}
@@ -397,7 +420,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                   className="bg-brand-gradient shadow-brand"
                 >
                   {tokenLoading ? (
-                    <Loader2 className="size-4 animate-spin mr-1.5" aria-hidden="true" />
+                    <Loader2
+                      className="size-4 animate-spin mr-1.5"
+                      aria-hidden="true"
+                    />
                   ) : (
                     <Search className="size-4 mr-1.5" aria-hidden="true" />
                   )}
@@ -420,7 +446,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                   onClick={goToToken}
                   className="text-muted-foreground hover:text-foreground -ml-2"
                 >
-                  <ArrowLeft className="size-4 mr-1 rtl:rotate-180" aria-hidden="true" />
+                  <ArrowLeft
+                    className="size-4 mr-1 rtl:rotate-180"
+                    aria-hidden="true"
+                  />
                   {t("back.toToken")}
                 </Button>
               </div>
@@ -437,12 +466,18 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
             {/* Request list */}
             {tokenLoading ? (
               <div className="flex items-center justify-center py-20">
-                <Loader2 className="size-6 animate-spin text-primary" aria-hidden="true" />
+                <Loader2
+                  className="size-6 animate-spin text-primary"
+                  aria-hidden="true"
+                />
               </div>
             ) : requests.length === 0 ? (
               <div className="rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm p-12 text-center">
                 <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-xl bg-muted">
-                  <FileText className="size-5 text-muted-foreground" aria-hidden="true" />
+                  <FileText
+                    className="size-5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
                 </div>
                 <h3 className="text-base font-semibold text-foreground mb-1">
                   {t("requests.empty")}
@@ -461,16 +496,19 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                       onClick={() => openRequestDetail(req.id)}
                       className={cn(
                         "group relative flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-5 text-left transition-all duration-300",
-                        "hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-start/5 hover:border-primary/30"
+                        "hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-start/5 hover:border-primary/30",
                       )}
                     >
                       {/* Gradient wash on hover */}
-                      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0ab8fb]/5 to-[#324b9d]/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-br from-[#0ab8fb]/5 to-[#324b9d]/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                       <div className="relative z-10 flex items-start justify-between gap-2">
                         <div className="flex items-center gap-2.5">
                           <div className="flex size-9 items-center justify-center rounded-lg bg-[#0ab8fb]/10">
-                            <Icon className="size-4 text-[#0ab8fb]" aria-hidden="true" />
+                            <Icon
+                              className="size-4 text-[#0ab8fb]"
+                              aria-hidden="true"
+                            />
                           </div>
                           <div>
                             <p className="text-sm font-semibold text-foreground leading-tight">
@@ -478,7 +516,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                             </p>
                             {req.company && (
                               <p className="text-[11px] text-muted-foreground mt-0.5 flex items-center gap-1">
-                                <Building2 className="size-3" aria-hidden="true" />
+                                <Building2
+                                  className="size-3"
+                                  aria-hidden="true"
+                                />
                                 {req.company}
                               </p>
                             )}
@@ -494,7 +535,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                         </span>
                         <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-primary transition-colors group-hover:text-[#0ab8fb]">
                           {t("requests.viewDetail")}
-                          <ChevronRight className="size-3.5 rtl:rotate-180 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" aria-hidden="true" />
+                          <ChevronRight
+                            className="size-3.5 rtl:rotate-180 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
+                            aria-hidden="true"
+                          />
                         </span>
                       </div>
                     </button>
@@ -514,7 +558,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
               onClick={goBack}
               className="text-muted-foreground hover:text-foreground -ml-2 mb-5"
             >
-              <ArrowLeft className="size-4 mr-1 rtl:rotate-180" aria-hidden="true" />
+              <ArrowLeft
+                className="size-4 mr-1 rtl:rotate-180"
+                aria-hidden="true"
+              />
               {t("back.toRequests")}
             </Button>
 
@@ -528,7 +575,8 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                   </span>
                 </div>
                 <span className="text-[12px] text-muted-foreground">
-                  {t("request.submitted")}: {formatDate(selectedRequest.created_at)}
+                  {t("request.submitted")}:{" "}
+                  {formatDate(selectedRequest.created_at)}
                 </span>
               </div>
 
@@ -578,12 +626,12 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                 return (
                   <div className="relative pl-6">
                     {/* Timeline line */}
-                    <div className="absolute left-[7px] top-1 bottom-1 w-px bg-border/60" />
+                    <div className="absolute left-1.75 top-1 bottom-1 w-px bg-border/60" />
                     <ul className="space-y-4">
                       {activities.map((act, i) => (
                         <li key={i} className="relative">
                           {/* Dot */}
-                          <div className="absolute -left-[22px] top-1.5 size-[9px] rounded-full border-2 border-[#0ab8fb] bg-card" />
+                          <div className="absolute -left-5.5 top-1.5 size-2.25 rounded-full border-2 border-[#0ab8fb] bg-card" />
                           <p className="text-[13px] text-foreground leading-snug">
                             {act.description || act.action || "—"}
                           </p>
@@ -618,7 +666,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
               onClick={goBack}
               className="text-muted-foreground hover:text-foreground -ml-2 mb-5"
             >
-              <ArrowLeft className="size-4 mr-1 rtl:rotate-180" aria-hidden="true" />
+              <ArrowLeft
+                className="size-4 mr-1 rtl:rotate-180"
+                aria-hidden="true"
+              />
               {t("back.toRequests")}
             </Button>
 
@@ -676,7 +727,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                   <label className="block text-[13px] font-medium text-foreground mb-1.5">
                     {t("createTicket.priorityLabel")}
                   </label>
-                  <Select value={ticketPriority} onValueChange={setTicketPriority}>
+                  <Select
+                    value={ticketPriority}
+                    onValueChange={setTicketPriority}
+                  >
                     <SelectTrigger className="h-10 text-sm">
                       <SelectValue />
                     </SelectTrigger>
@@ -713,17 +767,25 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                     onChange={(e) => setTicketDescription(e.target.value)}
                     placeholder={t("createTicket.descriptionPlaceholder")}
                     required
-                    className="min-h-[120px] text-sm resize-y"
+                    className="min-h-30 text-sm resize-y"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  disabled={isPending || !ticketTitle.trim() || !ticketDescription.trim() || !ticketEmail.trim()}
+                  disabled={
+                    isPending ||
+                    !ticketTitle.trim() ||
+                    !ticketDescription.trim() ||
+                    !ticketEmail.trim()
+                  }
                   className="w-full bg-brand-gradient shadow-brand"
                 >
                   {isPending ? (
-                    <Loader2 className="size-4 animate-spin mr-1.5" aria-hidden="true" />
+                    <Loader2
+                      className="size-4 animate-spin mr-1.5"
+                      aria-hidden="true"
+                    />
                   ) : (
                     <Send className="size-4 mr-1.5" aria-hidden="true" />
                   )}
@@ -743,7 +805,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
               onClick={goBack}
               className="text-muted-foreground hover:text-foreground -ml-2 mb-5"
             >
-              <ArrowLeft className="size-4 mr-1 rtl:rotate-180" aria-hidden="true" />
+              <ArrowLeft
+                className="size-4 mr-1 rtl:rotate-180"
+                aria-hidden="true"
+              />
               {t("back.toRequests")}
             </Button>
 
@@ -777,7 +842,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
             {/* Messages thread */}
             <div className="rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 sm:p-8 mb-4">
               <h3 className="text-sm font-bold text-foreground mb-5 flex items-center gap-2">
-                <MessageSquare className="size-4 text-primary" aria-hidden="true" />
+                <MessageSquare
+                  className="size-4 text-primary"
+                  aria-hidden="true"
+                />
                 {t("ticket.messages")}
                 {selectedTicket.messages.length > 0 && (
                   <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
@@ -797,12 +865,15 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                       key={msg.id}
                       className={cn(
                         "flex gap-3",
-                        msg.author_is_staff ? "justify-start" : "justify-end"
+                        msg.author_is_staff ? "justify-start" : "justify-end",
                       )}
                     >
                       {msg.author_is_staff && (
                         <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#0ab8fb]/10 mt-0.5">
-                          <Zap className="size-3.5 text-[#0ab8fb]" aria-hidden="true" />
+                          <Zap
+                            className="size-3.5 text-[#0ab8fb]"
+                            aria-hidden="true"
+                          />
                         </div>
                       )}
 
@@ -811,7 +882,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                           "max-w-[75%] rounded-2xl px-4 py-3",
                           msg.author_is_staff
                             ? "bg-muted/60 rounded-tl-sm"
-                            : "bg-[#0ab8fb]/10 rounded-tr-sm"
+                            : "bg-[#0ab8fb]/10 rounded-tr-sm",
                         )}
                       >
                         <div className="flex items-center gap-2 mb-1">
@@ -829,7 +900,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
 
                       {!msg.author_is_staff && (
                         <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted mt-0.5">
-                          <User className="size-3.5 text-muted-foreground" aria-hidden="true" />
+                          <User
+                            className="size-3.5 text-muted-foreground"
+                            aria-hidden="true"
+                          />
                         </div>
                       )}
                     </div>
@@ -849,7 +923,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                   onChange={(e) => setReplyBody(e.target.value)}
                   placeholder={t("ticket.replyPlaceholder")}
                   required
-                  className="min-h-[80px] text-sm resize-y"
+                  className="min-h-20 text-sm resize-y"
                 />
                 <div className="flex justify-end">
                   <Button
@@ -859,7 +933,10 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
                     className="bg-brand-gradient shadow-brand"
                   >
                     {isPending ? (
-                      <Loader2 className="size-4 animate-spin mr-1.5" aria-hidden="true" />
+                      <Loader2
+                        className="size-4 animate-spin mr-1.5"
+                        aria-hidden="true"
+                      />
                     ) : (
                       <Send className="size-3.5 mr-1.5" aria-hidden="true" />
                     )}
@@ -871,6 +948,7 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
           </div>
         )}
       </section>
+      <FooterSection />
     </>
   );
 }

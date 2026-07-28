@@ -1,12 +1,20 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowRight, Globe, Building2, ChevronLeft, ExternalLink, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  Globe,
+  Building2,
+  ChevronLeft,
+  ExternalLink,
+  Shield,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 import { getMediaUrl } from "@/lib/env";
 import type { Partner } from "@/lib/automex/types";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 interface PartnerDetailClientPageProps {
   partner: Partner;
@@ -23,21 +31,30 @@ const TIER_COLORS: Record<string, string> = {
 /** Partner type icon mapping. */
 function getTypeIcon(type: string) {
   switch (type) {
-    case "cloud": return <Globe className="size-4" aria-hidden="true" />;
-    case "technology": return <Shield className="size-4" aria-hidden="true" />;
-    case "implementation": return <Building2 className="size-4" aria-hidden="true" />;
-    default: return <Building2 className="size-4" aria-hidden="true" />;
+    case "cloud":
+      return <Globe className="size-4" aria-hidden="true" />;
+    case "technology":
+      return <Shield className="size-4" aria-hidden="true" />;
+    case "implementation":
+      return <Building2 className="size-4" aria-hidden="true" />;
+    default:
+      return <Building2 className="size-4" aria-hidden="true" />;
   }
 }
 
-export function PartnerDetailClientPage({ partner }: PartnerDetailClientPageProps) {
+export function PartnerDetailClientPage({
+  partner,
+}: PartnerDetailClientPageProps) {
   const t = useTranslations("Partners");
 
   return (
-    <div className="relative overflow-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-        <div className="absolute top-1/3 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+    <div className="relative overflow-hidden mt-16 md:mt-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-24 right-0 size-112.5 rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+        <div className="absolute top-1/3 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-4xl px-4 py-12 sm:py-20">
@@ -62,7 +79,10 @@ export function PartnerDetailClientPage({ partner }: PartnerDetailClientPageProp
                 className="max-h-full max-w-full object-contain"
               />
             ) : (
-              <Building2 className="size-10 text-primary/30" aria-hidden="true" />
+              <Building2
+                className="size-10 text-primary/30"
+                aria-hidden="true"
+              />
             )}
           </div>
 
@@ -80,10 +100,13 @@ export function PartnerDetailClientPage({ partner }: PartnerDetailClientPageProp
                 </span>
               )}
               {partner.tier && partner.tier_display && (
-                <span className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-semibold",
-                  TIER_COLORS[partner.tier] || "bg-muted/50 text-muted-foreground border border-border/20"
-                )}>
+                <span
+                  className={cn(
+                    "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[12px] font-semibold",
+                    TIER_COLORS[partner.tier] ||
+                      "bg-muted/50 text-muted-foreground border border-border/20",
+                  )}
+                >
                   <Shield className="size-3.5" aria-hidden="true" />
                   {partner.tier_display}
                 </span>
@@ -104,8 +127,16 @@ export function PartnerDetailClientPage({ partner }: PartnerDetailClientPageProp
         {/* Actions */}
         <div className="flex flex-wrap items-center gap-4">
           {partner.website_url && (
-            <Button asChild size="lg" className="bg-brand-gradient shadow-brand">
-              <a href={partner.website_url} target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              size="lg"
+              className="bg-brand-gradient shadow-brand"
+            >
+              <a
+                href={partner.website_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Visit Website
                 <ExternalLink className="size-4 ml-1.5" aria-hidden="true" />
               </a>
@@ -114,11 +145,15 @@ export function PartnerDetailClientPage({ partner }: PartnerDetailClientPageProp
           <Button asChild variant="outline" size="lg">
             <Link href="/crm/quote">
               Work with {partner.name}
-              <ArrowRight className="size-4 ml-1.5 rtl:rotate-180" aria-hidden="true" />
+              <ArrowRight
+                className="size-4 ml-1.5 rtl:rotate-180"
+                aria-hidden="true"
+              />
             </Link>
           </Button>
         </div>
       </div>
+      <FooterSection />
     </div>
   );
 }

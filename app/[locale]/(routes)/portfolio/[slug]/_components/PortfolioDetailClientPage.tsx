@@ -170,7 +170,7 @@ export function PortfolioDetailClientPage({
   const coverAlt = project.cover_image?.alt_text || project.title;
 
   return (
-    <div className="relative overflow-hidden mt-32">
+    <div className="relative overflow-hidden">
       {/* ─── Background decoration ─────────────────────────────── */}
       <div
         aria-hidden="true"
@@ -181,8 +181,7 @@ export function PortfolioDetailClientPage({
         <div className="absolute bottom-0 left-1/2 size-72 rounded-full bg-primary/3 blur-3xl -translate-x-1/2" />
       </div>
 
-      <article className="mx-auto max-w-4xl px-4 pb-16 sm:pb-24">
-
+      <article className="mx-auto max-w-4xl px-4 pb-16 sm:pb-24 mt-28 md:mt-40">
         {/* ─── Header ───────────────────────────────────────────── */}
         <header className="mb-8 text-center">
           {/* Badges */}

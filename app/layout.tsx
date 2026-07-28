@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+import "./content-blocks.css"
 import { Toaster } from "@/components/ui/sonner";
 import { validateEnv } from "@/lib/env";
 import { GoogleOauthProvider } from "@/providers/GoogleOauthProvider";

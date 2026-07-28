@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     pathSegment: "partners",
     customTitle: "Partners – AUTOMEX Technology & Implementation Partners",
-    customDescription: "Meet AUTOMEX partners — technology providers, cloud platforms, and implementation experts we collaborate with.",
+    customDescription:
+      "Meet AUTOMEX partners — technology providers, cloud platforms, and implementation experts we collaborate with.",
   });
 }
 

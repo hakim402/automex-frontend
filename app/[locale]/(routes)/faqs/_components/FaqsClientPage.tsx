@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import type { FAQ, FAQCategory } from "@/lib/automex/types";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Types ─────────────────────────────────────────────────────────────
 
@@ -47,7 +48,10 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-3 px-5 py-4 text-left text-[14px] font-medium text-foreground hover:bg-muted/20 transition-colors cursor-pointer"
       >
-        <HelpCircle className="size-4 shrink-0 text-primary/60" aria-hidden="true" />
+        <HelpCircle
+          className="size-4 shrink-0 text-primary/60"
+          aria-hidden="true"
+        />
         <span className="flex-1">{question}</span>
         <ChevronDown
           className={cn(
@@ -70,7 +74,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export function FaqsClientPage({ faqs }: FaqsClientPageProps) {
   const t = useTranslations("FaqsPage");
-  const [activeCategory, setActiveCategory] = useState<FAQCategory | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<FAQCategory | "all">(
+    "all",
+  );
 
   const filteredFaqs = useMemo(() => {
     if (activeCategory === "all") return faqs;
@@ -90,18 +96,17 @@ export function FaqsClientPage({ faqs }: FaqsClientPageProps) {
   return (
     <div className="relative overflow-hidden">
       {/* Background blobs */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 right-0 size-[450px] rounded-full bg-[#0ab8fb]/3 blur-3xl" />
-        <div className="absolute top-1/2 -left-32 size-[350px] rounded-full bg-[#324b9d]/3 blur-3xl" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-24 right-0 size-112.5rounded-full bg-[#0ab8fb]/3 blur-3xl" />
+        <div className="absolute top-1/2 -left-32 size-87.5 rounded-full bg-[#324b9d]/3 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:py-24">
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:py-24 mt-12 md:mt-24">
         {/* Hero */}
         <section className="text-center mb-10 sm:mb-14">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
-            <HelpCircle className="size-3" aria-hidden="true" />
-            {t("hero.eyebrow")}
-          </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
             <span className="text-brand-gradient">{t("hero.headline")}</span>
           </h1>
@@ -149,8 +154,13 @@ export function FaqsClientPage({ faqs }: FaqsClientPageProps) {
         {/* FAQ accordion */}
         {filteredFaqs.length === 0 ? (
           <div className="text-center py-16">
-            <MessageCircle className="size-12 mx-auto text-muted-foreground/30 mb-4" aria-hidden="true" />
-            <p className="text-[14px] text-muted-foreground">{t("noResults")}</p>
+            <MessageCircle
+              className="size-12 mx-auto text-muted-foreground/30 mb-4"
+              aria-hidden="true"
+            />
+            <p className="text-[14px] text-muted-foreground">
+              {t("noResults")}
+            </p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
@@ -168,7 +178,7 @@ export function FaqsClientPage({ faqs }: FaqsClientPageProps) {
         <section className="mt-14 relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-10 text-center">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
+            className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
           />
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
             <MessageCircle className="size-3" aria-hidden="true" />
@@ -197,6 +207,7 @@ export function FaqsClientPage({ faqs }: FaqsClientPageProps) {
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }

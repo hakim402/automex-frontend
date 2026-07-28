@@ -2,10 +2,11 @@
   "Header": {
     "aboutUs": "About Us",
     "blog": "Blog",
+    "blogDescription": "Latest insights and updates",
     "bookCall": "Book a Call",
     "careers": "Careers",
     "caseStudies": "Case Studies",
-    "caseStudiesDescription": "Real-world success stories — see how we've delivered results for clients across industries.",
+    "caseStudiesDescription": "Real-world success stories see how we've delivered results for clients across industries.",
     "closeMenu": "Close menu",
     "company": "Company",
     "contact": "Contact",
@@ -119,7 +120,7 @@
     ]
   },
   "AiShowcase": {
-    "sectionTitle": "AI Showcase – Intelligent Automation",
+    "sectionTitle": "AI Showcase Intelligent Automation",
     "orbit1": "AI Agents",
     "orbit2": "Automation",
     "orbit3": "Web Dev",
@@ -127,16 +128,16 @@
     "orbit5": "API Integration",
     "orbit6": "Analytics",
     "feedItem1Title": "AI Agent Deployed",
-    "feedItem1Subtitle": "Customer support bot — 98% resolution rate",
+    "feedItem1Subtitle": "Customer support bot 98% resolution rate",
     "feedItem1Badge": "Live",
     "feedItem2Title": "Workflow Automated",
-    "feedItem2Subtitle": "CRM data sync — saved 18 hrs/week",
+    "feedItem2Subtitle": "CRM data sync saved 18 hrs/week",
     "feedItem2Badge": "Complete",
     "feedItem3Title": "WhatsApp Bot Active",
-    "feedItem3Subtitle": "Lead gen chatbot — 54 new leads today",
+    "feedItem3Subtitle": "Lead gen chatbot 54 new leads today",
     "feedItem3Badge": "Running",
     "feedItem4Title": "SaaS Platform Launched",
-    "feedItem4Subtitle": "E-commerce dashboard — 0 downtime deploy",
+    "feedItem4Subtitle": "E-commerce dashboard 0 downtime deploy",
     "feedItem4Badge": "Deployed",
     "prop1Title": "AI agents that work while you sleep",
     "prop1Body": "We build and deploy AI bots for customer support, sales, lead generation, and internal operations across WhatsApp, Telegram, your website, and beyond.",
@@ -190,7 +191,7 @@
     "task1Label": "New lead",
     "task1Thought1": "New lead submitted from website form.",
     "task1Thought2": "Checking CRM for existing contact…",
-    "task1Thought3": "Lead is qualified – high enterprise potential.",
+    "task1Thought3": "Lead is qualified high enterprise potential.",
     "task1Thought4": "Planning outreach sequence.",
     "task1Action1": "Fetch lead data",
     "task1Action2": "Enrich with company insights",
@@ -226,7 +227,7 @@
     "eyebrow": "Integrations",
     "title": "Built on tools your team already uses",
     "accentWord": "tools your team",
-    "description": "automex integrates natively with the platforms that power modern businesses — from AI models and CRM systems to cloud infrastructure and team communication.",
+    "description": "automex integrates natively with the platforms that power modern businesses from AI models and CRM systems to cloud infrastructure and team communication.",
     "allLabel": "All tools",
     "tabListLabel": "Tool categories",
     "counterIntegrations": "Integrations",
@@ -258,7 +259,7 @@
       "password": "Password",
       "passwordPlaceholder": "Enter your password",
       "confirmPassword": "Confirm password",
-      "confirmPasswordPlaceholder": "Re-enter your password",
+      "confirmPasswordPlaceholder": "Re enter your password",
       "fullName": "Full name",
       "fullNamePlaceholder": "Jane Smith",
       "company": "Company (optional)",
@@ -629,7 +630,7 @@
       "m2Bio": "Full-stack engineer turned technology executive. Hakim now oversees technical strategy, innovation, and engineering culture. He ensures every product automex ships is reliable, secure, and built to outlast the trends.",
       "m3Name": "Abdullah Stanikzai",
       "m3Role": "Lead Engineer",
-      "m3Bio": "Abdullah is a backend and infrastructure specialist with 7+ years of experience building high‑throughput microservices and real‑time systems. He leads the engineering team in implementing robust, scalable solutions and champions code quality and performance.",
+      "m3Bio": "Abdullah is a backend and infrastructure specialist with 7+ years of experience building high throughput microservices and real time systems. He leads the engineering team in implementing robust, scalable solutions and champions code quality and performance.",
       "skill1": "AI / ML",
       "skill2": "Product Strategy",
       "skill3": "System Architecture",
@@ -646,160 +647,6 @@
       "primary": "Start a conversation",
       "secondary": "Explore our services"
     }
-  },
-  "Sidebar": {
-    "menuLabel": "Menu",
-    "dashboard": "Dashboard",
-    "requests": "Requests",
-    "bookings": "Bookings",
-    "support": "Support",
-    "calculations": "Estimates",
-    "conversations": "AI Assistant",
-    "accountLabel": "Account",
-    "notifications": "Notifications",
-    "profile": "Profile",
-    "security": "Security"
-  },
-  "DashboardHeader": {
-    "openMenu": "Open navigation",
-    "profile": "Profile"
-  },
-  "Dashboard": {
-    "defaultName": "there",
-    "welcomeEyebrow": "Your workspace",
-    "greetMorning": "Good morning",
-    "greetAfternoon": "Good afternoon",
-    "greetEvening": "Good evening",
-    "welcomeDescription": "Here's an overview of your account activity and quick access to your most-used services.",
-    "ctaNewRequest": "New request",
-    "ctaBookSession": "Book a session",
-    "sectionOverview": "Overview",
-    "sectionQuickActions": "Quick Actions",
-    "retry": "Retry",
-    "statsRequests": "Total Requests",
-    "statsRequestsActive": "active",
-    "statsBookings": "Total Bookings",
-    "statsBookingsUpcoming": "upcoming",
-    "statsTickets": "Support Tickets",
-    "statsTicketsOpen": "open",
-    "statsCalculations": "Estimates",
-    "statsCalculationsTotal": "total",
-    "actionNewRequest": "New Request",
-    "actionNewRequestDesc": "Submit a quote request or contact our sales team.",
-    "actionBookCall": "Book a Call",
-    "actionBookCallDesc": "Schedule a free consultation with our experts.",
-    "actionSupport": "Get Support",
-    "actionSupportDesc": "Create a ticket or view your existing requests.",
-    "sectionRecentActivity": "Recent Activity",
-    "recentViewAll": "View all",
-    "recentEmpty": "No recent activity to show.",
-    "recentRequest": "Request",
-    "recentBooking": "Booking",
-    "recentTicket": "Ticket"
-  },
-  "Profile": {
-    "pageTitle": "My Profile",
-    "pageDescription": "Manage your personal information, address, and account details.",
-    "emailVerified": "Email verified",
-    "emailNotVerified": "Email not verified",
-    "memberSince": "Member since",
-    "sectionPersonal": "Personal Information",
-    "sectionPersonalDesc": "Update your name, contact details, and address.",
-    "sectionAddress": "Address",
-    "sectionAccount": "Account Details",
-    "sectionAccountDesc": "Read-only account metadata.",
-    "fieldFullName": "Full name",
-    "fieldPhone": "Phone number",
-    "fieldDob": "Date of birth",
-    "fieldTimezone": "Timezone",
-    "fieldAltEmail": "Alternate email",
-    "fieldLanguage": "Preferred language",
-    "fieldBio": "Bio",
-    "fieldBioPlaceholder": "Tell us a little about yourself…",
-    "fieldAddress1": "Address line 1",
-    "fieldAddress2": "Address line 2",
-    "fieldCity": "City",
-    "fieldState": "State / Province",
-    "fieldPostal": "Postal code",
-    "fieldCountry": "Country",
-    "fieldCountryPlaceholder": "Select country",
-    "fieldAccountId": "Account ID",
-    "fieldEmail": "Email address",
-    "fieldRole": "Role",
-    "fieldSignInMethod": "Sign-in method",
-    "fieldEmailPassword": "Email & Password",
-    "fieldMemberSince": "Member since",
-    "fieldTermsAccepted": "Terms accepted",
-    "fieldLastUpdated": "Last updated",
-    "fieldLanguage": "Language",
-    "saveChanges": "Save changes",
-    "saving": "Saving…",
-    "savedSuccess": "Profile updated successfully",
-    "uploadPicture": "Change profile picture",
-    "uploadNotImage": "Please select a valid image file.",
-    "uploadTooLarge": "Image must be smaller than 5 MB.",
-    "uploadSuccess": "Profile picture updated!"
-  },
-  "Security": {
-    "pageTitle": "Security",
-    "pageDescription": "Manage your password, active sessions, and account safety.",
-    "sectionOverview": "Security Overview",
-    "sectionOverviewDesc": "Your account health at a glance.",
-    "sectionPassword": "Change Password",
-    "sectionPasswordDesc": "Choose a strong password you don't use elsewhere.",
-    "sectionSessions": "Active Sessions",
-    "sectionSessionsDesc": "Devices currently signed in to your account.",
-    "sectionDanger": "Danger Zone",
-    "sectionDangerDesc": "Irreversible actions — proceed with caution.",
-    "overallGood": "Your account looks secure",
-    "overallGoodDesc": "Email verified, password set, and session count is normal.",
-    "overallWarn": "Some security items need attention",
-    "overallWarnDesc": "Review the items below and take action where needed.",
-    "verifyEmailHint": "Check your inbox for a verification link. Contact support if you didn't receive one.",
-    "statusEmailLabel": "Email address",
-    "statusVerified": "Verified",
-    "statusNotVerified": "Not verified",
-    "statusPasswordLabel": "Password",
-    "statusPasswordSet": "Password set",
-    "statusOAuthOnly": "No password (OAuth)",
-    "statusSessionsLabel": "Active sessions",
-    "statusActiveSessions": "active",
-    "statusSignInLabel": "Sign-in method",
-    "statusEmailPassword": "Email & Password",
-    "oauthNoPassword": "Password change unavailable",
-    "oauthNoPasswordDesc": "Your account uses Google OAuth. Password changes are managed through Google.",
-    "fieldCurrentPassword": "Current password",
-    "fieldNewPassword": "New password",
-    "fieldConfirmPassword": "Confirm new password",
-    "passwordWarning": "Changing your password will sign you out of all devices. You will need to sign in again.",
-    "updatePassword": "Update password",
-    "updating": "Updating…",
-    "passwordChanged": "Password updated. Please sign in again.",
-    "currentSession": "Current",
-    "unknownDevice": "Unknown device",
-    "lastActive": "Last active",
-    "expires": "Expires",
-    "revokeSession": "Revoke",
-    "sessionRevoked": "Session revoked",
-    "sessionLoadError": "Failed to load sessions",
-    "noSessions": "No active sessions found",
-    "refresh": "Refresh",
-    "signOutAllTitle": "Sign out all other devices",
-    "signOutAllDesc": "Revoke all active sessions except your current one.",
-    "signOutAllBtn": "Sign out all others",
-    "allOtherSignedOut": "{count} other session(s) signed out",
-    "deleteAccountTitle": "Delete account",
-    "deleteAccountDesc": "Permanently delete your account and all associated data. This cannot be undone.",
-    "deleteAccountBtn": "Delete account",
-    "deleteContactSupport": "Account deletion is not yet available. Please contact support@automex.tech.",
-    "deleteDialogTitle": "Delete your account?",
-    "deleteDialogDesc": "This will permanently erase your profile, requests, bookings, and all data. There is no recovery.",
-    "deleteUnderstandCheck": "I understand this action is permanent and irreversible.",
-    "deleteTypeNamePrompt": "To confirm, type your full name:",
-    "deleteNameMatch": "Name confirmed",
-    "deleteConfirmBtn": "Yes, delete my account",
-    "deleting": "Deleting…",
-    "cancel": "Cancel"
   },
   "Blog": {
     "listing": {
@@ -926,7 +773,7 @@
       "hero": {
         "eyebrow": "Our Expertise",
         "headline": "Tech Expertise",
-        "description": "Deep expertise across the full technology stack — from cloud architecture to AI, DevOps, security, and everything in between."
+        "description": "Deep expertise across the full technology stack from cloud architecture to AI, DevOps, security, and everything in between."
       },
       "filters": {
         "all": "All"
@@ -936,6 +783,7 @@
         "caseStudies": "{count} case stud{plural}",
         "explore": "Explore"
       },
+      "items": "{count} items",
       "empty": "No tech expertise areas found.",
       "cta": {
         "eyebrow": "Let's Build",
@@ -968,7 +816,7 @@
       "cta": {
         "eyebrow": "Get Started",
         "title": "Need {name} expertise?",
-        "description": "Our team brings deep expertise and real-world experience. Let's discuss how we can help.",
+        "description": "Our team brings deep expertise and real world experience. Let's discuss how we can help.",
         "quote": "Request a Quote"
       }
     }
@@ -978,7 +826,7 @@
       "hero": {
         "eyebrow": "Our Work",
         "headline": "Portfolio",
-        "description": "Explore our projects — custom software, AI solutions, and digital products we've built for clients worldwide."
+        "description": "Explore our projects custom software, AI solutions, and digital products we've built for clients worldwide."
       },
       "filters": {
         "allIndustries": "All Industries",
@@ -1023,6 +871,37 @@
         "title": "Want a similar project?",
         "description": "Let's discuss how we can build something great together.",
         "quote": "Request a Quote"
+      }
+    }
+  },
+  "CaseStudies": {
+    "listing": {
+      "hero": {
+        "eyebrow": "Success Stories",
+        "headline": "Case Studies",
+        "description": "Real projects, real results. Explore how we've helped businesses transform with AI and custom software."
+      },
+      "filters": {
+        "allIndustries": "All Industries",
+        "allTechnologies": "All Technologies",
+        "clearAll": "Clear all filters"
+      },
+      "card": {
+        "featured": "Featured",
+        "readMore": "Read case study"
+      },
+      "count": {
+        "singular": "{count} case study",
+        "plural": "{count} case studies"
+      },
+      "empty": "No case studies found matching your criteria.",
+      "loadMore": "Load More",
+      "cta": {
+        "eyebrow": "Your Success Story",
+        "title": "Want to be our next case study?",
+        "description": "Let's build something great together. Share your project and get a free consultation.",
+        "quote": "Request a Quote",
+        "booking": "Book a Free Call"
       }
     }
   },
@@ -1094,7 +973,7 @@
       "hero": {
         "eyebrow": "Our Ecosystem",
         "headline": "Partners",
-        "description": "We collaborate with leading technology providers, cloud platforms, and implementation experts to deliver world-class solutions."
+        "description": "We collaborate with leading technology providers, cloud platforms, and implementation experts to deliver world class solutions."
       },
       "filters": {
         "allTypes": "All Types",
@@ -1156,7 +1035,7 @@
       },
       "industryPlaceholder": "Select your industry",
       "genericError": "Something went wrong. Please try again.",
-      "rateLimitError": "Too many requests — please wait a moment and try again.",
+      "rateLimitError": "Too many requests please wait a moment and try again.",
       "validationError": "Please check the highlighted fields."
     },
     "contact": {
@@ -1177,7 +1056,7 @@
       "submit": "Send message",
       "submitting": "Sending…",
       "successTitle": "Message sent",
-      "successBody": "Thanks for reaching out — our team will get back to you shortly.",
+      "successBody": "Thanks for reaching out our team will get back to you shortly.",
       "sendAnother": "Send another message"
     },
     "quote": {
@@ -1201,7 +1080,7 @@
       "submit": "Request a quote",
       "submitting": "Sending…",
       "successTitle": "Quote request sent",
-      "successBody": "Thanks — our team will review your project and follow up with a tailored quote shortly.",
+      "successBody": "Thanks our team will review your project and follow up with a tailored quote shortly.",
       "sendAnother": "Send another request"
     },
     "newsletter": {
@@ -1212,12 +1091,12 @@
     },
     "booking": {
       "dateLabel": "Pick a date",
-      "noSlots": "No available slots on this date — try another day.",
+      "noSlots": "No available slots on this date try another day.",
       "spotsLeft": "spots left",
       "continue": "Continue",
       "backToSlots": "Back to date & time",
       "selectedSlotLabel": "Selected time",
-      "slotTaken": "That slot was just booked — please pick another time.",
+      "slotTaken": "That slot was just booked please pick another time.",
       "stepSlot": "Choose time",
       "stepDetails": "Your details",
       "stepSlotTitle": "Pick a date & time",
@@ -1242,14 +1121,14 @@
       "submitting": "Booking…",
       "sendAnother": "Book another call",
       "successTitle": "Consultation booked",
-      "successBody": "You're all set — we've sent a confirmation to your email with the meeting details."
+      "successBody": "You're all set we've sent a confirmation to your email with the meeting details."
     }
   },
   "CrmPages": {
     "overview": {
       "meta": {
-        "title": "Work With AUTOMEX — AI‑Powered CRM, Quotes & Consultation",
-        "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response — start building with confidence."
+        "title": "Work With AUTOMEX AI‑Powered CRM, Quotes & Consultation",
+        "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response start building with confidence."
       },
       "hero": {
         "eyebrow": "Work With Us",
@@ -1261,20 +1140,20 @@
       },
       "stats": {
         "response": "< 2 min response",
-        "followUp": "24h follow‑up",
+        "followUp": "24h follow Up",
         "projects": "150+ projects"
       },
       "howItWorks": {
         "eyebrow": "How It Works",
         "title": "A simple, transparent process",
-        "description": "No black boxes. Here's exactly what happens after you reach out — from initial conversation to final delivery."
+        "description": "No black boxes. Here's exactly what happens after you reach out from initial conversation to final delivery."
       },
       "paths": {
         "eyebrow": "Choose Your Path",
         "title": "Three ways to get started",
         "quote": {
           "title": "Request a Quote",
-          "description": "Already know what you need? Tell us about your project and get a detailed, no‑obligation quote for AI, software, or automation.",
+          "description": "Already know what you need? Tell us about your project and get a detailed, no obligation quote for AI, software, or automation.",
           "cta": "Get a quote"
         },
         "booking": {
@@ -1291,7 +1170,7 @@
       "newsletter": {
         "eyebrow": "Stay in the Loop",
         "title": "Get occasional updates, no spam",
-        "description": "Product news, AI insights, and engineering write‑ups — a few times a month at most."
+        "description": "Product news, AI insights, and engineering write ups a few times a month at most."
       },
       "trust": {
         "confidential": "100% Confidential & Secure",
@@ -1301,41 +1180,41 @@
     },
     "quote": {
       "meta": {
-        "title": "Request a Quote — AI, Software & Automation | AUTOMEX",
-        "description": "Get a tailored, no‑obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
+        "title": "Request a Quote AI, Software & Automation | AUTOMEX",
+        "description": "Get a tailored, no obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
       },
       "hero": {
         "eyebrow": "Request a Quote",
         "title": "Let's scope your project",
-        "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate — usually within one business day."
+        "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate usually within one business day."
       }
     },
     "bookCall": {
       "meta": {
-        "title": "Book a Free Consultation — AI & Software Strategy | AUTOMEX",
-        "description": "Schedule a free 30‑minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
+        "title": "Book a Free Consultation AI & Software Strategy | AUTOMEX",
+        "description": "Schedule a free 30 minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
       },
       "hero": {
         "eyebrow": "Book a Call",
         "title": "Talk it through, no pressure",
-        "description": "Pick a time that works for you — just a friendly conversation about what you're building and how we can help."
+        "description": "Pick a time that works for you just a friendly conversation about what you're building and how we can help."
       }
     },
     "contact": {
       "meta": {
-        "title": "Contact AUTOMEX — Quick Enquiries, Sales & Partnerships",
-        "description": "Reach our team for quick questions, partnership opportunities, or enterprise‑grade AI solutions. We'll respond within one business day."
+        "title": "Contact AUTOMEX Quick Enquiries, Sales & Partnerships",
+        "description": "Reach our team for quick questions, partnership opportunities, or enterprise grade AI solutions. We'll respond within one business day."
       },
       "hero": {
         "eyebrow": "Get in Touch",
         "title": "Send us a message",
-        "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project — we're here to listen."
+        "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project we're here to listen."
       }
     },
     "contactSales": {
       "meta": {
-        "title": "Contact AUTOMEX Sales — Enterprise AI & Software Solutions",
-        "description": "Get in touch with our sales team for enterprise‑grade AI solutions, custom software, and digital transformation services."
+        "title": "Contact AUTOMEX Sales Enterprise AI & Software Solutions",
+        "description": "Get in touch with our sales team for enterprise grade AI solutions, custom software, and digital transformation services."
       }
     },
     "subNav": {
@@ -1346,14 +1225,14 @@
     },
     "guest": {
       "meta": {
-        "title": "Track Your Request — AUTOMEX",
+        "title": "Track Your Request AUTOMEX",
         "description": "Check the status of your quote, booking, or enquiry. View activity history and communicate with our team."
       },
       "hero": {
         "eyebrow": "Request Tracker",
         "headlineLead": "Track your",
         "headlineAccent": "request status",
-        "description": "Enter the tracking token you received after submitting a form — or from your confirmation email — to check progress, view activities, and stay in touch with our team."
+        "description": "Enter the tracking token you received after submitting a form or from your confirmation email to check progress, view activities, and stay in touch with our team."
       },
       "token": {
         "title": "Enter your tracking token",
@@ -1420,7 +1299,7 @@
       },
       "errors": {
         "tokenRequired": "Please enter a tracking token.",
-        "invalidToken": "We couldn't find any requests for that token. Please double-check and try again.",
+        "invalidToken": "We couldn't find any requests for that token. Please double check and try again.",
         "generic": "Something went wrong. Please try again later."
       }
     }
@@ -1428,7 +1307,7 @@
   "ServicesPage": {
     "meta": {
       "title": "Our Services - AUTOMEX",
-      "description": "Explore AUTOMEX's full range of services — AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
+      "description": "Explore AUTOMEX's full range of services AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
     },
     "breadcrumbHome": "Home",
     "breadcrumbServices": "Services",
@@ -1544,6 +1423,56 @@
       "description": "Our team is ready to answer any questions you have about our services, process, or technology solutions.",
       "button": "Contact Us"
     }
+  },
+   "Sidebar": {
+    "menuLabel": "Menu",
+    "dashboard": "Dashboard",
+    "requests": "Requests",
+    "bookings": "Bookings",
+    "support": "Support",
+    "calculations": "Estimates",
+    "conversations": "AI Assistant",
+    "accountLabel": "Account",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "security": "Security"
+  },
+  "DashboardHeader": {
+    "openMenu": "Open navigation",
+    "profile": "Profile"
+  },
+  "Dashboard": {
+    "defaultName": "there",
+    "welcomeEyebrow": "Your workspace",
+    "greetMorning": "Good morning",
+    "greetAfternoon": "Good afternoon",
+    "greetEvening": "Good evening",
+    "welcomeDescription": "Here's an overview of your account activity and quick access to your most used services.",
+    "ctaNewRequest": "New request",
+    "ctaBookSession": "Book a session",
+    "sectionOverview": "Overview",
+    "sectionQuickActions": "Quick Actions",
+    "retry": "Retry",
+    "statsRequests": "Total Requests",
+    "statsRequestsActive": "active",
+    "statsBookings": "Total Bookings",
+    "statsBookingsUpcoming": "upcoming",
+    "statsTickets": "Support Tickets",
+    "statsTicketsOpen": "open",
+    "statsCalculations": "Estimates",
+    "statsCalculationsTotal": "total",
+    "actionNewRequest": "New Request",
+    "actionNewRequestDesc": "Submit a quote request or contact our sales team.",
+    "actionBookCall": "Book a Call",
+    "actionBookCallDesc": "Schedule a free consultation with our experts.",
+    "actionSupport": "Get Support",
+    "actionSupportDesc": "Create a ticket or view your existing requests.",
+    "sectionRecentActivity": "Recent Activity",
+    "recentViewAll": "View all",
+    "recentEmpty": "No recent activity to show.",
+    "recentRequest": "Request",
+    "recentBooking": "Booking",
+    "recentTicket": "Ticket"
   },
   "Requests": {
     "pageTitle": "Requests",
@@ -1711,5 +1640,109 @@
     "messages": "messages",
     "leadCaptured": "Lead captured",
     "noMessages": "No messages in this conversation."
+  },
+   "Profile": {
+    "pageTitle": "My Profile",
+    "pageDescription": "Manage your personal information, address, and account details.",
+    "emailVerified": "Email verified",
+    "emailNotVerified": "Email not verified",
+    "memberSince": "Member since",
+    "sectionPersonal": "Personal Information",
+    "sectionPersonalDesc": "Update your name, contact details, and address.",
+    "sectionAddress": "Address",
+    "sectionAccount": "Account Details",
+    "sectionAccountDesc": "Read-only account metadata.",
+    "fieldFullName": "Full name",
+    "fieldPhone": "Phone number",
+    "fieldDob": "Date of birth",
+    "fieldTimezone": "Timezone",
+    "fieldAltEmail": "Alternate email",
+    "fieldLanguage": "Preferred language",
+    "fieldBio": "Bio",
+    "fieldBioPlaceholder": "Tell us a little about yourself…",
+    "fieldAddress1": "Address line 1",
+    "fieldAddress2": "Address line 2",
+    "fieldCity": "City",
+    "fieldState": "State / Province",
+    "fieldPostal": "Postal code",
+    "fieldCountry": "Country",
+    "fieldCountryPlaceholder": "Select country",
+    "fieldAccountId": "Account ID",
+    "fieldEmail": "Email address",
+    "fieldRole": "Role",
+    "fieldSignInMethod": "Sign-in method",
+    "fieldEmailPassword": "Email & Password",
+    "fieldMemberSince": "Member since",
+    "fieldTermsAccepted": "Terms accepted",
+    "fieldLastUpdated": "Last updated",
+    "fieldLanguage1": "Language",
+    "saveChanges": "Save changes",
+    "saving": "Saving…",
+    "savedSuccess": "Profile updated successfully",
+    "uploadPicture": "Change profile picture",
+    "uploadNotImage": "Please select a valid image file.",
+    "uploadTooLarge": "Image must be smaller than 5 MB.",
+    "uploadSuccess": "Profile picture updated!"
+  },
+  "Security": {
+    "pageTitle": "Security",
+    "pageDescription": "Manage your password, active sessions, and account safety.",
+    "sectionOverview": "Security Overview",
+    "sectionOverviewDesc": "Your account health at a glance.",
+    "sectionPassword": "Change Password",
+    "sectionPasswordDesc": "Choose a strong password you don't use elsewhere.",
+    "sectionSessions": "Active Sessions",
+    "sectionSessionsDesc": "Devices currently signed in to your account.",
+    "sectionDanger": "Danger Zone",
+    "sectionDangerDesc": "Irreversible actions proceed with caution.",
+    "overallGood": "Your account looks secure",
+    "overallGoodDesc": "Email verified, password set, and session count is normal.",
+    "overallWarn": "Some security items need attention",
+    "overallWarnDesc": "Review the items below and take action where needed.",
+    "verifyEmailHint": "Check your inbox for a verification link. Contact support if you didn't receive one.",
+    "statusEmailLabel": "Email address",
+    "statusVerified": "Verified",
+    "statusNotVerified": "Not verified",
+    "statusPasswordLabel": "Password",
+    "statusPasswordSet": "Password set",
+    "statusOAuthOnly": "No password (OAuth)",
+    "statusSessionsLabel": "Active sessions",
+    "statusActiveSessions": "active",
+    "statusSignInLabel": "Sign-in method",
+    "statusEmailPassword": "Email & Password",
+    "oauthNoPassword": "Password change unavailable",
+    "oauthNoPasswordDesc": "Your account uses Google OAuth. Password changes are managed through Google.",
+    "fieldCurrentPassword": "Current password",
+    "fieldNewPassword": "New password",
+    "fieldConfirmPassword": "Confirm new password",
+    "passwordWarning": "Changing your password will sign you out of all devices. You will need to sign in again.",
+    "updatePassword": "Update password",
+    "updating": "Updating…",
+    "passwordChanged": "Password updated. Please sign in again.",
+    "currentSession": "Current",
+    "unknownDevice": "Unknown device",
+    "lastActive": "Last active",
+    "expires": "Expires",
+    "revokeSession": "Revoke",
+    "sessionRevoked": "Session revoked",
+    "sessionLoadError": "Failed to load sessions",
+    "noSessions": "No active sessions found",
+    "refresh": "Refresh",
+    "signOutAllTitle": "Sign out all other devices",
+    "signOutAllDesc": "Revoke all active sessions except your current one.",
+    "signOutAllBtn": "Sign out all others",
+    "allOtherSignedOut": "{count} other session(s) signed out",
+    "deleteAccountTitle": "Delete account",
+    "deleteAccountDesc": "Permanently delete your account and all associated data. This cannot be undone.",
+    "deleteAccountBtn": "Delete account",
+    "deleteContactSupport": "Account deletion is not yet available. Please contact support@automex.tech.",
+    "deleteDialogTitle": "Delete your account?",
+    "deleteDialogDesc": "This will permanently erase your profile, requests, bookings, and all data. There is no recovery.",
+    "deleteUnderstandCheck": "I understand this action is permanent and irreversible.",
+    "deleteTypeNamePrompt": "To confirm, type your full name:",
+    "deleteNameMatch": "Name confirmed",
+    "deleteConfirmBtn": "Yes, delete my account",
+    "deleting": "Deleting…",
+    "cancel": "Cancel"
   }
 }

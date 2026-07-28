@@ -2,7 +2,6 @@
 
 import { memo, type ElementType } from "react";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Bot, Sparkles, Zap } from "lucide-react";
 
@@ -31,7 +30,6 @@ type HomeHeroContent = {
 
 const SUPPORTED_LOCALES: Locale[] = ["en", "zh", "ar", "fa", "ps"];
 const RTL_LOCALES = new Set<Locale>(["ar", "fa", "ps"]);
-const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const TICKER_ICON_MAP: Record<string, ElementType> = {
   bot: Bot,
@@ -58,32 +56,6 @@ const BADGE_VARIANTS: Record<
     border: "border-teal-500/20",
     bg: "bg-teal-500/10",
     text: "text-teal-600 dark:text-teal-400",
-  },
-};
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.09, delayChildren: 0.1 },
-  },
-};
-
-const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: smoothEase },
-  },
-};
-
-const fadeInVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.9, ease: smoothEase, delay: 0.25 },
   },
 };
 
@@ -152,10 +124,15 @@ function ActivityTicker({
           </div>
 
           <div className="min-w-0 overflow-hidden py-3">
-            <motion.div
-              className="flex gap-1 whitespace-nowrap"
-              animate={{ x: ["0%", direction] }}
-              transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+            <div
+              className="flex gap-1 whitespace-nowrap animate-ticker-scroll"
+              style={{
+                animationDuration: "28s",
+                animationTimingFunction: "linear",
+                animationIterationCount: "infinite",
+                animationDirection: "normal",
+                transform: isRtl ? "translateX(0%)" : "translateX(0%)",
+              }}
             >
               {doubled.map((item, i) => {
                 const Icon = TICKER_ICON_MAP[item.icon] ?? Sparkles;
@@ -180,10 +157,25 @@ function ActivityTicker({
                   </span>
                 );
               })}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .animate-ticker-scroll {
+          animation: ticker-scroll linear infinite;
+          animation-duration: 28s;
+        }
+        @keyframes ticker-scroll {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(${isRtl ? "50%" : "-50%"});
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -203,42 +195,34 @@ export default function HomeHero() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 xl:gap-12">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
+          <div
             className={[
               "flex w-full min-w-0 flex-col gap-8 text-center lg:basis-0 lg:flex-1",
               isRtl ? "lg:text-right" : "lg:text-left",
             ].join(" ")}
           >
-            <motion.h1
+            <h1
               id="home-hero-title"
-              variants={fadeUpVariants}
               className="text-balance text-4xl font-bold leading-tight tracking-tighter text-foreground sm:text-5xl sm:leading-[1.22] md:text-6xl md:leading-[1.18] xl:text-6xl xl:leading-[1.14]"
             >
               {content.headlineLead}{" "}
               <span className="text-color">{content.headlineAccent}</span>
               {content.headlineSuffix && <> {content.headlineSuffix}</>}
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              variants={fadeUpVariants}
-              className="mx-auto max-w-lg text-pretty text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0"
-            >
+            <p className="mx-auto max-w-lg text-pretty text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0">
               {content.description}
-            </motion.p>
+            </p>
 
             {/* CTA buttons */}
-            <motion.div
-              variants={fadeUpVariants}
+            <div
               className={[
                 "flex w-full flex-col items-center justify-center gap-3 sm:flex-row",
                 isRtl ? "lg:justify-end" : "lg:justify-start",
               ].join(" ")}
             >
               <Link
-                href={buildLocalePath(locale, "/contact")}
+                href={buildLocalePath(locale, "/crm/quote")}
                 className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-color px-6 py-3 text-sm font-semibold text-white shadow-brand transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
               >
                 {content.primaryAction}
@@ -257,26 +241,18 @@ export default function HomeHero() {
               >
                 {content.secondaryAction}
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={fadeUpVariants}
-              className="w-full max-w-xl lg:hidden lg:max-w-none"
-            >
+            <div className="w-full max-w-xl lg:hidden lg:max-w-none">
               <ActivityTicker
                 items={content.tickerItems}
                 liveLabel={content.liveLabel}
                 isRtl={isRtl}
               />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
-            variants={fadeInVariants}
-            initial="hidden"
-            animate="show"
-            className="relative flex h-90 w-full min-w-0 shrink-0 items-center justify-center sm:h-107.5 lg:h-auto lg:basis-125 xl:basis-140"
-          >
+          <div className="relative flex h-90 w-full min-w-0 shrink-0 items-center justify-center sm:h-107.5 lg:h-auto lg:basis-125 xl:basis-140">
             <div
               className="absolute rounded-full bg-primary/6 blur-3xl dark:bg-primary/10"
               style={{ width: 530, height: 530 }}
@@ -285,19 +261,16 @@ export default function HomeHero() {
             <div className="scale-[0.58] sm:scale-[0.72] lg:scale-[0.88] xl:scale-[0.92]">
               <OrbitalSystem floatingLabels={content.floatingLabels} />
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          variants={fadeUpVariants}
-          className="hidden w-full max-w-xl lg:block lg:max-w-none"
-        >
+        <div className="hidden w-full max-w-xl lg:block lg:max-w-none">
           <ActivityTicker
             items={content.tickerItems}
             liveLabel={content.liveLabel}
             isRtl={isRtl}
           />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

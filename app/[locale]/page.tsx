@@ -135,9 +135,9 @@ export default async function HomePage({ params }: Props) {
         />
       )}
       </div>
+      <TechStackSection isRtl={isRtl} liveTechnologies={technologies} />
       <AiShowcase />
       <HowItWorksWrapper />
-      <TechStackSection isRtl={isRtl} liveTechnologies={technologies} />
       <ConnectedModelSection isRtl={isRtl} liveTestimonials={testimonials} />
       <FooterSection />
     </div>

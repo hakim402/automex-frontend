@@ -39,6 +39,7 @@ import type {
 import { getMediaUrl } from "@/lib/env";
 
 import { loadMoreBlogPostsAction } from "../actions";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Props ───────────────────────────────────────────────────────────
 
@@ -123,7 +124,6 @@ function FeaturedCarousel({
     goToSlide((current - 1 + totalSlides) % totalSlides);
   }, [current, totalSlides, goToSlide]);
 
-  // Auto-rotate every 5s
   useEffect(() => {
     if (isHovered || totalSlides <= 1) return;
     timerRef.current = setInterval(next, 5000);
@@ -142,7 +142,7 @@ function FeaturedCarousel({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative aspect-21/9 sm:aspect-21/7 bg-muted/30">
+      <div className="relative aspect-[21/9] sm:aspect-[21/7] bg-muted/30">
         {/* Image with zoom effect */}
         <div className="absolute inset-0 overflow-hidden">
           {post.cover_image?.url && post.cover_image.file_type !== "video" ? (
@@ -181,13 +181,13 @@ function FeaturedCarousel({
                 </span>
               )}
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight text-shadow-lg">
               {post.title}
             </h2>
-            <p className="text-[14px] sm:text-[15px] text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+            <p className="text-[14px] sm:text-[15px] text-white/80 mb-4 line-clamp-2 leading-relaxed">
               {post.excerpt}
             </p>
-            <div className="flex flex-wrap items-center gap-4 text-[13px] text-muted-foreground mb-4">
+            <div className="flex flex-wrap items-center gap-4 text-[13px] text-white/70 mb-4">
               {post.author && (
                 <span className="flex items-center gap-2">
                   {post.author.avatar?.url &&
@@ -196,7 +196,7 @@ function FeaturedCarousel({
                     <img
                       src={getMediaUrl(post.author.avatar.url)}
                       alt={post.author.full_name}
-                      className="size-6 rounded-full object-cover ring-2 ring-background"
+                      className="size-6 rounded-full object-cover ring-2 ring-white/20"
                     />
                   ) : (
                     <span className="flex size-6 items-center justify-center rounded-full bg-brand-gradient text-[10px] font-semibold text-white">
@@ -279,6 +279,19 @@ function FeaturedCarousel({
             ))}
           </div>
         )}
+
+        {/* Progress bar */}
+        {totalSlides > 1 && (
+          <div className="absolute bottom-0 left-0 right-0 z-10 h-0.5 bg-white/20">
+            <div
+              className="h-full bg-white/60 transition-all duration-5000 ease-linear"
+              style={{
+                width: `${((current + 1) / totalSlides) * 100}%`,
+                transitionDuration: isHovered ? "0s" : "5000ms",
+              }}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -329,8 +342,25 @@ export function BlogClientPage({
     });
   }
 
+  // Build query for filter links
+  const buildQuery = (overrides: Record<string, string | undefined>) => {
+    const q: Record<string, string> = {};
+    const cat =
+      overrides.category !== undefined ? overrides.category : activeCategory;
+    const tag = overrides.tag !== undefined ? overrides.tag : activeTag;
+    const search =
+      overrides.search !== undefined ? overrides.search : searchQuery;
+    const order =
+      overrides.ordering !== undefined ? overrides.ordering : ordering;
+    if (cat) q.category = cat;
+    if (tag) q.tag = tag;
+    if (search) q.search = search;
+    if (order && order !== "-published_at") q.ordering = order;
+    return q;
+  };
+
   return (
-    <div className="relative overflow-hidden mt-32">
+    <div className="relative overflow-hidden">
       {/* Background decoration */}
       <div
         aria-hidden="true"
@@ -341,32 +371,29 @@ export function BlogClientPage({
         <div className="absolute bottom-0 left-1/2 size-75 rounded-full bg-primary/3 blur-3xl -translate-x-1/2" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 pb-16 sm:pb-24">
+      <div className="mx-auto max-w-7xl px-4 pb-16 sm:pb-24 mt-24 md:mt-48">
+        {/* ═══ Hero ════════════════════════════════════════════════ */}
+        <section className="text-center mb-8 sm:mb-12">
+          <div className="mx-auto max-w-3xl">
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
+              <span className="text-brand-gradient block mb-2">
+                {t("listing.hero.headlineLead")}
+              </span>
+              <span className="text-foreground block">
+                {t("listing.hero.headlineAccent")}
+              </span>
+            </h1>
+            <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed">
+              {t("listing.hero.description")}
+            </p>
+          </div>
+        </section>
+
         {/* ═══ Featured Carousel ═══════════════════════════════════ */}
         {featuredPosts.length > 0 && (
           <FeaturedCarousel posts={featuredPosts} t={t} />
         )}
-
-        {/* ═══ Hero ════════════════════════════════════════════════ */}
-        <section className="text-center mb-8 sm:mb-12">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary/80 mb-4">
-            <Sparkles className="size-3" aria-hidden="true" />
-            {t("listing.hero.eyebrow")}
-          </span>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            <span className="text-brand-gradient">
-              {t("listing.hero.headlineLead")}
-            </span>{" "}
-            <span className="text-foreground">
-              {t("listing.hero.headlineAccent")}
-            </span>
-          </h1>
-
-          <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {t("listing.hero.description")}
-          </p>
-        </section>
 
         {/* ═══ Filters ─── Search + Sort + Categories + Tags ───── */}
         <div className="flex flex-col gap-4 mb-10">
@@ -386,9 +413,7 @@ export function BlogClientPage({
                     window.location.href = `/blog?${params.toString()}`;
                   }
                 }}
-                placeholder={
-                  t("listing.filters.searchPlaceholder") || "Search articles..."
-                }
+                placeholder={t("listing.filters.searchPlaceholder")}
                 className="w-full rounded-full border border-border/30 bg-card/60 px-9 py-2.5 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm transition-all focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
             </div>
@@ -400,41 +425,39 @@ export function BlogClientPage({
                 onChange={(e) => {
                   setOrdering(e.target.value);
                   const params = new URLSearchParams(window.location.search);
-                  params.set("ordering", e.target.value);
+                  if (e.target.value !== "-published_at")
+                    params.set("ordering", e.target.value);
+                  else params.delete("ordering");
                   window.location.href = `/blog?${params.toString()}`;
                 }}
                 className="rounded-full border border-border/30 bg-card/60 px-4 py-2.5 text-sm text-foreground backdrop-blur-sm transition-all focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
               >
                 <option value="-published_at">
-                  {t("listing.filters.sortNewest") || "Newest"}
+                  {t("listing.filters.sortNewest")}
                 </option>
                 <option value="published_at">
-                  {t("listing.filters.sortOldest") || "Oldest"}
+                  {t("listing.filters.sortOldest")}
                 </option>
                 <option value="-views_count">
-                  {t("listing.filters.sortPopular") || "Most Popular"}
+                  {t("listing.filters.sortPopular")}
                 </option>
               </select>
             </div>
           </div>
 
           {/* Category + Tag filters */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="hidden md:flex flex-wrap items-center justify-center gap-2">
             {categories.length > 0 && (
               <div className="flex flex-wrap items-center gap-2">
                 <Link
                   href={{
                     pathname: "/blog",
-                    query: {
-                      tag: activeTag,
-                      search: searchQuery,
-                      ordering,
-                    } as any,
+                    query: buildQuery({ category: undefined }),
                   }}
                   className={cn(
                     "rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200",
                     !activeCategory
-                      ? "bg-brand-gradient text-white shadow-brand"
+                      ? "bg-brand-gradient text-brand-foreground shadow-brand"
                       : "bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted/60",
                   )}
                 >
@@ -447,17 +470,12 @@ export function BlogClientPage({
                       key={cat.id}
                       href={{
                         pathname: "/blog",
-                        query: {
-                          category: cat.slug,
-                          tag: activeTag,
-                          search: searchQuery,
-                          ordering,
-                        } as any,
+                        query: buildQuery({ category: cat.slug }),
                       }}
                       className={cn(
                         "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-200",
                         activeCategory === cat.slug
-                          ? "bg-brand-gradient text-white shadow-brand"
+                          ? "bg-brand-gradient text-brand-foreground shadow-brand"
                           : "bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted/60",
                       )}
                     >
@@ -485,17 +503,12 @@ export function BlogClientPage({
                       key={tg.id}
                       href={{
                         pathname: "/blog",
-                        query: {
-                          tag: tg.slug,
-                          category: activeCategory,
-                          search: searchQuery,
-                          ordering,
-                        } as any,
+                        query: buildQuery({ tag: tg.slug }),
                       }}
                       className={cn(
                         "rounded-full px-3 py-1 text-[12px] font-medium transition-all duration-200",
                         activeTag === tg.slug
-                          ? "bg-brand-gradient text-white shadow-brand"
+                          ? "bg-brand-gradient text-brand-foreground shadow-brand"
                           : "bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted/60",
                       )}
                     >
@@ -506,17 +519,29 @@ export function BlogClientPage({
               </>
             )}
           </div>
+
+          {/* Clear all filters (optional) */}
+          {(activeCategory || activeTag || searchQuery) && (
+            <div className="flex justify-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-all"
+              >
+                <span className="sr-only">Clear all filters</span>
+                Clear filters
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* ═══ Results count ════════════════════════════════════════ */}
         <p className="text-center text-[12px] text-muted-foreground/70 mb-8">
-          {totalCount}{" "}
-          {activeCategory
-            ? t("listing.filters.articlesCount", {
+          {totalCount === 1
+            ? t("listing.filters.articlesCount", { count: 1, plural: "" })
+            : t("listing.filters.articlesCount", {
                 count: totalCount,
-                plural: totalCount !== 1 ? "s" : "",
-              }).replace("{count}", String(totalCount))
-            : "article" + (totalCount !== 1 ? "s" : "")}
+                plural: "s",
+              })}
           {activeCategory &&
             ` in "${categories.find((c) => c.slug === activeCategory)?.name || activeCategory}"`}
           {activeTag &&
@@ -722,6 +747,7 @@ export function BlogClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }

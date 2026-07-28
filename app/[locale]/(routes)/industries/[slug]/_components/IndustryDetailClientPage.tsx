@@ -26,6 +26,7 @@ import type {
   CaseStudyListItem,
 } from "@/lib/automex/types";
 import { getMediaUrl } from "@/lib/env";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 interface IndustryDetailClientPageProps {
   industry: IndustryFull;
@@ -66,7 +67,7 @@ export function IndustryDetailClientPage({
     : [];
 
   return (
-    <div className="relative overflow-hidden mt-24">
+    <div className="relative overflow-hidden mt-14 md:mt-24">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
@@ -255,6 +256,7 @@ export function IndustryDetailClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }
