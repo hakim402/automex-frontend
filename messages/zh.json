@@ -1,124 +1,73 @@
 {
   "Header": {
-    "aboutUs": "About Us",
-    "blog": "Blog",
-    "blogDescription": "Latest insights and updates",
-    "bookCall": "Book a Call",
-    "careers": "Careers",
-    "caseStudies": "Case Studies",
-    "caseStudiesDescription": "Real-world success stories see how we've delivered results for clients across industries.",
-    "closeMenu": "Close menu",
-    "company": "Company",
-    "contact": "Contact",
-    "contactSales": "Contact Sales",
-    "crm": "CRM",
-    "crmOverview": "CRM Overview",
-    "dashboard": "Dashboard",
-    "downloads": "Downloads",
-    "expertise": "Expertise",
-    "expertiseDescription": "Deep technical expertise across the full technology stack.",
-    "faqs": "FAQs",
-    "featuredDescription": "Modernize your business with our end-to-end digital transformation services.",
-    "featuredTitle": "Digital Transformation",
-    "home": "Home",
-    "industries": "Industries",
-    "industriesDescription": "Industry-specific solutions tailored to the unique challenges and regulations of your sector.",
-    "latestBlogs": "Latest Blog Posts",
-    "leadership": "Leadership",
-    "learnMore": "Learn More",
-    "login": "Sign In",
-    "logout": "Logout",
-    "menu": "Menu",
-    "navigation": "Navigation",
-    "openMenu": "Open menu",
-    "partners": "Partners",
-    "partnersDescription": "Technology and implementation partners we collaborate with to deliver end-to-end solutions.",
-    "portfolio": "Portfolio",
-    "portfolioDesc": "Explore our work",
-    "requestQuote": "Request a Quote",
-    "resources": "Resources",
-    "search": "Search",
-    "searchEmpty": "No results found.",
-    "searchPlaceholder": "Search services, solutions & resources...",
-    "services": "Services",
-    "servicesDescription": "End-to-end digital solutions",
-    "signUp": "Sign Up",
-    "solutions": "Solutions",
-    "solutionsDescription": "Cutting-edge AI and software solutions that automate, scale, and transform your business operations.",
-    "viewAllBlog": "View All Blog Posts",
-    "viewAllCaseStudies": "View All Case Studies",
-    "viewAllExpertise": "View All Expertise",
-    "viewAllIndustries": "View All Industries",
-    "viewAllPartners": "View All Partners",
-    "viewAllPortfolio": "View All Projects",
-    "viewAllServices": "View All Services",
-    "viewAllSolutions": "View All Solutions",
-    "other": "Other"
-  },
+  "aboutUs": "关于我们",
+  "blog": "博客",
+  "blogDescription": "最新洞察与行业动态",
+  "bookCall": "预约咨询",
+  "careers": "加入我们",
+  "caseStudies": "成功案例",
+  "caseStudiesDescription": "真实案例分享，了解我们如何帮助各行业客户实现业务成果。",
+  "closeMenu": "关闭菜单",
+  "company": "公司",
+  "contact": "联系我们",
+  "contactSales": "联系销售",
+  "crm": "CRM",
+  "crmOverview": "CRM 概览",
+  "dashboard": "控制台",
+  "downloads": "下载中心",
+  "expertise": "技术专长",
+  "expertiseDescription": "覆盖完整技术栈的深厚技术实力与行业经验。",
+  "faqs": "常见问题",
+  "featuredDescription": "通过我们的端到端数字化转型服务，助力企业实现现代化升级。",
+  "featuredTitle": "数字化转型",
+  "home": "首页",
+  "industries": "行业",
+  "industriesDescription": "针对不同行业的独特挑战与合规需求，提供定制化解决方案。",
+  "latestBlogs": "最新博客",
+  "leadership": "管理团队",
+  "learnMore": "了解更多",
+  "login": "登录",
+  "logout": "退出登录",
+  "menu": "菜单",
+  "navigation": "导航",
+  "openMenu": "打开菜单",
+  "partners": "合作伙伴",
+  "partnersDescription": "携手技术与实施合作伙伴，共同提供端到端数字化解决方案。",
+  "portfolio": "项目案例",
+  "portfolioDesc": "浏览我们的项目",
+  "requestQuote": "获取报价",
+  "resources": "资源中心",
+  "search": "搜索",
+  "searchEmpty": "未找到相关结果。",
+  "searchPlaceholder": "搜索服务、解决方案和资源...",
+  "services": "服务",
+  "servicesDescription": "端到端数字化解决方案",
+  "signUp": "注册",
+  "solutions": "解决方案",
+  "solutionsDescription": "先进的 AI 与软件解决方案，帮助企业实现自动化、规模化发展，并推动业务数字化转型。",
+  "viewAllBlog": "查看全部博客",
+  "viewAllCaseStudies": "查看全部案例",
+  "viewAllExpertise": "查看全部技术专长",
+  "viewAllIndustries": "查看全部行业",
+  "viewAllPartners": "查看全部合作伙伴",
+  "viewAllPortfolio": "查看全部项目",
+  "viewAllServices": "查看全部服务",
+  "viewAllSolutions": "查看全部解决方案",
+  "other": "其他"
+},
   "HomeHero": {
-    "headlineLead": "Automate, Scale &",
-    "headlineAccent": "Grow with AI",
-    "headlineSuffix": "",
-    "description": "automex builds intelligent automation systems, custom software, and AI-powered tools that free your team from repetitive work so you can focus on what actually moves your business forward.",
-    "primaryAction": "Start Your Project",
-    "secondaryAction": "Explore Services",
-    "liveLabel": "Live",
-    "floatingLabels": [
-      "AI Agents",
-      "Web & Mobile",
-      "Cloud & APIs"
-    ],
-    "tickerItems": [
-      {
-        "icon": "bot",
-        "text": "AI Agent deployed for CRM automation",
-        "badge": "Live",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "zap",
-        "text": "Workflow automated 14 hrs/week saved",
-        "badge": "Done",
-        "badgeVariant": "teal"
-      },
-      {
-        "icon": "sparkles",
-        "text": "Custom GPT chatbot live on client website",
-        "badge": "Active",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "bot",
-        "text": "ERP integration completed successfully",
-        "badge": "Complete",
-        "badgeVariant": "blue"
-      },
-      {
-        "icon": "zap",
-        "text": "Sales bot generated 38 qualified leads today",
-        "badge": "Running",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "sparkles",
-        "text": "Mobile app shipped to App Store & Play Store",
-        "badge": "Shipped",
-        "badgeVariant": "teal"
-      },
-      {
-        "icon": "bot",
-        "text": "WhatsApp support bot handling 300 msgs/day",
-        "badge": "Live",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "zap",
-        "text": "Payment gateway integrated in 48 hours",
-        "badge": "Done",
-        "badgeVariant": "blue"
-      }
-    ]
-  },
+  "headlineLead": "携手打造",
+  "headlineAccent": "智能 AI 未来",
+  "headlineSuffix": "",
+  "description": "借助企业级 AI、定制软件和智能自动化推动您的业务转型。AUTOMEX 提供安全、可扩展的解决方案，优化运营流程，加速业务增长。",
+  "primaryAction": "开启您的项目",
+  "secondaryAction": "探索服务",
+  "floatingLabels": [
+    "AI 智能体",
+    "Web 与移动应用",
+    "云与 API"
+  ]
+},
   "AiShowcase": {
     "sectionTitle": "AI Showcase Intelligent Automation",
     "orbit1": "AI Agents",
@@ -1744,5 +1693,167 @@
     "deleteConfirmBtn": "Yes, delete my account",
     "deleting": "Deleting…",
     "cancel": "Cancel"
+  },
+  "PrivacyPolicy": {
+    "metaDescription": "Learn how Automex collects, uses, and protects your personal information. Effective July 2025.",
+    "title": "Privacy Policy",
+    "backToHome": "Back to Automex",
+    "breadcrumbHome": "Home",
+    "effectiveDateLabel": "Effective date:",
+    "effectiveDateValue": "July 9, 2025",
+    "companyLabel": "Company:",
+    "locationLabel": "Location:",
+    "intro": "This Privacy Policy explains how {company} (\"Automex\", \"we\", \"us\", or \"our\") collects, uses, discloses, and safeguards your information when you visit {site}, use our platform, or engage our services (collectively, the \"Services\"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Services.",
+
+    "section1": {
+      "intro": "We collect information you provide directly, information collected automatically, and information from third parties.",
+      "subsections": {
+        "1": {
+          "title": "1.1 Information You Provide Directly",
+          "items": [
+            "<strong>Account & contact data</strong> — name, email address, phone number, company name, job title, and password when you create an account or submit a contact form.",
+            "<strong>Billing & payment data</strong> — billing address and payment method details (processed by our PCI-DSS-compliant payment processors; we do not store full card numbers).",
+            "<strong>Communications</strong> — messages, emails, support tickets, and any content you send to us or upload to our platform.",
+            "<strong>Survey and feedback data</strong> — responses to questionnaires, testimonials, and product feedback."
+          ]
+        },
+        "2": {
+          "title": "1.2 Information Collected Automatically",
+          "items": [
+            "<strong>Usage data</strong> — pages visited, features used, clicks, search queries, timestamps, and session duration.",
+            "<strong>Device and log data</strong> — IP address, browser type and version, operating system, referral URL, and crash reports.",
+            "<strong>Cookies and tracking technologies</strong> — we use first-party and third-party cookies, web beacons, and similar technologies as described in Section 7 below."
+          ]
+        },
+        "3": {
+          "title": "1.3 Information from Third Parties",
+          "items": [
+            "<strong>OAuth providers</strong> — if you sign in with Google or another OAuth provider, we receive your name, email address, and profile picture from that provider.",
+            "<strong>Integration partners</strong> — when you connect third-party services (e.g., HubSpot, Slack, Asana) to Automex, we receive the data necessary to operate those integrations on your behalf.",
+            "<strong>Publicly available sources</strong> — business directories, LinkedIn, and similar sources for sales and marketing purposes."
+          ]
+        }
+      }
+    },
+
+    "section2": {
+      "intro": "We use your information for the following purposes:",
+      "items": [
+        "<strong>Providing and operating the Services</strong> — to create and manage your account, process transactions, authenticate your identity, and deliver the features you request.",
+        "<strong>Improving and developing the Services</strong> — to analyze usage patterns, diagnose technical problems, conduct research, and build new features.",
+        "<strong>Communications</strong> — to send transactional messages (receipts, security alerts, account notices) and, with your consent, marketing emails. You may opt out of marketing at any time.",
+        "<strong>Customer support</strong> — to respond to inquiries, resolve disputes, and troubleshoot issues.",
+        "<strong>Legal compliance and safety</strong> — to comply with applicable laws and regulations, enforce our terms, and protect the rights, property, and safety of Automex, our users, and the public.",
+        "<strong>Fraud prevention and security</strong> — to detect, investigate, and prevent fraudulent transactions, abuse, and other illegal activity."
+      ],
+      "legalBasis": "We process your personal data under the following legal bases (where applicable under US privacy law and international standards): contract performance (fulfilling our agreement with you), legitimate interests (improving and securing the Services), legal obligation, and consent (for optional marketing communications)."
+    },
+
+    "section3": {
+      "intro": "We do not sell, rent, or trade your personal information. We share it only as described below.",
+      "items": [
+        "<strong>Service providers</strong> — third-party vendors who process data on our behalf (cloud hosting, payment processing, email delivery, analytics, customer support tooling). These vendors are contractually bound to protect your data and may not use it for their own purposes.",
+        "<strong>Integration partners</strong> — when you explicitly connect a third-party tool to Automex, we share the data necessary to operate that integration. Your use of third-party services is governed by their own privacy policies.",
+        "<strong>Business transfers</strong> — in connection with a merger, acquisition, financing, or sale of all or a portion of our assets, your data may be transferred as part of that transaction. We will notify you via email or prominent notice on our site if such a transfer occurs.",
+        "<strong>Legal requirements</strong> — we may disclose your data if required by law, regulation, legal process, or governmental request, or to enforce our agreements or protect our rights.",
+        "<strong>With your consent</strong> — we may share your data for any other purpose with your explicit consent."
+      ]
+    },
+
+    "section4": {
+      "intro": "We retain your personal data for as long as your account is active or as needed to provide the Services. Specifically:",
+      "items": [
+        "<strong>Account data</strong> — is retained for the life of your account and up to 3 years after closure for dispute resolution, fraud prevention, and compliance with our legal obligations.",
+        "<strong>Financial and transactional records</strong> — are retained for a minimum of 7 years as required by US tax and accounting regulations.",
+        "<strong>Marketing data</strong> — is retained until you opt out or withdraw consent, after which we suppress your contact from future campaigns but may retain a record of the opt-out.",
+        "<strong>Server and security logs</strong> — are retained for up to 90 days and used solely for security and debugging."
+      ],
+      "disposal": "When data is no longer needed, we securely delete or anonymize it."
+    },
+
+    "section5": {
+      "items": [
+        "TLS 1.2+ encryption in transit and AES-256 encryption at rest.",
+        "Role-based access controls limiting employee access to personal data.",
+        "Regular security assessments and penetration testing.",
+        "Multi-factor authentication requirements for internal systems that process personal data."
+      ],
+      "disclaimer": "No method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security; however, we are committed to promptly notifying affected users in the event of a data breach as required by applicable law, including Washington State's Security Breach Notification Act (RCW 19.255)."
+    },
+
+    "section6": {
+      "intro": "Depending on where you reside, you may have certain rights regarding your personal information.",
+      "subsections": {
+        "1": {
+          "title": "6.1 Washington State Residents",
+          "content": "Washington's My Health MY Data Act (MHMD) and the Washington Privacy Act (WPA) provide residents with rights to access, correct, and delete certain personal data. Automex honors these rights for all users regardless of state."
+        },
+        "2": {
+          "title": "6.2 California Residents (CCPA / CPRA)",
+          "content": "California residents have the right to: (a) know what personal information we collect and how we use and share it; (b) delete personal information we hold about you; (c) opt out of the sale or sharing of personal information (we do not sell personal information); (d) correct inaccurate personal information; and (e) limit use of sensitive personal information. To exercise these rights, contact us at {email}. We will not discriminate against you for exercising your rights."
+        },
+        "3": {
+          "title": "6.3 All Users",
+          "items": [
+            "<strong>Access & portability</strong> — you may request a copy of the personal data we hold about you in a structured, machine-readable format.",
+            "<strong>Correction</strong> — you may update or correct inaccurate data through your account settings or by contacting us.",
+            "<strong>Deletion</strong> — you may request deletion of your personal data. We will fulfill your request unless retention is required by law or for legitimate business purposes (e.g., fraud prevention).",
+            "<strong>Opt out of marketing</strong> — you may unsubscribe from marketing emails at any time by clicking 'Unsubscribe' in any email or contacting us directly.",
+            "<strong>Account closure</strong> — you may close your account at any time through the account settings page."
+          ],
+          "requestProcess": "To submit a rights request, email {email} with the subject line \"Privacy Rights Request.\" We will respond within 45 days (with up to a 45-day extension where reasonably necessary)."
+        }
+      }
+    },
+
+    "section7": {
+      "intro": "We use the following types of cookies and similar technologies:",
+      "items": [
+        "<strong>Strictly necessary cookies</strong> — required for the Services to function (session management, authentication, security). These cannot be disabled.",
+        "<strong>Analytics cookies</strong> — help us understand how users interact with the Services (e.g., page views, session duration). We use tools such as Google Analytics with IP anonymization enabled.",
+        "<strong>Preference cookies</strong> — remember your settings (e.g., language, theme) so you do not have to set them on every visit.",
+        "<strong>Marketing cookies</strong> — used with your consent to deliver relevant advertisements. We do not use third-party ad networks without your explicit consent."
+      ],
+      "control": "You can control cookies through your browser settings. Disabling certain cookies may affect the functionality of the Services. We honor browser-based 'Do Not Track' (DNT) signals to the extent technically feasible."
+    },
+
+    "section8": {
+      "content": "The Services may contain links to third-party websites, integrations, or services that are not operated by Automex. We are not responsible for the privacy practices of any third party. We encourage you to review the privacy policy of every site or service you visit."
+    },
+
+    "section9": {
+      "content": "The Services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at {email}. If we discover we have collected personal information from a child under 13, we will promptly delete it in accordance with the Children's Online Privacy Protection Act (COPPA)."
+    },
+
+    "section10": {
+      "content": "Automex is headquartered in the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using the Services, you consent to this transfer. We take steps to ensure that your data receives an adequate level of protection wherever it is processed."
+    },
+
+    "section11": {
+      "intro": "We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:",
+      "items": [
+        "Posting the updated policy on this page with a revised 'Effective date' at the top.",
+        "Sending an email notice to the address associated with your account at least 30 days before the changes take effect."
+      ],
+      "acceptance": "Your continued use of the Services after the effective date constitutes your acceptance of the revised policy. If you do not agree to the changes, you must stop using the Services and may request account deletion."
+    },
+
+    "section12": {
+      "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
+      "address": {
+        "department": "Privacy & Data Compliance",
+        "emailLabel": "Email:",
+        "websiteLabel": "Website:"
+      },
+      "commitment": "We are committed to resolving complaints about your privacy and our collection or use of your personal information. If you have an unresolved privacy or data use concern that we have not addressed satisfactorily, please contact us at the email above."
+    },
+
+    "legalNotice": "Legal notice: This Privacy Policy is provided for informational purposes and constitutes a binding agreement between you and {company}. It is governed by the laws of the State of Washington, United States, without regard to its conflict-of-law provisions. Any disputes arising under this policy shall be resolved exclusively in the state or federal courts located in King County, Washington.",
+
+    "bottomNav": {
+      "terms": "Terms of Service",
+      "contact": "Contact Us",
+      "home": "Back to Home"
+    }
   }
 }

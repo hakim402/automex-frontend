@@ -21,7 +21,7 @@ import type {
 // Inline SVG logos (same as before)
 // ─────────────────────────────────────────────────────────────────────────────
 
-function OpenAILogo({
+export function OpenAILogo({
   className,
   style,
 }: {
@@ -41,7 +41,7 @@ function OpenAILogo({
   );
 }
 
-function AnthropicLogo({
+export function AnthropicLogo({
   className,
   style,
 }: {
@@ -61,7 +61,7 @@ function AnthropicLogo({
   );
 }
 
-function HubSpotLogo({
+export function HubSpotLogo({
   className,
   style,
 }: {
@@ -81,7 +81,7 @@ function HubSpotLogo({
   );
 }
 
-function SalesforceLogo({
+export function SalesforceLogo({
   className,
   style,
 }: {
@@ -101,7 +101,7 @@ function SalesforceLogo({
   );
 }
 
-function SlackLogo({
+export function SlackLogo({
   className,
   style,
 }: {
@@ -121,7 +121,7 @@ function SlackLogo({
   );
 }
 
-function AsanaLogo({
+export function AsanaLogo({
   className,
   style,
 }: {
@@ -141,7 +141,7 @@ function AsanaLogo({
   );
 }
 
-function NotionLogo({
+export function NotionLogo({
   className,
   style,
 }: {
@@ -161,7 +161,7 @@ function NotionLogo({
   );
 }
 
-function JiraLogo({
+export function JiraLogo({
   className,
   style,
 }: {
@@ -181,7 +181,7 @@ function JiraLogo({
   );
 }
 
-function MakeComLogo({
+export function MakeComLogo({
   className,
   style,
 }: {
@@ -201,7 +201,7 @@ function MakeComLogo({
   );
 }
 
-function ZapierLogo({
+export function ZapierLogo({
   className,
   style,
 }: {
@@ -221,7 +221,7 @@ function ZapierLogo({
   );
 }
 
-function AWSLogo({
+export function AWSLogo({
   className,
   style,
 }: {
@@ -241,7 +241,7 @@ function AWSLogo({
   );
 }
 
-function GCPLogo({
+export function GCPLogo({
   className,
   style,
 }: {
@@ -261,7 +261,7 @@ function GCPLogo({
   );
 }
 
-function AzureLogo({
+export function AzureLogo({
   className,
   style,
 }: {
@@ -281,7 +281,7 @@ function AzureLogo({
   );
 }
 
-function VercelLogo({
+export function VercelLogo({
   className,
   style,
 }: {
@@ -301,7 +301,7 @@ function VercelLogo({
   );
 }
 
-function SupabaseLogo({
+export function SupabaseLogo({
   className,
   style,
 }: {
@@ -321,7 +321,7 @@ function SupabaseLogo({
   );
 }
 
-function PostgreSQLLogo({
+export function PostgreSQLLogo({
   className,
   style,
 }: {
@@ -341,7 +341,7 @@ function PostgreSQLLogo({
   );
 }
 
-function WhatsAppLogo({
+export function WhatsAppLogo({
   className,
   style,
 }: {
@@ -361,7 +361,7 @@ function WhatsAppLogo({
   );
 }
 
-function TelegramLogo({
+export function TelegramLogo({
   className,
   style,
 }: {
@@ -381,7 +381,7 @@ function TelegramLogo({
   );
 }
 
-function ZoomLogo({
+export function ZoomLogo({
   className,
   style,
 }: {
@@ -401,7 +401,7 @@ function ZoomLogo({
   );
 }
 
-function LinearLogo({
+export function LinearLogo({
   className,
   style,
 }: {
@@ -421,7 +421,7 @@ function LinearLogo({
   );
 }
 
-function FigmaLogo({
+export function FigmaLogo({
   className,
   style,
 }: {

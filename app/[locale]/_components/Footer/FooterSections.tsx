@@ -423,26 +423,26 @@ function SocialRow({
 function BrandMark({ isRtl }: { isRtl: boolean }) {
   return (
     <div className={cn("flex items-center gap-4", isRtl && "flex-row-reverse")}>
-  {/* Logo container – always light background */}
-  <div className="relative size-12 rounded-2xl overflow-hidden border border-border/60 bg-white shadow-sm shrink-0">
-    <Image
-      src="/logo/icon.png"
-      alt="Infinity Solutions logo"
-      fill
-      className="object-contain"
-      sizes="(max-width: 768px) 64px, (max-width: 1024px) 80px, 96px"
-      priority
-    />
-  </div>
-  <div className={isRtl ? "text-right" : undefined}>
-    <p className="text-sm font-bold text-foreground leading-none tracking-tight">
-      AUTOMEX
-    </p>
-    <p className="text-[10px] text-muted-foreground mt-0.5 font-medium">
-      AI &amp; Automation Solutions
-    </p>
-  </div>
-</div>
+      {/* Logo container – always light background */}
+      <div className="relative size-12 rounded-2xl overflow-hidden border border-border/60 bg-white shadow-sm shrink-0">
+        <Image
+          src="/logo/icon.png"
+          alt="Infinity Solutions logo"
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 64px, (max-width: 1024px) 80px, 96px"
+          priority
+        />
+      </div>
+      <div className={isRtl ? "text-right" : undefined}>
+        <p className="text-sm font-bold text-foreground leading-none tracking-tight">
+          AUTOMEX
+        </p>
+        <p className="text-[10px] text-muted-foreground mt-0.5 font-medium">
+          AI &amp; Automation Solutions
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -474,13 +474,7 @@ export function FooterSection() {
 
       {/* ── Main content ── */}
       <div className="relative max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* ── Brand column (4/12) ── */}
           <div
             className="lg:col-span-4 flex flex-col gap-5"
@@ -525,18 +519,12 @@ export function FooterSection() {
               />
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* ── CTA banner ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.5 }}
-          className="mt-10"
-        >
+        <div className="mt-10">
           <CtaBanner isRtl={isRtl} locale={locale} t={t} />
-        </motion.div>
+        </div>
       </div>
 
       {/* ── Bottom bar ── */}

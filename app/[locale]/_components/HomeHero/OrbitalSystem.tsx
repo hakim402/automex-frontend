@@ -1,26 +1,31 @@
 "use client";
 
 import { memo } from "react";
+
+// ─── Lucide fallback icons ──────────────────────────────────────────
 import {
-  Zap,
-  Brain,
-  Bot,
-  Workflow,
-  MessageSquare,
-  Globe,
   Smartphone,
-  Code2,
-  Plug,
-  Database,
-  Cloud,
   ShieldCheck,
   BarChart3,
   Cpu,
-  Sparkles,
 } from "lucide-react";
 
+// ─── Real technology logos from your config ──────────────────────
+// Make sure these are exported from "@/config/TechStackConfig"
+import {
+  OpenAILogo,
+  AnthropicLogo,
+  MakeComLogo,
+  ZapierLogo,
+  SlackLogo,
+  VercelLogo,
+  SalesforceLogo,
+  PostgreSQLLogo,
+  AWSLogo,
+} from "@/config/TechStackConfig";
+
 type OrbitalNode = {
-  Icon: React.ElementType;
+  Logo: React.ElementType;
   label: string;
   color: string;
   offset: number;
@@ -33,16 +38,17 @@ type OrbitalRing = {
   nodes: OrbitalNode[];
 };
 
+// ─── Orbital rings data ────────────────────────────────────────────
 const ORBITAL_RINGS: OrbitalRing[] = [
   {
     radius: 88,
     duration: 22,
     clockwise: true,
     nodes: [
-      { Icon: Brain, label: "AI", color: "#0ab8fb", offset: 0 },
-      { Icon: Bot, label: "Agents", color: "#324b9d", offset: 90 },
-      { Icon: Workflow, label: "Automation", color: "#0ab8fb", offset: 180 },
-      { Icon: MessageSquare, label: "Chatbots", color: "#13a89e", offset: 270 },
+      { Logo: OpenAILogo, label: "AI", color: "#10a37f", offset: 0 },
+      { Logo: AnthropicLogo, label: "Agents", color: "#c96442", offset: 90 },
+      { Logo: MakeComLogo, label: "Automation", color: "#6d00cc", offset: 180 },
+      { Logo: SlackLogo, label: "Chatbots", color: "#4a154b", offset: 270 },
     ],
   },
   {
@@ -50,11 +56,11 @@ const ORBITAL_RINGS: OrbitalRing[] = [
     duration: 36,
     clockwise: false,
     nodes: [
-      { Icon: Globe, label: "Web", color: "#0ab8fb", offset: 30 },
-      { Icon: Smartphone, label: "Mobile", color: "#7c3aed", offset: 102 },
-      { Icon: Code2, label: "SaaS", color: "#324b9d", offset: 174 },
-      { Icon: Plug, label: "APIs", color: "#f59e0b", offset: 246 },
-      { Icon: Database, label: "DB", color: "#13a89e", offset: 318 },
+      { Logo: VercelLogo, label: "Web", color: "#000000", offset: 30 },
+      { Logo: Smartphone, label: "Mobile", color: "#7c3aed", offset: 102 }, // fallback
+      { Logo: SalesforceLogo, label: "SaaS", color: "#00a1e0", offset: 174 },
+      { Logo: ZapierLogo, label: "APIs", color: "#ff4a00", offset: 246 },
+      { Logo: PostgreSQLLogo, label: "DB", color: "#4169e1", offset: 318 },
     ],
   },
   {
@@ -62,25 +68,19 @@ const ORBITAL_RINGS: OrbitalRing[] = [
     duration: 52,
     clockwise: true,
     nodes: [
-      { Icon: Cloud, label: "Cloud", color: "#0ab8fb", offset: 15 },
-      { Icon: ShieldCheck, label: "Security", color: "#324b9d", offset: 75 },
-      { Icon: BarChart3, label: "Analytics", color: "#13a89e", offset: 135 },
-      { Icon: Zap, label: "Speed", color: "#f59e0b", offset: 195 },
-      { Icon: Cpu, label: "AI Infra", color: "#7c3aed", offset: 255 },
-      { Icon: Sparkles, label: "GPT", color: "#0ab8fb", offset: 315 },
+      { Logo: AWSLogo, label: "Cloud", color: "#ff9900", offset: 15 },
+      { Logo: ShieldCheck, label: "Security", color: "#324b9d", offset: 75 }, // fallback
+      { Logo: BarChart3, label: "Analytics", color: "#13a89e", offset: 135 }, // fallback
+      { Logo: OpenAILogo, label: "GPT", color: "#10a37f", offset: 195 },
+      { Logo: Cpu, label: "AI Infra", color: "#7c3aed", offset: 255 }, // fallback
     ],
   },
 ];
 
 const FLOAT_LABELS_DEFAULT = ["AI Agents", "Web & Mobile", "Cloud & APIs"];
 
-function OrbitalRingLayer({
-  ring,
-  ringIndex,
-}: {
-  ring: OrbitalRing;
-  ringIndex: number;
-}) {
+// ─── Ring layer component ──────────────────────────────────────────
+function OrbitalRingLayer({ ring, ringIndex }: { ring: OrbitalRing; ringIndex: number }) {
   const size = ring.radius * 2;
   const nodeSize = [40, 44, 48][ringIndex] ?? 44;
 
@@ -94,7 +94,7 @@ function OrbitalRingLayer({
         left: "50%",
         marginTop: -ring.radius,
         marginLeft: -ring.radius,
-        opacity: 0, // start hidden, fade in via CSS
+        opacity: 0,
         animation: `orbital-fade-in 0.7s ease ${0.35 + ringIndex * 0.18}s forwards`,
       }}
     >
@@ -107,10 +107,9 @@ function OrbitalRingLayer({
       >
         {ring.nodes.map((node, ni) => {
           const angleRad = ((node.offset - 90) * Math.PI) / 180;
-          const x =
-            ring.radius + ring.radius * Math.cos(angleRad) - nodeSize / 2;
-          const y =
-            ring.radius + ring.radius * Math.sin(angleRad) - nodeSize / 2;
+          const x = ring.radius + ring.radius * Math.cos(angleRad) - nodeSize / 2;
+          const y = ring.radius + ring.radius * Math.sin(angleRad) - nodeSize / 2;
+          const Logo = node.Logo;
 
           return (
             <div
@@ -126,12 +125,14 @@ function OrbitalRingLayer({
                 }}
               >
                 <div
-                  className="flex size-full items-center justify-center rounded-full border border-border/60 bg-card shadow-sm transition-transform duration-300 hover:scale-125"
+                  className="flex size-full items-center justify-center rounded-full border shadow-sm transition-transform duration-300 hover:scale-125"
                   style={{
+                    borderColor: node.color,
+                    background: `radial-gradient(circle at 30% 30%, ${node.color}60, ${node.color}15)`,
                     boxShadow: `0 0 14px ${node.color}28, 0 2px 8px rgb(0 0 0 / 0.12)`,
                   }}
                 >
-                  <node.Icon
+                  <Logo
                     className="size-[44%]"
                     style={{ color: node.color }}
                   />
@@ -145,7 +146,7 @@ function OrbitalRingLayer({
   );
 }
 
-// Memoized to avoid re-renders on parent updates
+// ─── Main component ──────────────────────────────────────────────────
 const OrbitalSystem = memo(function OrbitalSystem({
   floatingLabels = FLOAT_LABELS_DEFAULT,
 }: {
@@ -157,9 +158,7 @@ const OrbitalSystem = memo(function OrbitalSystem({
   const cx = containerSize / 2;
   const cy = containerSize / 2;
 
-  // Use provided labels or fallback
-  const labels =
-    floatingLabels.length >= 3 ? floatingLabels : FLOAT_LABELS_DEFAULT;
+  const labels = floatingLabels.length >= 3 ? floatingLabels : FLOAT_LABELS_DEFAULT;
 
   const floatPositions = [
     { left: "71%", top: "8%", delay: 1.3 },
@@ -173,6 +172,7 @@ const OrbitalSystem = memo(function OrbitalSystem({
       style={{ width: containerSize, height: containerSize }}
       aria-hidden="true"
     >
+      {/* SVG background layers */}
       <svg
         className="pointer-events-none absolute inset-0"
         width={containerSize}
@@ -208,12 +208,14 @@ const OrbitalSystem = memo(function OrbitalSystem({
         ))}
       </svg>
 
+      {/* Orbital ring layers */}
       {ORBITAL_RINGS.map((ring, i) => (
         <OrbitalRingLayer key={i} ring={ring} ringIndex={i} />
       ))}
 
+      {/* Center hub – using your custom logo image */}
       <div
-        className="absolute flex items-center justify-center rounded-full bg-color shadow-brand"
+        className="absolute flex items-center justify-center rounded-full bg-muted shadow-brand"
         style={{
           width: 72,
           height: 72,
@@ -226,9 +228,14 @@ const OrbitalSystem = memo(function OrbitalSystem({
           animation: `orbital-center-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards`,
         }}
       >
-        <Zap className="size-8 text-white" />
+        <img
+          src="/logo/icon.png"
+          alt="Automex Logo"
+          className="size-10 object-contain"
+        />
       </div>
 
+      {/* Floating labels */}
       {labels.map((text, i) => (
         <div
           key={text}
@@ -245,6 +252,7 @@ const OrbitalSystem = memo(function OrbitalSystem({
         </div>
       ))}
 
+      {/* CSS keyframes */}
       <style>{`
         @keyframes orbital-spin {
           from { transform: rotate(0deg); }

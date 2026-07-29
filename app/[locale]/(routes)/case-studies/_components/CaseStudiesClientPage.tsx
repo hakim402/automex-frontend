@@ -24,6 +24,7 @@ import type {
 import { getMediaUrl } from "@/lib/env";
 
 import { loadMoreCaseStudiesAction } from "../actions";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 interface CaseStudiesClientPageProps {
   initialStudies: CaseStudyListItem[];
@@ -236,6 +237,7 @@ export function CaseStudiesClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }

@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { getMediaUrl } from "@/lib/env";
 import { Link, useRouter } from "@/i18n/routing";
 import type { TechExpertiseArea } from "@/lib/automex/types";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Category metadata ──────────────────────────────────────────────────
 
@@ -377,6 +378,7 @@ export function TechExpertiseClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
 
       <style jsx>{`
         @keyframes gradient-shift {

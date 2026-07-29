@@ -1,7 +1,8 @@
-// app/[locale]/(routes)/privacy/page.tsx
+// app/[locale]/(routes)/terms/page.tsx
 //
-// Privacy Policy — Automex LLC
-// Fully translated via next-intl
+// Terms of Service — Automex LLC
+// Governing law: Washington State (RCW Title 19) + federal US law
+// Last updated: July 2025
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -16,7 +17,7 @@ import { SUPPORTED_LOCALES, isRtlLocale } from "@/lib/locale";
 
 const COMPANY = "Automex LLC";
 const SITE = "automex.tech";
-const EMAIL = "privacy@automex.tech";
+const EMAIL = "legal@automex.tech";
 const ADDRESS = "4911 Talbot Rd S, Renton, WA 98055, United States";
 
 // ─── Metadata ─────────────────────────────────────────
@@ -27,32 +28,32 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "PrivacyPolicy" });
+  const t = await getTranslations({ locale, namespace: "Terms" });
 
   return generatePageMetadata({
-    pageType: "privacy",
+    pageType: "terms",
     locale: locale as any,
     customTitle: t("title"),
     customDescription: t("metaDescription"),
-    pathSegment: "privacy",
+    pathSegment: "terms",
   });
 }
 
 // ─── Page ─────────────────────────────────────────────
 
-export default async function PrivacyPolicyPage({
+export default async function TermsPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   const isRtl = isRtlLocale(locale);
-  const t = await getTranslations({ locale, namespace: "PrivacyPolicy" });
+  const t = await getTranslations({ locale, namespace: "Terms" });
 
   // Breadcrumb items
   const breadcrumbItems = [
     { name: t("breadcrumbHome"), url: `/${locale}` },
-    { name: t("title"), url: `/${locale}/privacy` },
+    { name: t("title"), url: `/${locale}/terms` },
   ];
 
   // Helper to render section
@@ -80,7 +81,11 @@ export default async function PrivacyPolicyPage({
   const List = ({ items }: { items: string[] }) => (
     <ul className="list-disc pl-6 space-y-1.5">
       {items.map((item, i) => (
-        <li key={i} className="text-[15px] leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
+        <li
+          key={i}
+          className="text-[15px] leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: item }}
+        />
       ))}
     </ul>
   );
@@ -110,7 +115,9 @@ export default async function PrivacyPolicyPage({
               href={`/${locale}`}
               className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              <span aria-hidden="true" className="text-lg">←</span>
+              <span aria-hidden="true" className="text-lg">
+                ←
+              </span>
               {t("backToHome")}
             </Link>
 
@@ -146,52 +153,131 @@ export default async function PrivacyPolicyPage({
         <div className="mx-auto max-w-3xl px-4 pb-20 sm:px-6 lg:px-8">
           <div className="prose prose-slate dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground max-w-none">
             {[
-              { id: "1", title: t("section1.title"), content: t.raw("section1") },
-              { id: "2", title: t("section2.title"), content: t.raw("section2") },
-              { id: "3", title: t("section3.title"), content: t.raw("section3") },
-              { id: "4", title: t("section4.title"), content: t.raw("section4") },
-              { id: "5", title: t("section5.title"), content: t.raw("section5") },
-              { id: "6", title: t("section6.title"), content: t.raw("section6") },
-              { id: "7", title: t("section7.title"), content: t.raw("section7") },
-              { id: "8", title: t("section8.title"), content: t.raw("section8") },
-              { id: "9", title: t("section9.title"), content: t.raw("section9") },
-              { id: "10", title: t("section10.title"), content: t.raw("section10") },
-              { id: "11", title: t("section11.title"), content: t.raw("section11") },
-              { id: "12", title: t("section12.title"), content: t.raw("section12") },
+              {
+                id: "1",
+                title: t("section1.title"),
+                content: t.raw("section1"),
+              },
+              {
+                id: "2",
+                title: t("section2.title"),
+                content: t.raw("section2"),
+              },
+              {
+                id: "3",
+                title: t("section3.title"),
+                content: t.raw("section3"),
+              },
+              {
+                id: "4",
+                title: t("section4.title"),
+                content: t.raw("section4"),
+              },
+              {
+                id: "5",
+                title: t("section5.title"),
+                content: t.raw("section5"),
+              },
+              {
+                id: "6",
+                title: t("section6.title"),
+                content: t.raw("section6"),
+              },
+              {
+                id: "7",
+                title: t("section7.title"),
+                content: t.raw("section7"),
+              },
+              {
+                id: "8",
+                title: t("section8.title"),
+                content: t.raw("section8"),
+              },
+              {
+                id: "9",
+                title: t("section9.title"),
+                content: t.raw("section9"),
+              },
+              {
+                id: "10",
+                title: t("section10.title"),
+                content: t.raw("section10"),
+              },
+              {
+                id: "11",
+                title: t("section11.title"),
+                content: t.raw("section11"),
+              },
+              {
+                id: "12",
+                title: t("section12.title"),
+                content: t.raw("section12"),
+              },
+              {
+                id: "13",
+                title: t("section13.title"),
+                content: t.raw("section13"),
+              },
             ].map(({ id, title, content }) => (
               <Section key={id} id={id} title={title}>
                 {content.intro && <p>{content.intro}</p>}
                 {content.subsections &&
-                  Object.entries(content.subsections).map(([key, sub]: [string, any]) => (
-                    <Fragment key={key}>
-                      {sub.title && <h3 className="text-base font-semibold text-foreground">{sub.title}</h3>}
-                      {sub.content && <p>{sub.content}</p>}
-                      {sub.items && <List items={sub.items} />}
-                    </Fragment>
-                  ))}
+                  Object.entries(content.subsections).map(
+                    ([key, sub]: [string, any]) => (
+                      <Fragment key={key}>
+                        {sub.title && (
+                          <h3 className="text-base font-semibold text-foreground">
+                            {sub.title}
+                          </h3>
+                        )}
+                        {sub.content && <p>{sub.content}</p>}
+                        {sub.items && <List items={sub.items} />}
+                      </Fragment>
+                    ),
+                  )}
                 {content.items && <List items={content.items} />}
-                {content.legalBasis && <p className="mt-4 text-sm text-muted-foreground/80 italic">{content.legalBasis}</p>}
+                {content.legalBasis && (
+                  <p className="mt-4 text-sm text-muted-foreground/80 italic">
+                    {content.legalBasis}
+                  </p>
+                )}
                 {content.disposal && <p className="mt-2">{content.disposal}</p>}
-                {content.disclaimer && <p className="mt-2 text-sm">{content.disclaimer}</p>}
-                {content.control && <p className="mt-2 text-sm">{content.control}</p>}
-                {content.acceptance && <p className="mt-2 text-sm">{content.acceptance}</p>}
-                {content.commitment && <p className="mt-4 text-sm">{content.commitment}</p>}
-                {id === "12" && (
+                {content.disclaimer && (
+                  <p className="mt-2 text-sm">{content.disclaimer}</p>
+                )}
+                {content.control && (
+                  <p className="mt-2 text-sm">{content.control}</p>
+                )}
+                {content.acceptance && (
+                  <p className="mt-2 text-sm">{content.acceptance}</p>
+                )}
+                {content.commitment && (
+                  <p className="mt-4 text-sm">{content.commitment}</p>
+                )}
+                {id === "13" && (
                   <>
                     <address className="not-italic mt-4 rounded-xl border border-border/50 bg-muted/30 p-5 text-sm leading-7 text-foreground">
                       <strong>{COMPANY}</strong>
                       <br />
-                      {t("section12.address.department")}
+                      {t("section13.address.department")}
                       <br />
                       {ADDRESS}
                       <br />
-                      {t("section12.address.emailLabel")}{" "}
-                      <a href={`mailto:${EMAIL}`} className="text-primary hover:underline">
+                      {t("section13.address.emailLabel")}{" "}
+                      <a
+                        href={`mailto:${EMAIL}`}
+                        className="text-primary hover:underline"
+                      >
                         {EMAIL}
                       </a>
                       <br />
-                      {t("section12.address.websiteLabel")}{" "}
-                      <a href={`https://${SITE}`} className="text-primary hover:underline" target="_blank" rel="noopener">
+                      {t("section13.address.websiteLabel")}{" "}
+                      <a
+                        href={`https://${SITE}`}
+                        className="text-primary hover:underline"
+                        target="_blank"
+                        rel="noopener"
+                      >
                         {SITE}
                       </a>
                     </address>
@@ -203,19 +289,30 @@ export default async function PrivacyPolicyPage({
             {/* Legal notice */}
             <div
               className="mt-12 rounded-xl border border-border/40 bg-muted/20 p-5 text-xs leading-6 text-muted-foreground"
-              dangerouslySetInnerHTML={{ __html: t("legalNotice", { company: COMPANY }) }}
+              dangerouslySetInnerHTML={{
+                __html: t("legalNotice", { company: COMPANY }),
+              }}
             />
           </div>
 
           {/* Bottom nav */}
           <div className="mt-12 flex flex-wrap gap-4 border-t border-border/40 pt-8 text-sm text-muted-foreground">
-            <Link href={`/${locale}/terms`} className="hover:text-foreground hover:underline">
-              {t("bottomNav.terms")}
+            <Link
+              href={`/${locale}/privacy`}
+              className="hover:text-foreground hover:underline"
+            >
+              {t("bottomNav.privacy")}
             </Link>
-            <Link href={`/${locale}/contact`} className="hover:text-foreground hover:underline">
+            <Link
+              href={`/${locale}/contact`}
+              className="hover:text-foreground hover:underline"
+            >
               {t("bottomNav.contact")}
             </Link>
-            <Link href={`/${locale}`} className="hover:text-foreground hover:underline">
+            <Link
+              href={`/${locale}`}
+              className="hover:text-foreground hover:underline"
+            >
               {t("bottomNav.home")}
             </Link>
           </div>

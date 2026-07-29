@@ -24,7 +24,9 @@ export type PageType =
   | "contactSales"   // contact sales
   | "caseStudies"      // case studies listing
   | "caseStudyDetail" // individual case study
-  | "quote";          // request a quote
+  | "quote"          // request a quote
+  | "privacy"
+  | "terms";
   
 export interface SeoMetadataOptions {
   pageType: PageType;

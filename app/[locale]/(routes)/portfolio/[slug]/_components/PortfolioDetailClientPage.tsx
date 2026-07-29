@@ -30,6 +30,7 @@ import { Link } from "@/i18n/routing";
 import { getMediaUrl } from "@/lib/env";
 import { cn } from "@/lib/utils";
 import type { PortfolioProjectDetailFull } from "@/lib/automex/types";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 /** Resolve a lucide:icon-name string to a lucide-react component. */
 function resolveLucideIcon(iconName: string | undefined): React.ElementType {
@@ -413,6 +414,7 @@ export function PortfolioDetailClientPage({
           </Link>
         </section>
       </article>
+      <FooterSection />
     </div>
   );
 }

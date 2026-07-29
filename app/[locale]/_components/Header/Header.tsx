@@ -367,7 +367,7 @@ export const Header = ({
         )}
       >
         {/* Row 1: logo · search · account/theme/language */}
-        <div className="mx-auto grid h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto grid h-20 max-w-full grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-20">
           <Link href="/" className="flex shrink-0 items-center">
             <Image
               src="/logo/automex-dark.png"

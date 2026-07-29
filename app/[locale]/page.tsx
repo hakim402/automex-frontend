@@ -17,7 +17,7 @@ import {
   fetchPartners,
 } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
-import { PartnersLogoGrid } from "./(routes)/partners/_components";
+import { PartnersLogoGrid } from "./(routes)/partners/_components/PartnersLogoGrid";
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -126,14 +126,14 @@ export default async function HomePage({ params }: Props) {
       <HeaderWrapper locale={locale} />
       <HomeHero />
       <div className="mx-auto max-w-7xl px-4">
-
-      {partners && partners.length > 0 && (
-        <PartnersLogoGrid
-          partners={partners}
-          title="Trusted by"
-          maxLogos={6}
-        />
-      )}
+        {partners && partners.length > 0 && (
+          <PartnersLogoGrid
+            partners={partners}
+            title="Trusted by"
+            subtitle="We collaborate with the best in the industry"
+            maxLogos={8}
+          />
+        )}
       </div>
       <TechStackSection isRtl={isRtl} liveTechnologies={technologies} />
       <AiShowcase />

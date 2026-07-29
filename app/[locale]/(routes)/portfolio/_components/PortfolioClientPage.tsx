@@ -30,6 +30,7 @@ import type {
 import { getMediaUrl } from "@/lib/env";
 
 import { loadMorePortfolioAction } from "../actions";
+import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Props ───────────────────────────────────────────────────────────
 
@@ -456,6 +457,7 @@ export function PortfolioClientPage({
           </div>
         </section>
       </div>
+      <FooterSection />
     </div>
   );
 }

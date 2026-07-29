@@ -119,8 +119,8 @@ export function useConnectedModelConfig(): Omit<ConnectedModelProps, "isRtl"> {
     signals: SIGNALS,
     outputs: OUTPUTS,
     primaryLabel: t("primaryLabel"),
-    primaryHref: "/crm/quote",
+    primaryHref: "/crm/book-a-call",
     secondaryLabel: t("secondaryLabel"),
-    secondaryHref: "/crm/book-a-call",
+    secondaryHref: "/crm/quote",
   };
 }

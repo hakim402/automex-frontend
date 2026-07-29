@@ -1,415 +1,364 @@
 {
   "Header": {
-    "aboutUs": "About Us",
+    "aboutUs": "Sobre Nosotros",
     "blog": "Blog",
-    "blogDescription": "Latest insights and updates",
-    "bookCall": "Book a Call",
-    "careers": "Careers",
-    "caseStudies": "Case Studies",
-    "caseStudiesDescription": "Real-world success stories see how we've delivered results for clients across industries.",
-    "closeMenu": "Close menu",
-    "company": "Company",
-    "contact": "Contact",
-    "contactSales": "Contact Sales",
+    "blogDescription": "Últimas novedades y artículos",
+    "bookCall": "Agendar una Llamada",
+    "careers": "Carreras",
+    "caseStudies": "Casos de Éxito",
+    "caseStudiesDescription": "Historias reales de éxito: descubre cómo hemos generado resultados para clientes de diversos sectores.",
+    "closeMenu": "Cerrar menú",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "contactSales": "Contactar con Ventas",
     "crm": "CRM",
-    "crmOverview": "CRM Overview",
-    "dashboard": "Dashboard",
-    "downloads": "Downloads",
-    "expertise": "Expertise",
-    "expertiseDescription": "Deep technical expertise across the full technology stack.",
-    "faqs": "FAQs",
-    "featuredDescription": "Modernize your business with our end-to-end digital transformation services.",
-    "featuredTitle": "Digital Transformation",
-    "home": "Home",
-    "industries": "Industries",
-    "industriesDescription": "Industry-specific solutions tailored to the unique challenges and regulations of your sector.",
-    "latestBlogs": "Latest Blog Posts",
-    "leadership": "Leadership",
-    "learnMore": "Learn More",
-    "login": "Sign In",
-    "logout": "Logout",
-    "menu": "Menu",
-    "navigation": "Navigation",
-    "openMenu": "Open menu",
-    "partners": "Partners",
-    "partnersDescription": "Technology and implementation partners we collaborate with to deliver end-to-end solutions.",
-    "portfolio": "Portfolio",
-    "portfolioDesc": "Explore our work",
-    "requestQuote": "Request a Quote",
-    "resources": "Resources",
-    "search": "Search",
-    "searchEmpty": "No results found.",
-    "searchPlaceholder": "Search services, solutions & resources...",
-    "services": "Services",
-    "servicesDescription": "End-to-end digital solutions",
-    "signUp": "Sign Up",
-    "solutions": "Solutions",
-    "solutionsDescription": "Cutting-edge AI and software solutions that automate, scale, and transform your business operations.",
-    "viewAllBlog": "View All Blog Posts",
-    "viewAllCaseStudies": "View All Case Studies",
-    "viewAllExpertise": "View All Expertise",
-    "viewAllIndustries": "View All Industries",
-    "viewAllPartners": "View All Partners",
-    "viewAllPortfolio": "View All Projects",
-    "viewAllServices": "View All Services",
-    "viewAllSolutions": "View All Solutions",
-    "other": "Other"
+    "crmOverview": "Resumen del CRM",
+    "dashboard": "Panel de Control",
+    "downloads": "Descargas",
+    "expertise": "Experiencia",
+    "expertiseDescription": "Amplia experiencia técnica en todo el ecosistema tecnológico.",
+    "faqs": "Preguntas Frecuentes",
+    "featuredDescription": "Moderniza tu empresa con nuestros servicios integrales de transformación digital.",
+    "featuredTitle": "Transformación Digital",
+    "home": "Inicio",
+    "industries": "Industrias",
+    "industriesDescription": "Soluciones específicas para cada industria, adaptadas a los desafíos y normativas de tu sector.",
+    "latestBlogs": "Últimas Publicaciones",
+    "leadership": "Liderazgo",
+    "learnMore": "Más Información",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "menu": "Menú",
+    "navigation": "Navegación",
+    "openMenu": "Abrir menú",
+    "partners": "Socios",
+    "partnersDescription": "Socios tecnológicos y de implementación con los que colaboramos para ofrecer soluciones integrales.",
+    "portfolio": "Portafolio",
+    "portfolioDesc": "Explora nuestros proyectos",
+    "requestQuote": "Solicitar Cotización",
+    "resources": "Recursos",
+    "search": "Buscar",
+    "searchEmpty": "No se encontraron resultados.",
+    "searchPlaceholder": "Buscar servicios, soluciones y recursos...",
+    "services": "Servicios",
+    "servicesDescription": "Soluciones digitales de principio a fin",
+    "signUp": "Crear Cuenta",
+    "solutions": "Soluciones",
+    "solutionsDescription": "Soluciones avanzadas de IA y software que automatizan, escalan y transforman las operaciones de tu empresa.",
+    "viewAllBlog": "Ver Todas las Publicaciones",
+    "viewAllCaseStudies": "Ver Todos los Casos de Éxito",
+    "viewAllExpertise": "Ver Toda la Experiencia",
+    "viewAllIndustries": "Ver Todas las Industrias",
+    "viewAllPartners": "Ver Todos los Socios",
+    "viewAllPortfolio": "Ver Todos los Proyectos",
+    "viewAllServices": "Ver Todos los Servicios",
+    "viewAllSolutions": "Ver Todas las Soluciones",
+    "other": "Otros"
   },
   "HomeHero": {
-    "headlineLead": "Automate, Scale &",
-    "headlineAccent": "Grow with AI",
+    "headlineLead": "Construye el Futuro con",
+    "headlineAccent": "IA Inteligente",
     "headlineSuffix": "",
-    "description": "automex builds intelligent automation systems, custom software, and AI-powered tools that free your team from repetitive work so you can focus on what actually moves your business forward.",
-    "primaryAction": "Start Your Project",
-    "secondaryAction": "Explore Services",
-    "liveLabel": "Live",
+    "description": "Transforma tu empresa con IA empresarial, software a medida y automatización inteligente. AUTOMEX desarrolla soluciones seguras y escalables que optimizan las operaciones y aceleran el crecimiento.",
+    "primaryAction": "Inicia Tu Proyecto",
+    "secondaryAction": "Explorar Servicios",
     "floatingLabels": [
-      "AI Agents",
-      "Web & Mobile",
-      "Cloud & APIs"
-    ],
-    "tickerItems": [
-      {
-        "icon": "bot",
-        "text": "AI Agent deployed for CRM automation",
-        "badge": "Live",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "zap",
-        "text": "Workflow automated 14 hrs/week saved",
-        "badge": "Done",
-        "badgeVariant": "teal"
-      },
-      {
-        "icon": "sparkles",
-        "text": "Custom GPT chatbot live on client website",
-        "badge": "Active",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "bot",
-        "text": "ERP integration completed successfully",
-        "badge": "Complete",
-        "badgeVariant": "blue"
-      },
-      {
-        "icon": "zap",
-        "text": "Sales bot generated 38 qualified leads today",
-        "badge": "Running",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "sparkles",
-        "text": "Mobile app shipped to App Store & Play Store",
-        "badge": "Shipped",
-        "badgeVariant": "teal"
-      },
-      {
-        "icon": "bot",
-        "text": "WhatsApp support bot handling 300 msgs/day",
-        "badge": "Live",
-        "badgeVariant": "cyan"
-      },
-      {
-        "icon": "zap",
-        "text": "Payment gateway integrated in 48 hours",
-        "badge": "Done",
-        "badgeVariant": "blue"
-      }
+      "Agentes de IA",
+      "Web y Móvil",
+      "Nube y APIs"
     ]
   },
   "AiShowcase": {
-    "sectionTitle": "AI Showcase Intelligent Automation",
-    "orbit1": "AI Agents",
-    "orbit2": "Automation",
-    "orbit3": "Web Dev",
-    "orbit4": "Mobile Apps",
-    "orbit5": "API Integration",
-    "orbit6": "Analytics",
-    "feedItem1Title": "AI Agent Deployed",
-    "feedItem1Subtitle": "Customer support bot 98% resolution rate",
-    "feedItem1Badge": "Live",
-    "feedItem2Title": "Workflow Automated",
-    "feedItem2Subtitle": "CRM data sync saved 18 hrs/week",
-    "feedItem2Badge": "Complete",
-    "feedItem3Title": "WhatsApp Bot Active",
-    "feedItem3Subtitle": "Lead gen chatbot 54 new leads today",
-    "feedItem3Badge": "Running",
-    "feedItem4Title": "SaaS Platform Launched",
-    "feedItem4Subtitle": "E-commerce dashboard 0 downtime deploy",
-    "feedItem4Badge": "Deployed",
-    "prop1Title": "AI agents that work while you sleep",
-    "prop1Body": "We build and deploy AI bots for customer support, sales, lead generation, and internal operations across WhatsApp, Telegram, your website, and beyond.",
-    "prop2Title": "Automation that removes the busywork",
-    "prop2Body": "From CRM and ERP automation to workflow orchestration and reporting we map your processes and build systems that run them reliably, without manual effort.",
-    "prop3Title": "Software you own, built to last",
-    "prop3Body": "Every platform, dashboard, or mobile app we deliver is production-grade, documented, and fully yours. No vendor lock-in, no black boxes.",
-    "cta": "See All Services",
-    "trust1": "Production-ready delivery",
-    "trust2": "Fast turnaround",
-    "trust3": "Dedicated support"
+    "sectionTitle": "Vitrina de IA Automatización Inteligente",
+    "orbit1": "Agentes de IA",
+    "orbit2": "Automatización",
+    "orbit3": "Desarrollo Web",
+    "orbit4": "Apps Móviles",
+    "orbit5": "Integración de APIs",
+    "orbit6": "Analítica",
+    "feedItem1Title": "Agente de IA Implementado",
+    "feedItem1Subtitle": "Bot de atención al cliente 98% de resolución",
+    "feedItem1Badge": "En vivo",
+    "feedItem2Title": "Flujo de Trabajo Automatizado",
+    "feedItem2Subtitle": "Sincronización de datos de CRM ahorró 18 h/semana",
+    "feedItem2Badge": "Completo",
+    "feedItem3Title": "Bot de WhatsApp Activo",
+    "feedItem3Subtitle": "Chatbot de captación de leads 54 nuevos leads hoy",
+    "feedItem3Badge": "En curso",
+    "feedItem4Title": "Plataforma SaaS Lanzada",
+    "feedItem4Subtitle": "Panel de e-commerce despliegue sin tiempo de inactividad",
+    "feedItem4Badge": "Desplegado",
+    "prop1Title": "Agentes de IA que trabajan mientras duermes",
+    "prop1Body": "Creamos e implementamos bots de IA para atención al cliente, ventas, generación de leads y operaciones internas en WhatsApp, Telegram, tu sitio web y más.",
+    "prop2Title": "Automatización que elimina el trabajo tedioso",
+    "prop2Body": "Desde la automatización de CRM y ERP hasta la orquestación de flujos de trabajo e informes mapeamos tus procesos y creamos sistemas que los ejecutan de forma fiable, sin esfuerzo manual.",
+    "prop3Title": "Software que te pertenece, hecho para durar",
+    "prop3Body": "Cada plataforma, panel o app móvil que entregamos es de nivel de producción, está documentada y es completamente tuya. Sin dependencia de proveedores, sin cajas negras.",
+    "cta": "Ver Todos los Servicios",
+    "trust1": "Entrega lista para producción",
+    "trust2": "Entrega rápida",
+    "trust3": "Soporte dedicado"
   },
   "HowItWorks": {
-    "eyebrow": "AI Automation",
-    "title": "How our AI Agent works",
-    "accentWord": "AI Agent",
-    "description": "Watch how our autonomous agent thinks, plans, and acts across your tools in real time.",
-    "step1Title": "Trigger",
-    "step1Desc": "Event fires from CRM, form, or webhook",
-    "step2Title": "Reason",
-    "step2Desc": "AI analyzes context and plans actions",
-    "step3Title": "Act",
-    "step3Desc": "Calls APIs, creates tasks, sends messages",
-    "step4Title": "Complete",
-    "step4Desc": "Logs results and notifies the team",
-    "pipelineLabel": "Live Pipeline",
-    "pipelineNode1Label": "New Lead",
-    "pipelineNode1Sub": "HubSpot CRM",
-    "pipelineNode2Label": "AI Agent",
-    "pipelineNode2Sub": "Processing",
+    "eyebrow": "Automatización con IA",
+    "title": "Cómo funciona nuestro Agente de IA",
+    "accentWord": "Agente de IA",
+    "description": "Observa cómo nuestro agente autónomo piensa, planifica y actúa en tus herramientas en tiempo real.",
+    "step1Title": "Disparador",
+    "step1Desc": "El evento se activa desde CRM, formulario o webhook",
+    "step2Title": "Razonamiento",
+    "step2Desc": "La IA analiza el contexto y planifica acciones",
+    "step3Title": "Acción",
+    "step3Desc": "Llama a APIs, crea tareas, envía mensajes",
+    "step4Title": "Finalización",
+    "step4Desc": "Registra los resultados y notifica al equipo",
+    "pipelineLabel": "Flujo en Vivo",
+    "pipelineNode1Label": "Nuevo Lead",
+    "pipelineNode1Sub": "CRM HubSpot",
+    "pipelineNode2Label": "Agente de IA",
+    "pipelineNode2Sub": "Procesando",
     "pipelineNode3Label": "Asana",
-    "pipelineNode3Sub": "Task created",
+    "pipelineNode3Sub": "Tarea creada",
     "pipelineNode4Label": "Slack",
-    "pipelineNode4Sub": "Notified",
-    "pipelineNode5Label": "Calendar",
-    "pipelineNode5Sub": "Scheduled",
-    "sandboxSectionLabel": "Interactive Demo",
-    "scenarioLabel": "Scenario",
-    "idleTitle": "Agent is standing by",
-    "idleDescription": "Select a scenario on the left and press \"Run agent\" to watch it work in real time.",
-    "reasoningLabel": "Agent reasoning",
-    "actionsLabel": "Actions",
-    "readyLabel": "Ready",
-    "executingLabel": "Executing…",
-    "sandboxTitle": "Live demo",
-    "sandboxDescription": "Pick a scenario and watch the AI work step by step",
-    "runLabel": "Run agent",
-    "resetLabel": "Reset",
-    "thinkingLabel": "Reasoning…",
-    "doneLabel": "Done",
-    "task1Label": "New lead",
-    "task1Thought1": "New lead submitted from website form.",
-    "task1Thought2": "Checking CRM for existing contact…",
-    "task1Thought3": "Lead is qualified high enterprise potential.",
-    "task1Thought4": "Planning outreach sequence.",
-    "task1Action1": "Fetch lead data",
-    "task1Action2": "Enrich with company insights",
-    "task1Action3": "Create Asana task",
-    "task1Action4": "Notify Slack channel",
-    "task1Action5": "Schedule calendar invite",
-    "task1Result": "Lead fully processed and assigned to sales team.",
-    "task2Label": "Support ticket",
-    "task2Thought1": "New support ticket: API rate limit issue.",
-    "task2Thought2": "Classifying priority and sentiment…",
-    "task2Thought3": "Searching knowledge base for solutions.",
-    "task2Action1": "Fetch ticket details",
-    "task2Action2": "AI classifier analysis",
-    "task2Action3": "Generate draft reply from knowledge base",
-    "task2Action4": "Escalate to senior engineer",
-    "task2Result": "Ticket categorised and escalated. Suggested reply ready.",
-    "task3Label": "Report generation",
-    "task3Thought1": "Weekly report scheduled.",
-    "task3Thought2": "Querying data warehouse…",
-    "task3Thought3": "Analysing trends and outliers.",
-    "task3Action1": "Query data warehouse",
-    "task3Action2": "AI analyst insights",
-    "task3Action3": "Generate PDF and Notion page",
-    "task3Action4": "Distribute to stakeholders",
-    "task3Result": "Report generated and delivered to leadership.",
-    "metricTime": "Response time",
-    "metricSteps": "Actions executed",
-    "metricSaved": "Time saved",
-    "metricResolution": "Resolution confidence",
-    "metricRows": "Rows processed"
+    "pipelineNode4Sub": "Notificado",
+    "pipelineNode5Label": "Calendario",
+    "pipelineNode5Sub": "Programado",
+    "sandboxSectionLabel": "Demo Interactiva",
+    "scenarioLabel": "Escenario",
+    "idleTitle": "El agente está en espera",
+    "idleDescription": "Selecciona un escenario a la izquierda y pulsa \"Ejecutar agente\" para verlo trabajar en tiempo real.",
+    "reasoningLabel": "Razonamiento del agente",
+    "actionsLabel": "Acciones",
+    "readyLabel": "Listo",
+    "executingLabel": "Ejecutando…",
+    "sandboxTitle": "Demo en vivo",
+    "sandboxDescription": "Elige un escenario y observa cómo trabaja la IA paso a paso",
+    "runLabel": "Ejecutar agente",
+    "resetLabel": "Reiniciar",
+    "thinkingLabel": "Razonando…",
+    "doneLabel": "Hecho",
+    "task1Label": "Nuevo lead",
+    "task1Thought1": "Nuevo lead enviado desde el formulario del sitio web.",
+    "task1Thought2": "Comprobando el CRM en busca de contacto existente…",
+    "task1Thought3": "El lead está calificado alto potencial empresarial.",
+    "task1Thought4": "Planificando la secuencia de contacto.",
+    "task1Action1": "Obtener datos del lead",
+    "task1Action2": "Enriquecer con datos de la empresa",
+    "task1Action3": "Crear tarea en Asana",
+    "task1Action4": "Notificar al canal de Slack",
+    "task1Action5": "Programar invitación de calendario",
+    "task1Result": "Lead totalmente procesado y asignado al equipo de ventas.",
+    "task2Label": "Ticket de soporte",
+    "task2Thought1": "Nuevo ticket de soporte: problema de límite de tasa de la API.",
+    "task2Thought2": "Clasificando prioridad y sentimiento…",
+    "task2Thought3": "Buscando soluciones en la base de conocimientos.",
+    "task2Action1": "Obtener detalles del ticket",
+    "task2Action2": "Análisis del clasificador de IA",
+    "task2Action3": "Generar borrador de respuesta desde la base de conocimientos",
+    "task2Action4": "Escalar a ingeniero senior",
+    "task2Result": "Ticket categorizado y escalado. Respuesta sugerida lista.",
+    "task3Label": "Generación de informes",
+    "task3Thought1": "Informe semanal programado.",
+    "task3Thought2": "Consultando el almacén de datos…",
+    "task3Thought3": "Analizando tendencias y valores atípicos.",
+    "task3Action1": "Consultar el almacén de datos",
+    "task3Action2": "Perspectivas del analista de IA",
+    "task3Action3": "Generar PDF y página de Notion",
+    "task3Action4": "Distribuir a las partes interesadas",
+    "task3Result": "Informe generado y entregado a la dirección.",
+    "metricTime": "Tiempo de respuesta",
+    "metricSteps": "Acciones ejecutadas",
+    "metricSaved": "Tiempo ahorrado",
+    "metricResolution": "Confianza de resolución",
+    "metricRows": "Filas procesadas"
   },
   "TechStack": {
-    "eyebrow": "Integrations",
-    "title": "Built on tools your team already uses",
-    "accentWord": "tools your team",
-    "description": "automex integrates natively with the platforms that power modern businesses from AI models and CRM systems to cloud infrastructure and team communication.",
-    "allLabel": "All tools",
-    "tabListLabel": "Tool categories",
-    "counterIntegrations": "Integrations",
+    "eyebrow": "Integraciones",
+    "title": "Construido sobre herramientas que tu equipo ya usa",
+    "accentWord": "herramientas que tu equipo",
+    "description": "automex se integra de forma nativa con las plataformas que impulsan a las empresas modernas desde modelos de IA y sistemas CRM hasta infraestructura en la nube y comunicación de equipos.",
+    "allLabel": "Todas las herramientas",
+    "tabListLabel": "Categorías de herramientas",
+    "counterIntegrations": "Integraciones",
     "counterIntegrationsValue": "{toolsCount}+",
-    "counterCategories": "Categories",
+    "counterCategories": "Categorías",
     "counterCategoriesValue": "{count}"
   },
   "ConnectedModel": {
-    "eyebrow": "One Connected Model",
-    "headlineLead": "One trusted reality.",
-    "headlineAccent": "Dashboard and AI on top.",
-    "description": "Sales, ads, and website numbers often sit in different apps, so it's hard to see how your business is really doing. We bring it together in one place. AI and dashboard both use the same numbers, so you never get two different answers.",
-    "signalsLabel": "Every signal",
-    "outputsLabel": "Same data, two doors",
-    "primaryLabel": "Book a demo",
-    "hubLabel": "One model",
-    "secondaryLabel": "Contact us"
+    "eyebrow": "Un Modelo Conectado",
+    "headlineLead": "Una realidad de confianza.",
+    "headlineAccent": "Panel de control e IA en un solo lugar.",
+    "description": "Los datos de ventas, publicidad y sitio web suelen estar dispersos en distintas aplicaciones, lo que dificulta ver cómo va realmente tu negocio. Nosotros lo unificamos todo en un solo lugar. La IA y el panel de control usan los mismos datos, así que nunca obtienes dos respuestas distintas.",
+    "signalsLabel": "Cada señal",
+    "outputsLabel": "Mismos datos, dos puertas",
+    "primaryLabel": "Reservar una demo",
+    "hubLabel": "Un modelo",
+    "secondaryLabel": "Contáctanos"
   },
   "Auth": {
     "common": {
       "brand": "Automex",
       "brandShort": "automex",
-      "welcome": "Welcome to Automex",
-      "backHome": "Back to home",
-      "secureNote": "256-bit encrypted · SOC 2 compliant · Data never sold",
-      "footer": "© 2026 Automex. All rights reserved. Enterprise AI & Digital Transformation.",
-      "email": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "password": "Password",
-      "passwordPlaceholder": "Enter your password",
-      "confirmPassword": "Confirm password",
-      "confirmPasswordPlaceholder": "Re enter your password",
-      "fullName": "Full name",
+      "welcome": "Bienvenido a Automex",
+      "backHome": "Volver al inicio",
+      "secureNote": "Cifrado de 256 bits · Conforme con SOC 2 · Datos nunca vendidos",
+      "footer": "© 2026 Automex. Todos los derechos reservados. IA Empresarial y Transformación Digital.",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@empresa.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Introduce tu contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "confirmPasswordPlaceholder": "Vuelve a introducir tu contraseña",
+      "fullName": "Nombre completo",
       "fullNamePlaceholder": "Jane Smith",
-      "company": "Company (optional)",
+      "company": "Empresa (opcional)",
       "companyPlaceholder": "Acme Corp",
-      "showPassword": "Show password",
-      "hidePassword": "Hide password",
-      "orContinueWith": "or continue with"
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña",
+      "orContinueWith": "o continuar con"
     },
     "login": {
-      "metaTitle": "Sign In | Automex",
-      "metaDescription": "Sign in to your Automex account to manage your AI automation projects.",
-      "title": "Sign in to your account",
-      "description": "Enter your credentials to access your Automex workspace.",
-      "remember": "Keep me signed in",
-      "forgot": "Forgot password?",
-      "submit": "Sign in",
-      "signingIn": "Signing in…",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Create one free"
+      "metaTitle": "Iniciar Sesión | Automex",
+      "metaDescription": "Inicia sesión en tu cuenta de Automex para gestionar tus proyectos de automatización con IA.",
+      "title": "Inicia sesión en tu cuenta",
+      "description": "Introduce tus credenciales para acceder a tu espacio de trabajo de Automex.",
+      "remember": "Mantener sesión iniciada",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar sesión",
+      "signingIn": "Iniciando sesión…",
+      "noAccount": "¿No tienes una cuenta?",
+      "signupLink": "Crea una gratis"
     },
     "signup": {
-      "metaTitle": "Create Account | Automex",
-      "metaDescription": "Join Automex to build AI-powered automation systems for your business.",
-      "title": "Create your account",
-      "description": "Get started with Automex",
-      "passwordHint": "Must be at least 8 characters.",
-      "passwordMismatch": "Passwords do not match.",
-      "termsPrefix": "I agree to the",
-      "terms": "Terms of Service",
-      "and": "and",
-      "privacy": "Privacy Policy",
-      "submit": "Create account",
-      "creating": "Creating account…",
-      "haveAccount": "Already have an account?",
-      "loginLink": "Sign in",
-      "successTitle": "Check your inbox",
-      "successDescription": "We sent a verification link to",
-      "successAction": "Click it to activate your account.",
-      "successHint": "Didn't receive it? Check your spam folder or",
-      "tryAgain": "try again"
+      "metaTitle": "Crear Cuenta | Automex",
+      "metaDescription": "Únete a Automex para construir sistemas de automatización con IA para tu negocio.",
+      "title": "Crea tu cuenta",
+      "description": "Comienza con Automex",
+      "passwordHint": "Debe tener al menos 8 caracteres.",
+      "passwordMismatch": "Las contraseñas no coinciden.",
+      "termsPrefix": "Acepto los",
+      "terms": "Términos de Servicio",
+      "and": "y la",
+      "privacy": "Política de Privacidad",
+      "submit": "Crear cuenta",
+      "creating": "Creando cuenta…",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "loginLink": "Iniciar sesión",
+      "successTitle": "Revisa tu bandeja de entrada",
+      "successDescription": "Enviamos un enlace de verificación a",
+      "successAction": "Haz clic en él para activar tu cuenta.",
+      "successHint": "¿No lo recibiste? Revisa tu carpeta de spam o",
+      "tryAgain": "inténtalo de nuevo"
     },
     "forgotPassword": {
-      "metaTitle": "Reset Password | Automex",
-      "metaDescription": "Request a password reset link for your Automex account.",
-      "title": "Reset your password",
-      "description": "We'll send a secure reset code to your email address.",
-      "emailHint": "Use the email address linked to your automex account.",
-      "submit": "Send reset code",
-      "sending": "Sending…",
-      "backToLogin": "Back to sign in",
-      "successTitle": "Reset link sent",
-      "successDescription": "If",
-      "successAction": "is registered, you'll receive a reset link shortly. Check your spam folder if you don't see it."
+      "metaTitle": "Restablecer Contraseña | Automex",
+      "metaDescription": "Solicita un enlace para restablecer la contraseña de tu cuenta de Automex.",
+      "title": "Restablece tu contraseña",
+      "description": "Te enviaremos un código de restablecimiento seguro a tu correo electrónico.",
+      "emailHint": "Usa el correo electrónico vinculado a tu cuenta de automex.",
+      "submit": "Enviar código de restablecimiento",
+      "sending": "Enviando…",
+      "backToLogin": "Volver a iniciar sesión",
+      "successTitle": "Enlace de restablecimiento enviado",
+      "successDescription": "Si",
+      "successAction": "está registrado, recibirás un enlace de restablecimiento en breve. Revisa tu carpeta de spam si no lo ves."
     },
     "resetPassword": {
-      "metaTitle": "Set New Password | Automex",
-      "metaDescription": "Choose a new password for your Automex account.",
-      "title": "Set new password",
-      "description": "Choose a strong password for your Automex account.",
-      "submit": "Update password",
-      "updating": "Updating password…",
-      "backToLogin": "Back to sign in",
-      "success": "Password updated. Please sign in with your new password.",
-      "invalidTitle": "Invalid reset link",
-      "invalidDescription": "This link is missing a reset token. Please use the link from your email, or request a new one.",
-      "requestNew": "Request a new reset link"
+      "metaTitle": "Establecer Nueva Contraseña | Automex",
+      "metaDescription": "Elige una nueva contraseña para tu cuenta de Automex.",
+      "title": "Establece una nueva contraseña",
+      "description": "Elige una contraseña segura para tu cuenta de Automex.",
+      "submit": "Actualizar contraseña",
+      "updating": "Actualizando contraseña…",
+      "backToLogin": "Volver a iniciar sesión",
+      "success": "Contraseña actualizada. Inicia sesión con tu nueva contraseña.",
+      "invalidTitle": "Enlace de restablecimiento no válido",
+      "invalidDescription": "A este enlace le falta un token de restablecimiento. Usa el enlace de tu correo o solicita uno nuevo.",
+      "requestNew": "Solicitar un nuevo enlace de restablecimiento"
     },
     "verifyEmail": {
-      "metaTitle": "Verify Email | Automex",
-      "metaDescription": "Confirm your email address to activate your Automex account.",
-      "loadingTitle": "Verifying your email…",
-      "loadingDescription": "This only takes a moment.",
-      "successTitle": "Email verified!",
-      "successDescription": "Your account is active. You can now sign in to your Automex workspace.",
-      "signIn": "Sign in to your account",
-      "errorTitle": "Verification failed",
-      "errorDefault": "This link may have expired or already been used.",
-      "noToken": "No verification token found in the URL. Please use the link from your email.",
-      "goToSignIn": "Go to sign in",
-      "createAccount": "Create a new account"
+      "metaTitle": "Verificar Correo | Automex",
+      "metaDescription": "Confirma tu dirección de correo electrónico para activar tu cuenta de Automex.",
+      "loadingTitle": "Verificando tu correo electrónico…",
+      "loadingDescription": "Esto solo tomará un momento.",
+      "successTitle": "¡Correo verificado!",
+      "successDescription": "Tu cuenta está activa. Ahora puedes iniciar sesión en tu espacio de trabajo de Automex.",
+      "signIn": "Inicia sesión en tu cuenta",
+      "errorTitle": "Error de verificación",
+      "errorDefault": "Este enlace pudo haber caducado o ya haber sido utilizado.",
+      "noToken": "No se encontró ningún token de verificación en la URL. Usa el enlace de tu correo electrónico.",
+      "goToSignIn": "Ir a iniciar sesión",
+      "createAccount": "Crear una nueva cuenta"
     },
     "magicLink": {
-      "metaTitle": "Magic Link | Automex",
-      "metaDescription": "Sign in to Automex using your magic link.",
-      "loadingTitle": "Signing you in…",
-      "loadingDescription": "Verifying your magic link. You'll be redirected shortly.",
-      "errorTitle": "Link expired or invalid",
-      "errorDefault": "This magic link may have expired or already been used.",
-      "noToken": "No magic link token found. Please request a new link.",
-      "backToSignIn": "Back to sign in"
+      "metaTitle": "Enlace Mágico | Automex",
+      "metaDescription": "Inicia sesión en Automex usando tu enlace mágico.",
+      "loadingTitle": "Iniciando tu sesión…",
+      "loadingDescription": "Verificando tu enlace mágico. Serás redirigido en breve.",
+      "errorTitle": "Enlace caducado o no válido",
+      "errorDefault": "Este enlace mágico pudo haber caducado o ya haber sido utilizado.",
+      "noToken": "No se encontró ningún token de enlace mágico. Solicita un enlace nuevo.",
+      "backToSignIn": "Volver a iniciar sesión"
     },
     "verifyOtp": {
-      "title": "Check your inbox",
-      "description": "We sent a 6-digit code to your email. Enter it below to continue.",
-      "codeLabel": "Verification code",
-      "digitLabel": "Digit",
-      "hint": "The code expires in 10 minutes. Check your spam folder if you don't see it.",
-      "submit": "Verify and continue",
-      "resendText": "Didn't receive a code?",
-      "resendAction": "Resend",
-      "backToLogin": "Back to sign in"
+      "title": "Revisa tu bandeja de entrada",
+      "description": "Enviamos un código de 6 dígitos a tu correo electrónico. Introdúcelo a continuación para continuar.",
+      "codeLabel": "Código de verificación",
+      "digitLabel": "Dígito",
+      "hint": "El código caduca en 10 minutos. Revisa tu carpeta de spam si no lo ves.",
+      "submit": "Verificar y continuar",
+      "resendText": "¿No recibiste un código?",
+      "resendAction": "Reenviar",
+      "backToLogin": "Volver a iniciar sesión"
     }
   },
   "footer": {
-    "tagline": "Enterprise grade AI, cybersecurity, software engineering, cloud infrastructure, and digital transformation all under one roof.",
-    "location": "Remote-first team operating globally across the world.",
+    "tagline": "IA de nivel empresarial, ciberseguridad, ingeniería de software, infraestructura en la nube y transformación digital, todo bajo un mismo techo.",
+    "location": "Equipo remoto que opera globalmente en todo el mundo.",
     "contact": {
-      "whatsapp": "Chat on WhatsApp",
-      "email": "Send an email"
+      "whatsapp": "Chatear por WhatsApp",
+      "email": "Enviar un correo electrónico"
     },
     "cta": {
-      "heading": "Ready to transform your business?",
-      "subheading": "Tell us about your project and we'll respond within 24 hours.",
-      "button": "Get started"
+      "heading": "¿Listo para transformar tu negocio?",
+      "subheading": "Cuéntanos sobre tu proyecto y responderemos en un plazo de 24 horas.",
+      "button": "Comenzar"
     },
     "columns": {
       "services": {
-        "title": "Services",
-        "ai_solutions": "AI Solutions",
-        "ai_bots": "AI Bots & Automation",
-        "software_dev": "Software Development",
-        "web_dev": "Web Development",
-        "mobile_dev": "Mobile App Development",
-        "cybersecurity": "Cybersecurity Services"
+        "title": "Servicios",
+        "ai_solutions": "Soluciones de IA",
+        "ai_bots": "Bots de IA y Automatización",
+        "software_dev": "Desarrollo de Software",
+        "web_dev": "Desarrollo Web",
+        "mobile_dev": "Desarrollo de Apps Móviles",
+        "cybersecurity": "Servicios de Ciberseguridad"
       },
       "technology": {
-        "title": "Technology",
-        "claude_ai": "Claude AI Integration",
-        "api_integration": "API Integration",
-        "database": "Database Architecture",
-        "cloud": "Cloud Infrastructure",
-        "security_compliance": "Security Compliance",
-        "digital_transform": "Digital Transformation"
+        "title": "Tecnología",
+        "claude_ai": "Integración con Claude AI",
+        "api_integration": "Integración de APIs",
+        "database": "Arquitectura de Bases de Datos",
+        "cloud": "Infraestructura en la Nube",
+        "security_compliance": "Cumplimiento de Seguridad",
+        "digital_transform": "Transformación Digital"
       },
       "company": {
-        "title": "Company",
-        "about": "About Us",
-        "services": "Our Services",
-        "blogs": "Blog & Insights",
-        "caseStudies": "Case Studies",
-        "contact": "Contact Us",
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service"
+        "title": "Empresa",
+        "about": "Sobre Nosotros",
+        "services": "Nuestros Servicios",
+        "blogs": "Blog e Insights",
+        "caseStudies": "Casos de Éxito",
+        "contact": "Contáctanos",
+        "privacy": "Política de Privacidad",
+        "terms": "Términos de Servicio"
       }
     },
     "bottom": {
-      "copyright": "© {year} automex. All rights reserved.",
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "sitemap": "Sitemap"
+      "copyright": "© {year} automex. Todos los derechos reservados.",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "sitemap": "Mapa del sitio"
     },
     "social": {
       "facebook": "Facebook",
@@ -419,112 +368,112 @@
     },
     "badges": {
       "popular": "Popular",
-      "new": "New",
-      "enterprise": "Enterprise"
+      "new": "Nuevo",
+      "enterprise": "Empresarial"
     }
   },
   "Contact": {
     "meta": {
-      "title": "Contact automex AI Automation & Enterprise Software",
-      "description": "Reach the automex team to discuss AI agents, workflow automation, custom software, and digital transformation for your business. We respond within 24 hours.",
-      "keywords": "contact automex, AI automation, enterprise software, digital transformation, custom software development, AI agents, business automation",
-      "ogTitle": "Contact automex Let's Build Something Together",
-      "ogDescription": "Talk to our team about AI-powered automation, custom software, and enterprise digital transformation. Fast response, real solutions.",
-      "ogImageAlt": "automex contact page AI & Enterprise Software"
+      "title": "Contacta a automex Automatización con IA y Software Empresarial",
+      "description": "Ponte en contacto con el equipo de automex para hablar sobre agentes de IA, automatización de flujos de trabajo, software a medida y transformación digital para tu negocio. Respondemos en un plazo de 24 horas.",
+      "keywords": "contactar automex, automatización con IA, software empresarial, transformación digital, desarrollo de software a medida, agentes de IA, automatización empresarial",
+      "ogTitle": "Contacta a automex Construyamos Algo Juntos",
+      "ogDescription": "Habla con nuestro equipo sobre automatización impulsada por IA, software a medida y transformación digital empresarial. Respuesta rápida, soluciones reales.",
+      "ogImageAlt": "Página de contacto de automex IA y Software Empresarial"
     },
     "hero": {
-      "eyebrow": "Get in Touch",
-      "headlineLead": "Let's build something",
-      "headlineAccent": "extraordinary together",
-      "description": "Whether you're automating a workflow, launching a product, or transforming your entire operation the automex team is ready to help. Tell us what you need.",
+      "eyebrow": "Ponte en Contacto",
+      "headlineLead": "Construyamos algo",
+      "headlineAccent": "extraordinario juntos",
+      "description": "Ya sea que estés automatizando un flujo de trabajo, lanzando un producto o transformando toda tu operación, el equipo de automex está listo para ayudar. Cuéntanos qué necesitas.",
       "stats": [
         {
           "value": "< 24h",
-          "label": "Response time"
+          "label": "Tiempo de respuesta"
         },
         {
           "value": "50+",
-          "label": "Clients served"
+          "label": "Clientes atendidos"
         },
         {
           "value": "98%",
-          "label": "Satisfaction rate"
+          "label": "Tasa de satisfacción"
         }
       ],
-      "ctaWhatsapp": "Chat on WhatsApp",
-      "ctaEmail": "Send an Email"
+      "ctaWhatsapp": "Chatear por WhatsApp",
+      "ctaEmail": "Enviar un Correo"
     },
     "info": {
-      "eyebrow": "Contact Channels",
-      "title": "Reach us any way you prefer",
-      "description": "We operate across multiple time zones and channels. Pick whatever works best for you we aim to respond within one business day.",
-      "emailLabel": "Email",
+      "eyebrow": "Canales de Contacto",
+      "title": "Contáctanos de la forma que prefieras",
+      "description": "Operamos en múltiples zonas horarias y canales. Elige lo que mejor te funcione buscamos responder dentro de un día hábil.",
+      "emailLabel": "Correo electrónico",
       "email": "info@automex.tech",
-      "phoneLabel": "Phone Afghanistan",
+      "phoneLabel": "Teléfono Afganistán",
       "phoneAf": "+93 776 320 765",
-      "phoneAfLabel": "Phone Afghanistan",
-      "phoneUsLabel": "Phone United States",
+      "phoneAfLabel": "Teléfono Afganistán",
+      "phoneUsLabel": "Teléfono Estados Unidos",
       "phoneUs": "+1 (206) 470-9284",
-      "websiteLabel": "Website",
+      "websiteLabel": "Sitio web",
       "website": "automex.tech",
-      "whatsappTitle": "Chat on WhatsApp",
-      "whatsappSubtitle": "Quick questions? Message us directly.",
-      "whatsappMessage": "Hello automex team, I'd like to discuss a project.",
-      "responseTimeLabel": "Response time",
-      "responseTime": "Under 24 hours",
-      "responseNote": "Business days, all time zones",
-      "availabilityLabel": "Availability",
+      "whatsappTitle": "Chatear por WhatsApp",
+      "whatsappSubtitle": "¿Preguntas rápidas? Escríbenos directamente.",
+      "whatsappMessage": "Hola equipo de automex, me gustaría hablar sobre un proyecto.",
+      "responseTimeLabel": "Tiempo de respuesta",
+      "responseTime": "Menos de 24 horas",
+      "responseNote": "Días hábiles, todas las zonas horarias",
+      "availabilityLabel": "Disponibilidad",
       "availability": "Global",
-      "availabilityNote": "AF · US · EU time zones covered",
+      "availabilityNote": "Zonas horarias de AF · EE. UU. · UE cubiertas",
       "locationAf": "🇦🇫 Kabul, AF",
       "locationUs": "🇺🇸 Seattle, WA",
-      "locationNote": "Remote first team. We work with clients worldwide from Afghanistan and the United States."
+      "locationNote": "Equipo remoto por diseño. Trabajamos con clientes de todo el mundo desde Afganistán y Estados Unidos."
     },
     "form": {
-      "heading": "Send us a message",
-      "subheading": "Fill in the details below and we'll get back to you within one business day.",
-      "nameLabel": "Full name",
+      "heading": "Envíanos un mensaje",
+      "subheading": "Completa los datos a continuación y te responderemos dentro de un día hábil.",
+      "nameLabel": "Nombre completo",
       "namePlaceholder": "Hakim Safi",
-      "companyLabel": "Company (optional)",
+      "companyLabel": "Empresa (opcional)",
       "companyPlaceholder": "Acme Corp",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "info@company.com",
-      "subjectLabel": "What can we help with?",
-      "subjectPlaceholder": "Select a topic",
-      "messageLabel": "Your message",
-      "messagePlaceholder": "Tell us about your project, challenge, or question...",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "info@empresa.com",
+      "subjectLabel": "¿En qué podemos ayudarte?",
+      "subjectPlaceholder": "Selecciona un tema",
+      "messageLabel": "Tu mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu proyecto, desafío o pregunta...",
       "subjects": [
-        "AI Automation & Agents",
-        "Custom Software Development",
-        "Web or Mobile App",
-        "API & Third-Party Integration",
-        "Digital Transformation",
-        "Pricing & Packages",
-        "Partnership or Collaboration",
-        "Other"
+        "Automatización y Agentes de IA",
+        "Desarrollo de Software a Medida",
+        "App Web o Móvil",
+        "Integración de API y Terceros",
+        "Transformación Digital",
+        "Precios y Paquetes",
+        "Asociación o Colaboración",
+        "Otro"
       ],
-      "submit": "Send message",
-      "submitting": "Sending…",
-      "successTitle": "Message received!",
-      "successBody": "Thank you for reaching out. A member of the automex team will reply to your email within one business day.",
-      "successReset": "Send another message",
-      "errorMessage": "Something went wrong sending your message. Please try again, or email us directly at info@automex.tech.",
-      "privacyNote": "By submitting this form you agree to our Privacy Policy. We never share your data with third parties."
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando…",
+      "successTitle": "¡Mensaje recibido!",
+      "successBody": "Gracias por contactarnos. Un miembro del equipo de automex responderá a tu correo dentro de un día hábil.",
+      "successReset": "Enviar otro mensaje",
+      "errorMessage": "Algo salió mal al enviar tu mensaje. Inténtalo de nuevo o escríbenos directamente a info@automex.tech.",
+      "privacyNote": "Al enviar este formulario aceptas nuestra Política de Privacidad. Nunca compartimos tus datos con terceros."
     },
     "map": {
-      "title": "Our global footprint",
-      "description": "Remote first team operating from two core hubs, serving clients worldwide.",
-      "remoteBadge": "Remote first · 24/7 coverage",
+      "title": "Nuestra presencia global",
+      "description": "Equipo remoto que opera desde dos centros principales, atendiendo a clientes en todo el mundo.",
+      "remoteBadge": "Remoto por diseño · Cobertura 24/7",
       "offices": [
         {
           "city": "Kabul",
-          "country": "Afghanistan",
+          "country": "Afganistán",
           "flag": "🇦🇫",
           "tz": "UTC+4:30"
         },
         {
           "city": "Seattle",
-          "country": "USA",
+          "country": "EE. UU.",
           "flag": "🇺🇸",
           "tz": "UTC-8 (PST)"
         }
@@ -533,1216 +482,1378 @@
   },
   "About": {
     "meta": {
-      "title": "About automex AI Automation & Enterprise Software",
-      "description": "automex is a Seattle-based enterprise AI and software company. We build intelligent automation systems, custom software, and AI-powered products that help businesses worldwide move faster.",
-      "keywords": "about automex, AI automation company, enterprise software Seattle, AI agents, digital transformation, custom software team",
-      "ogTitle": "About automex Built to Automate the Future of Work",
-      "ogDescription": "From Seattle to the world automex designs and ships AI-powered automation, custom software, and enterprise products trusted by 50+ clients across 12 countries."
+      "title": "Sobre automex Automatización con IA y Software Empresarial",
+      "description": "automex es una empresa de software e IA empresarial con sede en Seattle. Creamos sistemas de automatización inteligente, software a medida y productos impulsados por IA que ayudan a empresas de todo el mundo a avanzar más rápido.",
+      "keywords": "sobre automex, empresa de automatización con IA, software empresarial Seattle, agentes de IA, transformación digital, equipo de software a medida",
+      "ogTitle": "Sobre automex Creada para Automatizar el Futuro del Trabajo",
+      "ogDescription": "Desde Seattle hacia el mundo automex diseña y lanza automatización impulsada por IA, software a medida y productos empresariales en los que confían más de 50 clientes en 12 países."
     },
     "hero": {
-      "eyebrow": "Our Story",
-      "headlineLead": "Built to automate",
-      "headlineAccent": "the future of work",
-      "headlineLine1": "Built to automate",
-      "headlineLine2": "the future of work",
+      "eyebrow": "Nuestra Historia",
+      "headlineLead": "Creada para automatizar",
+      "headlineAccent": "el futuro del trabajo",
+      "headlineLine1": "Creada para automatizar",
+      "headlineLine2": "el futuro del trabajo",
       "headlineSuffix": "",
-      "description": "automex is an enterprise AI and software company headquartered in Seattle, WA. We design and ship intelligent automation systems, custom software, and AI-powered products that free your team from repetitive work.",
-      "locationUs": "Seattle, WA United States",
-      "locationAf": "Kabul Afghanistan",
-      "founded": "Est. 2020",
-      "ctaStory": "Our story"
+      "description": "automex es una empresa de software e IA empresarial con sede en Seattle, WA. Diseñamos y lanzamos sistemas de automatización inteligente, software a medida y productos impulsados por IA que liberan a tu equipo del trabajo repetitivo.",
+      "locationUs": "Seattle, WA Estados Unidos",
+      "locationAf": "Kabul Afganistán",
+      "founded": "Fundada en 2020",
+      "ctaStory": "Nuestra historia"
     },
     "story": {
-      "eyebrow": "How we got here",
-      "title": "Started in Seattle. Built for the world.",
-      "pullQuote": "We started automex because great AI and automation tools shouldn't be a privilege of the Fortune 500.",
-      "body1": "In 2020, we launched out of Seattle with a single belief: that every business not just the biggest ones deserves access to enterprise-grade automation and AI. We started by solving real operational problems for SMBs and quickly discovered that the need was far wider than the Pacific Northwest.",
-      "body2": "Today, automex operates from two continents, serving clients across 12 countries. Our team spans Seattle and Kabul, combining Silicon Valley-caliber engineering with the hunger and work ethic of a team that knows exactly what's at stake.",
-      "chip": "Clients worldwide",
-      "badge1": "Remote-first since day one",
-      "badge2": "Two continents, one team",
-      "badge3": "No offshore hand-offs"
+      "eyebrow": "Cómo llegamos aquí",
+      "title": "Comenzamos en Seattle. Creados para el mundo.",
+      "pullQuote": "Creamos automex porque las grandes herramientas de IA y automatización no deberían ser un privilegio exclusivo de las Fortune 500.",
+      "body1": "En 2020, nos lanzamos desde Seattle con una sola convicción: que toda empresa no solo las más grandes merece acceso a automatización e IA de nivel empresarial. Comenzamos resolviendo problemas operativos reales para pymes y rápidamente descubrimos que la necesidad era mucho más amplia que el noroeste del Pacífico.",
+      "body2": "Hoy, automex opera desde dos continentes, atendiendo a clientes en 12 países. Nuestro equipo abarca Seattle y Kabul, combinando ingeniería del nivel de Silicon Valley con la ambición y ética de trabajo de un equipo que sabe exactamente lo que está en juego.",
+      "chip": "Clientes en todo el mundo",
+      "badge1": "Remotos desde el primer día",
+      "badge2": "Dos continentes, un solo equipo",
+      "badge3": "Sin traspasos offshore"
     },
     "mission": {
-      "eyebrow": "Purpose",
-      "missionTitle": "Our Mission",
-      "missionBody": "To make enterprise-grade AI automation accessible to every business from fast-growing startups to established enterprises so their teams can focus entirely on work that matters and decisions that move the needle.",
-      "visionTitle": "Our Vision",
-      "visionBody": "A world where repetitive, manual business processes are fully automated. Where people spend their time thinking, creating, and leading not copy-pasting, formatting, or clicking through dashboards. We're building the infrastructure that makes that world possible."
+      "eyebrow": "Propósito",
+      "missionTitle": "Nuestra Misión",
+      "missionBody": "Hacer que la automatización con IA de nivel empresarial sea accesible para todas las empresas desde startups en rápido crecimiento hasta empresas consolidadas para que sus equipos puedan centrarse por completo en el trabajo que importa y en las decisiones que marcan la diferencia.",
+      "visionTitle": "Nuestra Visión",
+      "visionBody": "Un mundo donde los procesos empresariales repetitivos y manuales estén totalmente automatizados. Donde las personas dediquen su tiempo a pensar, crear y liderar no a copiar y pegar, formatear o navegar por paneles de control. Estamos construyendo la infraestructura que hace posible ese mundo."
     },
     "stats": {
-      "eyebrow": "By the numbers",
-      "title": "Trusted by teams around the world",
-      "clients": "Clients served",
-      "years": "Years of operation",
-      "satisfaction": "Satisfaction rate",
-      "countries": "Countries reached"
+      "eyebrow": "En cifras",
+      "title": "La confianza de equipos de todo el mundo",
+      "clients": "Clientes atendidos",
+      "years": "Años de operación",
+      "satisfaction": "Tasa de satisfacción",
+      "countries": "Países alcanzados"
     },
     "values": {
-      "eyebrow": "What we stand for",
-      "title": "Principles that drive every decision",
-      "description": "These aren't posters on a wall. They're the filters we apply when making product decisions, choosing clients, and building systems that need to work five years from now.",
-      "v1Title": "Innovation first",
-      "v1Body": "We reach for the best available tool AI, automation, or custom code not the most familiar one. Every project is an opportunity to raise the bar.",
-      "v2Title": "Integrity in everything",
-      "v2Body": "We say what we'll do and do what we say. No black boxes, no hidden scope, no surprises on invoice day.",
-      "v3Title": "Real impact",
-      "v3Body": "We measure success in hours saved, revenue generated, and problems eliminated not in slides delivered or tickets closed.",
-      "v4Title": "True partnership",
-      "v4Body": "Your business goal is our goal. We work alongside your team as a technical co-pilot invested in the outcome, not a vendor shipping deliverables.",
-      "v5Title": "Uncompromising quality",
-      "v5Body": "Every line of code, every integration, every deployment is production-grade. We don't ship something we wouldn't run ourselves.",
-      "v6Title": "Global by design",
-      "v6Body": "Our team spans continents and time zones. We build products that work for every locale, language, and culture because the world is our market."
+      "eyebrow": "Lo que defendemos",
+      "title": "Principios que guían cada decisión",
+      "description": "No son carteles en una pared. Son los filtros que aplicamos al tomar decisiones de producto, elegir clientes y construir sistemas que deben funcionar dentro de cinco años.",
+      "v1Title": "Innovación primero",
+      "v1Body": "Optamos por la mejor herramienta disponible IA, automatización o código a medida no la más familiar. Cada proyecto es una oportunidad para elevar el estándar.",
+      "v2Title": "Integridad en todo",
+      "v2Body": "Decimos lo que haremos y hacemos lo que decimos. Sin cajas negras, sin alcance oculto, sin sorpresas el día de la factura.",
+      "v3Title": "Impacto real",
+      "v3Body": "Medimos el éxito en horas ahorradas, ingresos generados y problemas eliminados no en diapositivas entregadas o tickets cerrados.",
+      "v4Title": "Asociación verdadera",
+      "v4Body": "Tu objetivo de negocio es nuestro objetivo. Trabajamos junto a tu equipo como copiloto técnico comprometido con el resultado, no como un proveedor que entrega encargos.",
+      "v5Title": "Calidad sin concesiones",
+      "v5Body": "Cada línea de código, cada integración, cada despliegue es de nivel de producción. No entregamos nada que nosotros mismos no usaríamos.",
+      "v6Title": "Global por diseño",
+      "v6Body": "Nuestro equipo abarca continentes y zonas horarias. Creamos productos que funcionan para cada región, idioma y cultura porque el mundo es nuestro mercado."
     },
     "timeline": {
-      "eyebrow": "Our journey",
-      "title": "Five years of building",
-      "description": "From a one-person consultancy in Seattle to a global AI and software company with clients on four continents.",
-      "m1Title": "automex founded in Seattle",
-      "m1Body": "Launched as a boutique software consultancy focused on automation and custom web applications for SMBs in the Pacific Northwest.",
-      "m1Tag": "Origin",
-      "m2Title": "First enterprise clients land",
-      "m2Body": "Delivered our first enterprise CRM automation and ERP integration engagements saving clients thousands of manual hours per year.",
-      "m2Tag": "Milestone",
-      "m3Title": "AI division launched",
-      "m3Body": "Expanded into AI-powered products: intelligent chatbots, lead-generation agents, and data pipelines deployed across multiple industries.",
-      "m3Tag": "Expansion",
-      "m4Title": "Global operations opened",
-      "m4Body": "Opened engineering operations in Kabul, Afghanistan, extending our service footprint to clients across Asia, Europe, and the Middle East.",
+      "eyebrow": "Nuestro recorrido",
+      "title": "Cinco años construyendo",
+      "description": "De una consultoría de una sola persona en Seattle a una empresa global de IA y software con clientes en cuatro continentes.",
+      "m1Title": "automex se funda en Seattle",
+      "m1Body": "Lanzada como una consultoría de software boutique enfocada en automatización y aplicaciones web a medida para pymes del noroeste del Pacífico.",
+      "m1Tag": "Origen",
+      "m2Title": "Llegan los primeros clientes empresariales",
+      "m2Body": "Entregamos nuestros primeros proyectos de automatización de CRM e integración de ERP empresariales ahorrando a los clientes miles de horas manuales al año.",
+      "m2Tag": "Hito",
+      "m3Title": "Lanzamiento de la división de IA",
+      "m3Body": "Expansión hacia productos impulsados por IA: chatbots inteligentes, agentes de generación de leads y pipelines de datos implementados en múltiples industrias.",
+      "m3Tag": "Expansión",
+      "m4Title": "Apertura de operaciones globales",
+      "m4Body": "Abrimos operaciones de ingeniería en Kabul, Afganistán, ampliando nuestra presencia de servicio a clientes en Asia, Europa y Oriente Medio.",
       "m4Tag": "Global",
-      "m5Title": "50+ clients across 12 countries",
-      "m5Body": "Crossed 50 active clients. AI agents, SaaS platforms, mobile apps, and automation systems now trusted by teams on four continents.",
-      "m5Tag": "Scale",
-      "m6Title": "Full-spectrum AI platform",
-      "m6Body": "Shipping our most ambitious suite: end-to-end AI automation, multi-channel agent infrastructure, and enterprise dashboards built for scale.",
-      "m6Tag": "Now"
+      "m5Title": "Más de 50 clientes en 12 países",
+      "m5Body": "Superamos los 50 clientes activos. Agentes de IA, plataformas SaaS, apps móviles y sistemas de automatización ahora son de confianza de equipos en cuatro continentes.",
+      "m5Tag": "Escala",
+      "m6Title": "Plataforma de IA de espectro completo",
+      "m6Body": "Lanzando nuestra suite más ambiciosa: automatización de IA integral, infraestructura de agentes multicanal y paneles empresariales diseñados para escalar.",
+      "m6Tag": "Ahora"
     },
     "team": {
-      "eyebrow": "Leadership",
-      "title": "The people behind automex",
-      "description": "A small, senior team with deep expertise across AI, enterprise software, and product delivery. We stay lean on purpose it keeps us sharp and accountable.",
+      "eyebrow": "Liderazgo",
+      "title": "Las personas detrás de automex",
+      "description": "Un equipo pequeño y experimentado con profunda especialización en IA, software empresarial y entrega de productos. Nos mantenemos ágiles a propósito eso nos mantiene enfocados y responsables.",
       "m1Name": "Miraj Hejran",
-      "m1Role": "Founder & CEO",
-      "m1Bio": "Engineer turned entrepreneur. Miraj founded automex to bring enterprise-grade AI automation outside Silicon Valley. He leads product strategy, client relationships, and technical architecture across both offices.",
+      "m1Role": "Fundador y CEO",
+      "m1Bio": "Ingeniero convertido en emprendedor. Miraj fundó automex para llevar la automatización con IA de nivel empresarial más allá de Silicon Valley. Lidera la estrategia de producto, las relaciones con clientes y la arquitectura técnica en ambas oficinas.",
       "m2Name": "Hakim Rahimi Safi",
       "m2Role": "CTO",
-      "m2Bio": "Full-stack engineer turned technology executive. Hakim now oversees technical strategy, innovation, and engineering culture. He ensures every product automex ships is reliable, secure, and built to outlast the trends.",
+      "m2Bio": "Ingeniero full-stack convertido en ejecutivo tecnológico. Hakim supervisa ahora la estrategia técnica, la innovación y la cultura de ingeniería. Se asegura de que cada producto que lanza automex sea fiable, seguro y esté hecho para durar más que las tendencias.",
       "m3Name": "Abdullah Stanikzai",
-      "m3Role": "Lead Engineer",
-      "m3Bio": "Abdullah is a backend and infrastructure specialist with 7+ years of experience building high throughput microservices and real time systems. He leads the engineering team in implementing robust, scalable solutions and champions code quality and performance.",
-      "skill1": "AI / ML",
-      "skill2": "Product Strategy",
-      "skill3": "System Architecture",
-      "skill4": "Technical Leadership",
-      "skill5": "DevOps & Cloud",
-      "skill6": "API Design",
-      "skill7": "Microservices",
-      "skill8": "Performance Optimization",
-      "skill9": "System Design"
+      "m3Role": "Ingeniero Principal",
+      "m3Bio": "Abdullah es especialista en backend e infraestructura con más de 7 años de experiencia construyendo microservicios de alto rendimiento y sistemas en tiempo real. Lidera al equipo de ingeniería en la implementación de soluciones robustas y escalables, y defiende la calidad del código y el rendimiento.",
+      "skill1": "IA / ML",
+      "skill2": "Estrategia de Producto",
+      "skill3": "Arquitectura de Sistemas",
+      "skill4": "Liderazgo Técnico",
+      "skill5": "DevOps y Nube",
+      "skill6": "Diseño de API",
+      "skill7": "Microservicios",
+      "skill8": "Optimización de Rendimiento",
+      "skill9": "Diseño de Sistemas"
     },
     "cta": {
-      "title": "Ready to build something that lasts?",
-      "description": "Tell us what you're working on. Whether it's automating a workflow, launching a product, or transforming your operation we'll respond within 24 hours.",
-      "primary": "Start a conversation",
-      "secondary": "Explore our services"
+      "title": "¿Listo para construir algo duradero?",
+      "description": "Cuéntanos en qué estás trabajando. Ya sea automatizar un flujo de trabajo, lanzar un producto o transformar tu operación responderemos en un plazo de 24 horas.",
+      "primary": "Iniciar una conversación",
+      "secondary": "Explorar nuestros servicios"
     }
   },
   "Blog": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Blog",
-        "headlineLead": "Insights",
-        "headlineAccent": "on AI, Software & Technology",
-        "description": "Articles, tutorials, and deep dives from the AUTOMEX engineering team."
+        "eyebrow": "Nuestro Blog",
+        "headlineLead": "Ideas",
+        "headlineAccent": "sobre IA, Software y Tecnología",
+        "description": "Artículos, tutoriales y análisis profundos del equipo de ingeniería de AUTOMEX."
       },
       "filters": {
-        "all": "All",
-        "tagsLabel": "Tags:",
-        "articlesCount": "{count} article{plural}",
-        "searchPlaceholder": "Search articles...",
-        "sortLabel": "Sort by",
-        "sortNewest": "Newest",
-        "sortOldest": "Oldest",
-        "sortPopular": "Most Popular"
+        "all": "Todos",
+        "tagsLabel": "Etiquetas:",
+        "articlesCount": "{count} artículo{plural}",
+        "searchPlaceholder": "Buscar artículos...",
+        "sortLabel": "Ordenar por",
+        "sortNewest": "Más recientes",
+        "sortOldest": "Más antiguos",
+        "sortPopular": "Más populares"
       },
       "post": {
-        "readMore": "Read more",
-        "featured": "Featured",
+        "readMore": "Leer más",
+        "featured": "Destacado",
         "premium": "Premium",
-        "minRead": "{minutes} min read",
-        "noPosts": "No blog posts found.",
+        "minRead": "{minutes} min de lectura",
+        "noPosts": "No se encontraron entradas del blog.",
         "contentType": {
-          "article": "Article",
+          "article": "Artículo",
           "video": "Video",
-          "external": "External"
+          "external": "Externo"
         }
       },
-      "loadMore": "Load More",
+      "loadMore": "Cargar Más",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Have a project in mind?",
-        "description": "Share your ideas and we'll help turn them into reality. Get a free consultation today.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Construyamos",
+        "title": "¿Tienes un proyecto en mente?",
+        "description": "Comparte tus ideas y te ayudaremos a hacerlas realidad. Obtén una consulta gratuita hoy mismo.",
+        "quote": "Solicitar Presupuesto",
+        "booking": "Reservar una Llamada Gratuita"
       }
     },
     "detail": {
-      "back": "Back to Blog",
-      "by": "By",
-      "published": "Published",
-      "updated": "Updated",
-      "minRead": "{minutes} min read",
-      "views": "{count} views",
-      "featured": "Featured",
-      "premium": "Premium Content",
-      "premiumBadgeTooltip": "This content is available for premium leads only.",
-      "tagsLabel": "Tags",
-      "tableOfContents": "On this page",
-      "share": "Share",
-      "copyLink": "Copy link",
-      "copied": "Copied!",
-      "watchVideo": "Watch Video",
-      "readOriginal": "Read Original Article",
-      "relatedServices": "Related Services",
-      "relatedCaseStudies": "Related Case Studies",
-      "heroImages": "Gallery",
+      "back": "Volver al Blog",
+      "by": "Por",
+      "published": "Publicado",
+      "updated": "Actualizado",
+      "minRead": "{minutes} min de lectura",
+      "views": "{count} vistas",
+      "featured": "Destacado",
+      "premium": "Contenido Premium",
+      "premiumBadgeTooltip": "Este contenido solo está disponible para leads premium.",
+      "tagsLabel": "Etiquetas",
+      "tableOfContents": "En esta página",
+      "share": "Compartir",
+      "copyLink": "Copiar enlace",
+      "copied": "¡Copiado!",
+      "watchVideo": "Ver Video",
+      "readOriginal": "Leer Artículo Original",
+      "relatedServices": "Servicios Relacionados",
+      "relatedCaseStudies": "Casos de Éxito Relacionados",
+      "heroImages": "Galería",
       "contentType": {
-        "article": "Article",
-        "video": "Video Post",
-        "external": "External Link"
+        "article": "Artículo",
+        "video": "Entrada de Video",
+        "external": "Enlace Externo"
       },
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Ready to start your next project?",
-        "description": "Let's discuss how we can bring your ideas to life.",
-        "quote": "Request a Quote"
+        "eyebrow": "Construyamos",
+        "title": "¿Listo para iniciar tu próximo proyecto?",
+        "description": "Hablemos de cómo podemos dar vida a tus ideas.",
+        "quote": "Solicitar Presupuesto"
       }
     }
   },
   "AICapabilities": {
     "listing": {
       "hero": {
-        "eyebrow": "AI Solutions",
-        "headline": "AI Capabilities",
-        "description": "From NLP to computer vision, explore our AI and machine learning capabilities that power intelligent solutions."
+        "eyebrow": "Soluciones de IA",
+        "headline": "Capacidades de IA",
+        "description": "Desde el PLN hasta la visión artificial, explora nuestras capacidades de IA y aprendizaje automático que impulsan soluciones inteligentes."
       },
       "filters": {
-        "all": "All",
-        "count": "{count} AI capabilit{plural}"
+        "all": "Todas",
+        "count": "{count} capacidad{plural} de IA"
       },
       "card": {
-        "learnMore": "Learn more"
+        "learnMore": "Saber más"
       },
-      "empty": "No AI capabilities found.",
-      "loadMore": "Load More",
+      "empty": "No se encontraron capacidades de IA.",
+      "loadMore": "Cargar Más",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Ready to leverage AI?",
-        "description": "Let's discuss how these AI capabilities can be applied to your specific business challenges.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Construyamos",
+        "title": "¿Listo para aprovechar la IA?",
+        "description": "Hablemos de cómo estas capacidades de IA pueden aplicarse a los desafíos específicos de tu negocio.",
+        "quote": "Solicitar Presupuesto",
+        "booking": "Reservar una Llamada Gratuita"
       },
       "maturity": {
-        "research": "Research",
-        "production": "Production",
+        "research": "Investigación",
+        "production": "Producción",
         "experimental": "Experimental"
       }
     },
     "detail": {
-      "back": "Back to AI Capabilities",
-      "about": "About This Capability",
-      "technologies": "Technologies",
-      "relatedServices": "Related Services",
-      "demo": "View Live Demo",
+      "back": "Volver a Capacidades de IA",
+      "about": "Sobre Esta Capacidad",
+      "technologies": "Tecnologías",
+      "relatedServices": "Servicios Relacionados",
+      "demo": "Ver Demo en Vivo",
       "maturity": {
-        "research": "Research",
-        "production": "Production",
+        "research": "Investigación",
+        "production": "Producción",
         "experimental": "Experimental"
       },
       "cta": {
-        "eyebrow": "Get Started",
-        "title": "Interested in {name}?",
-        "description": "Let's discuss how this AI capability can address your specific business needs.",
-        "quote": "Request a Quote"
+        "eyebrow": "Comienza Ahora",
+        "title": "¿Interesado en {name}?",
+        "description": "Hablemos de cómo esta capacidad de IA puede abordar las necesidades específicas de tu negocio.",
+        "quote": "Solicitar Presupuesto"
       }
     }
   },
   "TechExpertise": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Expertise",
-        "headline": "Tech Expertise",
-        "description": "Deep expertise across the full technology stack from cloud architecture to AI, DevOps, security, and everything in between."
+        "eyebrow": "Nuestra Especialización",
+        "headline": "Especialización Tecnológica",
+        "description": "Amplia experiencia en toda la pila tecnológica desde arquitectura en la nube hasta IA, DevOps, seguridad y todo lo demás."
       },
       "filters": {
-        "all": "All"
+        "all": "Todas"
       },
       "card": {
-        "technologies": "{count} technolog{plural}",
-        "caseStudies": "{count} case stud{plural}",
-        "explore": "Explore"
+        "technologies": "{count} tecnología{plural}",
+        "caseStudies": "{count} caso{plural} de éxito",
+        "explore": "Explorar"
       },
-      "items": "{count} items",
-      "empty": "No tech expertise areas found.",
+      "items": "{count} elementos",
+      "empty": "No se encontraron áreas de especialización tecnológica.",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Need this expertise for your project?",
-        "description": "Our team brings deep technical knowledge to every engagement. Let's discuss your requirements.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Construyamos",
+        "title": "¿Necesitas esta experiencia para tu proyecto?",
+        "description": "Nuestro equipo aporta un profundo conocimiento técnico a cada colaboración. Hablemos de tus necesidades.",
+        "quote": "Solicitar Presupuesto",
+        "booking": "Reservar una Llamada Gratuita"
       }
     },
     "detail": {
-      "back": "Back to Tech Expertise",
+      "back": "Volver a Especialización Tecnológica",
       "stats": {
-        "technologies": "{count} technologies",
-        "caseStudies": "{count} case studies"
+        "technologies": "{count} tecnologías",
+        "caseStudies": "{count} casos de éxito"
       },
       "about": {
-        "title": "About This Expertise",
-        "eyebrow": "Overview"
+        "title": "Sobre Esta Especialización",
+        "eyebrow": "Resumen"
       },
       "technologies": {
-        "eyebrow": "Tech Stack",
-        "title": "Technologies & Tools"
+        "eyebrow": "Pila Tecnológica",
+        "title": "Tecnologías y Herramientas"
       },
       "caseStudies": {
-        "eyebrow": "Proven Results",
-        "title": "Related Case Studies",
-        "viewAll": "View all case studies",
-        "readCaseStudy": "Read case study"
+        "eyebrow": "Resultados Probados",
+        "title": "Casos de Éxito Relacionados",
+        "viewAll": "Ver todos los casos de éxito",
+        "readCaseStudy": "Leer caso de éxito"
       },
       "cta": {
-        "eyebrow": "Get Started",
-        "title": "Need {name} expertise?",
-        "description": "Our team brings deep expertise and real world experience. Let's discuss how we can help.",
-        "quote": "Request a Quote"
+        "eyebrow": "Comienza Ahora",
+        "title": "¿Necesitas experiencia en {name}?",
+        "description": "Nuestro equipo aporta amplia experiencia y conocimiento del mundo real. Hablemos de cómo podemos ayudar.",
+        "quote": "Solicitar Presupuesto"
       }
     }
   },
   "Portfolio": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Work",
-        "headline": "Portfolio",
-        "description": "Explore our projects custom software, AI solutions, and digital products we've built for clients worldwide."
+        "eyebrow": "Nuestro Trabajo",
+        "headline": "Portafolio",
+        "description": "Explora nuestros proyectos software a medida, soluciones de IA y productos digitales que hemos creado para clientes de todo el mundo."
       },
       "filters": {
-        "allIndustries": "All Industries",
-        "allTechnologies": "All Technologies",
-        "featured": "Featured",
-        "searchPlaceholder": "Search projects...",
-        "clearSearch": "Clear search",
-        "sortLabel": "Sort by",
-        "showLess": "Show less",
-        "more": "more",
-        "clearAll": "Clear all"
+        "allIndustries": "Todas las Industrias",
+        "allTechnologies": "Todas las Tecnologías",
+        "featured": "Destacados",
+        "searchPlaceholder": "Buscar proyectos...",
+        "clearSearch": "Borrar búsqueda",
+        "sortLabel": "Ordenar por",
+        "showLess": "Mostrar menos",
+        "more": "más",
+        "clearAll": "Borrar todo"
       },
       "card": {
-        "explore": "Explore project",
-        "featured": "Featured"
+        "explore": "Explorar proyecto",
+        "featured": "Destacado"
       },
       "count": {
-        "singular": "{count} project",
-        "plural": "{count} projects"
+        "singular": "{count} proyecto",
+        "plural": "{count} proyectos"
       },
-      "empty": "No portfolio projects found matching your criteria.",
-      "loadMore": "Load More",
+      "empty": "No se encontraron proyectos de portafolio que coincidan con tus criterios.",
+      "loadMore": "Cargar Más",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Have a project in mind?",
-        "description": "We'd love to add your success story here. Let's discuss your idea.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Construyamos",
+        "title": "¿Tienes un proyecto en mente?",
+        "description": "Nos encantaría añadir tu historia de éxito aquí. Hablemos de tu idea.",
+        "quote": "Solicitar Presupuesto",
+        "booking": "Reservar una Llamada Gratuita"
       }
     },
     "detail": {
-      "back": "Back to Portfolio",
-      "featured": "Featured",
-      "about": "Overview",
-      "industry": "Industry",
-      "services": "Services",
-      "technologies": "Technologies Used",
-      "liveProject": "Live project",
-      "gallery": "Gallery",
+      "back": "Volver al Portafolio",
+      "featured": "Destacado",
+      "about": "Resumen",
+      "industry": "Industria",
+      "services": "Servicios",
+      "technologies": "Tecnologías Utilizadas",
+      "liveProject": "Proyecto en vivo",
+      "gallery": "Galería",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Want a similar project?",
-        "description": "Let's discuss how we can build something great together.",
-        "quote": "Request a Quote"
+        "eyebrow": "Construyamos",
+        "title": "¿Quieres un proyecto similar?",
+        "description": "Hablemos de cómo podemos construir algo excelente juntos.",
+        "quote": "Solicitar Presupuesto"
       }
     }
   },
   "CaseStudies": {
     "listing": {
       "hero": {
-        "eyebrow": "Success Stories",
-        "headline": "Case Studies",
-        "description": "Real projects, real results. Explore how we've helped businesses transform with AI and custom software."
+        "eyebrow": "Historias de Éxito",
+        "headline": "Casos de Éxito",
+        "description": "Proyectos reales, resultados reales. Descubre cómo hemos ayudado a las empresas a transformarse con IA y software a medida."
       },
       "filters": {
-        "allIndustries": "All Industries",
-        "allTechnologies": "All Technologies",
-        "clearAll": "Clear all filters"
+        "allIndustries": "Todas las Industrias",
+        "allTechnologies": "Todas las Tecnologías",
+        "clearAll": "Borrar todos los filtros"
       },
       "card": {
-        "featured": "Featured",
-        "readMore": "Read case study"
+        "featured": "Destacado",
+        "readMore": "Leer caso de éxito"
       },
       "count": {
-        "singular": "{count} case study",
-        "plural": "{count} case studies"
+        "singular": "{count} caso de éxito",
+        "plural": "{count} casos de éxito"
       },
-      "empty": "No case studies found matching your criteria.",
-      "loadMore": "Load More",
+      "empty": "No se encontraron casos de éxito que coincidan con tus criterios.",
+      "loadMore": "Cargar Más",
       "cta": {
-        "eyebrow": "Your Success Story",
-        "title": "Want to be our next case study?",
-        "description": "Let's build something great together. Share your project and get a free consultation.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Tu Historia de Éxito",
+        "title": "¿Quieres ser nuestro próximo caso de éxito?",
+        "description": "Construyamos algo excelente juntos. Comparte tu proyecto y obtén una consulta gratuita.",
+        "quote": "Solicitar Presupuesto",
+        "booking": "Reservar una Llamada Gratuita"
       }
     }
   },
   "CaseStudyDetail": {
-    "backToCaseStudies": "Back to Case Studies",
-    "featuredBadge": "Featured",
+    "backToCaseStudies": "Volver a Casos de Éxito",
+    "featuredBadge": "Destacado",
     "hero": {
-      "clientLabel": "Client"
+      "clientLabel": "Cliente"
     },
     "stats": {
-      "weeks": "Weeks",
-      "technologies": "Technologies",
-      "industry": "Industry",
-      "teamSize": "Team Size",
-      "liveUrl": "Live Project",
-      "viewProject": "View Project",
-      "clientSite": "Client Website",
-      "viewClient": "Visit"
+      "weeks": "Semanas",
+      "technologies": "Tecnologías",
+      "industry": "Industria",
+      "teamSize": "Tamaño del Equipo",
+      "liveUrl": "Proyecto en Vivo",
+      "viewProject": "Ver Proyecto",
+      "clientSite": "Sitio Web del Cliente",
+      "viewClient": "Visitar"
     },
     "overview": {
-      "eyebrow": "Context",
-      "title": "Overview"
+      "eyebrow": "Contexto",
+      "title": "Resumen"
     },
     "challenge": {
-      "eyebrow": "The Problem",
-      "title": "Challenge"
+      "eyebrow": "El Problema",
+      "title": "Desafío"
     },
     "solution": {
-      "eyebrow": "Our Approach",
-      "title": "Solution"
+      "eyebrow": "Nuestro Enfoque",
+      "title": "Solución"
     },
     "results": {
-      "eyebrow": "Outcome",
-      "title": "Results"
+      "eyebrow": "Resultado",
+      "title": "Resultados"
     },
     "metrics": {
-      "eyebrow": "Impact",
-      "title": "Key Metrics"
+      "eyebrow": "Impacto",
+      "title": "Métricas Clave"
     },
     "technologies": {
-      "eyebrow": "Stack",
-      "title": "Technologies Used"
+      "eyebrow": "Pila Tecnológica",
+      "title": "Tecnologías Utilizadas"
     },
     "services": {
-      "eyebrow": "Related",
-      "title": "Related Services"
+      "eyebrow": "Relacionado",
+      "title": "Servicios Relacionados"
     },
     "gallery": {
-      "eyebrow": "Visuals",
-      "title": "Project Gallery",
-      "close": "Close",
-      "previous": "Previous",
-      "next": "Next"
+      "eyebrow": "Imágenes",
+      "title": "Galería del Proyecto",
+      "close": "Cerrar",
+      "previous": "Anterior",
+      "next": "Siguiente"
     },
     "related": {
-      "eyebrow": "More Stories",
-      "title": "Related Case Studies",
-      "readCaseStudy": "Read case study"
+      "eyebrow": "Más Historias",
+      "title": "Casos de Éxito Relacionados",
+      "readCaseStudy": "Leer caso de éxito"
     },
     "cta": {
-      "title": "Want similar results?",
-      "description": "Let's discuss how we can help your business achieve transformative outcomes.",
-      "primary": "Request a Quote",
-      "secondary": "Book a Free Call"
+      "title": "¿Quieres resultados similares?",
+      "description": "Hablemos de cómo podemos ayudar a tu negocio a lograr resultados transformadores.",
+      "primary": "Solicitar Presupuesto",
+      "secondary": "Reservar una Llamada Gratuita"
     }
   },
   "Partners": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Ecosystem",
-        "headline": "Partners",
-        "description": "We collaborate with leading technology providers, cloud platforms, and implementation experts to deliver world class solutions."
+        "eyebrow": "Nuestro Ecosistema",
+        "headline": "Socios",
+        "description": "Colaboramos con proveedores de tecnología líderes, plataformas en la nube y expertos en implementación para ofrecer soluciones de clase mundial."
       },
       "filters": {
-        "allTypes": "All Types",
-        "allTiers": "All Tiers",
-        "clearAll": "Clear all"
+        "allTypes": "Todos los Tipos",
+        "allTiers": "Todos los Niveles",
+        "clearAll": "Borrar todo"
       },
       "card": {
-        "visitWebsite": "Visit website"
+        "visitWebsite": "Visitar sitio web"
       },
       "count": {
-        "singular": "{count} partner",
-        "plural": "{count} partners"
+        "singular": "{count} socio",
+        "plural": "{count} socios"
       },
-      "empty": "No partners found matching your criteria.",
+      "empty": "No se encontraron socios que coincidan con tus criterios.",
       "cta": {
-        "eyebrow": "Become a Partner",
-        "title": "Interested in partnering with us?",
-        "description": "We're always looking for innovative technology and implementation partners to collaborate with.",
-        "quote": "Get in Touch"
+        "eyebrow": "Conviértete en Socio",
+        "title": "¿Interesado en asociarte con nosotros?",
+        "description": "Siempre buscamos socios tecnológicos e implementadores innovadores con quienes colaborar.",
+        "quote": "Ponte en Contacto"
       }
     }
   },
   "IndustriesPage": {
     "hero": {
-      "eyebrow": "Industries We Serve",
-      "headline": "Industry Solutions",
-      "description": "We deliver tailored technology solutions across healthcare, finance, education, and more."
+      "eyebrow": "Industrias a las que Servimos",
+      "headline": "Soluciones por Industria",
+      "description": "Ofrecemos soluciones tecnológicas a medida en salud, finanzas, educación y más."
     },
-    "breadcrumbHome": "Home",
-    "breadcrumbIndustries": "Industries",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbIndustries": "Industrias",
     "cta": {
-      "title": "Ready to transform your industry?",
-      "description": "Let's discuss how our technology solutions can drive results for your business.",
-      "button": "Get Started"
+      "title": "¿Listo para transformar tu industria?",
+      "description": "Hablemos de cómo nuestras soluciones tecnológicas pueden generar resultados para tu negocio.",
+      "button": "Comenzar"
     }
   },
   "CrmForms": {
     "shared": {
-      "budgetLabel": "Budget range",
-      "timelineLabel": "Timeline",
+      "budgetLabel": "Rango de presupuesto",
+      "timelineLabel": "Plazo",
       "budgetOptions": {
-        "not_specified": "Not specified",
-        "under_10k": "Under $10,000",
+        "not_specified": "No especificado",
+        "under_10k": "Menos de $10,000",
         "10k_50k": "$10,000 – $50,000",
         "50k_150k": "$50,000 – $150,000",
         "150k_plus": "$150,000+"
       },
       "timelineOptions": {
-        "asap": "ASAP",
-        "within_1_month": "Within 1 month",
-        "within_3_months": "Within 3 months",
-        "within_6_months": "Within 6 months",
+        "asap": "Lo antes posible",
+        "within_1_month": "Dentro de 1 mes",
+        "within_3_months": "Dentro de 3 meses",
+        "within_6_months": "Dentro de 6 meses",
         "flexible": "Flexible"
       },
       "meetingTypeOptions": {
-        "video": "Video call",
-        "phone": "Phone call",
-        "in_person": "In person"
+        "video": "Videollamada",
+        "phone": "Llamada telefónica",
+        "in_person": "En persona"
       },
-      "industryPlaceholder": "Select your industry",
-      "genericError": "Something went wrong. Please try again.",
-      "rateLimitError": "Too many requests please wait a moment and try again.",
-      "validationError": "Please check the highlighted fields."
+      "industryPlaceholder": "Selecciona tu industria",
+      "genericError": "Algo salió mal. Inténtalo de nuevo.",
+      "rateLimitError": "Demasiadas solicitudes espera un momento e inténtalo de nuevo.",
+      "validationError": "Revisa los campos resaltados."
     },
     "contact": {
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "fullNameLabel": "Nombre completo",
+      "fullNamePlaceholder": "Tu nombre",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@empresa.com",
+      "phoneLabel": "Teléfono (opcional)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "serviceLabel": "What are you interested in? (optional)",
-      "servicePlaceholder": "Select a service",
-      "messageLabel": "Message",
-      "messagePlaceholder": "Tell us about your project...",
-      "submit": "Send message",
-      "submitting": "Sending…",
-      "successTitle": "Message sent",
-      "successBody": "Thanks for reaching out our team will get back to you shortly.",
-      "sendAnother": "Send another message"
+      "companyLabel": "Empresa (opcional)",
+      "companyPlaceholder": "Tu empresa",
+      "jobTitleLabel": "Cargo (opcional)",
+      "jobTitlePlaceholder": "Tu rol",
+      "serviceLabel": "¿Qué te interesa? (opcional)",
+      "servicePlaceholder": "Selecciona un servicio",
+      "messageLabel": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando…",
+      "successTitle": "Mensaje enviado",
+      "successBody": "Gracias por contactarnos nuestro equipo se pondrá en contacto contigo en breve.",
+      "sendAnother": "Enviar otro mensaje"
     },
     "quote": {
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "fullNameLabel": "Nombre completo",
+      "fullNamePlaceholder": "Tu nombre",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@empresa.com",
+      "phoneLabel": "Teléfono (opcional)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "industryLabel": "Industry (optional)",
-      "industryPlaceholder": "Select your industry",
-      "servicesLabel": "Which services are you interested in?",
-      "descriptionLabel": "Project description",
-      "descriptionPlaceholder": "Tell us what you're looking to build...",
-      "budgetMinLabel": "Estimated budget min (optional)",
-      "budgetMaxLabel": "Estimated budget max (optional)",
-      "submit": "Request a quote",
-      "submitting": "Sending…",
-      "successTitle": "Quote request sent",
-      "successBody": "Thanks our team will review your project and follow up with a tailored quote shortly.",
-      "sendAnother": "Send another request"
+      "companyLabel": "Empresa (opcional)",
+      "companyPlaceholder": "Tu empresa",
+      "jobTitleLabel": "Cargo (opcional)",
+      "jobTitlePlaceholder": "Tu rol",
+      "industryLabel": "Industria (opcional)",
+      "industryPlaceholder": "Selecciona tu industria",
+      "servicesLabel": "¿Qué servicios te interesan?",
+      "descriptionLabel": "Descripción del proyecto",
+      "descriptionPlaceholder": "Cuéntanos qué quieres construir...",
+      "budgetMinLabel": "Presupuesto mínimo estimado (opcional)",
+      "budgetMaxLabel": "Presupuesto máximo estimado (opcional)",
+      "submit": "Solicitar presupuesto",
+      "submitting": "Enviando…",
+      "successTitle": "Solicitud de presupuesto enviada",
+      "successBody": "Gracias nuestro equipo revisará tu proyecto y te enviará un presupuesto a medida en breve.",
+      "sendAnother": "Enviar otra solicitud"
     },
     "newsletter": {
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "submit": "Subscribe",
-      "successMessage": "You're subscribed!"
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@empresa.com",
+      "submit": "Suscribirse",
+      "successMessage": "¡Te has suscrito!"
     },
     "booking": {
-      "dateLabel": "Pick a date",
-      "noSlots": "No available slots on this date try another day.",
-      "spotsLeft": "spots left",
-      "continue": "Continue",
-      "backToSlots": "Back to date & time",
-      "selectedSlotLabel": "Selected time",
-      "slotTaken": "That slot was just booked please pick another time.",
-      "stepSlot": "Choose time",
-      "stepDetails": "Your details",
-      "stepSlotTitle": "Pick a date & time",
-      "stepDetailsTitle": "Tell us about you",
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "dateLabel": "Elige una fecha",
+      "noSlots": "No hay horarios disponibles en esta fecha prueba otro día.",
+      "spotsLeft": "cupos disponibles",
+      "continue": "Continuar",
+      "backToSlots": "Volver a fecha y hora",
+      "selectedSlotLabel": "Hora seleccionada",
+      "slotTaken": "Ese horario acaba de reservarse elige otro horario.",
+      "stepSlot": "Elegir hora",
+      "stepDetails": "Tus datos",
+      "stepSlotTitle": "Elige una fecha y hora",
+      "stepDetailsTitle": "Cuéntanos sobre ti",
+      "fullNameLabel": "Nombre completo",
+      "fullNamePlaceholder": "Tu nombre",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "tu@empresa.com",
+      "phoneLabel": "Teléfono (opcional)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "industryLabel": "Industry (optional)",
-      "meetingTypeLabel": "Meeting type",
-      "messageLabel": "What would you like to discuss? (optional)",
-      "messagePlaceholder": "Tell us a bit about your project or goals...",
-      "notesLabel": "Anything else we should know? (optional)",
-      "notesPlaceholder": "Any specific questions or preferences...",
-      "submit": "Confirm booking",
-      "submitting": "Booking…",
-      "sendAnother": "Book another call",
-      "successTitle": "Consultation booked",
-      "successBody": "You're all set we've sent a confirmation to your email with the meeting details."
+      "companyLabel": "Empresa (opcional)",
+      "companyPlaceholder": "Tu empresa",
+      "jobTitleLabel": "Cargo (opcional)",
+      "jobTitlePlaceholder": "Tu rol",
+      "industryLabel": "Industria (opcional)",
+      "meetingTypeLabel": "Tipo de reunión",
+      "messageLabel": "¿Qué te gustaría discutir? (opcional)",
+      "messagePlaceholder": "Cuéntanos un poco sobre tu proyecto u objetivos...",
+      "notesLabel": "¿Algo más que debamos saber? (opcional)",
+      "notesPlaceholder": "Cualquier pregunta o preferencia específica...",
+      "submit": "Confirmar reserva",
+      "submitting": "Reservando…",
+      "sendAnother": "Reservar otra llamada",
+      "successTitle": "Consulta reservada",
+      "successBody": "Todo listo hemos enviado una confirmación a tu correo con los detalles de la reunión."
     }
   },
   "CrmPages": {
     "overview": {
       "meta": {
-        "title": "Work With AUTOMEX AI‑Powered CRM, Quotes & Consultation",
-        "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response start building with confidence."
+        "title": "Trabaja con AUTOMEX CRM con IA, Presupuestos y Consultas",
+        "description": "Elige tu camino: solicita un presupuesto de proyecto, reserva una consulta gratuita de IA/software o envía un mensaje. Proceso transparente, respuesta rápida comienza con confianza."
       },
       "hero": {
-        "eyebrow": "Work With Us",
-        "headlineLead": "Let's build something",
-        "headlineAccent": "that actually works",
-        "description": "Whether you have a clear scope or just a rough idea, we've made it easy to take the next step. Pick the path that fits below.",
-        "ctaQuote": "Request a Quote",
-        "ctaBooking": "Book a Free Call"
+        "eyebrow": "Trabaja con Nosotros",
+        "headlineLead": "Construyamos algo",
+        "headlineAccent": "que realmente funcione",
+        "description": "Ya sea que tengas un alcance claro o solo una idea general, hemos hecho que sea fácil dar el siguiente paso. Elige la opción que mejor te convenga a continuación.",
+        "ctaQuote": "Solicitar Presupuesto",
+        "ctaBooking": "Reservar una Llamada Gratuita"
       },
       "stats": {
-        "response": "< 2 min response",
-        "followUp": "24h follow Up",
-        "projects": "150+ projects"
+        "response": "< 2 min de respuesta",
+        "followUp": "Seguimiento en 24h",
+        "projects": "150+ proyectos"
       },
       "howItWorks": {
-        "eyebrow": "How It Works",
-        "title": "A simple, transparent process",
-        "description": "No black boxes. Here's exactly what happens after you reach out from initial conversation to final delivery."
+        "eyebrow": "Cómo Funciona",
+        "title": "Un proceso simple y transparente",
+        "description": "Sin cajas negras. Esto es exactamente lo que sucede después de contactarnos desde la conversación inicial hasta la entrega final."
       },
       "paths": {
-        "eyebrow": "Choose Your Path",
-        "title": "Three ways to get started",
+        "eyebrow": "Elige tu Camino",
+        "title": "Tres formas de comenzar",
         "quote": {
-          "title": "Request a Quote",
-          "description": "Already know what you need? Tell us about your project and get a detailed, no obligation quote for AI, software, or automation.",
-          "cta": "Get a quote"
+          "title": "Solicitar Presupuesto",
+          "description": "¿Ya sabes lo que necesitas? Cuéntanos sobre tu proyecto y obtén un presupuesto detallado y sin compromiso para IA, software o automatización.",
+          "cta": "Obtener presupuesto"
         },
         "booking": {
-          "title": "Book a Free Call",
-          "description": "Not sure yet? Grab 30 minutes with our team to discuss AI strategies, timelines, and the best approach for your business.",
-          "cta": "Pick a time"
+          "title": "Reservar una Llamada Gratuita",
+          "description": "¿Aún no estás seguro? Toma 30 minutos con nuestro equipo para hablar de estrategias de IA, plazos y el mejor enfoque para tu negocio.",
+          "cta": "Elegir un horario"
         },
         "contact": {
-          "title": "Send a Message",
-          "description": "Have a quick question or want a personalised walkthrough? We'll reply within one business day.",
-          "cta": "Contact us"
+          "title": "Enviar un Mensaje",
+          "description": "¿Tienes una pregunta rápida o quieres una demostración personalizada? Te responderemos dentro de un día hábil.",
+          "cta": "Contáctanos"
         }
       },
       "newsletter": {
-        "eyebrow": "Stay in the Loop",
-        "title": "Get occasional updates, no spam",
-        "description": "Product news, AI insights, and engineering write ups a few times a month at most."
+        "eyebrow": "Mantente Informado",
+        "title": "Recibe actualizaciones ocasionales, sin spam",
+        "description": "Noticias de producto, ideas sobre IA y artículos técnicos como máximo unas pocas veces al mes."
       },
       "trust": {
-        "confidential": "100% Confidential & Secure",
-        "expertise": "AI & Software Experts",
-        "timely": "Fast Turnaround & Delivery"
+        "confidential": "100% Confidencial y Seguro",
+        "expertise": "Expertos en IA y Software",
+        "timely": "Entrega Rápida y Puntual"
       }
     },
     "quote": {
       "meta": {
-        "title": "Request a Quote AI, Software & Automation | AUTOMEX",
-        "description": "Get a tailored, no obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
+        "title": "Solicita un Presupuesto IA, Software y Automatización | AUTOMEX",
+        "description": "Obtén un presupuesto a medida y sin compromiso para soluciones de IA personalizadas, desarrollo de software o transformación digital. Respuesta dentro de un día hábil."
       },
       "hero": {
-        "eyebrow": "Request a Quote",
-        "title": "Let's scope your project",
-        "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate usually within one business day."
+        "eyebrow": "Solicitar Presupuesto",
+        "title": "Definamos el alcance de tu proyecto",
+        "description": "Comparte algunos detalles sobre tus objetivos, plazos y necesidades tecnológicas. Nuestro equipo te enviará un presupuesto transparente generalmente dentro de un día hábil."
       }
     },
     "bookCall": {
       "meta": {
-        "title": "Book a Free Consultation AI & Software Strategy | AUTOMEX",
-        "description": "Schedule a free 30 minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
+        "title": "Reserva una Consulta Gratuita Estrategia de IA y Software | AUTOMEX",
+        "description": "Programa una llamada gratuita de 30 minutos con nuestros expertos. Hablaremos de tu proyecto, opciones tecnológicas y cómo la IA puede acelerar tu negocio."
       },
       "hero": {
-        "eyebrow": "Book a Call",
-        "title": "Talk it through, no pressure",
-        "description": "Pick a time that works for you just a friendly conversation about what you're building and how we can help."
+        "eyebrow": "Reserva una Llamada",
+        "title": "Hablémoslo, sin presión",
+        "description": "Elige un horario que te funcione solo una conversación amistosa sobre lo que estás construyendo y cómo podemos ayudar."
       }
     },
     "contact": {
       "meta": {
-        "title": "Contact AUTOMEX Quick Enquiries, Sales & Partnerships",
-        "description": "Reach our team for quick questions, partnership opportunities, or enterprise grade AI solutions. We'll respond within one business day."
+        "title": "Contacta a AUTOMEX Consultas Rápidas, Ventas y Alianzas",
+        "description": "Contacta a nuestro equipo para preguntas rápidas, oportunidades de alianzas o soluciones de IA de nivel empresarial. Responderemos dentro de un día hábil."
       },
       "hero": {
-        "eyebrow": "Get in Touch",
-        "title": "Send us a message",
-        "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project we're here to listen."
+        "eyebrow": "Ponte en Contacto",
+        "title": "Envíanos un mensaje",
+        "description": "Ya sea una pregunta rápida, una propuesta de alianza o el comienzo de un proyecto mayor estamos aquí para escuchar."
       }
     },
     "contactSales": {
       "meta": {
-        "title": "Contact AUTOMEX Sales Enterprise AI & Software Solutions",
-        "description": "Get in touch with our sales team for enterprise grade AI solutions, custom software, and digital transformation services."
+        "title": "Contacta a Ventas de AUTOMEX Soluciones de IA y Software Empresarial",
+        "description": "Ponte en contacto con nuestro equipo de ventas para soluciones de IA de nivel empresarial, software a medida y servicios de transformación digital."
       }
     },
     "subNav": {
-      "overview": "Overview",
-      "quote": "Get a Quote",
-      "booking": "Book a Call",
-      "contact": "Contact Us"
+      "overview": "Resumen",
+      "quote": "Obtener Presupuesto",
+      "booking": "Reservar Llamada",
+      "contact": "Contáctanos"
     },
     "guest": {
       "meta": {
-        "title": "Track Your Request AUTOMEX",
-        "description": "Check the status of your quote, booking, or enquiry. View activity history and communicate with our team."
+        "title": "Rastrea tu Solicitud AUTOMEX",
+        "description": "Consulta el estado de tu presupuesto, reserva o consulta. Ve el historial de actividad y comunícate con nuestro equipo."
       },
       "hero": {
-        "eyebrow": "Request Tracker",
-        "headlineLead": "Track your",
-        "headlineAccent": "request status",
-        "description": "Enter the tracking token you received after submitting a form or from your confirmation email to check progress, view activities, and stay in touch with our team."
+        "eyebrow": "Rastreador de Solicitudes",
+        "headlineLead": "Rastrea el estado",
+        "headlineAccent": "de tu solicitud",
+        "description": "Introduce el token de seguimiento que recibiste tras enviar un formulario o en tu correo de confirmación para ver el progreso, las actividades y mantenerte en contacto con nuestro equipo."
       },
       "token": {
-        "title": "Enter your tracking token",
-        "description": "You received this via email after submitting a contact, quote, or booking form. Paste it below to check your request status.",
-        "placeholder": "Paste your token here…",
-        "submit": "Look up requests"
+        "title": "Introduce tu token de seguimiento",
+        "description": "Lo recibiste por correo electrónico tras enviar un formulario de contacto, presupuesto o reserva. Pégalo a continuación para consultar el estado de tu solicitud.",
+        "placeholder": "Pega tu token aquí…",
+        "submit": "Buscar solicitudes"
       },
       "back": {
-        "toToken": "Change token",
-        "toRequests": "Back to requests"
+        "toToken": "Cambiar token",
+        "toRequests": "Volver a solicitudes"
       },
       "requests": {
-        "empty": "No requests found",
-        "emptyHint": "This token doesn't match any submissions. Check that you've copied it correctly, or try a different email.",
-        "viewDetail": "View details"
+        "empty": "No se encontraron solicitudes",
+        "emptyHint": "Este token no coincide con ninguna solicitud. Comprueba que lo hayas copiado correctamente o prueba con otro correo electrónico.",
+        "viewDetail": "Ver detalles"
       },
       "request": {
-        "submitted": "Submitted",
-        "activities": "Activity Timeline",
-        "noActivities": "No activity recorded yet. Our team will update this as your request progresses."
+        "submitted": "Enviado",
+        "activities": "Línea de Tiempo de Actividad",
+        "noActivities": "Aún no hay actividad registrada. Nuestro equipo actualizará esto a medida que avance tu solicitud."
       },
       "createTicket": {
-        "cta": "New Support Ticket",
-        "success": "Ticket created successfully.",
-        "formTitle": "Create a support ticket",
-        "formDescription": "Need help or have a question? Open a ticket and our team will respond within one business day.",
-        "titleLabel": "Subject",
-        "titlePlaceholder": "Brief summary of your issue…",
-        "typeLabel": "Ticket type",
-        "priorityLabel": "Priority",
-        "emailLabel": "Your email",
-        "emailPlaceholder": "you@company.com",
-        "descriptionLabel": "Details",
-        "descriptionPlaceholder": "Describe what you need help with in as much detail as possible…",
-        "submit": "Submit ticket"
+        "cta": "Nuevo Ticket de Soporte",
+        "success": "Ticket creado con éxito.",
+        "formTitle": "Crear un ticket de soporte",
+        "formDescription": "¿Necesitas ayuda o tienes una pregunta? Abre un ticket y nuestro equipo responderá dentro de un día hábil.",
+        "titleLabel": "Asunto",
+        "titlePlaceholder": "Breve resumen de tu problema…",
+        "typeLabel": "Tipo de ticket",
+        "priorityLabel": "Prioridad",
+        "emailLabel": "Tu correo electrónico",
+        "emailPlaceholder": "tu@empresa.com",
+        "descriptionLabel": "Detalles",
+        "descriptionPlaceholder": "Describe con el mayor detalle posible en qué necesitas ayuda…",
+        "submit": "Enviar ticket"
       },
       "ticket": {
-        "messages": "Messages",
-        "noMessages": "No messages yet. Our team will reply here.",
-        "reply": "Reply",
-        "replyPlaceholder": "Type your message…",
-        "sendReply": "Send reply"
+        "messages": "Mensajes",
+        "noMessages": "Aún no hay mensajes. Nuestro equipo responderá aquí.",
+        "reply": "Responder",
+        "replyPlaceholder": "Escribe tu mensaje…",
+        "sendReply": "Enviar respuesta"
       },
       "ticketTypes": {
-        "general_inquiry": "General Inquiry",
-        "technical_support": "Technical Support",
-        "project_request": "Project Request",
-        "bug_report": "Bug Report",
-        "feedback": "Feedback",
-        "partnership": "Partnership"
+        "general_inquiry": "Consulta General",
+        "technical_support": "Soporte Técnico",
+        "project_request": "Solicitud de Proyecto",
+        "bug_report": "Reporte de Error",
+        "feedback": "Comentarios",
+        "partnership": "Alianza"
       },
       "priorityLabels": {
-        "low": "Low",
+        "low": "Baja",
         "normal": "Normal",
-        "high": "High",
-        "urgent": "Urgent"
+        "high": "Alta",
+        "urgent": "Urgente"
       },
       "statusLabels": {
-        "open": "Open",
-        "in_progress": "In Progress",
-        "closed": "Closed",
-        "resolved": "Resolved",
-        "pending": "Pending"
+        "open": "Abierto",
+        "in_progress": "En Progreso",
+        "closed": "Cerrado",
+        "resolved": "Resuelto",
+        "pending": "Pendiente"
       },
       "errors": {
-        "tokenRequired": "Please enter a tracking token.",
-        "invalidToken": "We couldn't find any requests for that token. Please double check and try again.",
-        "generic": "Something went wrong. Please try again later."
+        "tokenRequired": "Introduce un token de seguimiento.",
+        "invalidToken": "No pudimos encontrar solicitudes con ese token. Verifícalo e inténtalo de nuevo.",
+        "generic": "Algo salió mal. Inténtalo de nuevo más tarde."
       }
     }
   },
   "ServicesPage": {
     "meta": {
-      "title": "Our Services - AUTOMEX",
-      "description": "Explore AUTOMEX's full range of services AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
+      "title": "Nuestros Servicios - AUTOMEX",
+      "description": "Explora la gama completa de servicios de AUTOMEX soluciones de IA, software a medida, ingeniería de datos, ERP/CRM, nube y DevOps, diseño UI/UX y aumento de personal de TI."
     },
-    "breadcrumbHome": "Home",
-    "breadcrumbServices": "Services",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbServices": "Servicios",
     "stats": {
-      "services": "Services",
-      "categories": "Categories",
-      "clientSatisfaction": "Client Satisfaction",
-      "projectsDelivered": "Projects Delivered"
+      "services": "Servicios",
+      "categories": "Categorías",
+      "clientSatisfaction": "Satisfacción del Cliente",
+      "projectsDelivered": "Proyectos Entregados"
     },
     "filters": {
-      "all": "All Services"
+      "all": "Todos los Servicios"
     },
-    "resultsCount": "{count, plural, =0 {No services found} one {# service} other {# services}}",
-    "featuredBadge": "Featured",
-    "cardCta": "Get a Quote",
-    "loadMore": "Load More",
-    "empty": "No services found in this category yet.",
+    "resultsCount": "{count, plural, =0 {No se encontraron servicios} one {# servicio} other {# servicios}}",
+    "featuredBadge": "Destacado",
+    "cardCta": "Obtener Presupuesto",
+    "loadMore": "Cargar Más",
+    "empty": "Aún no se encontraron servicios en esta categoría.",
     "bottomCta": {
-      "title": "Not sure which service fits?",
-      "description": "Tell us what you're trying to build and we'll point you in the right direction.",
-      "ctaQuote": "Request a Quote",
-      "ctaBooking": "Book a Free Call"
+      "title": "¿No sabes qué servicio se ajusta a ti?",
+      "description": "Cuéntanos qué intentas construir y te orientaremos en la dirección correcta.",
+      "ctaQuote": "Solicitar Presupuesto",
+      "ctaBooking": "Reservar una Llamada Gratuita"
     },
     "carousel": {
-      "viewService": "View Service"
+      "viewService": "Ver Servicio"
     },
     "trust": {
-      "whyAutomex": "Why AUTOMEX",
-      "headline": "Your technology partner, not just a vendor",
-      "enterpriseSecurity": "Enterprise-grade security",
-      "onTimeDelivery": "On time delivery 98% track record",
-      "dedicatedSupport": "Dedicated support & maintenance",
-      "aiPowered": "AI-powered development workflows",
-      "enterprise": "Enterprise",
-      "standard": "Standard"
+      "whyAutomex": "Por Qué AUTOMEX",
+      "headline": "Tu socio tecnológico, no solo un proveedor",
+      "enterpriseSecurity": "Seguridad de nivel empresarial",
+      "onTimeDelivery": "Entrega puntual historial del 98%",
+      "dedicatedSupport": "Soporte y mantenimiento dedicados",
+      "aiPowered": "Flujos de desarrollo impulsados por IA",
+      "enterprise": "Empresarial",
+      "standard": "Estándar"
     },
     "search": {
-      "placeholder": "Search services...",
-      "label": "Search services",
-      "clear": "Clear search",
-      "results": "Found {count} results"
+      "placeholder": "Buscar servicios...",
+      "label": "Buscar servicios",
+      "clear": "Borrar búsqueda",
+      "results": "Se encontraron {count} resultados"
     },
-    "letsBuild": "Let's Build"
+    "letsBuild": "Construyamos"
   },
   "ServicesDetail": {
-    "overview": "Overview",
-    "problemsWeSolve": "Problems We Solve",
-    "keyFeatures": "Key Features",
-    "benefits": "Benefits",
-    "technologyStack": "Technology Stack",
-    "industriesServed": "Industries Served",
-    "ourProcess": "Our Process",
-    "deliverables": "Deliverables",
-    "planComparison": "Plan Comparison",
-    "availableAddOns": "Available Add Ons",
-    "trustedBy": "Trusted By",
-    "clientTestimonials": "Client Testimonials",
-    "serviceGuarantees": "Service Guarantees",
-    "resourcesDocuments": "Resources & Documents",
-    "frequentlyAskedQuestions": "Frequently Asked Questions",
-    "pricing": "Pricing",
-    "relatedServices": "Related Services",
-    "getStarted": "Get Started",
-    "requestQuote": "Request a Quote",
-    "bookFreeCall": "Book a Free Call",
-    "getCustomQuote": "Get a Custom Quote",
-    "lastUpdated": "Last updated",
-    "cover": "Cover",
-    "featured": "Featured",
-    "delivery": "Delivery",
-    "team": "Team",
-    "pricingLabel": "Pricing",
-    "standard": "Standard",
+    "overview": "Resumen",
+    "problemsWeSolve": "Problemas que Resolvemos",
+    "keyFeatures": "Características Clave",
+    "benefits": "Beneficios",
+    "technologyStack": "Pila Tecnológica",
+    "industriesServed": "Industrias Atendidas",
+    "ourProcess": "Nuestro Proceso",
+    "deliverables": "Entregables",
+    "planComparison": "Comparación de Planes",
+    "availableAddOns": "Complementos Disponibles",
+    "trustedBy": "Con la Confianza de",
+    "clientTestimonials": "Testimonios de Clientes",
+    "serviceGuarantees": "Garantías del Servicio",
+    "resourcesDocuments": "Recursos y Documentos",
+    "frequentlyAskedQuestions": "Preguntas Frecuentes",
+    "pricing": "Precios",
+    "relatedServices": "Servicios Relacionados",
+    "getStarted": "Comenzar",
+    "requestQuote": "Solicitar Presupuesto",
+    "bookFreeCall": "Reservar una Llamada Gratuita",
+    "getCustomQuote": "Obtener Presupuesto Personalizado",
+    "lastUpdated": "Última actualización",
+    "cover": "Portada",
+    "featured": "Destacado",
+    "delivery": "Entrega",
+    "team": "Equipo",
+    "pricingLabel": "Precios",
+    "standard": "Estándar",
     "premium": "Premium",
-    "enterprise": "Enterprise",
+    "enterprise": "Empresarial",
     "popular": "Popular",
-    "includedInEnterprise": "Included in Enterprise",
-    "additionalResources": "Additional Resources",
-    "videoPresentation": "Video Presentation",
-    "serviceBrochure": "Service Brochure",
-    "serviceThumbnail": "Service Thumbnail",
-    "startingAt": "Starting at",
-    "model": "Model",
-    "feature": "Feature",
-    "enterpriseFeatures": "Enterprise Features",
-    "readyToBuild": "Ready to build with {name}?",
-    "letsDiscuss": "Let's discuss your requirements and create a tailored solution for your business.",
-    "previousSlide": "Previous slide",
-    "nextSlide": "Next slide",
-    "resumeSlideshow": "Resume slideshow",
-    "pauseSlideshow": "Pause slideshow",
-    "scrollLeft": "Scroll left",
-    "scrollRight": "Scroll right",
-    "goToSlide": "Go to slide {n}",
-    "getQuote": "Get a Quote",
-    "thumbnail": "Thumbnail"
+    "includedInEnterprise": "Incluido en Empresarial",
+    "additionalResources": "Recursos Adicionales",
+    "videoPresentation": "Presentación en Video",
+    "serviceBrochure": "Folleto del Servicio",
+    "serviceThumbnail": "Miniatura del Servicio",
+    "startingAt": "Desde",
+    "model": "Modelo",
+    "feature": "Característica",
+    "enterpriseFeatures": "Funciones Empresariales",
+    "readyToBuild": "¿Listo para construir con {name}?",
+    "letsDiscuss": "Hablemos de tus necesidades y creemos una solución a medida para tu negocio.",
+    "previousSlide": "Diapositiva anterior",
+    "nextSlide": "Siguiente diapositiva",
+    "resumeSlideshow": "Reanudar presentación",
+    "pauseSlideshow": "Pausar presentación",
+    "scrollLeft": "Desplazar a la izquierda",
+    "scrollRight": "Desplazar a la derecha",
+    "goToSlide": "Ir a la diapositiva {n}",
+    "getQuote": "Obtener Presupuesto",
+    "thumbnail": "Miniatura"
   },
   "FaqsPage": {
-    "categoryAll": "All",
+    "categoryAll": "Todas",
     "categoryGeneral": "General",
-    "categoryPricing": "Pricing",
-    "categoryProcess": "Process",
-    "categoryService": "Service specific",
-    "noResults": "No FAQs found for this category.",
+    "categoryPricing": "Precios",
+    "categoryProcess": "Proceso",
+    "categoryService": "Específico del servicio",
+    "noResults": "No se encontraron preguntas frecuentes para esta categoría.",
     "hero": {
-      "eyebrow": "Your Questions, Answered",
-      "headline": "Frequently Asked Questions",
-      "description": "Find clear answers to common questions about our services, process, pricing, and more. Can't find what you need? Reach out to our team."
+      "eyebrow": "Tus Preguntas, Respondidas",
+      "headline": "Preguntas Frecuentes",
+      "description": "Encuentra respuestas claras a preguntas comunes sobre nuestros servicios, proceso, precios y más. ¿No encuentras lo que buscas? Contacta a nuestro equipo."
     },
     "cta": {
-      "eyebrow": "Still Have Questions?",
-      "title": "We're Here to Help",
-      "description": "Our team is ready to answer any questions you have about our services, process, or technology solutions.",
-      "button": "Contact Us"
+      "eyebrow": "¿Aún Tienes Preguntas?",
+      "title": "Estamos Aquí para Ayudar",
+      "description": "Nuestro equipo está listo para responder cualquier pregunta que tengas sobre nuestros servicios, proceso o soluciones tecnológicas.",
+      "button": "Contáctanos"
     }
   },
-   "Sidebar": {
-    "menuLabel": "Menu",
-    "dashboard": "Dashboard",
-    "requests": "Requests",
-    "bookings": "Bookings",
-    "support": "Support",
-    "calculations": "Estimates",
-    "conversations": "AI Assistant",
-    "accountLabel": "Account",
-    "notifications": "Notifications",
-    "profile": "Profile",
-    "security": "Security"
+  "Sidebar": {
+    "menuLabel": "Menú",
+    "dashboard": "Panel de Control",
+    "requests": "Solicitudes",
+    "bookings": "Reservas",
+    "support": "Soporte",
+    "calculations": "Estimaciones",
+    "conversations": "Asistente de IA",
+    "accountLabel": "Cuenta",
+    "notifications": "Notificaciones",
+    "profile": "Perfil",
+    "security": "Seguridad"
   },
   "DashboardHeader": {
-    "openMenu": "Open navigation",
-    "profile": "Profile"
+    "openMenu": "Abrir navegación",
+    "profile": "Perfil"
   },
   "Dashboard": {
-    "defaultName": "there",
-    "welcomeEyebrow": "Your workspace",
-    "greetMorning": "Good morning",
-    "greetAfternoon": "Good afternoon",
-    "greetEvening": "Good evening",
-    "welcomeDescription": "Here's an overview of your account activity and quick access to your most used services.",
-    "ctaNewRequest": "New request",
-    "ctaBookSession": "Book a session",
-    "sectionOverview": "Overview",
-    "sectionQuickActions": "Quick Actions",
-    "retry": "Retry",
-    "statsRequests": "Total Requests",
-    "statsRequestsActive": "active",
-    "statsBookings": "Total Bookings",
-    "statsBookingsUpcoming": "upcoming",
-    "statsTickets": "Support Tickets",
-    "statsTicketsOpen": "open",
-    "statsCalculations": "Estimates",
-    "statsCalculationsTotal": "total",
-    "actionNewRequest": "New Request",
-    "actionNewRequestDesc": "Submit a quote request or contact our sales team.",
-    "actionBookCall": "Book a Call",
-    "actionBookCallDesc": "Schedule a free consultation with our experts.",
-    "actionSupport": "Get Support",
-    "actionSupportDesc": "Create a ticket or view your existing requests.",
-    "sectionRecentActivity": "Recent Activity",
-    "recentViewAll": "View all",
-    "recentEmpty": "No recent activity to show.",
-    "recentRequest": "Request",
-    "recentBooking": "Booking",
+    "defaultName": "de nuevo",
+    "welcomeEyebrow": "Tu espacio de trabajo",
+    "greetMorning": "Buenos días",
+    "greetAfternoon": "Buenas tardes",
+    "greetEvening": "Buenas noches",
+    "welcomeDescription": "Aquí tienes un resumen de la actividad de tu cuenta y acceso rápido a tus servicios más utilizados.",
+    "ctaNewRequest": "Nueva solicitud",
+    "ctaBookSession": "Reservar una sesión",
+    "sectionOverview": "Resumen",
+    "sectionQuickActions": "Acciones Rápidas",
+    "retry": "Reintentar",
+    "statsRequests": "Total de Solicitudes",
+    "statsRequestsActive": "activas",
+    "statsBookings": "Total de Reservas",
+    "statsBookingsUpcoming": "próximas",
+    "statsTickets": "Tickets de Soporte",
+    "statsTicketsOpen": "abiertos",
+    "statsCalculations": "Estimaciones",
+    "statsCalculationsTotal": "totales",
+    "actionNewRequest": "Nueva Solicitud",
+    "actionNewRequestDesc": "Envía una solicitud de presupuesto o contacta a nuestro equipo de ventas.",
+    "actionBookCall": "Reservar una Llamada",
+    "actionBookCallDesc": "Programa una consulta gratuita con nuestros expertos.",
+    "actionSupport": "Obtener Soporte",
+    "actionSupportDesc": "Crea un ticket o consulta tus solicitudes existentes.",
+    "sectionRecentActivity": "Actividad Reciente",
+    "recentViewAll": "Ver todo",
+    "recentEmpty": "No hay actividad reciente para mostrar.",
+    "recentRequest": "Solicitud",
+    "recentBooking": "Reserva",
     "recentTicket": "Ticket"
   },
   "Requests": {
-    "pageTitle": "Requests",
-    "pageDescription": "Track your service requests and quote inquiries.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "emptyTitle": "No requests yet",
-    "emptyDescription": "Submit a quote request or contact our sales team to get started.",
-    "emptyCta": "Submit a request"
+    "pageTitle": "Solicitudes",
+    "pageDescription": "Rastrea tus solicitudes de servicio y consultas de presupuesto.",
+    "filters": "Filtros",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "loading": "Cargando...",
+    "loadMore": "Cargar más",
+    "emptyTitle": "Aún no hay solicitudes",
+    "emptyDescription": "Envía una solicitud de presupuesto o contacta a nuestro equipo de ventas para comenzar.",
+    "emptyCta": "Enviar una solicitud"
   },
   "Calculations": {
-    "pageTitle": "Cost Estimates",
-    "pageDescription": "View your service cost estimates and convert them into requests.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "converted": "Converted",
-    "converting": "Converting...",
-    "convertToRequest": "Convert",
-    "emptyTitle": "No estimates yet",
-    "emptyDescription": "Use our service calculator to get a cost estimate for your project.",
-    "emptyCta": "Get a quote"
+    "pageTitle": "Estimaciones de Costos",
+    "pageDescription": "Consulta las estimaciones de costos de tus servicios y conviértelas en solicitudes.",
+    "filters": "Filtros",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "loading": "Cargando...",
+    "loadMore": "Cargar más",
+    "converted": "Convertida",
+    "converting": "Convirtiendo...",
+    "convertToRequest": "Convertir",
+    "emptyTitle": "Aún no hay estimaciones",
+    "emptyDescription": "Usa nuestra calculadora de servicios para obtener una estimación de costos para tu proyecto.",
+    "emptyCta": "Obtener presupuesto"
   },
   "RequestDetail": {
-    "pageTitle": "Request Details",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "labelEmail": "Email",
-    "labelCompany": "Company",
-    "labelExpectedClose": "Expected close date",
-    "labelMessage": "Message",
-    "labelQuoteDetails": "Quote Details",
-    "labelProject": "Project",
-    "labelBudget": "Budget",
-    "sendMessage": "Send a message",
-    "messagePlaceholder": "Type your message to our team...",
-    "send": "Send",
-    "sending": "Sending...",
-    "messageSent": "Message sent successfully!",
-    "activityTimeline": "Activity Timeline",
-    "by": "by",
-    "createTicketForRequest": "Create Support Ticket"
+    "pageTitle": "Detalles de la Solicitud",
+    "goBack": "Volver",
+    "retry": "Reintentar",
+    "labelEmail": "Correo electrónico",
+    "labelCompany": "Empresa",
+    "labelExpectedClose": "Fecha estimada de cierre",
+    "labelMessage": "Mensaje",
+    "labelQuoteDetails": "Detalles del Presupuesto",
+    "labelProject": "Proyecto",
+    "labelBudget": "Presupuesto",
+    "sendMessage": "Enviar un mensaje",
+    "messagePlaceholder": "Escribe tu mensaje para nuestro equipo...",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "messageSent": "¡Mensaje enviado con éxito!",
+    "activityTimeline": "Línea de Tiempo de Actividad",
+    "by": "por",
+    "createTicketForRequest": "Crear Ticket de Soporte"
   },
   "Bookings": {
-    "pageTitle": "Bookings",
-    "pageDescription": "Manage your consultation calls and meetings.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "emptyTitle": "No bookings yet",
-    "emptyDescription": "Schedule a consultation call with our team to discuss your project.",
-    "emptyCta": "Book a call"
+    "pageTitle": "Reservas",
+    "pageDescription": "Gestiona tus llamadas de consulta y reuniones.",
+    "filters": "Filtros",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "loading": "Cargando...",
+    "loadMore": "Cargar más",
+    "emptyTitle": "Aún no hay reservas",
+    "emptyDescription": "Programa una llamada de consulta con nuestro equipo para hablar de tu proyecto.",
+    "emptyCta": "Reservar una llamada"
   },
   "BookingDetail": {
-    "pageTitle": "Booking Details",
-    "bookingId": "Booking ID",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "labelDate": "Date",
-    "labelTime": "Time",
-    "labelMeetingLink": "Meeting Link",
-    "labelNotes": "Notes",
-    "labelConfirmed": "Confirmed on",
-    "labelCancelled": "Cancelled on",
-    "labelRescheduleCount": "Rescheduled",
-    "joinMeeting": "Join Meeting",
-    "reschedule": "Reschedule",
-    "cancel": "Cancel Booking",
-    "rescheduleTitle": "Reschedule Booking",
-    "rescheduleDescription": "Select a new date and time for your meeting.",
-    "labelNewDate": "New Date",
-    "labelNewTime": "New Time",
-    "labelReason": "Reason",
-    "optional": "optional",
-    "reasonPlaceholder": "Why do you need to reschedule?",
-    "dialogCancel": "Cancel",
-    "confirmReschedule": "Confirm Reschedule",
-    "rescheduling": "Rescheduling...",
-    "cancelTitle": "Cancel Booking",
-    "cancelDescription": "Are you sure you want to cancel this booking? This action cannot be undone.",
-    "confirmCancel": "Yes, Cancel Booking",
-    "cancelling": "Cancelling..."
+    "pageTitle": "Detalles de la Reserva",
+    "bookingId": "ID de Reserva",
+    "goBack": "Volver",
+    "retry": "Reintentar",
+    "labelDate": "Fecha",
+    "labelTime": "Hora",
+    "labelMeetingLink": "Enlace de la Reunión",
+    "labelNotes": "Notas",
+    "labelConfirmed": "Confirmada el",
+    "labelCancelled": "Cancelada el",
+    "labelRescheduleCount": "Reprogramada",
+    "joinMeeting": "Unirse a la Reunión",
+    "reschedule": "Reprogramar",
+    "cancel": "Cancelar Reserva",
+    "rescheduleTitle": "Reprogramar Reserva",
+    "rescheduleDescription": "Selecciona una nueva fecha y hora para tu reunión.",
+    "labelNewDate": "Nueva Fecha",
+    "labelNewTime": "Nueva Hora",
+    "labelReason": "Motivo",
+    "optional": "opcional",
+    "reasonPlaceholder": "¿Por qué necesitas reprogramar?",
+    "dialogCancel": "Cancelar",
+    "confirmReschedule": "Confirmar Reprogramación",
+    "rescheduling": "Reprogramando...",
+    "cancelTitle": "Cancelar Reserva",
+    "cancelDescription": "¿Estás seguro de que quieres cancelar esta reserva? Esta acción no se puede deshacer.",
+    "confirmCancel": "Sí, Cancelar Reserva",
+    "cancelling": "Cancelando..."
   },
   "Support": {
-    "pageTitle": "Support",
-    "pageDescription": "Get help from our team and track your support tickets.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "newTicket": "New Ticket",
-    "emptyTitle": "No support tickets",
-    "emptyDescription": "Create a ticket if you need help with a project or have a question.",
-    "emptyCta": "Create a ticket",
-    "createTitle": "Create Support Ticket",
-    "createDescription": "Describe your issue and our team will get back to you.",
-    "labelTitle": "Title",
-    "titlePlaceholder": "Brief summary of your issue...",
-    "labelType": "Type",
-    "typeGeneralInquiry": "General Inquiry",
-    "typeTechnicalSupport": "Technical Support",
-    "typeProjectRequest": "Project Request",
-    "typeBugReport": "Bug Report",
-    "typeFeedback": "Feedback",
-    "typePartnership": "Partnership",
-    "labelPriority": "Priority",
-    "priorityLow": "Low",
+    "pageTitle": "Soporte",
+    "pageDescription": "Obtén ayuda de nuestro equipo y rastrea tus tickets de soporte.",
+    "filters": "Filtros",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "loading": "Cargando...",
+    "loadMore": "Cargar más",
+    "newTicket": "Nuevo Ticket",
+    "emptyTitle": "No hay tickets de soporte",
+    "emptyDescription": "Crea un ticket si necesitas ayuda con un proyecto o tienes una pregunta.",
+    "emptyCta": "Crear un ticket",
+    "createTitle": "Crear Ticket de Soporte",
+    "createDescription": "Describe tu problema y nuestro equipo se pondrá en contacto contigo.",
+    "labelTitle": "Título",
+    "titlePlaceholder": "Breve resumen de tu problema...",
+    "labelType": "Tipo",
+    "typeGeneralInquiry": "Consulta General",
+    "typeTechnicalSupport": "Soporte Técnico",
+    "typeProjectRequest": "Solicitud de Proyecto",
+    "typeBugReport": "Reporte de Error",
+    "typeFeedback": "Comentarios",
+    "typePartnership": "Alianza",
+    "labelPriority": "Prioridad",
+    "priorityLow": "Baja",
     "priorityNormal": "Normal",
-    "priorityHigh": "High",
-    "priorityUrgent": "Urgent",
-    "labelDescription": "Description",
-    "descriptionPlaceholder": "Describe your issue in detail...",
-    "dialogCancel": "Cancel",
-    "submitTicket": "Submit Ticket",
-    "creating": "Creating...",
-    "linkedRequest": "Linked request",
-    "unlink": "Unlink"
+    "priorityHigh": "Alta",
+    "priorityUrgent": "Urgente",
+    "labelDescription": "Descripción",
+    "descriptionPlaceholder": "Describe tu problema en detalle...",
+    "dialogCancel": "Cancelar",
+    "submitTicket": "Enviar Ticket",
+    "creating": "Creando...",
+    "linkedRequest": "Solicitud vinculada",
+    "unlink": "Desvincular"
   },
   "TicketDetail": {
-    "ticketId": "Ticket ID",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "resolutionSummary": "Resolution Summary",
-    "conversation": "Conversation",
-    "noMessages": "No messages yet. Start the conversation below.",
-    "replyPlaceholder": "Type your reply...",
-    "sendReply": "Send Reply",
-    "sending": "Sending...",
-    "ticketClosed": "This ticket is closed. No further replies can be sent."
+    "ticketId": "ID del Ticket",
+    "goBack": "Volver",
+    "retry": "Reintentar",
+    "resolutionSummary": "Resumen de Resolución",
+    "conversation": "Conversación",
+    "noMessages": "Aún no hay mensajes. Inicia la conversación a continuación.",
+    "replyPlaceholder": "Escribe tu respuesta...",
+    "sendReply": "Enviar Respuesta",
+    "sending": "Enviando...",
+    "ticketClosed": "Este ticket está cerrado. No se pueden enviar más respuestas."
   },
   "Notifications": {
-    "pageTitle": "Notifications",
-    "pageDescription": "Stay updated on your requests, bookings, and support tickets.",
-    "unread": "unread",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "markAllRead": "Mark all read",
-    "emptyTitle": "No notifications",
-    "emptyDescription": "You're all caught up! Check back later for updates.",
-    "preferences": "Preferences",
-    "prefsTitle": "Notification Preferences",
-    "prefsSave": "Save",
-    "prefsSaved": "Saved!",
-    "prefsEmpty": "No preferences available.",
-    "freqInstant": "Instant",
-    "freqDaily": "Daily",
-    "freqWeekly": "Weekly"
+    "pageTitle": "Notificaciones",
+    "pageDescription": "Mantente al día sobre tus solicitudes, reservas y tickets de soporte.",
+    "unread": "sin leer",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "markAllRead": "Marcar todo como leído",
+    "emptyTitle": "No hay notificaciones",
+    "emptyDescription": "¡Estás al día! Vuelve más tarde para ver novedades.",
+    "preferences": "Preferencias",
+    "prefsTitle": "Preferencias de Notificaciones",
+    "prefsSave": "Guardar",
+    "prefsSaved": "¡Guardado!",
+    "prefsEmpty": "No hay preferencias disponibles.",
+    "freqInstant": "Instantánea",
+    "freqDaily": "Diaria",
+    "freqWeekly": "Semanal"
   },
   "Conversations": {
-    "pageTitle": "AI Conversations",
-    "pageDescription": "Review your past conversations with our AI sales assistant.",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "emptyTitle": "No conversations yet",
-    "emptyDescription": "Start a conversation using the AI assistant widget on any page.",
-    "detailTitle": "Conversation",
-    "messages": "messages",
-    "leadCaptured": "Lead captured",
-    "noMessages": "No messages in this conversation."
+    "pageTitle": "Conversaciones de IA",
+    "pageDescription": "Revisa tus conversaciones pasadas con nuestro asistente de ventas con IA.",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "emptyTitle": "Aún no hay conversaciones",
+    "emptyDescription": "Inicia una conversación usando el widget del asistente de IA en cualquier página.",
+    "detailTitle": "Conversación",
+    "messages": "mensajes",
+    "leadCaptured": "Lead capturado",
+    "noMessages": "No hay mensajes en esta conversación."
   },
-   "Profile": {
-    "pageTitle": "My Profile",
-    "pageDescription": "Manage your personal information, address, and account details.",
-    "emailVerified": "Email verified",
-    "emailNotVerified": "Email not verified",
-    "memberSince": "Member since",
-    "sectionPersonal": "Personal Information",
-    "sectionPersonalDesc": "Update your name, contact details, and address.",
-    "sectionAddress": "Address",
-    "sectionAccount": "Account Details",
-    "sectionAccountDesc": "Read-only account metadata.",
-    "fieldFullName": "Full name",
-    "fieldPhone": "Phone number",
-    "fieldDob": "Date of birth",
-    "fieldTimezone": "Timezone",
-    "fieldAltEmail": "Alternate email",
-    "fieldLanguage": "Preferred language",
-    "fieldBio": "Bio",
-    "fieldBioPlaceholder": "Tell us a little about yourself…",
-    "fieldAddress1": "Address line 1",
-    "fieldAddress2": "Address line 2",
-    "fieldCity": "City",
-    "fieldState": "State / Province",
-    "fieldPostal": "Postal code",
-    "fieldCountry": "Country",
-    "fieldCountryPlaceholder": "Select country",
-    "fieldAccountId": "Account ID",
-    "fieldEmail": "Email address",
-    "fieldRole": "Role",
-    "fieldSignInMethod": "Sign-in method",
-    "fieldEmailPassword": "Email & Password",
-    "fieldMemberSince": "Member since",
-    "fieldTermsAccepted": "Terms accepted",
-    "fieldLastUpdated": "Last updated",
-    "fieldLanguage1": "Language",
-    "saveChanges": "Save changes",
-    "saving": "Saving…",
-    "savedSuccess": "Profile updated successfully",
-    "uploadPicture": "Change profile picture",
-    "uploadNotImage": "Please select a valid image file.",
-    "uploadTooLarge": "Image must be smaller than 5 MB.",
-    "uploadSuccess": "Profile picture updated!"
+  "Profile": {
+    "pageTitle": "Mi Perfil",
+    "pageDescription": "Gestiona tu información personal, dirección y datos de cuenta.",
+    "emailVerified": "Correo verificado",
+    "emailNotVerified": "Correo no verificado",
+    "memberSince": "Miembro desde",
+    "sectionPersonal": "Información Personal",
+    "sectionPersonalDesc": "Actualiza tu nombre, datos de contacto y dirección.",
+    "sectionAddress": "Dirección",
+    "sectionAccount": "Datos de la Cuenta",
+    "sectionAccountDesc": "Metadatos de la cuenta de solo lectura.",
+    "fieldFullName": "Nombre completo",
+    "fieldPhone": "Número de teléfono",
+    "fieldDob": "Fecha de nacimiento",
+    "fieldTimezone": "Zona horaria",
+    "fieldAltEmail": "Correo electrónico alternativo",
+    "fieldLanguage": "Idioma preferido",
+    "fieldBio": "Biografía",
+    "fieldBioPlaceholder": "Cuéntanos un poco sobre ti…",
+    "fieldAddress1": "Dirección línea 1",
+    "fieldAddress2": "Dirección línea 2",
+    "fieldCity": "Ciudad",
+    "fieldState": "Estado / Provincia",
+    "fieldPostal": "Código postal",
+    "fieldCountry": "País",
+    "fieldCountryPlaceholder": "Selecciona un país",
+    "fieldAccountId": "ID de Cuenta",
+    "fieldEmail": "Correo electrónico",
+    "fieldRole": "Rol",
+    "fieldSignInMethod": "Método de inicio de sesión",
+    "fieldEmailPassword": "Correo y Contraseña",
+    "fieldMemberSince": "Miembro desde",
+    "fieldTermsAccepted": "Términos aceptados",
+    "fieldLastUpdated": "Última actualización",
+    "fieldLanguage1": "Idioma",
+    "saveChanges": "Guardar cambios",
+    "saving": "Guardando…",
+    "savedSuccess": "Perfil actualizado con éxito",
+    "uploadPicture": "Cambiar foto de perfil",
+    "uploadNotImage": "Selecciona un archivo de imagen válido.",
+    "uploadTooLarge": "La imagen debe ser menor de 5 MB.",
+    "uploadSuccess": "¡Foto de perfil actualizada!"
   },
   "Security": {
-    "pageTitle": "Security",
-    "pageDescription": "Manage your password, active sessions, and account safety.",
-    "sectionOverview": "Security Overview",
-    "sectionOverviewDesc": "Your account health at a glance.",
-    "sectionPassword": "Change Password",
-    "sectionPasswordDesc": "Choose a strong password you don't use elsewhere.",
-    "sectionSessions": "Active Sessions",
-    "sectionSessionsDesc": "Devices currently signed in to your account.",
-    "sectionDanger": "Danger Zone",
-    "sectionDangerDesc": "Irreversible actions proceed with caution.",
-    "overallGood": "Your account looks secure",
-    "overallGoodDesc": "Email verified, password set, and session count is normal.",
-    "overallWarn": "Some security items need attention",
-    "overallWarnDesc": "Review the items below and take action where needed.",
-    "verifyEmailHint": "Check your inbox for a verification link. Contact support if you didn't receive one.",
-    "statusEmailLabel": "Email address",
-    "statusVerified": "Verified",
-    "statusNotVerified": "Not verified",
-    "statusPasswordLabel": "Password",
-    "statusPasswordSet": "Password set",
-    "statusOAuthOnly": "No password (OAuth)",
-    "statusSessionsLabel": "Active sessions",
-    "statusActiveSessions": "active",
-    "statusSignInLabel": "Sign-in method",
-    "statusEmailPassword": "Email & Password",
-    "oauthNoPassword": "Password change unavailable",
-    "oauthNoPasswordDesc": "Your account uses Google OAuth. Password changes are managed through Google.",
-    "fieldCurrentPassword": "Current password",
-    "fieldNewPassword": "New password",
-    "fieldConfirmPassword": "Confirm new password",
-    "passwordWarning": "Changing your password will sign you out of all devices. You will need to sign in again.",
-    "updatePassword": "Update password",
-    "updating": "Updating…",
-    "passwordChanged": "Password updated. Please sign in again.",
-    "currentSession": "Current",
-    "unknownDevice": "Unknown device",
-    "lastActive": "Last active",
-    "expires": "Expires",
-    "revokeSession": "Revoke",
-    "sessionRevoked": "Session revoked",
-    "sessionLoadError": "Failed to load sessions",
-    "noSessions": "No active sessions found",
-    "refresh": "Refresh",
-    "signOutAllTitle": "Sign out all other devices",
-    "signOutAllDesc": "Revoke all active sessions except your current one.",
-    "signOutAllBtn": "Sign out all others",
-    "allOtherSignedOut": "{count} other session(s) signed out",
-    "deleteAccountTitle": "Delete account",
-    "deleteAccountDesc": "Permanently delete your account and all associated data. This cannot be undone.",
-    "deleteAccountBtn": "Delete account",
-    "deleteContactSupport": "Account deletion is not yet available. Please contact support@automex.tech.",
-    "deleteDialogTitle": "Delete your account?",
-    "deleteDialogDesc": "This will permanently erase your profile, requests, bookings, and all data. There is no recovery.",
-    "deleteUnderstandCheck": "I understand this action is permanent and irreversible.",
-    "deleteTypeNamePrompt": "To confirm, type your full name:",
-    "deleteNameMatch": "Name confirmed",
-    "deleteConfirmBtn": "Yes, delete my account",
-    "deleting": "Deleting…",
-    "cancel": "Cancel"
+    "pageTitle": "Seguridad",
+    "pageDescription": "Gestiona tu contraseña, sesiones activas y seguridad de la cuenta.",
+    "sectionOverview": "Resumen de Seguridad",
+    "sectionOverviewDesc": "El estado de seguridad de tu cuenta de un vistazo.",
+    "sectionPassword": "Cambiar Contraseña",
+    "sectionPasswordDesc": "Elige una contraseña segura que no uses en otros sitios.",
+    "sectionSessions": "Sesiones Activas",
+    "sectionSessionsDesc": "Dispositivos actualmente conectados a tu cuenta.",
+    "sectionDanger": "Zona de Peligro",
+    "sectionDangerDesc": "Acciones irreversibles proceder con precaución.",
+    "overallGood": "Tu cuenta parece segura",
+    "overallGoodDesc": "Correo verificado, contraseña establecida y número de sesiones normal.",
+    "overallWarn": "Algunos elementos de seguridad necesitan atención",
+    "overallWarnDesc": "Revisa los elementos a continuación y toma medidas donde sea necesario.",
+    "verifyEmailHint": "Revisa tu bandeja de entrada para ver un enlace de verificación. Contacta a soporte si no lo recibiste.",
+    "statusEmailLabel": "Correo electrónico",
+    "statusVerified": "Verificado",
+    "statusNotVerified": "No verificado",
+    "statusPasswordLabel": "Contraseña",
+    "statusPasswordSet": "Contraseña establecida",
+    "statusOAuthOnly": "Sin contraseña (OAuth)",
+    "statusSessionsLabel": "Sesiones activas",
+    "statusActiveSessions": "activas",
+    "statusSignInLabel": "Método de inicio de sesión",
+    "statusEmailPassword": "Correo y Contraseña",
+    "oauthNoPassword": "Cambio de contraseña no disponible",
+    "oauthNoPasswordDesc": "Tu cuenta usa Google OAuth. Los cambios de contraseña se gestionan a través de Google.",
+    "fieldCurrentPassword": "Contraseña actual",
+    "fieldNewPassword": "Nueva contraseña",
+    "fieldConfirmPassword": "Confirmar nueva contraseña",
+    "passwordWarning": "Cambiar tu contraseña cerrará tu sesión en todos los dispositivos. Tendrás que iniciar sesión de nuevo.",
+    "updatePassword": "Actualizar contraseña",
+    "updating": "Actualizando…",
+    "passwordChanged": "Contraseña actualizada. Inicia sesión de nuevo.",
+    "currentSession": "Actual",
+    "unknownDevice": "Dispositivo desconocido",
+    "lastActive": "Última actividad",
+    "expires": "Caduca",
+    "revokeSession": "Revocar",
+    "sessionRevoked": "Sesión revocada",
+    "sessionLoadError": "Error al cargar las sesiones",
+    "noSessions": "No se encontraron sesiones activas",
+    "refresh": "Actualizar",
+    "signOutAllTitle": "Cerrar sesión en todos los demás dispositivos",
+    "signOutAllDesc": "Revoca todas las sesiones activas excepto la actual.",
+    "signOutAllBtn": "Cerrar sesión en todos los demás",
+    "allOtherSignedOut": "{count} otra(s) sesión(es) cerrada(s)",
+    "deleteAccountTitle": "Eliminar cuenta",
+    "deleteAccountDesc": "Elimina permanentemente tu cuenta y todos los datos asociados. Esta acción no se puede deshacer.",
+    "deleteAccountBtn": "Eliminar cuenta",
+    "deleteContactSupport": "La eliminación de cuentas aún no está disponible. Contacta a support@automex.tech.",
+    "deleteDialogTitle": "¿Eliminar tu cuenta?",
+    "deleteDialogDesc": "Esto borrará permanentemente tu perfil, solicitudes, reservas y todos los datos. No hay forma de recuperarlos.",
+    "deleteUnderstandCheck": "Entiendo que esta acción es permanente e irreversible.",
+    "deleteTypeNamePrompt": "Para confirmar, escribe tu nombre completo:",
+    "deleteNameMatch": "Nombre confirmado",
+    "deleteConfirmBtn": "Sí, eliminar mi cuenta",
+    "deleting": "Eliminando…",
+    "cancel": "Cancelar"
+  },
+  "PrivacyPolicy": {
+    "metaDescription": "Learn how Automex collects, uses, and protects your personal information. Effective July 2025.",
+    "title": "Privacy Policy",
+    "backToHome": "Back to Automex",
+    "breadcrumbHome": "Home",
+    "effectiveDateLabel": "Effective date:",
+    "effectiveDateValue": "July 9, 2025",
+    "companyLabel": "Company:",
+    "locationLabel": "Location:",
+    "intro": "This Privacy Policy explains how {company} (\"Automex\", \"we\", \"us\", or \"our\") collects, uses, discloses, and safeguards your information when you visit {site}, use our platform, or engage our services (collectively, the \"Services\"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Services.",
+
+    "section1": {
+      "intro": "We collect information you provide directly, information collected automatically, and information from third parties.",
+      "subsections": {
+        "1": {
+          "title": "1.1 Information You Provide Directly",
+          "items": [
+            "<strong>Account & contact data</strong> — name, email address, phone number, company name, job title, and password when you create an account or submit a contact form.",
+            "<strong>Billing & payment data</strong> — billing address and payment method details (processed by our PCI-DSS-compliant payment processors; we do not store full card numbers).",
+            "<strong>Communications</strong> — messages, emails, support tickets, and any content you send to us or upload to our platform.",
+            "<strong>Survey and feedback data</strong> — responses to questionnaires, testimonials, and product feedback."
+          ]
+        },
+        "2": {
+          "title": "1.2 Information Collected Automatically",
+          "items": [
+            "<strong>Usage data</strong> — pages visited, features used, clicks, search queries, timestamps, and session duration.",
+            "<strong>Device and log data</strong> — IP address, browser type and version, operating system, referral URL, and crash reports.",
+            "<strong>Cookies and tracking technologies</strong> — we use first-party and third-party cookies, web beacons, and similar technologies as described in Section 7 below."
+          ]
+        },
+        "3": {
+          "title": "1.3 Information from Third Parties",
+          "items": [
+            "<strong>OAuth providers</strong> — if you sign in with Google or another OAuth provider, we receive your name, email address, and profile picture from that provider.",
+            "<strong>Integration partners</strong> — when you connect third-party services (e.g., HubSpot, Slack, Asana) to Automex, we receive the data necessary to operate those integrations on your behalf.",
+            "<strong>Publicly available sources</strong> — business directories, LinkedIn, and similar sources for sales and marketing purposes."
+          ]
+        }
+      }
+    },
+
+    "section2": {
+      "intro": "We use your information for the following purposes:",
+      "items": [
+        "<strong>Providing and operating the Services</strong> — to create and manage your account, process transactions, authenticate your identity, and deliver the features you request.",
+        "<strong>Improving and developing the Services</strong> — to analyze usage patterns, diagnose technical problems, conduct research, and build new features.",
+        "<strong>Communications</strong> — to send transactional messages (receipts, security alerts, account notices) and, with your consent, marketing emails. You may opt out of marketing at any time.",
+        "<strong>Customer support</strong> — to respond to inquiries, resolve disputes, and troubleshoot issues.",
+        "<strong>Legal compliance and safety</strong> — to comply with applicable laws and regulations, enforce our terms, and protect the rights, property, and safety of Automex, our users, and the public.",
+        "<strong>Fraud prevention and security</strong> — to detect, investigate, and prevent fraudulent transactions, abuse, and other illegal activity."
+      ],
+      "legalBasis": "We process your personal data under the following legal bases (where applicable under US privacy law and international standards): contract performance (fulfilling our agreement with you), legitimate interests (improving and securing the Services), legal obligation, and consent (for optional marketing communications)."
+    },
+
+    "section3": {
+      "intro": "We do not sell, rent, or trade your personal information. We share it only as described below.",
+      "items": [
+        "<strong>Service providers</strong> — third-party vendors who process data on our behalf (cloud hosting, payment processing, email delivery, analytics, customer support tooling). These vendors are contractually bound to protect your data and may not use it for their own purposes.",
+        "<strong>Integration partners</strong> — when you explicitly connect a third-party tool to Automex, we share the data necessary to operate that integration. Your use of third-party services is governed by their own privacy policies.",
+        "<strong>Business transfers</strong> — in connection with a merger, acquisition, financing, or sale of all or a portion of our assets, your data may be transferred as part of that transaction. We will notify you via email or prominent notice on our site if such a transfer occurs.",
+        "<strong>Legal requirements</strong> — we may disclose your data if required by law, regulation, legal process, or governmental request, or to enforce our agreements or protect our rights.",
+        "<strong>With your consent</strong> — we may share your data for any other purpose with your explicit consent."
+      ]
+    },
+
+    "section4": {
+      "intro": "We retain your personal data for as long as your account is active or as needed to provide the Services. Specifically:",
+      "items": [
+        "<strong>Account data</strong> — is retained for the life of your account and up to 3 years after closure for dispute resolution, fraud prevention, and compliance with our legal obligations.",
+        "<strong>Financial and transactional records</strong> — are retained for a minimum of 7 years as required by US tax and accounting regulations.",
+        "<strong>Marketing data</strong> — is retained until you opt out or withdraw consent, after which we suppress your contact from future campaigns but may retain a record of the opt-out.",
+        "<strong>Server and security logs</strong> — are retained for up to 90 days and used solely for security and debugging."
+      ],
+      "disposal": "When data is no longer needed, we securely delete or anonymize it."
+    },
+
+    "section5": {
+      "items": [
+        "TLS 1.2+ encryption in transit and AES-256 encryption at rest.",
+        "Role-based access controls limiting employee access to personal data.",
+        "Regular security assessments and penetration testing.",
+        "Multi-factor authentication requirements for internal systems that process personal data."
+      ],
+      "disclaimer": "No method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security; however, we are committed to promptly notifying affected users in the event of a data breach as required by applicable law, including Washington State's Security Breach Notification Act (RCW 19.255)."
+    },
+
+    "section6": {
+      "intro": "Depending on where you reside, you may have certain rights regarding your personal information.",
+      "subsections": {
+        "1": {
+          "title": "6.1 Washington State Residents",
+          "content": "Washington's My Health MY Data Act (MHMD) and the Washington Privacy Act (WPA) provide residents with rights to access, correct, and delete certain personal data. Automex honors these rights for all users regardless of state."
+        },
+        "2": {
+          "title": "6.2 California Residents (CCPA / CPRA)",
+          "content": "California residents have the right to: (a) know what personal information we collect and how we use and share it; (b) delete personal information we hold about you; (c) opt out of the sale or sharing of personal information (we do not sell personal information); (d) correct inaccurate personal information; and (e) limit use of sensitive personal information. To exercise these rights, contact us at {email}. We will not discriminate against you for exercising your rights."
+        },
+        "3": {
+          "title": "6.3 All Users",
+          "items": [
+            "<strong>Access & portability</strong> — you may request a copy of the personal data we hold about you in a structured, machine-readable format.",
+            "<strong>Correction</strong> — you may update or correct inaccurate data through your account settings or by contacting us.",
+            "<strong>Deletion</strong> — you may request deletion of your personal data. We will fulfill your request unless retention is required by law or for legitimate business purposes (e.g., fraud prevention).",
+            "<strong>Opt out of marketing</strong> — you may unsubscribe from marketing emails at any time by clicking 'Unsubscribe' in any email or contacting us directly.",
+            "<strong>Account closure</strong> — you may close your account at any time through the account settings page."
+          ],
+          "requestProcess": "To submit a rights request, email {email} with the subject line \"Privacy Rights Request.\" We will respond within 45 days (with up to a 45-day extension where reasonably necessary)."
+        }
+      }
+    },
+
+    "section7": {
+      "intro": "We use the following types of cookies and similar technologies:",
+      "items": [
+        "<strong>Strictly necessary cookies</strong> — required for the Services to function (session management, authentication, security). These cannot be disabled.",
+        "<strong>Analytics cookies</strong> — help us understand how users interact with the Services (e.g., page views, session duration). We use tools such as Google Analytics with IP anonymization enabled.",
+        "<strong>Preference cookies</strong> — remember your settings (e.g., language, theme) so you do not have to set them on every visit.",
+        "<strong>Marketing cookies</strong> — used with your consent to deliver relevant advertisements. We do not use third-party ad networks without your explicit consent."
+      ],
+      "control": "You can control cookies through your browser settings. Disabling certain cookies may affect the functionality of the Services. We honor browser-based 'Do Not Track' (DNT) signals to the extent technically feasible."
+    },
+
+    "section8": {
+      "content": "The Services may contain links to third-party websites, integrations, or services that are not operated by Automex. We are not responsible for the privacy practices of any third party. We encourage you to review the privacy policy of every site or service you visit."
+    },
+
+    "section9": {
+      "content": "The Services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at {email}. If we discover we have collected personal information from a child under 13, we will promptly delete it in accordance with the Children's Online Privacy Protection Act (COPPA)."
+    },
+
+    "section10": {
+      "content": "Automex is headquartered in the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using the Services, you consent to this transfer. We take steps to ensure that your data receives an adequate level of protection wherever it is processed."
+    },
+
+    "section11": {
+      "intro": "We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:",
+      "items": [
+        "Posting the updated policy on this page with a revised 'Effective date' at the top.",
+        "Sending an email notice to the address associated with your account at least 30 days before the changes take effect."
+      ],
+      "acceptance": "Your continued use of the Services after the effective date constitutes your acceptance of the revised policy. If you do not agree to the changes, you must stop using the Services and may request account deletion."
+    },
+
+    "section12": {
+      "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
+      "address": {
+        "department": "Privacy & Data Compliance",
+        "emailLabel": "Email:",
+        "websiteLabel": "Website:"
+      },
+      "commitment": "We are committed to resolving complaints about your privacy and our collection or use of your personal information. If you have an unresolved privacy or data use concern that we have not addressed satisfactorily, please contact us at the email above."
+    },
+
+    "legalNotice": "Legal notice: This Privacy Policy is provided for informational purposes and constitutes a binding agreement between you and {company}. It is governed by the laws of the State of Washington, United States, without regard to its conflict-of-law provisions. Any disputes arising under this policy shall be resolved exclusively in the state or federal courts located in King County, Washington.",
+
+    "bottomNav": {
+      "terms": "Terms of Service",
+      "contact": "Contact Us",
+      "home": "Back to Home"
+    }
   }
 }
