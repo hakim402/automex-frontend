@@ -50,7 +50,6 @@ import {
   createGuestTicketAction,
   sendGuestTicketMessageAction,
 } from "../../actions";
-import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
 
 // ─── Types ────────────────────────────────────────────────────────────────
 
@@ -948,7 +947,6 @@ export function GuestClientPage({ locale }: GuestClientPageProps) {
           </div>
         )}
       </section>
-      <FooterSection />
     </>
   );
 }

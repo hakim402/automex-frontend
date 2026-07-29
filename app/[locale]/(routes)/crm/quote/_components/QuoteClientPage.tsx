@@ -33,8 +33,6 @@ import {
 } from "../../_components/crm-shared/schemas";
 
 import { submitQuoteRequestAction } from "../../actions";
-import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
-
 const quoteSchema = z.object({
   ...leadContactFields,
   industry: z.string().optional(),
@@ -378,7 +376,6 @@ export function QuoteClientPage({
           </div>
         )}
       </div>
-      <FooterSection />
     </div>
   );
 }

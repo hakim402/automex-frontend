@@ -38,8 +38,6 @@ import {
 } from "../../_components/crm-shared/schemas";
 
 import { submitContactLeadAction } from "../../actions";
-import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
-
 const contactSchema = z.object({
   ...leadContactFields,
   service_interest: z.string().optional(),
@@ -330,7 +328,6 @@ export function ContactClientPage({
           </div>
         )}
       </div>
-      <FooterSection />
     </div>
   );
 }

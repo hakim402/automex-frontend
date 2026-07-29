@@ -54,8 +54,6 @@ import {
   fetchAvailabilityAction,
   submitConsultationBookingAction,
 } from "../../actions";
-import { FooterSection } from "@/app/[locale]/_components/Footer/FooterSections";
-
 const detailsSchema = z.object({
   ...leadContactFields,
   industry: z.string().optional(),
@@ -550,7 +548,6 @@ export function BookCallClientPage({
           </div>
         )}
       </div>
-      <FooterSection />
     </div>
   );
 }
