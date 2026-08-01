@@ -411,7 +411,7 @@ export const Header = ({
             </button>
 
             <ThemeToggle />
-            {/* <LanguageSwitcher /> */}
+            <LanguageSwitcher />
 
             {!loading && (
               <>

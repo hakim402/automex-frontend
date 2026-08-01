@@ -1373,7 +1373,7 @@
       "button": "Contattaci"
     }
   },
-  "Sidebar": {
+   "Sidebar": {
     "menuLabel": "Menu",
     "dashboard": "Dashboard",
     "requests": "Richieste",
@@ -1590,7 +1590,7 @@
     "leadCaptured": "Lead acquisito",
     "noMessages": "Nessun messaggio in questa conversazione."
   },
-  "Profile": {
+   "Profile": {
     "pageTitle": "Il Mio Profilo",
     "pageDescription": "Gestisci le tue informazioni personali, l'indirizzo e i dettagli dell'account.",
     "emailVerified": "Email verificata",
@@ -1694,7 +1694,7 @@
     "deleting": "Eliminazione in corso…",
     "cancel": "Annulla"
   },
-  "PrivacyPolicy": {
+"PrivacyPolicy": {
     "metaDescription": "Learn how Automex collects, uses, and protects your personal information. Effective July 2025.",
     "title": "Privacy Policy",
     "backToHome": "Back to Automex",
@@ -1706,6 +1706,7 @@
     "intro": "This Privacy Policy explains how {company} (\"Automex\", \"we\", \"us\", or \"our\") collects, uses, discloses, and safeguards your information when you visit {site}, use our platform, or engage our services (collectively, the \"Services\"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Services.",
 
     "section1": {
+      "title": "1. Information We Collect",
       "intro": "We collect information you provide directly, information collected automatically, and information from third parties.",
       "subsections": {
         "1": {
@@ -1737,6 +1738,7 @@
     },
 
     "section2": {
+      "title": "2. How We Use Your Information",
       "intro": "We use your information for the following purposes:",
       "items": [
         "<strong>Providing and operating the Services</strong> — to create and manage your account, process transactions, authenticate your identity, and deliver the features you request.",
@@ -1750,6 +1752,7 @@
     },
 
     "section3": {
+      "title": "3. How We Share Your Information",
       "intro": "We do not sell, rent, or trade your personal information. We share it only as described below.",
       "items": [
         "<strong>Service providers</strong> — third-party vendors who process data on our behalf (cloud hosting, payment processing, email delivery, analytics, customer support tooling). These vendors are contractually bound to protect your data and may not use it for their own purposes.",
@@ -1761,6 +1764,7 @@
     },
 
     "section4": {
+      "title": "4. Data Retention",
       "intro": "We retain your personal data for as long as your account is active or as needed to provide the Services. Specifically:",
       "items": [
         "<strong>Account data</strong> — is retained for the life of your account and up to 3 years after closure for dispute resolution, fraud prevention, and compliance with our legal obligations.",
@@ -1772,6 +1776,7 @@
     },
 
     "section5": {
+      "title": "5. Security",
       "items": [
         "TLS 1.2+ encryption in transit and AES-256 encryption at rest.",
         "Role-based access controls limiting employee access to personal data.",
@@ -1782,6 +1787,7 @@
     },
 
     "section6": {
+      "title": "6. Your Rights and Choices",
       "intro": "Depending on where you reside, you may have certain rights regarding your personal information.",
       "subsections": {
         "1": {
@@ -1807,6 +1813,7 @@
     },
 
     "section7": {
+      "title": "7. Cookies and Tracking Technologies",
       "intro": "We use the following types of cookies and similar technologies:",
       "items": [
         "<strong>Strictly necessary cookies</strong> — required for the Services to function (session management, authentication, security). These cannot be disabled.",
@@ -1818,18 +1825,22 @@
     },
 
     "section8": {
+      "title": "8. Third-Party Links and Services",
       "content": "The Services may contain links to third-party websites, integrations, or services that are not operated by Automex. We are not responsible for the privacy practices of any third party. We encourage you to review the privacy policy of every site or service you visit."
     },
 
     "section9": {
+      "title": "9. Children's Privacy (COPPA)",
       "content": "The Services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at {email}. If we discover we have collected personal information from a child under 13, we will promptly delete it in accordance with the Children's Online Privacy Protection Act (COPPA)."
     },
 
     "section10": {
+      "title": "10. International Users",
       "content": "Automex is headquartered in the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using the Services, you consent to this transfer. We take steps to ensure that your data receives an adequate level of protection wherever it is processed."
     },
 
     "section11": {
+      "title": "11. Changes to This Privacy Policy",
       "intro": "We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:",
       "items": [
         "Posting the updated policy on this page with a revised 'Effective date' at the top.",
@@ -1839,6 +1850,7 @@
     },
 
     "section12": {
+      "title": "12. Contact Us",
       "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
       "address": {
         "department": "Privacy & Data Compliance",
@@ -1852,6 +1864,153 @@
 
     "bottomNav": {
       "terms": "Terms of Service",
+      "contact": "Contact Us",
+      "home": "Back to Home"
+    }
+  },
+  "Terms": {
+    "metaDescription": "Read the Terms of Service for Automex. Understand your rights and obligations when using our AI and software services.",
+    "title": "Terms of Service",
+    "backToHome": "Back to Automex",
+    "breadcrumbHome": "Home",
+    "effectiveDateLabel": "Last updated:",
+    "effectiveDateValue": "July 9, 2025",
+    "companyLabel": "Company:",
+    "locationLabel": "Location:",
+    "intro": "Welcome to {company}. By accessing or using our website {site}, you agree to be bound by these Terms of Service (the \"Terms\"). If you do not agree to these Terms, please do not use our Services. These Terms apply to all visitors, users, and others who access or use the Services.",
+
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "items": [
+        "By using the Services, you agree to comply with and be legally bound by these Terms, whether or not you become a registered user.",
+        "If you are using the Services on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.",
+        "We reserve the right to update or modify these Terms at any time. Your continued use of the Services after any such changes constitutes your acceptance of the new Terms."
+      ]
+    },
+
+    "section2": {
+      "title": "2. Description of Services",
+      "items": [
+        "Automex provides AI automation, software development, cloud infrastructure, and digital transformation services (the \"Services\").",
+        "We may add, modify, or discontinue any aspect of the Services at our discretion, with or without notice.",
+        "The Services may include third-party tools, integrations, or content. Your use of such third-party offerings is governed by their respective terms."
+      ]
+    },
+
+    "section3": {
+      "title": "3. User Accounts",
+      "items": [
+        "To access certain features, you must create an account. You are responsible for maintaining the confidentiality of your account credentials.",
+        "You agree to provide accurate, current, and complete information during registration and to update it as necessary.",
+        "You are solely responsible for all activities that occur under your account. Notify us immediately of any unauthorised use.",
+        "We reserve the right to suspend or terminate accounts that violate these Terms or applicable law."
+      ]
+    },
+
+    "section4": {
+      "title": "4. User Obligations and Conduct",
+      "items": [
+        "You agree to use the Services only for lawful purposes and in accordance with these Terms.",
+        "You shall not: (a) misuse the Services (e.g., hacking, scraping, distributing malware); (b) infringe the rights of others; (c) violate any applicable laws or regulations.",
+        "You shall not interfere with or disrupt the integrity or performance of the Services or any data contained therein.",
+        "You are responsible for all content you upload, post, or transmit via the Services, and you grant us a non-exclusive license to use it to provide the Services."
+      ]
+    },
+
+    "section5": {
+      "title": "5. Intellectual Property",
+      "items": [
+        "All content, trademarks, and intellectual property on the Services are owned by or licensed to Automex.",
+        "You may not reproduce, distribute, modify, or create derivative works of our content without our prior written consent.",
+        "Your use of the Services does not grant you any ownership rights in our intellectual property.",
+        "Feedback, suggestions, and ideas you provide to us about the Services become our property and we may use them without obligation."
+      ]
+    },
+
+    "section6": {
+      "title": "6. Payment and Billing",
+      "items": [
+        "Some Services are fee-based. You agree to pay all fees and charges incurred in connection with your use of such Services.",
+        "All fees are non-refundable unless otherwise stated. We may change our fees upon notice.",
+        "You are responsible for providing accurate billing information and for keeping it current.",
+        "If we are unable to charge your payment method, we may suspend or terminate your access to paid Services."
+      ]
+    },
+
+    "section7": {
+      "title": "7. Termination",
+      "items": [
+        "You may terminate your account at any time by contacting us or using the account settings.",
+        "We may suspend or terminate your account and access to the Services at any time, with or without cause, with or without notice.",
+        "Upon termination, your right to use the Services will immediately cease, and we may delete your data.",
+        "Provisions that by their nature should survive termination (e.g., indemnity, liability limits, governing law) shall survive."
+      ]
+    },
+
+    "section8": {
+      "title": "8. Disclaimer of Warranties",
+      "items": [
+        "The Services are provided on an \"AS IS\" and \"AS AVAILABLE\" basis, without warranties of any kind, express or implied.",
+        "We disclaim all warranties, including merchantability, fitness for a particular purpose, non-infringement, and accuracy.",
+        "We do not warrant that the Services will be uninterrupted, error-free, secure, or free from viruses.",
+        "Any material downloaded or otherwise obtained through the Services is at your own discretion and risk."
+      ]
+    },
+
+    "section9": {
+      "title": "9. Limitation of Liability",
+      "items": [
+        "To the maximum extent permitted by law, Automex and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages.",
+        "Our total liability for any claim arising out of or relating to these Terms or the Services shall not exceed the amount paid by you to us during the twelve months preceding the claim.",
+        "The foregoing limitations apply regardless of the basis of liability, whether contract, tort, or otherwise.",
+        "Some jurisdictions do not allow the exclusion of certain warranties or limitations, so these limitations may not apply to you."
+      ]
+    },
+
+    "section10": {
+      "title": "10. Indemnification",
+      "items": [
+        "You agree to defend, indemnify, and hold harmless Automex and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, or expenses arising from:",
+        "(a) your use of the Services; (b) your violation of these Terms; (c) your violation of any third-party rights; or (d) your content.",
+        "We reserve the right to assume the exclusive defence and control of any matter subject to indemnification, and you will cooperate with us in asserting any available defences."
+      ]
+    },
+
+    "section11": {
+      "title": "11. Governing Law and Dispute Resolution",
+      "items": [
+        "These Terms shall be governed by and construed in accordance with the laws of the State of Washington, United States, without regard to its conflict-of-law provisions.",
+        "Any dispute arising out of or relating to these Terms or the Services shall be resolved exclusively in the state or federal courts located in King County, Washington.",
+        "Both parties consent to the exclusive jurisdiction and venue of such courts.",
+        "The parties agree to attempt to resolve any dispute through good-faith negotiation before resorting to litigation."
+      ]
+    },
+
+    "section12": {
+      "title": "12. Changes to These Terms",
+      "items": [
+        "We may revise these Terms from time to time. The updated version will be posted on this page with a new effective date.",
+        "If we make material changes, we will provide notice (e.g., via email or an in‑app notification) at least 30 days before the changes take effect.",
+        "Your continued use of the Services after the effective date constitutes your acceptance of the revised Terms.",
+        "If you do not agree to the changes, you must stop using the Services and may terminate your account."
+      ]
+    },
+
+    "section13": {
+      "title": "13. Contact Information",
+      "intro": "If you have any questions, concerns, or requests regarding these Terms, please contact us:",
+      "address": {
+        "department": "Legal & Compliance",
+        "emailLabel": "Email:",
+        "websiteLabel": "Website:"
+      },
+      "commitment": "We are committed to clarifying any questions you may have about your rights and obligations under these Terms."
+    },
+
+    "legalNotice": "Legal notice: These Terms of Service are a legally binding agreement between you and {company}. They are governed by the laws of Washington State, United States. Any disputes shall be resolved in the state or federal courts located in King County, Washington.",
+
+    "bottomNav": {
+      "privacy": "Privacy Policy",
       "contact": "Contact Us",
       "home": "Back to Home"
     }

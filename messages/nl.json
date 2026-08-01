@@ -69,295 +69,295 @@
   ]
 },
   "AiShowcase": {
-    "sectionTitle": "AI Showcase Intelligent Automation",
-    "orbit1": "AI Agents",
-    "orbit2": "Automation",
-    "orbit3": "Web Dev",
-    "orbit4": "Mobile Apps",
-    "orbit5": "API Integration",
-    "orbit6": "Analytics",
-    "feedItem1Title": "AI Agent Deployed",
-    "feedItem1Subtitle": "Customer support bot 98% resolution rate",
+    "sectionTitle": "AI-showcase Intelligente Automatisering",
+    "orbit1": "AI-agenten",
+    "orbit2": "Automatisering",
+    "orbit3": "Webontwikkeling",
+    "orbit4": "Mobiele Apps",
+    "orbit5": "API-integratie",
+    "orbit6": "Analyse",
+    "feedItem1Title": "AI-agent Ingezet",
+    "feedItem1Subtitle": "Klantenservicebot 98% oplospercentage",
     "feedItem1Badge": "Live",
-    "feedItem2Title": "Workflow Automated",
-    "feedItem2Subtitle": "CRM data sync saved 18 hrs/week",
-    "feedItem2Badge": "Complete",
-    "feedItem3Title": "WhatsApp Bot Active",
-    "feedItem3Subtitle": "Lead gen chatbot 54 new leads today",
-    "feedItem3Badge": "Running",
-    "feedItem4Title": "SaaS Platform Launched",
-    "feedItem4Subtitle": "E-commerce dashboard 0 downtime deploy",
-    "feedItem4Badge": "Deployed",
-    "prop1Title": "AI agents that work while you sleep",
-    "prop1Body": "We build and deploy AI bots for customer support, sales, lead generation, and internal operations across WhatsApp, Telegram, your website, and beyond.",
-    "prop2Title": "Automation that removes the busywork",
-    "prop2Body": "From CRM and ERP automation to workflow orchestration and reporting we map your processes and build systems that run them reliably, without manual effort.",
-    "prop3Title": "Software you own, built to last",
-    "prop3Body": "Every platform, dashboard, or mobile app we deliver is production-grade, documented, and fully yours. No vendor lock-in, no black boxes.",
-    "cta": "See All Services",
-    "trust1": "Production-ready delivery",
-    "trust2": "Fast turnaround",
-    "trust3": "Dedicated support"
+    "feedItem2Title": "Workflow Geautomatiseerd",
+    "feedItem2Subtitle": "CRM-datasynchronisatie bespaarde 18 uur/week",
+    "feedItem2Badge": "Voltooid",
+    "feedItem3Title": "WhatsApp-bot Actief",
+    "feedItem3Subtitle": "Leadgeneratie-chatbot 54 nieuwe leads vandaag",
+    "feedItem3Badge": "Actief",
+    "feedItem4Title": "SaaS-platform Gelanceerd",
+    "feedItem4Subtitle": "E-commerce dashboard implementatie zonder downtime",
+    "feedItem4Badge": "Uitgerold",
+    "prop1Title": "AI-agenten die werken terwijl u slaapt",
+    "prop1Body": "We bouwen en implementeren AI-bots voor klantenservice, verkoop, leadgeneratie en interne processen via WhatsApp, Telegram, uw website en meer.",
+    "prop2Title": "Automatisering die het rompslompwerk wegneemt",
+    "prop2Body": "Van CRM- en ERP-automatisering tot workflowbeheer en rapportages we brengen uw processen in kaart en bouwen systemen die ze betrouwbaar uitvoeren, zonder handmatige inspanning.",
+    "prop3Title": "Software die van u is, gebouwd om lang mee te gaan",
+    "prop3Body": "Elk platform, dashboard of mobiele app die we opleveren is productieklaar, gedocumenteerd en volledig van u. Geen leveranciersafhankelijkheid, geen black boxes.",
+    "cta": "Bekijk Alle Diensten",
+    "trust1": "Productieklare oplevering",
+    "trust2": "Snelle doorlooptijd",
+    "trust3": "Toegewijde ondersteuning"
   },
   "HowItWorks": {
-    "eyebrow": "AI Automation",
-    "title": "How our AI Agent works",
-    "accentWord": "AI Agent",
-    "description": "Watch how our autonomous agent thinks, plans, and acts across your tools in real time.",
+    "eyebrow": "AI-automatisering",
+    "title": "Hoe onze AI-agent werkt",
+    "accentWord": "AI-agent",
+    "description": "Zie hoe onze autonome agent denkt, plant en handelt binnen uw tools in realtime.",
     "step1Title": "Trigger",
-    "step1Desc": "Event fires from CRM, form, or webhook",
-    "step2Title": "Reason",
-    "step2Desc": "AI analyzes context and plans actions",
-    "step3Title": "Act",
-    "step3Desc": "Calls APIs, creates tasks, sends messages",
-    "step4Title": "Complete",
-    "step4Desc": "Logs results and notifies the team",
+    "step1Desc": "Gebeurtenis wordt geactiveerd vanuit CRM, formulier of webhook",
+    "step2Title": "Redeneren",
+    "step2Desc": "AI analyseert de context en plant acties",
+    "step3Title": "Actie",
+    "step3Desc": "Roept API's aan, maakt taken aan, verstuurt berichten",
+    "step4Title": "Voltooiing",
+    "step4Desc": "Legt resultaten vast en informeert het team",
     "pipelineLabel": "Live Pipeline",
-    "pipelineNode1Label": "New Lead",
+    "pipelineNode1Label": "Nieuwe Lead",
     "pipelineNode1Sub": "HubSpot CRM",
-    "pipelineNode2Label": "AI Agent",
-    "pipelineNode2Sub": "Processing",
+    "pipelineNode2Label": "AI-agent",
+    "pipelineNode2Sub": "Wordt verwerkt",
     "pipelineNode3Label": "Asana",
-    "pipelineNode3Sub": "Task created",
+    "pipelineNode3Sub": "Taak aangemaakt",
     "pipelineNode4Label": "Slack",
-    "pipelineNode4Sub": "Notified",
-    "pipelineNode5Label": "Calendar",
-    "pipelineNode5Sub": "Scheduled",
-    "sandboxSectionLabel": "Interactive Demo",
+    "pipelineNode4Sub": "Geïnformeerd",
+    "pipelineNode5Label": "Agenda",
+    "pipelineNode5Sub": "Gepland",
+    "sandboxSectionLabel": "Interactieve Demo",
     "scenarioLabel": "Scenario",
-    "idleTitle": "Agent is standing by",
-    "idleDescription": "Select a scenario on the left and press \"Run agent\" to watch it work in real time.",
-    "reasoningLabel": "Agent reasoning",
-    "actionsLabel": "Actions",
-    "readyLabel": "Ready",
-    "executingLabel": "Executing…",
+    "idleTitle": "Agent staat in de wacht",
+    "idleDescription": "Selecteer links een scenario en druk op \"Agent starten\" om het in realtime aan het werk te zien.",
+    "reasoningLabel": "Redenering van de agent",
+    "actionsLabel": "Acties",
+    "readyLabel": "Klaar",
+    "executingLabel": "Wordt uitgevoerd…",
     "sandboxTitle": "Live demo",
-    "sandboxDescription": "Pick a scenario and watch the AI work step by step",
-    "runLabel": "Run agent",
-    "resetLabel": "Reset",
-    "thinkingLabel": "Reasoning…",
-    "doneLabel": "Done",
-    "task1Label": "New lead",
-    "task1Thought1": "New lead submitted from website form.",
-    "task1Thought2": "Checking CRM for existing contact…",
-    "task1Thought3": "Lead is qualified high enterprise potential.",
-    "task1Thought4": "Planning outreach sequence.",
-    "task1Action1": "Fetch lead data",
-    "task1Action2": "Enrich with company insights",
-    "task1Action3": "Create Asana task",
-    "task1Action4": "Notify Slack channel",
-    "task1Action5": "Schedule calendar invite",
-    "task1Result": "Lead fully processed and assigned to sales team.",
-    "task2Label": "Support ticket",
-    "task2Thought1": "New support ticket: API rate limit issue.",
-    "task2Thought2": "Classifying priority and sentiment…",
-    "task2Thought3": "Searching knowledge base for solutions.",
-    "task2Action1": "Fetch ticket details",
-    "task2Action2": "AI classifier analysis",
-    "task2Action3": "Generate draft reply from knowledge base",
-    "task2Action4": "Escalate to senior engineer",
-    "task2Result": "Ticket categorised and escalated. Suggested reply ready.",
-    "task3Label": "Report generation",
-    "task3Thought1": "Weekly report scheduled.",
-    "task3Thought2": "Querying data warehouse…",
-    "task3Thought3": "Analysing trends and outliers.",
-    "task3Action1": "Query data warehouse",
-    "task3Action2": "AI analyst insights",
-    "task3Action3": "Generate PDF and Notion page",
-    "task3Action4": "Distribute to stakeholders",
-    "task3Result": "Report generated and delivered to leadership.",
-    "metricTime": "Response time",
-    "metricSteps": "Actions executed",
-    "metricSaved": "Time saved",
-    "metricResolution": "Resolution confidence",
-    "metricRows": "Rows processed"
+    "sandboxDescription": "Kies een scenario en bekijk hoe de AI stap voor stap werkt",
+    "runLabel": "Agent starten",
+    "resetLabel": "Resetten",
+    "thinkingLabel": "Redeneren…",
+    "doneLabel": "Klaar",
+    "task1Label": "Nieuwe lead",
+    "task1Thought1": "Nieuwe lead ingediend via het websiteformulier.",
+    "task1Thought2": "CRM wordt gecontroleerd op bestaand contact…",
+    "task1Thought3": "Lead is gekwalificeerd hoog enterprise-potentieel.",
+    "task1Thought4": "Outreach-sequentie wordt gepland.",
+    "task1Action1": "Leadgegevens ophalen",
+    "task1Action2": "Verrijken met bedrijfsinzichten",
+    "task1Action3": "Asana-taak aanmaken",
+    "task1Action4": "Slack-kanaal informeren",
+    "task1Action5": "Agenda-uitnodiging plannen",
+    "task1Result": "Lead volledig verwerkt en toegewezen aan het verkoopteam.",
+    "task2Label": "Supportticket",
+    "task2Thought1": "Nieuw supportticket: probleem met API-snelheidslimiet.",
+    "task2Thought2": "Prioriteit en sentiment worden geclassificeerd…",
+    "task2Thought3": "Kennisbank wordt doorzocht op oplossingen.",
+    "task2Action1": "Ticketgegevens ophalen",
+    "task2Action2": "Analyse door AI-classificator",
+    "task2Action3": "Conceptantwoord genereren uit kennisbank",
+    "task2Action4": "Escaleren naar senior engineer",
+    "task2Result": "Ticket gecategoriseerd en geëscaleerd. Voorgesteld antwoord klaar.",
+    "task3Label": "Rapportgeneratie",
+    "task3Thought1": "Wekelijks rapport gepland.",
+    "task3Thought2": "Data warehouse wordt bevraagd…",
+    "task3Thought3": "Trends en uitschieters worden geanalyseerd.",
+    "task3Action1": "Data warehouse bevragen",
+    "task3Action2": "Inzichten van AI-analist",
+    "task3Action3": "PDF en Notion-pagina genereren",
+    "task3Action4": "Verspreiden naar stakeholders",
+    "task3Result": "Rapport gegenereerd en geleverd aan het management.",
+    "metricTime": "Reactietijd",
+    "metricSteps": "Uitgevoerde acties",
+    "metricSaved": "Bespaarde tijd",
+    "metricResolution": "Betrouwbaarheid van oplossing",
+    "metricRows": "Verwerkte rijen"
   },
   "TechStack": {
-    "eyebrow": "Integrations",
-    "title": "Built on tools your team already uses",
-    "accentWord": "tools your team",
-    "description": "automex integrates natively with the platforms that power modern businesses from AI models and CRM systems to cloud infrastructure and team communication.",
-    "allLabel": "All tools",
-    "tabListLabel": "Tool categories",
-    "counterIntegrations": "Integrations",
+    "eyebrow": "Integraties",
+    "title": "Gebouwd op tools die uw team al gebruikt",
+    "accentWord": "tools die uw team",
+    "description": "automex integreert native met de platforms die moderne bedrijven aandrijven van AI-modellen en CRM-systemen tot cloudinfrastructuur en teamcommunicatie.",
+    "allLabel": "Alle tools",
+    "tabListLabel": "Toolcategorieën",
+    "counterIntegrations": "Integraties",
     "counterIntegrationsValue": "{toolsCount}+",
-    "counterCategories": "Categories",
+    "counterCategories": "Categorieën",
     "counterCategoriesValue": "{count}"
   },
   "ConnectedModel": {
-    "eyebrow": "One Connected Model",
-    "headlineLead": "One trusted reality.",
-    "headlineAccent": "Dashboard and AI on top.",
-    "description": "Sales, ads, and website numbers often sit in different apps, so it's hard to see how your business is really doing. We bring it together in one place. AI and dashboard both use the same numbers, so you never get two different answers.",
-    "signalsLabel": "Every signal",
-    "outputsLabel": "Same data, two doors",
-    "primaryLabel": "Book a demo",
-    "hubLabel": "One model",
-    "secondaryLabel": "Contact us"
+    "eyebrow": "Eén Verbonden Model",
+    "headlineLead": "Eén betrouwbare realiteit.",
+    "headlineAccent": "Dashboard en AI op één plek.",
+    "description": "Verkoop-, advertentie- en websitecijfers staan vaak verspreid over verschillende apps, waardoor het lastig is te zien hoe het écht met uw bedrijf gaat. Wij brengen alles samen op één plek. AI en dashboard gebruiken dezelfde cijfers, zodat u nooit twee verschillende antwoorden krijgt.",
+    "signalsLabel": "Elk signaal",
+    "outputsLabel": "Dezelfde data, twee deuren",
+    "primaryLabel": "Boek een demo",
+    "hubLabel": "Eén model",
+    "secondaryLabel": "Neem contact op"
   },
   "Auth": {
     "common": {
       "brand": "Automex",
       "brandShort": "automex",
-      "welcome": "Welcome to Automex",
-      "backHome": "Back to home",
-      "secureNote": "256-bit encrypted · SOC 2 compliant · Data never sold",
-      "footer": "© 2026 Automex. All rights reserved. Enterprise AI & Digital Transformation.",
-      "email": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "password": "Password",
-      "passwordPlaceholder": "Enter your password",
-      "confirmPassword": "Confirm password",
-      "confirmPasswordPlaceholder": "Re enter your password",
-      "fullName": "Full name",
+      "welcome": "Welkom bij Automex",
+      "backHome": "Terug naar home",
+      "secureNote": "256-bit versleuteling · SOC 2-conform · Gegevens nooit verkocht",
+      "footer": "© 2026 Automex. Alle rechten voorbehouden. Enterprise AI & Digitale Transformatie.",
+      "email": "E-mailadres",
+      "emailPlaceholder": "u@bedrijf.com",
+      "password": "Wachtwoord",
+      "passwordPlaceholder": "Voer uw wachtwoord in",
+      "confirmPassword": "Bevestig wachtwoord",
+      "confirmPasswordPlaceholder": "Voer uw wachtwoord opnieuw in",
+      "fullName": "Volledige naam",
       "fullNamePlaceholder": "Jane Smith",
-      "company": "Company (optional)",
+      "company": "Bedrijf (optioneel)",
       "companyPlaceholder": "Acme Corp",
-      "showPassword": "Show password",
-      "hidePassword": "Hide password",
-      "orContinueWith": "or continue with"
+      "showPassword": "Wachtwoord tonen",
+      "hidePassword": "Wachtwoord verbergen",
+      "orContinueWith": "of ga verder met"
     },
     "login": {
-      "metaTitle": "Sign In | Automex",
-      "metaDescription": "Sign in to your Automex account to manage your AI automation projects.",
-      "title": "Sign in to your account",
-      "description": "Enter your credentials to access your Automex workspace.",
-      "remember": "Keep me signed in",
-      "forgot": "Forgot password?",
-      "submit": "Sign in",
-      "signingIn": "Signing in…",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Create one free"
+      "metaTitle": "Inloggen | Automex",
+      "metaDescription": "Log in op uw Automex-account om uw AI-automatiseringsprojecten te beheren.",
+      "title": "Log in op uw account",
+      "description": "Voer uw inloggegevens in om toegang te krijgen tot uw Automex-werkruimte.",
+      "remember": "Ingelogd blijven",
+      "forgot": "Wachtwoord vergeten?",
+      "submit": "Inloggen",
+      "signingIn": "Inloggen…",
+      "noAccount": "Nog geen account?",
+      "signupLink": "Maak er gratis een aan"
     },
     "signup": {
-      "metaTitle": "Create Account | Automex",
-      "metaDescription": "Join Automex to build AI-powered automation systems for your business.",
-      "title": "Create your account",
-      "description": "Get started with Automex",
-      "passwordHint": "Must be at least 8 characters.",
-      "passwordMismatch": "Passwords do not match.",
-      "termsPrefix": "I agree to the",
-      "terms": "Terms of Service",
-      "and": "and",
-      "privacy": "Privacy Policy",
-      "submit": "Create account",
-      "creating": "Creating account…",
-      "haveAccount": "Already have an account?",
-      "loginLink": "Sign in",
-      "successTitle": "Check your inbox",
-      "successDescription": "We sent a verification link to",
-      "successAction": "Click it to activate your account.",
-      "successHint": "Didn't receive it? Check your spam folder or",
-      "tryAgain": "try again"
+      "metaTitle": "Account Aanmaken | Automex",
+      "metaDescription": "Sluit u aan bij Automex om AI-gedreven automatiseringssystemen voor uw bedrijf te bouwen.",
+      "title": "Maak uw account aan",
+      "description": "Ga aan de slag met Automex",
+      "passwordHint": "Moet minimaal 8 tekens lang zijn.",
+      "passwordMismatch": "Wachtwoorden komen niet overeen.",
+      "termsPrefix": "Ik ga akkoord met de",
+      "terms": "Servicevoorwaarden",
+      "and": "en het",
+      "privacy": "Privacybeleid",
+      "submit": "Account aanmaken",
+      "creating": "Account wordt aangemaakt…",
+      "haveAccount": "Heeft u al een account?",
+      "loginLink": "Inloggen",
+      "successTitle": "Controleer uw inbox",
+      "successDescription": "We hebben een verificatielink gestuurd naar",
+      "successAction": "Klik erop om uw account te activeren.",
+      "successHint": "Niet ontvangen? Controleer uw spammap of",
+      "tryAgain": "probeer het opnieuw"
     },
     "forgotPassword": {
-      "metaTitle": "Reset Password | Automex",
-      "metaDescription": "Request a password reset link for your Automex account.",
-      "title": "Reset your password",
-      "description": "We'll send a secure reset code to your email address.",
-      "emailHint": "Use the email address linked to your automex account.",
-      "submit": "Send reset code",
-      "sending": "Sending…",
-      "backToLogin": "Back to sign in",
-      "successTitle": "Reset link sent",
-      "successDescription": "If",
-      "successAction": "is registered, you'll receive a reset link shortly. Check your spam folder if you don't see it."
+      "metaTitle": "Wachtwoord Resetten | Automex",
+      "metaDescription": "Vraag een link aan om het wachtwoord van uw Automex-account te resetten.",
+      "title": "Reset uw wachtwoord",
+      "description": "We sturen een beveiligde resetcode naar uw e-mailadres.",
+      "emailHint": "Gebruik het e-mailadres dat is gekoppeld aan uw automex-account.",
+      "submit": "Resetcode versturen",
+      "sending": "Versturen…",
+      "backToLogin": "Terug naar inloggen",
+      "successTitle": "Resetlink verzonden",
+      "successDescription": "Als",
+      "successAction": "geregistreerd is, ontvangt u binnenkort een resetlink. Controleer uw spammap als u deze niet ziet."
     },
     "resetPassword": {
-      "metaTitle": "Set New Password | Automex",
-      "metaDescription": "Choose a new password for your Automex account.",
-      "title": "Set new password",
-      "description": "Choose a strong password for your Automex account.",
-      "submit": "Update password",
-      "updating": "Updating password…",
-      "backToLogin": "Back to sign in",
-      "success": "Password updated. Please sign in with your new password.",
-      "invalidTitle": "Invalid reset link",
-      "invalidDescription": "This link is missing a reset token. Please use the link from your email, or request a new one.",
-      "requestNew": "Request a new reset link"
+      "metaTitle": "Nieuw Wachtwoord Instellen | Automex",
+      "metaDescription": "Kies een nieuw wachtwoord voor uw Automex-account.",
+      "title": "Nieuw wachtwoord instellen",
+      "description": "Kies een sterk wachtwoord voor uw Automex-account.",
+      "submit": "Wachtwoord bijwerken",
+      "updating": "Wachtwoord wordt bijgewerkt…",
+      "backToLogin": "Terug naar inloggen",
+      "success": "Wachtwoord bijgewerkt. Log in met uw nieuwe wachtwoord.",
+      "invalidTitle": "Ongeldige resetlink",
+      "invalidDescription": "Deze link mist een resettoken. Gebruik de link uit uw e-mail of vraag een nieuwe aan.",
+      "requestNew": "Nieuwe resetlink aanvragen"
     },
     "verifyEmail": {
-      "metaTitle": "Verify Email | Automex",
-      "metaDescription": "Confirm your email address to activate your Automex account.",
-      "loadingTitle": "Verifying your email…",
-      "loadingDescription": "This only takes a moment.",
-      "successTitle": "Email verified!",
-      "successDescription": "Your account is active. You can now sign in to your Automex workspace.",
-      "signIn": "Sign in to your account",
-      "errorTitle": "Verification failed",
-      "errorDefault": "This link may have expired or already been used.",
-      "noToken": "No verification token found in the URL. Please use the link from your email.",
-      "goToSignIn": "Go to sign in",
-      "createAccount": "Create a new account"
+      "metaTitle": "E-mail Verifiëren | Automex",
+      "metaDescription": "Bevestig uw e-mailadres om uw Automex-account te activeren.",
+      "loadingTitle": "Uw e-mail wordt geverifieerd…",
+      "loadingDescription": "Dit duurt slechts een moment.",
+      "successTitle": "E-mail geverifieerd!",
+      "successDescription": "Uw account is actief. U kunt nu inloggen op uw Automex-werkruimte.",
+      "signIn": "Log in op uw account",
+      "errorTitle": "Verificatie mislukt",
+      "errorDefault": "Deze link is mogelijk verlopen of al gebruikt.",
+      "noToken": "Geen verificatietoken gevonden in de URL. Gebruik de link uit uw e-mail.",
+      "goToSignIn": "Naar inloggen",
+      "createAccount": "Nieuw account aanmaken"
     },
     "magicLink": {
-      "metaTitle": "Magic Link | Automex",
-      "metaDescription": "Sign in to Automex using your magic link.",
-      "loadingTitle": "Signing you in…",
-      "loadingDescription": "Verifying your magic link. You'll be redirected shortly.",
-      "errorTitle": "Link expired or invalid",
-      "errorDefault": "This magic link may have expired or already been used.",
-      "noToken": "No magic link token found. Please request a new link.",
-      "backToSignIn": "Back to sign in"
+      "metaTitle": "Magische Link | Automex",
+      "metaDescription": "Log in bij Automex met uw magische link.",
+      "loadingTitle": "U wordt ingelogd…",
+      "loadingDescription": "Uw magische link wordt geverifieerd. U wordt binnenkort doorgestuurd.",
+      "errorTitle": "Link verlopen of ongeldig",
+      "errorDefault": "Deze magische link is mogelijk verlopen of al gebruikt.",
+      "noToken": "Geen magische-linktoken gevonden. Vraag een nieuwe link aan.",
+      "backToSignIn": "Terug naar inloggen"
     },
     "verifyOtp": {
-      "title": "Check your inbox",
-      "description": "We sent a 6-digit code to your email. Enter it below to continue.",
-      "codeLabel": "Verification code",
-      "digitLabel": "Digit",
-      "hint": "The code expires in 10 minutes. Check your spam folder if you don't see it.",
-      "submit": "Verify and continue",
-      "resendText": "Didn't receive a code?",
-      "resendAction": "Resend",
-      "backToLogin": "Back to sign in"
+      "title": "Controleer uw inbox",
+      "description": "We hebben een 6-cijferige code naar uw e-mail gestuurd. Voer deze hieronder in om verder te gaan.",
+      "codeLabel": "Verificatiecode",
+      "digitLabel": "Cijfer",
+      "hint": "De code verloopt over 10 minuten. Controleer uw spammap als u deze niet ziet.",
+      "submit": "Verifiëren en doorgaan",
+      "resendText": "Geen code ontvangen?",
+      "resendAction": "Opnieuw versturen",
+      "backToLogin": "Terug naar inloggen"
     }
   },
   "footer": {
-    "tagline": "Enterprise grade AI, cybersecurity, software engineering, cloud infrastructure, and digital transformation all under one roof.",
-    "location": "Remote-first team operating globally across the world.",
+    "tagline": "AI op enterprise-niveau, cybersecurity, software-engineering, cloudinfrastructuur en digitale transformatie allemaal onder één dak.",
+    "location": "Volledig remote team dat wereldwijd actief is.",
     "contact": {
-      "whatsapp": "Chat on WhatsApp",
-      "email": "Send an email"
+      "whatsapp": "Chat via WhatsApp",
+      "email": "Stuur een e-mail"
     },
     "cta": {
-      "heading": "Ready to transform your business?",
-      "subheading": "Tell us about your project and we'll respond within 24 hours.",
-      "button": "Get started"
+      "heading": "Klaar om uw bedrijf te transformeren?",
+      "subheading": "Vertel ons over uw project en wij reageren binnen 24 uur.",
+      "button": "Aan de slag"
     },
     "columns": {
       "services": {
-        "title": "Services",
-        "ai_solutions": "AI Solutions",
-        "ai_bots": "AI Bots & Automation",
-        "software_dev": "Software Development",
-        "web_dev": "Web Development",
-        "mobile_dev": "Mobile App Development",
-        "cybersecurity": "Cybersecurity Services"
+        "title": "Diensten",
+        "ai_solutions": "AI-oplossingen",
+        "ai_bots": "AI-bots & Automatisering",
+        "software_dev": "Softwareontwikkeling",
+        "web_dev": "Webontwikkeling",
+        "mobile_dev": "Mobiele-app-ontwikkeling",
+        "cybersecurity": "Cybersecuritydiensten"
       },
       "technology": {
-        "title": "Technology",
-        "claude_ai": "Claude AI Integration",
-        "api_integration": "API Integration",
-        "database": "Database Architecture",
-        "cloud": "Cloud Infrastructure",
-        "security_compliance": "Security Compliance",
-        "digital_transform": "Digital Transformation"
+        "title": "Technologie",
+        "claude_ai": "Claude AI-integratie",
+        "api_integration": "API-integratie",
+        "database": "Database-architectuur",
+        "cloud": "Cloudinfrastructuur",
+        "security_compliance": "Beveiligingscompliance",
+        "digital_transform": "Digitale Transformatie"
       },
       "company": {
-        "title": "Company",
-        "about": "About Us",
-        "services": "Our Services",
-        "blogs": "Blog & Insights",
-        "caseStudies": "Case Studies",
-        "contact": "Contact Us",
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service"
+        "title": "Bedrijf",
+        "about": "Over Ons",
+        "services": "Onze Diensten",
+        "blogs": "Blog & Inzichten",
+        "caseStudies": "Casestudy's",
+        "contact": "Neem Contact Op",
+        "privacy": "Privacybeleid",
+        "terms": "Servicevoorwaarden"
       }
     },
     "bottom": {
-      "copyright": "© {year} automex. All rights reserved.",
+      "copyright": "© {year} automex. Alle rechten voorbehouden.",
       "privacy": "Privacy",
-      "terms": "Terms",
+      "terms": "Voorwaarden",
       "sitemap": "Sitemap"
     },
     "social": {
@@ -367,103 +367,103 @@
       "linkedin": "LinkedIn"
     },
     "badges": {
-      "popular": "Popular",
-      "new": "New",
+      "popular": "Populair",
+      "new": "Nieuw",
       "enterprise": "Enterprise"
     }
   },
   "Contact": {
     "meta": {
-      "title": "Contact automex AI Automation & Enterprise Software",
-      "description": "Reach the automex team to discuss AI agents, workflow automation, custom software, and digital transformation for your business. We respond within 24 hours.",
-      "keywords": "contact automex, AI automation, enterprise software, digital transformation, custom software development, AI agents, business automation",
-      "ogTitle": "Contact automex Let's Build Something Together",
-      "ogDescription": "Talk to our team about AI-powered automation, custom software, and enterprise digital transformation. Fast response, real solutions.",
-      "ogImageAlt": "automex contact page AI & Enterprise Software"
+      "title": "Neem contact op met automex AI-automatisering & Enterprise Software",
+      "description": "Neem contact op met het automex-team om te praten over AI-agenten, workflowautomatisering, maatwerksoftware en digitale transformatie voor uw bedrijf. Wij reageren binnen 24 uur.",
+      "keywords": "contact automex, AI-automatisering, enterprise software, digitale transformatie, maatwerk softwareontwikkeling, AI-agenten, bedrijfsautomatisering",
+      "ogTitle": "Neem contact op met automex Laten We Samen Iets Bouwen",
+      "ogDescription": "Praat met ons team over AI-gedreven automatisering, maatwerksoftware en digitale transformatie voor bedrijven. Snelle reactie, echte oplossingen.",
+      "ogImageAlt": "automex contactpagina AI & Enterprise Software"
     },
     "hero": {
-      "eyebrow": "Get in Touch",
-      "headlineLead": "Let's build something",
-      "headlineAccent": "extraordinary together",
-      "description": "Whether you're automating a workflow, launching a product, or transforming your entire operation the automex team is ready to help. Tell us what you need.",
+      "eyebrow": "Neem Contact Op",
+      "headlineLead": "Laten we samen iets",
+      "headlineAccent": "buitengewoons bouwen",
+      "description": "Of u nu een workflow automatiseert, een product lanceert of uw volledige bedrijfsvoering transformeert het automex-team staat klaar om te helpen. Vertel ons wat u nodig heeft.",
       "stats": [
         {
-          "value": "< 24h",
-          "label": "Response time"
+          "value": "< 24u",
+          "label": "Reactietijd"
         },
         {
           "value": "50+",
-          "label": "Clients served"
+          "label": "Bediende klanten"
         },
         {
           "value": "98%",
-          "label": "Satisfaction rate"
+          "label": "Tevredenheidspercentage"
         }
       ],
-      "ctaWhatsapp": "Chat on WhatsApp",
-      "ctaEmail": "Send an Email"
+      "ctaWhatsapp": "Chat via WhatsApp",
+      "ctaEmail": "Stuur een E-mail"
     },
     "info": {
-      "eyebrow": "Contact Channels",
-      "title": "Reach us any way you prefer",
-      "description": "We operate across multiple time zones and channels. Pick whatever works best for you we aim to respond within one business day.",
-      "emailLabel": "Email",
+      "eyebrow": "Contactkanalen",
+      "title": "Bereik ons op de manier die u het beste past",
+      "description": "We opereren in meerdere tijdzones en via meerdere kanalen. Kies wat het beste bij u past we streven ernaar binnen één werkdag te reageren.",
+      "emailLabel": "E-mail",
       "email": "info@automex.tech",
-      "phoneLabel": "Phone Afghanistan",
+      "phoneLabel": "Telefoon Afghanistan",
       "phoneAf": "+93 776 320 765",
-      "phoneAfLabel": "Phone Afghanistan",
-      "phoneUsLabel": "Phone United States",
+      "phoneAfLabel": "Telefoon Afghanistan",
+      "phoneUsLabel": "Telefoon Verenigde Staten",
       "phoneUs": "+1 (206) 470-9284",
       "websiteLabel": "Website",
       "website": "automex.tech",
-      "whatsappTitle": "Chat on WhatsApp",
-      "whatsappSubtitle": "Quick questions? Message us directly.",
-      "whatsappMessage": "Hello automex team, I'd like to discuss a project.",
-      "responseTimeLabel": "Response time",
-      "responseTime": "Under 24 hours",
-      "responseNote": "Business days, all time zones",
-      "availabilityLabel": "Availability",
-      "availability": "Global",
-      "availabilityNote": "AF · US · EU time zones covered",
+      "whatsappTitle": "Chat via WhatsApp",
+      "whatsappSubtitle": "Snelle vragen? Stuur ons direct een bericht.",
+      "whatsappMessage": "Hallo automex-team, ik wil graag een project bespreken.",
+      "responseTimeLabel": "Reactietijd",
+      "responseTime": "Binnen 24 uur",
+      "responseNote": "Werkdagen, alle tijdzones",
+      "availabilityLabel": "Beschikbaarheid",
+      "availability": "Wereldwijd",
+      "availabilityNote": "AF · US · EU tijdzones gedekt",
       "locationAf": "🇦🇫 Kabul, AF",
       "locationUs": "🇺🇸 Seattle, WA",
-      "locationNote": "Remote first team. We work with clients worldwide from Afghanistan and the United States."
+      "locationNote": "Volledig remote team van opzet. Wij werken met klanten wereldwijd, vanuit Afghanistan en de Verenigde Staten."
     },
     "form": {
-      "heading": "Send us a message",
-      "subheading": "Fill in the details below and we'll get back to you within one business day.",
-      "nameLabel": "Full name",
+      "heading": "Stuur ons een bericht",
+      "subheading": "Vul de onderstaande gegevens in en wij nemen binnen één werkdag contact met u op.",
+      "nameLabel": "Volledige naam",
       "namePlaceholder": "Hakim Safi",
-      "companyLabel": "Company (optional)",
+      "companyLabel": "Bedrijf (optioneel)",
       "companyPlaceholder": "Acme Corp",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "info@company.com",
-      "subjectLabel": "What can we help with?",
-      "subjectPlaceholder": "Select a topic",
-      "messageLabel": "Your message",
-      "messagePlaceholder": "Tell us about your project, challenge, or question...",
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "info@bedrijf.com",
+      "subjectLabel": "Waarmee kunnen we u helpen?",
+      "subjectPlaceholder": "Selecteer een onderwerp",
+      "messageLabel": "Uw bericht",
+      "messagePlaceholder": "Vertel ons over uw project, uitdaging of vraag...",
       "subjects": [
-        "AI Automation & Agents",
-        "Custom Software Development",
-        "Web or Mobile App",
-        "API & Third-Party Integration",
-        "Digital Transformation",
-        "Pricing & Packages",
-        "Partnership or Collaboration",
-        "Other"
+        "AI-automatisering & Agenten",
+        "Maatwerk Softwareontwikkeling",
+        "Web- of Mobiele App",
+        "API- & Externe Integratie",
+        "Digitale Transformatie",
+        "Prijzen & Pakketten",
+        "Partnerschap of Samenwerking",
+        "Overig"
       ],
-      "submit": "Send message",
-      "submitting": "Sending…",
-      "successTitle": "Message received!",
-      "successBody": "Thank you for reaching out. A member of the automex team will reply to your email within one business day.",
-      "successReset": "Send another message",
-      "errorMessage": "Something went wrong sending your message. Please try again, or email us directly at info@automex.tech.",
-      "privacyNote": "By submitting this form you agree to our Privacy Policy. We never share your data with third parties."
+      "submit": "Bericht Versturen",
+      "submitting": "Versturen…",
+      "successTitle": "Bericht ontvangen!",
+      "successBody": "Bedankt voor uw bericht. Een lid van het automex-team reageert binnen één werkdag op uw e-mail.",
+      "successReset": "Nog een bericht versturen",
+      "errorMessage": "Er is iets misgegaan bij het versturen van uw bericht. Probeer het opnieuw, of mail ons direct op info@automex.tech.",
+      "privacyNote": "Door dit formulier te verzenden, gaat u akkoord met ons Privacybeleid. Wij delen uw gegevens nooit met derden."
     },
     "map": {
-      "title": "Our global footprint",
-      "description": "Remote first team operating from two core hubs, serving clients worldwide.",
-      "remoteBadge": "Remote first · 24/7 coverage",
+      "title": "Onze wereldwijde aanwezigheid",
+      "description": "Volledig remote team dat opereert vanuit twee kernhubs en klanten wereldwijd bedient.",
+      "remoteBadge": "Remote van opzet · 24/7 dekking",
       "offices": [
         {
           "city": "Kabul",
@@ -473,7 +473,7 @@
         },
         {
           "city": "Seattle",
-          "country": "USA",
+          "country": "VS",
           "flag": "🇺🇸",
           "tz": "UTC-8 (PST)"
         }
@@ -482,1217 +482,1217 @@
   },
   "About": {
     "meta": {
-      "title": "About automex AI Automation & Enterprise Software",
-      "description": "automex is a Seattle-based enterprise AI and software company. We build intelligent automation systems, custom software, and AI-powered products that help businesses worldwide move faster.",
-      "keywords": "about automex, AI automation company, enterprise software Seattle, AI agents, digital transformation, custom software team",
-      "ogTitle": "About automex Built to Automate the Future of Work",
-      "ogDescription": "From Seattle to the world automex designs and ships AI-powered automation, custom software, and enterprise products trusted by 50+ clients across 12 countries."
+      "title": "Over automex AI-automatisering & Enterprise Software",
+      "description": "automex is een in Seattle gevestigd bedrijf voor enterprise AI en software. Wij bouwen intelligente automatiseringssystemen, maatwerksoftware en AI-gedreven producten die bedrijven wereldwijd helpen sneller vooruit te komen.",
+      "keywords": "over automex, AI-automatiseringsbedrijf, enterprise software Seattle, AI-agenten, digitale transformatie, maatwerk softwareteam",
+      "ogTitle": "Over automex Gebouwd om de Toekomst van Werk te Automatiseren",
+      "ogDescription": "Van Seattle naar de wereld automex ontwerpt en levert AI-gedreven automatisering, maatwerksoftware en enterprise producten waarop meer dan 50 klanten in 12 landen vertrouwen."
     },
     "hero": {
-      "eyebrow": "Our Story",
-      "headlineLead": "Built to automate",
-      "headlineAccent": "the future of work",
-      "headlineLine1": "Built to automate",
-      "headlineLine2": "the future of work",
+      "eyebrow": "Ons Verhaal",
+      "headlineLead": "Gebouwd om",
+      "headlineAccent": "de toekomst van werk te automatiseren",
+      "headlineLine1": "Gebouwd om",
+      "headlineLine2": "de toekomst van werk te automatiseren",
       "headlineSuffix": "",
-      "description": "automex is an enterprise AI and software company headquartered in Seattle, WA. We design and ship intelligent automation systems, custom software, and AI-powered products that free your team from repetitive work.",
-      "locationUs": "Seattle, WA United States",
+      "description": "automex is een bedrijf voor enterprise AI en software met hoofdkantoor in Seattle, WA. Wij ontwerpen en leveren intelligente automatiseringssystemen, maatwerksoftware en AI-gedreven producten die uw team bevrijden van repetitief werk.",
+      "locationUs": "Seattle, WA Verenigde Staten",
       "locationAf": "Kabul Afghanistan",
-      "founded": "Est. 2020",
-      "ctaStory": "Our story"
+      "founded": "Opgericht in 2020",
+      "ctaStory": "Ons verhaal"
     },
     "story": {
-      "eyebrow": "How we got here",
-      "title": "Started in Seattle. Built for the world.",
-      "pullQuote": "We started automex because great AI and automation tools shouldn't be a privilege of the Fortune 500.",
-      "body1": "In 2020, we launched out of Seattle with a single belief: that every business not just the biggest ones deserves access to enterprise-grade automation and AI. We started by solving real operational problems for SMBs and quickly discovered that the need was far wider than the Pacific Northwest.",
-      "body2": "Today, automex operates from two continents, serving clients across 12 countries. Our team spans Seattle and Kabul, combining Silicon Valley-caliber engineering with the hunger and work ethic of a team that knows exactly what's at stake.",
-      "chip": "Clients worldwide",
-      "badge1": "Remote-first since day one",
-      "badge2": "Two continents, one team",
-      "badge3": "No offshore hand-offs"
+      "eyebrow": "Hoe we hier zijn gekomen",
+      "title": "Begonnen in Seattle. Gebouwd voor de wereld.",
+      "pullQuote": "We zijn automex begonnen omdat geweldige AI- en automatiseringstools geen privilege van de Fortune 500 zouden mogen zijn.",
+      "body1": "In 2020 lanceerden we vanuit Seattle met één overtuiging: elk bedrijf niet alleen de grootste verdient toegang tot automatisering en AI op enterprise-niveau. We begonnen met het oplossen van echte operationele problemen voor mkb-bedrijven en ontdekten al snel dat de behoefte veel breder was dan het Pacific Northwest.",
+      "body2": "Tegenwoordig opereert automex vanuit twee continenten en bedient het klanten in 12 landen. Ons team is verspreid over Seattle en Kabul, en combineert engineering van Silicon Valley-kaliber met de gedrevenheid en werkethiek van een team dat precies weet wat er op het spel staat.",
+      "chip": "Klanten wereldwijd",
+      "badge1": "Remote van dag één",
+      "badge2": "Twee continenten, één team",
+      "badge3": "Geen offshore overdrachten"
     },
     "mission": {
-      "eyebrow": "Purpose",
-      "missionTitle": "Our Mission",
-      "missionBody": "To make enterprise-grade AI automation accessible to every business from fast-growing startups to established enterprises so their teams can focus entirely on work that matters and decisions that move the needle.",
-      "visionTitle": "Our Vision",
-      "visionBody": "A world where repetitive, manual business processes are fully automated. Where people spend their time thinking, creating, and leading not copy-pasting, formatting, or clicking through dashboards. We're building the infrastructure that makes that world possible."
+      "eyebrow": "Doel",
+      "missionTitle": "Onze Missie",
+      "missionBody": "AI-automatisering op enterprise-niveau toegankelijk maken voor elk bedrijf van snelgroeiende start-ups tot gevestigde ondernemingen zodat hun teams zich volledig kunnen richten op werk dat ertoe doet en beslissingen die het verschil maken.",
+      "visionTitle": "Onze Visie",
+      "visionBody": "Een wereld waarin repetitieve, handmatige bedrijfsprocessen volledig geautomatiseerd zijn. Waar mensen hun tijd besteden aan denken, creëren en leiden niet aan kopiëren en plakken, opmaken of door dashboards klikken. Wij bouwen de infrastructuur die die wereld mogelijk maakt."
     },
     "stats": {
-      "eyebrow": "By the numbers",
-      "title": "Trusted by teams around the world",
-      "clients": "Clients served",
-      "years": "Years of operation",
-      "satisfaction": "Satisfaction rate",
-      "countries": "Countries reached"
+      "eyebrow": "In Cijfers",
+      "title": "Vertrouwd door teams wereldwijd",
+      "clients": "Bediende klanten",
+      "years": "Jaren actief",
+      "satisfaction": "Tevredenheidspercentage",
+      "countries": "Bereikte landen"
     },
     "values": {
-      "eyebrow": "What we stand for",
-      "title": "Principles that drive every decision",
-      "description": "These aren't posters on a wall. They're the filters we apply when making product decisions, choosing clients, and building systems that need to work five years from now.",
-      "v1Title": "Innovation first",
-      "v1Body": "We reach for the best available tool AI, automation, or custom code not the most familiar one. Every project is an opportunity to raise the bar.",
-      "v2Title": "Integrity in everything",
-      "v2Body": "We say what we'll do and do what we say. No black boxes, no hidden scope, no surprises on invoice day.",
-      "v3Title": "Real impact",
-      "v3Body": "We measure success in hours saved, revenue generated, and problems eliminated not in slides delivered or tickets closed.",
-      "v4Title": "True partnership",
-      "v4Body": "Your business goal is our goal. We work alongside your team as a technical co-pilot invested in the outcome, not a vendor shipping deliverables.",
-      "v5Title": "Uncompromising quality",
-      "v5Body": "Every line of code, every integration, every deployment is production-grade. We don't ship something we wouldn't run ourselves.",
-      "v6Title": "Global by design",
-      "v6Body": "Our team spans continents and time zones. We build products that work for every locale, language, and culture because the world is our market."
+      "eyebrow": "Waar We Voor Staan",
+      "title": "Principes die elke beslissing sturen",
+      "description": "Dit zijn geen posters aan de muur. Het zijn de filters die we toepassen bij het nemen van productbeslissingen, het kiezen van klanten en het bouwen van systemen die over vijf jaar nog moeten werken.",
+      "v1Title": "Innovatie voorop",
+      "v1Body": "We kiezen voor het best beschikbare middel AI, automatisering of maatwerkcode niet het meest vertrouwde. Elk project is een kans om de lat hoger te leggen.",
+      "v2Title": "Integriteit in alles",
+      "v2Body": "We zeggen wat we zullen doen en doen wat we zeggen. Geen black boxes, geen verborgen scope, geen verrassingen op de factuurdatum.",
+      "v3Title": "Echte impact",
+      "v3Body": "We meten succes in bespaarde uren, gegenereerde omzet en opgeloste problemen niet in geleverde slides of gesloten tickets.",
+      "v4Title": "Echt partnerschap",
+      "v4Body": "Uw bedrijfsdoel is ons doel. We werken samen met uw team als technische co-piloot, betrokken bij het resultaat niet als leverancier die opleveringen aflevert.",
+      "v5Title": "Compromisloze kwaliteit",
+      "v5Body": "Elke regel code, elke integratie, elke implementatie is productieklaar. We leveren niets dat we zelf niet zouden gebruiken.",
+      "v6Title": "Wereldwijd van opzet",
+      "v6Body": "Ons team overspant continenten en tijdzones. Wij bouwen producten die werken voor elke regio, taal en cultuur want de wereld is onze markt."
     },
     "timeline": {
-      "eyebrow": "Our journey",
-      "title": "Five years of building",
-      "description": "From a one-person consultancy in Seattle to a global AI and software company with clients on four continents.",
-      "m1Title": "automex founded in Seattle",
-      "m1Body": "Launched as a boutique software consultancy focused on automation and custom web applications for SMBs in the Pacific Northwest.",
-      "m1Tag": "Origin",
-      "m2Title": "First enterprise clients land",
-      "m2Body": "Delivered our first enterprise CRM automation and ERP integration engagements saving clients thousands of manual hours per year.",
-      "m2Tag": "Milestone",
-      "m3Title": "AI division launched",
-      "m3Body": "Expanded into AI-powered products: intelligent chatbots, lead-generation agents, and data pipelines deployed across multiple industries.",
-      "m3Tag": "Expansion",
-      "m4Title": "Global operations opened",
-      "m4Body": "Opened engineering operations in Kabul, Afghanistan, extending our service footprint to clients across Asia, Europe, and the Middle East.",
-      "m4Tag": "Global",
-      "m5Title": "50+ clients across 12 countries",
-      "m5Body": "Crossed 50 active clients. AI agents, SaaS platforms, mobile apps, and automation systems now trusted by teams on four continents.",
-      "m5Tag": "Scale",
-      "m6Title": "Full-spectrum AI platform",
-      "m6Body": "Shipping our most ambitious suite: end-to-end AI automation, multi-channel agent infrastructure, and enterprise dashboards built for scale.",
-      "m6Tag": "Now"
+      "eyebrow": "Onze Reis",
+      "title": "Vijf jaar bouwen",
+      "description": "Van een eenmanszaak in Seattle tot een wereldwijd AI- en softwarebedrijf met klanten op vier continenten.",
+      "m1Title": "automex opgericht in Seattle",
+      "m1Body": "Gelanceerd als boetiek softwareconsultancy gericht op automatisering en maatwerk webapplicaties voor mkb-bedrijven in het Pacific Northwest.",
+      "m1Tag": "Oorsprong",
+      "m2Title": "Eerste enterprise-klanten aan boord",
+      "m2Body": "Onze eerste CRM-automatiserings- en ERP-integratieprojecten voor bedrijven opgeleverd waarmee klanten duizenden manuele uren per jaar bespaarden.",
+      "m2Tag": "Mijlpaal",
+      "m3Title": "AI-divisie gelanceerd",
+      "m3Body": "Uitbreiding naar AI-gedreven producten: intelligente chatbots, leadgeneratie-agenten en datapijplijnen ingezet in meerdere sectoren.",
+      "m3Tag": "Uitbreiding",
+      "m4Title": "Wereldwijde operaties geopend",
+      "m4Body": "Engineeringoperaties geopend in Kabul, Afghanistan, waardoor onze dienstverlening werd uitgebreid naar klanten in Azië, Europa en het Midden-Oosten.",
+      "m4Tag": "Wereldwijd",
+      "m5Title": "50+ klanten in 12 landen",
+      "m5Body": "Meer dan 50 actieve klanten bereikt. AI-agenten, SaaS-platforms, mobiele apps en automatiseringssystemen worden nu vertrouwd door teams op vier continenten.",
+      "m5Tag": "Schaal",
+      "m6Title": "Volwaardig AI-platform",
+      "m6Body": "Onze meest ambitieuze suite wordt uitgerold: end-to-end AI-automatisering, multichannel agent-infrastructuur en enterprise dashboards gebouwd voor schaal.",
+      "m6Tag": "Nu"
     },
     "team": {
-      "eyebrow": "Leadership",
-      "title": "The people behind automex",
-      "description": "A small, senior team with deep expertise across AI, enterprise software, and product delivery. We stay lean on purpose it keeps us sharp and accountable.",
+      "eyebrow": "Leiderschap",
+      "title": "De mensen achter automex",
+      "description": "Een klein, senior team met diepgaande expertise in AI, enterprise software en productlevering. We blijven bewust klein dat houdt ons scherp en verantwoordelijk.",
       "m1Name": "Miraj Hejran",
-      "m1Role": "Founder & CEO",
-      "m1Bio": "Engineer turned entrepreneur. Miraj founded automex to bring enterprise-grade AI automation outside Silicon Valley. He leads product strategy, client relationships, and technical architecture across both offices.",
+      "m1Role": "Oprichter & CEO",
+      "m1Bio": "Van ingenieur tot ondernemer. Miraj richtte automex op om AI-automatisering op enterprise-niveau buiten Silicon Valley te brengen. Hij leidt de productstrategie, klantrelaties en technische architectuur in beide kantoren.",
       "m2Name": "Hakim Rahimi Safi",
       "m2Role": "CTO",
-      "m2Bio": "Full-stack engineer turned technology executive. Hakim now oversees technical strategy, innovation, and engineering culture. He ensures every product automex ships is reliable, secure, and built to outlast the trends.",
+      "m2Bio": "Van full-stack engineer tot technologiedirecteur. Hakim houdt nu toezicht op technische strategie, innovatie en engineeringcultuur. Hij zorgt ervoor dat elk product dat automex oplevert betrouwbaar, veilig en gebouwd is om trends te overleven.",
       "m3Name": "Abdullah Stanikzai",
       "m3Role": "Lead Engineer",
-      "m3Bio": "Abdullah is a backend and infrastructure specialist with 7+ years of experience building high throughput microservices and real time systems. He leads the engineering team in implementing robust, scalable solutions and champions code quality and performance.",
+      "m3Bio": "Abdullah is een backend- en infrastructuurspecialist met meer dan 7 jaar ervaring in het bouwen van high-throughput microservices en realtime systemen. Hij leidt het engineeringteam bij het implementeren van robuuste, schaalbare oplossingen en staat pal voor codekwaliteit en prestaties.",
       "skill1": "AI / ML",
-      "skill2": "Product Strategy",
-      "skill3": "System Architecture",
-      "skill4": "Technical Leadership",
+      "skill2": "Productstrategie",
+      "skill3": "Systeemarchitectuur",
+      "skill4": "Technisch Leiderschap",
       "skill5": "DevOps & Cloud",
-      "skill6": "API Design",
+      "skill6": "API-ontwerp",
       "skill7": "Microservices",
-      "skill8": "Performance Optimization",
-      "skill9": "System Design"
+      "skill8": "Prestatie-optimalisatie",
+      "skill9": "Systeemontwerp"
     },
     "cta": {
-      "title": "Ready to build something that lasts?",
-      "description": "Tell us what you're working on. Whether it's automating a workflow, launching a product, or transforming your operation we'll respond within 24 hours.",
-      "primary": "Start a conversation",
-      "secondary": "Explore our services"
+      "title": "Klaar om iets duurzaams te bouwen?",
+      "description": "Vertel ons waar u aan werkt. Of het nu gaat om het automatiseren van een workflow, het lanceren van een product of het transformeren van uw bedrijfsvoering wij reageren binnen 24 uur.",
+      "primary": "Start een gesprek",
+      "secondary": "Ontdek onze diensten"
     }
   },
   "Blog": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Blog",
-        "headlineLead": "Insights",
-        "headlineAccent": "on AI, Software & Technology",
-        "description": "Articles, tutorials, and deep dives from the AUTOMEX engineering team."
+        "eyebrow": "Onze Blog",
+        "headlineLead": "Inzichten",
+        "headlineAccent": "over AI, Software & Technologie",
+        "description": "Artikelen, tutorials en diepgaande analyses van het engineeringteam van AUTOMEX."
       },
       "filters": {
-        "all": "All",
+        "all": "Alle",
         "tagsLabel": "Tags:",
-        "articlesCount": "{count} article{plural}",
-        "searchPlaceholder": "Search articles...",
-        "sortLabel": "Sort by",
-        "sortNewest": "Newest",
-        "sortOldest": "Oldest",
-        "sortPopular": "Most Popular"
+        "articlesCount": "{count} artikel{plural}",
+        "searchPlaceholder": "Zoek artikelen...",
+        "sortLabel": "Sorteren op",
+        "sortNewest": "Nieuwste",
+        "sortOldest": "Oudste",
+        "sortPopular": "Meest Populair"
       },
       "post": {
-        "readMore": "Read more",
-        "featured": "Featured",
+        "readMore": "Lees meer",
+        "featured": "Uitgelicht",
         "premium": "Premium",
-        "minRead": "{minutes} min read",
-        "noPosts": "No blog posts found.",
+        "minRead": "{minutes} min leestijd",
+        "noPosts": "Geen blogberichten gevonden.",
         "contentType": {
-          "article": "Article",
+          "article": "Artikel",
           "video": "Video",
-          "external": "External"
+          "external": "Extern"
         }
       },
-      "loadMore": "Load More",
+      "loadMore": "Meer Laden",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Have a project in mind?",
-        "description": "Share your ideas and we'll help turn them into reality. Get a free consultation today.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Laten We Bouwen",
+        "title": "Heeft u een project in gedachten?",
+        "description": "Deel uw ideeën en wij helpen ze werkelijkheid te laten worden. Vraag vandaag nog een gratis consult aan.",
+        "quote": "Offerte Aanvragen",
+        "booking": "Plan een Gratis Gesprek"
       }
     },
     "detail": {
-      "back": "Back to Blog",
-      "by": "By",
-      "published": "Published",
-      "updated": "Updated",
-      "minRead": "{minutes} min read",
-      "views": "{count} views",
-      "featured": "Featured",
+      "back": "Terug naar Blog",
+      "by": "Door",
+      "published": "Gepubliceerd",
+      "updated": "Bijgewerkt",
+      "minRead": "{minutes} min leestijd",
+      "views": "{count} weergaven",
+      "featured": "Uitgelicht",
       "premium": "Premium Content",
-      "premiumBadgeTooltip": "This content is available for premium leads only.",
+      "premiumBadgeTooltip": "Deze content is alleen beschikbaar voor premium leads.",
       "tagsLabel": "Tags",
-      "tableOfContents": "On this page",
-      "share": "Share",
-      "copyLink": "Copy link",
-      "copied": "Copied!",
-      "watchVideo": "Watch Video",
-      "readOriginal": "Read Original Article",
-      "relatedServices": "Related Services",
-      "relatedCaseStudies": "Related Case Studies",
-      "heroImages": "Gallery",
+      "tableOfContents": "Op deze pagina",
+      "share": "Delen",
+      "copyLink": "Link kopiëren",
+      "copied": "Gekopieerd!",
+      "watchVideo": "Video Bekijken",
+      "readOriginal": "Origineel Artikel Lezen",
+      "relatedServices": "Gerelateerde Diensten",
+      "relatedCaseStudies": "Gerelateerde Casestudy's",
+      "heroImages": "Galerij",
       "contentType": {
-        "article": "Article",
-        "video": "Video Post",
-        "external": "External Link"
+        "article": "Artikel",
+        "video": "Videobericht",
+        "external": "Externe Link"
       },
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Ready to start your next project?",
-        "description": "Let's discuss how we can bring your ideas to life.",
-        "quote": "Request a Quote"
+        "eyebrow": "Laten We Bouwen",
+        "title": "Klaar om uw volgende project te starten?",
+        "description": "Laten we bespreken hoe we uw ideeën tot leven kunnen brengen.",
+        "quote": "Offerte Aanvragen"
       }
     }
   },
   "AICapabilities": {
     "listing": {
       "hero": {
-        "eyebrow": "AI Solutions",
-        "headline": "AI Capabilities",
-        "description": "From NLP to computer vision, explore our AI and machine learning capabilities that power intelligent solutions."
+        "eyebrow": "AI-oplossingen",
+        "headline": "AI-mogelijkheden",
+        "description": "Van NLP tot computervisie, ontdek onze AI- en machine learning-mogelijkheden die intelligente oplossingen aandrijven."
       },
       "filters": {
-        "all": "All",
-        "count": "{count} AI capabilit{plural}"
+        "all": "Alle",
+        "count": "{count} AI-mogelijkhe{plural}"
       },
       "card": {
-        "learnMore": "Learn more"
+        "learnMore": "Meer weten"
       },
-      "empty": "No AI capabilities found.",
-      "loadMore": "Load More",
+      "empty": "Geen AI-mogelijkheden gevonden.",
+      "loadMore": "Meer Laden",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Ready to leverage AI?",
-        "description": "Let's discuss how these AI capabilities can be applied to your specific business challenges.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Laten We Bouwen",
+        "title": "Klaar om AI in te zetten?",
+        "description": "Laten we bespreken hoe deze AI-mogelijkheden kunnen worden toegepast op de specifieke uitdagingen van uw bedrijf.",
+        "quote": "Offerte Aanvragen",
+        "booking": "Plan een Gratis Gesprek"
       },
       "maturity": {
-        "research": "Research",
-        "production": "Production",
-        "experimental": "Experimental"
+        "research": "Onderzoek",
+        "production": "Productie",
+        "experimental": "Experimenteel"
       }
     },
     "detail": {
-      "back": "Back to AI Capabilities",
-      "about": "About This Capability",
-      "technologies": "Technologies",
-      "relatedServices": "Related Services",
-      "demo": "View Live Demo",
+      "back": "Terug naar AI-mogelijkheden",
+      "about": "Over Deze Mogelijkheid",
+      "technologies": "Technologieën",
+      "relatedServices": "Gerelateerde Diensten",
+      "demo": "Bekijk Live Demo",
       "maturity": {
-        "research": "Research",
-        "production": "Production",
-        "experimental": "Experimental"
+        "research": "Onderzoek",
+        "production": "Productie",
+        "experimental": "Experimenteel"
       },
       "cta": {
-        "eyebrow": "Get Started",
-        "title": "Interested in {name}?",
-        "description": "Let's discuss how this AI capability can address your specific business needs.",
-        "quote": "Request a Quote"
+        "eyebrow": "Aan de Slag",
+        "title": "Geïnteresseerd in {name}?",
+        "description": "Laten we bespreken hoe deze AI-mogelijkheid uw specifieke bedrijfsbehoeften kan invullen.",
+        "quote": "Offerte Aanvragen"
       }
     }
   },
   "TechExpertise": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Expertise",
-        "headline": "Tech Expertise",
-        "description": "Deep expertise across the full technology stack from cloud architecture to AI, DevOps, security, and everything in between."
+        "eyebrow": "Onze Expertise",
+        "headline": "Technische Expertise",
+        "description": "Diepgaande expertise over de volledige technologiestack van cloudarchitectuur tot AI, DevOps, beveiliging en alles daartussenin."
       },
       "filters": {
-        "all": "All"
+        "all": "Alle"
       },
       "card": {
-        "technologies": "{count} technolog{plural}",
-        "caseStudies": "{count} case stud{plural}",
-        "explore": "Explore"
+        "technologies": "{count} technologie{plural}",
+        "caseStudies": "{count} casestud{plural}",
+        "explore": "Ontdekken"
       },
       "items": "{count} items",
-      "empty": "No tech expertise areas found.",
+      "empty": "Geen technische expertisegebieden gevonden.",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Need this expertise for your project?",
-        "description": "Our team brings deep technical knowledge to every engagement. Let's discuss your requirements.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Laten We Bouwen",
+        "title": "Heeft u deze expertise nodig voor uw project?",
+        "description": "Ons team brengt diepgaande technische kennis in elk project. Laten we uw behoeften bespreken.",
+        "quote": "Offerte Aanvragen",
+        "booking": "Plan een Gratis Gesprek"
       }
     },
     "detail": {
-      "back": "Back to Tech Expertise",
+      "back": "Terug naar Technische Expertise",
       "stats": {
-        "technologies": "{count} technologies",
-        "caseStudies": "{count} case studies"
+        "technologies": "{count} technologieën",
+        "caseStudies": "{count} casestudy's"
       },
       "about": {
-        "title": "About This Expertise",
-        "eyebrow": "Overview"
+        "title": "Over Deze Expertise",
+        "eyebrow": "Overzicht"
       },
       "technologies": {
-        "eyebrow": "Tech Stack",
-        "title": "Technologies & Tools"
+        "eyebrow": "Technologiestack",
+        "title": "Technologieën & Tools"
       },
       "caseStudies": {
-        "eyebrow": "Proven Results",
-        "title": "Related Case Studies",
-        "viewAll": "View all case studies",
-        "readCaseStudy": "Read case study"
+        "eyebrow": "Bewezen Resultaten",
+        "title": "Gerelateerde Casestudy's",
+        "viewAll": "Bekijk alle casestudy's",
+        "readCaseStudy": "Lees casestudy"
       },
       "cta": {
-        "eyebrow": "Get Started",
-        "title": "Need {name} expertise?",
-        "description": "Our team brings deep expertise and real world experience. Let's discuss how we can help.",
-        "quote": "Request a Quote"
+        "eyebrow": "Aan de Slag",
+        "title": "Heeft u {name}-expertise nodig?",
+        "description": "Ons team brengt diepgaande expertise en praktijkervaring mee. Laten we bespreken hoe we kunnen helpen.",
+        "quote": "Offerte Aanvragen"
       }
     }
   },
   "Portfolio": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Work",
+        "eyebrow": "Ons Werk",
         "headline": "Portfolio",
-        "description": "Explore our projects custom software, AI solutions, and digital products we've built for clients worldwide."
+        "description": "Ontdek onze projecten maatwerksoftware, AI-oplossingen en digitale producten die we voor klanten wereldwijd hebben gebouwd."
       },
       "filters": {
-        "allIndustries": "All Industries",
-        "allTechnologies": "All Technologies",
-        "featured": "Featured",
-        "searchPlaceholder": "Search projects...",
-        "clearSearch": "Clear search",
-        "sortLabel": "Sort by",
-        "showLess": "Show less",
-        "more": "more",
-        "clearAll": "Clear all"
+        "allIndustries": "Alle Sectoren",
+        "allTechnologies": "Alle Technologieën",
+        "featured": "Uitgelicht",
+        "searchPlaceholder": "Zoek projecten...",
+        "clearSearch": "Zoekopdracht wissen",
+        "sortLabel": "Sorteren op",
+        "showLess": "Minder tonen",
+        "more": "meer",
+        "clearAll": "Alles wissen"
       },
       "card": {
-        "explore": "Explore project",
-        "featured": "Featured"
+        "explore": "Project ontdekken",
+        "featured": "Uitgelicht"
       },
       "count": {
         "singular": "{count} project",
-        "plural": "{count} projects"
+        "plural": "{count} projecten"
       },
-      "empty": "No portfolio projects found matching your criteria.",
-      "loadMore": "Load More",
+      "empty": "Geen portfolioprojecten gevonden die aan uw criteria voldoen.",
+      "loadMore": "Meer Laden",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Have a project in mind?",
-        "description": "We'd love to add your success story here. Let's discuss your idea.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Laten We Bouwen",
+        "title": "Heeft u een project in gedachten?",
+        "description": "We voegen uw succesverhaal hier graag toe. Laten we uw idee bespreken.",
+        "quote": "Offerte Aanvragen",
+        "booking": "Plan een Gratis Gesprek"
       }
     },
     "detail": {
-      "back": "Back to Portfolio",
-      "featured": "Featured",
-      "about": "Overview",
-      "industry": "Industry",
-      "services": "Services",
-      "technologies": "Technologies Used",
+      "back": "Terug naar Portfolio",
+      "featured": "Uitgelicht",
+      "about": "Overzicht",
+      "industry": "Sector",
+      "services": "Diensten",
+      "technologies": "Gebruikte Technologieën",
       "liveProject": "Live project",
-      "gallery": "Gallery",
+      "gallery": "Galerij",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Want a similar project?",
-        "description": "Let's discuss how we can build something great together.",
-        "quote": "Request a Quote"
+        "eyebrow": "Laten We Bouwen",
+        "title": "Wilt u een vergelijkbaar project?",
+        "description": "Laten we bespreken hoe we samen iets geweldigs kunnen bouwen.",
+        "quote": "Offerte Aanvragen"
       }
     }
   },
   "CaseStudies": {
     "listing": {
       "hero": {
-        "eyebrow": "Success Stories",
-        "headline": "Case Studies",
-        "description": "Real projects, real results. Explore how we've helped businesses transform with AI and custom software."
+        "eyebrow": "Succesverhalen",
+        "headline": "Casestudy's",
+        "description": "Echte projecten, echte resultaten. Ontdek hoe we bedrijven hebben geholpen te transformeren met AI en maatwerksoftware."
       },
       "filters": {
-        "allIndustries": "All Industries",
-        "allTechnologies": "All Technologies",
-        "clearAll": "Clear all filters"
+        "allIndustries": "Alle Sectoren",
+        "allTechnologies": "Alle Technologieën",
+        "clearAll": "Alle filters wissen"
       },
       "card": {
-        "featured": "Featured",
-        "readMore": "Read case study"
+        "featured": "Uitgelicht",
+        "readMore": "Lees casestudy"
       },
       "count": {
-        "singular": "{count} case study",
-        "plural": "{count} case studies"
+        "singular": "{count} casestudy",
+        "plural": "{count} casestudy's"
       },
-      "empty": "No case studies found matching your criteria.",
-      "loadMore": "Load More",
+      "empty": "Geen casestudy's gevonden die aan uw criteria voldoen.",
+      "loadMore": "Meer Laden",
       "cta": {
-        "eyebrow": "Your Success Story",
-        "title": "Want to be our next case study?",
-        "description": "Let's build something great together. Share your project and get a free consultation.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "Uw Succesverhaal",
+        "title": "Wilt u onze volgende casestudy zijn?",
+        "description": "Laten we samen iets geweldigs bouwen. Deel uw project en ontvang een gratis consult.",
+        "quote": "Offerte Aanvragen",
+        "booking": "Plan een Gratis Gesprek"
       }
     }
   },
   "CaseStudyDetail": {
-    "backToCaseStudies": "Back to Case Studies",
-    "featuredBadge": "Featured",
+    "backToCaseStudies": "Terug naar Casestudy's",
+    "featuredBadge": "Uitgelicht",
     "hero": {
-      "clientLabel": "Client"
+      "clientLabel": "Klant"
     },
     "stats": {
-      "weeks": "Weeks",
-      "technologies": "Technologies",
-      "industry": "Industry",
-      "teamSize": "Team Size",
+      "weeks": "Weken",
+      "technologies": "Technologieën",
+      "industry": "Sector",
+      "teamSize": "Teamgrootte",
       "liveUrl": "Live Project",
-      "viewProject": "View Project",
-      "clientSite": "Client Website",
-      "viewClient": "Visit"
+      "viewProject": "Project Bekijken",
+      "clientSite": "Website van de Klant",
+      "viewClient": "Bezoeken"
     },
     "overview": {
       "eyebrow": "Context",
-      "title": "Overview"
+      "title": "Overzicht"
     },
     "challenge": {
-      "eyebrow": "The Problem",
-      "title": "Challenge"
+      "eyebrow": "Het Probleem",
+      "title": "Uitdaging"
     },
     "solution": {
-      "eyebrow": "Our Approach",
-      "title": "Solution"
+      "eyebrow": "Onze Aanpak",
+      "title": "Oplossing"
     },
     "results": {
-      "eyebrow": "Outcome",
-      "title": "Results"
+      "eyebrow": "Resultaat",
+      "title": "Resultaten"
     },
     "metrics": {
       "eyebrow": "Impact",
-      "title": "Key Metrics"
+      "title": "Belangrijkste Statistieken"
     },
     "technologies": {
       "eyebrow": "Stack",
-      "title": "Technologies Used"
+      "title": "Gebruikte Technologieën"
     },
     "services": {
-      "eyebrow": "Related",
-      "title": "Related Services"
+      "eyebrow": "Gerelateerd",
+      "title": "Gerelateerde Diensten"
     },
     "gallery": {
-      "eyebrow": "Visuals",
-      "title": "Project Gallery",
-      "close": "Close",
-      "previous": "Previous",
-      "next": "Next"
+      "eyebrow": "Beelden",
+      "title": "Projectgalerij",
+      "close": "Sluiten",
+      "previous": "Vorige",
+      "next": "Volgende"
     },
     "related": {
-      "eyebrow": "More Stories",
-      "title": "Related Case Studies",
-      "readCaseStudy": "Read case study"
+      "eyebrow": "Meer Verhalen",
+      "title": "Gerelateerde Casestudy's",
+      "readCaseStudy": "Lees casestudy"
     },
     "cta": {
-      "title": "Want similar results?",
-      "description": "Let's discuss how we can help your business achieve transformative outcomes.",
-      "primary": "Request a Quote",
-      "secondary": "Book a Free Call"
+      "title": "Wilt u vergelijkbare resultaten?",
+      "description": "Laten we bespreken hoe we uw bedrijf kunnen helpen transformatieve resultaten te behalen.",
+      "primary": "Offerte Aanvragen",
+      "secondary": "Plan een Gratis Gesprek"
     }
   },
   "Partners": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Ecosystem",
+        "eyebrow": "Ons Ecosysteem",
         "headline": "Partners",
-        "description": "We collaborate with leading technology providers, cloud platforms, and implementation experts to deliver world class solutions."
+        "description": "Wij werken samen met toonaangevende technologieleveranciers, cloudplatforms en implementatie-experts om oplossingen van wereldklasse te leveren."
       },
       "filters": {
-        "allTypes": "All Types",
-        "allTiers": "All Tiers",
-        "clearAll": "Clear all"
+        "allTypes": "Alle Types",
+        "allTiers": "Alle Niveaus",
+        "clearAll": "Alles wissen"
       },
       "card": {
-        "visitWebsite": "Visit website"
+        "visitWebsite": "Bezoek website"
       },
       "count": {
         "singular": "{count} partner",
         "plural": "{count} partners"
       },
-      "empty": "No partners found matching your criteria.",
+      "empty": "Geen partners gevonden die aan uw criteria voldoen.",
       "cta": {
-        "eyebrow": "Become a Partner",
-        "title": "Interested in partnering with us?",
-        "description": "We're always looking for innovative technology and implementation partners to collaborate with.",
-        "quote": "Get in Touch"
+        "eyebrow": "Word Partner",
+        "title": "Geïnteresseerd om met ons samen te werken?",
+        "description": "We zijn altijd op zoek naar innovatieve technologie- en implementatiepartners om mee samen te werken.",
+        "quote": "Neem Contact Op"
       }
     }
   },
   "IndustriesPage": {
     "hero": {
-      "eyebrow": "Industries We Serve",
-      "headline": "Industry Solutions",
-      "description": "We deliver tailored technology solutions across healthcare, finance, education, and more."
+      "eyebrow": "Sectoren die We Bedienen",
+      "headline": "Sectoroplossingen",
+      "description": "Wij leveren op maat gemaakte technologische oplossingen voor zorg, financiën, onderwijs en meer."
     },
     "breadcrumbHome": "Home",
-    "breadcrumbIndustries": "Industries",
+    "breadcrumbIndustries": "Sectoren",
     "cta": {
-      "title": "Ready to transform your industry?",
-      "description": "Let's discuss how our technology solutions can drive results for your business.",
-      "button": "Get Started"
+      "title": "Klaar om uw sector te transformeren?",
+      "description": "Laten we bespreken hoe onze technologische oplossingen resultaten kunnen opleveren voor uw bedrijf.",
+      "button": "Aan de Slag"
     }
   },
   "CrmForms": {
     "shared": {
-      "budgetLabel": "Budget range",
-      "timelineLabel": "Timeline",
+      "budgetLabel": "Budgetbereik",
+      "timelineLabel": "Tijdlijn",
       "budgetOptions": {
-        "not_specified": "Not specified",
-        "under_10k": "Under $10,000",
-        "10k_50k": "$10,000 – $50,000",
-        "50k_150k": "$50,000 – $150,000",
-        "150k_plus": "$150,000+"
+        "not_specified": "Niet gespecificeerd",
+        "under_10k": "Onder $10.000",
+        "10k_50k": "$10.000 – $50.000",
+        "50k_150k": "$50.000 – $150.000",
+        "150k_plus": "$150.000+"
       },
       "timelineOptions": {
-        "asap": "ASAP",
-        "within_1_month": "Within 1 month",
-        "within_3_months": "Within 3 months",
-        "within_6_months": "Within 6 months",
-        "flexible": "Flexible"
+        "asap": "Zo snel mogelijk",
+        "within_1_month": "Binnen 1 maand",
+        "within_3_months": "Binnen 3 maanden",
+        "within_6_months": "Binnen 6 maanden",
+        "flexible": "Flexibel"
       },
       "meetingTypeOptions": {
-        "video": "Video call",
-        "phone": "Phone call",
-        "in_person": "In person"
+        "video": "Videogesprek",
+        "phone": "Telefoongesprek",
+        "in_person": "Persoonlijk"
       },
-      "industryPlaceholder": "Select your industry",
-      "genericError": "Something went wrong. Please try again.",
-      "rateLimitError": "Too many requests please wait a moment and try again.",
-      "validationError": "Please check the highlighted fields."
+      "industryPlaceholder": "Selecteer uw sector",
+      "genericError": "Er is iets misgegaan. Probeer het opnieuw.",
+      "rateLimitError": "Te veel aanvragen wacht even en probeer het opnieuw.",
+      "validationError": "Controleer de gemarkeerde velden."
     },
     "contact": {
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "fullNameLabel": "Volledige naam",
+      "fullNamePlaceholder": "Uw naam",
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "u@bedrijf.com",
+      "phoneLabel": "Telefoon (optioneel)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "serviceLabel": "What are you interested in? (optional)",
-      "servicePlaceholder": "Select a service",
-      "messageLabel": "Message",
-      "messagePlaceholder": "Tell us about your project...",
-      "submit": "Send message",
-      "submitting": "Sending…",
-      "successTitle": "Message sent",
-      "successBody": "Thanks for reaching out our team will get back to you shortly.",
-      "sendAnother": "Send another message"
+      "companyLabel": "Bedrijf (optioneel)",
+      "companyPlaceholder": "Uw bedrijf",
+      "jobTitleLabel": "Functietitel (optioneel)",
+      "jobTitlePlaceholder": "Uw rol",
+      "serviceLabel": "Waarin bent u geïnteresseerd? (optioneel)",
+      "servicePlaceholder": "Selecteer een dienst",
+      "messageLabel": "Bericht",
+      "messagePlaceholder": "Vertel ons over uw project...",
+      "submit": "Bericht Versturen",
+      "submitting": "Versturen…",
+      "successTitle": "Bericht verzonden",
+      "successBody": "Bedankt voor uw bericht ons team neemt binnenkort contact met u op.",
+      "sendAnother": "Nog een bericht versturen"
     },
     "quote": {
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "fullNameLabel": "Volledige naam",
+      "fullNamePlaceholder": "Uw naam",
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "u@bedrijf.com",
+      "phoneLabel": "Telefoon (optioneel)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "industryLabel": "Industry (optional)",
-      "industryPlaceholder": "Select your industry",
-      "servicesLabel": "Which services are you interested in?",
-      "descriptionLabel": "Project description",
-      "descriptionPlaceholder": "Tell us what you're looking to build...",
-      "budgetMinLabel": "Estimated budget min (optional)",
-      "budgetMaxLabel": "Estimated budget max (optional)",
-      "submit": "Request a quote",
-      "submitting": "Sending…",
-      "successTitle": "Quote request sent",
-      "successBody": "Thanks our team will review your project and follow up with a tailored quote shortly.",
-      "sendAnother": "Send another request"
+      "companyLabel": "Bedrijf (optioneel)",
+      "companyPlaceholder": "Uw bedrijf",
+      "jobTitleLabel": "Functietitel (optioneel)",
+      "jobTitlePlaceholder": "Uw rol",
+      "industryLabel": "Sector (optioneel)",
+      "industryPlaceholder": "Selecteer uw sector",
+      "servicesLabel": "In welke diensten bent u geïnteresseerd?",
+      "descriptionLabel": "Projectbeschrijving",
+      "descriptionPlaceholder": "Vertel ons wat u wilt bouwen...",
+      "budgetMinLabel": "Geschat minimumbudget (optioneel)",
+      "budgetMaxLabel": "Geschat maximumbudget (optioneel)",
+      "submit": "Offerte Aanvragen",
+      "submitting": "Versturen…",
+      "successTitle": "Offerteaanvraag verzonden",
+      "successBody": "Bedankt ons team beoordeelt uw project en neemt binnenkort contact met u op met een offerte op maat.",
+      "sendAnother": "Nog een aanvraag versturen"
     },
     "newsletter": {
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "submit": "Subscribe",
-      "successMessage": "You're subscribed!"
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "u@bedrijf.com",
+      "submit": "Aanmelden",
+      "successMessage": "U bent aangemeld!"
     },
     "booking": {
-      "dateLabel": "Pick a date",
-      "noSlots": "No available slots on this date try another day.",
-      "spotsLeft": "spots left",
-      "continue": "Continue",
-      "backToSlots": "Back to date & time",
-      "selectedSlotLabel": "Selected time",
-      "slotTaken": "That slot was just booked please pick another time.",
-      "stepSlot": "Choose time",
-      "stepDetails": "Your details",
-      "stepSlotTitle": "Pick a date & time",
-      "stepDetailsTitle": "Tell us about you",
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "dateLabel": "Kies een datum",
+      "noSlots": "Geen beschikbare tijdvakken op deze datum probeer een andere dag.",
+      "spotsLeft": "plekken over",
+      "continue": "Doorgaan",
+      "backToSlots": "Terug naar datum & tijd",
+      "selectedSlotLabel": "Geselecteerde tijd",
+      "slotTaken": "Dat tijdvak is net geboekt kies een andere tijd.",
+      "stepSlot": "Tijd kiezen",
+      "stepDetails": "Uw gegevens",
+      "stepSlotTitle": "Kies een datum & tijd",
+      "stepDetailsTitle": "Vertel ons over uzelf",
+      "fullNameLabel": "Volledige naam",
+      "fullNamePlaceholder": "Uw naam",
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "u@bedrijf.com",
+      "phoneLabel": "Telefoon (optioneel)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "industryLabel": "Industry (optional)",
-      "meetingTypeLabel": "Meeting type",
-      "messageLabel": "What would you like to discuss? (optional)",
-      "messagePlaceholder": "Tell us a bit about your project or goals...",
-      "notesLabel": "Anything else we should know? (optional)",
-      "notesPlaceholder": "Any specific questions or preferences...",
-      "submit": "Confirm booking",
-      "submitting": "Booking…",
-      "sendAnother": "Book another call",
-      "successTitle": "Consultation booked",
-      "successBody": "You're all set we've sent a confirmation to your email with the meeting details."
+      "companyLabel": "Bedrijf (optioneel)",
+      "companyPlaceholder": "Uw bedrijf",
+      "jobTitleLabel": "Functietitel (optioneel)",
+      "jobTitlePlaceholder": "Uw rol",
+      "industryLabel": "Sector (optioneel)",
+      "meetingTypeLabel": "Type gesprek",
+      "messageLabel": "Waarover wilt u praten? (optioneel)",
+      "messagePlaceholder": "Vertel ons iets over uw project of doelen...",
+      "notesLabel": "Nog iets dat we moeten weten? (optioneel)",
+      "notesPlaceholder": "Specifieke vragen of voorkeuren...",
+      "submit": "Boeking Bevestigen",
+      "submitting": "Bezig met boeken…",
+      "sendAnother": "Nog een gesprek boeken",
+      "successTitle": "Consult geboekt",
+      "successBody": "U bent helemaal klaar we hebben een bevestiging met de vergaderdetails naar uw e-mail gestuurd."
     }
   },
   "CrmPages": {
     "overview": {
       "meta": {
-        "title": "Work With AUTOMEX AI‑Powered CRM, Quotes & Consultation",
-        "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response start building with confidence."
+        "title": "Werken met AUTOMEX AI-gedreven CRM, Offertes & Consult",
+        "description": "Kies uw pad: vraag een projectofferte aan, boek een gratis AI-/software-consult of stuur een bericht. Transparant proces, snelle reactie begin met vertrouwen."
       },
       "hero": {
-        "eyebrow": "Work With Us",
-        "headlineLead": "Let's build something",
-        "headlineAccent": "that actually works",
-        "description": "Whether you have a clear scope or just a rough idea, we've made it easy to take the next step. Pick the path that fits below.",
-        "ctaQuote": "Request a Quote",
-        "ctaBooking": "Book a Free Call"
+        "eyebrow": "Werk met Ons Samen",
+        "headlineLead": "Laten we iets bouwen",
+        "headlineAccent": "dat écht werkt",
+        "description": "Of u nu een duidelijke scope heeft of slechts een ruw idee, wij hebben het gemakkelijk gemaakt om de volgende stap te zetten. Kies hieronder het pad dat bij u past.",
+        "ctaQuote": "Offerte Aanvragen",
+        "ctaBooking": "Plan een Gratis Gesprek"
       },
       "stats": {
-        "response": "< 2 min response",
-        "followUp": "24h follow Up",
-        "projects": "150+ projects"
+        "response": "< 2 min reactietijd",
+        "followUp": "24u opvolging",
+        "projects": "150+ projecten"
       },
       "howItWorks": {
-        "eyebrow": "How It Works",
-        "title": "A simple, transparent process",
-        "description": "No black boxes. Here's exactly what happens after you reach out from initial conversation to final delivery."
+        "eyebrow": "Hoe Het Werkt",
+        "title": "Een eenvoudig, transparant proces",
+        "description": "Geen black boxes. Dit is precies wat er gebeurt nadat u contact heeft opgenomen van het eerste gesprek tot de uiteindelijke oplevering."
       },
       "paths": {
-        "eyebrow": "Choose Your Path",
-        "title": "Three ways to get started",
+        "eyebrow": "Kies Uw Pad",
+        "title": "Drie manieren om te beginnen",
         "quote": {
-          "title": "Request a Quote",
-          "description": "Already know what you need? Tell us about your project and get a detailed, no obligation quote for AI, software, or automation.",
-          "cta": "Get a quote"
+          "title": "Offerte Aanvragen",
+          "description": "Weet u al wat u nodig heeft? Vertel ons over uw project en ontvang een gedetailleerde, vrijblijvende offerte voor AI, software of automatisering.",
+          "cta": "Offerte aanvragen"
         },
         "booking": {
-          "title": "Book a Free Call",
-          "description": "Not sure yet? Grab 30 minutes with our team to discuss AI strategies, timelines, and the best approach for your business.",
-          "cta": "Pick a time"
+          "title": "Plan een Gratis Gesprek",
+          "description": "Nog niet zeker? Neem 30 minuten met ons team om AI-strategieën, tijdlijnen en de beste aanpak voor uw bedrijf te bespreken.",
+          "cta": "Kies een tijdstip"
         },
         "contact": {
-          "title": "Send a Message",
-          "description": "Have a quick question or want a personalised walkthrough? We'll reply within one business day.",
-          "cta": "Contact us"
+          "title": "Stuur een Bericht",
+          "description": "Heeft u een snelle vraag of wilt u een gepersonaliseerde rondleiding? Wij reageren binnen één werkdag.",
+          "cta": "Neem contact op"
         }
       },
       "newsletter": {
-        "eyebrow": "Stay in the Loop",
-        "title": "Get occasional updates, no spam",
-        "description": "Product news, AI insights, and engineering write ups a few times a month at most."
+        "eyebrow": "Blijf op de Hoogte",
+        "title": "Ontvang af en toe updates, geen spam",
+        "description": "Productnieuws, AI-inzichten en technische artikelen hooguit een paar keer per maand."
       },
       "trust": {
-        "confidential": "100% Confidential & Secure",
-        "expertise": "AI & Software Experts",
-        "timely": "Fast Turnaround & Delivery"
+        "confidential": "100% Vertrouwelijk & Veilig",
+        "expertise": "AI- & Software-experts",
+        "timely": "Snelle Doorlooptijd & Levering"
       }
     },
     "quote": {
       "meta": {
-        "title": "Request a Quote AI, Software & Automation | AUTOMEX",
-        "description": "Get a tailored, no obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
+        "title": "Offerte Aanvragen AI, Software & Automatisering | AUTOMEX",
+        "description": "Ontvang een op maat gemaakte, vrijblijvende offerte voor maatwerk AI-oplossingen, softwareontwikkeling of digitale transformatie. Reactie binnen één werkdag."
       },
       "hero": {
-        "eyebrow": "Request a Quote",
-        "title": "Let's scope your project",
-        "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate usually within one business day."
+        "eyebrow": "Offerte Aanvragen",
+        "title": "Laten we de scope van uw project bepalen",
+        "description": "Deel enkele details over uw doelen, tijdlijn en technische behoeften. Ons team komt meestal binnen één werkdag terug met een transparante schatting."
       }
     },
     "bookCall": {
       "meta": {
-        "title": "Book a Free Consultation AI & Software Strategy | AUTOMEX",
-        "description": "Schedule a free 30 minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
+        "title": "Boek een Gratis Consult AI- & Softwarestrategie | AUTOMEX",
+        "description": "Plan een gratis gesprek van 30 minuten met onze experts. We bespreken uw project, technologiekeuzes en hoe AI uw bedrijf kan versnellen."
       },
       "hero": {
-        "eyebrow": "Book a Call",
-        "title": "Talk it through, no pressure",
-        "description": "Pick a time that works for you just a friendly conversation about what you're building and how we can help."
+        "eyebrow": "Plan een Gesprek",
+        "title": "Bespreek het, zonder druk",
+        "description": "Kies een tijdstip dat u past gewoon een vriendelijk gesprek over wat u bouwt en hoe wij kunnen helpen."
       }
     },
     "contact": {
       "meta": {
-        "title": "Contact AUTOMEX Quick Enquiries, Sales & Partnerships",
-        "description": "Reach our team for quick questions, partnership opportunities, or enterprise grade AI solutions. We'll respond within one business day."
+        "title": "Neem contact op met AUTOMEX Snelle Vragen, Verkoop & Partnerschappen",
+        "description": "Neem contact op met ons team voor snelle vragen, partnerschapsmogelijkheden of AI-oplossingen op enterprise-niveau. Wij reageren binnen één werkdag."
       },
       "hero": {
-        "eyebrow": "Get in Touch",
-        "title": "Send us a message",
-        "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project we're here to listen."
+        "eyebrow": "Neem Contact Op",
+        "title": "Stuur ons een bericht",
+        "description": "Of het nu een snelle vraag, een partnerschapsvoorstel of het begin van een groter project is wij staan klaar om te luisteren."
       }
     },
     "contactSales": {
       "meta": {
-        "title": "Contact AUTOMEX Sales Enterprise AI & Software Solutions",
-        "description": "Get in touch with our sales team for enterprise grade AI solutions, custom software, and digital transformation services."
+        "title": "Contact AUTOMEX Verkoop Enterprise AI- & Softwareoplossingen",
+        "description": "Neem contact op met ons verkoopteam voor AI-oplossingen op enterprise-niveau, maatwerksoftware en diensten voor digitale transformatie."
       }
     },
     "subNav": {
-      "overview": "Overview",
-      "quote": "Get a Quote",
-      "booking": "Book a Call",
-      "contact": "Contact Us"
+      "overview": "Overzicht",
+      "quote": "Offerte Ontvangen",
+      "booking": "Gesprek Plannen",
+      "contact": "Neem Contact Op"
     },
     "guest": {
       "meta": {
-        "title": "Track Your Request AUTOMEX",
-        "description": "Check the status of your quote, booking, or enquiry. View activity history and communicate with our team."
+        "title": "Volg Uw Aanvraag AUTOMEX",
+        "description": "Controleer de status van uw offerte, boeking of aanvraag. Bekijk de activiteitengeschiedenis en communiceer met ons team."
       },
       "hero": {
-        "eyebrow": "Request Tracker",
-        "headlineLead": "Track your",
-        "headlineAccent": "request status",
-        "description": "Enter the tracking token you received after submitting a form or from your confirmation email to check progress, view activities, and stay in touch with our team."
+        "eyebrow": "Aanvraagtracker",
+        "headlineLead": "Volg de status",
+        "headlineAccent": "van uw aanvraag",
+        "description": "Voer het trackingtoken in dat u heeft ontvangen na het indienen van een formulier of in uw bevestigingsmail om de voortgang te bekijken, activiteiten in te zien en in contact te blijven met ons team."
       },
       "token": {
-        "title": "Enter your tracking token",
-        "description": "You received this via email after submitting a contact, quote, or booking form. Paste it below to check your request status.",
-        "placeholder": "Paste your token here…",
-        "submit": "Look up requests"
+        "title": "Voer uw trackingtoken in",
+        "description": "U heeft dit per e-mail ontvangen na het indienen van een contact-, offerte- of boekingsformulier. Plak het hieronder om de status van uw aanvraag te controleren.",
+        "placeholder": "Plak hier uw token…",
+        "submit": "Aanvragen opzoeken"
       },
       "back": {
-        "toToken": "Change token",
-        "toRequests": "Back to requests"
+        "toToken": "Token wijzigen",
+        "toRequests": "Terug naar aanvragen"
       },
       "requests": {
-        "empty": "No requests found",
-        "emptyHint": "This token doesn't match any submissions. Check that you've copied it correctly, or try a different email.",
-        "viewDetail": "View details"
+        "empty": "Geen aanvragen gevonden",
+        "emptyHint": "Dit token komt niet overeen met een aanvraag. Controleer of u het correct heeft gekopieerd, of probeer een ander e-mailadres.",
+        "viewDetail": "Bekijk details"
       },
       "request": {
-        "submitted": "Submitted",
-        "activities": "Activity Timeline",
-        "noActivities": "No activity recorded yet. Our team will update this as your request progresses."
+        "submitted": "Ingediend",
+        "activities": "Activiteitentijdlijn",
+        "noActivities": "Nog geen activiteit geregistreerd. Ons team werkt dit bij naarmate uw aanvraag vordert."
       },
       "createTicket": {
-        "cta": "New Support Ticket",
-        "success": "Ticket created successfully.",
-        "formTitle": "Create a support ticket",
-        "formDescription": "Need help or have a question? Open a ticket and our team will respond within one business day.",
-        "titleLabel": "Subject",
-        "titlePlaceholder": "Brief summary of your issue…",
-        "typeLabel": "Ticket type",
-        "priorityLabel": "Priority",
-        "emailLabel": "Your email",
-        "emailPlaceholder": "you@company.com",
+        "cta": "Nieuw Supportticket",
+        "success": "Ticket succesvol aangemaakt.",
+        "formTitle": "Maak een supportticket aan",
+        "formDescription": "Heeft u hulp nodig of een vraag? Open een ticket en ons team reageert binnen één werkdag.",
+        "titleLabel": "Onderwerp",
+        "titlePlaceholder": "Korte samenvatting van uw probleem…",
+        "typeLabel": "Type ticket",
+        "priorityLabel": "Prioriteit",
+        "emailLabel": "Uw e-mail",
+        "emailPlaceholder": "u@bedrijf.com",
         "descriptionLabel": "Details",
-        "descriptionPlaceholder": "Describe what you need help with in as much detail as possible…",
-        "submit": "Submit ticket"
+        "descriptionPlaceholder": "Beschrijf zo gedetailleerd mogelijk waarmee u hulp nodig heeft…",
+        "submit": "Ticket Indienen"
       },
       "ticket": {
-        "messages": "Messages",
-        "noMessages": "No messages yet. Our team will reply here.",
-        "reply": "Reply",
-        "replyPlaceholder": "Type your message…",
-        "sendReply": "Send reply"
+        "messages": "Berichten",
+        "noMessages": "Nog geen berichten. Ons team reageert hier.",
+        "reply": "Reageren",
+        "replyPlaceholder": "Typ uw bericht…",
+        "sendReply": "Reactie Versturen"
       },
       "ticketTypes": {
-        "general_inquiry": "General Inquiry",
-        "technical_support": "Technical Support",
-        "project_request": "Project Request",
-        "bug_report": "Bug Report",
+        "general_inquiry": "Algemene Vraag",
+        "technical_support": "Technische Ondersteuning",
+        "project_request": "Projectaanvraag",
+        "bug_report": "Bugmelding",
         "feedback": "Feedback",
-        "partnership": "Partnership"
+        "partnership": "Partnerschap"
       },
       "priorityLabels": {
-        "low": "Low",
-        "normal": "Normal",
-        "high": "High",
+        "low": "Laag",
+        "normal": "Normaal",
+        "high": "Hoog",
         "urgent": "Urgent"
       },
       "statusLabels": {
         "open": "Open",
-        "in_progress": "In Progress",
-        "closed": "Closed",
-        "resolved": "Resolved",
-        "pending": "Pending"
+        "in_progress": "In Behandeling",
+        "closed": "Gesloten",
+        "resolved": "Opgelost",
+        "pending": "In Afwachting"
       },
       "errors": {
-        "tokenRequired": "Please enter a tracking token.",
-        "invalidToken": "We couldn't find any requests for that token. Please double check and try again.",
-        "generic": "Something went wrong. Please try again later."
+        "tokenRequired": "Voer een trackingtoken in.",
+        "invalidToken": "We konden geen aanvragen vinden voor dit token. Controleer het en probeer het opnieuw.",
+        "generic": "Er is iets misgegaan. Probeer het later opnieuw."
       }
     }
   },
   "ServicesPage": {
     "meta": {
-      "title": "Our Services - AUTOMEX",
-      "description": "Explore AUTOMEX's full range of services AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
+      "title": "Onze Diensten - AUTOMEX",
+      "description": "Ontdek het volledige dienstenaanbod van AUTOMEX AI-oplossingen, maatwerksoftware, data-engineering, ERP/CRM, cloud & DevOps, UI/UX-ontwerp en IT-personeelsuitbreiding."
     },
     "breadcrumbHome": "Home",
-    "breadcrumbServices": "Services",
+    "breadcrumbServices": "Diensten",
     "stats": {
-      "services": "Services",
-      "categories": "Categories",
-      "clientSatisfaction": "Client Satisfaction",
-      "projectsDelivered": "Projects Delivered"
+      "services": "Diensten",
+      "categories": "Categorieën",
+      "clientSatisfaction": "Klanttevredenheid",
+      "projectsDelivered": "Opgeleverde Projecten"
     },
     "filters": {
-      "all": "All Services"
+      "all": "Alle Diensten"
     },
-    "resultsCount": "{count, plural, =0 {No services found} one {# service} other {# services}}",
-    "featuredBadge": "Featured",
-    "cardCta": "Get a Quote",
-    "loadMore": "Load More",
-    "empty": "No services found in this category yet.",
+    "resultsCount": "{count, plural, =0 {Geen diensten gevonden} one {# dienst} other {# diensten}}",
+    "featuredBadge": "Uitgelicht",
+    "cardCta": "Offerte Ontvangen",
+    "loadMore": "Meer Laden",
+    "empty": "Nog geen diensten gevonden in deze categorie.",
     "bottomCta": {
-      "title": "Not sure which service fits?",
-      "description": "Tell us what you're trying to build and we'll point you in the right direction.",
-      "ctaQuote": "Request a Quote",
-      "ctaBooking": "Book a Free Call"
+      "title": "Niet zeker welke dienst bij u past?",
+      "description": "Vertel ons wat u probeert te bouwen en wij wijzen u de juiste richting.",
+      "ctaQuote": "Offerte Aanvragen",
+      "ctaBooking": "Plan een Gratis Gesprek"
     },
     "carousel": {
-      "viewService": "View Service"
+      "viewService": "Dienst Bekijken"
     },
     "trust": {
-      "whyAutomex": "Why AUTOMEX",
-      "headline": "Your technology partner, not just a vendor",
-      "enterpriseSecurity": "Enterprise-grade security",
-      "onTimeDelivery": "On time delivery 98% track record",
-      "dedicatedSupport": "Dedicated support & maintenance",
-      "aiPowered": "AI-powered development workflows",
+      "whyAutomex": "Waarom AUTOMEX",
+      "headline": "Uw technologiepartner, niet zomaar een leverancier",
+      "enterpriseSecurity": "Beveiliging op enterprise-niveau",
+      "onTimeDelivery": "Tijdige oplevering 98% trackrecord",
+      "dedicatedSupport": "Toegewijde ondersteuning & onderhoud",
+      "aiPowered": "AI-gedreven ontwikkelworkflows",
       "enterprise": "Enterprise",
-      "standard": "Standard"
+      "standard": "Standaard"
     },
     "search": {
-      "placeholder": "Search services...",
-      "label": "Search services",
-      "clear": "Clear search",
-      "results": "Found {count} results"
+      "placeholder": "Zoek diensten...",
+      "label": "Zoek diensten",
+      "clear": "Zoekopdracht wissen",
+      "results": "{count} resultaten gevonden"
     },
-    "letsBuild": "Let's Build"
+    "letsBuild": "Laten We Bouwen"
   },
   "ServicesDetail": {
-    "overview": "Overview",
-    "problemsWeSolve": "Problems We Solve",
-    "keyFeatures": "Key Features",
-    "benefits": "Benefits",
-    "technologyStack": "Technology Stack",
-    "industriesServed": "Industries Served",
-    "ourProcess": "Our Process",
-    "deliverables": "Deliverables",
-    "planComparison": "Plan Comparison",
-    "availableAddOns": "Available Add Ons",
-    "trustedBy": "Trusted By",
-    "clientTestimonials": "Client Testimonials",
-    "serviceGuarantees": "Service Guarantees",
-    "resourcesDocuments": "Resources & Documents",
-    "frequentlyAskedQuestions": "Frequently Asked Questions",
-    "pricing": "Pricing",
-    "relatedServices": "Related Services",
-    "getStarted": "Get Started",
-    "requestQuote": "Request a Quote",
-    "bookFreeCall": "Book a Free Call",
-    "getCustomQuote": "Get a Custom Quote",
-    "lastUpdated": "Last updated",
-    "cover": "Cover",
-    "featured": "Featured",
-    "delivery": "Delivery",
+    "overview": "Overzicht",
+    "problemsWeSolve": "Problemen die We Oplossen",
+    "keyFeatures": "Belangrijkste Kenmerken",
+    "benefits": "Voordelen",
+    "technologyStack": "Technologiestack",
+    "industriesServed": "Bediende Sectoren",
+    "ourProcess": "Ons Proces",
+    "deliverables": "Opleveringen",
+    "planComparison": "Vergelijking van Pakketten",
+    "availableAddOns": "Beschikbare Add-ons",
+    "trustedBy": "Vertrouwd Door",
+    "clientTestimonials": "Klantbeoordelingen",
+    "serviceGuarantees": "Dienstgaranties",
+    "resourcesDocuments": "Bronnen & Documenten",
+    "frequentlyAskedQuestions": "Veelgestelde Vragen",
+    "pricing": "Prijzen",
+    "relatedServices": "Gerelateerde Diensten",
+    "getStarted": "Aan de Slag",
+    "requestQuote": "Offerte Aanvragen",
+    "bookFreeCall": "Plan een Gratis Gesprek",
+    "getCustomQuote": "Aangepaste Offerte Ontvangen",
+    "lastUpdated": "Laatst bijgewerkt",
+    "cover": "Omslag",
+    "featured": "Uitgelicht",
+    "delivery": "Levering",
     "team": "Team",
-    "pricingLabel": "Pricing",
-    "standard": "Standard",
+    "pricingLabel": "Prijzen",
+    "standard": "Standaard",
     "premium": "Premium",
     "enterprise": "Enterprise",
-    "popular": "Popular",
-    "includedInEnterprise": "Included in Enterprise",
-    "additionalResources": "Additional Resources",
-    "videoPresentation": "Video Presentation",
-    "serviceBrochure": "Service Brochure",
-    "serviceThumbnail": "Service Thumbnail",
-    "startingAt": "Starting at",
+    "popular": "Populair",
+    "includedInEnterprise": "Inbegrepen in Enterprise",
+    "additionalResources": "Aanvullende Bronnen",
+    "videoPresentation": "Videopresentatie",
+    "serviceBrochure": "Dienstbrochure",
+    "serviceThumbnail": "Dienstminiatuur",
+    "startingAt": "Vanaf",
     "model": "Model",
-    "feature": "Feature",
-    "enterpriseFeatures": "Enterprise Features",
-    "readyToBuild": "Ready to build with {name}?",
-    "letsDiscuss": "Let's discuss your requirements and create a tailored solution for your business.",
-    "previousSlide": "Previous slide",
-    "nextSlide": "Next slide",
-    "resumeSlideshow": "Resume slideshow",
-    "pauseSlideshow": "Pause slideshow",
-    "scrollLeft": "Scroll left",
-    "scrollRight": "Scroll right",
-    "goToSlide": "Go to slide {n}",
-    "getQuote": "Get a Quote",
-    "thumbnail": "Thumbnail"
+    "feature": "Functie",
+    "enterpriseFeatures": "Enterprise-functies",
+    "readyToBuild": "Klaar om te bouwen met {name}?",
+    "letsDiscuss": "Laten we uw behoeften bespreken en een oplossing op maat maken voor uw bedrijf.",
+    "previousSlide": "Vorige slide",
+    "nextSlide": "Volgende slide",
+    "resumeSlideshow": "Diavoorstelling hervatten",
+    "pauseSlideshow": "Diavoorstelling pauzeren",
+    "scrollLeft": "Naar links scrollen",
+    "scrollRight": "Naar rechts scrollen",
+    "goToSlide": "Ga naar slide {n}",
+    "getQuote": "Offerte Ontvangen",
+    "thumbnail": "Miniatuur"
   },
   "FaqsPage": {
-    "categoryAll": "All",
-    "categoryGeneral": "General",
-    "categoryPricing": "Pricing",
-    "categoryProcess": "Process",
-    "categoryService": "Service specific",
-    "noResults": "No FAQs found for this category.",
+    "categoryAll": "Alle",
+    "categoryGeneral": "Algemeen",
+    "categoryPricing": "Prijzen",
+    "categoryProcess": "Proces",
+    "categoryService": "Dienstspecifiek",
+    "noResults": "Geen veelgestelde vragen gevonden voor deze categorie.",
     "hero": {
-      "eyebrow": "Your Questions, Answered",
-      "headline": "Frequently Asked Questions",
-      "description": "Find clear answers to common questions about our services, process, pricing, and more. Can't find what you need? Reach out to our team."
+      "eyebrow": "Uw Vragen, Beantwoord",
+      "headline": "Veelgestelde Vragen",
+      "description": "Vind duidelijke antwoorden op veelgestelde vragen over onze diensten, proces, prijzen en meer. Vindt u niet wat u zoekt? Neem contact op met ons team."
     },
     "cta": {
-      "eyebrow": "Still Have Questions?",
-      "title": "We're Here to Help",
-      "description": "Our team is ready to answer any questions you have about our services, process, or technology solutions.",
-      "button": "Contact Us"
+      "eyebrow": "Nog Vragen?",
+      "title": "Wij Staan Klaar om te Helpen",
+      "description": "Ons team staat klaar om al uw vragen te beantwoorden over onze diensten, proces of technologische oplossingen.",
+      "button": "Neem Contact Op"
     }
   },
    "Sidebar": {
     "menuLabel": "Menu",
     "dashboard": "Dashboard",
-    "requests": "Requests",
-    "bookings": "Bookings",
-    "support": "Support",
-    "calculations": "Estimates",
-    "conversations": "AI Assistant",
+    "requests": "Aanvragen",
+    "bookings": "Boekingen",
+    "support": "Ondersteuning",
+    "calculations": "Schattingen",
+    "conversations": "AI-assistent",
     "accountLabel": "Account",
-    "notifications": "Notifications",
-    "profile": "Profile",
-    "security": "Security"
+    "notifications": "Meldingen",
+    "profile": "Profiel",
+    "security": "Beveiliging"
   },
   "DashboardHeader": {
-    "openMenu": "Open navigation",
-    "profile": "Profile"
+    "openMenu": "Navigatie openen",
+    "profile": "Profiel"
   },
   "Dashboard": {
-    "defaultName": "there",
-    "welcomeEyebrow": "Your workspace",
-    "greetMorning": "Good morning",
-    "greetAfternoon": "Good afternoon",
-    "greetEvening": "Good evening",
-    "welcomeDescription": "Here's an overview of your account activity and quick access to your most used services.",
-    "ctaNewRequest": "New request",
-    "ctaBookSession": "Book a session",
-    "sectionOverview": "Overview",
-    "sectionQuickActions": "Quick Actions",
-    "retry": "Retry",
-    "statsRequests": "Total Requests",
-    "statsRequestsActive": "active",
-    "statsBookings": "Total Bookings",
-    "statsBookingsUpcoming": "upcoming",
-    "statsTickets": "Support Tickets",
+    "defaultName": "daar",
+    "welcomeEyebrow": "Uw werkruimte",
+    "greetMorning": "Goedemorgen",
+    "greetAfternoon": "Goedemiddag",
+    "greetEvening": "Goedenavond",
+    "welcomeDescription": "Hier vindt u een overzicht van uw accountactiviteit en snelle toegang tot uw meest gebruikte diensten.",
+    "ctaNewRequest": "Nieuwe aanvraag",
+    "ctaBookSession": "Boek een sessie",
+    "sectionOverview": "Overzicht",
+    "sectionQuickActions": "Snelle Acties",
+    "retry": "Opnieuw Proberen",
+    "statsRequests": "Totaal Aanvragen",
+    "statsRequestsActive": "actief",
+    "statsBookings": "Totaal Boekingen",
+    "statsBookingsUpcoming": "aankomend",
+    "statsTickets": "Supporttickets",
     "statsTicketsOpen": "open",
-    "statsCalculations": "Estimates",
-    "statsCalculationsTotal": "total",
-    "actionNewRequest": "New Request",
-    "actionNewRequestDesc": "Submit a quote request or contact our sales team.",
-    "actionBookCall": "Book a Call",
-    "actionBookCallDesc": "Schedule a free consultation with our experts.",
-    "actionSupport": "Get Support",
-    "actionSupportDesc": "Create a ticket or view your existing requests.",
-    "sectionRecentActivity": "Recent Activity",
-    "recentViewAll": "View all",
-    "recentEmpty": "No recent activity to show.",
-    "recentRequest": "Request",
-    "recentBooking": "Booking",
+    "statsCalculations": "Schattingen",
+    "statsCalculationsTotal": "totaal",
+    "actionNewRequest": "Nieuwe Aanvraag",
+    "actionNewRequestDesc": "Dien een offerteaanvraag in of neem contact op met ons verkoopteam.",
+    "actionBookCall": "Plan een Gesprek",
+    "actionBookCallDesc": "Plan een gratis consult met onze experts.",
+    "actionSupport": "Ondersteuning Krijgen",
+    "actionSupportDesc": "Maak een ticket aan of bekijk uw bestaande aanvragen.",
+    "sectionRecentActivity": "Recente Activiteit",
+    "recentViewAll": "Alles Bekijken",
+    "recentEmpty": "Geen recente activiteit om te tonen.",
+    "recentRequest": "Aanvraag",
+    "recentBooking": "Boeking",
     "recentTicket": "Ticket"
   },
   "Requests": {
-    "pageTitle": "Requests",
-    "pageDescription": "Track your service requests and quote inquiries.",
+    "pageTitle": "Aanvragen",
+    "pageDescription": "Volg uw serviceaanvragen en offerteverzoeken.",
     "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "emptyTitle": "No requests yet",
-    "emptyDescription": "Submit a quote request or contact our sales team to get started.",
-    "emptyCta": "Submit a request"
+    "refresh": "Vernieuwen",
+    "retry": "Opnieuw Proberen",
+    "loading": "Laden...",
+    "loadMore": "Meer laden",
+    "emptyTitle": "Nog geen aanvragen",
+    "emptyDescription": "Dien een offerteaanvraag in of neem contact op met ons verkoopteam om te beginnen.",
+    "emptyCta": "Een aanvraag indienen"
   },
   "Calculations": {
-    "pageTitle": "Cost Estimates",
-    "pageDescription": "View your service cost estimates and convert them into requests.",
+    "pageTitle": "Kostenschattingen",
+    "pageDescription": "Bekijk uw kostenschattingen voor diensten en zet deze om in aanvragen.",
     "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "converted": "Converted",
-    "converting": "Converting...",
-    "convertToRequest": "Convert",
-    "emptyTitle": "No estimates yet",
-    "emptyDescription": "Use our service calculator to get a cost estimate for your project.",
-    "emptyCta": "Get a quote"
+    "refresh": "Vernieuwen",
+    "retry": "Opnieuw Proberen",
+    "loading": "Laden...",
+    "loadMore": "Meer laden",
+    "converted": "Omgezet",
+    "converting": "Omzetten...",
+    "convertToRequest": "Omzetten",
+    "emptyTitle": "Nog geen schattingen",
+    "emptyDescription": "Gebruik onze servicecalculator om een kostenschatting voor uw project te krijgen.",
+    "emptyCta": "Offerte ontvangen"
   },
   "RequestDetail": {
-    "pageTitle": "Request Details",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "labelEmail": "Email",
-    "labelCompany": "Company",
-    "labelExpectedClose": "Expected close date",
-    "labelMessage": "Message",
-    "labelQuoteDetails": "Quote Details",
+    "pageTitle": "Aanvraagdetails",
+    "goBack": "Terug",
+    "retry": "Opnieuw Proberen",
+    "labelEmail": "E-mail",
+    "labelCompany": "Bedrijf",
+    "labelExpectedClose": "Verwachte afsluitdatum",
+    "labelMessage": "Bericht",
+    "labelQuoteDetails": "Offertedetails",
     "labelProject": "Project",
     "labelBudget": "Budget",
-    "sendMessage": "Send a message",
-    "messagePlaceholder": "Type your message to our team...",
-    "send": "Send",
-    "sending": "Sending...",
-    "messageSent": "Message sent successfully!",
-    "activityTimeline": "Activity Timeline",
-    "by": "by",
-    "createTicketForRequest": "Create Support Ticket"
+    "sendMessage": "Een bericht sturen",
+    "messagePlaceholder": "Typ uw bericht voor ons team...",
+    "send": "Versturen",
+    "sending": "Versturen...",
+    "messageSent": "Bericht succesvol verzonden!",
+    "activityTimeline": "Activiteitentijdlijn",
+    "by": "door",
+    "createTicketForRequest": "Supportticket Aanmaken"
   },
   "Bookings": {
-    "pageTitle": "Bookings",
-    "pageDescription": "Manage your consultation calls and meetings.",
+    "pageTitle": "Boekingen",
+    "pageDescription": "Beheer uw consultgesprekken en vergaderingen.",
     "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "emptyTitle": "No bookings yet",
-    "emptyDescription": "Schedule a consultation call with our team to discuss your project.",
-    "emptyCta": "Book a call"
+    "refresh": "Vernieuwen",
+    "retry": "Opnieuw Proberen",
+    "loading": "Laden...",
+    "loadMore": "Meer laden",
+    "emptyTitle": "Nog geen boekingen",
+    "emptyDescription": "Plan een consultgesprek met ons team om uw project te bespreken.",
+    "emptyCta": "Boek een gesprek"
   },
   "BookingDetail": {
-    "pageTitle": "Booking Details",
-    "bookingId": "Booking ID",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "labelDate": "Date",
-    "labelTime": "Time",
-    "labelMeetingLink": "Meeting Link",
-    "labelNotes": "Notes",
-    "labelConfirmed": "Confirmed on",
-    "labelCancelled": "Cancelled on",
-    "labelRescheduleCount": "Rescheduled",
-    "joinMeeting": "Join Meeting",
-    "reschedule": "Reschedule",
-    "cancel": "Cancel Booking",
-    "rescheduleTitle": "Reschedule Booking",
-    "rescheduleDescription": "Select a new date and time for your meeting.",
-    "labelNewDate": "New Date",
-    "labelNewTime": "New Time",
-    "labelReason": "Reason",
-    "optional": "optional",
-    "reasonPlaceholder": "Why do you need to reschedule?",
-    "dialogCancel": "Cancel",
-    "confirmReschedule": "Confirm Reschedule",
-    "rescheduling": "Rescheduling...",
-    "cancelTitle": "Cancel Booking",
-    "cancelDescription": "Are you sure you want to cancel this booking? This action cannot be undone.",
-    "confirmCancel": "Yes, Cancel Booking",
-    "cancelling": "Cancelling..."
+    "pageTitle": "Boekingsdetails",
+    "bookingId": "Boekings-ID",
+    "goBack": "Terug",
+    "retry": "Opnieuw Proberen",
+    "labelDate": "Datum",
+    "labelTime": "Tijd",
+    "labelMeetingLink": "Vergaderlink",
+    "labelNotes": "Notities",
+    "labelConfirmed": "Bevestigd op",
+    "labelCancelled": "Geannuleerd op",
+    "labelRescheduleCount": "Verzet",
+    "joinMeeting": "Deelnemen aan Vergadering",
+    "reschedule": "Verzetten",
+    "cancel": "Boeking Annuleren",
+    "rescheduleTitle": "Boeking Verzetten",
+    "rescheduleDescription": "Selecteer een nieuwe datum en tijd voor uw vergadering.",
+    "labelNewDate": "Nieuwe Datum",
+    "labelNewTime": "Nieuwe Tijd",
+    "labelReason": "Reden",
+    "optional": "optioneel",
+    "reasonPlaceholder": "Waarom moet u verzetten?",
+    "dialogCancel": "Annuleren",
+    "confirmReschedule": "Verzetten Bevestigen",
+    "rescheduling": "Wordt verzet...",
+    "cancelTitle": "Boeking Annuleren",
+    "cancelDescription": "Weet u zeker dat u deze boeking wilt annuleren? Deze actie kan niet ongedaan worden gemaakt.",
+    "confirmCancel": "Ja, Boeking Annuleren",
+    "cancelling": "Wordt geannuleerd..."
   },
   "Support": {
-    "pageTitle": "Support",
-    "pageDescription": "Get help from our team and track your support tickets.",
+    "pageTitle": "Ondersteuning",
+    "pageDescription": "Krijg hulp van ons team en volg uw supporttickets.",
     "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "newTicket": "New Ticket",
-    "emptyTitle": "No support tickets",
-    "emptyDescription": "Create a ticket if you need help with a project or have a question.",
-    "emptyCta": "Create a ticket",
-    "createTitle": "Create Support Ticket",
-    "createDescription": "Describe your issue and our team will get back to you.",
-    "labelTitle": "Title",
-    "titlePlaceholder": "Brief summary of your issue...",
+    "refresh": "Vernieuwen",
+    "retry": "Opnieuw Proberen",
+    "loading": "Laden...",
+    "loadMore": "Meer laden",
+    "newTicket": "Nieuw Ticket",
+    "emptyTitle": "Geen supporttickets",
+    "emptyDescription": "Maak een ticket aan als u hulp nodig heeft bij een project of een vraag heeft.",
+    "emptyCta": "Een ticket aanmaken",
+    "createTitle": "Supportticket Aanmaken",
+    "createDescription": "Beschrijf uw probleem en ons team neemt contact met u op.",
+    "labelTitle": "Titel",
+    "titlePlaceholder": "Korte samenvatting van uw probleem...",
     "labelType": "Type",
-    "typeGeneralInquiry": "General Inquiry",
-    "typeTechnicalSupport": "Technical Support",
-    "typeProjectRequest": "Project Request",
-    "typeBugReport": "Bug Report",
+    "typeGeneralInquiry": "Algemene Vraag",
+    "typeTechnicalSupport": "Technische Ondersteuning",
+    "typeProjectRequest": "Projectaanvraag",
+    "typeBugReport": "Bugmelding",
     "typeFeedback": "Feedback",
-    "typePartnership": "Partnership",
-    "labelPriority": "Priority",
-    "priorityLow": "Low",
-    "priorityNormal": "Normal",
-    "priorityHigh": "High",
+    "typePartnership": "Partnerschap",
+    "labelPriority": "Prioriteit",
+    "priorityLow": "Laag",
+    "priorityNormal": "Normaal",
+    "priorityHigh": "Hoog",
     "priorityUrgent": "Urgent",
-    "labelDescription": "Description",
-    "descriptionPlaceholder": "Describe your issue in detail...",
-    "dialogCancel": "Cancel",
-    "submitTicket": "Submit Ticket",
-    "creating": "Creating...",
-    "linkedRequest": "Linked request",
-    "unlink": "Unlink"
+    "labelDescription": "Beschrijving",
+    "descriptionPlaceholder": "Beschrijf uw probleem in detail...",
+    "dialogCancel": "Annuleren",
+    "submitTicket": "Ticket Indienen",
+    "creating": "Aanmaken...",
+    "linkedRequest": "Gekoppelde aanvraag",
+    "unlink": "Koppeling Verbreken"
   },
   "TicketDetail": {
-    "ticketId": "Ticket ID",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "resolutionSummary": "Resolution Summary",
-    "conversation": "Conversation",
-    "noMessages": "No messages yet. Start the conversation below.",
-    "replyPlaceholder": "Type your reply...",
-    "sendReply": "Send Reply",
-    "sending": "Sending...",
-    "ticketClosed": "This ticket is closed. No further replies can be sent."
+    "ticketId": "Ticket-ID",
+    "goBack": "Terug",
+    "retry": "Opnieuw Proberen",
+    "resolutionSummary": "Samenvatting van de Oplossing",
+    "conversation": "Gesprek",
+    "noMessages": "Nog geen berichten. Start hieronder het gesprek.",
+    "replyPlaceholder": "Typ uw antwoord...",
+    "sendReply": "Antwoord Versturen",
+    "sending": "Versturen...",
+    "ticketClosed": "Dit ticket is gesloten. Er kunnen geen verdere reacties worden verzonden."
   },
   "Notifications": {
-    "pageTitle": "Notifications",
-    "pageDescription": "Stay updated on your requests, bookings, and support tickets.",
-    "unread": "unread",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "markAllRead": "Mark all read",
-    "emptyTitle": "No notifications",
-    "emptyDescription": "You're all caught up! Check back later for updates.",
-    "preferences": "Preferences",
-    "prefsTitle": "Notification Preferences",
-    "prefsSave": "Save",
-    "prefsSaved": "Saved!",
-    "prefsEmpty": "No preferences available.",
-    "freqInstant": "Instant",
-    "freqDaily": "Daily",
-    "freqWeekly": "Weekly"
+    "pageTitle": "Meldingen",
+    "pageDescription": "Blijf op de hoogte van uw aanvragen, boekingen en supporttickets.",
+    "unread": "ongelezen",
+    "refresh": "Vernieuwen",
+    "retry": "Opnieuw Proberen",
+    "markAllRead": "Alles als Gelezen Markeren",
+    "emptyTitle": "Geen meldingen",
+    "emptyDescription": "U bent helemaal bij! Kom later terug voor updates.",
+    "preferences": "Voorkeuren",
+    "prefsTitle": "Meldingsvoorkeuren",
+    "prefsSave": "Opslaan",
+    "prefsSaved": "Opgeslagen!",
+    "prefsEmpty": "Geen voorkeuren beschikbaar.",
+    "freqInstant": "Direct",
+    "freqDaily": "Dagelijks",
+    "freqWeekly": "Wekelijks"
   },
   "Conversations": {
-    "pageTitle": "AI Conversations",
-    "pageDescription": "Review your past conversations with our AI sales assistant.",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "emptyTitle": "No conversations yet",
-    "emptyDescription": "Start a conversation using the AI assistant widget on any page.",
-    "detailTitle": "Conversation",
-    "messages": "messages",
-    "leadCaptured": "Lead captured",
-    "noMessages": "No messages in this conversation."
+    "pageTitle": "AI-gesprekken",
+    "pageDescription": "Bekijk uw eerdere gesprekken met onze AI-verkoopassistent.",
+    "refresh": "Vernieuwen",
+    "retry": "Opnieuw Proberen",
+    "emptyTitle": "Nog geen gesprekken",
+    "emptyDescription": "Start een gesprek via de AI-assistentwidget op elke pagina.",
+    "detailTitle": "Gesprek",
+    "messages": "berichten",
+    "leadCaptured": "Lead vastgelegd",
+    "noMessages": "Geen berichten in dit gesprek."
   },
    "Profile": {
-    "pageTitle": "My Profile",
-    "pageDescription": "Manage your personal information, address, and account details.",
-    "emailVerified": "Email verified",
-    "emailNotVerified": "Email not verified",
-    "memberSince": "Member since",
-    "sectionPersonal": "Personal Information",
-    "sectionPersonalDesc": "Update your name, contact details, and address.",
-    "sectionAddress": "Address",
-    "sectionAccount": "Account Details",
-    "sectionAccountDesc": "Read-only account metadata.",
-    "fieldFullName": "Full name",
-    "fieldPhone": "Phone number",
-    "fieldDob": "Date of birth",
-    "fieldTimezone": "Timezone",
-    "fieldAltEmail": "Alternate email",
-    "fieldLanguage": "Preferred language",
+    "pageTitle": "Mijn Profiel",
+    "pageDescription": "Beheer uw persoonlijke gegevens, adres en accountdetails.",
+    "emailVerified": "E-mail geverifieerd",
+    "emailNotVerified": "E-mail niet geverifieerd",
+    "memberSince": "Lid sinds",
+    "sectionPersonal": "Persoonlijke Gegevens",
+    "sectionPersonalDesc": "Werk uw naam, contactgegevens en adres bij.",
+    "sectionAddress": "Adres",
+    "sectionAccount": "Accountgegevens",
+    "sectionAccountDesc": "Alleen-lezen accountmetadata.",
+    "fieldFullName": "Volledige naam",
+    "fieldPhone": "Telefoonnummer",
+    "fieldDob": "Geboortedatum",
+    "fieldTimezone": "Tijdzone",
+    "fieldAltEmail": "Alternatief e-mailadres",
+    "fieldLanguage": "Voorkeurstaal",
     "fieldBio": "Bio",
-    "fieldBioPlaceholder": "Tell us a little about yourself…",
-    "fieldAddress1": "Address line 1",
-    "fieldAddress2": "Address line 2",
-    "fieldCity": "City",
-    "fieldState": "State / Province",
-    "fieldPostal": "Postal code",
-    "fieldCountry": "Country",
-    "fieldCountryPlaceholder": "Select country",
-    "fieldAccountId": "Account ID",
-    "fieldEmail": "Email address",
-    "fieldRole": "Role",
-    "fieldSignInMethod": "Sign-in method",
-    "fieldEmailPassword": "Email & Password",
-    "fieldMemberSince": "Member since",
-    "fieldTermsAccepted": "Terms accepted",
-    "fieldLastUpdated": "Last updated",
-    "fieldLanguage1": "Language",
-    "saveChanges": "Save changes",
-    "saving": "Saving…",
-    "savedSuccess": "Profile updated successfully",
-    "uploadPicture": "Change profile picture",
-    "uploadNotImage": "Please select a valid image file.",
-    "uploadTooLarge": "Image must be smaller than 5 MB.",
-    "uploadSuccess": "Profile picture updated!"
+    "fieldBioPlaceholder": "Vertel ons iets over uzelf…",
+    "fieldAddress1": "Adres regel 1",
+    "fieldAddress2": "Adres regel 2",
+    "fieldCity": "Stad",
+    "fieldState": "Staat / Provincie",
+    "fieldPostal": "Postcode",
+    "fieldCountry": "Land",
+    "fieldCountryPlaceholder": "Selecteer een land",
+    "fieldAccountId": "Account-ID",
+    "fieldEmail": "E-mailadres",
+    "fieldRole": "Rol",
+    "fieldSignInMethod": "Inlogmethode",
+    "fieldEmailPassword": "E-mail & Wachtwoord",
+    "fieldMemberSince": "Lid sinds",
+    "fieldTermsAccepted": "Voorwaarden Geaccepteerd",
+    "fieldLastUpdated": "Laatst bijgewerkt",
+    "fieldLanguage1": "Taal",
+    "saveChanges": "Wijzigingen Opslaan",
+    "saving": "Opslaan…",
+    "savedSuccess": "Profiel succesvol bijgewerkt",
+    "uploadPicture": "Profielfoto Wijzigen",
+    "uploadNotImage": "Selecteer een geldig afbeeldingsbestand.",
+    "uploadTooLarge": "De afbeelding moet kleiner zijn dan 5 MB.",
+    "uploadSuccess": "Profielfoto bijgewerkt!"
   },
   "Security": {
-    "pageTitle": "Security",
-    "pageDescription": "Manage your password, active sessions, and account safety.",
-    "sectionOverview": "Security Overview",
-    "sectionOverviewDesc": "Your account health at a glance.",
-    "sectionPassword": "Change Password",
-    "sectionPasswordDesc": "Choose a strong password you don't use elsewhere.",
-    "sectionSessions": "Active Sessions",
-    "sectionSessionsDesc": "Devices currently signed in to your account.",
-    "sectionDanger": "Danger Zone",
-    "sectionDangerDesc": "Irreversible actions proceed with caution.",
-    "overallGood": "Your account looks secure",
-    "overallGoodDesc": "Email verified, password set, and session count is normal.",
-    "overallWarn": "Some security items need attention",
-    "overallWarnDesc": "Review the items below and take action where needed.",
-    "verifyEmailHint": "Check your inbox for a verification link. Contact support if you didn't receive one.",
-    "statusEmailLabel": "Email address",
-    "statusVerified": "Verified",
-    "statusNotVerified": "Not verified",
-    "statusPasswordLabel": "Password",
-    "statusPasswordSet": "Password set",
-    "statusOAuthOnly": "No password (OAuth)",
-    "statusSessionsLabel": "Active sessions",
-    "statusActiveSessions": "active",
-    "statusSignInLabel": "Sign-in method",
-    "statusEmailPassword": "Email & Password",
-    "oauthNoPassword": "Password change unavailable",
-    "oauthNoPasswordDesc": "Your account uses Google OAuth. Password changes are managed through Google.",
-    "fieldCurrentPassword": "Current password",
-    "fieldNewPassword": "New password",
-    "fieldConfirmPassword": "Confirm new password",
-    "passwordWarning": "Changing your password will sign you out of all devices. You will need to sign in again.",
-    "updatePassword": "Update password",
-    "updating": "Updating…",
-    "passwordChanged": "Password updated. Please sign in again.",
-    "currentSession": "Current",
-    "unknownDevice": "Unknown device",
-    "lastActive": "Last active",
-    "expires": "Expires",
-    "revokeSession": "Revoke",
-    "sessionRevoked": "Session revoked",
-    "sessionLoadError": "Failed to load sessions",
-    "noSessions": "No active sessions found",
-    "refresh": "Refresh",
-    "signOutAllTitle": "Sign out all other devices",
-    "signOutAllDesc": "Revoke all active sessions except your current one.",
-    "signOutAllBtn": "Sign out all others",
-    "allOtherSignedOut": "{count} other session(s) signed out",
-    "deleteAccountTitle": "Delete account",
-    "deleteAccountDesc": "Permanently delete your account and all associated data. This cannot be undone.",
-    "deleteAccountBtn": "Delete account",
-    "deleteContactSupport": "Account deletion is not yet available. Please contact support@automex.tech.",
-    "deleteDialogTitle": "Delete your account?",
-    "deleteDialogDesc": "This will permanently erase your profile, requests, bookings, and all data. There is no recovery.",
-    "deleteUnderstandCheck": "I understand this action is permanent and irreversible.",
-    "deleteTypeNamePrompt": "To confirm, type your full name:",
-    "deleteNameMatch": "Name confirmed",
-    "deleteConfirmBtn": "Yes, delete my account",
-    "deleting": "Deleting…",
-    "cancel": "Cancel"
+    "pageTitle": "Beveiliging",
+    "pageDescription": "Beheer uw wachtwoord, actieve sessies en accountbeveiliging.",
+    "sectionOverview": "Beveiligingsoverzicht",
+    "sectionOverviewDesc": "De beveiligingsstatus van uw account in één oogopslag.",
+    "sectionPassword": "Wachtwoord Wijzigen",
+    "sectionPasswordDesc": "Kies een sterk wachtwoord dat u nergens anders gebruikt.",
+    "sectionSessions": "Actieve Sessies",
+    "sectionSessionsDesc": "Apparaten die momenteel zijn ingelogd op uw account.",
+    "sectionDanger": "Gevarenzone",
+    "sectionDangerDesc": "Onomkeerbare acties ga voorzichtig te werk.",
+    "overallGood": "Uw account lijkt veilig",
+    "overallGoodDesc": "E-mail geverifieerd, wachtwoord ingesteld en het aantal sessies is normaal.",
+    "overallWarn": "Sommige beveiligingsitems vereisen aandacht",
+    "overallWarnDesc": "Bekijk de onderstaande items en onderneem waar nodig actie.",
+    "verifyEmailHint": "Controleer uw inbox voor een verificatielink. Neem contact op met support als u er geen heeft ontvangen.",
+    "statusEmailLabel": "E-mailadres",
+    "statusVerified": "Geverifieerd",
+    "statusNotVerified": "Niet geverifieerd",
+    "statusPasswordLabel": "Wachtwoord",
+    "statusPasswordSet": "Wachtwoord ingesteld",
+    "statusOAuthOnly": "Geen wachtwoord (OAuth)",
+    "statusSessionsLabel": "Actieve sessies",
+    "statusActiveSessions": "actief",
+    "statusSignInLabel": "Inlogmethode",
+    "statusEmailPassword": "E-mail & Wachtwoord",
+    "oauthNoPassword": "Wachtwoord wijzigen niet beschikbaar",
+    "oauthNoPasswordDesc": "Uw account gebruikt Google OAuth. Wachtwoordwijzigingen worden beheerd via Google.",
+    "fieldCurrentPassword": "Huidig wachtwoord",
+    "fieldNewPassword": "Nieuw wachtwoord",
+    "fieldConfirmPassword": "Bevestig nieuw wachtwoord",
+    "passwordWarning": "Het wijzigen van uw wachtwoord logt u uit op alle apparaten. U moet opnieuw inloggen.",
+    "updatePassword": "Wachtwoord Bijwerken",
+    "updating": "Bijwerken…",
+    "passwordChanged": "Wachtwoord bijgewerkt. Log opnieuw in.",
+    "currentSession": "Huidig",
+    "unknownDevice": "Onbekend apparaat",
+    "lastActive": "Laatst actief",
+    "expires": "Verloopt",
+    "revokeSession": "Intrekken",
+    "sessionRevoked": "Sessie ingetrokken",
+    "sessionLoadError": "Sessies laden mislukt",
+    "noSessions": "Geen actieve sessies gevonden",
+    "refresh": "Vernieuwen",
+    "signOutAllTitle": "Uitloggen op Alle Andere Apparaten",
+    "signOutAllDesc": "Trek alle actieve sessies in, behalve uw huidige.",
+    "signOutAllBtn": "Overal Anders Uitloggen",
+    "allOtherSignedOut": "{count} andere sessie(s) uitgelogd",
+    "deleteAccountTitle": "Account Verwijderen",
+    "deleteAccountDesc": "Verwijder uw account en alle bijbehorende gegevens permanent. Dit kan niet ongedaan worden gemaakt.",
+    "deleteAccountBtn": "Account Verwijderen",
+    "deleteContactSupport": "Accountverwijdering is nog niet beschikbaar. Neem contact op met support@automex.tech.",
+    "deleteDialogTitle": "Uw account verwijderen?",
+    "deleteDialogDesc": "Dit verwijdert permanent uw profiel, aanvragen, boekingen en alle gegevens. Herstel is niet mogelijk.",
+    "deleteUnderstandCheck": "Ik begrijp dat deze actie permanent en onomkeerbaar is.",
+    "deleteTypeNamePrompt": "Typ ter bevestiging uw volledige naam:",
+    "deleteNameMatch": "Naam bevestigd",
+    "deleteConfirmBtn": "Ja, Verwijder Mijn Account",
+    "deleting": "Verwijderen…",
+    "cancel": "Annuleren"
   },
   "PrivacyPolicy": {
     "metaDescription": "Learn how Automex collects, uses, and protects your personal information. Effective July 2025.",
@@ -1706,6 +1706,7 @@
     "intro": "This Privacy Policy explains how {company} (\"Automex\", \"we\", \"us\", or \"our\") collects, uses, discloses, and safeguards your information when you visit {site}, use our platform, or engage our services (collectively, the \"Services\"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Services.",
 
     "section1": {
+      "title": "1. Information We Collect",
       "intro": "We collect information you provide directly, information collected automatically, and information from third parties.",
       "subsections": {
         "1": {
@@ -1737,6 +1738,7 @@
     },
 
     "section2": {
+      "title": "2. How We Use Your Information",
       "intro": "We use your information for the following purposes:",
       "items": [
         "<strong>Providing and operating the Services</strong> — to create and manage your account, process transactions, authenticate your identity, and deliver the features you request.",
@@ -1750,6 +1752,7 @@
     },
 
     "section3": {
+      "title": "3. How We Share Your Information",
       "intro": "We do not sell, rent, or trade your personal information. We share it only as described below.",
       "items": [
         "<strong>Service providers</strong> — third-party vendors who process data on our behalf (cloud hosting, payment processing, email delivery, analytics, customer support tooling). These vendors are contractually bound to protect your data and may not use it for their own purposes.",
@@ -1761,6 +1764,7 @@
     },
 
     "section4": {
+      "title": "4. Data Retention",
       "intro": "We retain your personal data for as long as your account is active or as needed to provide the Services. Specifically:",
       "items": [
         "<strong>Account data</strong> — is retained for the life of your account and up to 3 years after closure for dispute resolution, fraud prevention, and compliance with our legal obligations.",
@@ -1772,6 +1776,7 @@
     },
 
     "section5": {
+      "title": "5. Security",
       "items": [
         "TLS 1.2+ encryption in transit and AES-256 encryption at rest.",
         "Role-based access controls limiting employee access to personal data.",
@@ -1782,6 +1787,7 @@
     },
 
     "section6": {
+      "title": "6. Your Rights and Choices",
       "intro": "Depending on where you reside, you may have certain rights regarding your personal information.",
       "subsections": {
         "1": {
@@ -1807,6 +1813,7 @@
     },
 
     "section7": {
+      "title": "7. Cookies and Tracking Technologies",
       "intro": "We use the following types of cookies and similar technologies:",
       "items": [
         "<strong>Strictly necessary cookies</strong> — required for the Services to function (session management, authentication, security). These cannot be disabled.",
@@ -1818,18 +1825,22 @@
     },
 
     "section8": {
+      "title": "8. Third-Party Links and Services",
       "content": "The Services may contain links to third-party websites, integrations, or services that are not operated by Automex. We are not responsible for the privacy practices of any third party. We encourage you to review the privacy policy of every site or service you visit."
     },
 
     "section9": {
+      "title": "9. Children's Privacy (COPPA)",
       "content": "The Services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at {email}. If we discover we have collected personal information from a child under 13, we will promptly delete it in accordance with the Children's Online Privacy Protection Act (COPPA)."
     },
 
     "section10": {
+      "title": "10. International Users",
       "content": "Automex is headquartered in the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using the Services, you consent to this transfer. We take steps to ensure that your data receives an adequate level of protection wherever it is processed."
     },
 
     "section11": {
+      "title": "11. Changes to This Privacy Policy",
       "intro": "We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:",
       "items": [
         "Posting the updated policy on this page with a revised 'Effective date' at the top.",
@@ -1839,6 +1850,7 @@
     },
 
     "section12": {
+      "title": "12. Contact Us",
       "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
       "address": {
         "department": "Privacy & Data Compliance",
@@ -1852,6 +1864,153 @@
 
     "bottomNav": {
       "terms": "Terms of Service",
+      "contact": "Contact Us",
+      "home": "Back to Home"
+    }
+  },
+  "Terms": {
+    "metaDescription": "Read the Terms of Service for Automex. Understand your rights and obligations when using our AI and software services.",
+    "title": "Terms of Service",
+    "backToHome": "Back to Automex",
+    "breadcrumbHome": "Home",
+    "effectiveDateLabel": "Last updated:",
+    "effectiveDateValue": "July 9, 2025",
+    "companyLabel": "Company:",
+    "locationLabel": "Location:",
+    "intro": "Welcome to {company}. By accessing or using our website {site}, you agree to be bound by these Terms of Service (the \"Terms\"). If you do not agree to these Terms, please do not use our Services. These Terms apply to all visitors, users, and others who access or use the Services.",
+
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "items": [
+        "By using the Services, you agree to comply with and be legally bound by these Terms, whether or not you become a registered user.",
+        "If you are using the Services on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.",
+        "We reserve the right to update or modify these Terms at any time. Your continued use of the Services after any such changes constitutes your acceptance of the new Terms."
+      ]
+    },
+
+    "section2": {
+      "title": "2. Description of Services",
+      "items": [
+        "Automex provides AI automation, software development, cloud infrastructure, and digital transformation services (the \"Services\").",
+        "We may add, modify, or discontinue any aspect of the Services at our discretion, with or without notice.",
+        "The Services may include third-party tools, integrations, or content. Your use of such third-party offerings is governed by their respective terms."
+      ]
+    },
+
+    "section3": {
+      "title": "3. User Accounts",
+      "items": [
+        "To access certain features, you must create an account. You are responsible for maintaining the confidentiality of your account credentials.",
+        "You agree to provide accurate, current, and complete information during registration and to update it as necessary.",
+        "You are solely responsible for all activities that occur under your account. Notify us immediately of any unauthorised use.",
+        "We reserve the right to suspend or terminate accounts that violate these Terms or applicable law."
+      ]
+    },
+
+    "section4": {
+      "title": "4. User Obligations and Conduct",
+      "items": [
+        "You agree to use the Services only for lawful purposes and in accordance with these Terms.",
+        "You shall not: (a) misuse the Services (e.g., hacking, scraping, distributing malware); (b) infringe the rights of others; (c) violate any applicable laws or regulations.",
+        "You shall not interfere with or disrupt the integrity or performance of the Services or any data contained therein.",
+        "You are responsible for all content you upload, post, or transmit via the Services, and you grant us a non-exclusive license to use it to provide the Services."
+      ]
+    },
+
+    "section5": {
+      "title": "5. Intellectual Property",
+      "items": [
+        "All content, trademarks, and intellectual property on the Services are owned by or licensed to Automex.",
+        "You may not reproduce, distribute, modify, or create derivative works of our content without our prior written consent.",
+        "Your use of the Services does not grant you any ownership rights in our intellectual property.",
+        "Feedback, suggestions, and ideas you provide to us about the Services become our property and we may use them without obligation."
+      ]
+    },
+
+    "section6": {
+      "title": "6. Payment and Billing",
+      "items": [
+        "Some Services are fee-based. You agree to pay all fees and charges incurred in connection with your use of such Services.",
+        "All fees are non-refundable unless otherwise stated. We may change our fees upon notice.",
+        "You are responsible for providing accurate billing information and for keeping it current.",
+        "If we are unable to charge your payment method, we may suspend or terminate your access to paid Services."
+      ]
+    },
+
+    "section7": {
+      "title": "7. Termination",
+      "items": [
+        "You may terminate your account at any time by contacting us or using the account settings.",
+        "We may suspend or terminate your account and access to the Services at any time, with or without cause, with or without notice.",
+        "Upon termination, your right to use the Services will immediately cease, and we may delete your data.",
+        "Provisions that by their nature should survive termination (e.g., indemnity, liability limits, governing law) shall survive."
+      ]
+    },
+
+    "section8": {
+      "title": "8. Disclaimer of Warranties",
+      "items": [
+        "The Services are provided on an \"AS IS\" and \"AS AVAILABLE\" basis, without warranties of any kind, express or implied.",
+        "We disclaim all warranties, including merchantability, fitness for a particular purpose, non-infringement, and accuracy.",
+        "We do not warrant that the Services will be uninterrupted, error-free, secure, or free from viruses.",
+        "Any material downloaded or otherwise obtained through the Services is at your own discretion and risk."
+      ]
+    },
+
+    "section9": {
+      "title": "9. Limitation of Liability",
+      "items": [
+        "To the maximum extent permitted by law, Automex and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages.",
+        "Our total liability for any claim arising out of or relating to these Terms or the Services shall not exceed the amount paid by you to us during the twelve months preceding the claim.",
+        "The foregoing limitations apply regardless of the basis of liability, whether contract, tort, or otherwise.",
+        "Some jurisdictions do not allow the exclusion of certain warranties or limitations, so these limitations may not apply to you."
+      ]
+    },
+
+    "section10": {
+      "title": "10. Indemnification",
+      "items": [
+        "You agree to defend, indemnify, and hold harmless Automex and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, or expenses arising from:",
+        "(a) your use of the Services; (b) your violation of these Terms; (c) your violation of any third-party rights; or (d) your content.",
+        "We reserve the right to assume the exclusive defence and control of any matter subject to indemnification, and you will cooperate with us in asserting any available defences."
+      ]
+    },
+
+    "section11": {
+      "title": "11. Governing Law and Dispute Resolution",
+      "items": [
+        "These Terms shall be governed by and construed in accordance with the laws of the State of Washington, United States, without regard to its conflict-of-law provisions.",
+        "Any dispute arising out of or relating to these Terms or the Services shall be resolved exclusively in the state or federal courts located in King County, Washington.",
+        "Both parties consent to the exclusive jurisdiction and venue of such courts.",
+        "The parties agree to attempt to resolve any dispute through good-faith negotiation before resorting to litigation."
+      ]
+    },
+
+    "section12": {
+      "title": "12. Changes to These Terms",
+      "items": [
+        "We may revise these Terms from time to time. The updated version will be posted on this page with a new effective date.",
+        "If we make material changes, we will provide notice (e.g., via email or an in‑app notification) at least 30 days before the changes take effect.",
+        "Your continued use of the Services after the effective date constitutes your acceptance of the revised Terms.",
+        "If you do not agree to the changes, you must stop using the Services and may terminate your account."
+      ]
+    },
+
+    "section13": {
+      "title": "13. Contact Information",
+      "intro": "If you have any questions, concerns, or requests regarding these Terms, please contact us:",
+      "address": {
+        "department": "Legal & Compliance",
+        "emailLabel": "Email:",
+        "websiteLabel": "Website:"
+      },
+      "commitment": "We are committed to clarifying any questions you may have about your rights and obligations under these Terms."
+    },
+
+    "legalNotice": "Legal notice: These Terms of Service are a legally binding agreement between you and {company}. They are governed by the laws of Washington State, United States. Any disputes shall be resolved in the state or federal courts located in King County, Washington.",
+
+    "bottomNav": {
+      "privacy": "Privacy Policy",
       "contact": "Contact Us",
       "home": "Back to Home"
     }

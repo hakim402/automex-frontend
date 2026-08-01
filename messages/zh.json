@@ -1,479 +1,479 @@
 {
   "Header": {
-  "aboutUs": "关于我们",
-  "blog": "博客",
-  "blogDescription": "最新洞察与行业动态",
-  "bookCall": "预约咨询",
-  "careers": "加入我们",
-  "caseStudies": "成功案例",
-  "caseStudiesDescription": "真实案例分享，了解我们如何帮助各行业客户实现业务成果。",
-  "closeMenu": "关闭菜单",
-  "company": "公司",
-  "contact": "联系我们",
-  "contactSales": "联系销售",
-  "crm": "CRM",
-  "crmOverview": "CRM 概览",
-  "dashboard": "控制台",
-  "downloads": "下载中心",
-  "expertise": "技术专长",
-  "expertiseDescription": "覆盖完整技术栈的深厚技术实力与行业经验。",
-  "faqs": "常见问题",
-  "featuredDescription": "通过我们的端到端数字化转型服务，助力企业实现现代化升级。",
-  "featuredTitle": "数字化转型",
-  "home": "首页",
-  "industries": "行业",
-  "industriesDescription": "针对不同行业的独特挑战与合规需求，提供定制化解决方案。",
-  "latestBlogs": "最新博客",
-  "leadership": "管理团队",
-  "learnMore": "了解更多",
-  "login": "登录",
-  "logout": "退出登录",
-  "menu": "菜单",
-  "navigation": "导航",
-  "openMenu": "打开菜单",
-  "partners": "合作伙伴",
-  "partnersDescription": "携手技术与实施合作伙伴，共同提供端到端数字化解决方案。",
-  "portfolio": "项目案例",
-  "portfolioDesc": "浏览我们的项目",
-  "requestQuote": "获取报价",
-  "resources": "资源中心",
-  "search": "搜索",
-  "searchEmpty": "未找到相关结果。",
-  "searchPlaceholder": "搜索服务、解决方案和资源...",
-  "services": "服务",
-  "servicesDescription": "端到端数字化解决方案",
-  "signUp": "注册",
-  "solutions": "解决方案",
-  "solutionsDescription": "先进的 AI 与软件解决方案，帮助企业实现自动化、规模化发展，并推动业务数字化转型。",
-  "viewAllBlog": "查看全部博客",
-  "viewAllCaseStudies": "查看全部案例",
-  "viewAllExpertise": "查看全部技术专长",
-  "viewAllIndustries": "查看全部行业",
-  "viewAllPartners": "查看全部合作伙伴",
-  "viewAllPortfolio": "查看全部项目",
-  "viewAllServices": "查看全部服务",
-  "viewAllSolutions": "查看全部解决方案",
-  "other": "其他"
-},
+    "aboutUs": "关于我们",
+    "blog": "博客",
+    "blogDescription": "最新洞察与行业动态",
+    "bookCall": "预约咨询",
+    "careers": "加入我们",
+    "caseStudies": "成功案例",
+    "caseStudiesDescription": "真实案例分享，了解我们如何帮助各行业客户实现业务成果。",
+    "closeMenu": "关闭菜单",
+    "company": "公司",
+    "contact": "联系我们",
+    "contactSales": "联系销售",
+    "crm": "CRM",
+    "crmOverview": "CRM 概览",
+    "dashboard": "控制台",
+    "downloads": "下载中心",
+    "expertise": "技术专长",
+    "expertiseDescription": "覆盖完整技术栈的深厚技术实力与行业经验。",
+    "faqs": "常见问题",
+    "featuredDescription": "通过我们的端到端数字化转型服务，助力企业实现现代化升级。",
+    "featuredTitle": "数字化转型",
+    "home": "首页",
+    "industries": "行业",
+    "industriesDescription": "针对不同行业的独特挑战与合规需求，提供定制化解决方案。",
+    "latestBlogs": "最新博客",
+    "leadership": "管理团队",
+    "learnMore": "了解更多",
+    "login": "登录",
+    "logout": "退出登录",
+    "menu": "菜单",
+    "navigation": "导航",
+    "openMenu": "打开菜单",
+    "partners": "合作伙伴",
+    "partnersDescription": "携手技术与实施合作伙伴，共同提供端到端数字化解决方案。",
+    "portfolio": "项目案例",
+    "portfolioDesc": "浏览我们的项目",
+    "requestQuote": "获取报价",
+    "resources": "资源中心",
+    "search": "搜索",
+    "searchEmpty": "未找到相关结果。",
+    "searchPlaceholder": "搜索服务、解决方案和资源...",
+    "services": "服务",
+    "servicesDescription": "端到端数字化解决方案",
+    "signUp": "注册",
+    "solutions": "解决方案",
+    "solutionsDescription": "先进的 AI 与软件解决方案，帮助企业实现自动化、规模化发展，并推动业务数字化转型。",
+    "viewAllBlog": "查看全部博客",
+    "viewAllCaseStudies": "查看全部案例",
+    "viewAllExpertise": "查看全部技术专长",
+    "viewAllIndustries": "查看全部行业",
+    "viewAllPartners": "查看全部合作伙伴",
+    "viewAllPortfolio": "查看全部项目",
+    "viewAllServices": "查看全部服务",
+    "viewAllSolutions": "查看全部解决方案",
+    "other": "其他"
+  },
   "HomeHero": {
-  "headlineLead": "携手打造",
-  "headlineAccent": "智能 AI 未来",
-  "headlineSuffix": "",
-  "description": "借助企业级 AI、定制软件和智能自动化推动您的业务转型。AUTOMEX 提供安全、可扩展的解决方案，优化运营流程，加速业务增长。",
-  "primaryAction": "开启您的项目",
-  "secondaryAction": "探索服务",
-  "floatingLabels": [
-    "AI 智能体",
-    "Web 与移动应用",
-    "云与 API"
-  ]
-},
+    "headlineLead": "携手打造",
+    "headlineAccent": "智能 AI 未来",
+    "headlineSuffix": "",
+    "description": "借助企业级 AI、定制软件和智能自动化推动您的业务转型。AUTOMEX 提供安全、可扩展的解决方案，优化运营流程，加速业务增长。",
+    "primaryAction": "开启您的项目",
+    "secondaryAction": "探索服务",
+    "floatingLabels": [
+      "AI 智能体",
+      "Web 与移动应用",
+      "云与 API"
+    ]
+  },
   "AiShowcase": {
-    "sectionTitle": "AI Showcase Intelligent Automation",
-    "orbit1": "AI Agents",
-    "orbit2": "Automation",
-    "orbit3": "Web Dev",
-    "orbit4": "Mobile Apps",
-    "orbit5": "API Integration",
-    "orbit6": "Analytics",
-    "feedItem1Title": "AI Agent Deployed",
-    "feedItem1Subtitle": "Customer support bot 98% resolution rate",
-    "feedItem1Badge": "Live",
-    "feedItem2Title": "Workflow Automated",
-    "feedItem2Subtitle": "CRM data sync saved 18 hrs/week",
-    "feedItem2Badge": "Complete",
-    "feedItem3Title": "WhatsApp Bot Active",
-    "feedItem3Subtitle": "Lead gen chatbot 54 new leads today",
-    "feedItem3Badge": "Running",
-    "feedItem4Title": "SaaS Platform Launched",
-    "feedItem4Subtitle": "E-commerce dashboard 0 downtime deploy",
-    "feedItem4Badge": "Deployed",
-    "prop1Title": "AI agents that work while you sleep",
-    "prop1Body": "We build and deploy AI bots for customer support, sales, lead generation, and internal operations across WhatsApp, Telegram, your website, and beyond.",
-    "prop2Title": "Automation that removes the busywork",
-    "prop2Body": "From CRM and ERP automation to workflow orchestration and reporting we map your processes and build systems that run them reliably, without manual effort.",
-    "prop3Title": "Software you own, built to last",
-    "prop3Body": "Every platform, dashboard, or mobile app we deliver is production-grade, documented, and fully yours. No vendor lock-in, no black boxes.",
-    "cta": "See All Services",
-    "trust1": "Production-ready delivery",
-    "trust2": "Fast turnaround",
-    "trust3": "Dedicated support"
+    "sectionTitle": "AI 展示 智能自动化",
+    "orbit1": "AI 智能体",
+    "orbit2": "自动化",
+    "orbit3": "网页开发",
+    "orbit4": "移动应用",
+    "orbit5": "API 集成",
+    "orbit6": "数据分析",
+    "feedItem1Title": "AI 智能体已部署",
+    "feedItem1Subtitle": "客户支持机器人 解决率达 98%",
+    "feedItem1Badge": "实时",
+    "feedItem2Title": "工作流已自动化",
+    "feedItem2Subtitle": "CRM 数据同步 每周节省 18 小时",
+    "feedItem2Badge": "已完成",
+    "feedItem3Title": "WhatsApp 机器人运行中",
+    "feedItem3Subtitle": "获客聊天机器人 今日新增 54 条线索",
+    "feedItem3Badge": "运行中",
+    "feedItem4Title": "SaaS 平台已上线",
+    "feedItem4Subtitle": "电商仪表盘 零停机部署",
+    "feedItem4Badge": "已部署",
+    "prop1Title": "AI 智能体,让您安心休息也能持续工作",
+    "prop1Body": "我们为客户支持、销售、获客和内部运营构建并部署 AI 机器人,覆盖 WhatsApp、Telegram、您的网站等多种渠道。",
+    "prop2Title": "自动化,消除繁琐的重复劳动",
+    "prop2Body": "从 CRM 和 ERP 自动化到工作流编排与报表 我们梳理您的业务流程,构建可靠运行、无需人工干预的系统。",
+    "prop3Title": "属于您、经久耐用的软件",
+    "prop3Body": "我们交付的每个平台、仪表盘或移动应用都是生产级别、有完整文档,并完全归您所有。没有供应商锁定,没有黑箱操作。",
+    "cta": "查看全部服务",
+    "trust1": "生产就绪交付",
+    "trust2": "交付速度快",
+    "trust3": "专属支持"
   },
   "HowItWorks": {
-    "eyebrow": "AI Automation",
-    "title": "How our AI Agent works",
-    "accentWord": "AI Agent",
-    "description": "Watch how our autonomous agent thinks, plans, and acts across your tools in real time.",
-    "step1Title": "Trigger",
-    "step1Desc": "Event fires from CRM, form, or webhook",
-    "step2Title": "Reason",
-    "step2Desc": "AI analyzes context and plans actions",
-    "step3Title": "Act",
-    "step3Desc": "Calls APIs, creates tasks, sends messages",
-    "step4Title": "Complete",
-    "step4Desc": "Logs results and notifies the team",
-    "pipelineLabel": "Live Pipeline",
-    "pipelineNode1Label": "New Lead",
+    "eyebrow": "AI 自动化",
+    "title": "我们的 AI 智能体如何运作",
+    "accentWord": "AI 智能体",
+    "description": "实时观看我们的自主智能体如何思考、规划并在您的工具中采取行动。",
+    "step1Title": "触发",
+    "step1Desc": "事件由 CRM、表单或 Webhook 触发",
+    "step2Title": "推理",
+    "step2Desc": "AI 分析上下文并规划行动",
+    "step3Title": "执行",
+    "step3Desc": "调用 API、创建任务、发送消息",
+    "step4Title": "完成",
+    "step4Desc": "记录结果并通知团队",
+    "pipelineLabel": "实时流程",
+    "pipelineNode1Label": "新线索",
     "pipelineNode1Sub": "HubSpot CRM",
-    "pipelineNode2Label": "AI Agent",
-    "pipelineNode2Sub": "Processing",
+    "pipelineNode2Label": "AI 智能体",
+    "pipelineNode2Sub": "处理中",
     "pipelineNode3Label": "Asana",
-    "pipelineNode3Sub": "Task created",
+    "pipelineNode3Sub": "任务已创建",
     "pipelineNode4Label": "Slack",
-    "pipelineNode4Sub": "Notified",
-    "pipelineNode5Label": "Calendar",
-    "pipelineNode5Sub": "Scheduled",
-    "sandboxSectionLabel": "Interactive Demo",
-    "scenarioLabel": "Scenario",
-    "idleTitle": "Agent is standing by",
-    "idleDescription": "Select a scenario on the left and press \"Run agent\" to watch it work in real time.",
-    "reasoningLabel": "Agent reasoning",
-    "actionsLabel": "Actions",
-    "readyLabel": "Ready",
-    "executingLabel": "Executing…",
-    "sandboxTitle": "Live demo",
-    "sandboxDescription": "Pick a scenario and watch the AI work step by step",
-    "runLabel": "Run agent",
-    "resetLabel": "Reset",
-    "thinkingLabel": "Reasoning…",
-    "doneLabel": "Done",
-    "task1Label": "New lead",
-    "task1Thought1": "New lead submitted from website form.",
-    "task1Thought2": "Checking CRM for existing contact…",
-    "task1Thought3": "Lead is qualified high enterprise potential.",
-    "task1Thought4": "Planning outreach sequence.",
-    "task1Action1": "Fetch lead data",
-    "task1Action2": "Enrich with company insights",
-    "task1Action3": "Create Asana task",
-    "task1Action4": "Notify Slack channel",
-    "task1Action5": "Schedule calendar invite",
-    "task1Result": "Lead fully processed and assigned to sales team.",
-    "task2Label": "Support ticket",
-    "task2Thought1": "New support ticket: API rate limit issue.",
-    "task2Thought2": "Classifying priority and sentiment…",
-    "task2Thought3": "Searching knowledge base for solutions.",
-    "task2Action1": "Fetch ticket details",
-    "task2Action2": "AI classifier analysis",
-    "task2Action3": "Generate draft reply from knowledge base",
-    "task2Action4": "Escalate to senior engineer",
-    "task2Result": "Ticket categorised and escalated. Suggested reply ready.",
-    "task3Label": "Report generation",
-    "task3Thought1": "Weekly report scheduled.",
-    "task3Thought2": "Querying data warehouse…",
-    "task3Thought3": "Analysing trends and outliers.",
-    "task3Action1": "Query data warehouse",
-    "task3Action2": "AI analyst insights",
-    "task3Action3": "Generate PDF and Notion page",
-    "task3Action4": "Distribute to stakeholders",
-    "task3Result": "Report generated and delivered to leadership.",
-    "metricTime": "Response time",
-    "metricSteps": "Actions executed",
-    "metricSaved": "Time saved",
-    "metricResolution": "Resolution confidence",
-    "metricRows": "Rows processed"
+    "pipelineNode4Sub": "已通知",
+    "pipelineNode5Label": "日历",
+    "pipelineNode5Sub": "已安排",
+    "sandboxSectionLabel": "互动演示",
+    "scenarioLabel": "场景",
+    "idleTitle": "智能体待命中",
+    "idleDescription": "在左侧选择一个场景,然后点击“运行智能体”,实时观看其工作过程。",
+    "reasoningLabel": "智能体推理",
+    "actionsLabel": "操作",
+    "readyLabel": "就绪",
+    "executingLabel": "执行中…",
+    "sandboxTitle": "实时演示",
+    "sandboxDescription": "选择一个场景,逐步观看 AI 的工作过程",
+    "runLabel": "运行智能体",
+    "resetLabel": "重置",
+    "thinkingLabel": "推理中…",
+    "doneLabel": "已完成",
+    "task1Label": "新线索",
+    "task1Thought1": "新线索已通过网站表单提交。",
+    "task1Thought2": "正在检查 CRM 中是否存在联系人…",
+    "task1Thought3": "该线索已认定为高潜力企业客户。",
+    "task1Thought4": "正在规划跟进沟通序列。",
+    "task1Action1": "获取线索数据",
+    "task1Action2": "补充公司相关信息",
+    "task1Action3": "创建 Asana 任务",
+    "task1Action4": "通知 Slack 频道",
+    "task1Action5": "安排日历邀请",
+    "task1Result": "线索已完全处理并分配给销售团队。",
+    "task2Label": "支持工单",
+    "task2Thought1": "新支持工单:API 速率限制问题。",
+    "task2Thought2": "正在对优先级和情绪进行分类…",
+    "task2Thought3": "正在知识库中搜索解决方案。",
+    "task2Action1": "获取工单详情",
+    "task2Action2": "AI 分类器分析",
+    "task2Action3": "根据知识库生成回复草稿",
+    "task2Action4": "升级至高级工程师",
+    "task2Result": "工单已分类并升级。建议回复已准备就绪。",
+    "task3Label": "报告生成",
+    "task3Thought1": "已安排每周报告。",
+    "task3Thought2": "正在查询数据仓库…",
+    "task3Thought3": "正在分析趋势与异常值。",
+    "task3Action1": "查询数据仓库",
+    "task3Action2": "AI 分析师洞察",
+    "task3Action3": "生成 PDF 与 Notion 页面",
+    "task3Action4": "分发给相关方",
+    "task3Result": "报告已生成并交付给管理层。",
+    "metricTime": "响应时间",
+    "metricSteps": "已执行操作",
+    "metricSaved": "节省时间",
+    "metricResolution": "解决置信度",
+    "metricRows": "已处理行数"
   },
   "TechStack": {
-    "eyebrow": "Integrations",
-    "title": "Built on tools your team already uses",
-    "accentWord": "tools your team",
-    "description": "automex integrates natively with the platforms that power modern businesses from AI models and CRM systems to cloud infrastructure and team communication.",
-    "allLabel": "All tools",
-    "tabListLabel": "Tool categories",
-    "counterIntegrations": "Integrations",
+    "eyebrow": "集成",
+    "title": "构建于您的团队已在使用的工具之上",
+    "accentWord": "您的团队已在使用的工具",
+    "description": "automex 与驱动现代企业运转的各类平台原生集成 从 AI 模型和 CRM 系统到云基础设施和团队沟通工具。",
+    "allLabel": "全部工具",
+    "tabListLabel": "工具分类",
+    "counterIntegrations": "集成数量",
     "counterIntegrationsValue": "{toolsCount}+",
-    "counterCategories": "Categories",
+    "counterCategories": "分类数量",
     "counterCategoriesValue": "{count}"
   },
   "ConnectedModel": {
-    "eyebrow": "One Connected Model",
-    "headlineLead": "One trusted reality.",
-    "headlineAccent": "Dashboard and AI on top.",
-    "description": "Sales, ads, and website numbers often sit in different apps, so it's hard to see how your business is really doing. We bring it together in one place. AI and dashboard both use the same numbers, so you never get two different answers.",
-    "signalsLabel": "Every signal",
-    "outputsLabel": "Same data, two doors",
-    "primaryLabel": "Book a demo",
-    "hubLabel": "One model",
-    "secondaryLabel": "Contact us"
+    "eyebrow": "统一互联模型",
+    "headlineLead": "一个值得信赖的真相。",
+    "headlineAccent": "仪表盘与 AI 融为一体。",
+    "description": "销售、广告和网站数据往往分散在不同应用中,让您很难看清企业的真实经营状况。我们将这一切汇聚到一个地方。AI 与仪表盘使用相同的数据,因此您绝不会得到两个不同的答案。",
+    "signalsLabel": "每一个信号",
+    "outputsLabel": "同一数据,两个入口",
+    "primaryLabel": "预约演示",
+    "hubLabel": "一个模型",
+    "secondaryLabel": "联系我们"
   },
   "Auth": {
     "common": {
       "brand": "Automex",
       "brandShort": "automex",
-      "welcome": "Welcome to Automex",
-      "backHome": "Back to home",
-      "secureNote": "256-bit encrypted · SOC 2 compliant · Data never sold",
-      "footer": "© 2026 Automex. All rights reserved. Enterprise AI & Digital Transformation.",
-      "email": "Email address",
+      "welcome": "欢迎使用 Automex",
+      "backHome": "返回首页",
+      "secureNote": "256 位加密 · 符合 SOC 2 标准 · 数据绝不出售",
+      "footer": "© 2026 Automex。保留所有权利。企业级 AI 与数字化转型。",
+      "email": "电子邮箱地址",
       "emailPlaceholder": "you@company.com",
-      "password": "Password",
-      "passwordPlaceholder": "Enter your password",
-      "confirmPassword": "Confirm password",
-      "confirmPasswordPlaceholder": "Re enter your password",
-      "fullName": "Full name",
+      "password": "密码",
+      "passwordPlaceholder": "请输入您的密码",
+      "confirmPassword": "确认密码",
+      "confirmPasswordPlaceholder": "请再次输入您的密码",
+      "fullName": "全名",
       "fullNamePlaceholder": "Jane Smith",
-      "company": "Company (optional)",
+      "company": "公司(选填)",
       "companyPlaceholder": "Acme Corp",
-      "showPassword": "Show password",
-      "hidePassword": "Hide password",
-      "orContinueWith": "or continue with"
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "orContinueWith": "或继续使用"
     },
     "login": {
-      "metaTitle": "Sign In | Automex",
-      "metaDescription": "Sign in to your Automex account to manage your AI automation projects.",
-      "title": "Sign in to your account",
-      "description": "Enter your credentials to access your Automex workspace.",
-      "remember": "Keep me signed in",
-      "forgot": "Forgot password?",
-      "submit": "Sign in",
-      "signingIn": "Signing in…",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Create one free"
+      "metaTitle": "登录 | Automex",
+      "metaDescription": "登录您的 Automex 账户,管理您的 AI 自动化项目。",
+      "title": "登录您的账户",
+      "description": "输入您的登录凭证以访问您的 Automex 工作空间。",
+      "remember": "保持登录状态",
+      "forgot": "忘记密码?",
+      "submit": "登录",
+      "signingIn": "正在登录…",
+      "noAccount": "还没有账户?",
+      "signupLink": "免费创建一个"
     },
     "signup": {
-      "metaTitle": "Create Account | Automex",
-      "metaDescription": "Join Automex to build AI-powered automation systems for your business.",
-      "title": "Create your account",
-      "description": "Get started with Automex",
-      "passwordHint": "Must be at least 8 characters.",
-      "passwordMismatch": "Passwords do not match.",
-      "termsPrefix": "I agree to the",
-      "terms": "Terms of Service",
-      "and": "and",
-      "privacy": "Privacy Policy",
-      "submit": "Create account",
-      "creating": "Creating account…",
-      "haveAccount": "Already have an account?",
-      "loginLink": "Sign in",
-      "successTitle": "Check your inbox",
-      "successDescription": "We sent a verification link to",
-      "successAction": "Click it to activate your account.",
-      "successHint": "Didn't receive it? Check your spam folder or",
-      "tryAgain": "try again"
+      "metaTitle": "创建账户 | Automex",
+      "metaDescription": "加入 Automex,为您的企业构建 AI 驱动的自动化系统。",
+      "title": "创建您的账户",
+      "description": "开始使用 Automex",
+      "passwordHint": "密码至少需要 8 个字符。",
+      "passwordMismatch": "两次输入的密码不一致。",
+      "termsPrefix": "我同意",
+      "terms": "服务条款",
+      "and": "及",
+      "privacy": "隐私政策",
+      "submit": "创建账户",
+      "creating": "正在创建账户…",
+      "haveAccount": "已经有账户了?",
+      "loginLink": "登录",
+      "successTitle": "请查收您的邮箱",
+      "successDescription": "我们已发送验证链接至",
+      "successAction": "点击链接以激活您的账户。",
+      "successHint": "没有收到?请检查垃圾邮件文件夹,或",
+      "tryAgain": "重试"
     },
     "forgotPassword": {
-      "metaTitle": "Reset Password | Automex",
-      "metaDescription": "Request a password reset link for your Automex account.",
-      "title": "Reset your password",
-      "description": "We'll send a secure reset code to your email address.",
-      "emailHint": "Use the email address linked to your automex account.",
-      "submit": "Send reset code",
-      "sending": "Sending…",
-      "backToLogin": "Back to sign in",
-      "successTitle": "Reset link sent",
-      "successDescription": "If",
-      "successAction": "is registered, you'll receive a reset link shortly. Check your spam folder if you don't see it."
+      "metaTitle": "重置密码 | Automex",
+      "metaDescription": "为您的 Automex 账户申请密码重置链接。",
+      "title": "重置您的密码",
+      "description": "我们将向您的邮箱发送安全的重置代码。",
+      "emailHint": "请使用与您的 automex 账户绑定的邮箱地址。",
+      "submit": "发送重置代码",
+      "sending": "正在发送…",
+      "backToLogin": "返回登录",
+      "successTitle": "重置链接已发送",
+      "successDescription": "如果",
+      "successAction": "已注册,您很快会收到重置链接。如果没有看到,请检查垃圾邮件文件夹。"
     },
     "resetPassword": {
-      "metaTitle": "Set New Password | Automex",
-      "metaDescription": "Choose a new password for your Automex account.",
-      "title": "Set new password",
-      "description": "Choose a strong password for your Automex account.",
-      "submit": "Update password",
-      "updating": "Updating password…",
-      "backToLogin": "Back to sign in",
-      "success": "Password updated. Please sign in with your new password.",
-      "invalidTitle": "Invalid reset link",
-      "invalidDescription": "This link is missing a reset token. Please use the link from your email, or request a new one.",
-      "requestNew": "Request a new reset link"
+      "metaTitle": "设置新密码 | Automex",
+      "metaDescription": "为您的 Automex 账户选择一个新密码。",
+      "title": "设置新密码",
+      "description": "为您的 Automex 账户选择一个强密码。",
+      "submit": "更新密码",
+      "updating": "正在更新密码…",
+      "backToLogin": "返回登录",
+      "success": "密码已更新。请使用新密码登录。",
+      "invalidTitle": "重置链接无效",
+      "invalidDescription": "此链接缺少重置令牌。请使用邮件中的链接,或申请一个新链接。",
+      "requestNew": "申请新的重置链接"
     },
     "verifyEmail": {
-      "metaTitle": "Verify Email | Automex",
-      "metaDescription": "Confirm your email address to activate your Automex account.",
-      "loadingTitle": "Verifying your email…",
-      "loadingDescription": "This only takes a moment.",
-      "successTitle": "Email verified!",
-      "successDescription": "Your account is active. You can now sign in to your Automex workspace.",
-      "signIn": "Sign in to your account",
-      "errorTitle": "Verification failed",
-      "errorDefault": "This link may have expired or already been used.",
-      "noToken": "No verification token found in the URL. Please use the link from your email.",
-      "goToSignIn": "Go to sign in",
-      "createAccount": "Create a new account"
+      "metaTitle": "验证邮箱 | Automex",
+      "metaDescription": "确认您的邮箱地址以激活您的 Automex 账户。",
+      "loadingTitle": "正在验证您的邮箱…",
+      "loadingDescription": "只需片刻。",
+      "successTitle": "邮箱验证成功!",
+      "successDescription": "您的账户已激活。现在可以登录您的 Automex 工作空间了。",
+      "signIn": "登录您的账户",
+      "errorTitle": "验证失败",
+      "errorDefault": "此链接可能已过期或已被使用。",
+      "noToken": "URL 中未找到验证令牌。请使用邮件中的链接。",
+      "goToSignIn": "前往登录",
+      "createAccount": "创建新账户"
     },
     "magicLink": {
-      "metaTitle": "Magic Link | Automex",
-      "metaDescription": "Sign in to Automex using your magic link.",
-      "loadingTitle": "Signing you in…",
-      "loadingDescription": "Verifying your magic link. You'll be redirected shortly.",
-      "errorTitle": "Link expired or invalid",
-      "errorDefault": "This magic link may have expired or already been used.",
-      "noToken": "No magic link token found. Please request a new link.",
-      "backToSignIn": "Back to sign in"
+      "metaTitle": "魔法链接 | Automex",
+      "metaDescription": "使用您的魔法链接登录 Automex。",
+      "loadingTitle": "正在为您登录…",
+      "loadingDescription": "正在验证您的魔法链接。您很快将被重定向。",
+      "errorTitle": "链接已过期或无效",
+      "errorDefault": "此魔法链接可能已过期或已被使用。",
+      "noToken": "未找到魔法链接令牌。请申请新链接。",
+      "backToSignIn": "返回登录"
     },
     "verifyOtp": {
-      "title": "Check your inbox",
-      "description": "We sent a 6-digit code to your email. Enter it below to continue.",
-      "codeLabel": "Verification code",
-      "digitLabel": "Digit",
-      "hint": "The code expires in 10 minutes. Check your spam folder if you don't see it.",
-      "submit": "Verify and continue",
-      "resendText": "Didn't receive a code?",
-      "resendAction": "Resend",
-      "backToLogin": "Back to sign in"
+      "title": "请查收您的邮箱",
+      "description": "我们已向您的邮箱发送了一个 6 位验证码。请在下方输入以继续。",
+      "codeLabel": "验证码",
+      "digitLabel": "数字",
+      "hint": "验证码将在 10 分钟后过期。如果没有看到,请检查垃圾邮件文件夹。",
+      "submit": "验证并继续",
+      "resendText": "没有收到验证码?",
+      "resendAction": "重新发送",
+      "backToLogin": "返回登录"
     }
   },
   "footer": {
-    "tagline": "Enterprise grade AI, cybersecurity, software engineering, cloud infrastructure, and digital transformation all under one roof.",
-    "location": "Remote-first team operating globally across the world.",
+    "tagline": "企业级 AI、网络安全、软件工程、云基础设施与数字化转型 一站式服务。",
+    "location": "远程优先团队,业务遍及全球。",
     "contact": {
-      "whatsapp": "Chat on WhatsApp",
-      "email": "Send an email"
+      "whatsapp": "通过 WhatsApp 聊天",
+      "email": "发送邮件"
     },
     "cta": {
-      "heading": "Ready to transform your business?",
-      "subheading": "Tell us about your project and we'll respond within 24 hours.",
-      "button": "Get started"
+      "heading": "准备好转型您的企业了吗?",
+      "subheading": "告诉我们您的项目,我们将在 24 小时内回复。",
+      "button": "开始使用"
     },
     "columns": {
       "services": {
-        "title": "Services",
-        "ai_solutions": "AI Solutions",
-        "ai_bots": "AI Bots & Automation",
-        "software_dev": "Software Development",
-        "web_dev": "Web Development",
-        "mobile_dev": "Mobile App Development",
-        "cybersecurity": "Cybersecurity Services"
+        "title": "服务",
+        "ai_solutions": "AI 解决方案",
+        "ai_bots": "AI 机器人与自动化",
+        "software_dev": "软件开发",
+        "web_dev": "网页开发",
+        "mobile_dev": "移动应用开发",
+        "cybersecurity": "网络安全服务"
       },
       "technology": {
-        "title": "Technology",
-        "claude_ai": "Claude AI Integration",
-        "api_integration": "API Integration",
-        "database": "Database Architecture",
-        "cloud": "Cloud Infrastructure",
-        "security_compliance": "Security Compliance",
-        "digital_transform": "Digital Transformation"
+        "title": "技术",
+        "claude_ai": "Claude AI 集成",
+        "api_integration": "API 集成",
+        "database": "数据库架构",
+        "cloud": "云基础设施",
+        "security_compliance": "安全合规",
+        "digital_transform": "数字化转型"
       },
       "company": {
-        "title": "Company",
-        "about": "About Us",
-        "services": "Our Services",
-        "blogs": "Blog & Insights",
-        "caseStudies": "Case Studies",
-        "contact": "Contact Us",
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service"
+        "title": "公司",
+        "about": "关于我们",
+        "services": "我们的服务",
+        "blogs": "博客与洞察",
+        "caseStudies": "案例研究",
+        "contact": "联系我们",
+        "privacy": "隐私政策",
+        "terms": "服务条款"
       }
     },
     "bottom": {
-      "copyright": "© {year} automex. All rights reserved.",
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "sitemap": "Sitemap"
+      "copyright": "© {year} automex。保留所有权利。",
+      "privacy": "隐私",
+      "terms": "条款",
+      "sitemap": "网站地图"
     },
     "social": {
       "facebook": "Facebook",
       "instagram": "Instagram",
-      "twitter": "X (Twitter)",
+      "twitter": "X(Twitter)",
       "linkedin": "LinkedIn"
     },
     "badges": {
-      "popular": "Popular",
-      "new": "New",
-      "enterprise": "Enterprise"
+      "popular": "热门",
+      "new": "新",
+      "enterprise": "企业版"
     }
   },
   "Contact": {
     "meta": {
-      "title": "Contact automex AI Automation & Enterprise Software",
-      "description": "Reach the automex team to discuss AI agents, workflow automation, custom software, and digital transformation for your business. We respond within 24 hours.",
-      "keywords": "contact automex, AI automation, enterprise software, digital transformation, custom software development, AI agents, business automation",
-      "ogTitle": "Contact automex Let's Build Something Together",
-      "ogDescription": "Talk to our team about AI-powered automation, custom software, and enterprise digital transformation. Fast response, real solutions.",
-      "ogImageAlt": "automex contact page AI & Enterprise Software"
+      "title": "联系 automex AI 自动化与企业级软件",
+      "description": "联系 automex 团队,探讨 AI 智能体、工作流自动化、定制软件以及企业数字化转型。我们将在 24 小时内回复。",
+      "keywords": "联系 automex, AI 自动化, 企业软件, 数字化转型, 定制软件开发, AI 智能体, 业务自动化",
+      "ogTitle": "联系 automex 让我们携手共创",
+      "ogDescription": "与我们的团队探讨 AI 驱动的自动化、定制软件以及企业数字化转型。响应迅速,方案实在。",
+      "ogImageAlt": "automex 联系页面 AI 与企业软件"
     },
     "hero": {
-      "eyebrow": "Get in Touch",
-      "headlineLead": "Let's build something",
-      "headlineAccent": "extraordinary together",
-      "description": "Whether you're automating a workflow, launching a product, or transforming your entire operation the automex team is ready to help. Tell us what you need.",
+      "eyebrow": "联系我们",
+      "headlineLead": "让我们携手共创",
+      "headlineAccent": "非凡成就",
+      "description": "无论您是要自动化某个工作流、推出新产品,还是转型整个业务运营,automex 团队都随时准备提供帮助。告诉我们您的需求。",
       "stats": [
         {
-          "value": "< 24h",
-          "label": "Response time"
+          "value": "< 24小时",
+          "label": "响应时间"
         },
         {
           "value": "50+",
-          "label": "Clients served"
+          "label": "服务客户数"
         },
         {
           "value": "98%",
-          "label": "Satisfaction rate"
+          "label": "满意度"
         }
       ],
-      "ctaWhatsapp": "Chat on WhatsApp",
-      "ctaEmail": "Send an Email"
+      "ctaWhatsapp": "通过 WhatsApp 聊天",
+      "ctaEmail": "发送邮件"
     },
     "info": {
-      "eyebrow": "Contact Channels",
-      "title": "Reach us any way you prefer",
-      "description": "We operate across multiple time zones and channels. Pick whatever works best for you we aim to respond within one business day.",
-      "emailLabel": "Email",
+      "eyebrow": "联系渠道",
+      "title": "以您偏好的方式联系我们",
+      "description": "我们跨多个时区和渠道运营。选择最适合您的方式 我们力求在一个工作日内回复。",
+      "emailLabel": "邮箱",
       "email": "info@automex.tech",
-      "phoneLabel": "Phone Afghanistan",
+      "phoneLabel": "电话 阿富汗",
       "phoneAf": "+93 776 320 765",
-      "phoneAfLabel": "Phone Afghanistan",
-      "phoneUsLabel": "Phone United States",
+      "phoneAfLabel": "电话 阿富汗",
+      "phoneUsLabel": "电话 美国",
       "phoneUs": "+1 (206) 470-9284",
-      "websiteLabel": "Website",
+      "websiteLabel": "网站",
       "website": "automex.tech",
-      "whatsappTitle": "Chat on WhatsApp",
-      "whatsappSubtitle": "Quick questions? Message us directly.",
-      "whatsappMessage": "Hello automex team, I'd like to discuss a project.",
-      "responseTimeLabel": "Response time",
-      "responseTime": "Under 24 hours",
-      "responseNote": "Business days, all time zones",
-      "availabilityLabel": "Availability",
-      "availability": "Global",
-      "availabilityNote": "AF · US · EU time zones covered",
-      "locationAf": "🇦🇫 Kabul, AF",
-      "locationUs": "🇺🇸 Seattle, WA",
-      "locationNote": "Remote first team. We work with clients worldwide from Afghanistan and the United States."
+      "whatsappTitle": "通过 WhatsApp 聊天",
+      "whatsappSubtitle": "有简短问题?直接给我们留言。",
+      "whatsappMessage": "您好 automex 团队,我想咨询一个项目。",
+      "responseTimeLabel": "响应时间",
+      "responseTime": "24 小时以内",
+      "responseNote": "工作日,覆盖所有时区",
+      "availabilityLabel": "服务范围",
+      "availability": "全球",
+      "availabilityNote": "覆盖阿富汗、美国、欧盟时区",
+      "locationAf": "🇦🇫 喀布尔,阿富汗",
+      "locationUs": "🇺🇸 西雅图,美国",
+      "locationNote": "以远程优先为设计理念的团队。我们从阿富汗和美国出发,服务全球各地的客户。"
     },
     "form": {
-      "heading": "Send us a message",
-      "subheading": "Fill in the details below and we'll get back to you within one business day.",
-      "nameLabel": "Full name",
+      "heading": "给我们发消息",
+      "subheading": "填写以下信息,我们将在一个工作日内回复您。",
+      "nameLabel": "全名",
       "namePlaceholder": "Hakim Safi",
-      "companyLabel": "Company (optional)",
+      "companyLabel": "公司(选填)",
       "companyPlaceholder": "Acme Corp",
-      "emailLabel": "Email address",
+      "emailLabel": "电子邮箱地址",
       "emailPlaceholder": "info@company.com",
-      "subjectLabel": "What can we help with?",
-      "subjectPlaceholder": "Select a topic",
-      "messageLabel": "Your message",
-      "messagePlaceholder": "Tell us about your project, challenge, or question...",
+      "subjectLabel": "我们能帮您做些什么?",
+      "subjectPlaceholder": "选择一个主题",
+      "messageLabel": "您的留言",
+      "messagePlaceholder": "告诉我们您的项目、挑战或问题...",
       "subjects": [
-        "AI Automation & Agents",
-        "Custom Software Development",
-        "Web or Mobile App",
-        "API & Third-Party Integration",
-        "Digital Transformation",
-        "Pricing & Packages",
-        "Partnership or Collaboration",
-        "Other"
+        "AI 自动化与智能体",
+        "定制软件开发",
+        "网页或移动应用",
+        "API 与第三方集成",
+        "数字化转型",
+        "价格与套餐",
+        "合作或协作",
+        "其他"
       ],
-      "submit": "Send message",
-      "submitting": "Sending…",
-      "successTitle": "Message received!",
-      "successBody": "Thank you for reaching out. A member of the automex team will reply to your email within one business day.",
-      "successReset": "Send another message",
-      "errorMessage": "Something went wrong sending your message. Please try again, or email us directly at info@automex.tech.",
-      "privacyNote": "By submitting this form you agree to our Privacy Policy. We never share your data with third parties."
+      "submit": "发送消息",
+      "submitting": "正在发送…",
+      "successTitle": "消息已收到!",
+      "successBody": "感谢您的联系。automex 团队成员将在一个工作日内回复您的邮件。",
+      "successReset": "发送另一条消息",
+      "errorMessage": "发送消息时出现问题。请重试,或直接发邮件至 info@automex.tech。",
+      "privacyNote": "提交此表单即表示您同意我们的隐私政策。我们绝不会与第三方共享您的数据。"
     },
     "map": {
-      "title": "Our global footprint",
-      "description": "Remote first team operating from two core hubs, serving clients worldwide.",
-      "remoteBadge": "Remote first · 24/7 coverage",
+      "title": "我们的全球足迹",
+      "description": "以远程优先为设计理念的团队,从两个核心枢纽出发,服务全球客户。",
+      "remoteBadge": "远程优先 · 24/7 覆盖",
       "offices": [
         {
-          "city": "Kabul",
-          "country": "Afghanistan",
+          "city": "喀布尔",
+          "country": "阿富汗",
           "flag": "🇦🇫",
           "tz": "UTC+4:30"
         },
         {
-          "city": "Seattle",
-          "country": "USA",
+          "city": "西雅图",
+          "country": "美国",
           "flag": "🇺🇸",
           "tz": "UTC-8 (PST)"
         }
@@ -482,1217 +482,1218 @@
   },
   "About": {
     "meta": {
-      "title": "About automex AI Automation & Enterprise Software",
-      "description": "automex is a Seattle-based enterprise AI and software company. We build intelligent automation systems, custom software, and AI-powered products that help businesses worldwide move faster.",
-      "keywords": "about automex, AI automation company, enterprise software Seattle, AI agents, digital transformation, custom software team",
-      "ogTitle": "About automex Built to Automate the Future of Work",
-      "ogDescription": "From Seattle to the world automex designs and ships AI-powered automation, custom software, and enterprise products trusted by 50+ clients across 12 countries."
+      "title": "关于 automex AI 自动化与企业级软件",
+      "description": "automex 是一家总部位于西雅图的企业级 AI 与软件公司。我们构建智能自动化系统、定制软件以及 AI 驱动的产品,帮助全球企业加速前行。",
+      "keywords": "关于 automex, AI 自动化公司, 西雅图企业软件, AI 智能体, 数字化转型, 定制软件团队",
+      "ogTitle": "关于 automex 致力于自动化未来的工作方式",
+      "ogDescription": "从西雅图走向世界 automex 设计并交付 AI 驱动的自动化、定制软件以及企业级产品,深受 12 个国家 50 多家客户的信赖。"
     },
     "hero": {
-      "eyebrow": "Our Story",
-      "headlineLead": "Built to automate",
-      "headlineAccent": "the future of work",
-      "headlineLine1": "Built to automate",
-      "headlineLine2": "the future of work",
+      "eyebrow": "我们的故事",
+      "headlineLead": "致力于自动化",
+      "headlineAccent": "未来的工作方式",
+      "headlineLine1": "致力于自动化",
+      "headlineLine2": "未来的工作方式",
       "headlineSuffix": "",
-      "description": "automex is an enterprise AI and software company headquartered in Seattle, WA. We design and ship intelligent automation systems, custom software, and AI-powered products that free your team from repetitive work.",
-      "locationUs": "Seattle, WA United States",
-      "locationAf": "Kabul Afghanistan",
-      "founded": "Est. 2020",
-      "ctaStory": "Our story"
+      "description": "automex 是一家总部位于美国华盛顿州西雅图的企业级 AI 与软件公司。我们设计并交付智能自动化系统、定制软件以及 AI 驱动的产品,将您的团队从重复性工作中解放出来。",
+      "locationUs": "美国 华盛顿州 西雅图",
+      "locationAf": "阿富汗 喀布尔",
+      "founded": "成立于 2020 年",
+      "ctaStory": "我们的故事"
     },
     "story": {
-      "eyebrow": "How we got here",
-      "title": "Started in Seattle. Built for the world.",
-      "pullQuote": "We started automex because great AI and automation tools shouldn't be a privilege of the Fortune 500.",
-      "body1": "In 2020, we launched out of Seattle with a single belief: that every business not just the biggest ones deserves access to enterprise-grade automation and AI. We started by solving real operational problems for SMBs and quickly discovered that the need was far wider than the Pacific Northwest.",
-      "body2": "Today, automex operates from two continents, serving clients across 12 countries. Our team spans Seattle and Kabul, combining Silicon Valley-caliber engineering with the hunger and work ethic of a team that knows exactly what's at stake.",
-      "chip": "Clients worldwide",
-      "badge1": "Remote-first since day one",
-      "badge2": "Two continents, one team",
-      "badge3": "No offshore hand-offs"
+      "eyebrow": "我们如何走到今天",
+      "title": "始于西雅图。为全世界而建。",
+      "pullQuote": "我们创立 automex,是因为优秀的 AI 与自动化工具不应只是财富 500 强企业的特权。",
+      "body1": "2020 年,我们从西雅图出发,秉持一个信念:每一家企业 而不仅仅是最大的企业 都应享有企业级自动化与 AI 的机会。我们从解决中小企业真实的运营问题开始,很快发现这种需求远远超出了太平洋西北地区的范围。",
+      "body2": "如今,automex 运营于两大洲,服务 12 个国家的客户。我们的团队分布在西雅图和喀布尔,将硅谷水准的工程能力与深知责任重大的团队所具备的拼搏精神和职业道德结合在一起。",
+      "chip": "全球客户",
+      "badge1": "自成立之初即远程优先",
+      "badge2": "两大洲,一个团队",
+      "badge3": "无离岸外包交接",
+      "badge3note": ""
     },
     "mission": {
-      "eyebrow": "Purpose",
-      "missionTitle": "Our Mission",
-      "missionBody": "To make enterprise-grade AI automation accessible to every business from fast-growing startups to established enterprises so their teams can focus entirely on work that matters and decisions that move the needle.",
-      "visionTitle": "Our Vision",
-      "visionBody": "A world where repetitive, manual business processes are fully automated. Where people spend their time thinking, creating, and leading not copy-pasting, formatting, or clicking through dashboards. We're building the infrastructure that makes that world possible."
+      "eyebrow": "使命宗旨",
+      "missionTitle": "我们的使命",
+      "missionBody": "让企业级 AI 自动化惠及每一家企业 无论是快速成长的初创公司,还是根基稳固的大型企业 从而让他们的团队能够将全部精力聚焦于真正重要的工作和关键决策。",
+      "visionTitle": "我们的愿景",
+      "visionBody": "在这个世界里,重复的手动业务流程将被完全自动化。人们把时间用于思考、创造和引领 而不是复制粘贴、排版或点击各种仪表盘。我们正在构建实现这一愿景所需的基础设施。"
     },
     "stats": {
-      "eyebrow": "By the numbers",
-      "title": "Trusted by teams around the world",
-      "clients": "Clients served",
-      "years": "Years of operation",
-      "satisfaction": "Satisfaction rate",
-      "countries": "Countries reached"
+      "eyebrow": "数据见证",
+      "title": "获全球团队信赖",
+      "clients": "服务客户数",
+      "years": "运营年限",
+      "satisfaction": "满意度",
+      "countries": "覆盖国家数"
     },
     "values": {
-      "eyebrow": "What we stand for",
-      "title": "Principles that drive every decision",
-      "description": "These aren't posters on a wall. They're the filters we apply when making product decisions, choosing clients, and building systems that need to work five years from now.",
-      "v1Title": "Innovation first",
-      "v1Body": "We reach for the best available tool AI, automation, or custom code not the most familiar one. Every project is an opportunity to raise the bar.",
-      "v2Title": "Integrity in everything",
-      "v2Body": "We say what we'll do and do what we say. No black boxes, no hidden scope, no surprises on invoice day.",
-      "v3Title": "Real impact",
-      "v3Body": "We measure success in hours saved, revenue generated, and problems eliminated not in slides delivered or tickets closed.",
-      "v4Title": "True partnership",
-      "v4Body": "Your business goal is our goal. We work alongside your team as a technical co-pilot invested in the outcome, not a vendor shipping deliverables.",
-      "v5Title": "Uncompromising quality",
-      "v5Body": "Every line of code, every integration, every deployment is production-grade. We don't ship something we wouldn't run ourselves.",
-      "v6Title": "Global by design",
-      "v6Body": "Our team spans continents and time zones. We build products that work for every locale, language, and culture because the world is our market."
+      "eyebrow": "我们的坚守",
+      "title": "指引每一个决策的原则",
+      "description": "这些不是挂在墙上的标语,而是我们在做产品决策、选择客户、构建需要五年后依然可靠运行的系统时所应用的准则。",
+      "v1Title": "创新为先",
+      "v1Body": "我们选用当下最好的工具 无论是 AI、自动化还是定制代码 而不是最熟悉的工具。每个项目都是提升标准的机会。",
+      "v2Title": "事事秉持诚信",
+      "v2Body": "我们言出必行,行必果。没有黑箱操作,没有隐藏的范围,账单日不会有任何意外。",
+      "v3Title": "真实的影响力",
+      "v3Body": "我们以节省的工时、创造的收入和消除的问题来衡量成功 而不是交付的幻灯片数量或已关闭的工单数量。",
+      "v4Title": "真正的伙伴关系",
+      "v4Body": "您的业务目标就是我们的目标。我们与您的团队并肩作战,如同投入其中的技术合伙人,而不是仅仅交付成果的供应商。",
+      "v5Title": "毫不妥协的品质",
+      "v5Body": "每一行代码、每一次集成、每一次部署都是生产级别的。我们不会交付自己不愿使用的东西。",
+      "v6Title": "以全球为设计理念",
+      "v6Body": "我们的团队横跨多个大洲和时区。我们构建的产品适用于每个地区、每种语言和每种文化 因为整个世界都是我们的市场。"
     },
     "timeline": {
-      "eyebrow": "Our journey",
-      "title": "Five years of building",
-      "description": "From a one-person consultancy in Seattle to a global AI and software company with clients on four continents.",
-      "m1Title": "automex founded in Seattle",
-      "m1Body": "Launched as a boutique software consultancy focused on automation and custom web applications for SMBs in the Pacific Northwest.",
-      "m1Tag": "Origin",
-      "m2Title": "First enterprise clients land",
-      "m2Body": "Delivered our first enterprise CRM automation and ERP integration engagements saving clients thousands of manual hours per year.",
-      "m2Tag": "Milestone",
-      "m3Title": "AI division launched",
-      "m3Body": "Expanded into AI-powered products: intelligent chatbots, lead-generation agents, and data pipelines deployed across multiple industries.",
-      "m3Tag": "Expansion",
-      "m4Title": "Global operations opened",
-      "m4Body": "Opened engineering operations in Kabul, Afghanistan, extending our service footprint to clients across Asia, Europe, and the Middle East.",
-      "m4Tag": "Global",
-      "m5Title": "50+ clients across 12 countries",
-      "m5Body": "Crossed 50 active clients. AI agents, SaaS platforms, mobile apps, and automation systems now trusted by teams on four continents.",
-      "m5Tag": "Scale",
-      "m6Title": "Full-spectrum AI platform",
-      "m6Body": "Shipping our most ambitious suite: end-to-end AI automation, multi-channel agent infrastructure, and enterprise dashboards built for scale.",
-      "m6Tag": "Now"
+      "eyebrow": "我们的历程",
+      "title": "五年的成长历程",
+      "description": "从西雅图的一人咨询公司,发展为拥有四大洲客户的全球 AI 与软件公司。",
+      "m1Title": "automex 在西雅图成立",
+      "m1Body": "以精品软件咨询公司起步,专注于为太平洋西北地区的中小企业提供自动化与定制网页应用。",
+      "m1Tag": "起源",
+      "m2Title": "首批企业客户到来",
+      "m2Body": "交付了我们首批企业级 CRM 自动化和 ERP 集成项目,每年为客户节省数千小时的手动工作。",
+      "m2Tag": "里程碑",
+      "m3Title": "AI 事业部启动",
+      "m3Body": "扩展至 AI 驱动的产品:智能聊天机器人、获客智能体和数据管道,应用于多个行业。",
+      "m3Tag": "扩展",
+      "m4Title": "全球业务开启",
+      "m4Body": "在阿富汗喀布尔开设工程业务,将我们的服务范围拓展至亚洲、欧洲和中东的客户。",
+      "m4Tag": "全球化",
+      "m5Title": "覆盖 12 个国家的 50 多家客户",
+      "m5Body": "活跃客户数突破 50 家。AI 智能体、SaaS 平台、移动应用和自动化系统如今受到四大洲团队的信赖。",
+      "m5Tag": "规模化",
+      "m6Title": "全谱系 AI 平台",
+      "m6Body": "推出我们迄今最具雄心的产品套件:端到端 AI 自动化、多渠道智能体基础设施以及为规模化而生的企业级仪表盘。",
+      "m6Tag": "现在"
     },
     "team": {
-      "eyebrow": "Leadership",
-      "title": "The people behind automex",
-      "description": "A small, senior team with deep expertise across AI, enterprise software, and product delivery. We stay lean on purpose it keeps us sharp and accountable.",
+      "eyebrow": "领导团队",
+      "title": "automex 背后的团队",
+      "description": "一支精干、资深的团队,在 AI、企业软件和产品交付方面拥有深厚的专业经验。我们刻意保持精简 这让我们保持敏锐并对结果负责。",
       "m1Name": "Miraj Hejran",
-      "m1Role": "Founder & CEO",
-      "m1Bio": "Engineer turned entrepreneur. Miraj founded automex to bring enterprise-grade AI automation outside Silicon Valley. He leads product strategy, client relationships, and technical architecture across both offices.",
+      "m1Role": "创始人兼首席执行官",
+      "m1Bio": "从工程师转型为创业者。Miraj 创立 automex,旨在将企业级 AI 自动化带到硅谷之外的世界。他在两个办公室都负责产品战略、客户关系与技术架构。",
       "m2Name": "Hakim Rahimi Safi",
-      "m2Role": "CTO",
-      "m2Bio": "Full-stack engineer turned technology executive. Hakim now oversees technical strategy, innovation, and engineering culture. He ensures every product automex ships is reliable, secure, and built to outlast the trends.",
+      "m2Role": "首席技术官",
+      "m2Bio": "从全栈工程师转型为技术高管。Hakim 现负责技术战略、创新与工程文化建设。他确保 automex 交付的每一款产品都可靠、安全,并经得起潮流变迁的考验。",
       "m3Name": "Abdullah Stanikzai",
-      "m3Role": "Lead Engineer",
-      "m3Bio": "Abdullah is a backend and infrastructure specialist with 7+ years of experience building high throughput microservices and real time systems. He leads the engineering team in implementing robust, scalable solutions and champions code quality and performance.",
-      "skill1": "AI / ML",
-      "skill2": "Product Strategy",
-      "skill3": "System Architecture",
-      "skill4": "Technical Leadership",
-      "skill5": "DevOps & Cloud",
-      "skill6": "API Design",
-      "skill7": "Microservices",
-      "skill8": "Performance Optimization",
-      "skill9": "System Design"
+      "m3Role": "首席工程师",
+      "m3Bio": "Abdullah 是一名后端与基础设施专家,拥有 7 年以上构建高吞吐量微服务和实时系统的经验。他带领工程团队实施稳健、可扩展的解决方案,并大力倡导代码质量与性能。",
+      "skill1": "AI / 机器学习",
+      "skill2": "产品战略",
+      "skill3": "系统架构",
+      "skill4": "技术领导力",
+      "skill5": "DevOps 与云",
+      "skill6": "API 设计",
+      "skill7": "微服务",
+      "skill8": "性能优化",
+      "skill9": "系统设计"
     },
     "cta": {
-      "title": "Ready to build something that lasts?",
-      "description": "Tell us what you're working on. Whether it's automating a workflow, launching a product, or transforming your operation we'll respond within 24 hours.",
-      "primary": "Start a conversation",
-      "secondary": "Explore our services"
+      "title": "准备好构建经久不衰的成果了吗?",
+      "description": "告诉我们您正在进行的工作。无论是自动化工作流、推出新产品,还是转型您的业务运营 我们都将在 24 小时内回复。",
+      "primary": "开启对话",
+      "secondary": "探索我们的服务"
     }
   },
   "Blog": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Blog",
-        "headlineLead": "Insights",
-        "headlineAccent": "on AI, Software & Technology",
-        "description": "Articles, tutorials, and deep dives from the AUTOMEX engineering team."
+        "eyebrow": "我们的博客",
+        "headlineLead": "洞察",
+        "headlineAccent": "关于 AI、软件与技术",
+        "description": "来自 AUTOMEX 工程团队的文章、教程与深度解析。"
       },
       "filters": {
-        "all": "All",
-        "tagsLabel": "Tags:",
-        "articlesCount": "{count} article{plural}",
-        "searchPlaceholder": "Search articles...",
-        "sortLabel": "Sort by",
-        "sortNewest": "Newest",
-        "sortOldest": "Oldest",
-        "sortPopular": "Most Popular"
+        "all": "全部",
+        "tagsLabel": "标签:",
+        "articlesCount": "{count} 篇文章{plural}",
+        "searchPlaceholder": "搜索文章...",
+        "sortLabel": "排序方式",
+        "sortNewest": "最新",
+        "sortOldest": "最早",
+        "sortPopular": "最受欢迎"
       },
       "post": {
-        "readMore": "Read more",
-        "featured": "Featured",
-        "premium": "Premium",
-        "minRead": "{minutes} min read",
-        "noPosts": "No blog posts found.",
+        "readMore": "阅读更多",
+        "featured": "精选",
+        "premium": "高级内容",
+        "minRead": "{minutes} 分钟阅读",
+        "noPosts": "未找到博客文章。",
         "contentType": {
-          "article": "Article",
-          "video": "Video",
-          "external": "External"
+          "article": "文章",
+          "video": "视频",
+          "external": "外部链接"
         }
       },
-      "loadMore": "Load More",
+      "loadMore": "加载更多",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Have a project in mind?",
-        "description": "Share your ideas and we'll help turn them into reality. Get a free consultation today.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "让我们携手共创",
+        "title": "有项目想法吗?",
+        "description": "分享您的想法,我们会帮助您将其变为现实。立即获取免费咨询。",
+        "quote": "获取报价",
+        "booking": "预约免费通话"
       }
     },
     "detail": {
-      "back": "Back to Blog",
-      "by": "By",
-      "published": "Published",
-      "updated": "Updated",
-      "minRead": "{minutes} min read",
-      "views": "{count} views",
-      "featured": "Featured",
-      "premium": "Premium Content",
-      "premiumBadgeTooltip": "This content is available for premium leads only.",
-      "tagsLabel": "Tags",
-      "tableOfContents": "On this page",
-      "share": "Share",
-      "copyLink": "Copy link",
-      "copied": "Copied!",
-      "watchVideo": "Watch Video",
-      "readOriginal": "Read Original Article",
-      "relatedServices": "Related Services",
-      "relatedCaseStudies": "Related Case Studies",
-      "heroImages": "Gallery",
+      "back": "返回博客",
+      "by": "作者",
+      "published": "发布于",
+      "updated": "更新于",
+      "minRead": "{minutes} 分钟阅读",
+      "views": "{count} 次浏览",
+      "featured": "精选",
+      "premium": "高级内容",
+      "premiumBadgeTooltip": "此内容仅对高级潜客开放。",
+      "tagsLabel": "标签",
+      "tableOfContents": "本页目录",
+      "share": "分享",
+      "copyLink": "复制链接",
+      "copied": "已复制!",
+      "watchVideo": "观看视频",
+      "readOriginal": "阅读原文",
+      "relatedServices": "相关服务",
+      "relatedCaseStudies": "相关案例研究",
+      "heroImages": "图库",
       "contentType": {
-        "article": "Article",
-        "video": "Video Post",
-        "external": "External Link"
+        "article": "文章",
+        "video": "视频文章",
+        "external": "外部链接"
       },
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Ready to start your next project?",
-        "description": "Let's discuss how we can bring your ideas to life.",
-        "quote": "Request a Quote"
+        "eyebrow": "让我们携手共创",
+        "title": "准备好启动您的下一个项目了吗?",
+        "description": "让我们探讨如何将您的想法变为现实。",
+        "quote": "获取报价"
       }
     }
   },
   "AICapabilities": {
     "listing": {
       "hero": {
-        "eyebrow": "AI Solutions",
-        "headline": "AI Capabilities",
-        "description": "From NLP to computer vision, explore our AI and machine learning capabilities that power intelligent solutions."
+        "eyebrow": "AI 解决方案",
+        "headline": "AI 能力",
+        "description": "从自然语言处理到计算机视觉,探索为智能解决方案赋能的 AI 与机器学习能力。"
       },
       "filters": {
-        "all": "All",
-        "count": "{count} AI capabilit{plural}"
+        "all": "全部",
+        "count": "{count} 项 AI 能力{plural}"
       },
       "card": {
-        "learnMore": "Learn more"
+        "learnMore": "了解更多"
       },
-      "empty": "No AI capabilities found.",
-      "loadMore": "Load More",
+      "empty": "未找到 AI 能力。",
+      "loadMore": "加载更多",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Ready to leverage AI?",
-        "description": "Let's discuss how these AI capabilities can be applied to your specific business challenges.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "让我们携手共创",
+        "title": "准备好利用 AI 了吗?",
+        "description": "让我们探讨如何将这些 AI 能力应用于您企业面临的具体挑战。",
+        "quote": "获取报价",
+        "booking": "预约免费通话"
       },
       "maturity": {
-        "research": "Research",
-        "production": "Production",
-        "experimental": "Experimental"
+        "research": "研究阶段",
+        "production": "生产阶段",
+        "experimental": "实验阶段"
       }
     },
     "detail": {
-      "back": "Back to AI Capabilities",
-      "about": "About This Capability",
-      "technologies": "Technologies",
-      "relatedServices": "Related Services",
-      "demo": "View Live Demo",
+      "back": "返回 AI 能力",
+      "about": "关于该能力",
+      "technologies": "技术栈",
+      "relatedServices": "相关服务",
+      "demo": "查看实时演示",
       "maturity": {
-        "research": "Research",
-        "production": "Production",
-        "experimental": "Experimental"
+        "research": "研究阶段",
+        "production": "生产阶段",
+        "experimental": "实验阶段"
       },
       "cta": {
-        "eyebrow": "Get Started",
-        "title": "Interested in {name}?",
-        "description": "Let's discuss how this AI capability can address your specific business needs.",
-        "quote": "Request a Quote"
+        "eyebrow": "立即开始",
+        "title": "对 {name} 感兴趣吗?",
+        "description": "让我们探讨这项 AI 能力如何满足您企业的具体需求。",
+        "quote": "获取报价"
       }
     }
   },
   "TechExpertise": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Expertise",
-        "headline": "Tech Expertise",
-        "description": "Deep expertise across the full technology stack from cloud architecture to AI, DevOps, security, and everything in between."
+        "eyebrow": "我们的专业能力",
+        "headline": "技术专长",
+        "description": "覆盖全技术栈的深厚专业能力 从云架构到 AI、DevOps、安全等各个方面。"
       },
       "filters": {
-        "all": "All"
+        "all": "全部"
       },
       "card": {
-        "technologies": "{count} technolog{plural}",
-        "caseStudies": "{count} case stud{plural}",
-        "explore": "Explore"
+        "technologies": "{count} 项技术{plural}",
+        "caseStudies": "{count} 个案例研究{plural}",
+        "explore": "探索"
       },
-      "items": "{count} items",
-      "empty": "No tech expertise areas found.",
+      "items": "{count} 个项目",
+      "empty": "未找到技术专长领域。",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Need this expertise for your project?",
-        "description": "Our team brings deep technical knowledge to every engagement. Let's discuss your requirements.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "让我们携手共创",
+        "title": "您的项目需要这项专业能力吗?",
+        "description": "我们的团队为每一次合作带来深厚的技术知识。让我们探讨您的需求。",
+        "quote": "获取报价",
+        "booking": "预约免费通话"
       }
     },
     "detail": {
-      "back": "Back to Tech Expertise",
+      "back": "返回技术专长",
       "stats": {
-        "technologies": "{count} technologies",
-        "caseStudies": "{count} case studies"
+        "technologies": "{count} 项技术",
+        "caseStudies": "{count} 个案例研究"
       },
       "about": {
-        "title": "About This Expertise",
-        "eyebrow": "Overview"
+        "title": "关于该专业能力",
+        "eyebrow": "概览"
       },
       "technologies": {
-        "eyebrow": "Tech Stack",
-        "title": "Technologies & Tools"
+        "eyebrow": "技术栈",
+        "title": "技术与工具"
       },
       "caseStudies": {
-        "eyebrow": "Proven Results",
-        "title": "Related Case Studies",
-        "viewAll": "View all case studies",
-        "readCaseStudy": "Read case study"
+        "eyebrow": "经过验证的成果",
+        "title": "相关案例研究",
+        "viewAll": "查看全部案例研究",
+        "readCaseStudy": "阅读案例研究"
       },
       "cta": {
-        "eyebrow": "Get Started",
-        "title": "Need {name} expertise?",
-        "description": "Our team brings deep expertise and real world experience. Let's discuss how we can help.",
-        "quote": "Request a Quote"
+        "eyebrow": "立即开始",
+        "title": "需要 {name} 方面的专业能力吗?",
+        "description": "我们的团队带来深厚的专业知识和实际经验。让我们探讨我们如何提供帮助。",
+        "quote": "获取报价"
       }
     }
   },
   "Portfolio": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Work",
-        "headline": "Portfolio",
-        "description": "Explore our projects custom software, AI solutions, and digital products we've built for clients worldwide."
+        "eyebrow": "我们的作品",
+        "headline": "作品集",
+        "description": "探索我们的项目 定制软件、AI 解决方案以及我们为全球客户打造的数字化产品。"
       },
       "filters": {
-        "allIndustries": "All Industries",
-        "allTechnologies": "All Technologies",
-        "featured": "Featured",
-        "searchPlaceholder": "Search projects...",
-        "clearSearch": "Clear search",
-        "sortLabel": "Sort by",
-        "showLess": "Show less",
-        "more": "more",
-        "clearAll": "Clear all"
+        "allIndustries": "全部行业",
+        "allTechnologies": "全部技术",
+        "featured": "精选",
+        "searchPlaceholder": "搜索项目...",
+        "clearSearch": "清除搜索",
+        "sortLabel": "排序方式",
+        "showLess": "收起",
+        "more": "更多",
+        "clearAll": "全部清除"
       },
       "card": {
-        "explore": "Explore project",
-        "featured": "Featured"
+        "explore": "探索项目",
+        "featured": "精选"
       },
       "count": {
-        "singular": "{count} project",
-        "plural": "{count} projects"
+        "singular": "{count} 个项目",
+        "plural": "{count} 个项目"
       },
-      "empty": "No portfolio projects found matching your criteria.",
-      "loadMore": "Load More",
+      "empty": "未找到符合您筛选条件的作品集项目。",
+      "loadMore": "加载更多",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Have a project in mind?",
-        "description": "We'd love to add your success story here. Let's discuss your idea.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "让我们携手共创",
+        "title": "有项目想法吗?",
+        "description": "我们很乐意将您的成功故事也添加到这里。让我们探讨您的想法。",
+        "quote": "获取报价",
+        "booking": "预约免费通话"
       }
     },
     "detail": {
-      "back": "Back to Portfolio",
-      "featured": "Featured",
-      "about": "Overview",
-      "industry": "Industry",
-      "services": "Services",
-      "technologies": "Technologies Used",
-      "liveProject": "Live project",
-      "gallery": "Gallery",
+      "back": "返回作品集",
+      "featured": "精选",
+      "about": "概览",
+      "industry": "行业",
+      "services": "服务",
+      "technologies": "所用技术",
+      "liveProject": "在线项目",
+      "gallery": "图库",
       "cta": {
-        "eyebrow": "Let's Build",
-        "title": "Want a similar project?",
-        "description": "Let's discuss how we can build something great together.",
-        "quote": "Request a Quote"
+        "eyebrow": "让我们携手共创",
+        "title": "想要打造类似的项目吗?",
+        "description": "让我们探讨如何携手打造出色的成果。",
+        "quote": "获取报价"
       }
     }
   },
   "CaseStudies": {
     "listing": {
       "hero": {
-        "eyebrow": "Success Stories",
-        "headline": "Case Studies",
-        "description": "Real projects, real results. Explore how we've helped businesses transform with AI and custom software."
+        "eyebrow": "成功故事",
+        "headline": "案例研究",
+        "description": "真实的项目,真实的成果。了解我们如何借助 AI 和定制软件帮助企业实现转型。"
       },
       "filters": {
-        "allIndustries": "All Industries",
-        "allTechnologies": "All Technologies",
-        "clearAll": "Clear all filters"
+        "allIndustries": "全部行业",
+        "allTechnologies": "全部技术",
+        "clearAll": "清除全部筛选条件"
       },
       "card": {
-        "featured": "Featured",
-        "readMore": "Read case study"
+        "featured": "精选",
+        "readMore": "阅读案例研究"
       },
       "count": {
-        "singular": "{count} case study",
-        "plural": "{count} case studies"
+        "singular": "{count} 个案例研究",
+        "plural": "{count} 个案例研究"
       },
-      "empty": "No case studies found matching your criteria.",
-      "loadMore": "Load More",
+      "empty": "未找到符合您筛选条件的案例研究。",
+      "loadMore": "加载更多",
       "cta": {
-        "eyebrow": "Your Success Story",
-        "title": "Want to be our next case study?",
-        "description": "Let's build something great together. Share your project and get a free consultation.",
-        "quote": "Request a Quote",
-        "booking": "Book a Free Call"
+        "eyebrow": "您的成功故事",
+        "title": "想成为我们的下一个案例研究吗?",
+        "description": "让我们携手打造出色的成果。分享您的项目,获取免费咨询。",
+        "quote": "获取报价",
+        "booking": "预约免费通话"
       }
     }
   },
   "CaseStudyDetail": {
-    "backToCaseStudies": "Back to Case Studies",
-    "featuredBadge": "Featured",
+    "backToCaseStudies": "返回案例研究",
+    "featuredBadge": "精选",
     "hero": {
-      "clientLabel": "Client"
+      "clientLabel": "客户"
     },
     "stats": {
-      "weeks": "Weeks",
-      "technologies": "Technologies",
-      "industry": "Industry",
-      "teamSize": "Team Size",
-      "liveUrl": "Live Project",
-      "viewProject": "View Project",
-      "clientSite": "Client Website",
-      "viewClient": "Visit"
+      "weeks": "周数",
+      "technologies": "技术",
+      "industry": "行业",
+      "teamSize": "团队规模",
+      "liveUrl": "在线项目",
+      "viewProject": "查看项目",
+      "clientSite": "客户网站",
+      "viewClient": "访问"
     },
     "overview": {
-      "eyebrow": "Context",
-      "title": "Overview"
+      "eyebrow": "背景",
+      "title": "概览"
     },
     "challenge": {
-      "eyebrow": "The Problem",
-      "title": "Challenge"
+      "eyebrow": "面临的问题",
+      "title": "挑战"
     },
     "solution": {
-      "eyebrow": "Our Approach",
-      "title": "Solution"
+      "eyebrow": "我们的方案",
+      "title": "解决方案"
     },
     "results": {
-      "eyebrow": "Outcome",
-      "title": "Results"
+      "eyebrow": "成果",
+      "title": "结果"
     },
     "metrics": {
-      "eyebrow": "Impact",
-      "title": "Key Metrics"
+      "eyebrow": "影响力",
+      "title": "关键指标"
     },
     "technologies": {
-      "eyebrow": "Stack",
-      "title": "Technologies Used"
+      "eyebrow": "技术栈",
+      "title": "所用技术"
     },
     "services": {
-      "eyebrow": "Related",
-      "title": "Related Services"
+      "eyebrow": "相关内容",
+      "title": "相关服务"
     },
     "gallery": {
-      "eyebrow": "Visuals",
-      "title": "Project Gallery",
-      "close": "Close",
-      "previous": "Previous",
-      "next": "Next"
+      "eyebrow": "视觉资料",
+      "title": "项目图库",
+      "close": "关闭",
+      "previous": "上一个",
+      "next": "下一个"
     },
     "related": {
-      "eyebrow": "More Stories",
-      "title": "Related Case Studies",
-      "readCaseStudy": "Read case study"
+      "eyebrow": "更多故事",
+      "title": "相关案例研究",
+      "readCaseStudy": "阅读案例研究"
     },
     "cta": {
-      "title": "Want similar results?",
-      "description": "Let's discuss how we can help your business achieve transformative outcomes.",
-      "primary": "Request a Quote",
-      "secondary": "Book a Free Call"
+      "title": "想获得类似的成果吗?",
+      "description": "让我们探讨如何帮助您的企业实现转型性的成果。",
+      "primary": "获取报价",
+      "secondary": "预约免费通话"
     }
   },
   "Partners": {
     "listing": {
       "hero": {
-        "eyebrow": "Our Ecosystem",
-        "headline": "Partners",
-        "description": "We collaborate with leading technology providers, cloud platforms, and implementation experts to deliver world class solutions."
+        "eyebrow": "我们的生态系统",
+        "headline": "合作伙伴",
+        "description": "我们与领先的技术供应商、云平台和实施专家携手合作,提供世界级的解决方案。"
       },
       "filters": {
-        "allTypes": "All Types",
-        "allTiers": "All Tiers",
-        "clearAll": "Clear all"
+        "allTypes": "全部类型",
+        "allTiers": "全部等级",
+        "clearAll": "全部清除"
       },
       "card": {
-        "visitWebsite": "Visit website"
+        "visitWebsite": "访问网站"
       },
       "count": {
-        "singular": "{count} partner",
-        "plural": "{count} partners"
+        "singular": "{count} 个合作伙伴",
+        "plural": "{count} 个合作伙伴"
       },
-      "empty": "No partners found matching your criteria.",
+      "empty": "未找到符合您筛选条件的合作伙伴。",
       "cta": {
-        "eyebrow": "Become a Partner",
-        "title": "Interested in partnering with us?",
-        "description": "We're always looking for innovative technology and implementation partners to collaborate with.",
-        "quote": "Get in Touch"
+        "eyebrow": "成为合作伙伴",
+        "title": "有兴趣与我们合作吗?",
+        "description": "我们始终在寻找创新的技术与实施合作伙伴携手合作。",
+        "quote": "联系我们"
       }
     }
   },
   "IndustriesPage": {
     "hero": {
-      "eyebrow": "Industries We Serve",
-      "headline": "Industry Solutions",
-      "description": "We deliver tailored technology solutions across healthcare, finance, education, and more."
+      "eyebrow": "我们服务的行业",
+      "headline": "行业解决方案",
+      "description": "我们在医疗、金融、教育等多个领域提供量身定制的技术解决方案。"
     },
-    "breadcrumbHome": "Home",
-    "breadcrumbIndustries": "Industries",
+    "breadcrumbHome": "首页",
+    "breadcrumbIndustries": "行业",
     "cta": {
-      "title": "Ready to transform your industry?",
-      "description": "Let's discuss how our technology solutions can drive results for your business.",
-      "button": "Get Started"
+      "title": "准备好转型您的行业了吗?",
+      "description": "让我们探讨我们的技术解决方案如何为您的企业带来成果。",
+      "button": "开始使用"
     }
   },
   "CrmForms": {
     "shared": {
-      "budgetLabel": "Budget range",
-      "timelineLabel": "Timeline",
+      "budgetLabel": "预算范围",
+      "timelineLabel": "时间线",
       "budgetOptions": {
-        "not_specified": "Not specified",
-        "under_10k": "Under $10,000",
-        "10k_50k": "$10,000 – $50,000",
-        "50k_150k": "$50,000 – $150,000",
-        "150k_plus": "$150,000+"
+        "not_specified": "未指定",
+        "under_10k": "低于 10,000 美元",
+        "10k_50k": "10,000–50,000 美元",
+        "50k_150k": "50,000–150,000 美元",
+        "150k_plus": "150,000 美元以上"
       },
       "timelineOptions": {
-        "asap": "ASAP",
-        "within_1_month": "Within 1 month",
-        "within_3_months": "Within 3 months",
-        "within_6_months": "Within 6 months",
-        "flexible": "Flexible"
+        "asap": "尽快",
+        "within_1_month": "1 个月内",
+        "within_3_months": "3 个月内",
+        "within_6_months": "6 个月内",
+        "flexible": "灵活安排"
       },
       "meetingTypeOptions": {
-        "video": "Video call",
-        "phone": "Phone call",
-        "in_person": "In person"
+        "video": "视频通话",
+        "phone": "电话通话",
+        "in_person": "线下会面"
       },
-      "industryPlaceholder": "Select your industry",
-      "genericError": "Something went wrong. Please try again.",
-      "rateLimitError": "Too many requests please wait a moment and try again.",
-      "validationError": "Please check the highlighted fields."
+      "industryPlaceholder": "选择您所在的行业",
+      "genericError": "出现问题,请重试。",
+      "rateLimitError": "请求过多,请稍候片刻后重试。",
+      "validationError": "请检查高亮标注的字段。"
     },
     "contact": {
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
+      "fullNameLabel": "全名",
+      "fullNamePlaceholder": "您的姓名",
+      "emailLabel": "电子邮箱地址",
       "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "phoneLabel": "电话(选填)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "serviceLabel": "What are you interested in? (optional)",
-      "servicePlaceholder": "Select a service",
-      "messageLabel": "Message",
-      "messagePlaceholder": "Tell us about your project...",
-      "submit": "Send message",
-      "submitting": "Sending…",
-      "successTitle": "Message sent",
-      "successBody": "Thanks for reaching out our team will get back to you shortly.",
-      "sendAnother": "Send another message"
+      "companyLabel": "公司(选填)",
+      "companyPlaceholder": "您的公司",
+      "jobTitleLabel": "职位(选填)",
+      "jobTitlePlaceholder": "您的职务",
+      "serviceLabel": "您对什么感兴趣?(选填)",
+      "servicePlaceholder": "选择一项服务",
+      "messageLabel": "留言",
+      "messagePlaceholder": "告诉我们您的项目...",
+      "submit": "发送消息",
+      "submitting": "正在发送…",
+      "successTitle": "消息已发送",
+      "successBody": "感谢您的联系,我们的团队将尽快与您取得联系。",
+      "sendAnother": "发送另一条消息"
     },
     "quote": {
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
+      "fullNameLabel": "全名",
+      "fullNamePlaceholder": "您的姓名",
+      "emailLabel": "电子邮箱地址",
       "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "phoneLabel": "电话(选填)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "industryLabel": "Industry (optional)",
-      "industryPlaceholder": "Select your industry",
-      "servicesLabel": "Which services are you interested in?",
-      "descriptionLabel": "Project description",
-      "descriptionPlaceholder": "Tell us what you're looking to build...",
-      "budgetMinLabel": "Estimated budget min (optional)",
-      "budgetMaxLabel": "Estimated budget max (optional)",
-      "submit": "Request a quote",
-      "submitting": "Sending…",
-      "successTitle": "Quote request sent",
-      "successBody": "Thanks our team will review your project and follow up with a tailored quote shortly.",
-      "sendAnother": "Send another request"
+      "companyLabel": "公司(选填)",
+      "companyPlaceholder": "您的公司",
+      "jobTitleLabel": "职位(选填)",
+      "jobTitlePlaceholder": "您的职务",
+      "industryLabel": "行业(选填)",
+      "industryPlaceholder": "选择您所在的行业",
+      "servicesLabel": "您对哪些服务感兴趣?",
+      "descriptionLabel": "项目描述",
+      "descriptionPlaceholder": "告诉我们您想要构建什么...",
+      "budgetMinLabel": "预估最低预算(选填)",
+      "budgetMaxLabel": "预估最高预算(选填)",
+      "submit": "获取报价",
+      "submitting": "正在发送…",
+      "successTitle": "报价请求已发送",
+      "successBody": "感谢您,我们的团队将审核您的项目,并尽快为您提供量身定制的报价。",
+      "sendAnother": "发送另一个请求"
     },
     "newsletter": {
-      "emailLabel": "Email address",
+      "emailLabel": "电子邮箱地址",
       "emailPlaceholder": "you@company.com",
-      "submit": "Subscribe",
-      "successMessage": "You're subscribed!"
+      "submit": "订阅",
+      "successMessage": "您已成功订阅!"
     },
     "booking": {
-      "dateLabel": "Pick a date",
-      "noSlots": "No available slots on this date try another day.",
-      "spotsLeft": "spots left",
-      "continue": "Continue",
-      "backToSlots": "Back to date & time",
-      "selectedSlotLabel": "Selected time",
-      "slotTaken": "That slot was just booked please pick another time.",
-      "stepSlot": "Choose time",
-      "stepDetails": "Your details",
-      "stepSlotTitle": "Pick a date & time",
-      "stepDetailsTitle": "Tell us about you",
-      "fullNameLabel": "Full name",
-      "fullNamePlaceholder": "Your name",
-      "emailLabel": "Email address",
+      "dateLabel": "选择日期",
+      "noSlots": "该日期没有可用时段,请尝试其他日期。",
+      "spotsLeft": "剩余名额",
+      "continue": "继续",
+      "backToSlots": "返回日期与时间",
+      "selectedSlotLabel": "已选时间",
+      "slotTaken": "该时段刚被预订,请选择其他时间。",
+      "stepSlot": "选择时间",
+      "stepDetails": "您的信息",
+      "stepSlotTitle": "选择日期与时间",
+      "stepDetailsTitle": "告诉我们关于您的信息",
+      "fullNameLabel": "全名",
+      "fullNamePlaceholder": "您的姓名",
+      "emailLabel": "电子邮箱地址",
       "emailPlaceholder": "you@company.com",
-      "phoneLabel": "Phone (optional)",
+      "phoneLabel": "电话(选填)",
       "phonePlaceholder": "+1 555 000 0000",
-      "companyLabel": "Company (optional)",
-      "companyPlaceholder": "Your company",
-      "jobTitleLabel": "Job title (optional)",
-      "jobTitlePlaceholder": "Your role",
-      "industryLabel": "Industry (optional)",
-      "meetingTypeLabel": "Meeting type",
-      "messageLabel": "What would you like to discuss? (optional)",
-      "messagePlaceholder": "Tell us a bit about your project or goals...",
-      "notesLabel": "Anything else we should know? (optional)",
-      "notesPlaceholder": "Any specific questions or preferences...",
-      "submit": "Confirm booking",
-      "submitting": "Booking…",
-      "sendAnother": "Book another call",
-      "successTitle": "Consultation booked",
-      "successBody": "You're all set we've sent a confirmation to your email with the meeting details."
+      "companyLabel": "公司(选填)",
+      "companyPlaceholder": "您的公司",
+      "jobTitleLabel": "职位(选填)",
+      "jobTitlePlaceholder": "您的职务",
+      "industryLabel": "行业(选填)",
+      "meetingTypeLabel": "会议类型",
+      "messageLabel": "您希望讨论什么?(选填)",
+      "messagePlaceholder": "简单告诉我们您的项目或目标...",
+      "notesLabel": "还有其他需要我们了解的吗?(选填)",
+      "notesPlaceholder": "任何具体问题或偏好...",
+      "submit": "确认预约",
+      "submitting": "正在预约…",
+      "sendAnother": "预约另一场通话",
+      "successTitle": "咨询已预约",
+      "successBody": "一切准备就绪,我们已将会议详情的确认邮件发送至您的邮箱。"
     }
   },
   "CrmPages": {
     "overview": {
       "meta": {
-        "title": "Work With AUTOMEX AI‑Powered CRM, Quotes & Consultation",
-        "description": "Choose your path: request a project quote, book a free AI/software consultation, or send a message. Transparent process, fast response start building with confidence."
+        "title": "与 AUTOMEX 合作 AI 驱动的 CRM、报价与咨询",
+        "description": "选择适合您的方式:申请项目报价、预约免费的 AI/软件咨询,或发送消息。透明的流程、快速的响应 放心开始合作。"
       },
       "hero": {
-        "eyebrow": "Work With Us",
-        "headlineLead": "Let's build something",
-        "headlineAccent": "that actually works",
-        "description": "Whether you have a clear scope or just a rough idea, we've made it easy to take the next step. Pick the path that fits below.",
-        "ctaQuote": "Request a Quote",
-        "ctaBooking": "Book a Free Call"
+        "eyebrow": "与我们合作",
+        "headlineLead": "让我们打造",
+        "headlineAccent": "真正有效的成果",
+        "description": "无论您已经有清晰的项目范围,还是只有一个粗略的想法,我们都让下一步变得简单。选择下方最适合您的方式。",
+        "ctaQuote": "获取报价",
+        "ctaBooking": "预约免费通话"
       },
       "stats": {
-        "response": "< 2 min response",
-        "followUp": "24h follow Up",
-        "projects": "150+ projects"
+        "response": "< 2 分钟响应",
+        "followUp": "24 小时跟进",
+        "projects": "150+ 个项目"
       },
       "howItWorks": {
-        "eyebrow": "How It Works",
-        "title": "A simple, transparent process",
-        "description": "No black boxes. Here's exactly what happens after you reach out from initial conversation to final delivery."
+        "eyebrow": "工作方式",
+        "title": "简单透明的流程",
+        "description": "没有黑箱操作。这正是您联系我们后 从初次沟通到最终交付 所发生的一切。"
       },
       "paths": {
-        "eyebrow": "Choose Your Path",
-        "title": "Three ways to get started",
+        "eyebrow": "选择您的方式",
+        "title": "三种开始合作的方式",
         "quote": {
-          "title": "Request a Quote",
-          "description": "Already know what you need? Tell us about your project and get a detailed, no obligation quote for AI, software, or automation.",
-          "cta": "Get a quote"
+          "title": "获取报价",
+          "description": "已经明确需求了?告诉我们您的项目,即可获得详细的、无义务的 AI、软件或自动化报价。",
+          "cta": "获取报价"
         },
         "booking": {
-          "title": "Book a Free Call",
-          "description": "Not sure yet? Grab 30 minutes with our team to discuss AI strategies, timelines, and the best approach for your business.",
-          "cta": "Pick a time"
+          "title": "预约免费通话",
+          "description": "还不确定?抽出 30 分钟与我们的团队交流,探讨 AI 策略、时间安排以及最适合您企业的方案。",
+          "cta": "选择时间"
         },
         "contact": {
-          "title": "Send a Message",
-          "description": "Have a quick question or want a personalised walkthrough? We'll reply within one business day.",
-          "cta": "Contact us"
+          "title": "发送消息",
+          "description": "有简短问题,或希望获得个性化的介绍?我们将在一个工作日内回复。",
+          "cta": "联系我们"
         }
       },
       "newsletter": {
-        "eyebrow": "Stay in the Loop",
-        "title": "Get occasional updates, no spam",
-        "description": "Product news, AI insights, and engineering write ups a few times a month at most."
+        "eyebrow": "保持关注",
+        "title": "偶尔获取更新,绝不打扰",
+        "description": "产品动态、AI 洞察和技术文章 至多每月几次。"
       },
       "trust": {
-        "confidential": "100% Confidential & Secure",
-        "expertise": "AI & Software Experts",
-        "timely": "Fast Turnaround & Delivery"
+        "confidential": "100% 保密与安全",
+        "expertise": "AI 与软件专家",
+        "timely": "快速的交付周期"
       }
     },
     "quote": {
       "meta": {
-        "title": "Request a Quote AI, Software & Automation | AUTOMEX",
-        "description": "Get a tailored, no obligation quote for custom AI solutions, software development, or digital transformation. Response within one business day."
+        "title": "获取报价 AI、软件与自动化 | AUTOMEX",
+        "description": "为定制 AI 解决方案、软件开发或数字化转型获取量身定制的、无义务的报价。一个工作日内回复。"
       },
       "hero": {
-        "eyebrow": "Request a Quote",
-        "title": "Let's scope your project",
-        "description": "Share a few details about your goals, timeline, and tech needs. Our team will follow up with a transparent estimate usually within one business day."
+        "eyebrow": "获取报价",
+        "title": "让我们梳理您项目的范围",
+        "description": "分享一些关于您目标、时间安排和技术需求的细节。我们的团队通常会在一个工作日内提供透明的预估报价。"
       }
     },
     "bookCall": {
       "meta": {
-        "title": "Book a Free Consultation AI & Software Strategy | AUTOMEX",
-        "description": "Schedule a free 30 minute call with our experts. We'll discuss your project, technology choices, and how AI can accelerate your business."
+        "title": "预约免费咨询 AI 与软件战略 | AUTOMEX",
+        "description": "与我们的专家预约一次免费的 30 分钟通话。我们将探讨您的项目、技术选择以及 AI 如何加速您的业务发展。"
       },
       "hero": {
-        "eyebrow": "Book a Call",
-        "title": "Talk it through, no pressure",
-        "description": "Pick a time that works for you just a friendly conversation about what you're building and how we can help."
+        "eyebrow": "预约通话",
+        "title": "轻松聊聊,没有压力",
+        "description": "选择一个适合您的时间 只是一次关于您在构建什么以及我们能如何提供帮助的友好交流。"
       }
     },
     "contact": {
       "meta": {
-        "title": "Contact AUTOMEX Quick Enquiries, Sales & Partnerships",
-        "description": "Reach our team for quick questions, partnership opportunities, or enterprise grade AI solutions. We'll respond within one business day."
+        "title": "联系 AUTOMEX 快速咨询、销售与合作",
+        "description": "联系我们的团队,咨询简短问题、探讨合作机会,或了解企业级 AI 解决方案。我们将在一个工作日内回复。"
       },
       "hero": {
-        "eyebrow": "Get in Touch",
-        "title": "Send us a message",
-        "description": "Whether it's a quick question, a partnership proposal, or the start of a larger project we're here to listen."
+        "eyebrow": "联系我们",
+        "title": "给我们发消息",
+        "description": "无论是一个简短问题、一份合作提案,还是一个更大项目的开端 我们都在这里倾听。"
       }
     },
     "contactSales": {
       "meta": {
-        "title": "Contact AUTOMEX Sales Enterprise AI & Software Solutions",
-        "description": "Get in touch with our sales team for enterprise grade AI solutions, custom software, and digital transformation services."
+        "title": "联系 AUTOMEX 销售团队 企业级 AI 与软件解决方案",
+        "description": "联系我们的销售团队,了解企业级 AI 解决方案、定制软件以及数字化转型服务。"
       }
     },
     "subNav": {
-      "overview": "Overview",
-      "quote": "Get a Quote",
-      "booking": "Book a Call",
-      "contact": "Contact Us"
+      "overview": "概览",
+      "quote": "获取报价",
+      "booking": "预约通话",
+      "contact": "联系我们"
     },
     "guest": {
       "meta": {
-        "title": "Track Your Request AUTOMEX",
-        "description": "Check the status of your quote, booking, or enquiry. View activity history and communicate with our team."
+        "title": "追踪您的请求 AUTOMEX",
+        "description": "查看您的报价、预约或咨询的状态。查看活动记录并与我们的团队沟通。"
       },
       "hero": {
-        "eyebrow": "Request Tracker",
-        "headlineLead": "Track your",
-        "headlineAccent": "request status",
-        "description": "Enter the tracking token you received after submitting a form or from your confirmation email to check progress, view activities, and stay in touch with our team."
+        "eyebrow": "请求追踪",
+        "headlineLead": "追踪您的",
+        "headlineAccent": "请求状态",
+        "description": "输入您在提交表单后或在确认邮件中收到的追踪令牌,以查看进度、活动记录,并与我们的团队保持联系。"
       },
       "token": {
-        "title": "Enter your tracking token",
-        "description": "You received this via email after submitting a contact, quote, or booking form. Paste it below to check your request status.",
-        "placeholder": "Paste your token here…",
-        "submit": "Look up requests"
+        "title": "输入您的追踪令牌",
+        "description": "您在提交联系、报价或预约表单后通过邮件收到此令牌。请粘贴在下方以查看您请求的状态。",
+        "placeholder": "在此粘贴您的令牌…",
+        "submit": "查询请求"
       },
       "back": {
-        "toToken": "Change token",
-        "toRequests": "Back to requests"
+        "toToken": "更换令牌",
+        "toRequests": "返回请求列表"
       },
       "requests": {
-        "empty": "No requests found",
-        "emptyHint": "This token doesn't match any submissions. Check that you've copied it correctly, or try a different email.",
-        "viewDetail": "View details"
+        "empty": "未找到任何请求",
+        "emptyHint": "该令牌与任何提交记录都不匹配。请检查是否复制正确,或尝试使用其他邮箱。",
+        "viewDetail": "查看详情"
       },
       "request": {
-        "submitted": "Submitted",
-        "activities": "Activity Timeline",
-        "noActivities": "No activity recorded yet. Our team will update this as your request progresses."
+        "submitted": "已提交",
+        "activities": "活动时间线",
+        "noActivities": "目前尚无活动记录。随着您的请求进展,我们的团队会更新此处。"
       },
       "createTicket": {
-        "cta": "New Support Ticket",
-        "success": "Ticket created successfully.",
-        "formTitle": "Create a support ticket",
-        "formDescription": "Need help or have a question? Open a ticket and our team will respond within one business day.",
-        "titleLabel": "Subject",
-        "titlePlaceholder": "Brief summary of your issue…",
-        "typeLabel": "Ticket type",
-        "priorityLabel": "Priority",
-        "emailLabel": "Your email",
+        "cta": "新建支持工单",
+        "success": "工单创建成功。",
+        "formTitle": "创建支持工单",
+        "formDescription": "需要帮助或有疑问?提交工单,我们的团队将在一个工作日内回复。",
+        "titleLabel": "主题",
+        "titlePlaceholder": "简要概括您的问题…",
+        "typeLabel": "工单类型",
+        "priorityLabel": "优先级",
+        "emailLabel": "您的邮箱",
         "emailPlaceholder": "you@company.com",
-        "descriptionLabel": "Details",
-        "descriptionPlaceholder": "Describe what you need help with in as much detail as possible…",
-        "submit": "Submit ticket"
+        "descriptionLabel": "详细信息",
+        "descriptionPlaceholder": "请尽可能详细地描述您需要什么帮助…",
+        "submit": "提交工单"
       },
       "ticket": {
-        "messages": "Messages",
-        "noMessages": "No messages yet. Our team will reply here.",
-        "reply": "Reply",
-        "replyPlaceholder": "Type your message…",
-        "sendReply": "Send reply"
+        "messages": "消息",
+        "noMessages": "暂无消息。我们的团队将在此处回复。",
+        "reply": "回复",
+        "replyPlaceholder": "输入您的消息…",
+        "sendReply": "发送回复"
       },
       "ticketTypes": {
-        "general_inquiry": "General Inquiry",
-        "technical_support": "Technical Support",
-        "project_request": "Project Request",
-        "bug_report": "Bug Report",
-        "feedback": "Feedback",
-        "partnership": "Partnership"
+        "general_inquiry": "一般咨询",
+        "technical_support": "技术支持",
+        "project_request": "项目请求",
+        "bug_report": "错误报告",
+        "feedback": "反馈意见",
+        "partnership": "合作伙伴关系"
       },
       "priorityLabels": {
-        "low": "Low",
-        "normal": "Normal",
-        "high": "High",
-        "urgent": "Urgent"
+        "low": "低",
+        "normal": "中",
+        "high": "高",
+        "urgent": "紧急"
       },
       "statusLabels": {
-        "open": "Open",
-        "in_progress": "In Progress",
-        "closed": "Closed",
-        "resolved": "Resolved",
-        "pending": "Pending"
+        "open": "待处理",
+        "in_progress": "处理中",
+        "closed": "已关闭",
+        "resolved": "已解决",
+        "pending": "待定"
       },
       "errors": {
-        "tokenRequired": "Please enter a tracking token.",
-        "invalidToken": "We couldn't find any requests for that token. Please double check and try again.",
-        "generic": "Something went wrong. Please try again later."
+        "tokenRequired": "请输入追踪令牌。",
+        "invalidToken": "未能找到与该令牌对应的请求。请检查后重试。",
+        "generic": "出现问题,请稍后重试。"
       }
     }
   },
   "ServicesPage": {
     "meta": {
-      "title": "Our Services - AUTOMEX",
-      "description": "Explore AUTOMEX's full range of services AI solutions, custom software, data engineering, ERP/CRM, cloud & DevOps, UI/UX design, and IT staff augmentation."
+      "title": "我们的服务 - AUTOMEX",
+      "description": "探索 AUTOMEX 的全方位服务 AI 解决方案、定制软件、数据工程、ERP/CRM、云与 DevOps、UI/UX 设计,以及 IT 人才外包。"
     },
-    "breadcrumbHome": "Home",
-    "breadcrumbServices": "Services",
+    "breadcrumbHome": "首页",
+    "breadcrumbServices": "服务",
     "stats": {
-      "services": "Services",
-      "categories": "Categories",
-      "clientSatisfaction": "Client Satisfaction",
-      "projectsDelivered": "Projects Delivered"
+      "services": "服务项目",
+      "categories": "分类",
+      "clientSatisfaction": "客户满意度",
+      "projectsDelivered": "已交付项目"
     },
     "filters": {
-      "all": "All Services"
+      "all": "全部服务"
     },
-    "resultsCount": "{count, plural, =0 {No services found} one {# service} other {# services}}",
-    "featuredBadge": "Featured",
-    "cardCta": "Get a Quote",
-    "loadMore": "Load More",
-    "empty": "No services found in this category yet.",
+    "resultsCount": "{count, plural, =0 {未找到服务} other {# 项服务}}",
+    "featuredBadge": "精选",
+    "cardCta": "获取报价",
+    "loadMore": "加载更多",
+    "empty": "该分类下暂无服务。",
     "bottomCta": {
-      "title": "Not sure which service fits?",
-      "description": "Tell us what you're trying to build and we'll point you in the right direction.",
-      "ctaQuote": "Request a Quote",
-      "ctaBooking": "Book a Free Call"
+      "title": "不确定哪项服务适合您?",
+      "description": "告诉我们您想要构建什么,我们会为您指明正确的方向。",
+      "ctaQuote": "获取报价",
+      "ctaBooking": "预约免费通话"
     },
     "carousel": {
-      "viewService": "View Service"
+      "viewService": "查看服务"
     },
     "trust": {
-      "whyAutomex": "Why AUTOMEX",
-      "headline": "Your technology partner, not just a vendor",
-      "enterpriseSecurity": "Enterprise-grade security",
-      "onTimeDelivery": "On time delivery 98% track record",
-      "dedicatedSupport": "Dedicated support & maintenance",
-      "aiPowered": "AI-powered development workflows",
-      "enterprise": "Enterprise",
-      "standard": "Standard"
+      "whyAutomex": "为何选择 AUTOMEX",
+      "headline": "您的技术伙伴,而非普通供应商",
+      "enterpriseSecurity": "企业级安全保障",
+      "onTimeDelivery": "按时交付 98% 成功记录",
+      "dedicatedSupport": "专属支持与维护",
+      "aiPowered": "AI 驱动的开发工作流",
+      "enterprise": "企业版",
+      "standard": "标准版"
     },
     "search": {
-      "placeholder": "Search services...",
-      "label": "Search services",
-      "clear": "Clear search",
-      "results": "Found {count} results"
+      "placeholder": "搜索服务...",
+      "label": "搜索服务",
+      "clear": "清除搜索",
+      "results": "找到 {count} 条结果"
     },
-    "letsBuild": "Let's Build"
+    "letsBuild": "让我们携手共创"
   },
   "ServicesDetail": {
-    "overview": "Overview",
-    "problemsWeSolve": "Problems We Solve",
-    "keyFeatures": "Key Features",
-    "benefits": "Benefits",
-    "technologyStack": "Technology Stack",
-    "industriesServed": "Industries Served",
-    "ourProcess": "Our Process",
-    "deliverables": "Deliverables",
-    "planComparison": "Plan Comparison",
-    "availableAddOns": "Available Add Ons",
-    "trustedBy": "Trusted By",
-    "clientTestimonials": "Client Testimonials",
-    "serviceGuarantees": "Service Guarantees",
-    "resourcesDocuments": "Resources & Documents",
-    "frequentlyAskedQuestions": "Frequently Asked Questions",
-    "pricing": "Pricing",
-    "relatedServices": "Related Services",
-    "getStarted": "Get Started",
-    "requestQuote": "Request a Quote",
-    "bookFreeCall": "Book a Free Call",
-    "getCustomQuote": "Get a Custom Quote",
-    "lastUpdated": "Last updated",
-    "cover": "Cover",
-    "featured": "Featured",
-    "delivery": "Delivery",
-    "team": "Team",
-    "pricingLabel": "Pricing",
-    "standard": "Standard",
-    "premium": "Premium",
-    "enterprise": "Enterprise",
-    "popular": "Popular",
-    "includedInEnterprise": "Included in Enterprise",
-    "additionalResources": "Additional Resources",
-    "videoPresentation": "Video Presentation",
-    "serviceBrochure": "Service Brochure",
-    "serviceThumbnail": "Service Thumbnail",
-    "startingAt": "Starting at",
-    "model": "Model",
-    "feature": "Feature",
-    "enterpriseFeatures": "Enterprise Features",
-    "readyToBuild": "Ready to build with {name}?",
-    "letsDiscuss": "Let's discuss your requirements and create a tailored solution for your business.",
-    "previousSlide": "Previous slide",
-    "nextSlide": "Next slide",
-    "resumeSlideshow": "Resume slideshow",
-    "pauseSlideshow": "Pause slideshow",
-    "scrollLeft": "Scroll left",
-    "scrollRight": "Scroll right",
-    "goToSlide": "Go to slide {n}",
-    "getQuote": "Get a Quote",
-    "thumbnail": "Thumbnail"
+    "overview": "概览",
+    "problemsWeSolve": "我们解决的问题",
+    "keyFeatures": "核心功能",
+    "benefits": "优势",
+    "technologyStack": "技术栈",
+    "industriesServed": "服务行业",
+    "ourProcess": "我们的流程",
+    "deliverables": "交付成果",
+    "planComparison": "套餐对比",
+    "availableAddOns": "可选附加项",
+    "trustedBy": "受到信赖",
+    "clientTestimonials": "客户评价",
+    "serviceGuarantees": "服务保障",
+    "resourcesDocuments": "资源与文档",
+    "frequentlyAskedQuestions": "常见问题",
+    "pricing": "价格",
+    "relatedServices": "相关服务",
+    "getStarted": "开始使用",
+    "requestQuote": "获取报价",
+    "bookFreeCall": "预约免费通话",
+    "getCustomQuote": "获取定制报价",
+    "lastUpdated": "最后更新",
+    "cover": "封面",
+    "featured": "精选",
+    "delivery": "交付周期",
+    "team": "团队",
+    "pricingLabel": "价格",
+    "standard": "标准版",
+    "premium": "高级版",
+    "enterprise": "企业版",
+    "popular": "热门",
+    "includedInEnterprise": "企业版包含",
+    "additionalResources": "更多资源",
+    "videoPresentation": "视频介绍",
+    "serviceBrochure": "服务手册",
+    "serviceThumbnail": "服务缩略图",
+    "startingAt": "起价",
+    "model": "模式",
+    "feature": "功能",
+    "enterpriseFeatures": "企业版功能",
+    "readyToBuild": "准备好使用 {name} 开始构建了吗?",
+    "letsDiscuss": "让我们探讨您的需求,为您的企业打造量身定制的解决方案。",
+    "previousSlide": "上一张",
+    "nextSlide": "下一张",
+    "resumeSlideshow": "继续播放",
+    "pauseSlideshow": "暂停播放",
+    "scrollLeft": "向左滚动",
+    "scrollRight": "向右滚动",
+    "goToSlide": "跳转至第 {n} 张",
+    "getQuote": "获取报价",
+    "thumbnail": "缩略图"
   },
   "FaqsPage": {
-    "categoryAll": "All",
-    "categoryGeneral": "General",
-    "categoryPricing": "Pricing",
-    "categoryProcess": "Process",
-    "categoryService": "Service specific",
-    "noResults": "No FAQs found for this category.",
+    "categoryAll": "全部",
+    "categoryGeneral": "常规",
+    "categoryPricing": "价格",
+    "categoryProcess": "流程",
+    "categoryService": "服务相关",
+    "noResults": "该分类下未找到常见问题。",
     "hero": {
-      "eyebrow": "Your Questions, Answered",
-      "headline": "Frequently Asked Questions",
-      "description": "Find clear answers to common questions about our services, process, pricing, and more. Can't find what you need? Reach out to our team."
+      "eyebrow": "为您解答",
+      "headline": "常见问题",
+      "description": "查找关于我们服务、流程、价格等方面常见问题的清晰解答。没有找到您需要的信息?请联系我们的团队。"
     },
     "cta": {
-      "eyebrow": "Still Have Questions?",
-      "title": "We're Here to Help",
-      "description": "Our team is ready to answer any questions you have about our services, process, or technology solutions.",
-      "button": "Contact Us"
+      "eyebrow": "仍有疑问?",
+      "title": "我们随时为您提供帮助",
+      "description": "我们的团队随时准备解答您关于我们服务、流程或技术解决方案的任何问题。",
+      "button": "联系我们"
     }
   },
-   "Sidebar": {
-    "menuLabel": "Menu",
-    "dashboard": "Dashboard",
-    "requests": "Requests",
-    "bookings": "Bookings",
-    "support": "Support",
-    "calculations": "Estimates",
-    "conversations": "AI Assistant",
-    "accountLabel": "Account",
-    "notifications": "Notifications",
-    "profile": "Profile",
-    "security": "Security"
+  "Sidebar": {
+    "menuLabel": "菜单",
+    "dashboard": "仪表盘",
+    "requests": "请求",
+    "bookings": "预约",
+    "support": "支持",
+    "calculations": "预估",
+    "conversations": "AI 助手",
+    "accountLabel": "账户",
+    "notifications": "通知",
+    "profile": "个人资料",
+    "security": "安全"
   },
   "DashboardHeader": {
-    "openMenu": "Open navigation",
-    "profile": "Profile"
+    "openMenu": "打开导航",
+    "profile": "个人资料"
   },
   "Dashboard": {
-    "defaultName": "there",
-    "welcomeEyebrow": "Your workspace",
-    "greetMorning": "Good morning",
-    "greetAfternoon": "Good afternoon",
-    "greetEvening": "Good evening",
-    "welcomeDescription": "Here's an overview of your account activity and quick access to your most used services.",
-    "ctaNewRequest": "New request",
-    "ctaBookSession": "Book a session",
-    "sectionOverview": "Overview",
-    "sectionQuickActions": "Quick Actions",
-    "retry": "Retry",
-    "statsRequests": "Total Requests",
-    "statsRequestsActive": "active",
-    "statsBookings": "Total Bookings",
-    "statsBookingsUpcoming": "upcoming",
-    "statsTickets": "Support Tickets",
-    "statsTicketsOpen": "open",
-    "statsCalculations": "Estimates",
-    "statsCalculationsTotal": "total",
-    "actionNewRequest": "New Request",
-    "actionNewRequestDesc": "Submit a quote request or contact our sales team.",
-    "actionBookCall": "Book a Call",
-    "actionBookCallDesc": "Schedule a free consultation with our experts.",
-    "actionSupport": "Get Support",
-    "actionSupportDesc": "Create a ticket or view your existing requests.",
-    "sectionRecentActivity": "Recent Activity",
-    "recentViewAll": "View all",
-    "recentEmpty": "No recent activity to show.",
-    "recentRequest": "Request",
-    "recentBooking": "Booking",
-    "recentTicket": "Ticket"
+    "defaultName": "您好",
+    "welcomeEyebrow": "您的工作空间",
+    "greetMorning": "早上好",
+    "greetAfternoon": "下午好",
+    "greetEvening": "晚上好",
+    "welcomeDescription": "这里是您账户活动的概览,以及最常用服务的快捷入口。",
+    "ctaNewRequest": "新建请求",
+    "ctaBookSession": "预约会话",
+    "sectionOverview": "概览",
+    "sectionQuickActions": "快捷操作",
+    "retry": "重试",
+    "statsRequests": "请求总数",
+    "statsRequestsActive": "进行中",
+    "statsBookings": "预约总数",
+    "statsBookingsUpcoming": "即将到来",
+    "statsTickets": "支持工单",
+    "statsTicketsOpen": "待处理",
+    "statsCalculations": "预估",
+    "statsCalculationsTotal": "总计",
+    "actionNewRequest": "新建请求",
+    "actionNewRequestDesc": "提交报价请求,或联系我们的销售团队。",
+    "actionBookCall": "预约通话",
+    "actionBookCallDesc": "与我们的专家安排一次免费咨询。",
+    "actionSupport": "获取支持",
+    "actionSupportDesc": "创建工单或查看您现有的请求。",
+    "sectionRecentActivity": "最近活动",
+    "recentViewAll": "查看全部",
+    "recentEmpty": "暂无近期活动可显示。",
+    "recentRequest": "请求",
+    "recentBooking": "预约",
+    "recentTicket": "工单"
   },
   "Requests": {
-    "pageTitle": "Requests",
-    "pageDescription": "Track your service requests and quote inquiries.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "emptyTitle": "No requests yet",
-    "emptyDescription": "Submit a quote request or contact our sales team to get started.",
-    "emptyCta": "Submit a request"
+    "pageTitle": "请求",
+    "pageDescription": "追踪您的服务请求与报价咨询。",
+    "filters": "筛选",
+    "refresh": "刷新",
+    "retry": "重试",
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "emptyTitle": "暂无请求",
+    "emptyDescription": "提交报价请求或联系我们的销售团队即可开始。",
+    "emptyCta": "提交请求"
   },
   "Calculations": {
-    "pageTitle": "Cost Estimates",
-    "pageDescription": "View your service cost estimates and convert them into requests.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "converted": "Converted",
-    "converting": "Converting...",
-    "convertToRequest": "Convert",
-    "emptyTitle": "No estimates yet",
-    "emptyDescription": "Use our service calculator to get a cost estimate for your project.",
-    "emptyCta": "Get a quote"
+    "pageTitle": "费用预估",
+    "pageDescription": "查看您的服务费用预估,并将其转换为正式请求。",
+    "filters": "筛选",
+    "refresh": "刷新",
+    "retry": "重试",
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "converted": "已转换",
+    "converting": "转换中...",
+    "convertToRequest": "转换",
+    "emptyTitle": "暂无预估",
+    "emptyDescription": "使用我们的服务计算器为您的项目获取费用预估。",
+    "emptyCta": "获取报价"
   },
   "RequestDetail": {
-    "pageTitle": "Request Details",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "labelEmail": "Email",
-    "labelCompany": "Company",
-    "labelExpectedClose": "Expected close date",
-    "labelMessage": "Message",
-    "labelQuoteDetails": "Quote Details",
-    "labelProject": "Project",
-    "labelBudget": "Budget",
-    "sendMessage": "Send a message",
-    "messagePlaceholder": "Type your message to our team...",
-    "send": "Send",
-    "sending": "Sending...",
-    "messageSent": "Message sent successfully!",
-    "activityTimeline": "Activity Timeline",
-    "by": "by",
-    "createTicketForRequest": "Create Support Ticket"
+    "pageTitle": "请求详情",
+    "goBack": "返回",
+    "retry": "重试",
+    "labelEmail": "邮箱",
+    "labelCompany": "公司",
+    "labelExpectedClose": "预计完成日期",
+    "labelMessage": "留言",
+    "labelQuoteDetails": "报价详情",
+    "labelProject": "项目",
+    "labelBudget": "预算",
+    "sendMessage": "发送消息",
+    "messagePlaceholder": "输入给我们团队的消息...",
+    "send": "发送",
+    "sending": "正在发送...",
+    "messageSent": "消息发送成功!",
+    "activityTimeline": "活动时间线",
+    "by": "来自",
+    "createTicketForRequest": "创建支持工单"
   },
   "Bookings": {
-    "pageTitle": "Bookings",
-    "pageDescription": "Manage your consultation calls and meetings.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "emptyTitle": "No bookings yet",
-    "emptyDescription": "Schedule a consultation call with our team to discuss your project.",
-    "emptyCta": "Book a call"
+    "pageTitle": "预约",
+    "pageDescription": "管理您的咨询通话与会议。",
+    "filters": "筛选",
+    "refresh": "刷新",
+    "retry": "重试",
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "emptyTitle": "暂无预约",
+    "emptyDescription": "与我们的团队安排一次咨询通话,探讨您的项目。",
+    "emptyCta": "预约通话"
   },
   "BookingDetail": {
-    "pageTitle": "Booking Details",
-    "bookingId": "Booking ID",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "labelDate": "Date",
-    "labelTime": "Time",
-    "labelMeetingLink": "Meeting Link",
-    "labelNotes": "Notes",
-    "labelConfirmed": "Confirmed on",
-    "labelCancelled": "Cancelled on",
-    "labelRescheduleCount": "Rescheduled",
-    "joinMeeting": "Join Meeting",
-    "reschedule": "Reschedule",
-    "cancel": "Cancel Booking",
-    "rescheduleTitle": "Reschedule Booking",
-    "rescheduleDescription": "Select a new date and time for your meeting.",
-    "labelNewDate": "New Date",
-    "labelNewTime": "New Time",
-    "labelReason": "Reason",
-    "optional": "optional",
-    "reasonPlaceholder": "Why do you need to reschedule?",
-    "dialogCancel": "Cancel",
-    "confirmReschedule": "Confirm Reschedule",
-    "rescheduling": "Rescheduling...",
-    "cancelTitle": "Cancel Booking",
-    "cancelDescription": "Are you sure you want to cancel this booking? This action cannot be undone.",
-    "confirmCancel": "Yes, Cancel Booking",
-    "cancelling": "Cancelling..."
+    "pageTitle": "预约详情",
+    "bookingId": "预约编号",
+    "goBack": "返回",
+    "retry": "重试",
+    "labelDate": "日期",
+    "labelTime": "时间",
+    "labelMeetingLink": "会议链接",
+    "labelNotes": "备注",
+    "labelConfirmed": "确认于",
+    "labelCancelled": "取消于",
+    "labelRescheduleCount": "已改期",
+    "joinMeeting": "加入会议",
+    "reschedule": "改期",
+    "cancel": "取消预约",
+    "rescheduleTitle": "改期预约",
+    "rescheduleDescription": "为您的会议选择新的日期和时间。",
+    "labelNewDate": "新日期",
+    "labelNewTime": "新时间",
+    "labelReason": "原因",
+    "optional": "选填",
+    "reasonPlaceholder": "为什么需要改期?",
+    "dialogCancel": "取消",
+    "confirmReschedule": "确认改期",
+    "rescheduling": "正在改期...",
+    "cancelTitle": "取消预约",
+    "cancelDescription": "您确定要取消此预约吗?此操作无法撤销。",
+    "confirmCancel": "是的,取消预约",
+    "cancelling": "正在取消..."
   },
   "Support": {
-    "pageTitle": "Support",
-    "pageDescription": "Get help from our team and track your support tickets.",
-    "filters": "Filters",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "loading": "Loading...",
-    "loadMore": "Load more",
-    "newTicket": "New Ticket",
-    "emptyTitle": "No support tickets",
-    "emptyDescription": "Create a ticket if you need help with a project or have a question.",
-    "emptyCta": "Create a ticket",
-    "createTitle": "Create Support Ticket",
-    "createDescription": "Describe your issue and our team will get back to you.",
-    "labelTitle": "Title",
-    "titlePlaceholder": "Brief summary of your issue...",
-    "labelType": "Type",
-    "typeGeneralInquiry": "General Inquiry",
-    "typeTechnicalSupport": "Technical Support",
-    "typeProjectRequest": "Project Request",
-    "typeBugReport": "Bug Report",
-    "typeFeedback": "Feedback",
-    "typePartnership": "Partnership",
-    "labelPriority": "Priority",
-    "priorityLow": "Low",
-    "priorityNormal": "Normal",
-    "priorityHigh": "High",
-    "priorityUrgent": "Urgent",
-    "labelDescription": "Description",
-    "descriptionPlaceholder": "Describe your issue in detail...",
-    "dialogCancel": "Cancel",
-    "submitTicket": "Submit Ticket",
-    "creating": "Creating...",
-    "linkedRequest": "Linked request",
-    "unlink": "Unlink"
+    "pageTitle": "支持",
+    "pageDescription": "获取我们团队的帮助,并追踪您的支持工单。",
+    "filters": "筛选",
+    "refresh": "刷新",
+    "retry": "重试",
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "newTicket": "新建工单",
+    "emptyTitle": "暂无支持工单",
+    "emptyDescription": "如果您的项目需要帮助或有疑问,请创建工单。",
+    "emptyCta": "创建工单",
+    "createTitle": "创建支持工单",
+    "createDescription": "描述您的问题,我们的团队将与您联系。",
+    "labelTitle": "标题",
+    "titlePlaceholder": "简要概括您的问题...",
+    "labelType": "类型",
+    "typeGeneralInquiry": "一般咨询",
+    "typeTechnicalSupport": "技术支持",
+    "typeProjectRequest": "项目请求",
+    "typeBugReport": "错误报告",
+    "typeFeedback": "反馈意见",
+    "typePartnership": "合作伙伴关系",
+    "labelPriority": "优先级",
+    "priorityLow": "低",
+    "priorityNormal": "中",
+    "priorityHigh": "高",
+    "priorityUrgent": "紧急",
+    "labelDescription": "描述",
+    "descriptionPlaceholder": "详细描述您的问题...",
+    "dialogCancel": "取消",
+    "submitTicket": "提交工单",
+    "creating": "创建中...",
+    "linkedRequest": "关联请求",
+    "unlink": "取消关联"
   },
   "TicketDetail": {
-    "ticketId": "Ticket ID",
-    "goBack": "Go back",
-    "retry": "Retry",
-    "resolutionSummary": "Resolution Summary",
-    "conversation": "Conversation",
-    "noMessages": "No messages yet. Start the conversation below.",
-    "replyPlaceholder": "Type your reply...",
-    "sendReply": "Send Reply",
-    "sending": "Sending...",
-    "ticketClosed": "This ticket is closed. No further replies can be sent."
+    "ticketId": "工单编号",
+    "goBack": "返回",
+    "retry": "重试",
+    "resolutionSummary": "解决方案摘要",
+    "conversation": "对话",
+    "noMessages": "暂无消息。请在下方开始对话。",
+    "replyPlaceholder": "输入您的回复...",
+    "sendReply": "发送回复",
+    "sending": "正在发送...",
+    "ticketClosed": "此工单已关闭,无法再发送更多回复。"
   },
   "Notifications": {
-    "pageTitle": "Notifications",
-    "pageDescription": "Stay updated on your requests, bookings, and support tickets.",
-    "unread": "unread",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "markAllRead": "Mark all read",
-    "emptyTitle": "No notifications",
-    "emptyDescription": "You're all caught up! Check back later for updates.",
-    "preferences": "Preferences",
-    "prefsTitle": "Notification Preferences",
-    "prefsSave": "Save",
-    "prefsSaved": "Saved!",
-    "prefsEmpty": "No preferences available.",
-    "freqInstant": "Instant",
-    "freqDaily": "Daily",
-    "freqWeekly": "Weekly"
+    "pageTitle": "通知",
+    "pageDescription": "及时了解您的请求、预约与支持工单的最新动态。",
+    "unread": "未读",
+    "refresh": "刷新",
+    "retry": "重试",
+    "markAllRead": "全部标为已读",
+    "emptyTitle": "暂无通知",
+    "emptyDescription": "您已阅览全部内容!请稍后查看更新。",
+    "preferences": "偏好设置",
+    "prefsTitle": "通知偏好设置",
+    "prefsSave": "保存",
+    "prefsSaved": "已保存!",
+    "prefsEmpty": "暂无可用偏好设置。",
+    "freqInstant": "即时",
+    "freqDaily": "每日",
+    "freqWeekly": "每周"
   },
   "Conversations": {
-    "pageTitle": "AI Conversations",
-    "pageDescription": "Review your past conversations with our AI sales assistant.",
-    "refresh": "Refresh",
-    "retry": "Retry",
-    "emptyTitle": "No conversations yet",
-    "emptyDescription": "Start a conversation using the AI assistant widget on any page.",
-    "detailTitle": "Conversation",
-    "messages": "messages",
-    "leadCaptured": "Lead captured",
-    "noMessages": "No messages in this conversation."
+    "pageTitle": "AI 对话记录",
+    "pageDescription": "查看您与我们 AI 销售助手的历史对话。",
+    "refresh": "刷新",
+    "retry": "重试",
+    "emptyTitle": "暂无对话记录",
+    "emptyDescription": "在任意页面使用 AI 助手小组件开始一段对话。",
+    "detailTitle": "对话",
+    "messages": "条消息",
+    "leadCaptured": "已获取线索",
+    "noMessages": "此对话中暂无消息。"
   },
-   "Profile": {
-    "pageTitle": "My Profile",
-    "pageDescription": "Manage your personal information, address, and account details.",
-    "emailVerified": "Email verified",
-    "emailNotVerified": "Email not verified",
-    "memberSince": "Member since",
-    "sectionPersonal": "Personal Information",
-    "sectionPersonalDesc": "Update your name, contact details, and address.",
-    "sectionAddress": "Address",
-    "sectionAccount": "Account Details",
-    "sectionAccountDesc": "Read-only account metadata.",
-    "fieldFullName": "Full name",
-    "fieldPhone": "Phone number",
-    "fieldDob": "Date of birth",
-    "fieldTimezone": "Timezone",
-    "fieldAltEmail": "Alternate email",
-    "fieldLanguage": "Preferred language",
-    "fieldBio": "Bio",
-    "fieldBioPlaceholder": "Tell us a little about yourself…",
-    "fieldAddress1": "Address line 1",
-    "fieldAddress2": "Address line 2",
-    "fieldCity": "City",
-    "fieldState": "State / Province",
-    "fieldPostal": "Postal code",
-    "fieldCountry": "Country",
-    "fieldCountryPlaceholder": "Select country",
-    "fieldAccountId": "Account ID",
-    "fieldEmail": "Email address",
-    "fieldRole": "Role",
-    "fieldSignInMethod": "Sign-in method",
-    "fieldEmailPassword": "Email & Password",
-    "fieldMemberSince": "Member since",
-    "fieldTermsAccepted": "Terms accepted",
-    "fieldLastUpdated": "Last updated",
-    "fieldLanguage1": "Language",
-    "saveChanges": "Save changes",
-    "saving": "Saving…",
-    "savedSuccess": "Profile updated successfully",
-    "uploadPicture": "Change profile picture",
-    "uploadNotImage": "Please select a valid image file.",
-    "uploadTooLarge": "Image must be smaller than 5 MB.",
-    "uploadSuccess": "Profile picture updated!"
+  "Profile": {
+    "pageTitle": "我的资料",
+    "pageDescription": "管理您的个人信息、地址与账户详情。",
+    "emailVerified": "邮箱已验证",
+    "emailNotVerified": "邮箱未验证",
+    "memberSince": "加入时间",
+    "sectionPersonal": "个人信息",
+    "sectionPersonalDesc": "更新您的姓名、联系方式和地址。",
+    "sectionAddress": "地址",
+    "sectionAccount": "账户详情",
+    "sectionAccountDesc": "只读账户元数据。",
+    "fieldFullName": "全名",
+    "fieldPhone": "电话号码",
+    "fieldDob": "出生日期",
+    "fieldTimezone": "时区",
+    "fieldAltEmail": "备用邮箱",
+    "fieldLanguage": "首选语言",
+    "fieldBio": "个人简介",
+    "fieldBioPlaceholder": "简单介绍一下您自己…",
+    "fieldAddress1": "地址第一行",
+    "fieldAddress2": "地址第二行",
+    "fieldCity": "城市",
+    "fieldState": "州/省",
+    "fieldPostal": "邮政编码",
+    "fieldCountry": "国家",
+    "fieldCountryPlaceholder": "选择国家",
+    "fieldAccountId": "账户 ID",
+    "fieldEmail": "电子邮箱地址",
+    "fieldRole": "角色",
+    "fieldSignInMethod": "登录方式",
+    "fieldEmailPassword": "邮箱与密码",
+    "fieldMemberSince": "加入时间",
+    "fieldTermsAccepted": "已接受条款",
+    "fieldLastUpdated": "最后更新",
+    "fieldLanguage1": "语言",
+    "saveChanges": "保存更改",
+    "saving": "保存中…",
+    "savedSuccess": "个人资料更新成功",
+    "uploadPicture": "更换头像",
+    "uploadNotImage": "请选择有效的图片文件。",
+    "uploadTooLarge": "图片大小必须小于 5 MB。",
+    "uploadSuccess": "头像已更新!"
   },
   "Security": {
-    "pageTitle": "Security",
-    "pageDescription": "Manage your password, active sessions, and account safety.",
-    "sectionOverview": "Security Overview",
-    "sectionOverviewDesc": "Your account health at a glance.",
-    "sectionPassword": "Change Password",
-    "sectionPasswordDesc": "Choose a strong password you don't use elsewhere.",
-    "sectionSessions": "Active Sessions",
-    "sectionSessionsDesc": "Devices currently signed in to your account.",
-    "sectionDanger": "Danger Zone",
-    "sectionDangerDesc": "Irreversible actions proceed with caution.",
-    "overallGood": "Your account looks secure",
-    "overallGoodDesc": "Email verified, password set, and session count is normal.",
-    "overallWarn": "Some security items need attention",
-    "overallWarnDesc": "Review the items below and take action where needed.",
-    "verifyEmailHint": "Check your inbox for a verification link. Contact support if you didn't receive one.",
-    "statusEmailLabel": "Email address",
-    "statusVerified": "Verified",
-    "statusNotVerified": "Not verified",
-    "statusPasswordLabel": "Password",
-    "statusPasswordSet": "Password set",
-    "statusOAuthOnly": "No password (OAuth)",
-    "statusSessionsLabel": "Active sessions",
-    "statusActiveSessions": "active",
-    "statusSignInLabel": "Sign-in method",
-    "statusEmailPassword": "Email & Password",
-    "oauthNoPassword": "Password change unavailable",
-    "oauthNoPasswordDesc": "Your account uses Google OAuth. Password changes are managed through Google.",
-    "fieldCurrentPassword": "Current password",
-    "fieldNewPassword": "New password",
-    "fieldConfirmPassword": "Confirm new password",
-    "passwordWarning": "Changing your password will sign you out of all devices. You will need to sign in again.",
-    "updatePassword": "Update password",
-    "updating": "Updating…",
-    "passwordChanged": "Password updated. Please sign in again.",
-    "currentSession": "Current",
-    "unknownDevice": "Unknown device",
-    "lastActive": "Last active",
-    "expires": "Expires",
-    "revokeSession": "Revoke",
-    "sessionRevoked": "Session revoked",
-    "sessionLoadError": "Failed to load sessions",
-    "noSessions": "No active sessions found",
-    "refresh": "Refresh",
-    "signOutAllTitle": "Sign out all other devices",
-    "signOutAllDesc": "Revoke all active sessions except your current one.",
-    "signOutAllBtn": "Sign out all others",
-    "allOtherSignedOut": "{count} other session(s) signed out",
-    "deleteAccountTitle": "Delete account",
-    "deleteAccountDesc": "Permanently delete your account and all associated data. This cannot be undone.",
-    "deleteAccountBtn": "Delete account",
-    "deleteContactSupport": "Account deletion is not yet available. Please contact support@automex.tech.",
-    "deleteDialogTitle": "Delete your account?",
-    "deleteDialogDesc": "This will permanently erase your profile, requests, bookings, and all data. There is no recovery.",
-    "deleteUnderstandCheck": "I understand this action is permanent and irreversible.",
-    "deleteTypeNamePrompt": "To confirm, type your full name:",
-    "deleteNameMatch": "Name confirmed",
-    "deleteConfirmBtn": "Yes, delete my account",
-    "deleting": "Deleting…",
-    "cancel": "Cancel"
+    "pageTitle": "安全设置",
+    "pageDescription": "管理您的密码、活跃会话与账户安全。",
+    "sectionOverview": "安全概览",
+    "sectionOverviewDesc": "一目了然地查看您的账户安全状况。",
+    "sectionPassword": "修改密码",
+    "sectionPasswordDesc": "选择一个不在其他地方使用的强密码。",
+    "sectionSessions": "活跃会话",
+    "sectionSessionsDesc": "当前已登录您账户的设备。",
+    "sectionDanger": "危险操作区",
+    "sectionDangerDesc": "不可逆操作,请谨慎处理。",
+    "overallGood": "您的账户看起来很安全",
+    "overallGoodDesc": "邮箱已验证,密码已设置,会话数量正常。",
+    "overallWarn": "部分安全项需要关注",
+    "overallWarnDesc": "请查看以下事项,并在需要时采取行动。",
+    "verifyEmailHint": "请查收您的邮箱以获取验证链接。如未收到,请联系客服。",
+    "statusEmailLabel": "电子邮箱地址",
+    "statusVerified": "已验证",
+    "statusNotVerified": "未验证",
+    "statusPasswordLabel": "密码",
+    "statusPasswordSet": "已设置密码",
+    "statusOAuthOnly": "无密码(OAuth)",
+    "statusSessionsLabel": "活跃会话",
+    "statusActiveSessions": "个活跃",
+    "statusSignInLabel": "登录方式",
+    "statusEmailPassword": "邮箱与密码",
+    "oauthNoPassword": "无法修改密码",
+    "oauthNoPasswordDesc": "您的账户使用 Google OAuth 登录。密码更改需通过 Google 管理。",
+    "fieldCurrentPassword": "当前密码",
+    "fieldNewPassword": "新密码",
+    "fieldConfirmPassword": "确认新密码",
+    "passwordWarning": "更改密码将使您在所有设备上退出登录。您需要重新登录。",
+    "updatePassword": "更新密码",
+    "updating": "正在更新…",
+    "passwordChanged": "密码已更新。请重新登录。",
+    "currentSession": "当前会话",
+    "unknownDevice": "未知设备",
+    "lastActive": "最后活跃时间",
+    "expires": "过期时间",
+    "revokeSession": "撤销",
+    "sessionRevoked": "会话已撤销",
+    "sessionLoadError": "会话加载失败",
+    "noSessions": "未找到活跃会话",
+    "refresh": "刷新",
+    "signOutAllTitle": "在所有其他设备上退出登录",
+    "signOutAllDesc": "撤销除当前设备外的所有活跃会话。",
+    "signOutAllBtn": "退出所有其他设备",
+    "allOtherSignedOut": "已注销 {count} 个其他会话",
+    "deleteAccountTitle": "删除账户",
+    "deleteAccountDesc": "永久删除您的账户及所有相关数据。此操作无法撤销。",
+    "deleteAccountBtn": "删除账户",
+    "deleteContactSupport": "账户删除功能暂未开放。请联系 support@automex.tech。",
+    "deleteDialogTitle": "删除您的账户?",
+    "deleteDialogDesc": "此操作将永久清除您的个人资料、请求、预约及所有数据,且无法恢复。",
+    "deleteUnderstandCheck": "我理解此操作是永久且不可逆的。",
+    "deleteTypeNamePrompt": "为确认操作,请输入您的全名:",
+    "deleteNameMatch": "姓名已确认",
+    "deleteConfirmBtn": "是的,删除我的账户",
+    "deleting": "正在删除…",
+    "cancel": "取消"
   },
   "PrivacyPolicy": {
     "metaDescription": "Learn how Automex collects, uses, and protects your personal information. Effective July 2025.",
@@ -1706,6 +1707,7 @@
     "intro": "This Privacy Policy explains how {company} (\"Automex\", \"we\", \"us\", or \"our\") collects, uses, discloses, and safeguards your information when you visit {site}, use our platform, or engage our services (collectively, the \"Services\"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Services.",
 
     "section1": {
+      "title": "1. Information We Collect",
       "intro": "We collect information you provide directly, information collected automatically, and information from third parties.",
       "subsections": {
         "1": {
@@ -1737,6 +1739,7 @@
     },
 
     "section2": {
+      "title": "2. How We Use Your Information",
       "intro": "We use your information for the following purposes:",
       "items": [
         "<strong>Providing and operating the Services</strong> — to create and manage your account, process transactions, authenticate your identity, and deliver the features you request.",
@@ -1750,6 +1753,7 @@
     },
 
     "section3": {
+      "title": "3. How We Share Your Information",
       "intro": "We do not sell, rent, or trade your personal information. We share it only as described below.",
       "items": [
         "<strong>Service providers</strong> — third-party vendors who process data on our behalf (cloud hosting, payment processing, email delivery, analytics, customer support tooling). These vendors are contractually bound to protect your data and may not use it for their own purposes.",
@@ -1761,6 +1765,7 @@
     },
 
     "section4": {
+      "title": "4. Data Retention",
       "intro": "We retain your personal data for as long as your account is active or as needed to provide the Services. Specifically:",
       "items": [
         "<strong>Account data</strong> — is retained for the life of your account and up to 3 years after closure for dispute resolution, fraud prevention, and compliance with our legal obligations.",
@@ -1772,6 +1777,7 @@
     },
 
     "section5": {
+      "title": "5. Security",
       "items": [
         "TLS 1.2+ encryption in transit and AES-256 encryption at rest.",
         "Role-based access controls limiting employee access to personal data.",
@@ -1782,6 +1788,7 @@
     },
 
     "section6": {
+      "title": "6. Your Rights and Choices",
       "intro": "Depending on where you reside, you may have certain rights regarding your personal information.",
       "subsections": {
         "1": {
@@ -1807,6 +1814,7 @@
     },
 
     "section7": {
+      "title": "7. Cookies and Tracking Technologies",
       "intro": "We use the following types of cookies and similar technologies:",
       "items": [
         "<strong>Strictly necessary cookies</strong> — required for the Services to function (session management, authentication, security). These cannot be disabled.",
@@ -1818,18 +1826,22 @@
     },
 
     "section8": {
+      "title": "8. Third-Party Links and Services",
       "content": "The Services may contain links to third-party websites, integrations, or services that are not operated by Automex. We are not responsible for the privacy practices of any third party. We encourage you to review the privacy policy of every site or service you visit."
     },
 
     "section9": {
+      "title": "9. Children's Privacy (COPPA)",
       "content": "The Services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at {email}. If we discover we have collected personal information from a child under 13, we will promptly delete it in accordance with the Children's Online Privacy Protection Act (COPPA)."
     },
 
     "section10": {
+      "title": "10. International Users",
       "content": "Automex is headquartered in the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using the Services, you consent to this transfer. We take steps to ensure that your data receives an adequate level of protection wherever it is processed."
     },
 
     "section11": {
+      "title": "11. Changes to This Privacy Policy",
       "intro": "We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:",
       "items": [
         "Posting the updated policy on this page with a revised 'Effective date' at the top.",
@@ -1839,6 +1851,7 @@
     },
 
     "section12": {
+      "title": "12. Contact Us",
       "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
       "address": {
         "department": "Privacy & Data Compliance",
@@ -1852,6 +1865,153 @@
 
     "bottomNav": {
       "terms": "Terms of Service",
+      "contact": "Contact Us",
+      "home": "Back to Home"
+    }
+  },
+  "Terms": {
+    "metaDescription": "Read the Terms of Service for Automex. Understand your rights and obligations when using our AI and software services.",
+    "title": "Terms of Service",
+    "backToHome": "Back to Automex",
+    "breadcrumbHome": "Home",
+    "effectiveDateLabel": "Last updated:",
+    "effectiveDateValue": "July 9, 2025",
+    "companyLabel": "Company:",
+    "locationLabel": "Location:",
+    "intro": "Welcome to {company}. By accessing or using our website {site}, you agree to be bound by these Terms of Service (the \"Terms\"). If you do not agree to these Terms, please do not use our Services. These Terms apply to all visitors, users, and others who access or use the Services.",
+
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "items": [
+        "By using the Services, you agree to comply with and be legally bound by these Terms, whether or not you become a registered user.",
+        "If you are using the Services on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.",
+        "We reserve the right to update or modify these Terms at any time. Your continued use of the Services after any such changes constitutes your acceptance of the new Terms."
+      ]
+    },
+
+    "section2": {
+      "title": "2. Description of Services",
+      "items": [
+        "Automex provides AI automation, software development, cloud infrastructure, and digital transformation services (the \"Services\").",
+        "We may add, modify, or discontinue any aspect of the Services at our discretion, with or without notice.",
+        "The Services may include third-party tools, integrations, or content. Your use of such third-party offerings is governed by their respective terms."
+      ]
+    },
+
+    "section3": {
+      "title": "3. User Accounts",
+      "items": [
+        "To access certain features, you must create an account. You are responsible for maintaining the confidentiality of your account credentials.",
+        "You agree to provide accurate, current, and complete information during registration and to update it as necessary.",
+        "You are solely responsible for all activities that occur under your account. Notify us immediately of any unauthorised use.",
+        "We reserve the right to suspend or terminate accounts that violate these Terms or applicable law."
+      ]
+    },
+
+    "section4": {
+      "title": "4. User Obligations and Conduct",
+      "items": [
+        "You agree to use the Services only for lawful purposes and in accordance with these Terms.",
+        "You shall not: (a) misuse the Services (e.g., hacking, scraping, distributing malware); (b) infringe the rights of others; (c) violate any applicable laws or regulations.",
+        "You shall not interfere with or disrupt the integrity or performance of the Services or any data contained therein.",
+        "You are responsible for all content you upload, post, or transmit via the Services, and you grant us a non-exclusive license to use it to provide the Services."
+      ]
+    },
+
+    "section5": {
+      "title": "5. Intellectual Property",
+      "items": [
+        "All content, trademarks, and intellectual property on the Services are owned by or licensed to Automex.",
+        "You may not reproduce, distribute, modify, or create derivative works of our content without our prior written consent.",
+        "Your use of the Services does not grant you any ownership rights in our intellectual property.",
+        "Feedback, suggestions, and ideas you provide to us about the Services become our property and we may use them without obligation."
+      ]
+    },
+
+    "section6": {
+      "title": "6. Payment and Billing",
+      "items": [
+        "Some Services are fee-based. You agree to pay all fees and charges incurred in connection with your use of such Services.",
+        "All fees are non-refundable unless otherwise stated. We may change our fees upon notice.",
+        "You are responsible for providing accurate billing information and for keeping it current.",
+        "If we are unable to charge your payment method, we may suspend or terminate your access to paid Services."
+      ]
+    },
+
+    "section7": {
+      "title": "7. Termination",
+      "items": [
+        "You may terminate your account at any time by contacting us or using the account settings.",
+        "We may suspend or terminate your account and access to the Services at any time, with or without cause, with or without notice.",
+        "Upon termination, your right to use the Services will immediately cease, and we may delete your data.",
+        "Provisions that by their nature should survive termination (e.g., indemnity, liability limits, governing law) shall survive."
+      ]
+    },
+
+    "section8": {
+      "title": "8. Disclaimer of Warranties",
+      "items": [
+        "The Services are provided on an \"AS IS\" and \"AS AVAILABLE\" basis, without warranties of any kind, express or implied.",
+        "We disclaim all warranties, including merchantability, fitness for a particular purpose, non-infringement, and accuracy.",
+        "We do not warrant that the Services will be uninterrupted, error-free, secure, or free from viruses.",
+        "Any material downloaded or otherwise obtained through the Services is at your own discretion and risk."
+      ]
+    },
+
+    "section9": {
+      "title": "9. Limitation of Liability",
+      "items": [
+        "To the maximum extent permitted by law, Automex and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages.",
+        "Our total liability for any claim arising out of or relating to these Terms or the Services shall not exceed the amount paid by you to us during the twelve months preceding the claim.",
+        "The foregoing limitations apply regardless of the basis of liability, whether contract, tort, or otherwise.",
+        "Some jurisdictions do not allow the exclusion of certain warranties or limitations, so these limitations may not apply to you."
+      ]
+    },
+
+    "section10": {
+      "title": "10. Indemnification",
+      "items": [
+        "You agree to defend, indemnify, and hold harmless Automex and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, or expenses arising from:",
+        "(a) your use of the Services; (b) your violation of these Terms; (c) your violation of any third-party rights; or (d) your content.",
+        "We reserve the right to assume the exclusive defence and control of any matter subject to indemnification, and you will cooperate with us in asserting any available defences."
+      ]
+    },
+
+    "section11": {
+      "title": "11. Governing Law and Dispute Resolution",
+      "items": [
+        "These Terms shall be governed by and construed in accordance with the laws of the State of Washington, United States, without regard to its conflict-of-law provisions.",
+        "Any dispute arising out of or relating to these Terms or the Services shall be resolved exclusively in the state or federal courts located in King County, Washington.",
+        "Both parties consent to the exclusive jurisdiction and venue of such courts.",
+        "The parties agree to attempt to resolve any dispute through good-faith negotiation before resorting to litigation."
+      ]
+    },
+
+    "section12": {
+      "title": "12. Changes to These Terms",
+      "items": [
+        "We may revise these Terms from time to time. The updated version will be posted on this page with a new effective date.",
+        "If we make material changes, we will provide notice (e.g., via email or an in‑app notification) at least 30 days before the changes take effect.",
+        "Your continued use of the Services after the effective date constitutes your acceptance of the revised Terms.",
+        "If you do not agree to the changes, you must stop using the Services and may terminate your account."
+      ]
+    },
+
+    "section13": {
+      "title": "13. Contact Information",
+      "intro": "If you have any questions, concerns, or requests regarding these Terms, please contact us:",
+      "address": {
+        "department": "Legal & Compliance",
+        "emailLabel": "Email:",
+        "websiteLabel": "Website:"
+      },
+      "commitment": "We are committed to clarifying any questions you may have about your rights and obligations under these Terms."
+    },
+
+    "legalNotice": "Legal notice: These Terms of Service are a legally binding agreement between you and {company}. They are governed by the laws of Washington State, United States. Any disputes shall be resolved in the state or federal courts located in King County, Washington.",
+
+    "bottomNav": {
+      "privacy": "Privacy Policy",
       "contact": "Contact Us",
       "home": "Back to Home"
     }
