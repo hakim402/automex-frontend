@@ -65,7 +65,8 @@ function setCache(model: string, slug: string, lang: string, resolvedSlug: strin
 async function resolveSlug(
   model: string,
   slug: string,
-  targetLang: string
+  targetLang: string,
+  sourceLang: string = "en"
 ): Promise<string | null> {
   // Check cache first
   const cached = getCached(model, slug, targetLang);
@@ -74,18 +75,18 @@ async function resolveSlug(
   const listPath = MODEL_ENDPOINTS[model];
   if (!listPath) return null;
 
-  const backendLang = toBackendLang(targetLang);
+  const backendTargetLang = toBackendLang(targetLang);
+  const backendSourceLang = toBackendLang(sourceLang);
 
   try {
-    // Step 1: Fetch the item by slug in the source language (no lang param → default en)
-    // to get its stable UUID.
+    // Step 1: Fetch the item by slug IN THE CURRENT LOCALE to get its stable UUID.
     const sourceItem = await automexFetch<{ id: string }>(
-      `${listPath}${slug}/`
+      `${listPath}${slug}/?lang=${backendSourceLang}`
     );
 
     // Step 2: Fetch all items in the target language and find the one with matching ID.
     const targetList = await automexFetch<Paginated<{ id: string; slug: string }>>(
-      `${listPath}?lang=${backendLang}`,
+      `${listPath}?lang=${backendTargetLang}`,
       { revalidate: 600 }
     );
 
@@ -109,6 +110,7 @@ export async function GET(request: NextRequest) {
   const model = searchParams.get("model");
   const slug = searchParams.get("slug");
   const lang = searchParams.get("lang");
+  const sourceLang = searchParams.get("source_lang") || "en";
 
   if (!model || !slug || !lang) {
     return NextResponse.json(
@@ -124,7 +126,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const resolvedSlug = await resolveSlug(model, slug, lang);
+  const resolvedSlug = await resolveSlug(model, slug, lang, sourceLang);
 
   if (!resolvedSlug) {
     return NextResponse.json(

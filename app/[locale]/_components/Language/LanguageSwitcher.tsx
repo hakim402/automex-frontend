@@ -122,10 +122,18 @@ export function LanguageSwitcher() {
       const currentSlug = segments[slugIndex];
       try {
         const res = await fetch(
-          `/api/resolve-slug?model=${model}&slug=${encodeURIComponent(currentSlug)}&lang=${newLocale}`
+          `/api/resolve-slug?model=${model}&slug=${encodeURIComponent(currentSlug)}&lang=${newLocale}&source_lang=${locale}`
         );
         if (res.ok) {
           const data = await res.json();
+          // Only "service" has translated slugs. For portfolio/case-studies/blog,
+          // the slug stays the same across all languages — that's expected.
+          if (model === "service" && data.slug === currentSlug && newLocale !== locale) {
+            window.location.href = `/${newLocale}/${segments[1]}`;
+            setOpen(false);
+            return;
+          }
+          segments[0] = newLocale;
           segments[slugIndex] = data.slug;
           const newPath = "/" + segments.join("/");
           window.location.href = newPath;
@@ -135,6 +143,17 @@ export function LanguageSwitcher() {
       } catch {
         // If resolution fails, fall through to simple locale swap
       }
+      // Slug resolution failed.
+      // For services: redirect to list page (no translation = would 404).
+      // For other models: simple locale swap (same slug works across all languages).
+      if (model === "service") {
+        window.location.href = `/${newLocale}/${segments[1]}`;
+      } else {
+        segments[0] = newLocale;
+        window.location.href = "/" + segments.join("/");
+      }
+      setOpen(false);
+      return;
     }
 
     // Default: just swap the locale prefix (for static pages or if slug resolution fails)
