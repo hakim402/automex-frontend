@@ -75,6 +75,8 @@ import {
   Palette,
   Quote,
   Layers,
+  TrendingUp,
+  Trophy,
   type LucideIcon,
 } from "lucide-react";
 
@@ -212,6 +214,7 @@ function renderTechnology(t: {
   name: string;
   slug: string;
   icon?: string;
+  logo?: { url?: string | null; alt_text?: string } | null;
   category?: string;
   website_url?: string;
 }) {
@@ -222,7 +225,16 @@ function renderTechnology(t: {
 
   let content: React.ReactNode;
 
-  if (isImageUrl(t.icon)) {
+  // 1) Backend logo image
+  if (t.logo?.url) {
+    content = (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={getMediaUrl(t.logo.url)} alt={t.logo.alt_text || t.name} className="size-4 object-contain" />
+        {t.name}
+      </>
+    );
+  } else if (isImageUrl(t.icon)) {
     content = (
       <>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -471,9 +483,24 @@ function industryIcon(slug: string): LucideIcon {
 }
 
 function renderIndustryIcon(
-  ind: { id: string; name: string; slug: string; icon?: string },
+  ind: { id: string; name: string; slug: string; icon?: string; icon_image?: { url?: string | null; alt_text?: string } | null },
   size: string = "size-6",
 ) {
+  // 1) Backend image (icon_image)
+  if (ind.icon_image?.url) {
+    return (
+      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 ring-1 ring-border/40">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={getMediaUrl(ind.icon_image.url)}
+          alt={ind.icon_image.alt_text || ind.name}
+          className="size-full object-contain p-1.5"
+        />
+      </div>
+    );
+  }
+
+  // 2) Custom icon string (URL or lucide name)
   if (isImageUrl(ind.icon)) {
     return (
       <div className="flex size-11 shrink-0 items-center justify-center rounded-xl overflow-hidden bg-muted/30 ring-1 ring-border/40">
@@ -489,7 +516,7 @@ function renderIndustryIcon(
 
   const Icon = ind.icon ? resolveIcon(ind.icon) : industryIcon(ind.slug);
   return (
-    <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-gradient/10 text-primary ring-1 ring-primary/10">
+    <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-500/10">
       <Icon className={size} aria-hidden="true" />
     </div>
   );
@@ -507,55 +534,22 @@ function SectionHeader({
   index,
   icon: Icon,
   eyebrow,
-  title,
-  description,
 }: {
   index: number;
   icon: LucideIcon;
   eyebrow: string;
-  title: string;
-  description?: string;
 }) {
   return (
-    <div className="mb-6 sm:mb-8">
-      <div className="inline-flex items-center gap-2 rounded-md border border-border/50 bg-muted/40 px-2.5 py-1 mb-3">
-        <Icon className="size-3.5 text-primary" aria-hidden="true" />
-        <span className="font-mono text-[11px] font-medium tracking-wider text-muted-foreground">
-          {`// ${String(index).padStart(2, "0")} · ${eyebrow.toUpperCase()}`}
-        </span>
-      </div>
-      <h2 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-[13px] sm:text-[14px] text-muted-foreground mt-1.5 max-w-2xl">
-          {description}
-        </p>
-      )}
+    <div className="mb-6 sm:mb-8 flex items-center gap-2.5">
+      <Icon className="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+      <span className="font-mono text-[11px] font-semibold text-emerald-600/70 dark:text-emerald-400/70 uppercase tracking-widest">
+        {`// ${String(index).padStart(2, "0")} · ${eyebrow}`}
+      </span>
     </div>
   );
 }
 
-/** Faint blueprint dot-grid, used as an ambient backdrop behind hero states. */
-function BlueprintGrid({ className }: { className?: string }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={cn("pointer-events-none absolute inset-0 -z-10", className)}
-      style={{
-        backgroundImage:
-          "radial-gradient(circle, currentColor 1px, transparent 1px)",
-        backgroundSize: "22px 22px",
-        color: "var(--border)",
-        opacity: 0.4,
-        maskImage:
-          "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
-      }}
-    />
-  );
-}
+
 
 // ─────────────────────────────────────────────────────────────────────────
 // Hero Carousel (desktop, when hero_images exist)
@@ -809,15 +803,18 @@ function ScrollCarousel({
   children,
   className,
   gap = "gap-4",
+  autoScroll = false,
 }: {
   children: React.ReactNode;
   className?: string;
   gap?: string;
+  autoScroll?: boolean;
 }) {
   const t = useTranslations("ServicesDetail");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const checkScroll = useCallback(() => {
     const el = scrollRef.current;
@@ -838,6 +835,24 @@ function ScrollCarousel({
     };
   }, [checkScroll]);
 
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!autoScroll || isPaused) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const timer = setInterval(() => {
+      const firstCard = el.firstChild as HTMLElement | null;
+      const cardWidth = firstCard ? firstCard.offsetWidth + 16 : 300;
+      const newScroll = el.scrollLeft + cardWidth;
+      if (newScroll >= el.scrollWidth - el.clientWidth - 4) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: cardWidth, behavior: "smooth" });
+      }
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [autoScroll, isPaused]);
+
   const scroll = (dir: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
@@ -849,7 +864,11 @@ function ScrollCarousel({
   };
 
   return (
-    <div className={cn("relative group/carousel", className)}>
+    <div
+      className={cn("relative group/carousel", className)}
+      onMouseEnter={autoScroll ? () => setIsPaused(true) : undefined}
+      onMouseLeave={autoScroll ? () => setIsPaused(false) : undefined}
+    >
       {canScrollLeft && (
         <button
           onClick={() => scroll("left")}
@@ -966,129 +985,115 @@ function HeroSkeleton({
 }) {
   const t = useTranslations("ServicesDetail");
   const ctaUrl = service.cta_url || "/crm/quote";
-  const ServiceIcon = resolveIcon(service.icon);
-  const CategoryIcon = resolveIcon(service.category?.icon);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:mt-24">
-      <BlueprintGrid className="rounded-2xl" />
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-center">
-        {/* ─── Text panel — always on the LEFT on desktop ────────── */}
-        <div className="lg:col-span-3 order-2 lg:order-1 space-y-6">
-          <div className="flex flex-wrap items-center gap-2">
-            {service.category && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf]">
-                <CategoryIcon className="size-3" aria-hidden="true" />
-                {service.category.name}
-              </span>
-            )}
-            {service.service_level_display && (
-              <span
-                className={cn(
-                  "inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider",
-                  service.service_level === "enterprise"
-                    ? "bg-[#324b9d]/10 text-[#324b9d] border border-[#324b9d]/20"
-                    : service.service_level === "premium"
-                      ? "bg-[#13a89e]/10 text-[#13a89e] border border-[#13a89e]/20"
-                      : "bg-muted text-muted-foreground border border-border/40",
-                )}
-              >
-                {service.service_level_display}
-              </span>
-            )}
-            {service.is_featured && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2.5 py-1 text-[11px] font-semibold">
-                <Star className="size-3" aria-hidden="true" />
-                {t("featured")}
-              </span>
-            )}
-          </div>
+    <section className="relative isolate overflow-hidden pb-12 pt-20 sm:pb-16 sm:pt-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 -z-10 -translate-x-1/2 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(148_198_233/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.04)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)]"
+      />
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            {service.name}
-          </h1>
-
-          <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
-            {service.short_description}
-          </p>
-
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Button
-              asChild
-              size="lg"
-              className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all"
+      <div className="mx-auto max-w-4xl px-4 text-center">
+        {/* Badges */}
+        <div className="mb-4 flex items-center gap-3 justify-center flex-wrap">
+          {service.category && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[12px] font-medium text-emerald-600 dark:text-emerald-400">
+              {iconFor(service.category.icon, "size-3.5")}
+              {service.category.name}
+            </span>
+          )}
+          {service.service_level_display && (
+            <span
+              className={cn(
+                "inline-flex items-center rounded-full px-3 py-1 text-[12px] font-medium",
+                service.service_level === "enterprise"
+                  ? "border border-[#324b9d]/20 bg-[#324b9d]/5 text-[#324b9d]"
+                  : service.service_level === "premium"
+                    ? "border border-[#13a89e]/20 bg-[#13a89e]/5 text-[#13a89e]"
+                    : "border border-border/40 bg-muted/50 text-muted-foreground",
+              )}
             >
-              <Link
-                href={
-                  { pathname: ctaUrl, query: { service: service.id } } as any
-                }
-              >
-                {t("getQuote")}
-                <ArrowRight
-                  className="size-4 ml-1.5 rtl:rotate-180"
-                  aria-hidden="true"
-                />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-brand-gradient hover:border-primary/50 transition-all"
-            >
-              <Link href="/crm/book-a-call">
-                <PhoneCall
-                  className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
-                  aria-hidden="true"
-                />
-                {t("bookFreeCall")}
-              </Link>
-            </Button>
-          </div>
+              {service.service_level_display}
+            </span>
+          )}
+          {service.is_featured && (
+            <span className="rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+              {t("featured")}
+            </span>
+          )}
         </div>
 
-        {/* ─── Image / icon panel — always on the RIGHT on desktop ── */}
-        <div className="lg:col-span-2 order-1 lg:order-2">
-          {hasThumbnail ? (
-            <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-lg group">
+        {/* Title */}
+        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+          {service.name}
+        </h1>
+
+        {/* Description */}
+        {service.short_description && (
+          <p className="mt-3 text-[15px] text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            {service.short_description}
+          </p>
+        )}
+
+        {/* CTA Buttons */}
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <Button
+            asChild
+            size="lg"
+            className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all"
+          >
+            <Link
+              href={
+                { pathname: ctaUrl, query: { service: service.id } } as any
+              }
+            >
+              {t("getQuote")}
+              <ArrowRight
+                className="size-4 ml-1.5 rtl:rotate-180"
+                aria-hidden="true"
+              />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-brand-gradient"
+          >
+            <Link href="/crm/book-a-call">
+              <PhoneCall
+                className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
+                aria-hidden="true"
+              />
+              {t("bookFreeCall")}
+            </Link>
+          </Button>
+        </div>
+
+        {/* Thumbnail / Icon */}
+        {hasThumbnail && (
+          <div className="mt-10 mx-auto max-w-3xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border/40 shadow-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={getMediaUrl(service.thumbnail_image!.url)}
                 alt={service.thumbnail_image?.alt_text || service.name}
-                className="h-64 sm:h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-auto w-full object-cover"
               />
               {service.thumbnail_image?.caption && (
-                <p className="absolute bottom-3 left-3 right-3 text-[12px] text-white/80 bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5">
-                  {service.thumbnail_image.caption}
-                </p>
-              )}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent pointer-events-none"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute -inset-1 bg-brand-gradient/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"
-              />
-            </div>
-          ) : (
-            <div className="relative flex items-center justify-center h-64 sm:h-80 rounded-2xl border border-border/50 bg-linear-to-br from-[#0ab8fb]/10 to-[#324b9d]/10 overflow-hidden group">
-              <BlueprintGrid />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-brand-gradient/5 blur-3xl animate-pulse"
-              />
-              <div className="relative z-10 flex flex-col items-center text-center gap-4">
-                <div className="flex size-20 items-center justify-center rounded-2xl bg-card border border-border/60 shadow-sm text-primary transition-transform duration-500 group-hover:scale-105">
-                  <ServiceIcon className="size-9" aria-hidden="true" />
+                <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/90 dark:bg-black/80 p-3 shadow-lg backdrop-blur-sm">
+                  <p className="text-[12px] text-foreground">
+                    {service.thumbnail_image.caption}
+                  </p>
                 </div>
-                <p className="text-[13px] font-medium text-muted-foreground">
-                  {service.name}
-                </p>
-              </div>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -1179,19 +1184,19 @@ export function ServiceDetailClientPage({
         </div>
 
         {/* ─── HERO ─────────────────────────────────────────────────── */}
-        {/* Mobile: always the compact thumbnail+text hero (image, then text). */}
-        <div className="block md:hidden px-4" ref={heroRef as any}>
+        {/* Mobile: always the compact skeleton hero */}
+        <div className="block md:hidden" ref={heroRef as any}>
           <HeroSkeleton service={service} hasThumbnail={hasThumbnail} />
         </div>
 
-        {/* Desktop: carousel when images exist, otherwise the same spec-card hero. */}
+        {/* Desktop: carousel when images exist, otherwise skeleton hero */}
         <div className="hidden md:block">
           {hasHeroImages ? (
             <section ref={heroRef}>
               <HeroCarousel images={heroImages} service={service} />
             </section>
           ) : (
-            <div className="px-4" ref={heroRef as any}>
+            <div ref={heroRef as any}>
               <HeroSkeleton service={service} hasThumbnail={hasThumbnail} />
             </div>
           )}
@@ -1199,11 +1204,11 @@ export function ServiceDetailClientPage({
 
         <div className="mx-auto max-w-6xl px-4 py-12 sm:py-20">
           {/* Quick info bar */}
-          <div className="flex flex-wrap gap-4 text-[13px] mb-16 sm:mb-20 animate-in fade-in slide-in-from-bottom-3 duration-500 delay-150">
+          <div className="flex flex-wrap gap-4 text-[13px] mb-16 sm:mb-20">
             {service.delivery_time_estimate && (
-              <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-card/60 px-3 py-2">
+              <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm px-4 py-2.5">
                 <Clock
-                  className="size-4 text-primary shrink-0"
+                  className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0"
                   aria-hidden="true"
                 />
                 <span className="text-muted-foreground">
@@ -1215,9 +1220,9 @@ export function ServiceDetailClientPage({
               </div>
             )}
             {service.team_size_range && (
-              <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-card/60 px-3 py-2">
+              <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm px-4 py-2.5">
                 <Users
-                  className="size-4 text-primary shrink-0"
+                  className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0"
                   aria-hidden="true"
                 />
                 <span className="text-muted-foreground">
@@ -1229,9 +1234,9 @@ export function ServiceDetailClientPage({
               </div>
             )}
             {service.pricing_model_display && (
-              <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-card/60 px-3 py-2">
+              <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm px-4 py-2.5">
                 <DollarSign
-                  className="size-4 text-primary shrink-0"
+                  className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0"
                   aria-hidden="true"
                 />
                 <span className="text-muted-foreground">
@@ -1247,24 +1252,32 @@ export function ServiceDetailClientPage({
           {/* ═══ KEY METRICS ═══ */}
           {metricKeys.length > 0 && (
             <section ref={metricsRef} className="mb-16 sm:mb-20">
+              <SectionHeader
+                index={4}
+                icon={TrendingUp}
+                eyebrow={t("metricsEyebrow")}
+              />
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {metricKeys.map((key, index) => {
+                {metricKeys.map((key) => {
                   const rawValue = keyMetrics[key];
                   const numericValue =
                     typeof rawValue === "number" ? rawValue : 0;
                   const displayValue = useCountUp(
                     numericValue,
-                    1200 + index * 200,
+                    1200 + metricKeys.indexOf(key) * 200,
                     metricsVisible,
                   );
 
                   return (
                     <div
                       key={key}
-                      className="group rounded-xl border border-border/50 bg-card/70 backdrop-blur-sm p-5 text-center transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/5 hover:border-primary/30 animate-in fade-in zoom-in duration-500"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      className="flex flex-col items-center gap-1 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 text-center transition-all hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                     >
-                      <span className="text-2xl sm:text-3xl font-bold text-brand-gradient">
+                      <TrendingUp
+                        className="size-5 text-emerald-600 dark:text-emerald-400"
+                        aria-hidden="true"
+                      />
+                      <span className="text-lg font-bold text-foreground">
                         {metricsVisible
                           ? typeof rawValue === "number"
                             ? displayValue.toLocaleString()
@@ -1279,7 +1292,7 @@ export function ServiceDetailClientPage({
                           key.includes("seconds") &&
                           "s"}
                       </span>
-                      <p className="text-[12px] text-muted-foreground mt-1 capitalize">
+                      <p className="text-[11px] text-muted-foreground capitalize">
                         {key.replace(/_/g, " ")}
                       </p>
                     </div>
@@ -1291,59 +1304,63 @@ export function ServiceDetailClientPage({
 
           {/* ═══ OVERVIEW ═══ */}
           {service.overview && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={1}
                 icon={Layers}
-                eyebrow="Overview"
-                title={t("overview")}
+                eyebrow={t("overviewEyebrow")}
               />
-              <div className="max-w-3xl prose text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed space-y-3">
-                {service.overview.split("\n").map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
+              <div className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6 sm:p-8">
+                <div className="prose text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed space-y-3 max-w-none">
+                  {service.overview.split("\n").map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
               </div>
             </section>
           )}
 
           {/* ═══ PROBLEMS WE SOLVE ═══ */}
           {service.problems_we_solve && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-100">
-              <SectionHeader
-                index={2}
-                icon={Target}
-                eyebrow="Problems"
-                title={t("problemsWeSolve")}
-              />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {service.problems_we_solve
-                  .split("\n")
-                  .filter(Boolean)
-                  .map((problem, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-3 rounded-lg border border-red-100/20 bg-red-50/30 dark:bg-red-950/10 p-4 transition-all hover:border-red-300/40 hover:bg-red-50/50 dark:hover:bg-red-950/20"
-                    >
-                      <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-500 mt-0.5">
-                        <X className="size-3" aria-hidden="true" />
-                      </span>
-                      <span className="text-[14px] text-foreground/80">
-                        {problem.replace(/^-\s*|^•\s*/, "")}
-                      </span>
-                    </div>
-                  ))}
+            <section className="mb-16 sm:mb-20">
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-rose-500/10 text-rose-500">
+                  <Target className="size-5" aria-hidden="true" />
+                </div>
+                <p className="text-[13px] font-semibold uppercase tracking-wider text-rose-500">
+                  {t("problemsEyebrow")}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-rose-500/20 bg-rose-500/5 backdrop-blur-sm p-6 sm:p-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {service.problems_we_solve
+                    .split("\n")
+                    .filter(Boolean)
+                    .map((problem, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 transition-all hover:border-rose-500/40 hover:shadow-sm"
+                      >
+                        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-rose-500/10 text-rose-500 mt-0.5">
+                          <X className="size-3" aria-hidden="true" />
+                        </span>
+                        <span className="text-[14px] text-foreground/80">
+                          {problem.replace(/^-\s*|^•\s*/, "")}
+                        </span>
+                      </div>
+                    ))}
+                </div>
               </div>
             </section>
           )}
 
           {/* ═══ FEATURES ═══ */}
           {service.features && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-150">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={3}
                 icon={Zap}
-                eyebrow="Features"
-                title={t("keyFeatures")}
+                eyebrow={t("featuresEyebrow")}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {service.features
@@ -1364,10 +1381,9 @@ export function ServiceDetailClientPage({
                     return (
                       <div
                         key={i}
-                        className="group flex items-start gap-3 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30 hover:bg-card/80 animate-in fade-up"
-                        style={{ animationDelay: `${i * 50}ms` }}
+                        className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                       >
-                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-gradient/10 text-primary group-hover:bg-brand-gradient group-hover:text-white transition-colors duration-300">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
                           <Icon className="size-4.5" aria-hidden="true" />
                         </div>
                         <span className="text-[14px] text-foreground/90">
@@ -1382,31 +1398,35 @@ export function ServiceDetailClientPage({
 
           {/* ═══ BENEFITS ═══ */}
           {service.benefits && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-200">
-              <SectionHeader
-                index={4}
-                icon={CheckCircle2}
-                eyebrow="Benefits"
-                title={t("benefits")}
-              />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {service.benefits
-                  .split("\n")
-                  .filter(Boolean)
-                  .map((benefit, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-3 rounded-lg border border-emerald-100/20 bg-emerald-50/30 dark:bg-emerald-950/10 p-4 transition-all hover:border-emerald-300/40 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20"
-                    >
-                      <CheckCircle2
-                        className="size-5 text-emerald-500 shrink-0 mt-0.5"
-                        aria-hidden="true"
-                      />
-                      <span className="text-[14px] text-foreground/80">
-                        {benefit.replace(/^-\s*|^•\s*/, "")}
-                      </span>
-                    </div>
-                  ))}
+            <section className="mb-16 sm:mb-20">
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
+                  <Trophy className="size-5" aria-hidden="true" />
+                </div>
+                <p className="text-[13px] font-semibold uppercase tracking-wider text-emerald-500">
+                  {t("benefitsEyebrow")}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm p-6 sm:p-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {service.benefits
+                    .split("\n")
+                    .filter(Boolean)
+                    .map((benefit, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 transition-all hover:border-emerald-500/40 hover:shadow-sm"
+                      >
+                        <CheckCircle2
+                          className="size-5 text-emerald-500 shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        />
+                        <span className="text-[14px] text-foreground/80">
+                          {benefit.replace(/^-\s*|^•\s*/, "")}
+                        </span>
+                      </div>
+                    ))}
+                </div>
               </div>
             </section>
           )}
@@ -1420,24 +1440,22 @@ export function ServiceDetailClientPage({
                 (grouped[cat] ??= []).push(tech);
               }
               return (
-                <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-250">
+                <section className="mb-16 sm:mb-20">
                   <SectionHeader
                     index={5}
                     icon={Layers}
-                    eyebrow="Stack"
-                    title={t("technologyStack")}
+                    eyebrow={t("stackEyebrow")}
                   />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {Object.entries(grouped).map(([cat, techs], idx) => {
+                  <ScrollCarousel autoScroll>
+                    {Object.entries(grouped).map(([cat, techs]) => {
                       const CatIcon = techLucideIcon(cat, cat);
                       return (
                         <div
                           key={cat}
-                          className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30 animate-in fade-up"
-                          style={{ animationDelay: `${idx * 100}ms` }}
+                          className="snap-start shrink-0 w-65 sm:w-70 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                         >
                           <h3 className="text-[12px] font-semibold text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                            <CatIcon className="size-4" aria-hidden="true" />
+                            <CatIcon className="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
                             {cat}
                           </h3>
                           <div className="flex flex-wrap gap-1.5">
@@ -1446,30 +1464,28 @@ export function ServiceDetailClientPage({
                         </div>
                       );
                     })}
-                  </div>
+                  </ScrollCarousel>
                 </section>
               );
             })()}
 
           {/* ═══ INDUSTRIES ═══ */}
           {service.industries.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-300">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={6}
                 icon={Building2}
-                eyebrow="Industries"
-                title={t("industriesServed")}
+                eyebrow={t("industriesEyebrow")}
               />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {service.industries.map((ind, idx) => (
+              <ScrollCarousel autoScroll>
+                {service.industries.map((ind) => (
                   <div
                     key={ind.id}
-                    className="group rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-brand/5 hover:border-primary/30 animate-in fade-up"
-                    style={{ animationDelay: `${idx * 80}ms` }}
+                    className="group snap-start shrink-0 w-65 sm:w-70 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                   >
                     <div className="flex items-center gap-3 mb-3">
                       {renderIndustryIcon(ind)}
-                      <h3 className="text-[15px] font-semibold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-[15px] font-semibold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                         {ind.name}
                       </h3>
                     </div>
@@ -1496,10 +1512,9 @@ export function ServiceDetailClientPage({
                           ))}
                         </div>
                       )}
-                    <div className="mt-3 h-0.5 w-0 group-hover:w-full rounded-full bg-linear-to-r from-[#0ab8fb] to-[#324b9d] transition-all duration-500" />
                   </div>
                 ))}
-              </div>
+              </ScrollCarousel>
             </section>
           )}
 
@@ -1509,13 +1524,12 @@ export function ServiceDetailClientPage({
               <SectionHeader
                 index={7}
                 icon={Workflow}
-                eyebrow="Process"
-                title={t("ourProcess")}
+                eyebrow={t("processEyebrow")}
               />
               <div className="relative">
                 <div
                   aria-hidden="true"
-                  className="absolute left-4 top-0 bottom-0 w-0.5 bg-linear-to-b from-[#0ab8fb]/30 via-[#324b9d]/30 to-[#0ab8fb]/30 hidden sm:block"
+                  className="absolute left-4 top-0 bottom-0 w-0.5 bg-linear-to-b from-emerald-500/20 via-emerald-500/30 to-emerald-500/20 hidden sm:block"
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {processSteps.map((step, i) => {
@@ -1525,17 +1539,16 @@ export function ServiceDetailClientPage({
                     return (
                       <div
                         key={step.id}
-                        className="relative group animate-in fade-up"
-                        style={{ animationDelay: `${i * 150}ms` }}
+                        className="relative group"
                       >
                         {i < processSteps.length - 1 && (
                           <div
                             aria-hidden="true"
-                            className="absolute top-9 left-full w-[calc(100%-2rem)] h-0.5 bg-linear-to-r from-[#0ab8fb]/30 to-[#324b9d]/30 hidden lg:block"
+                            className="absolute top-9 left-full w-[calc(100%-2rem)] h-0.5 bg-linear-to-r from-emerald-500/20 to-emerald-500/30 hidden lg:block"
                           />
                         )}
-                        <div className="flex flex-col items-center text-center rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-brand/5 hover:border-primary/30">
-                          <div className="flex size-14 items-center justify-center rounded-full bg-brand-gradient text-white shadow-brand mb-4 transition-transform duration-300 group-hover:scale-110">
+                        <div className="flex flex-col items-center text-center rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg">
+                          <div className="flex size-14 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-4 transition-transform duration-300 group-hover:scale-110">
                             <StepIcon className="size-6" aria-hidden="true" />
                           </div>
                           <span className="font-mono text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
@@ -1560,21 +1573,20 @@ export function ServiceDetailClientPage({
 
           {/* ═══ DELIVERABLES ═══ */}
           {deliverables.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-350">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={8}
                 icon={ClipboardList}
-                eyebrow="Deliverables"
-                title={t("deliverables")}
+                eyebrow={t("deliverablesEyebrow")}
               />
               <ScrollCarousel>
                 {deliverables.map((d) => (
                   <div
                     key={d.id}
-                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 snap-start shrink-0 w-65 sm:w-70 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+                    className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 snap-start shrink-0 w-65 sm:w-70 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <span className="flex size-7 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                         {iconFor(d.icon, "size-3.5")}
                       </span>
                       <h3 className="text-[14px] font-semibold text-foreground">
@@ -1594,12 +1606,11 @@ export function ServiceDetailClientPage({
 
           {/* ═══ PLAN COMPARISON ═══ */}
           {comparisonRows.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-400">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={9}
                 icon={BarChart3}
-                eyebrow="Plans"
-                title={t("planComparison")}
+                eyebrow={t("plansEyebrow")}
               />
               <div className="overflow-x-auto rounded-xl border border-border/50">
                 <table className="w-full text-[13px]">
@@ -1658,8 +1669,8 @@ export function ServiceDetailClientPage({
 
           {/* ═══ ENTERPRISE FEATURES ═══ */}
           {enterpriseFeatures.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-450">
-              <div className="rounded-2xl border border-[#324b9d]/30 bg-linear-to-br from-[#324b9d]/5 to-[#0ab8fb]/5 p-6 sm:p-8">
+            <section className="mb-16 sm:mb-20">
+              <div className="rounded-2xl border border-[#324b9d]/20 bg-[#324b9d]/5 backdrop-blur-sm p-6 sm:p-8">
                 <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
                   <ShieldCheck
                     className="size-5 text-[#324b9d]"
@@ -1690,18 +1701,17 @@ export function ServiceDetailClientPage({
 
           {/* ═══ ADD-ONS ═══ */}
           {addOns.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-500">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={10}
                 icon={Puzzle}
-                eyebrow="Add-ons"
-                title={t("availableAddOns")}
+                eyebrow={t("addonsEyebrow")}
               />
               <ScrollCarousel>
                 {addOns.map((addon) => (
                   <div
                     key={addon.id}
-                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 snap-start shrink-0 w-65 sm:w-70 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+                    className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 snap-start shrink-0 w-65 sm:w-70 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-[14px] font-semibold text-foreground">
@@ -1733,13 +1743,11 @@ export function ServiceDetailClientPage({
 
           {/* ═══ CLIENT LOGOS ═══ */}
           {clientLogos.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-550">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={11}
                 icon={Users}
-                eyebrow="Clients"
-                title={t("trustedBy")}
-                description="Join 200+ companies that trust AUTOMEX"
+                eyebrow={t("clientsEyebrow")}
               />
               <div className="flex flex-wrap gap-4">
                 {clientLogos.map((logo) => {
@@ -1748,7 +1756,7 @@ export function ServiceDetailClientPage({
                     <img
                       src={getMediaUrl(logo.logo.url)}
                       alt={logo.client_name}
-                      className="max-h-10 max-w-full object-contain opacity-60 hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                      className="max-h-10 max-w-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
                     />
                   ) : (
                     <span className="text-[13px] font-semibold text-muted-foreground group-hover:text-foreground transition-colors">
@@ -1757,7 +1765,7 @@ export function ServiceDetailClientPage({
                   );
 
                   const cardClasses =
-                    "group flex items-center justify-center rounded-xl border border-border/40 bg-card/50 backdrop-blur-sm p-5 h-20 min-w-[140px] transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30 hover:bg-card/80";
+                    "group flex items-center justify-center rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 h-20 min-w-[140px] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg";
 
                   return logo.client_url ? (
                     <a
@@ -1782,18 +1790,17 @@ export function ServiceDetailClientPage({
 
           {/* ═══ TESTIMONIALS ═══ */}
           {testimonials.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-600">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={12}
                 icon={Quote}
-                eyebrow="Testimonials"
-                title={t("clientTestimonials")}
+                eyebrow={t("testimonialsEyebrow")}
               />
               <ScrollCarousel>
                 {testimonials.map((tm) => (
                   <div
                     key={tm.id}
-                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 snap-start shrink-0 w-[320px] sm:w-95 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30"
+                    className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6 snap-start shrink-0 w-[320px] sm:w-95 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-1">
@@ -1849,29 +1856,27 @@ export function ServiceDetailClientPage({
 
           {/* ═══ SLAs ═══ */}
           {slas.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-650">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={13}
                 icon={ShieldCheck}
-                eyebrow="Guarantees"
-                title={t("serviceGuarantees")}
+                eyebrow={t("slaEyebrow")}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {slas.map((sla, idx) => (
+                {slas.map((sla) => (
                   <div
                     key={sla.id}
-                    className="rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30 animate-in fade-up"
-                    style={{ animationDelay: `${idx * 80}ms` }}
+                    className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <span className="flex size-7 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                         {iconFor(sla.icon, "size-3.5")}
                       </span>
                       <h3 className="text-[14px] font-semibold text-foreground">
                         {sla.guarantee_name}
                       </h3>
                     </div>
-                    <p className="text-2xl font-bold text-brand-gradient mb-1">
+                    <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">
                       {sla.value}
                     </p>
                     {sla.description && (
@@ -1887,21 +1892,19 @@ export function ServiceDetailClientPage({
 
           {/* ═══ DOCUMENTS ═══ */}
           {documents.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-700">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={14}
                 icon={FileText}
-                eyebrow="Resources"
-                title={t("resourcesDocuments")}
+                eyebrow={t("resourcesEyebrow")}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {documents.map((doc, idx) => (
+                {documents.map((doc) => (
                   <div
                     key={doc.id}
-                    className="flex items-center gap-4 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-4 group hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-in fade-up"
-                    style={{ animationDelay: `${idx * 60}ms` }}
+                    className="flex items-center gap-4 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 group hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   >
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-brand-gradient group-hover:text-white transition-all duration-300">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
                       <FileText className="size-5" aria-hidden="true" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -1935,23 +1938,22 @@ export function ServiceDetailClientPage({
 
           {/* ═══ FAQs ═══ */}
           {faqs.length > 0 && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-750">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={15}
                 icon={Search}
-                eyebrow="FAQ"
-                title={t("frequentlyAskedQuestions")}
+                eyebrow={t("faqEyebrow")}
               />
 
               {faqCategories.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <button className="text-[12px] font-medium px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors">
+                  <button className="text-[12px] font-medium px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
                     All
                   </button>
                   {faqCategories.map((cat) => (
                     <button
                       key={cat}
-                      className="text-[12px] font-medium px-3 py-1.5 rounded-full border border-border/40 bg-card/50 text-muted-foreground hover:border-primary/30 hover:text-foreground transition-colors"
+                      className="text-[12px] font-medium px-3 py-1.5 rounded-full border border-border/60 bg-card/80 text-muted-foreground hover:border-emerald-500/40 hover:text-foreground transition-colors"
                     >
                       {cat}
                     </button>
@@ -1986,18 +1988,17 @@ export function ServiceDetailClientPage({
 
           {/* ═══ RELATED SERVICES ═══ */}
           {(relatedServices.length > 0 || relatedSvcs.length > 0) && (
-            <section className="mb-16 sm:mb-20 animate-in fade-up duration-700 delay-800">
+            <section className="mb-16 sm:mb-20">
               <SectionHeader
                 index={16}
                 icon={ArrowUpRight}
-                eyebrow="Related"
-                title={t("relatedServices")}
+                eyebrow={t("relatedEyebrow")}
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {(relatedServices.length > 0
                   ? relatedServices
                   : relatedSvcs.slice(0, 3)
-                ).map((s, idx) => {
+                ).map((s) => {
                   const isRef = !("hero_image" in s && "category" in s);
                   const slug = isRef
                     ? (s as ServiceListItemRef).slug
@@ -2011,6 +2012,9 @@ export function ServiceDetailClientPage({
                   const img = isRef
                     ? (s as ServiceListItemRef).hero_image
                     : (s as ServiceListItem).hero_image;
+                  const thumbnail = isRef
+                    ? (s as ServiceListItemRef).thumbnail_image
+                    : (s as ServiceListItem).thumbnail_image;
                   const category = isRef
                     ? (s as ServiceListItemRef).category
                     : (s as ServiceListItem).category;
@@ -2023,55 +2027,52 @@ export function ServiceDetailClientPage({
                     <Link
                       key={slug}
                       href={`/services/${slug}` as any}
-                      className="group flex flex-col rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm overflow-hidden hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/5 animate-in fade-up"
-                      style={{ animationDelay: `${idx * 80}ms` }}
+                      className="group flex gap-4 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
                     >
-                      {img?.url ? (
-                        <div className="h-36 overflow-hidden relative">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <div className="h-24 w-28 shrink-0 overflow-hidden rounded-lg bg-linear-to-br from-emerald-500/10 to-teal-500/5">
+                        {thumbnail?.url ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={getMediaUrl(thumbnail.url)}
+                            alt={thumbnail.alt_text || name}
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        ) : svcIcon ? (
+                          <div className="flex h-full items-center justify-center">
+                            <FallbackIcon className="size-6 text-emerald-500/40" />
+                          </div>
+                        ) : img?.url ? (
+                          // eslint-disable-next-line @next/next/no-img-element
                           <img
                             src={getMediaUrl(img.url)}
                             alt={img.alt_text || name}
-                            className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span className="inline-flex items-center gap-1.5 text-white text-sm font-medium bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm">
-                              Learn more{" "}
-                              <ArrowUpRight
-                                className="size-3.5"
-                                aria-hidden="true"
-                              />
-                            </span>
+                        ) : (
+                          <div className="flex h-full items-center justify-center">
+                            <FallbackIcon className="size-6 text-muted-foreground/30" />
                           </div>
-                        </div>
-                      ) : (
-                        <div className="h-36 bg-linear-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                          <FallbackIcon
-                            className="size-9 text-primary/30"
-                            aria-hidden="true"
-                          />
-                        </div>
-                      )}
-                      <div className="p-4 flex-1 flex flex-col">
+                        )}
+                      </div>
+                      <div className="flex flex-col justify-center gap-1 flex-1 min-w-0">
                         {category && (
-                          <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mb-1">
+                          <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
                             {typeof category === "object" && "name" in category
                               ? category.name
                               : category}
                           </span>
                         )}
-                        <h3 className="text-[14px] font-semibold text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="text-[14px] font-semibold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
                           {name}
                         </h3>
                         {desc && (
-                          <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2 flex-1">
+                          <p className="text-[12px] text-muted-foreground line-clamp-2">
                             {desc}
                           </p>
                         )}
-                        <div className="mt-3 inline-flex items-center gap-1 text-[12px] font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                          Explore{" "}
-                          <ArrowRight className="size-3" aria-hidden="true" />
-                        </div>
+                        <span className="text-[12px] font-medium text-emerald-600 dark:text-emerald-400 mt-1">
+                          {t("exploreService")}
+                        </span>
                       </div>
                     </Link>
                   );
@@ -2081,61 +2082,49 @@ export function ServiceDetailClientPage({
           )}
 
           {/* ═══ BOTTOM CTA ═══ */}
-          <section className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm p-8 sm:p-12 text-center animate-in fade-up duration-700 delay-900">
-            <BlueprintGrid />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-[#0ab8fb]/5 via-transparent to-[#324b9d]/5"
-              style={{
-                backgroundSize: "200% 200%",
-                animation: "gradient-shift 8s ease-in-out infinite alternate",
-              }}
-            />
-
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#0ab8fb]/20 bg-[#0ab8fb]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#0a9fdf] mb-4">
-              <Sparkles className="size-3" aria-hidden="true" />
-              {t("getStarted")}
-            </span>
-
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-              {t("readyToBuild", { name: service.name })}
-            </h2>
-            <p className="text-[14px] text-muted-foreground max-w-lg mx-auto mb-8 leading-relaxed">
-              {t("letsDiscuss")}
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all hover:scale-105"
-              >
-                <Link
-                  href={
-                    { pathname: ctaUrl, query: { service: service.id } } as any
-                  }
+          <section className="mx-auto max-w-4xl pb-20 sm:pb-28">
+            <div className="relative isolate overflow-hidden rounded-3xl bg-linear-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/20 p-8 sm:p-12 text-center">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_50%,rgb(16_185_129/8%),transparent)]"
+              />
+              <h2 className="mb-3 text-2xl font-bold text-foreground sm:text-3xl">
+                {t("readyToBuild", { name: service.name })}
+              </h2>
+              <p className="mb-6 text-[14px] text-muted-foreground sm:text-base max-w-lg mx-auto">
+                {t("letsDiscuss")}
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Button
+                  asChild
+                  size="lg"
                 >
-                  <Send
-                    className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
-                    aria-hidden="true"
-                  />
-                  {t("requestQuote")}
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-brand-gradient hover:border-primary/50 transition-all hover:scale-105"
-              >
-                <Link href="/crm/book-a-call">
-                  <PhoneCall
-                    className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
-                    aria-hidden="true"
-                  />
-                  {t("bookFreeCall")}
-                </Link>
-              </Button>
+                  <Link
+                    href={
+                      { pathname: ctaUrl, query: { service: service.id } } as any
+                    }
+                  >
+                    <Send
+                      className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
+                      aria-hidden="true"
+                    />
+                    {t("requestQuote")}
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                >
+                  <Link href="/crm/book-a-call">
+                    <PhoneCall
+                      className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
+                      aria-hidden="true"
+                    />
+                    {t("bookFreeCall")}
+                  </Link>
+                </Button>
+              </div>
             </div>
           </section>
 
@@ -2143,12 +2132,11 @@ export function ServiceDetailClientPage({
           {(service.thumbnail_image ||
             service.video_presentation ||
             service.brochure) && (
-            <section className="mb-16 sm:mb-20 mt-16 sm:mt-20 animate-in fade-up duration-700 delay-950">
+            <section className="mb-16 sm:mb-20 mt-16 sm:mt-20">
               <SectionHeader
                 index={17}
                 icon={FileText}
-                eyebrow="Media"
-                title={t("additionalResources")}
+                eyebrow={t("mediaEyebrow")}
               />
               <div className="flex flex-wrap gap-4">
                 {service.thumbnail_image?.url && (
@@ -2156,7 +2144,7 @@ export function ServiceDetailClientPage({
                     href={getMediaUrl(service.thumbnail_image.url)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-4 hover:border-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                    className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 hover:border-emerald-500/40 transition-all hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -2181,7 +2169,7 @@ export function ServiceDetailClientPage({
                     href={service.video_presentation.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-4 hover:border-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                    className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 hover:border-emerald-500/40 transition-all hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#0ab8fb]/10 text-[#0ab8fb]">
                       <Play className="size-5" aria-hidden="true" />
@@ -2200,7 +2188,7 @@ export function ServiceDetailClientPage({
                     href={getMediaUrl(service.brochure.url)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm p-4 hover:border-primary/40 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                    className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm p-4 hover:border-emerald-500/40 transition-all hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#13a89e]/10 text-[#13a89e]">
                       <FileText className="size-5" aria-hidden="true" />

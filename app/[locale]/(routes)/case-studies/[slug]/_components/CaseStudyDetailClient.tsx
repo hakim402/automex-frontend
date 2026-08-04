@@ -558,7 +558,21 @@ export function CaseStudyDetailClient({
                 className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 hover:border-emerald-500/40 hover:shadow-lg transition-all duration-300"
               >
                 <div className="shrink-0">
-                  {svc.hero_image?.url ? (
+                  {svc.thumbnail_image?.url ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={getMediaUrl(svc.thumbnail_image.url)}
+                      alt={svc.thumbnail_image.alt_text || svc.name}
+                      className="size-12 rounded-xl object-cover"
+                    />
+                  ) : svc.icon ? (
+                    <span className="inline-flex items-center justify-center size-12 rounded-xl bg-emerald-500/10 text-emerald-500">
+                      {(() => {
+                        const SvcIcon = resolveIcon(svc.icon);
+                        return <SvcIcon className="size-5" />;
+                      })()}
+                    </span>
+                  ) : svc.hero_image?.url ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={getMediaUrl(svc.hero_image.url)}

@@ -245,6 +245,7 @@ export interface ServiceListItemRef {
   short_description: string;
   icon: string;
   hero_image: MediaAsset | null;
+  thumbnail_image?: MediaAsset | null;
   category: ServiceCategory | null;
   is_featured: boolean;
   order: number;
@@ -314,6 +315,7 @@ export interface CaseStudyServiceRef {
   short_description: string;
   icon?: string;
   hero_image: MediaAsset | null;
+  thumbnail_image?: MediaAsset | null;
 }
 
 /**
