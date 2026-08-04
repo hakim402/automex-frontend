@@ -77,6 +77,14 @@ import {
   Layers,
   TrendingUp,
   Trophy,
+  BadgeCheck,
+  Gauge,
+  ThumbsUp,
+  RefreshCw,
+  Headphones,
+  HeartHandshake,
+  MessageCircle,
+  Award,
   type LucideIcon,
 } from "lucide-react";
 
@@ -187,6 +195,24 @@ const ICON_MAP: Record<string, LucideIcon> = {
   "brain-circuit": Brain,
   "cloud-cog": Cloud,
   layers: Layers,
+  "badge-check": BadgeCheck,
+  badgecheck: BadgeCheck,
+  gauge: Gauge,
+  "thumbs-up": ThumbsUp,
+  thumbsup: ThumbsUp,
+  "refresh-cw": RefreshCw,
+  refreshcw: RefreshCw,
+  headphones: Headphones,
+  headset: Headphones,
+  "heart-handshake": HeartHandshake,
+  hearthandshake: HeartHandshake,
+  "message-circle": MessageCircle,
+  messagecircle: MessageCircle,
+  "message-square": MessageCircle,
+  "trending-up": TrendingUp,
+  trendingup: TrendingUp,
+  trophy: Trophy,
+  award: Award,
 };
 
 /** Resolve an icon name (optionally "lucide:" prefixed) to a lucide component. Always lucide, never emoji. */
@@ -682,7 +708,7 @@ function HeroCarousel({
                 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight"
                 style={{ textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
               >
-                {currentImage?.title || service.name}
+                {service.name}
               </h1>
 
               <div className="flex flex-wrap gap-3 pt-1">
@@ -988,112 +1014,125 @@ function HeroSkeleton({
 
   return (
     <section className="relative isolate overflow-hidden pb-12 pt-20 sm:pb-16 sm:pt-28">
+      {/* Background glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 left-1/2 -z-10 -translate-x-1/2 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-      />
+      >
+        <div className="size-96 rounded-full bg-emerald-500/8" />
+      </div>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(148_198_233/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.04)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)]"
       />
 
-      <div className="mx-auto max-w-4xl px-4 text-center">
-        {/* Badges */}
-        <div className="mb-4 flex items-center gap-3 justify-center flex-wrap">
-          {service.category && (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[12px] font-medium text-emerald-600 dark:text-emerald-400">
-              {iconFor(service.category.icon, "size-3.5")}
-              {service.category.name}
-            </span>
-          )}
-          {service.service_level_display && (
-            <span
-              className={cn(
-                "inline-flex items-center rounded-full px-3 py-1 text-[12px] font-medium",
-                service.service_level === "enterprise"
-                  ? "border border-[#324b9d]/20 bg-[#324b9d]/5 text-[#324b9d]"
-                  : service.service_level === "premium"
-                    ? "border border-[#13a89e]/20 bg-[#13a89e]/5 text-[#13a89e]"
-                    : "border border-border/40 bg-muted/50 text-muted-foreground",
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
+          {/* ── LEFT: Text Content ── */}
+          <div className="flex-1 space-y-5 lg:space-y-6">
+            {/* Badges */}
+            <div className="flex items-center gap-3 flex-wrap">
+              {service.category && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[12px] font-medium text-emerald-600 dark:text-emerald-400">
+                  {iconFor(service.category.icon, "size-3.5")}
+                  {service.category.name}
+                </span>
               )}
-            >
-              {service.service_level_display}
-            </span>
-          )}
-          {service.is_featured && (
-            <span className="rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-              {t("featured")}
-            </span>
-          )}
-        </div>
-
-        {/* Title */}
-        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          {service.name}
-        </h1>
-
-        {/* Description */}
-        {service.short_description && (
-          <p className="mt-3 text-[15px] text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {service.short_description}
-          </p>
-        )}
-
-        {/* CTA Buttons */}
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Button
-            asChild
-            size="lg"
-            className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all"
-          >
-            <Link
-              href={
-                { pathname: ctaUrl, query: { service: service.id } } as any
-              }
-            >
-              {t("getQuote")}
-              <ArrowRight
-                className="size-4 ml-1.5 rtl:rotate-180"
-                aria-hidden="true"
-              />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-brand-gradient"
-          >
-            <Link href="/crm/book-a-call">
-              <PhoneCall
-                className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
-                aria-hidden="true"
-              />
-              {t("bookFreeCall")}
-            </Link>
-          </Button>
-        </div>
-
-        {/* Thumbnail / Icon */}
-        {hasThumbnail && (
-          <div className="mt-10 mx-auto max-w-3xl">
-            <div className="relative overflow-hidden rounded-2xl border border-border/40 shadow-2xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={getMediaUrl(service.thumbnail_image!.url)}
-                alt={service.thumbnail_image?.alt_text || service.name}
-                className="h-auto w-full object-cover"
-              />
-              {service.thumbnail_image?.caption && (
-                <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/90 dark:bg-black/80 p-3 shadow-lg backdrop-blur-sm">
-                  <p className="text-[12px] text-foreground">
-                    {service.thumbnail_image.caption}
-                  </p>
-                </div>
+              {service.service_level_display && (
+                <span
+                  className={cn(
+                    "inline-flex items-center rounded-full px-3 py-1 text-[12px] font-medium",
+                    service.service_level === "enterprise"
+                      ? "border border-[#324b9d]/20 bg-[#324b9d]/5 text-[#324b9d]"
+                      : service.service_level === "premium"
+                        ? "border border-[#13a89e]/20 bg-[#13a89e]/5 text-[#13a89e]"
+                        : "border border-border/40 bg-muted/50 text-muted-foreground",
+                  )}
+                >
+                  {service.service_level_display}
+                </span>
+              )}
+              {service.is_featured && (
+                <span className="rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                  {t("featured")}
+                </span>
               )}
             </div>
+
+            {/* Title */}
+            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              {service.name}
+            </h1>
+
+            {/* Description */}
+            {service.short_description && (
+              <p className="text-[15px] text-muted-foreground max-w-lg leading-relaxed">
+                {service.short_description}
+              </p>
+            )}
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button
+                asChild
+                size="lg"
+                className="bg-brand-gradient shadow-brand hover:shadow-xl transition-all"
+              >
+                <Link
+                  href={
+                    { pathname: ctaUrl, query: { service: service.id } } as any
+                  }
+                >
+                  {t("getQuote")}
+                  <ArrowRight
+                    className="size-4 ml-1.5 rtl:rotate-180"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-brand-gradient"
+              >
+                <Link href="/crm/book-a-call">
+                  <PhoneCall
+                    className="size-4 mr-1.5 rtl:ml-1.5 rtl:mr-0"
+                    aria-hidden="true"
+                  />
+                  {t("bookFreeCall")}
+                </Link>
+              </Button>
+            </div>
           </div>
-        )}
+
+          {/* ── RIGHT: Thumbnail / Icon ── */}
+          {hasThumbnail && (
+            <div className="flex-1 mt-10 lg:mt-0">
+              <div className="relative overflow-hidden rounded-2xl border border-border/40 shadow-2xl group/img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={getMediaUrl(service.thumbnail_image!.url)}
+                  alt={service.thumbnail_image?.alt_text || service.name}
+                  className="h-auto w-full object-cover transition-transform duration-700 group-hover/img:scale-[1.02]"
+                />
+                {/* Subtle overlay gradient */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-linear-to-tr from-emerald-500/5 to-transparent pointer-events-none"
+                />
+                {service.thumbnail_image?.caption && (
+                  <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/90 dark:bg-black/80 p-3 shadow-lg backdrop-blur-sm">
+                    <p className="text-[12px] text-foreground">
+                      {service.thumbnail_image.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -1366,32 +1405,19 @@ export function ServiceDetailClientPage({
                 {service.features
                   .split(/\n- |\n• |\n/)
                   .filter(Boolean)
-                  .map((feat, i) => {
-                    const icons: LucideIcon[] = [
-                      Rocket,
-                      ShieldCheck,
-                      Zap,
-                      Cloud,
-                      Code2,
-                      Database,
-                      Users,
-                      Globe,
-                    ];
-                    const Icon = icons[i % icons.length];
-                    return (
-                      <div
-                        key={i}
-                        className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
-                      >
-                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
-                          <Icon className="size-4.5" aria-hidden="true" />
-                        </div>
-                        <span className="text-[14px] text-foreground/90">
-                          {feat.replace(/^-\s*|^•\s*/, "")}
-                        </span>
+                  .map((feat, i) => (
+                    <div
+                      key={i}
+                      className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg"
+                    >
+                      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                        <CheckCircle2 className="size-4.5" aria-hidden="true" />
                       </div>
-                    );
-                  })}
+                      <span className="text-[14px] text-foreground/90">
+                        {feat.replace(/^-\s*|^•\s*/, "")}
+                      </span>
+                    </div>
+                  ))}
               </div>
             </section>
           )}
