@@ -4,7 +4,7 @@
 
 import { useEffect } from "react";
 
-const RTL_LOCALES = ["ar", "fa", "ps"] as const;
+const RTL_LOCALES = ["ar"] as const;
 
 interface LocaleSyncProps {
   locale: string;

@@ -24,7 +24,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
   const locale = useLocale();
 
   // RTL support for Arabic, Persian, Pashto
-  const isRtl = ["ar", "fa", "ps"].includes(locale);
+  const isRtl = ["ar"].includes(locale);
 
   const initial = user?.full_name?.charAt(0).toUpperCase() ?? "U";
 

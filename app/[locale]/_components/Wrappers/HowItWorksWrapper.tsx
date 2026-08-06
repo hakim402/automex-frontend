@@ -16,7 +16,7 @@ const ICON_COLOR_CYCLE = [
 export function HowItWorksWrapper({ liveProcessSteps }: { liveProcessSteps?: ProcessStep[] }) {
   const config = useHowItWorksConfig();
   const locale = useLocale();
-  const isRtl = ["ar", "fa", "ps"].includes(locale); // match your RTL list
+  const isRtl = ["ar"].includes(locale); // match your RTL list
 
   // When live data is available, replace static flowSteps with API process steps
   const mergedConfig = liveProcessSteps?.length

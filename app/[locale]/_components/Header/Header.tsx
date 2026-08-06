@@ -79,7 +79,7 @@ export const Header = ({
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  const isRtl = ["ar", "fa", "ps"].includes(locale);
+  const isRtl = ["ar"].includes(locale);
   const isAuthenticated = !!user && !loading;
 
   useEffect(() => {

@@ -1,26 +1,40 @@
 "use client";
 
-import { memo } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 
-import OrbitalSystem from "./OrbitalSystem";
+import HeroVisual, { type HeroVisualContent } from "./HeroVisual";
+import TrustedByLogos from "./TrustedByLogos";
 
-type Locale = "en" | "zh" | "ar" | "fa" | "ps";
+type Locale =
+  | "en"
+  | "es"
+  | "de"
+  | "fr"
+  | "zh"
+  | "ar";
 
 type HomeHeroContent = {
+  eyebrow: string;
   headlineLead: string;
   headlineAccent: string;
   headlineSuffix: string;
   description: string;
   primaryAction: string;
   secondaryAction: string;
-  floatingLabels: string[];
+  visual: HeroVisualContent;
 };
 
-const SUPPORTED_LOCALES: Locale[] = ["en", "zh", "ar", "fa", "ps"];
-const RTL_LOCALES = new Set<Locale>(["ar", "fa", "ps"]);
+const SUPPORTED_LOCALES: Locale[] = [
+  "en",
+  "es",
+  "de",
+  "fr",
+  "zh",
+  "ar",
+];
+const RTL_LOCALES = new Set<Locale>(["ar"]);
 
 function getSupportedLocale(locale: string): Locale {
   return SUPPORTED_LOCALES.includes(locale as Locale)
@@ -39,13 +53,14 @@ function useHomeHeroContent(): { locale: Locale; content: HomeHeroContent } {
   return {
     locale,
     content: {
+      eyebrow: t("eyebrow"),
       headlineLead: t("headlineLead"),
       headlineAccent: t("headlineAccent"),
       headlineSuffix: t("headlineSuffix"),
       description: t("description"),
       primaryAction: t("primaryAction"),
       secondaryAction: t("secondaryAction"),
-      floatingLabels: t.raw("floatingLabels") as string[],
+      visual: t.raw("visual") as HeroVisualContent,
     },
   };
 }
@@ -59,70 +74,63 @@ export default function HomeHero() {
     <section
       dir={direction}
       aria-labelledby="home-hero-title"
-      className="relative isolate w-full overflow-hidden bg-background px-5 pb-20 pt-32 text-foreground sm:px-5 lg:px-5 lg:pb-28 lg:pt-28"
+      className="relative isolate w-full overflow-hidden bg-background px-5 pb-16 pt-28 md:pt-48 text-foreground sm:px-5 lg:px-5 md:pb-20"
     >
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgb(10_184_251/12%),transparent)] dark:bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgb(10_184_251/8%),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_40%_at_50%_0%,rgb(10_184_251/8%),transparent)] dark:bg-[radial-gradient(ellipse_50%_40%_at_50%_0%,rgb(10_184_251/6%),transparent)]" />
 
-      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-20 md:mt-16">
-        <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 xl:gap-12">
-          <div
-            className={[
-              "flex w-full min-w-0 flex-col gap-8 text-center lg:basis-0 lg:flex-1",
-              isRtl ? "lg:text-right" : "lg:text-left",
-            ].join(" ")}
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 px-4 text-center sm:px-6">
+
+        <h1
+          id="home-hero-title"
+          className="text-balance text-[28px] font-bold leading-[1.28] tracking-tight text-foreground sm:text-4xl sm:leading-[1.24] md:text-5xl md:leading-[1.18]"
+        >
+          {content.headlineLead}{" "}
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, var(--foreground) 0%, var(--foreground) 15%, var(--brand-start) 85%, var(--brand-start) 100%)",
+            }}
           >
-            <h1
-              id="home-hero-title"
-              className="text-balance text-4xl font-bold leading-tight tracking-tighter text-foreground sm:text-5xl sm:leading-[1.22] md:text-6xl md:leading-[1.18] xl:text-6xl xl:leading-[1.14] max-w-xl"
-            >
-              {content.headlineLead}{" "}
-              <span className="text-color">{content.headlineAccent}</span>
-              {content.headlineSuffix && <> {content.headlineSuffix}</>}
-            </h1>
+            {content.headlineAccent}
+          </span>
+          {content.headlineSuffix && <> {content.headlineSuffix}</>}
+        </h1>
 
-            <p className="mx-auto max-w-lg text-pretty text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0">
-              {content.description}
-            </p>
+        <p className="text-pretty text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8">
+          {content.description}
+        </p>
 
-            {/* CTA buttons – fixed alignment & text wrapping */}
-            <div
-              className={`flex w-full flex-wrap items-center justify-center gap-2 sm:gap-3 lg:justify-start`}
-            >
-              <Link
-                href={buildLocalePath(locale, "/crm/quote")}
-                className="group inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-color px-3 py-1.5 text-xs font-semibold text-white shadow-brand transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:flex-none sm:px-6 sm:py-2 sm:text-sm"
-              >
-                {content.primaryAction}
-                <ArrowRight
-                  className={`size-3 transition-transform sm:size-4 ${
-                    isRtl
-                      ? "rotate-180 group-hover:-translate-x-1"
-                      : "group-hover:translate-x-1"
-                  }`}
-                />
-              </Link>
+        {/* CTA row: stays on one line at every width — no wrap, buttons share space equally on mobile */}
+        <div className="flex w-full max-w-90 items-center justify-center gap-2 pb-8 pt-1 sm:max-w-none sm:w-auto sm:gap-2.5 sm:pb-10">
+          <Link
+            href={buildLocalePath(locale, "/services")}
+            className="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-full bg-secondary px-4 py-2.5 text-xs font-medium text-foreground transition duration-300 hover:-translate-y-0.5 sm:flex-none sm:px-5.5 sm:text-sm"
+          >
+            {content.secondaryAction}
+          </Link>
 
-              <Link
-                href={buildLocalePath(locale, "/services")}
-                className="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-full border border-border bg-background/75 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary sm:flex-none sm:px-6 sm:py-2 sm:text-sm"
-              >
-                {content.secondaryAction}
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative flex h-90 w-full min-w-0 shrink-0 items-center justify-center sm:h-107.5 lg:h-auto lg:basis-125 xl:basis-140">
-            <div
-              className="absolute rounded-full bg-primary/6 blur-3xl dark:bg-primary/10"
-              style={{ width: 530, height: 530 }}
-            />
-
-            <div className="scale-[0.58] sm:scale-[0.72] lg:scale-[0.88] xl:scale-[0.92]">
-              <OrbitalSystem floatingLabels={content.floatingLabels} />
-            </div>
-          </div>
+          <Link
+            href={buildLocalePath(locale, "/crm/quote")}
+            className="group inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-color pl-4 pr-1.5 py-2 text-xs font-medium text-white shadow-brand transition duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:flex-none sm:gap-2.5 sm:pl-5.5 sm:pr-2 sm:text-sm"
+          >
+            {content.primaryAction}
+            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-white/25">
+              <ArrowRight
+                className={`size-2.5 transition-transform ${
+                  isRtl
+                    ? "rotate-180 group-hover:-translate-x-0.5"
+                    : "group-hover:translate-x-0.5"
+                }`}
+              />
+            </span>
+          </Link>
         </div>
+
+        <TrustedByLogos />
       </div>
+
+      <HeroVisual content={content.visual} />
     </section>
   );
 }

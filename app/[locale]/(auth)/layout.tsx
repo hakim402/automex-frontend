@@ -4,7 +4,7 @@ import { getLocale } from "next-intl/server";
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-const RTL_LOCALES = ["ar", "fa", "ps"];
+const RTL_LOCALES = ["ar"];
 
 export default async function AuthLayout({
   children,

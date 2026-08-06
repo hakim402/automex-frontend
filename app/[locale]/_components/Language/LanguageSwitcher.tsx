@@ -13,16 +13,12 @@ import { cn } from "@/lib/utils";
 // Existing flags
 import US from "country-flag-icons/react/3x2/US";
 import SA from "country-flag-icons/react/3x2/SA";
-import IR from "country-flag-icons/react/3x2/IR";
-import AF from "country-flag-icons/react/3x2/AF";
 import CN from "country-flag-icons/react/3x2/CN";
 
 // New flags for European languages
 import ES from "country-flag-icons/react/3x2/ES"; // Spain
 import DE from "country-flag-icons/react/3x2/DE"; // Germany
 import FR from "country-flag-icons/react/3x2/FR"; // France
-import IT from "country-flag-icons/react/3x2/IT"; // Italy
-import NL from "country-flag-icons/react/3x2/NL"; // Netherlands
 
 const LOCALES = [
   {
@@ -50,18 +46,6 @@ const LOCALES = [
     short: "FR",
   },
   {
-    value: "it",
-    label: "Italiano",
-    flag: IT,
-    short: "IT",
-  },
-  {
-    value: "nl",
-    label: "Nederlands",
-    flag: NL,
-    short: "NL",
-  },
-  {
     value: "zh",
     label: "中文",
     flag: CN,
@@ -72,18 +56,6 @@ const LOCALES = [
     label: "العربية",
     flag: SA,
     short: "AR",
-  },
-  {
-    value: "ps",
-    label: "پښتو",
-    flag: AF,
-    short: "PS",
-  },
-  {
-    value: "fa",
-    label: "فارسی",
-    flag: IR,
-    short: "FA",
   },
 ] as const;
 

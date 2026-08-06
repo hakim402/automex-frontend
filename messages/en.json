@@ -56,18 +56,28 @@
     "other": "Other"
   },
   "HomeHero": {
-  "headlineLead": "Build the Future with",
-  "headlineAccent": "Intelligent AI",
-  "headlineSuffix": "",
-  "description": "Transform your business with enterprise AI, custom software, and intelligent automation. AUTOMEX builds secure, scalable solutions that streamline operations and accelerate growth.",
-  "primaryAction": "Start Your Project",
-  "secondaryAction": "Explore Services",
-  "floatingLabels": [
-      "AI Agents",
-      "Web & Mobile",
-      "Cloud & APIs"
-    ]
-},
+    "eyebrow": "AI & Automation, done for you",
+    "headlineLead": "Build the Future with",
+    "headlineAccent": "Intelligent AI",
+    "headlineSuffix": "",
+    "description": "Transform your business with enterprise AI, custom software, and intelligent automation. AUTOMEX builds secure, scalable solutions that streamline operations and accelerate growth.",
+    "primaryAction": "Start Your Project",
+    "secondaryAction": "Explore Services",
+    "floatingLabels": ["AI Agents", "Web & Mobile", "Cloud & APIs"],
+    "visual": {
+      "inputGhostTop": "Automate my invoicing…",
+      "inputActiveLead": "Automate my",
+      "inputActiveBold": "customer support…",
+      "inputGhostBottom": "Automate my onboarding…",
+      "coreTitle": "AI Automation",
+      "coreSubtitle": "For Your Business",
+      "stats": [
+        { "metric": "3x Faster Response", "label": "AI Agents" },
+        { "metric": "18 Hrs Saved / Week", "label": "CRM Sync" },
+        { "metric": "0% Deploy Downtime", "label": "Cloud & APIs" }
+      ]
+    }
+  },
   "AiShowcase": {
     "sectionTitle": "AI Showcase Intelligent Automation",
     "orbit1": "AI Agents",

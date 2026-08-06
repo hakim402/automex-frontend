@@ -17,7 +17,6 @@ import {
   fetchPartners,
 } from "@/lib/automex/content";
 import type { SupportedLocale } from "@/lib/locale";
-import { PartnersLogoGrid } from "./(routes)/partners/_components/PartnersLogoGrid";
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -55,16 +54,6 @@ const content = {
     servicesSub:
       "Nous fournissons des solutions d'IA, de l'ingénierie logicielle et des services de transformation digitale de niveau entreprise.",
   },
-  it: {
-    servicesHeading: "I Nostri Servizi",
-    servicesSub:
-      "Forniamo soluzioni AI, ingegneria del software e servizi di trasformazione digitale di livello enterprise.",
-  },
-  nl: {
-    servicesHeading: "Onze Diensten",
-    servicesSub:
-      "Wij leveren AI-oplossingen, software-engineering en digitale transformatiediensten op ondernemingsniveau.",
-  },
   zh: {
     servicesHeading: "我们的服务",
     servicesSub: "我们提供AI解决方案、软件工程和企业级数字化转型服务。",
@@ -74,16 +63,6 @@ const content = {
     servicesSub:
       "نقدم حلول الذكاء الاصطناعي، هندسة البرمجيات، وخدمات التحول الرقمي على مستوى المؤسسات.",
   },
-  fa: {
-    servicesHeading: "خدمات ما",
-    servicesSub:
-      "ما راهکارهای هوش مصنوعی، مهندسی نرم‌افزار و خدمات تحول دیجیتال در سطح سازمانی ارائه می‌دهیم.",
-  },
-  ps: {
-    servicesHeading: "زموږ خدمتونه",
-    servicesSub:
-      "موږ د AI حل لارې، سافټویر انجینري او د ډیجیټل بدلون تصدۍ کچې خدمتونه وړاندې کوو.",
-  },
 } as const;
 
 // ─── Page ─────────────────────────────────────────
@@ -92,7 +71,7 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   const lang = locale as SupportedLocale;
   const t = content[locale as keyof typeof content] ?? content.en;
-  const isRtl = ["ar", "fa", "ps"].includes(locale);
+  const isRtl = ["ar"].includes(locale);
 
   // Fetch live data for key homepage sections.
   // Swallow errors during static generation so the build succeeds
@@ -125,16 +104,6 @@ export default async function HomePage({ params }: Props) {
     <div dir={isRtl ? "rtl" : "ltr"}>
       <HeaderWrapper locale={locale} />
       <HomeHero />
-      <div className="mx-auto max-w-7xl px-4">
-        {partners && partners.length > 0 && (
-          <PartnersLogoGrid
-            partners={partners}
-            title="Trusted by"
-            subtitle="We collaborate with the best in the industry"
-            maxLogos={8}
-          />
-        )}
-      </div>
       <TechStackSection isRtl={isRtl} liveTechnologies={technologies} />
       <AiShowcase />
       <HowItWorksWrapper />

@@ -5,7 +5,7 @@
 import { useLocale } from "next-intl";
 import { useEffect } from "react";
 
-const RTL_LOCALES = ["ar", "fa", "ps"];
+const RTL_LOCALES = ["ar"];
 
 export function SetHtmlLangDir() {
   const locale = useLocale();

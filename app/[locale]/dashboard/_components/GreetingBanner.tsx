@@ -21,7 +21,7 @@ const fadeUp = (delay = 0) => ({
 export function GreetingBanner() {
   const t = useTranslations("Dashboard");
   const locale = useLocale();
-  const isRtl = ["ar", "fa", "ps"].includes(locale);
+  const isRtl = ["ar"].includes(locale);
   const { user } = useAuth();
 
   const firstName = user?.full_name?.split(" ")[0] ?? t("defaultName");

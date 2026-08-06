@@ -25,10 +25,10 @@ import Link from "next/link";
 // Types & Utilities
 // ─────────────────────────────────────────────────────────────────────────────
 
-type Locale = "en" | "zh" | "ar" | "fa" | "ps";
+type Locale = "en" | "zh" | "ar";
 
-const SUPPORTED_LOCALES: Locale[] = ["en", "zh", "ar", "fa", "ps"];
-const RTL_LOCALES = new Set<Locale>(["ar", "fa", "ps"]);
+const SUPPORTED_LOCALES: Locale[] = ["en", "zh", "ar"];
+const RTL_LOCALES = new Set<Locale>(["ar"]);
 
 function getSupportedLocale(locale: string): Locale {
   return SUPPORTED_LOCALES.includes(locale as Locale)

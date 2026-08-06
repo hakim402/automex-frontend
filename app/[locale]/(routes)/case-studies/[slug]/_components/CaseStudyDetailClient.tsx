@@ -204,7 +204,7 @@ export function CaseStudyDetailClient({
   locale,
 }: CaseStudyDetailClientProps) {
   const t = useTranslations("CaseStudyDetail");
-  const isRtl = ["ar", "fa", "ps"].includes(locale);
+  const isRtl = ["ar"].includes(locale);
 
   const thumbUrl = caseStudy.thumbnail?.url
     ? getMediaUrl(caseStudy.thumbnail.url)

@@ -1,17 +1,13 @@
 // lib/locale.ts
-export const RTL_LOCALES = ["ar", "fa", "ps"] as const;
+export const RTL_LOCALES = ["ar"] as const;
 
 export const SUPPORTED_LOCALES = [
   "en",
   "es",
   "de",
   "fr",
-  "it",
-  "nl",
   "zh",
   "ar",
-  "fa",
-  "ps",
 ] as const;
 
 export type SupportedLocale = typeof SUPPORTED_LOCALES[number];
@@ -26,12 +22,8 @@ export function getOgLocale(locale: string): string {
     es: "es_ES",
     de: "de_DE",
     fr: "fr_FR",
-    it: "it_IT",
-    nl: "nl_NL",
     zh: "zh_CN",
     ar: "ar_SA",
-    fa: "fa_IR",
-    ps: "ps_AF",
   };
   return map[locale] || "en_US";
 }

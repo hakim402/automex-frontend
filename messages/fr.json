@@ -56,17 +56,40 @@
     "other": "Autres"
   },
   "HomeHero": {
-    "headlineLead": "Construisez l'Avenir avec",
-    "headlineAccent": "une IA Intelligente",
+    "eyebrow": "IA et automatisation, réalisées pour vous",
+    "headlineLead": "Construisez l'avenir avec",
+    "headlineAccent": "l'IA Intelligente",
     "headlineSuffix": "",
-    "description": "Transformez votre entreprise grâce à l'IA d'entreprise, aux logiciels sur mesure et à l'automatisation intelligente. AUTOMEX conçoit des solutions sécurisées et évolutives qui optimisent vos opérations et accélèrent votre croissance.",
-    "primaryAction": "Lancer Votre Projet",
-    "secondaryAction": "Découvrir Nos Services",
+    "description": "Transformez votre entreprise grâce à l'IA d'entreprise, aux logiciels sur mesure et à l'automatisation intelligente. AUTOMEX conçoit des solutions sécurisées et évolutives qui optimisent les opérations et accélèrent la croissance.",
+    "primaryAction": "Lancer votre projet",
+    "secondaryAction": "Découvrir les services",
     "floatingLabels": [
       "Agents IA",
       "Web & Mobile",
       "Cloud & APIs"
-    ]
+    ],
+    "visual": {
+      "inputGhostTop": "Automatiser ma facturation…",
+      "inputActiveLead": "Automatiser mon",
+      "inputActiveBold": "support client…",
+      "inputGhostBottom": "Automatiser mon intégration…",
+      "coreTitle": "Automatisation IA",
+      "coreSubtitle": "Pour votre entreprise",
+      "stats": [
+        {
+          "metric": "Réponses 3× plus rapides",
+          "label": "Agents IA"
+        },
+        {
+          "metric": "18 h économisées / semaine",
+          "label": "Synchronisation CRM"
+        },
+        {
+          "metric": "0 % d'interruption de déploiement",
+          "label": "Cloud & APIs"
+        }
+      ]
+    }
   },
   "AiShowcase": {
     "sectionTitle": "Vitrine IA Automatisation Intelligente",
@@ -1373,7 +1396,7 @@
     "metricsEyebrow": "Indicateurs",
     "keyMetrics": "Indicateurs clés",
     "exploreService": "Explorer le service"
-},
+  },
   "FaqsPage": {
     "categoryAll": "Toutes",
     "categoryGeneral": "Général",
@@ -1393,7 +1416,7 @@
       "button": "Contactez-nous"
     }
   },
-   "Sidebar": {
+  "Sidebar": {
     "menuLabel": "Menu",
     "dashboard": "Tableau de Bord",
     "requests": "Demandes",
@@ -1610,7 +1633,7 @@
     "leadCaptured": "Lead capturé",
     "noMessages": "Aucun message dans cette conversation."
   },
-   "Profile": {
+  "Profile": {
     "pageTitle": "Mon Profil",
     "pageDescription": "Gérez vos informations personnelles, votre adresse et les détails de votre compte.",
     "emailVerified": "E-mail vérifié",
@@ -1714,7 +1737,7 @@
     "deleting": "Suppression en cours…",
     "cancel": "Annuler"
   },
-"PrivacyPolicy": {
+  "PrivacyPolicy": {
     "metaDescription": "Learn how Automex collects, uses, and protects your personal information. Effective July 2025.",
     "title": "Privacy Policy",
     "backToHome": "Back to Automex",
@@ -1724,7 +1747,6 @@
     "companyLabel": "Company:",
     "locationLabel": "Location:",
     "intro": "This Privacy Policy explains how {company} (\"Automex\", \"we\", \"us\", or \"our\") collects, uses, discloses, and safeguards your information when you visit {site}, use our platform, or engage our services (collectively, the \"Services\"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Services.",
-
     "section1": {
       "title": "1. Information We Collect",
       "intro": "We collect information you provide directly, information collected automatically, and information from third parties.",
@@ -1756,7 +1778,6 @@
         }
       }
     },
-
     "section2": {
       "title": "2. How We Use Your Information",
       "intro": "We use your information for the following purposes:",
@@ -1770,7 +1791,6 @@
       ],
       "legalBasis": "We process your personal data under the following legal bases (where applicable under US privacy law and international standards): contract performance (fulfilling our agreement with you), legitimate interests (improving and securing the Services), legal obligation, and consent (for optional marketing communications)."
     },
-
     "section3": {
       "title": "3. How We Share Your Information",
       "intro": "We do not sell, rent, or trade your personal information. We share it only as described below.",
@@ -1782,7 +1802,6 @@
         "<strong>With your consent</strong> — we may share your data for any other purpose with your explicit consent."
       ]
     },
-
     "section4": {
       "title": "4. Data Retention",
       "intro": "We retain your personal data for as long as your account is active or as needed to provide the Services. Specifically:",
@@ -1794,7 +1813,6 @@
       ],
       "disposal": "When data is no longer needed, we securely delete or anonymize it."
     },
-
     "section5": {
       "title": "5. Security",
       "items": [
@@ -1805,7 +1823,6 @@
       ],
       "disclaimer": "No method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security; however, we are committed to promptly notifying affected users in the event of a data breach as required by applicable law, including Washington State's Security Breach Notification Act (RCW 19.255)."
     },
-
     "section6": {
       "title": "6. Your Rights and Choices",
       "intro": "Depending on where you reside, you may have certain rights regarding your personal information.",
@@ -1831,7 +1848,6 @@
         }
       }
     },
-
     "section7": {
       "title": "7. Cookies and Tracking Technologies",
       "intro": "We use the following types of cookies and similar technologies:",
@@ -1843,22 +1859,18 @@
       ],
       "control": "You can control cookies through your browser settings. Disabling certain cookies may affect the functionality of the Services. We honor browser-based 'Do Not Track' (DNT) signals to the extent technically feasible."
     },
-
     "section8": {
       "title": "8. Third-Party Links and Services",
       "content": "The Services may contain links to third-party websites, integrations, or services that are not operated by Automex. We are not responsible for the privacy practices of any third party. We encourage you to review the privacy policy of every site or service you visit."
     },
-
     "section9": {
       "title": "9. Children's Privacy (COPPA)",
       "content": "The Services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at {email}. If we discover we have collected personal information from a child under 13, we will promptly delete it in accordance with the Children's Online Privacy Protection Act (COPPA)."
     },
-
     "section10": {
       "title": "10. International Users",
       "content": "Automex is headquartered in the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using the Services, you consent to this transfer. We take steps to ensure that your data receives an adequate level of protection wherever it is processed."
     },
-
     "section11": {
       "title": "11. Changes to This Privacy Policy",
       "intro": "We may update this Privacy Policy from time to time. When we make material changes, we will notify you by:",
@@ -1868,7 +1880,6 @@
       ],
       "acceptance": "Your continued use of the Services after the effective date constitutes your acceptance of the revised policy. If you do not agree to the changes, you must stop using the Services and may request account deletion."
     },
-
     "section12": {
       "title": "12. Contact Us",
       "intro": "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:",
@@ -1879,9 +1890,7 @@
       },
       "commitment": "We are committed to resolving complaints about your privacy and our collection or use of your personal information. If you have an unresolved privacy or data use concern that we have not addressed satisfactorily, please contact us at the email above."
     },
-
     "legalNotice": "Legal notice: This Privacy Policy is provided for informational purposes and constitutes a binding agreement between you and {company}. It is governed by the laws of the State of Washington, United States, without regard to its conflict-of-law provisions. Any disputes arising under this policy shall be resolved exclusively in the state or federal courts located in King County, Washington.",
-
     "bottomNav": {
       "terms": "Terms of Service",
       "contact": "Contact Us",
@@ -1898,7 +1907,6 @@
     "companyLabel": "Company:",
     "locationLabel": "Location:",
     "intro": "Welcome to {company}. By accessing or using our website {site}, you agree to be bound by these Terms of Service (the \"Terms\"). If you do not agree to these Terms, please do not use our Services. These Terms apply to all visitors, users, and others who access or use the Services.",
-
     "section1": {
       "title": "1. Acceptance of Terms",
       "items": [
@@ -1907,7 +1915,6 @@
         "We reserve the right to update or modify these Terms at any time. Your continued use of the Services after any such changes constitutes your acceptance of the new Terms."
       ]
     },
-
     "section2": {
       "title": "2. Description of Services",
       "items": [
@@ -1916,7 +1923,6 @@
         "The Services may include third-party tools, integrations, or content. Your use of such third-party offerings is governed by their respective terms."
       ]
     },
-
     "section3": {
       "title": "3. User Accounts",
       "items": [
@@ -1926,7 +1932,6 @@
         "We reserve the right to suspend or terminate accounts that violate these Terms or applicable law."
       ]
     },
-
     "section4": {
       "title": "4. User Obligations and Conduct",
       "items": [
@@ -1936,7 +1941,6 @@
         "You are responsible for all content you upload, post, or transmit via the Services, and you grant us a non-exclusive license to use it to provide the Services."
       ]
     },
-
     "section5": {
       "title": "5. Intellectual Property",
       "items": [
@@ -1946,7 +1950,6 @@
         "Feedback, suggestions, and ideas you provide to us about the Services become our property and we may use them without obligation."
       ]
     },
-
     "section6": {
       "title": "6. Payment and Billing",
       "items": [
@@ -1956,7 +1959,6 @@
         "If we are unable to charge your payment method, we may suspend or terminate your access to paid Services."
       ]
     },
-
     "section7": {
       "title": "7. Termination",
       "items": [
@@ -1966,7 +1968,6 @@
         "Provisions that by their nature should survive termination (e.g., indemnity, liability limits, governing law) shall survive."
       ]
     },
-
     "section8": {
       "title": "8. Disclaimer of Warranties",
       "items": [
@@ -1976,7 +1977,6 @@
         "Any material downloaded or otherwise obtained through the Services is at your own discretion and risk."
       ]
     },
-
     "section9": {
       "title": "9. Limitation of Liability",
       "items": [
@@ -1986,7 +1986,6 @@
         "Some jurisdictions do not allow the exclusion of certain warranties or limitations, so these limitations may not apply to you."
       ]
     },
-
     "section10": {
       "title": "10. Indemnification",
       "items": [
@@ -1995,7 +1994,6 @@
         "We reserve the right to assume the exclusive defence and control of any matter subject to indemnification, and you will cooperate with us in asserting any available defences."
       ]
     },
-
     "section11": {
       "title": "11. Governing Law and Dispute Resolution",
       "items": [
@@ -2005,7 +2003,6 @@
         "The parties agree to attempt to resolve any dispute through good-faith negotiation before resorting to litigation."
       ]
     },
-
     "section12": {
       "title": "12. Changes to These Terms",
       "items": [
@@ -2015,7 +2012,6 @@
         "If you do not agree to the changes, you must stop using the Services and may terminate your account."
       ]
     },
-
     "section13": {
       "title": "13. Contact Information",
       "intro": "If you have any questions, concerns, or requests regarding these Terms, please contact us:",
@@ -2026,9 +2022,7 @@
       },
       "commitment": "We are committed to clarifying any questions you may have about your rights and obligations under these Terms."
     },
-
     "legalNotice": "Legal notice: These Terms of Service are a legally binding agreement between you and {company}. They are governed by the laws of Washington State, United States. Any disputes shall be resolved in the state or federal courts located in King County, Washington.",
-
     "bottomNav": {
       "privacy": "Privacy Policy",
       "contact": "Contact Us",

@@ -5,7 +5,7 @@ import { Sidebar }         from "./_components/Sidebar/Sidebar";
 import { DashboardMain }   from "./_components/DashboardMain";
 import { getLocale }       from "next-intl/server";
 
-const RTL_LOCALES = new Set(["ar", "fa", "ps"]);
+const RTL_LOCALES = new Set(["ar"]);
 
 export default async function DashboardLayout({
   children,

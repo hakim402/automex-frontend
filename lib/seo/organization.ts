@@ -20,7 +20,7 @@ export const organizationData = {
     "@type": "ContactPoint",
     telephone: "+93 776320765",
     contactType: "Sales",
-    availableLanguage: ["English", "Spanish", "German", "French", "Italian", "Dutch", "Chinese", "Arabic", "Persian", "Pashto"],
+    availableLanguage: ["English", "Spanish", "German", "French", "Chinese", "Arabic"],
   },
   sameAs: [
     // Add social media URLs when available

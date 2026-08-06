@@ -72,11 +72,7 @@ const LANGUAGES = [
   { code: "ar", name: "العربية" },
   { code: "de", name: "Deutsch" },
   { code: "es", name: "Español" },
-  { code: "fa", name: "فارسی" },
   { code: "fr", name: "Français" },
-  { code: "it", name: "Italiano" },
-  { code: "nl", name: "Nederlands" },
-  { code: "ps", name: "پښتو" },
   { code: "zh", name: "中文" },
 ] as const;
 

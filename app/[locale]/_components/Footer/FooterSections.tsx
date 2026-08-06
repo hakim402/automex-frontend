@@ -450,7 +450,7 @@ function BrandMark({ isRtl }: { isRtl: boolean }) {
 // Main Footer
 // ─────────────────────────────────────────────────────────────────────────────
 
-const RTL_LOCALES = new Set(["ar", "fa", "ps"]);
+const RTL_LOCALES = new Set(["ar"]);
 
 const BOTTOM_LINKS = [
   ["bottom.privacy", "/privacy"],
