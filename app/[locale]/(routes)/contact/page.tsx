@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
 import { FooterSection } from "../../_components/Footer/FooterSections";
 import ContactPageClient from "./_components/ContactPageClient";
-import OrbitalSystem from "../../_components/HomeHero/OrbitalSystem";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
@@ -74,13 +73,6 @@ export default async function ContactPage({
           className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(148_198_233/0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgb(148_198_233/0.05)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)"
         />
         <ContactPageClient isRtl={isRtl} />
-
-        {/* Decorative orbital */}
-        <div className="relative mt-16 mb-20 w-full overflow-hidden py-10">
-          <div className="flex justify-center opacity-60">
-            <OrbitalSystem />
-          </div>
-        </div>
 
         <FooterSection />
       </main>
